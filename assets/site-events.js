@@ -21,7 +21,27 @@
     window.gtag = function () { dataLayer.push(arguments); };
     gtag('js', new Date());
     gtag('config', GA_ID);
+
+    // ---- Meta (Facebook) Pixel ----
+    var FB_ID = '1376533839963615';
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', FB_ID);
+    window.fbq('track', 'PageView');
   }
+
+  // Map our funnel events to Meta standard conversion events (for ad targeting).
+  var FB_EVENTS = {
+    lead_submitted: 'Lead',
+    book_click: 'Schedule',
+    apply_click: 'SubmitApplication',
+    call_click: 'Contact',
+    tool_completed: 'CompleteRegistration',
+    cara_chat_used: 'Contact',
+  };
 
   var ENDPOINT = 'https://zngsgedlsxinbygwmxwn.supabase.co/rest/v1/website_events';
   var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZ3NnZWRsc3hpbmJ5Z3dteHduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NDIzNDQsImV4cCI6MjA5ODExODM0NH0.L_31_UKdccyRH9n7p1GaBlZTqcJipB008H-GIvxwLxM';
@@ -54,6 +74,10 @@
         headers: { 'Content-Type': 'application/json', 'apikey': ANON_KEY, 'Authorization': 'Bearer ' + ANON_KEY },
         body: payload,
       }).catch(function () {});
+
+      // Mirror key actions to Google Analytics and the Meta Pixel as conversions.
+      if (window.gtag) gtag('event', event, props || {});
+      if (window.fbq && FB_EVENTS[event]) fbq('track', FB_EVENTS[event]);
     } catch (e) { /* analytics must never break the page */ }
   }
 
