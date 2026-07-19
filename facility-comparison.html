@@ -57,7 +57,7 @@
 </section>
 
 <section style="max-width:1080px;margin:0 auto;padding:0 24px 60px;overflow-x:auto" id="table-wrap">
-<p id="empty-note" style="text-align:center;font-size:14px;color:#8a978f;padding:30px 0">No facilities added yet&nbsp;&mdash; click "Add a Facility" to start comparing.</p>
+<p id="empty-note" style="text-align:center;font-size:14px;color:#8a978f;padding:30px 0">No facilities added yet, click "Add a Facility" to start comparing.</p>
 </section>
 
 <section style="max-width:780px;margin:0 auto;padding:0 24px 80px;text-align:center">
@@ -172,7 +172,7 @@ function render() {
       cell.style.cssText = 'padding:8px 10px';
       var input = document.createElement('input');
       input.value = (f.data && f.data[label]) || '';
-      input.placeholder = '—';
+      input.placeholder = ', ';
       input.style.cssText = 'width:100%;padding:8px 10px;font-size:13px;border:1px solid #e4e1d8;border-radius:6px;font-family:inherit;color:#2c3d4d';
       input.addEventListener('input', function () {
         facilities[i].data = facilities[i].data || {};

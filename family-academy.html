@@ -28,11 +28,11 @@
 <link rel="canonical" href="https://guide.mo-care.com/family-academy.html">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="Short, structured courses built from our Resource Library — for families who want more than one article can cover.">
+<meta name="description" content="Short, structured courses built from our Resource Library, for families who want more than one article can cover.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Family Academy | Caring Companions">
-<meta property="og:description" content="Short, structured courses built from our Resource Library — for families who want more than one article can cover.">
+<meta property="og:description" content="Short, structured courses built from our Resource Library, for families who want more than one article can cover.">
 <meta property="og:url" content="https://guide.mo-care.com/family-academy.html">
 <meta property="og:image" content="https://guide.mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -62,7 +62,7 @@
 <section class="fa-hero">
 <p class="kicker">Family Academy</p>
 <h1 class="fa-h1">Learn at your own pace.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:560px">Short, structured courses built from our Resource Library&nbsp;&mdash; for families who want more than one article can cover.</p>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:560px">Short, structured courses built from our Resource Library, for families who want more than one article can cover.</p>
 </section>
 <section style="max-width:820px;margin:0 auto;padding:30px 24px 80px;display:flex;flex-direction:column;gap:16px" id="course-list"></section>
 </div>
@@ -156,16 +156,16 @@
 var COURSES = [
   { id: 'dementia', tag: 'Dementia Care Academy', title: 'Understanding & Supporting Someone with Dementia', desc: 'Five lessons on recognizing changes, communicating well, staying safe at home, and caring for yourself along the way.',
     lessons: [
-      { title: 'Recognizing the Early Signs', body: 'Learn the difference between normal aging and the warning signs that call for a doctor’s visit — and why catching changes early gives your family more options.', worksheet: 'Early Signs Checklist (PDF)' },
-      { title: 'Communicating Well as Memory Changes', body: 'Simple shifts in how you ask questions and respond to confusion can reduce frustration for everyone — without pretending nothing has changed.', worksheet: 'Communication Tip Sheet (PDF)' },
+      { title: 'Recognizing the Early Signs', body: 'Learn the difference between normal aging and the warning signs that call for a doctor’s visit, and why catching changes early gives your family more options.', worksheet: 'Early Signs Checklist (PDF)' },
+      { title: 'Communicating Well as Memory Changes', body: 'Simple shifts in how you ask questions and respond to confusion can reduce frustration for everyone, without pretending nothing has changed.', worksheet: 'Communication Tip Sheet (PDF)' },
       { title: 'Creating a Safer Home', body: 'Practical, specific changes that reduce wandering risk, fall risk, and kitchen or medication accidents.', worksheet: 'Home Safety Walkthrough (PDF)' },
-      { title: 'Building a Daily Routine', body: 'Predictable routines reduce anxiety for someone with dementia — here’s how to build one that still fits your family’s life.', worksheet: 'Sample Daily Routine (PDF)' },
+      { title: 'Building a Daily Routine', body: 'Predictable routines reduce anxiety for someone with dementia, here’s how to build one that still fits your family’s life.', worksheet: 'Sample Daily Routine (PDF)' },
       { title: 'Caring for Yourself, Too', body: 'Burnout is common and treatable. What respite actually looks like, and how to ask for help without guilt.', worksheet: 'Caregiver Self-Check (PDF)' },
     ] },
-  { id: 'caregiver', tag: 'Family Caregiver Academy', title: 'The Family Caregiver Foundations Course', desc: 'Four lessons for anyone newly caring for an aging parent or spouse — the basics nobody hands you a manual for.',
+  { id: 'caregiver', tag: 'Family Caregiver Academy', title: 'The Family Caregiver Foundations Course', desc: 'Four lessons for anyone newly caring for an aging parent or spouse, the basics nobody hands you a manual for.',
     lessons: [
       { title: 'Is It Time to Ask for Help?', body: 'Honest signs that a loved one may need more support than family alone can safely provide.', worksheet: 'Readiness Checklist (PDF)' },
-      { title: 'Understanding the Care Continuum', body: 'From occasional check-ins to full-time hands-on care — how the levels differ and how they can change over time.', worksheet: 'Care Levels Overview (PDF)' },
+      { title: 'Understanding the Care Continuum', body: 'From occasional check-ins to full-time hands-on care, how the levels differ and how they can change over time.', worksheet: 'Care Levels Overview (PDF)' },
       { title: 'Talking to Siblings and Family', body: 'How to get everyone on the same page using facts, not just opinions.', worksheet: 'Family Meeting Guide (PDF)' },
       { title: 'Paying for Care', body: 'A plain-language overview of private pay, Medicaid, VA benefits, and long-term care insurance.', worksheet: 'Payment Options Summary (PDF)' },
     ] },
@@ -207,7 +207,7 @@ function renderCatalog() {
     ps[0].textContent = c.tag;
     ps[1].textContent = c.title;
     ps[2].textContent = c.desc;
-    ps[3].textContent = done === 0 ? total + ' lessons' : done === total ? 'Completed — view certificate' : done + ' of ' + total + ' lessons complete';
+    ps[3].textContent = done === 0 ? total + ' lessons' : done === total ? 'Completed, view certificate' : done + ' of ' + total + ' lessons complete';
     b.addEventListener('click', function () {
       state.courseId = c.id;
       if (done === total) { renderCertificate(); show('certificate'); }

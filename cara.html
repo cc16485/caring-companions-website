@@ -45,11 +45,11 @@
 <link rel="canonical" href="https://guide.mo-care.com/cara.html">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="Talk through your family’s situation with Cara, our guided care consultation. A few questions, a personalized care recommendation, and clear next steps — free, no account needed.">
+<meta name="description" content="Talk through your family’s situation with Cara, our guided care consultation. A few questions, a personalized care recommendation, and clear next steps, free, no account needed.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Cara | Guided Care Consultation | Caring Companions">
-<meta property="og:description" content="Talk through your family’s situation with Cara, our guided care consultation. A few questions, a personalized care recommendation, and clear next steps — free, no account needed.">
+<meta property="og:description" content="Talk through your family’s situation with Cara, our guided care consultation. A few questions, a personalized care recommendation, and clear next steps, free, no account needed.">
 <meta property="og:url" content="https://guide.mo-care.com/cara.html">
 <meta property="og:image" content="https://guide.mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -86,7 +86,7 @@
 <section class="cara-page" id="stage-situation" hidden>
 <p class="kicker" style="text-align:center">Understanding Your Situation</p>
 <h1 class="cara-h1" style="text-align:center">Tell me what's happening.</h1>
-<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px;text-align:center">In your own words&nbsp;&mdash; as much or as little as you'd like.</p>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px;text-align:center">In your own words, as much or as little as you'd like.</p>
 <textarea id="situation-text" placeholder="e.g. &ldquo;My dad has Parkinson's and keeps falling&rdquo;" rows="4" style="width:100%;padding:16px 18px;font-size:15px;border:1.5px solid #dfe6e2;border-radius:10px;font-family:inherit;color:#16283a;background:#ffffff;resize:vertical"></textarea>
 <div style="display:flex;justify-content:center;margin-top:20px">
 <button id="situation-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">Continue →</button>
@@ -102,7 +102,7 @@
 <p style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-style:italic;color:#122236;margin:0">I understand. Let's work through this together.</p>
 </div>
 </div>
-<p style="font-size:13px;color:#8a978f;margin:20px 0 24px">To point you toward the most helpful resources, I'll ask a few questions&nbsp;&mdash; about <span id="empathy-qcount">10</span> in total.</p>
+<p style="font-size:13px;color:#8a978f;margin:20px 0 24px">To point you toward the most helpful resources, I'll ask a few questions, about <span id="empathy-qcount">10</span> in total.</p>
 <button id="empathy-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">Continue →</button>
 </section>
 
@@ -201,10 +201,10 @@ var SUBJECTS = [
 
 var ACK_SCENARIOS = [
   { keywords: ['parkinson', 'fell', 'fall', 'falling'], text: "I'm sorry you're dealing with that. Falls can be frightening, especially with a condition like Parkinson's. I'm glad you're looking into this before someone gets seriously hurt." },
-  { keywords: ['forget', 'memory', 'confus', 'dementia', 'alzheimer'], text: "Thank you for telling me — watching memory change in someone you love is one of the hardest things a family goes through." },
+  { keywords: ['forget', 'memory', 'confus', 'dementia', 'alzheimer'], text: "Thank you for telling me, watching memory change in someone you love is one of the hardest things a family goes through." },
   { keywords: ['discharge', 'hospital', 'rehab', 'surgery'], text: "Coming home from the hospital on a short timeline is stressful, and it's smart to plan ahead rather than scramble." },
-  { keywords: ['overnight', 'night', 'awake'], text: "Nighttime safety is one of the concerns families worry about most — and one of the hardest to plan for alone." },
-  { keywords: ['burnout', 'exhausted', 'overwhelmed', 'tired'], text: "I'm really glad you said that — your wellbeing matters here just as much as theirs." },
+  { keywords: ['overnight', 'night', 'awake'], text: "Nighttime safety is one of the concerns families worry about most, and one of the hardest to plan for alone." },
+  { keywords: ['burnout', 'exhausted', 'overwhelmed', 'tired'], text: "I'm really glad you said that, your wellbeing matters here just as much as theirs." },
 ];
 var DEFAULT_ACK = "Thank you for sharing that with me. I know reaching out about something like this isn't always easy.";
 
@@ -228,7 +228,7 @@ function buildQuestions(subject) {
       { value: 'none', label: 'None noticed', weight: 0 },
       { value: 'occasional', label: 'Occasional forgetfulness', weight: 1 },
       { value: 'frequent', label: 'Frequent confusion', weight: 3 },
-      { value: 'significant', label: 'Significant — wandering or getting lost', weight: 5 } ] },
+      { value: 'significant', label: 'Significant, wandering or getting lost', weight: 5 } ] },
     { key: 'medication', category: 'Medication', text: 'How ' + (v === 'have' ? 'do you' : 'does ' + n) + ' currently manage medications?', options: [
       { value: 'independent', label: 'Manages independently', weight: 0 },
       { value: 'reminders', label: 'Needs reminders', weight: 2 },
@@ -241,7 +241,7 @@ function buildQuestions(subject) {
     { key: 'helper', category: 'Family Support', text: 'Who currently helps with day-to-day care?', options: [
       { value: 'noone', label: 'No one right now', weight: 3 },
       { value: 'sometimes', label: 'A family member, sometimes', weight: 1 },
-      { value: 'daily', label: 'A family member, daily — and feeling stretched', weight: 2 } ] },
+      { value: 'daily', label: 'A family member, daily, and feeling stretched', weight: 2 } ] },
     { key: 'stress', category: 'Family Support', text: 'How would you describe your own stress level right now?', options: [
       { value: 'fine', label: 'Fine for now', weight: 0 },
       { value: 'stretched', label: 'Somewhat stretched', weight: 1 },
@@ -274,7 +274,7 @@ function scoreConsultation(answers, subject) {
   var levelName, levelExplain, levelRate, exploreAlternatives;
   if (answers.memory === 'significant') {
     levelName = 'Advanced Care'; levelRate = 'Starting at $34/hour';
-    levelExplain = 'Higher-acuity support for advanced dementia and memory-related safety concerns like wandering — caregivers experienced in dementia care, with closer supervision.';
+    levelExplain = 'Higher-acuity support for advanced dementia and memory-related safety concerns like wandering, caregivers experienced in dementia care, with closer supervision.';
     exploreAlternatives = ['Overnight Care (if nighttime wandering is a concern)', 'Live-In Care (for consistent daily coverage)'];
   } else if (answers.hospital === 'yes') {
     levelName = 'Personal Care'; levelRate = 'Starting at $32/hour';
@@ -290,7 +290,7 @@ function scoreConsultation(answers, subject) {
     exploreAlternatives = ['Overnight Care (if nighttime supervision becomes necessary)', 'Advanced Care (if needs become more complex)'];
   } else if (points >= 3) {
     levelName = 'Wellness Care'; levelRate = 'Starting at $30/hour';
-    levelExplain = 'Companionship, meal preparation, transportation, light housekeeping, reminders, and wellness support — without hands-on personal care.';
+    levelExplain = 'Companionship, meal preparation, transportation, light housekeeping, reminders, and wellness support, without hands-on personal care.';
     exploreAlternatives = ['Personal Care (if daily self-care needs increase)', 'HomeTogether™ (to add virtual check-ins between visits)'];
   } else {
     levelName = 'HomeTogether™ Connection'; levelRate = 'Starting at $75/month';
@@ -309,7 +309,7 @@ function scoreConsultation(answers, subject) {
   if (answers.helper === 'noone') concerns.push('No regular caregiver support yet');
   if (answers.stress === 'overwhelmed') concerns.push('Primary caregiver feeling overwhelmed');
   if (answers.hospital === 'yes') concerns.push('Recent hospitalization');
-  if (concerns.length === 0) concerns.push('No major concerns flagged — mostly looking for a bit of extra connection and oversight');
+  if (concerns.length === 0) concerns.push('No major concerns flagged, mostly looking for a bit of extra connection and oversight');
 
   var nextSteps = ['Talk with a physician about what you’ve shared here', 'Learn more about ' + levelName, 'Schedule a free consultation with a care coordinator'];
   if (answers.falls && answers.falls !== 'none') nextSteps.unshift('Review our Fall Prevention guide');
@@ -543,7 +543,7 @@ function renderSummary() {
     row.style.cssText = 'padding:10px 0;border-bottom:1px solid #ede9e0';
     row.innerHTML = '<p style="font-size:14px;margin:0 0 3px"><strong style="color:#122236"></strong> <span style="color:#C17A12;font-weight:600"></span></p><p style="font-size:12.5px;color:#55677a;line-height:1.5;margin:0"></p>';
     row.querySelector('strong').textContent = r.name;
-    row.querySelector('span').textContent = ' — ' + r.rate;
+    row.querySelector('span').textContent = ', ' + r.rate;
     row.querySelectorAll('p')[1].textContent = r.desc;
     rc.appendChild(row);
   });

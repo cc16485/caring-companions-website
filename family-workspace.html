@@ -24,11 +24,11 @@
 <link rel="canonical" href="https://guide.mo-care.com/family-workspace.html">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="Everything you've started stays here — come back anytime, from any device on this browser, and pick up where you left off.">
+<meta name="description" content="Everything you've started stays here, come back anytime, from any device on this browser, and pick up where you left off.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Family Workspace | Caring Companions">
-<meta property="og:description" content="Everything you've started stays here — come back anytime, from any device on this browser, and pick up where you left off.">
+<meta property="og:description" content="Everything you've started stays here, come back anytime, from any device on this browser, and pick up where you left off.">
 <meta property="og:url" content="https://guide.mo-care.com/family-workspace.html">
 <meta property="og:image" content="https://guide.mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -55,7 +55,7 @@
 <section class="fw-hero">
 <p class="kicker" style="margin-bottom:10px">Family Workspace</p>
 <h1 class="fw-h1">Your Care Plan</h1>
-<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0">Everything you've started stays here&nbsp;&mdash; come back anytime, from any device on this browser, and pick up where you left off.</p>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0">Everything you've started stays here, come back anytime, from any device on this browser, and pick up where you left off.</p>
 </section>
 
 <section style="max-width:680px;margin:0 auto;padding:20px 24px 60px">
@@ -128,7 +128,7 @@ var items = [
   { label: 'Home Safety Assessment', detail: 'Room-by-room fall risk check', href: 'home-safety-check.html', s: pick(flags.homeSafety, done) },
   { label: 'Hospital Discharge Plan', detail: 'Recovery timeline and equipment checklist', href: 'care-paths/hospital-discharge.html', s: pick(flags.hospitalDischarge, done) },
   { label: 'Paying for Care', detail: 'Payment options for your situation', href: 'care-paths/paying-for-care.html', s: pick(flags.payingForCare, done) },
-  { label: 'Decision Center Journey', detail: dc ? 'In progress — step ' + (dc.stepIndex + 1) + ' of 5' : 'Not started yet', href: 'decision-center.html', s: pick(dc, inProgress) },
+  { label: 'Decision Center Journey', detail: dc ? 'In progress, step ' + (dc.stepIndex + 1) + ' of 5' : 'Not started yet', href: 'decision-center.html', s: pick(dc, inProgress) },
   { label: 'Family Academy', detail: academy && Object.keys(academy).length ? 'Lessons in progress' : 'No courses started yet', href: 'family-academy.html', s: pick(academy && Object.keys(academy).length, inProgress) },
   { label: 'Family Checklist', detail: 'Documents, home safety, equipment, and care setup', href: 'family-checklist.html', s: pick(flags.checklistStarted, inProgress) },
   { label: 'Care Costs Calculator', detail: 'Compare home care against assisted living, memory care, and nursing home', href: 'cost-calculator.html', s: notStarted },

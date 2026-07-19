@@ -34,11 +34,11 @@
 <link rel="canonical" href="https://guide.mo-care.com/decision-center.html">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="Tell us what’s happening — a fall, memory changes, a hospital discharge — and the Decision Center builds a step-by-step path for your family.">
+<meta name="description" content="Tell us what’s happening, a fall, memory changes, a hospital discharge, and the Decision Center builds a step-by-step path for your family.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Home Care Decision Center | Caring Companions">
-<meta property="og:description" content="Tell us what’s happening — a fall, memory changes, a hospital discharge — and the Decision Center builds a step-by-step path for your family.">
+<meta property="og:description" content="Tell us what’s happening, a fall, memory changes, a hospital discharge, and the Decision Center builds a step-by-step path for your family.">
 <meta property="og:url" content="https://guide.mo-care.com/decision-center.html">
 <meta property="og:image" content="https://guide.mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -72,14 +72,14 @@
 
 <p class="kicker" style="text-align:center">Home Care Decision Center</p>
 <h1 class="dc-h1">What's happening?</h1>
-<p style="font-size:15.5px;color:#55677a;text-align:center;line-height:1.6;margin:0 0 32px">Tell us in your own words, or choose what's closest&nbsp;&mdash; we'll build the right path for you.</p>
+<p style="font-size:15.5px;color:#55677a;text-align:center;line-height:1.6;margin:0 0 32px">Tell us in your own words, or choose what's closest, we'll build the right path for you.</p>
 
 <div class="dc-search-row">
 <input id="query" placeholder="e.g. &ldquo;Mom fell and I don't know what to do&rdquo;" style="flex:1;padding:15px 18px;font-size:15px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;color:#16283a;background:#ffffff">
 <button id="find-path" class="btn-primary" style="padding:15px 22px;font-size:15px;white-space:nowrap">Find my path</button>
 </div>
 
-<p id="no-match" hidden style="font-size:13.5px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:12px 16px;margin:12px 0 0">We're not quite sure yet&nbsp;&mdash; try one of the situations below, or ask Cara using the button in the corner.</p>
+<p id="no-match" hidden style="font-size:13.5px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:12px 16px;margin:12px 0 0">We're not quite sure yet, try one of the situations below, or ask Cara using the button in the corner.</p>
 
 <p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:40px 0 14px">Or choose a common situation</p>
 <div class="dc-chips" id="situation-chips"></div>
@@ -137,11 +137,11 @@
 var SITUATIONS = [
   { id: 'fell', label: 'Mom fell yesterday', keywords: ['fell', 'fall', 'falling'],
     steps: [
-      { kind: 'Assessment', title: 'Home Safety Assessment', body: 'Let’s check for the risks that led to this fall so it doesn’t happen again — flooring, lighting, bathroom setup, and mobility.', actionLabel: 'Start Safety Assessment', href: 'home-safety-check.html' },
+      { kind: 'Assessment', title: 'Home Safety Assessment', body: 'Let’s check for the risks that led to this fall so it doesn’t happen again, flooring, lighting, bathroom setup, and mobility.', actionLabel: 'Start Safety Assessment', href: 'home-safety-check.html' },
       { kind: 'Guide', title: 'Hospital & Recovery Guide', body: 'If she was seen at the hospital or an ER, here’s what to expect during recovery at home and what to watch for.', actionLabel: 'Read the Guide', href: 'guides/hospital-discharge.html' },
-      { kind: 'Consider', title: 'Fall Prevention Basics', body: 'A handful of small, immediate changes reduce fall risk right away — before any care plan is even in place.', actionLabel: 'See Fall Prevention Tips', href: 'guides/fall-prevention-at-home.html' },
+      { kind: 'Consider', title: 'Fall Prevention Basics', body: 'A handful of small, immediate changes reduce fall risk right away, before any care plan is even in place.', actionLabel: 'See Fall Prevention Tips', href: 'guides/fall-prevention-at-home.html' },
       { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Based on what you’ve told us, here’s the level of in-home support that typically helps most after a fall like this.', actionLabel: 'See Recommended Care', href: 'care-paths/falls-and-mobility.html' },
-      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'Talk with a care coordinator about a safe, specific plan for your mom — no obligation.', actionLabel: 'Schedule Consultation', href: 'book.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'Talk with a care coordinator about a safe, specific plan for your mom, no obligation.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
     related: [
       { label: 'Fall Prevention at Home', href: 'guides/fall-prevention-at-home.html' },
@@ -153,7 +153,7 @@ var SITUATIONS = [
       { kind: 'Guide', title: 'Early Signs of Dementia', body: 'What’s normal aging, what isn’t, and when it’s time to talk to a doctor.', actionLabel: 'Read the Guide', href: 'guides/dementia-and-alzheimers.html' },
       { kind: 'Assessment', title: 'Dementia Stage Guide', body: 'A short set of questions to help understand where he may be in the progression, in plain language.', actionLabel: 'Start the Stage Guide', href: 'care-paths/dementia.html' },
       { kind: 'Consider', title: 'Caregiver Communication Tips', body: 'How to talk with someone experiencing memory loss without causing frustration or fear.', actionLabel: 'See Communication Tips', href: 'guides/best-practices-for-dementia-care.html' },
-      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Memory changes often call for Specialized Care — here’s what that looks like day to day.', actionLabel: 'See Recommended Care', href: 'care-paths/dementia.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Memory changes often call for Specialized Care, here’s what that looks like day to day.', actionLabel: 'See Recommended Care', href: 'care-paths/dementia.html' },
       { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'A coordinator experienced with dementia care can help you plan the next conversation with your dad.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
     related: [
@@ -163,10 +163,10 @@ var SITUATIONS = [
     ] },
   { id: 'discharge', label: 'Hospital discharge tomorrow', keywords: ['discharge', 'hospital', 'rehab'],
     steps: [
-      { kind: 'Guide', title: 'Hospital Discharge Checklist', body: 'What to have ready at home before she arrives — medications, equipment, and follow-up appointments.', actionLabel: 'Get the Checklist', href: 'care-paths/hospital-discharge.html' },
-      { kind: 'Assessment', title: 'Home Safety Assessment', body: 'A fast check of the home for the first 72 hours — the highest-risk window for readmission.', actionLabel: 'Start Safety Assessment', href: 'home-safety-check.html' },
+      { kind: 'Guide', title: 'Hospital Discharge Checklist', body: 'What to have ready at home before she arrives, medications, equipment, and follow-up appointments.', actionLabel: 'Get the Checklist', href: 'care-paths/hospital-discharge.html' },
+      { kind: 'Assessment', title: 'Home Safety Assessment', body: 'A fast check of the home for the first 72 hours, the highest-risk window for readmission.', actionLabel: 'Start Safety Assessment', href: 'home-safety-check.html' },
       { kind: 'Consider', title: 'Medication Management', body: 'How to keep new prescriptions straight and avoid dangerous interactions in the first weeks home.', actionLabel: 'Read the Guide', href: 'guides/medication-management.html' },
-      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Transition Care is built exactly for this window — temporary, focused support during recovery.', actionLabel: 'See Recommended Care', href: 'care-paths/hospital-discharge.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Transition Care is built exactly for this window, temporary, focused support during recovery.', actionLabel: 'See Recommended Care', href: 'care-paths/hospital-discharge.html' },
       { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We can often start Transition Care within 24 hours of discharge.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
     related: [
@@ -176,9 +176,9 @@ var SITUATIONS = [
     ] },
   { id: 'alone', label: 'Can’t stay alone anymore', keywords: ['alone', 'unsafe', 'safe'],
     steps: [
-      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A full picture of daily needs — mobility, meals, medication, and safety — to see what support actually makes sense.', actionLabel: 'Start Assessment', href: 'assessment.html' },
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A full picture of daily needs, mobility, meals, medication, and safety, to see what support actually makes sense.', actionLabel: 'Start Assessment', href: 'assessment.html' },
       { kind: 'Guide', title: 'Signs It’s No Longer Safe Alone', body: 'A clear, honest checklist for a hard question many families are afraid to ask.', actionLabel: 'Read the Guide', href: 'guides/home-safety-room-by-room.html' },
-      { kind: 'Consider', title: 'Home Care vs. Assisted Living', body: 'An honest comparison — including when a facility may actually be the better fit.', actionLabel: 'Compare Options', href: 'compare-care.html' },
+      { kind: 'Consider', title: 'Home Care vs. Assisted Living', body: 'An honest comparison, including when a facility may actually be the better fit.', actionLabel: 'Compare Options', href: 'compare-care.html' },
       { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Here’s the level of daily support that would let your loved one stay home safely.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
       { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'Talk through the options with a coordinator before any decision is final.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
@@ -190,8 +190,8 @@ var SITUATIONS = [
   { id: 'overnight', label: 'Need overnight help', keywords: ['overnight', 'night', 'sleep'],
     steps: [
       { kind: 'Guide', title: 'Overnight & Live-In Care Guide', body: 'The difference between overnight shifts, 24-hour rotating care, and live-in caregivers.', actionLabel: 'Read the Guide', href: 'services/overnight-care.html' },
-      { kind: 'Consider', title: 'Cost Comparison', body: 'Overnight vs. 24-Hour vs. Live-In — published rates, side by side.', actionLabel: 'Compare Costs', href: 'cost-calculator.html' },
-      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A few questions about nighttime needs — wandering, falls, toileting — to size the right coverage.', actionLabel: 'Start Assessment', href: 'care-paths/overnight-care.html' },
+      { kind: 'Consider', title: 'Cost Comparison', body: 'Overnight vs. 24-Hour vs. Live-In, published rates, side by side.', actionLabel: 'Compare Costs', href: 'cost-calculator.html' },
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A few questions about nighttime needs, wandering, falls, toileting, to size the right coverage.', actionLabel: 'Start Assessment', href: 'care-paths/overnight-care.html' },
       { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Based on your answers, here’s the overnight arrangement that fits best.', actionLabel: 'See Recommended Care', href: 'care-paths/overnight-care.html' },
       { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We can usually schedule overnight coverage within days.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
@@ -204,7 +204,7 @@ var SITUATIONS = [
     steps: [
       { kind: 'Guide', title: 'Missouri Medicaid HCBS Guide', body: 'How Missouri’s Home and Community-Based Services program works for in-home care.', actionLabel: 'Read the Guide', href: 'guides/missouri-medicaid-hcbs.html' },
       { kind: 'Guide', title: 'Medicaid Spend-Down, Explained', body: 'A plain-language walkthrough of spend-down rules and eligibility.', actionLabel: 'Read the Guide', href: 'guides/missouri-medicaid-hcbs.html' },
-      { kind: 'Assessment', title: 'Benefits Eligibility Check', body: 'A few questions to get a sense of likely eligibility — not a substitute for a formal application.', actionLabel: 'Check Eligibility', href: 'care-paths/paying-for-care.html' },
+      { kind: 'Assessment', title: 'Benefits Eligibility Check', body: 'A few questions to get a sense of likely eligibility, not a substitute for a formal application.', actionLabel: 'Check Eligibility', href: 'care-paths/paying-for-care.html' },
       { kind: 'Recommendation', title: 'Recommended Payment Plan', body: 'How Medicaid can combine with other payment sources for your situation.', actionLabel: 'See Payment Options', href: 'care-paths/paying-for-care.html' },
       { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We’ll help you navigate the paperwork, not just explain it.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
@@ -219,7 +219,7 @@ var SITUATIONS = [
       { kind: 'Assessment', title: 'Veteran Eligibility Check', body: 'A quick look at whether your veteran or their spouse likely qualifies.', actionLabel: 'Check Eligibility', href: 'guides/va-benefits-for-home-care.html' },
       { kind: 'Consider', title: 'Combining VA with Home Care', body: 'How VA benefits typically layer with private pay or other coverage.', actionLabel: 'Learn More', href: 'care-paths/paying-for-care.html' },
       { kind: 'Recommendation', title: 'Recommended Payment Plan', body: 'A realistic picture of what VA coverage could mean for your monthly cost.', actionLabel: 'See Payment Options', href: 'care-paths/paying-for-care.html' },
-      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We work directly with VA benefits regularly — we can help you apply.', actionLabel: 'Schedule Consultation', href: 'book.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We work directly with VA benefits regularly, we can help you apply.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
     related: [
       { label: 'VA-Funded Home Care', href: 'guides/va-benefits-for-home-care.html' },
@@ -231,7 +231,7 @@ var SITUATIONS = [
       { kind: 'Guide', title: 'Family Caregiver Communication Guide', body: 'How to get everyone looking at the same facts instead of arguing from different assumptions.', actionLabel: 'Read the Guide', href: 'family-meeting-planner.html' },
       { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A neutral, shareable assessment the whole family can review together.', actionLabel: 'Start Assessment', href: 'assessment.html' },
       { kind: 'Consider', title: 'Comparing Care Options Together', body: 'A side-by-side families can look at together, instead of debating from memory.', actionLabel: 'Compare Options', href: 'compare-care.html' },
-      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'A specific, written recommendation everyone can react to — not just opinions.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'A specific, written recommendation everyone can react to, not just opinions.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
       { kind: 'Next Step', title: 'Schedule a Family Consultation', body: 'We can walk the whole family through it together, on one call.', actionLabel: 'Schedule Consultation', href: 'book.html' },
     ],
     related: [
@@ -242,7 +242,7 @@ var SITUATIONS = [
   { id: 'burnout', label: 'I’m the caregiver and I’m exhausted', keywords: ['burnout', 'exhaust', 'tired', 'overwhelmed'],
     steps: [
       { kind: 'Guide', title: 'Caregiver Burnout Guide', body: 'What burnout actually looks like, and why asking for help isn’t giving up.', actionLabel: 'Read the Guide', href: 'guides/caregiver-burnout.html' },
-      { kind: 'Consider', title: 'Respite Care Options', body: 'Short-term relief — a few hours, a weekend, or ongoing regular breaks.', actionLabel: 'See Respite Options', href: 'services/hourly-care.html' },
+      { kind: 'Consider', title: 'Respite Care Options', body: 'Short-term relief, a few hours, a weekend, or ongoing regular breaks.', actionLabel: 'See Respite Options', href: 'services/hourly-care.html' },
       { kind: 'Assessment', title: 'Care Needs Assessment', body: 'Let’s look at what support would actually lighten your load, not just your loved one’s.', actionLabel: 'Start Assessment', href: 'assessment.html' },
       { kind: 'Recommendation', title: 'Recommended Care Level', body: 'A plan that gives you real breaks without losing continuity of care.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
       { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'Let’s talk about what relief could look like this week, not eventually.', actionLabel: 'Schedule Consultation', href: 'book.html' },
@@ -256,7 +256,7 @@ var SITUATIONS = [
     steps: [
       { kind: 'Guide', title: 'Switching Agencies Checklist', body: 'How to transition without a gap in coverage, and what to ask your current agency for.', actionLabel: 'Get the Checklist', href: 'family-checklist.html' },
       { kind: 'Consider', title: 'Compare Pricing & Vetting', body: 'See our published rates and caregiver screening standards next to what you have now.', actionLabel: 'Compare', href: 'cost-calculator.html' },
-      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'Bring your current care plan — we’ll build from what’s already working.', actionLabel: 'Start Assessment', href: 'assessment.html' },
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'Bring your current care plan, we’ll build from what’s already working.', actionLabel: 'Start Assessment', href: 'assessment.html' },
       { kind: 'Recommendation', title: 'Recommended Care Level', body: 'A plan that matches or improves on your current coverage.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
       { kind: 'Next Step', title: 'Schedule a Transition Call', body: 'We’ll coordinate the handoff so there’s no gap in care.', actionLabel: 'Schedule Call', href: 'book.html' },
     ],
@@ -352,7 +352,7 @@ function renderJourney() {
   });
 
   var next = s.steps[idx + 1];
-  el('suggested-next').textContent = next ? next.title : 'You’ve reached the final step — schedule your consultation when ready.';
+  el('suggested-next').textContent = next ? next.title : 'You’ve reached the final step, schedule your consultation when ready.';
 }
 
 el('mark-complete').addEventListener('click', function () {

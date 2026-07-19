@@ -10,11 +10,11 @@
 <link rel="canonical" href="https://guide.mo-care.com/home-safety-check.html">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="Six quick questions, room by room. You'll get a personalized safety checklist at the end — free, about 3 minutes.">
+<meta name="description" content="Six quick questions, room by room. You'll get a personalized safety checklist at the end, free, about 3 minutes.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Home Safety Assessment | Caring Companions">
-<meta property="og:description" content="Six quick questions, room by room. You'll get a personalized safety checklist at the end — free, about 3 minutes.">
+<meta property="og:description" content="Six quick questions, room by room. You'll get a personalized safety checklist at the end, free, about 3 minutes.">
 <meta property="og:url" content="https://guide.mo-care.com/home-safety-check.html">
 <meta property="og:image" content="https://guide.mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,7 +41,7 @@
 <section class="fun-hero" id="stage-intro">
 <p class="kicker">Home Safety Assessment</p>
 <h1 class="fun-h1">Let's check the home for fall risks.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto 30px;max-width:520px">Six quick questions, room by room. You'll get a personalized safety checklist at the end&nbsp;&mdash; free, about 3 minutes.</p>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto 30px;max-width:520px">Six quick questions, room by room. You'll get a personalized safety checklist at the end, free, about 3 minutes.</p>
 <button id="begin" class="btn-primary" style="padding:15px 28px;font-size:15px">Start the Assessment</button>
 </section>
 
@@ -188,10 +188,10 @@ function renderResult() {
     if (chosen) { riskTotal += chosen.risk; if (chosen.flag) flags.push(chosen.flag); }
   });
   var score = maxScore - riskTotal;
-  var summary = 'The home looks quite safe already — just a couple of small items to double check.';
-  if (riskTotal >= 7) summary = 'Several meaningful fall risks stood out — addressing these this week would make a real difference.';
+  var summary = 'The home looks quite safe already, just a couple of small items to double check.';
+  if (riskTotal >= 7) summary = 'Several meaningful fall risks stood out, addressing these this week would make a real difference.';
   else if (riskTotal >= 3) summary = 'A few fall risks are worth addressing soon, alongside considering some extra support.';
-  if (flags.length === 0) flags.push('No major hazards flagged — keep up the good habits!');
+  if (flags.length === 0) flags.push('No major hazards flagged, keep up the good habits!');
 
   if (window.CCTrack) CCTrack('tool_completed', { tool: 'home-safety', score: score });
   el('res-score').textContent = String(score);

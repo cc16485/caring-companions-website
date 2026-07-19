@@ -69,7 +69,7 @@
 <section class="as-page" id="view-intro" style="text-align:center">
 <p class="kicker" style="margin-bottom:16px">Digital Care Assessment</p>
 <h1 class="as-h1">A real assessment, not a quiz.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 0 30px">Eight short sections covering safety, memory, daily needs, medication, and more. At the end, you'll get a written report you can keep, print, and bring to a doctor&nbsp;&mdash; whether or not you ever call us.</p>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 0 30px">Eight short sections covering safety, memory, daily needs, medication, and more. At the end, you'll get a written report you can keep, print, and bring to a doctor, whether or not you ever call us.</p>
 <button id="begin" class="btn-primary" style="padding:16px 30px;font-size:15.5px">Begin the assessment</button>
 <p style="font-size:13px;color:#8a978f;margin:14px 0 0">About 8 minutes · Free · Saved automatically as you go</p>
 </section>
@@ -138,20 +138,20 @@
 <p style="font-size:12px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Risk Flags</p>
 <p id="r-riskflags" style="font-size:14.5px;line-height:1.8;color:#2c3d4d;margin:0"></p>
 </div>
-<p style="font-size:12px;color:#8a978f;line-height:1.6;margin:0 0 20px">This summary reflects a self-reported, non-clinical digital assessment and is intended to support&nbsp;&mdash; not replace&nbsp;&mdash; professional clinical evaluation.</p>
+<p style="font-size:12px;color:#8a978f;line-height:1.6;margin:0 0 20px">This summary reflects a self-reported, non-clinical digital assessment and is intended to support, not replace, professional clinical evaluation.</p>
 </div>
 
 <div class="no-print" style="background:#fbf6ec;border:1px solid #e8dcc4;border-radius:14px;padding:26px;margin-bottom:24px">
 <div id="email-capture">
 <p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px">Want to keep this report?</p>
-<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0 0 16px">We'll email you a copy to review later and share with your family&nbsp;&mdash; no spam, ever.</p>
+<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0 0 16px">We'll email you a copy to review later and share with your family, no spam, ever.</p>
 <div style="display:flex;flex-wrap:wrap;gap:10px">
 <input id="email-input" type="email" placeholder="you@email.com" style="flex:1;min-width:200px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
 <button id="email-send" class="btn-primary" style="border-radius:8px;padding:12px 20px;font-size:14px">Email My Report</button>
 </div>
 </div>
-<p id="email-sent" hidden style="font-size:15px;font-weight:600;color:#0e6b5c;margin:0">✓ Request received — a care coordinator will email your report shortly.</p>
-<p id="email-error" hidden style="font-size:13.5px;color:#8a5a2a;margin:12px 0 0">Sorry — that didn't go through. Please try again, or call (417) 234-8494.</p>
+<p id="email-sent" hidden style="font-size:15px;font-weight:600;color:#0e6b5c;margin:0">✓ Request received, a care coordinator will email your report shortly.</p>
+<p id="email-error" hidden style="font-size:13.5px;color:#8a5a2a;margin:12px 0 0">Sorry, that didn't go through. Please try again, or call (417) 234-8494.</p>
 </div>
 
 <div class="no-print" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:8px">
@@ -182,7 +182,7 @@ var DOMAINS = [
       { value: 'none', label: 'None noticed', weight: 0 },
       { value: 'occasional', label: 'Occasional forgetfulness', weight: 1 },
       { value: 'frequent', label: 'Frequent confusion', weight: 3 },
-      { value: 'significant', label: 'Significant — wandering or getting lost', weight: 5 } ] },
+      { value: 'significant', label: 'Significant, wandering or getting lost', weight: 5 } ] },
   ]},
   { id: 'adl', eyebrow: 'Daily Self-Care', title: 'Bathing, dressing, and personal care.', questions: [
     { key: 'bathing', text: 'Can they bathe and dress without help?', type: 'single', options: [
@@ -211,7 +211,7 @@ var DOMAINS = [
     { key: 'helper', text: 'Who currently helps care for them?', type: 'single', options: [
       { value: 'noone', label: 'No one right now', weight: 3 },
       { value: 'sometimes', label: 'A family member, sometimes', weight: 1 },
-      { value: 'daily', label: 'A family member, daily — and feeling stretched', weight: 2 } ] },
+      { value: 'daily', label: 'A family member, daily, and feeling stretched', weight: 2 } ] },
     { key: 'stress', text: 'How would you describe your own stress level as caregiver?', type: 'single', options: [
       { value: 'fine', label: 'Fine for now', weight: 0 },
       { value: 'stretched', label: 'Somewhat stretched', weight: 1 },
@@ -274,7 +274,7 @@ function scoreAssessment(answers) {
     costEstimate = '$28–$34/hour, typically 4+ hours per visit';
   } else if (points >= 3) {
     levelName = 'Wellness Care';
-    levelExplain = 'Help with everyday routines, meals, and light household tasks — support without full personal care.';
+    levelExplain = 'Help with everyday routines, meals, and light household tasks, support without full personal care.';
     costEstimate = '$28–$34/hour, typically 4+ hours per visit';
   } else {
     levelName = 'HomeTogether™ Connection';
@@ -284,10 +284,10 @@ function scoreAssessment(answers) {
 
   var payerMap = {
     private: 'Private pay, billed directly at our published hourly or daily rate.',
-    ltci: 'Long-term care insurance — we can help verify and bill your policy directly.',
+    ltci: 'Long-term care insurance, we can help verify and bill your policy directly.',
     medicaid: 'Missouri Medicaid Home and Community-Based Services (HCBS) may cover part or all of your cost.',
     va: 'VA Community Care or Aid & Attendance may help cover the cost for a qualifying veteran or spouse.',
-    unsure: 'We’ll walk through private pay, LTC insurance, Medicaid, and VA options together — most families use a combination.',
+    unsure: 'We’ll walk through private pay, LTC insurance, Medicaid, and VA options together, most families use a combination.',
   };
   var payerOptions = payerMap[answers.payer] || payerMap.unsure;
 
@@ -303,14 +303,14 @@ function scoreAssessment(answers) {
 
   function optLabel(d, q, val) {
     var o = DOMAINS[d].questions[q].options.find(function (x) { return x.value === val; });
-    return o ? o.label : '—';
+    return o ? o.label : ', ';
   }
   var clinicalRows = [
     { label: 'Falls (6 mo.)', value: answers.fallHistory === 'multiple' ? '2+' : answers.fallHistory === 'once' ? '1' : '0' },
     { label: 'Mobility', value: optLabel(0, 1, answers.mobility) },
     { label: 'Cognition', value: optLabel(1, 0, answers.memory) },
-    { label: 'ADL — Bathing/Dressing', value: optLabel(2, 0, answers.bathing) },
-    { label: 'ADL — Toileting', value: optLabel(2, 1, answers.toileting) },
+    { label: 'ADL, Bathing/Dressing', value: optLabel(2, 0, answers.bathing) },
+    { label: 'ADL, Toileting', value: optLabel(2, 1, answers.toileting) },
     { label: 'Medication management', value: optLabel(3, 0, answers.meds) },
     { label: 'Recent hospitalization', value: recentHospital ? 'Yes, within 3 months' : 'None reported' },
   ];
@@ -481,7 +481,7 @@ el('email-send').addEventListener('click', function () {
     message: [
       'Visitor completed the Digital Care Assessment and asked for their report by email.',
       'Recommended level: ' + r.levelName,
-      'Urgent flag: ' + (r.urgent ? 'YES — ' + r.urgentReason : 'no'),
+      'Urgent flag: ' + (r.urgent ? 'YES, ' + r.urgentReason : 'no'),
       'Cost estimate: ' + r.costEstimate,
       'Payer: ' + r.payerOptions,
     ].join('\n'),
