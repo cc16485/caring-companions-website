@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resource Library | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.rl-hero { max-width: 800px; margin: 0 auto; padding: 64px 24px 24px; text-align: center; }
+.rl-h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
+.rl-grid-wrap { max-width: 1180px; margin: 0 auto; padding: 20px 24px 80px; }
+.rl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.rl-card {
+  display: block; border: 1px solid var(--border); border-radius: 14px; padding: 22px 20px;
+  background: #ffffff; box-shadow: 0 1px 2px rgba(22,40,58,0.04);
+  transition: border-color .18s ease, transform .18s ease; text-decoration: none;
+}
+.rl-card:hover { border-color: var(--accent); transform: translateY(-2px); text-decoration: none; }
+.rl-cat-chip {
+  background: #ffffff; color: var(--muted); border: 1px solid var(--border); border-radius: 20px;
+  padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit;
+}
+.rl-cat-chip.selected { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.rl-hide-mobile { display: inline; }
+@media (max-width: 1039px) { .rl-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 719px) {
+  .rl-hero { padding: 40px 20px 20px; }
+  .rl-h1 { font-size: 28px; }
+  .rl-grid-wrap { padding: 20px 20px 60px; }
+  .rl-grid { grid-template-columns: 1fr; }
+  .rl-hide-mobile { display: none; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/resource-library.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Comprehensive, clinically reviewed guides on the questions families actually face — not blog posts. Each one is written to be the best resource on its…">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Resource Library | Caring Companions">
+<meta property="og:description" content="Comprehensive, clinically reviewed guides on the questions families actually face — not blog posts. Each one is written to be the best resource on its…">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/resource-library.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner" style="max-width:1180px">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions">
+<span class="rl-hide-mobile" style="width:1px;height:22px;background:#dfe6e2"></span>
+<span class="rl-hide-mobile" style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;color:#55677a">Resource Library</span>
+</a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="rl-hero">
+<p class="kicker">Resource Library</p>
+<h1 class="rl-h1">The Aging at Home Library</h1>
+<p style="font-size:15.5px;line-height:1.65;color:#55677a;margin:0 0 30px">Comprehensive, clinically reviewed guides on the questions families actually face&nbsp;&mdash; not blog posts. Each one is written to be the best resource on its topic, anywhere.</p>
+<input id="query" placeholder="Search guides&nbsp;&mdash; e.g. &ldquo;falls,&rdquo; &ldquo;Medicaid,&rdquo; &ldquo;dementia&rdquo;" style="width:100%;max-width:480px;padding:14px 18px;font-size:14.5px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;color:#16283a;background:#ffffff">
+</section>
+
+<section style="max-width:1180px;margin:0 auto;padding:0 24px 20px">
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" id="category-chips"></div>
+</section>
+
+<section class="rl-grid-wrap">
+<div class="rl-grid" id="guide-grid"></div>
+<p id="no-results" hidden style="text-align:center;font-size:14.5px;color:#8a978f;padding:40px 0">No guides match "<span id="no-results-term"></span>" yet&nbsp;&mdash; try a different search, or <a href="cara.html">ask Cara</a>.</p>
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+'use strict';
+var BYLINE = 'Reviewed by a Caring Companions Care Coordinator · Updated July 2026';
+var GUIDES = [
+  { title: 'Recognizing Early Signs of Dementia', category: 'Dementia & Memory', desc: 'What’s normal aging, what isn’t, and when to see a doctor.', href: 'guides/dementia-and-alzheimers.html' },
+  { title: 'Best Practices for Dementia Care', category: 'Dementia & Memory', desc: 'Daily routines, communication tips, safety, and caregiver support.', href: 'guides/best-practices-for-dementia-care.html' },
+  { title: 'Parkinson’s Disease at Home', category: 'Chronic Conditions', desc: 'Mobility, fall risk, and daily support strategies.', href: 'guides/parkinsons-disease-at-home.html' },
+  { title: 'Stroke Recovery at Home', category: 'Chronic Conditions', desc: 'What recovery looks like month to month, and how to support it.', href: 'guides/stroke-recovery-at-home.html' },
+  { title: 'Living Well with Heart Failure', category: 'Chronic Conditions', desc: 'Daily monitoring and home routines that reduce hospital readmission.', href: 'guides/living-well-with-heart-failure.html' },
+  { title: 'Managing COPD at Home', category: 'Chronic Conditions', desc: 'Breathing routines, triggers, and when symptoms mean it’s time to call a doctor.', href: 'guides/managing-copd-at-home.html' },
+  { title: 'Diabetes Care for Seniors', category: 'Chronic Conditions', desc: 'Meal planning, monitoring, and medication support at home.', href: 'guides/diabetes-care-for-seniors.html' },
+  { title: 'Fall Prevention at Home', category: 'Falls & Mobility', desc: 'Simple, immediate changes that meaningfully reduce fall risk.', href: 'guides/fall-prevention-at-home.html' },
+  { title: 'Coming Home After a Hospital Stay', category: 'Hospital & Recovery', desc: 'A 72-hour checklist for a safe transition home.', href: 'guides/hospital-discharge.html' },
+  { title: 'Medication Management Made Simple', category: 'Medication', desc: 'Keeping prescriptions straight and avoiding dangerous interactions.', href: 'guides/medication-management.html' },
+  { title: 'Caregiver Burnout: What It Is, What Helps', category: 'Caregiver Support', desc: 'Recognizing burnout and finding real relief, not just advice.', href: 'guides/caregiver-burnout.html' },
+  { title: 'Home Safety Room by Room', category: 'Falls & Mobility', desc: 'A practical walkthrough of the highest-risk spots in the house.', href: 'guides/home-safety-room-by-room.html' },
+  { title: 'Eating Well as We Age', category: 'Nutrition', desc: 'Nutrition changes that matter most for seniors, and warning signs.', href: 'guides/eating-well-as-we-age.html' },
+  { title: 'Planning for End-of-Life Care', category: 'End-of-Life', desc: 'A compassionate, practical guide to a hard conversation.', href: 'guides/planning-for-end-of-life-care.html' },
+  { title: 'VA Benefits for Home Care', category: 'Payment & Benefits', desc: 'How VA Community Care and Aid & Attendance can help pay for care.', href: 'guides/va-benefits-for-home-care.html' },
+  { title: 'Missouri Medicaid HCBS, Explained', category: 'Payment & Benefits', desc: 'How Missouri’s Home and Community-Based Services program works.', href: 'guides/missouri-medicaid-hcbs.html' },
+];
+var CATS = ['All', 'Dementia & Memory', 'Chronic Conditions', 'Falls & Mobility', 'Hospital & Recovery', 'Medication', 'Caregiver Support', 'Nutrition', 'End-of-Life', 'Payment & Benefits'];
+
+var state = { query: '', category: 'All' };
+
+var chipWrap = document.getElementById('category-chips');
+CATS.forEach(function (c) {
+  var b = document.createElement('button');
+  b.className = 'rl-cat-chip' + (c === 'All' ? ' selected' : '');
+  b.textContent = c;
+  b.addEventListener('click', function () {
+    state.category = c;
+    chipWrap.querySelectorAll('.rl-cat-chip').forEach(function (x) { x.classList.toggle('selected', x.textContent === c); });
+    render();
+  });
+  chipWrap.appendChild(b);
+});
+
+function render() {
+  var q = state.query.trim().toLowerCase();
+  var filtered = GUIDES.filter(function (g) {
+    var matchesCat = state.category === 'All' || g.category === state.category;
+    var matchesQuery = !q || g.title.toLowerCase().indexOf(q) !== -1 || g.desc.toLowerCase().indexOf(q) !== -1 || g.category.toLowerCase().indexOf(q) !== -1;
+    return matchesCat && matchesQuery;
+  });
+  var grid = document.getElementById('guide-grid');
+  grid.innerHTML = '';
+  filtered.forEach(function (g) {
+    var a = document.createElement('a');
+    a.className = 'rl-card';
+    a.href = g.href;
+    var cat = document.createElement('p');
+    cat.style.cssText = 'font-size:11px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px';
+    cat.textContent = g.category;
+    var title = document.createElement('p');
+    title.style.cssText = 'font-size:16px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35';
+    title.textContent = g.title;
+    var desc = document.createElement('p');
+    desc.style.cssText = 'font-size:13px;line-height:1.55;color:#55677a;margin:0 0 14px';
+    desc.textContent = g.desc;
+    var byline = document.createElement('p');
+    byline.style.cssText = 'font-size:11.5px;color:#8a978f;margin:0';
+    byline.textContent = BYLINE;
+    a.appendChild(cat); a.appendChild(title); a.appendChild(desc); a.appendChild(byline);
+    grid.appendChild(a);
+  });
+  document.getElementById('no-results').hidden = filtered.length > 0;
+  document.getElementById('no-results-term').textContent = state.query;
+}
+
+document.getElementById('query').addEventListener('input', function (e) {
+  state.query = e.target.value;
+  render();
+});
+render();
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

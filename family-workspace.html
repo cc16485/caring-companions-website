@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Workspace | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.fw-hero { max-width: 680px; margin: 0 auto; padding: 56px 24px 20px; }
+.fw-h1 { font-family: var(--serif); font-size: 32px; font-weight: 600; margin: 0 0 8px; color: var(--brand-blue); }
+.fw-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px;
+  text-decoration: none; transition: border-color .15s ease;
+}
+.fw-item:hover { border-color: var(--accent); text-decoration: none; }
+@media (max-width: 639px) {
+  .fw-hero { padding: 36px 20px 16px; }
+  .fw-h1 { font-size: 25px; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/family-workspace.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Everything you've started stays here — come back anytime, from any device on this browser, and pick up where you left off.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Family Workspace | Caring Companions">
+<meta property="og:description" content="Everything you've started stays here — come back anytime, from any device on this browser, and pick up where you left off.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/family-workspace.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner w820">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="fw-hero">
+<p class="kicker" style="margin-bottom:10px">Family Workspace</p>
+<h1 class="fw-h1">Your Care Plan</h1>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0">Everything you've started stays here&nbsp;&mdash; come back anytime, from any device on this browser, and pick up where you left off.</p>
+</section>
+
+<section style="max-width:680px;margin:0 auto;padding:20px 24px 60px">
+<div style="display:flex;flex-direction:column;gap:10px" id="workspace-items"></div>
+
+<div style="background:#0E3760;border-radius:14px;padding:24px;margin-top:24px;text-align:center">
+<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Not sure what to tackle next?</p>
+<a href="cara.html" style="display:inline-block;background:#fbfaf7;color:#0E3760;border-radius:9px;padding:12px 24px;font-size:14px;font-weight:600;text-decoration:none">Ask Cara</a>
+</div>
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+'use strict';
+function readJSON(key) { try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) { return null; } }
+
+var flags = readJSON('cc-workspace-flags') || {};
+var dc = readJSON('cc-decision-center-progress');
+var academy = readJSON('cc-family-academy-progress');
+
+var done = { color: '#0e6b5c', bg: '#e8f3ef', status: 'Complete' };
+var notStarted = { color: '#8a978f', bg: '#f2f0e9', status: 'Not Started' };
+var inProgress = { color: '#96692a', bg: '#fbf6ec', status: 'In Progress' };
+
+function pick(cond, yes) { return cond ? yes : notStarted; }
+
+var items = [
+  { label: 'Digital Care Assessment', detail: 'Your recommended care level and cost estimate', href: 'assessment.html', s: pick(flags.assessment, done) },
+  { label: 'Home Safety Assessment', detail: 'Room-by-room fall risk check', href: 'home-safety-check.html', s: pick(flags.homeSafety, done) },
+  { label: 'Hospital Discharge Plan', detail: 'Recovery timeline and equipment checklist', href: 'care-paths/hospital-discharge.html', s: pick(flags.hospitalDischarge, done) },
+  { label: 'Paying for Care', detail: 'Payment options for your situation', href: 'care-paths/paying-for-care.html', s: pick(flags.payingForCare, done) },
+  { label: 'Decision Center Journey', detail: dc ? 'In progress — step ' + (dc.stepIndex + 1) + ' of 5' : 'Not started yet', href: 'decision-center.html', s: pick(dc, inProgress) },
+  { label: 'Family Academy', detail: academy && Object.keys(academy).length ? 'Lessons in progress' : 'No courses started yet', href: 'family-academy.html', s: pick(academy && Object.keys(academy).length, inProgress) },
+  { label: 'Family Checklist', detail: 'Documents, home safety, equipment, and care setup', href: 'family-checklist.html', s: pick(flags.checklistStarted, inProgress) },
+  { label: 'Care Costs Calculator', detail: 'Compare home care against assisted living, memory care, and nursing home', href: 'cost-calculator.html', s: notStarted },
+  { label: 'Compare Care Options', detail: 'Home Care vs. Assisted Living vs. Memory Care vs. Nursing Home', href: 'compare-care.html', s: notStarted },
+  { label: 'How We Decide', detail: 'Our transparency page on recommendations and pricing', href: 'how-we-decide.html', s: notStarted },
+  { label: 'Family Meeting Planner', detail: 'Agenda, discussion guide, and decision worksheet', href: 'family-meeting-planner.html', s: notStarted },
+  { label: 'Decision Journal', detail: 'Record why you made the choices you did', href: 'decision-journal.html', s: pick(flags.journalStarted, inProgress) },
+  { label: 'Facility Comparison', detail: 'Side-by-side notes on facilities you tour', href: 'facility-comparison.html', s: pick(flags.facilityComparisonStarted, inProgress) },
+  { label: 'Agency Interview Notes', detail: 'A worksheet for each agency you call', href: 'agency-interview-notes.html', s: pick(flags.agencyInterviewsStarted, inProgress) },
+];
+
+var wrap = document.getElementById('workspace-items');
+items.forEach(function (item) {
+  var a = document.createElement('a');
+  a.className = 'fw-item';
+  a.href = item.href;
+  var text = document.createElement('div');
+  var label = document.createElement('p');
+  label.style.cssText = 'font-size:15px;font-weight:600;color:#122236;margin:0 0 4px';
+  label.textContent = item.label;
+  var detail = document.createElement('p');
+  detail.style.cssText = 'font-size:13px;color:#55677a;margin:0';
+  detail.textContent = item.detail;
+  text.appendChild(label);
+  text.appendChild(detail);
+  var status = document.createElement('span');
+  status.style.cssText = 'font-size:11.5px;font-weight:700;border-radius:10px;padding:5px 12px;white-space:nowrap;color:' + item.s.color + ';background:' + item.s.bg;
+  status.textContent = item.s.status;
+  a.appendChild(text);
+  a.appendChild(status);
+  wrap.appendChild(a);
+});
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

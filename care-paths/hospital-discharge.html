@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Discharge Care | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/care-paths/hospital-discharge.html">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="description" content="The first 72 hours home carry the highest risk of complications. Answer a few quick questions and we'll build a personalized recovery plan — free, in…">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Hospital Discharge Care | Caring Companions">
+<meta property="og:description" content="The first 72 hours home carry the highest risk of complications. Answer a few quick questions and we'll build a personalized recovery plan — free, in…">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/care-paths/hospital-discharge.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner w820">
+<a href="../index.html" class="cc-logo"><img src="../assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="fun-hero" id="stage-hook">
+<p style="font-size:13px;font-weight:600;color:#96692a;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 14px">Hospital Discharge</p>
+<h1 class="fun-h1">Is your loved one leaving the hospital soon?</h1>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto 30px;max-width:520px">The first 72 hours home carry the highest risk of complications. Answer a few quick questions and we'll build a personalized recovery plan&nbsp;&mdash; free, in about 2 minutes.</p>
+<p style="font-size:13px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 14px">Are they still in the hospital?</p>
+<div style="display:flex;flex-direction:column;gap:9px;max-width:400px;margin:0 auto">
+<button class="fun-option" data-hook-label="Yes, discharging soon">Yes, discharging soon</button>
+<button class="fun-option" data-hook-label="Already home">Already home</button>
+<button class="fun-option" data-hook-label="Not sure yet">Not sure yet</button>
+</div>
+</section>
+
+<section class="fun-result" id="stage-question" hidden>
+<div style="margin-bottom:30px">
+<div style="display:flex;justify-content:space-between;font-size:12.5px;color:#8a978f;margin-bottom:6px"><span>Question <span id="q-num">1</span> of <span id="q-count"></span></span><span>Building your recovery plan</span></div>
+<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden"><div style="height:100%;width:0%;background:#96692a;transition:width .3s ease" id="q-progress"></div></div>
+</div>
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:0 0 22px;color:#0D365F" id="q-text"></h2>
+<div style="display:flex;flex-direction:column;gap:9px" id="q-options"></div>
+<button id="q-back" style="background:none;border:none;color:#55677a;font-size:13.5px;font-weight:600;cursor:pointer;padding:20px 0 0">← Back</button>
+</section>
+
+<section style="max-width:680px;margin:0 auto;padding:48px 24px 80px" id="stage-result" hidden>
+<p style="font-size:12.5px;font-weight:600;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-align:center">Your Personalized Aging-at-Home Plan</p>
+<h1 style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;margin:0 0 20px;color:#0D365F;text-align:center">Recovery Plan Summary</h1>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:16px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Based on your answers</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0" id="res-summary"></p>
+</div>
+
+<div style="background:#0E3760;border-radius:14px;padding:24px;margin-bottom:16px">
+<p style="font-size:11.5px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Our Biggest Concerns</p>
+<div id="res-concerns"></div>
+</div>
+
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;margin:28px 0 14px;color:#0D365F">Your Recovery Timeline</h2>
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:16px">
+<p style="font-size:12px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">First 48 Hours</p>
+<div id="res-checklist"></div>
+<p style="font-size:12px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:18px 0 8px">Week One</p>
+<p style="font-size:14px;line-height:1.8;color:#2c3d4d;margin:0">Focus on pain management, safe bathing, nutrition, hydration, and a gentle walking program.</p>
+<p style="font-size:12px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:18px 0 8px">Weeks Two–Four</p>
+<p style="font-size:14px;line-height:1.8;color:#2c3d4d;margin:0">Goals shift toward regaining strength, reducing assistance, and increasing independence.</p>
+</div>
+
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;margin:28px 0 14px;color:#0D365F">Questions to Ask Before Leaving the Hospital</h2>
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:16px">
+<p style="font-size:13px;color:#8a978f;line-height:1.6;margin:0 0 12px">Because <span id="res-recovering-lower"></span>, ask:</p>
+<div id="res-hospital-questions"></div>
+</div>
+
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;margin:28px 0 14px;color:#0D365F">Recommended Equipment</h2>
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:16px" id="res-equipment"></div>
+
+<div style="background:#0E3760;border-radius:16px;padding:30px;margin-bottom:16px">
+<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Recommended Care Level</p>
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;margin:0 0 6px;color:#fbfaf7">Transition Care</h2>
+<p style="font-size:15px;font-weight:600;color:#e8c988;margin:0 0 14px">Starting at $32/hour</p>
+<p style="font-size:14px;line-height:1.7;color:#c3cdd6;margin:0">We recommend Transition Care because it combines hands-on mobility and transfer support, medication reminders, and close monitoring&nbsp;&mdash; exactly the mix that reduces the risk of returning to the hospital during this window.</p>
+</div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:16px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Cost Planning (illustrative only)</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">20 hrs/week ≈ $640/week · 30 hrs/week ≈ $960/week · 40 hrs/week ≈ $1,280/week</p>
+<p style="font-size:12.5px;color:#8a978f;line-height:1.6;margin:10px 0 0">Based on $32/hour. Potential payment options: Private Pay, VA, Long-Term Care Insurance, Medicaid (if applicable).</p>
+</div>
+
+<div style="background:#f2f0e9;border-radius:14px;padding:22px;margin-bottom:16px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Family Discussion Guide</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">• Who will help with appointments?</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">• Who manages medications day to day?</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">• Who checks in daily, and who is the emergency contact?</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">• What happens overnight if something goes wrong?</p>
+</div>
+
+<div style="background:#fbf6ec;border:1px solid #e8dcc4;border-radius:14px;padding:22px;margin-bottom:24px">
+<p style="font-size:11.5px;font-weight:700;color:#8a5a2a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Call the Doctor If You See</p>
+<p style="font-size:14px;line-height:1.9;color:#5a4726;margin:0">Fever · new confusion · increased swelling · shortness of breath · a new inability to walk or bear weight</p>
+</div>
+
+<div style="background:#f2f0e9;border-radius:14px;padding:22px;margin-bottom:24px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Your Personalized Reading List</p>
+<a href="../guides/hospital-discharge.html" style="display:block;font-size:14px;font-weight:600;color:#2c3d4d;text-decoration:none;padding:4px 0">Coming Home After a Hospital Stay →</a>
+<a href="../guides/fall-prevention-at-home.html" style="display:block;font-size:14px;font-weight:600;color:#2c3d4d;text-decoration:none;padding:4px 0">Fall Prevention at Home →</a>
+<a href="../guides/medication-management.html" style="display:block;font-size:14px;font-weight:600;color:#2c3d4d;text-decoration:none;padding:4px 0">Medication Management Made Simple →</a>
+<a href="paying-for-care.html" style="display:block;font-size:14px;font-weight:600;color:#2c3d4d;text-decoration:none;padding:4px 0">Paying for Care →</a>
+</div>
+
+<div style="background:#ffffff;border:2px solid #96692a;border-radius:14px;padding:26px;margin-bottom:24px">
+<div id="email-capture">
+<p style="font-size:16px;font-weight:600;color:#122236;margin:0 0 8px">Your Personalized Recovery Plan is Ready</p>
+<p style="font-size:13.5px;line-height:1.7;color:#55677a;margin:0 0 14px">We can email you the printable PDF, equipment checklist, hospital questions, care calendar, and Springfield resource directory&nbsp;&mdash; plus updates if our recommendations change.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<input id="email-input" type="email" placeholder="you@email.com" style="flex:1;min-width:200px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<button id="email-send" class="btn-primary" style="border-radius:8px;padding:12px 22px;font-size:14px">Send My Recovery Plan</button>
+</div>
+</div>
+<p id="email-sent" hidden style="font-size:16px;font-weight:600;color:#0e6b5c;margin:0">✓ Request received — a care coordinator will email your Recovery Plan shortly.</p>
+<p id="email-error" hidden style="font-size:13.5px;color:#8a5a2a;margin:12px 0 0">Sorry — that didn't go through. Please try again, or call (417) 234-8494.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+<a href="../contact.html" style="background:#0D365F;color:#faf9f6;border:none;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none;display:inline-block">Schedule a Free Consultation</a>
+<a href="../cara.html" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Ask Cara a Follow-up</a>
+</div>
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner">
+<img src="../assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script src="../assets/funnel.js"></script>
+<script>
+const QUESTIONS = [
+  { key: 'recoveringFrom', text: 'What are they recovering from?', options: ['Surgery', 'Fall or injury', 'Stroke', 'Illness or infection'] },
+  { key: 'mobility', text: 'How will they get around at home right now?', options: ['Walking independently', 'With a cane or walker', 'Wheelchair or mostly in bed'] },
+  { key: 'homeSupport', text: 'Will someone be able to stay with them the first few days?', options: ['Yes, around the clock', 'Only part of the day', 'No, they’ll be mostly alone'] },
+  { key: 'priorFalls', text: 'Any falls in the last 6 months?', options: ['No', 'Once', 'Twice or more'] },
+];
+
+const HOSPITAL_QUESTIONS = {
+  'Surgery': ['Are there weight-bearing restrictions?', 'Which exercises should begin right away?', 'How should pain medication be timed?', 'When is the follow-up appointment?'],
+  'Fall or injury': ['What caused the fall, and could a medication be a factor?', 'Should we get a fall-risk screening?', 'Are there movement restrictions while healing?', 'When is the follow-up appointment?'],
+  'Stroke': ['What follow-up therapy is recommended?', 'Are there swallowing precautions?', 'What symptoms mean we should call 911?', 'When is the follow-up appointment?'],
+  'Illness or infection': ['How long should the medication course continue?', 'What symptoms mean the infection is returning?', 'Are there activity restrictions?', 'When is the follow-up appointment?'],
+};
+const EQUIPMENT = {
+  'Walking independently': ['Shower chair', 'Grab bars', 'Night lights'],
+  'With a cane or walker': ['Walker', 'Shower chair', 'Raised toilet seat', 'Grab bars', 'Night lights'],
+  'Wheelchair or mostly in bed': ['Wheelchair or transport chair', 'Bed rail', 'Raised toilet seat', 'Grab bars', 'Reacher', 'Night lights'],
+};
+
+function fillList(id, items, renderItem) {
+  var wrap = document.getElementById(id);
+  wrap.innerHTML = '';
+  items.forEach(function (item) {
+    var p = document.createElement('p');
+    renderItem(p, item);
+    wrap.appendChild(p);
+  });
+}
+
+var lastPlanSummary = '';
+
+function onResult(state) {
+  var answers = state.answers;
+  var alone = answers.homeSupport === 'No, they’ll be mostly alone';
+  var fallsRisk = answers.priorFalls && answers.priorFalls !== 'No';
+
+  var checklist = ['Medications reconciled into one list, with follow-up appointments already scheduled', 'A clear, well-lit path to the bathroom, free of fall hazards'];
+  if (alone) checklist.push('A plan for daytime coverage, since no one will be there full-time');
+  if (fallsRisk) checklist.push('Extra attention to mobility support given recent falls');
+  checklist.push('A Transition Care caregiver to help bridge the first few weeks home');
+
+  var recoveringFrom = answers.recoveringFrom || 'a hospital stay';
+  var homeSupportText = alone ? 'will be mostly alone at home' : answers.homeSupport === 'Only part of the day' ? 'has part-day support at home' : 'has around-the-clock support at home';
+  document.getElementById('res-summary').textContent =
+    'Recovering from ' + recoveringFrom.toLowerCase() + ' · ' + (answers.mobility || 'mobility not yet specified') + ' · ' + homeSupportText + (fallsRisk ? ' · recent fall history' : '');
+  document.getElementById('res-recovering-lower').textContent = 'they’re recovering from ' + recoveringFrom.toLowerCase();
+
+  var concerns = [
+    { dot: (alone || fallsRisk) ? '🟠' : '🟢', label: 'Fall risk' },
+    { dot: '🟡', label: 'Medication management' },
+    { dot: alone ? '🟠' : '🟢', label: 'Meal preparation' },
+  ];
+  fillList('res-concerns', concerns, function (p, c) {
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#eef2ef;margin:0';
+    p.textContent = c.dot + ' ' + c.label;
+  });
+  fillList('res-checklist', checklist, function (p, item) {
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#2c3d4d;margin:0';
+    p.textContent = '☐ ' + item;
+  });
+  fillList('res-hospital-questions', HOSPITAL_QUESTIONS[answers.recoveringFrom] || HOSPITAL_QUESTIONS['Surgery'], function (p, item) {
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#2c3d4d;margin:0';
+    p.textContent = '• ' + item;
+  });
+  fillList('res-equipment', EQUIPMENT[answers.mobility] || EQUIPMENT['With a cane or walker'], function (p, item) {
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#2c3d4d;margin:0';
+    p.innerHTML = '<span style="color:#96692a;font-weight:700">✓</span>&nbsp; ';
+    p.appendChild(document.createTextNode(item));
+  });
+
+  lastPlanSummary = document.getElementById('res-summary').textContent;
+
+  try {
+    var f = JSON.parse(localStorage.getItem('cc-workspace-flags') || '{}');
+    f.hospitalDischarge = true;
+    localStorage.setItem('cc-workspace-flags', JSON.stringify(f));
+  } catch (e) {}
+}
+
+CCFunnel.init({ questions: QUESTIONS, onResult: onResult });
+
+document.getElementById('email-send').addEventListener('click', function () {
+  var email = document.getElementById('email-input').value.trim();
+  if (!email) return;
+  var btn = document.getElementById('email-send');
+  document.getElementById('email-error').hidden = true;
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  CCForms.submitLead({
+    name: '(Recovery Plan request)',
+    email: email,
+    message: [
+      'Visitor completed the Hospital Discharge planner and asked for their Recovery Plan by email.',
+      'Plan summary: ' + (lastPlanSummary || 'not recorded'),
+      'Recommended: Transition Care, starting at $32/hour.',
+    ].join('\n'),
+  }).then(function () {
+    document.getElementById('email-capture').hidden = true;
+    document.getElementById('email-sent').hidden = false;
+  }).catch(function () {
+    document.getElementById('email-error').hidden = false;
+  }).finally(function () {
+    btn.disabled = false;
+    btn.textContent = 'Send My Recovery Plan';
+  });
+});
+</script>
+<script src="../assets/forms.js"></script>
+<script src="../assets/cara-widget.js"></script>
+<script src="../assets/site-events.js"></script>
+</body>
+</html>

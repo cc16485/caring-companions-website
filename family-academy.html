@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Academy | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.fa-hero { max-width: 820px; margin: 0 auto; padding: 64px 24px 24px; text-align: center; }
+.fa-h1 { font-family: var(--serif); font-size: 36px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
+.fa-course { max-width: 1080px; margin: 0 auto; padding: 36px 24px 80px; }
+.fa-cert { max-width: 640px; margin: 0 auto; padding: 64px 24px 80px; }
+.fa-course-grid { display: grid; grid-template-columns: 260px 1fr; gap: 28px; align-items: start; }
+.fa-hide-mobile { display: inline; }
+@media (max-width: 1039px) { .fa-course-grid { grid-template-columns: 220px 1fr; } }
+@media (max-width: 719px) {
+  .fa-hero { padding: 40px 20px 20px; }
+  .fa-h1 { font-size: 27px; }
+  .fa-course { padding: 24px 20px 60px; }
+  .fa-cert { padding: 40px 20px 60px; }
+  .fa-course-grid { grid-template-columns: 1fr; }
+  .fa-hide-mobile { display: none; }
+}
+@media print { .no-print { display: none !important; } }
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/family-academy.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Short, structured courses built from our Resource Library — for families who want more than one article can cover.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Family Academy | Caring Companions">
+<meta property="og:description" content="Short, structured courses built from our Resource Library — for families who want more than one article can cover.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/family-academy.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+
+<header class="cc-header no-print">
+<div class="cc-header-inner">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions">
+<span class="fa-hide-mobile" style="width:1px;height:22px;background:#dfe6e2"></span>
+<span class="fa-hide-mobile" style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;color:#55677a">Family Academy</span>
+</a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<!-- Catalog -->
+<div id="view-catalog" class="no-print">
+<section class="fa-hero">
+<p class="kicker">Family Academy</p>
+<h1 class="fa-h1">Learn at your own pace.</h1>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:560px">Short, structured courses built from our Resource Library&nbsp;&mdash; for families who want more than one article can cover.</p>
+</section>
+<section style="max-width:820px;margin:0 auto;padding:30px 24px 80px;display:flex;flex-direction:column;gap:16px" id="course-list"></section>
+</div>
+
+<!-- Course -->
+<section class="fa-course no-print" id="view-course" hidden>
+<button class="js-back-catalog" style="background:none;border:none;color:#96692a;font-size:13.5px;font-weight:600;cursor:pointer;padding:0;margin-bottom:20px">← All courses</button>
+<p id="course-tag" style="font-size:12px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px"></p>
+<h1 id="course-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:600;margin:0 0 20px;color:#0D365F"></h1>
+
+<div class="fa-course-grid">
+<div style="display:flex;flex-direction:column;gap:0" id="lesson-list"></div>
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
+<div style="background:#122c42;border-radius:10px;height:200px;display:flex;align-items:center;justify-content:center;margin-bottom:22px">
+<p style="font-size:13px;color:#8fd8c8;margin:0">▶ Video: <span id="lesson-video-title"></span></p>
+</div>
+<h2 id="lesson-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:21px;font-weight:600;margin:0 0 16px;color:#0D365F"></h2>
+<p id="lesson-body" style="font-size:15px;line-height:1.75;color:#2c3d4d;margin:0 0 22px"></p>
+<p style="display:inline-block;font-size:13.5px;font-weight:600;color:#96692a;margin:0 0 24px">↓ Download: <span id="lesson-worksheet"></span> <span style="font-weight:400;color:#8a978f">(coming soon)</span></p>
+<div style="display:flex;justify-content:space-between;gap:12px">
+<button id="lesson-back" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">← Back</button>
+<button id="lesson-complete" class="btn-primary" style="padding:12px 24px;font-size:14px">Mark complete &amp; continue</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Certificate -->
+<section class="fa-cert" id="view-certificate" hidden>
+<div class="no-print" style="text-align:center;margin-bottom:24px">
+<button class="js-back-catalog" style="background:none;border:none;color:#96692a;font-size:13.5px;font-weight:600;cursor:pointer;padding:0">← All courses</button>
+</div>
+<div style="background:#ffffff;border:2px solid #96692a;border-radius:16px;padding:48px;text-align:center">
+<p style="font-size:12px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 20px">Certificate of Completion</p>
+<img src="assets/cc-logo.webp" alt="Caring Companions" style="height:36px;display:block;margin:0 auto 24px">
+<p style="font-family:'Source Serif 4',Georgia,serif;font-size:15px;color:#55677a;margin:0 0 10px">This certifies that a dedicated family caregiver has completed</p>
+<h1 id="cert-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:600;margin:0 0 16px;color:#0D365F"></h1>
+<p id="cert-date" style="font-size:13.5px;color:#8a978f;margin:0 0 32px"></p>
+<p style="font-size:13px;color:#8a978f;margin:0">Caring Companions Family Academy</p>
+</div>
+<div class="no-print" style="display:flex;justify-content:center;gap:12px;margin-top:24px">
+<button id="print-cert" class="btn-primary" style="padding:13px 24px;font-size:14px">Print / Save Certificate</button>
+</div>
+</section>
+
+<footer class="cc-footer no-print">
+<div class="cc-footer-inner">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+
+<script>
+(function () {
+'use strict';
+var COURSES = [
+  { id: 'dementia', tag: 'Dementia Care Academy', title: 'Understanding & Supporting Someone with Dementia', desc: 'Five lessons on recognizing changes, communicating well, staying safe at home, and caring for yourself along the way.',
+    lessons: [
+      { title: 'Recognizing the Early Signs', body: 'Learn the difference between normal aging and the warning signs that call for a doctor’s visit — and why catching changes early gives your family more options.', worksheet: 'Early Signs Checklist (PDF)' },
+      { title: 'Communicating Well as Memory Changes', body: 'Simple shifts in how you ask questions and respond to confusion can reduce frustration for everyone — without pretending nothing has changed.', worksheet: 'Communication Tip Sheet (PDF)' },
+      { title: 'Creating a Safer Home', body: 'Practical, specific changes that reduce wandering risk, fall risk, and kitchen or medication accidents.', worksheet: 'Home Safety Walkthrough (PDF)' },
+      { title: 'Building a Daily Routine', body: 'Predictable routines reduce anxiety for someone with dementia — here’s how to build one that still fits your family’s life.', worksheet: 'Sample Daily Routine (PDF)' },
+      { title: 'Caring for Yourself, Too', body: 'Burnout is common and treatable. What respite actually looks like, and how to ask for help without guilt.', worksheet: 'Caregiver Self-Check (PDF)' },
+    ] },
+  { id: 'caregiver', tag: 'Family Caregiver Academy', title: 'The Family Caregiver Foundations Course', desc: 'Four lessons for anyone newly caring for an aging parent or spouse — the basics nobody hands you a manual for.',
+    lessons: [
+      { title: 'Is It Time to Ask for Help?', body: 'Honest signs that a loved one may need more support than family alone can safely provide.', worksheet: 'Readiness Checklist (PDF)' },
+      { title: 'Understanding the Care Continuum', body: 'From occasional check-ins to full-time hands-on care — how the levels differ and how they can change over time.', worksheet: 'Care Levels Overview (PDF)' },
+      { title: 'Talking to Siblings and Family', body: 'How to get everyone on the same page using facts, not just opinions.', worksheet: 'Family Meeting Guide (PDF)' },
+      { title: 'Paying for Care', body: 'A plain-language overview of private pay, Medicaid, VA benefits, and long-term care insurance.', worksheet: 'Payment Options Summary (PDF)' },
+    ] },
+];
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem('cc-family-academy-progress') || '{}'); } catch (e) { return {}; }
+}
+function saveProgress(p) {
+  try { localStorage.setItem('cc-family-academy-progress', JSON.stringify(p)); } catch (e) {}
+}
+
+var state = { view: 'catalog', courseId: null, lessonIndex: 0, progress: loadProgress() };
+function el(id) { return document.getElementById(id); }
+function course() { return COURSES.find(function (c) { return c.id === state.courseId; }) || COURSES[0]; }
+function show(view) {
+  state.view = view;
+  el('view-catalog').hidden = view !== 'catalog';
+  el('view-course').hidden = view !== 'course';
+  el('view-certificate').hidden = view !== 'certificate';
+  window.scrollTo({ top: 0 });
+}
+
+function renderCatalog() {
+  var wrap = el('course-list');
+  wrap.innerHTML = '';
+  COURSES.forEach(function (c) {
+    var done = (state.progress[c.id] || []).length;
+    var total = c.lessons.length;
+    var pct = Math.round((done / total) * 100);
+    var b = document.createElement('button');
+    b.style.cssText = 'text-align:left;background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;cursor:pointer;font-family:inherit';
+    b.innerHTML = '<p style="font-size:11.5px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px"></p>' +
+      '<p style="font-size:19px;font-weight:600;color:#122236;margin:0 0 8px"></p>' +
+      '<p style="font-size:14px;line-height:1.6;color:#55677a;margin:0 0 16px"></p>' +
+      '<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden;margin-bottom:8px"><div style="height:100%;width:' + pct + '%;background:#96692a"></div></div>' +
+      '<p style="font-size:12.5px;color:#8a978f;margin:0"></p>';
+    var ps = b.querySelectorAll('p');
+    ps[0].textContent = c.tag;
+    ps[1].textContent = c.title;
+    ps[2].textContent = c.desc;
+    ps[3].textContent = done === 0 ? total + ' lessons' : done === total ? 'Completed — view certificate' : done + ' of ' + total + ' lessons complete';
+    b.addEventListener('click', function () {
+      state.courseId = c.id;
+      if (done === total) { renderCertificate(); show('certificate'); }
+      else { state.lessonIndex = Math.min(done, total - 1); renderCourse(); show('course'); }
+    });
+    wrap.appendChild(b);
+  });
+}
+
+function renderCourse() {
+  var c = course();
+  var completedSet = state.progress[c.id] || [];
+  el('course-tag').textContent = c.tag;
+  el('course-title').textContent = c.title;
+
+  var list = el('lesson-list');
+  list.innerHTML = '';
+  c.lessons.forEach(function (l, i) {
+    var done = completedSet.indexOf(i) !== -1;
+    var active = i === state.lessonIndex;
+    var b = document.createElement('button');
+    b.style.cssText = 'display:flex;gap:12px;text-align:left;background:' + (active ? '#fbf6ec' : 'transparent') + ';border:none;border-radius:8px;cursor:pointer;padding:12px;font-family:inherit;width:100%';
+    var badge = document.createElement('span');
+    badge.style.cssText = 'width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:' +
+      (done ? '#96692a' : active ? '#16283a' : '#eceae2') + ';color:' + (done || active ? '#fbfaf7' : '#8a978f');
+    badge.textContent = done ? '✓' : String(i + 1);
+    var title = document.createElement('span');
+    title.style.cssText = 'font-size:13.5px;font-weight:600;color:' + (active ? '#122236' : done ? '#55677a' : '#8a978f');
+    title.textContent = l.title;
+    b.appendChild(badge);
+    b.appendChild(title);
+    b.addEventListener('click', function () { state.lessonIndex = i; renderCourse(); });
+    list.appendChild(b);
+  });
+
+  var lesson = c.lessons[state.lessonIndex];
+  el('lesson-video-title').textContent = lesson.title;
+  el('lesson-title').textContent = lesson.title;
+  el('lesson-body').textContent = lesson.body;
+  el('lesson-worksheet').textContent = lesson.worksheet;
+  el('lesson-complete').textContent = state.lessonIndex === c.lessons.length - 1 ? 'Mark complete & finish course' : 'Mark complete & continue';
+}
+
+function renderCertificate() {
+  el('cert-title').textContent = course().title;
+  el('cert-date').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+document.querySelectorAll('.js-back-catalog').forEach(function (b) {
+  b.addEventListener('click', function () { renderCatalog(); show('catalog'); });
+});
+el('lesson-back').addEventListener('click', function () {
+  if (state.lessonIndex === 0) { renderCatalog(); show('catalog'); }
+  else { state.lessonIndex -= 1; renderCourse(); }
+});
+el('lesson-complete').addEventListener('click', function () {
+  var c = course();
+  var arr = state.progress[c.id] || [];
+  if (arr.indexOf(state.lessonIndex) === -1) arr.push(state.lessonIndex);
+  state.progress[c.id] = arr;
+  saveProgress(state.progress);
+  if (state.lessonIndex === c.lessons.length - 1) { renderCertificate(); show('certificate'); }
+  else { state.lessonIndex += 1; renderCourse(); }
+});
+el('print-cert').addEventListener('click', function () { window.print(); });
+
+renderCatalog();
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Journal | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.dj-hero { max-width: 680px; margin: 0 auto; padding: 48px 24px 10px; }
+.dj-h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; margin: 0 0 8px; color: var(--brand-blue); }
+@media (max-width: 639px) {
+  .dj-hero { padding: 32px 20px 10px; }
+  .dj-h1 { font-size: 25px; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/decision-journal.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="A place to record why you made the choices you did — so six months from now, the family remembers the reasoning, not just the decision.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Decision Journal | Caring Companions">
+<meta property="og:description" content="A place to record why you made the choices you did — so six months from now, the family remembers the reasoning, not just the decision.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/decision-journal.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner" style="max-width:680px">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="dj-hero">
+<p style="font-size:13px;font-weight:600;color:#96692a;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace.html" style="text-decoration:none;color:#96692a">Family Workspace</a> › Decision Journal</p>
+<h1 class="dj-h1">Decision Journal</h1>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px">A place to record why you made the choices you did&nbsp;&mdash; so six months from now, the family remembers the reasoning, not just the decision.</p>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:22px;margin-bottom:24px">
+<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 10px">Add an entry</p>
+<input id="entry-title" placeholder="Decision (e.g. &ldquo;Why we chose home care over assisted living&rdquo;)" style="width:100%;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;margin-bottom:10px">
+<textarea id="entry-note" placeholder="What we decided, and why" rows="3" style="width:100%;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;resize:vertical;margin-bottom:12px"></textarea>
+<button id="entry-save" class="btn-primary" style="border-radius:8px;padding:12px 22px;font-size:14px">Save Entry</button>
+</div>
+</section>
+
+<section style="max-width:680px;margin:0 auto;padding:0 24px 60px">
+<div style="display:flex;flex-direction:column;gap:12px" id="entries"></div>
+<p id="no-entries" style="text-align:center;font-size:14px;color:#8a978f;padding:30px 0">No entries yet&nbsp;&mdash; your first decision, and the reasoning behind it, will show up here.</p>
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner" style="max-width:680px">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+'use strict';
+function loadEntries() { try { return JSON.parse(localStorage.getItem('cc-decision-journal') || '[]'); } catch (e) { return []; } }
+function saveEntries(entries) {
+  try { localStorage.setItem('cc-decision-journal', JSON.stringify(entries)); } catch (e) {}
+  try {
+    var f = JSON.parse(localStorage.getItem('cc-workspace-flags') || '{}');
+    f.journalStarted = entries.length > 0;
+    localStorage.setItem('cc-workspace-flags', JSON.stringify(f));
+  } catch (e) {}
+}
+
+var entries = loadEntries();
+
+function render() {
+  var wrap = document.getElementById('entries');
+  wrap.innerHTML = '';
+  document.getElementById('no-entries').hidden = entries.length > 0;
+  entries.forEach(function (e, i) {
+    var card = document.createElement('div');
+    card.style.cssText = 'background:#ffffff;border:1px solid #e4e1d8;border-radius:12px;padding:18px 20px';
+    var head = document.createElement('div');
+    head.style.cssText = 'display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px';
+    var title = document.createElement('p');
+    title.style.cssText = 'font-size:15px;font-weight:600;color:#122236;margin:0';
+    title.textContent = e.title;
+    var remove = document.createElement('button');
+    remove.style.cssText = 'background:none;border:none;color:#8a978f;font-size:13px;cursor:pointer;padding:0;white-space:nowrap';
+    remove.textContent = 'Remove';
+    remove.addEventListener('click', function () {
+      entries.splice(i, 1);
+      saveEntries(entries);
+      render();
+    });
+    head.appendChild(title);
+    head.appendChild(remove);
+    var note = document.createElement('p');
+    note.style.cssText = 'font-size:13.5px;line-height:1.65;color:#2c3d4d;margin:0 0 8px';
+    note.textContent = e.note;
+    var date = document.createElement('p');
+    date.style.cssText = 'font-size:12px;color:#8a978f;margin:0';
+    date.textContent = e.date;
+    card.appendChild(head);
+    card.appendChild(note);
+    card.appendChild(date);
+    wrap.appendChild(card);
+  });
+}
+
+document.getElementById('entry-save').addEventListener('click', function () {
+  var title = document.getElementById('entry-title').value.trim();
+  var note = document.getElementById('entry-note').value.trim();
+  if (!title && !note) return;
+  entries.unshift({
+    title: title || 'Untitled decision',
+    note: note,
+    date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+  });
+  saveEntries(entries);
+  document.getElementById('entry-title').value = '';
+  document.getElementById('entry-note').value = '';
+  render();
+});
+
+render();
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

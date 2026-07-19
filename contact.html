@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.ct-hero { max-width: 780px; margin: 0 auto; padding: 56px 24px 20px; text-align: center; }
+.ct-h1 { font-family: var(--serif); font-size: 36px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
+.ct-body { max-width: 1080px; margin: 0 auto; padding: 30px 24px 80px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+.ct-form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 14px; }
+.ct-form-grid .ct-email { grid-column: 1 / span 2; }
+.ct-input { padding: 13px 15px; font-size: 14px; border: 1.5px solid #dfe6e2; border-radius: 8px; font-family: inherit; color: var(--ink); }
+@media (max-width: 719px) {
+  .ct-hero { padding: 36px 20px 16px; }
+  .ct-h1 { font-size: 27px; }
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-form-grid { grid-template-columns: 1fr; }
+  .ct-form-grid .ct-email { grid-column: auto; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/contact.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="No pressure, no sales script — just a conversation with a real care coordinator. Prefer to explore on your own first? Try the Care Assessment or ask Cara…">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Contact Us | Caring Companions">
+<meta property="og:description" content="No pressure, no sales script — just a conversation with a real care coordinator. Prefer to explore on your own first? Try the Care Assessment or ask Cara…">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/contact.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeHealthCareService","name":"Caring Companions In-Home Senior Care","url":"https://cc16485.github.io/caring-companions-website/","logo":"https://cc16485.github.io/caring-companions-website/assets/cc-logo.webp","image":"https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg","telephone":"+1-417-234-8494","priceRange":"$30-$34/hour","address":{"@type":"PostalAddress","streetAddress":"1331 N Stewart Ave Ste B","addressLocality":"Springfield","addressRegion":"MO","postalCode":"65802","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":37.22244,"longitude":-93.25992},"openingHours":"Mo-Su 00:00-24:00","areaServed":["Greene County MO","Christian County MO","Douglas County MO","Phelps County MO","Taney County MO","Webster County MO"]}</script>
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="ct-hero">
+<p class="kicker">Contact Us</p>
+<h1 class="ct-h1">Let's talk about what your family needs.</h1>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:560px">No pressure, no sales script&nbsp;&mdash; just a conversation with a real care coordinator. Prefer to explore on your own first? Try the Care Assessment or ask Cara below.</p>
+</section>
+
+<section class="ct-body">
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
+<div id="contact-form">
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600;margin:0 0 20px;color:#0D365F">Send us a message</h2>
+<div class="ct-form-grid">
+<input id="f-name" class="ct-input" placeholder="Your name">
+<input id="f-phone" class="ct-input" placeholder="Phone">
+<input id="f-email" class="ct-input ct-email" type="email" placeholder="Email">
+</div>
+<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">I'm looking into care for</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px" id="who-chips"></div>
+<textarea id="f-message" class="ct-input" placeholder="Tell us a bit about your situation" rows="4" style="width:100%;resize:vertical;margin-bottom:14px"></textarea>
+<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">Best way to reach you</p>
+<div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap" id="method-chips"></div>
+<button id="f-submit" class="btn-primary">Send Message</button>
+<p id="f-error" hidden style="font-size:13.5px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:14px 0 0"></p>
+</div>
+<div id="contact-thanks" hidden style="text-align:center;padding:20px 0">
+<p style="font-size:12px;font-weight:700;color:#0e6b5c;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Message Received</p>
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:21px;font-weight:600;margin:0 0 12px;color:#0D365F">Thank you<span id="thanks-name"></span>.</h2>
+<p style="font-size:14.5px;line-height:1.7;color:#55677a;margin:0 0 22px">A care coordinator will reach out within one business day. If it's urgent, please call us directly at (417) 234-8494.</p>
+<button id="f-reset" style="background:none;border:1.5px solid #dfe6e2;border-radius:9px;padding:12px 22px;font-size:13.5px;font-weight:600;color:#0D365F;cursor:pointer">Send Another Message</button>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Reach us directly</p>
+<a href="tel:4172348494" style="display:block;font-size:18px;font-weight:600;color:#122236;margin-bottom:4px;text-decoration:none">(417) 234-8494</a>
+<p style="font-size:13px;color:#8a978f;margin:0 0 16px">Available 24 hours a day, 7 days a week</p>
+<p style="font-size:14px;color:#2c3d4d;margin:0 0 4px;font-weight:600">1331 N Stewart Ave Ste B</p>
+<p style="font-size:14px;color:#2c3d4d;margin:0">Springfield, MO 65802</p>
+</div>
+<iframe title="Map of the Caring Companions office, 1331 N Stewart Ave, Springfield, MO" src="https://www.openstreetmap.org/export/embed.html?bbox=-93.2699%2C37.2164%2C-93.2499%2C37.2284&layer=mapnik&marker=37.22244%2C-93.25992" style="width:100%;height:200px;border:1px solid #e4e1d8;border-radius:14px;display:block" loading="lazy"></iframe>
+<div style="background:#0E3760;border-radius:14px;padding:22px">
+<p style="font-size:11.5px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Prefer to explore first?</p>
+<a href="assessment.html" style="display:block;text-align:center;background:#fbfaf7;color:#0E3760;border-radius:8px;padding:11px;font-size:13.5px;font-weight:600;text-decoration:none;margin-bottom:10px">Start the Care Assessment</a>
+<a href="cara.html" style="display:block;text-align:center;background:transparent;color:#fbfaf7;border:1px solid #2d4a63;border-radius:8px;padding:11px;font-size:13.5px;font-weight:600;text-decoration:none">Ask Cara</a>
+</div>
+</div>
+
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+  var who = null, method = null;
+  function chipRow(containerId, labels, selectedStyle, onPick) {
+    var wrap = document.getElementById(containerId);
+    labels.forEach(function (label) {
+      var b = document.createElement('button');
+      b.className = 'chip';
+      b.textContent = label;
+      b.addEventListener('click', function () {
+        wrap.querySelectorAll('.chip').forEach(function (c) { c.classList.remove(selectedStyle); });
+        b.classList.add(selectedStyle);
+        onPick(label);
+      });
+      wrap.appendChild(b);
+    });
+  }
+  chipRow('who-chips', ['Mom', 'Dad', 'Spouse', 'Myself', 'Someone else'], 'selected', function (v) { who = v; });
+  chipRow('method-chips', ['Call', 'Text', 'Email'], 'selected-accent', function (v) { method = v; });
+
+  document.getElementById('f-submit').addEventListener('click', function () {
+    var btn = document.getElementById('f-submit');
+    var errEl = document.getElementById('f-error');
+    var name = document.getElementById('f-name').value.trim();
+    var phone = document.getElementById('f-phone').value.trim();
+    var email = document.getElementById('f-email').value.trim();
+    var message = document.getElementById('f-message').value.trim();
+    errEl.hidden = true;
+    if (!name && !phone && !email) {
+      errEl.textContent = 'Please include your name and a phone number or email so we can reach you.';
+      errEl.hidden = false;
+      return;
+    }
+    var parts = [message];
+    if (method) parts.push('Preferred contact method: ' + method);
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    CCForms.submitLead({
+      name: name,
+      phone: phone,
+      email: email,
+      message: parts.filter(Boolean).join('\n'),
+      care_for: who || '',
+    }).then(function () {
+      document.getElementById('thanks-name').textContent = name ? ', ' + name : '';
+      document.getElementById('contact-form').hidden = true;
+      document.getElementById('contact-thanks').hidden = false;
+    }).catch(function () {
+      errEl.textContent = 'Sorry — something went wrong sending your message. Please try again, or call us at (417) 234-8494.';
+      errEl.hidden = false;
+    }).finally(function () {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    });
+  });
+  document.getElementById('f-reset').addEventListener('click', function () {
+    ['f-name', 'f-phone', 'f-email', 'f-message'].forEach(function (id) { document.getElementById(id).value = ''; });
+    who = null; method = null;
+    document.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('selected', 'selected-accent'); });
+    document.getElementById('contact-thanks').hidden = true;
+    document.getElementById('contact-form').hidden = false;
+  });
+})();
+</script>
+<script src="assets/forms.js"></script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

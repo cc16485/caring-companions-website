@@ -1,0 +1,214 @@
+/* Caring Companions — shared site styles
+   Design tokens from the design handoff (July 2026). */
+
+:root {
+  --brand-blue: #0D365F;
+  --brand-blue-hover: #092647;
+  --navy-panel: #0E3760;
+  --navy-panel-2: #122c42;
+  --ink: #16283a;
+  --ink-2: #122236;
+  --body-text: #2c3d4d;
+  --muted: #55677a;
+  --muted-label: #8a978f;
+  --accent: #96692a;
+  --accent-hover: #7a551f;
+  --bg: #faf9f6;
+  --border: #e4e1d8;
+  --soft-panel: #f2f0e9;
+  --gold-on-dark: #e8c988;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'Inter', Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--sans);
+  color: var(--ink);
+  min-height: 100vh;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+button { font-family: inherit; }
+input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- Shared header (interior pages: logo + phone) ---------- */
+.cc-header {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(250, 249, 246, 0.94);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.cc-header-inner {
+  max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.cc-header-inner.w820 { max-width: 820px; }
+.cc-header-inner .cc-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.cc-header-inner .cc-logo img { height: 34px; display: block; }
+.cc-header-phone { font-size: 14px; color: var(--muted); white-space: nowrap; text-decoration: none; }
+.cc-header-phone:hover { text-decoration: none; color: var(--muted); }
+
+/* ---------- Shared footer ---------- */
+.cc-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 40px 20px; }
+.cc-footer-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
+.cc-footer-inner img { height: 32px; display: block; margin: 0 auto 10px; }
+.cc-footer-inner p { font-size: 13px; color: var(--muted-label); margin: 0; }
+
+/* ---------- Breadcrumb ---------- */
+.cc-breadcrumb { max-width: 1080px; margin: 0 auto; padding: 16px 24px 0; }
+.cc-breadcrumb p { font-size: 13px; color: var(--muted-label); margin: 0; }
+.cc-breadcrumb a { text-decoration: none; }
+.cc-breadcrumb .current { color: var(--muted); }
+
+/* ---------- Kicker / eyebrow label ---------- */
+.kicker {
+  font-size: 13px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 14px;
+}
+
+/* ---------- Guide / article pages (breakpoint 900px) ---------- */
+.guide-hero { max-width: 1080px; margin: 0 auto; padding: 40px 24px 20px; }
+.guide-h1 {
+  font-family: var(--serif); font-size: 36px; font-weight: 600;
+  margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; max-width: 720px;
+}
+.guide-body {
+  max-width: 1080px; margin: 0 auto; padding: 0 24px 90px;
+  display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start;
+}
+.guide-aside { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
+@media (max-width: 899px) {
+  .guide-hero { padding: 28px 20px 20px; }
+  .guide-h1 { font-size: 28px; }
+  .guide-body { grid-template-columns: 1fr; }
+  .guide-aside { position: static; }
+  .g-cols-2 { grid-template-columns: 1fr !important; }
+}
+
+/* ---------- Service pages (breakpoint 640px) ---------- */
+.svc-hero { max-width: 820px; margin: 0 auto; padding: 56px 24px 24px; text-align: center; }
+.svc-h1 {
+  font-family: var(--serif); font-size: 38px; font-weight: 600;
+  margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em;
+}
+@media (max-width: 639px) {
+  .svc-hero { padding: 36px 20px 20px; }
+  .svc-h1 { font-size: 28px; }
+}
+
+/* ---------- Funnel (care path) pages (breakpoint 640px) ---------- */
+.fun-hero { max-width: 640px; margin: 0 auto; padding: 56px 24px 24px; text-align: center; }
+.fun-h1 {
+  font-family: var(--serif); font-size: 34px; font-weight: 600;
+  margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em;
+}
+.fun-result { max-width: 640px; margin: 0 auto; padding: 48px 24px 80px; }
+@media (max-width: 639px) {
+  .fun-hero { padding: 36px 20px 20px; }
+  .fun-h1 { font-size: 27px; }
+  .fun-result { padding: 32px 20px 60px; }
+}
+.fun-option {
+  text-align: left; background: #ffffff; border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 18px; font-size: 14.5px; color: var(--body-text);
+  cursor: pointer; font-family: inherit; transition: border-color .15s ease, background .15s ease;
+}
+.fun-option:hover { border-color: var(--accent); background: #fbf9f5; }
+
+.fun-q-option {
+  text-align: left; background: #ffffff; border: 1.5px solid var(--border);
+  border-radius: 9px; padding: 14px 16px; font-size: 14.5px; color: var(--body-text);
+  cursor: pointer; font-family: inherit; transition: border-color .15s ease;
+}
+.fun-q-option:hover { border-color: var(--accent); }
+.fun-q-option.selected { background: #fbf6ec; border-color: var(--accent); }
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-block; background: var(--brand-blue); color: var(--bg); border: none;
+  border-radius: 9px; padding: 14px 26px; font-size: 14.5px; font-weight: 600;
+  cursor: pointer; text-decoration: none; transition: background .15s ease;
+}
+.btn-primary:hover { background: var(--brand-blue-hover); color: var(--bg); text-decoration: none; }
+.btn-outline {
+  display: inline-block; background: transparent; color: var(--brand-blue);
+  border: 1.5px solid #dfe6e2; border-radius: 9px; padding: 14px 26px;
+  font-size: 14.5px; font-weight: 600; cursor: pointer; text-decoration: none;
+}
+.btn-outline:hover { text-decoration: none; color: var(--brand-blue); }
+
+/* ---------- Generic accordion (FAQ) ---------- */
+.acc-item { border-bottom: 1px solid var(--border); }
+.acc-toggle {
+  width: 100%; text-align: left; background: none; border: none; padding: 16px 0;
+  font-size: 15px; font-weight: 600; color: var(--ink-2); cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; font-family: inherit;
+}
+.acc-toggle .acc-marker { color: var(--accent); font-size: 18px; }
+.acc-body { font-size: 14px; line-height: 1.7; color: var(--muted); margin: 0 0 18px; display: none; }
+.acc-item.open .acc-body { display: block; }
+
+/* ---------- Selectable chip buttons (forms) ---------- */
+.chip {
+  background: #ffffff; color: var(--muted); border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.chip.selected { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip.selected-accent { background: var(--accent); color: #fbfaf7; border-color: var(--accent); }
+
+/* ---------- County resource centers (breakpoints: <720, 720–1039, ≥1040) ---------- */
+.cty-hero { max-width: 820px; margin: 0 auto; padding: 56px 24px 10px; text-align: center; }
+.cty-h1 { font-family: var(--serif); font-size: 36px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
+.cty-stats { background: #122a40; border-radius: 12px; padding: 20px 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px 24px; }
+.cty-includes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; }
+.cty-situations { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.cty-tools { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.cty-crisis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
+.cty-body { max-width: 1180px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+/* let wide content (e.g. the comparison table) scroll inside its own
+   overflow container instead of stretching the grid column */
+.cty-body > *, .guide-body > * { min-width: 0; }
+.cty-aside { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
+@media (max-width: 1039px) {
+  .cty-situations { grid-template-columns: repeat(2, 1fr); }
+  .cty-tools { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 719px) {
+  .cty-hero { padding: 36px 20px 10px; }
+  .cty-h1 { font-size: 27px; }
+  .cty-stats { grid-template-columns: repeat(2, 1fr); }
+  .cty-includes { grid-template-columns: 1fr; }
+  .cty-situations { grid-template-columns: 1fr; }
+  .cty-tools { grid-template-columns: 1fr; }
+  .cty-crisis { grid-template-columns: 1fr; }
+  .cty-body { grid-template-columns: 1fr; }
+  .cty-aside { position: static; }
+}
+
+/* Rich accordions (county pages): panel visibility only; content keeps inline styles */
+.acc-panel { display: none; }
+.acc-item.open .acc-panel { display: block; }
+
+/* County directory accordion */
+.dir-panel { display: none; }
+.dir-cat.open .dir-panel { display: flex; }
+
+/* ---------- Photo placeholder (until real photography is sourced) ---------- */
+.img-slot {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #ece8dd 0%, #e0dbcc 55%, #d6cfbc 100%);
+  color: #a89f8a; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase; text-align: center;
+}
+.img-slot.rounded { border-radius: 18px; }
+
+/* ---------- Reveal on scroll ---------- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}

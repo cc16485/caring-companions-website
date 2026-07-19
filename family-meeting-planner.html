@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Meeting Planner | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.fm-hero { max-width: 720px; margin: 0 auto; padding: 48px 24px 10px; }
+.fm-h1 { font-family: var(--serif); font-size: 32px; font-weight: 600; margin: 0 0 12px; color: var(--brand-blue); letter-spacing: -0.01em; }
+@media (max-width: 639px) {
+  .fm-hero { padding: 32px 20px 10px; }
+  .fm-h1 { font-size: 25px; }
+}
+@media print { .no-print { display: none !important; } }
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/family-meeting-planner.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Tell us who's involved and what's driving the meeting. We'll generate an agenda, discussion guide, and decision worksheet you can print or share.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Family Meeting Planner | Caring Companions">
+<meta property="og:description" content="Tell us who's involved and what's driving the meeting. We'll generate an agenda, discussion guide, and decision worksheet you can print or share.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/family-meeting-planner.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header no-print">
+<div class="cc-header-inner" style="max-width:720px">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="fm-hero">
+<p class="kicker no-print">Family Meeting Planner</p>
+<h1 class="fm-h1">Let's prepare for the conversation.</h1>
+<p class="no-print" style="font-size:14.5px;line-height:1.65;color:#45566a;margin:0 0 20px">Tell us who's involved and what's driving the meeting. We'll generate an agenda, discussion guide, and decision worksheet you can print or share.</p>
+
+<div class="no-print" style="display:flex;flex-direction:column;gap:14px;margin-bottom:10px">
+<input id="who-name" placeholder="Who is this meeting about? (e.g. Mom, Dad)" style="padding:13px 15px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a">
+<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0">What's driving this meeting?</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px" id="trigger-chips"></div>
+</div>
+</section>
+
+<section style="max-width:720px;margin:0 auto;padding:20px 24px 60px">
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;margin-bottom:18px">
+<p style="font-size:11.5px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Agenda</p>
+<div id="agenda"></div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;margin-bottom:18px">
+<p style="font-size:11.5px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Discussion Guide</p>
+<p style="font-size:13.5px;color:#8a978f;line-height:1.6;margin:0 0 12px">Because this meeting is about <span id="trigger-lower"></span>, start here:</p>
+<div id="questions"></div>
+</div>
+
+<div style="background:#f2f0e9;border-radius:14px;padding:24px;margin-bottom:18px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Decision Worksheet</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ What did we decide today?</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ What are we still unsure about?</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ Who is responsible for each next step?</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ When do we check back in as a family?</p>
+</div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;margin-bottom:18px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Responsibilities &amp; Follow-Up Tasks</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
+<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
+</div>
+
+<div class="no-print" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px">
+<button id="print-plan" class="btn-primary">Print This Planner</button>
+<a href="cara.html" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Ask Cara for Help Preparing</a>
+</div>
+</section>
+
+<footer class="cc-footer no-print">
+<div class="cc-footer-inner" style="max-width:720px">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+'use strict';
+var TRIGGERS = {
+  'A recent fall': { agenda: ['Review what happened and any injuries', 'Discuss home safety changes needed', 'Decide on a safety assessment or additional support', 'Agree on next steps and who’s responsible'], questions: ['How many falls, and any injuries?', 'Is the home safe right now?', 'Does someone need to check in more often?', 'Are we ready to bring in outside help?'] },
+  'Memory changes': { agenda: ['Share specific examples everyone has noticed', 'Discuss whether a doctor’s visit is needed', 'Talk through safety concerns (driving, wandering, cooking)', 'Agree on next steps and who’s responsible'], questions: ['What specific changes have each of us noticed?', 'Has this been getting worse, or is it steady?', 'Is a cognitive screening the right next step?', 'What safety changes can we make now?'] },
+  'Hospital discharge': { agenda: ['Review discharge instructions together', 'Confirm who is available the first 72 hours', 'Discuss follow-up appointments and medications', 'Agree on next steps and who’s responsible'], questions: ['What did the discharge team tell us to watch for?', 'Who can be there the first few days?', 'Are all follow-up appointments scheduled?', 'Do we need extra help during recovery?'] },
+  'Paying for care': { agenda: ['Review estimated costs together', 'Discuss available payment sources', 'Decide who manages the financial side', 'Agree on next steps and who’s responsible'], questions: ['What can we realistically afford monthly?', 'Have we checked Medicaid, VA, or LTC insurance?', 'Who will manage bills and paperwork?', 'Do we need a financial planner or elder law attorney?'] },
+  'Caregiver burnout': { agenda: ['Let the primary caregiver share how they’re really doing', 'Discuss what relief would actually help', 'Divide responsibilities more evenly', 'Agree on next steps and who’s responsible'], questions: ['How is the primary caregiver really doing?', 'What tasks could someone else take on?', 'Would respite care help, and how much?', 'How often should we check in on this?'] },
+  'Just planning ahead': { agenda: ['Ask what matters most if things got harder', 'Discuss early warning signs to watch for', 'Talk through legal and financial documents', 'Agree on next steps and who’s responsible'], questions: ['What does Mom or Dad want if things change?', 'Do we have power of attorney and advance directives?', 'What would tell us it’s time to revisit this?', 'Who should be the main point of contact?'] },
+};
+
+var state = { whoName: '', trigger: 'Just planning ahead' };
+
+var chipWrap = document.getElementById('trigger-chips');
+Object.keys(TRIGGERS).forEach(function (label) {
+  var b = document.createElement('button');
+  b.className = 'chip' + (label === state.trigger ? ' selected' : '');
+  b.textContent = label;
+  b.addEventListener('click', function () {
+    state.trigger = label;
+    chipWrap.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('selected', c.textContent === label); });
+    render();
+  });
+  chipWrap.appendChild(b);
+});
+
+function render() {
+  var t = TRIGGERS[state.trigger];
+  var who = state.whoName.trim() || 'your loved one';
+  var agenda = ['1. Welcome and purpose of the meeting about ' + who, '2. ' + t.agenda[0], '3. ' + t.agenda[1], '4. ' + t.agenda[2], '5. ' + t.agenda[3]];
+  var agendaWrap = document.getElementById('agenda');
+  agendaWrap.innerHTML = '';
+  agenda.forEach(function (line) {
+    var p = document.createElement('p');
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#2c3d4d;margin:0';
+    p.textContent = line;
+    agendaWrap.appendChild(p);
+  });
+  document.getElementById('trigger-lower').textContent = state.trigger.toLowerCase();
+  var qWrap = document.getElementById('questions');
+  qWrap.innerHTML = '';
+  t.questions.forEach(function (q) {
+    var p = document.createElement('p');
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#2c3d4d;margin:0';
+    p.textContent = '• ' + q;
+    qWrap.appendChild(p);
+  });
+}
+
+document.getElementById('who-name').addEventListener('input', function (e) {
+  state.whoName = e.target.value;
+  render();
+});
+document.getElementById('print-plan').addEventListener('click', function () { window.print(); });
+render();
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

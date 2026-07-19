@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caring Companions | The Trusted Guide for Aging at Home</title>
+<meta name="description" content="Caring Companions helps older adults in southwest Missouri remain safe, independent, and at home through companion care, personal care, dementia care, live-in care, overnight care, and 24-hour support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Homepage-specific layout (breakpoints: <720 mobile, 720–1039 tablet, ≥1040 desktop) */
+.hp { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; }
+.hp-header-inner { max-width: 1180px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.hp-logo img { height: 55px; display: block; }
+.hp-nav { display: flex; align-items: center; gap: 28px; }
+.hp-nav a { font-size: 14.5px; font-weight: 500; color: var(--ink); transition: color .15s ease; text-decoration: none; }
+.hp-nav a:hover { color: var(--accent); }
+.hp-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.hp-header-right { display: flex; align-items: center; gap: 14px; }
+.hp-phone { font-size: 14px; color: var(--muted); white-space: nowrap; text-decoration: none; }
+.hp-cta-sm { display: inline-block; background: var(--brand-blue); color: var(--bg); border: none; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; text-decoration: none; transition: background .15s ease; }
+.hp-cta-sm:hover { background: var(--brand-blue-hover); color: var(--bg); text-decoration: none; }
+#cc-nav-toggle { background: none; border: 1px solid #dfe6e2; border-radius: 8px; width: 38px; height: 38px; display: none; align-items: center; justify-content: center; cursor: pointer; color: var(--ink); font-size: 16px; }
+#cc-mobile-menu { display: none; flex-direction: column; padding: 6px 20px 18px; border-top: 1px solid var(--border); gap: 2px; }
+#cc-mobile-menu a { font-size: 15px; padding: 10px 0; color: var(--ink); border-bottom: 1px solid #ede9e0; text-decoration: none; }
+#cc-mobile-menu a:last-child { border-bottom: none; }
+
+.hp-hero { max-width: 1180px; margin: 0 auto; padding: 80px 24px 20px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.hp-hero h1 { font-family: var(--serif); font-size: 54px; line-height: 1.14; font-weight: 600; margin: 0 0 20px; color: var(--brand-blue); letter-spacing: -0.015em; }
+.hp-hero-sub { font-size: 17px; line-height: 1.6; color: #000000; margin: 0 0 20px; max-width: 520px; }
+.hp-hero-img { width: 100%; height: 440px; }
+
+.hp-btn-hero { color: var(--bg); border: none; border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; background-color: var(--brand-blue); text-decoration: none; display: inline-block; }
+.hp-btn-hero:hover { background: #0f1c2a; color: var(--bg); text-decoration: none; }
+.hp-btn-hero:active { transform: scale(0.98); }
+.hp-btn-hero:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hp-btn-hero-outline { background: transparent; color: var(--brand-blue); border: 1.5px solid var(--brand-blue); border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; text-decoration: none; display: inline-block; }
+.hp-btn-hero-outline:hover { background: rgba(13, 54, 95, 0.05); color: var(--brand-blue); text-decoration: none; }
+.hp-btn-hero-outline:active { transform: scale(0.98); }
+.hp-btn-hero-outline:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.hp-section { max-width: 1180px; margin: 0 auto; padding: 88px 24px; }
+.hp-section-dark { background: var(--navy-panel); padding: 88px 24px; }
+.hp-cta-section { max-width: 1180px; margin: 0 auto; padding: 88px 24px 96px; text-align: center; }
+.hp h2 { font-family: var(--serif); font-size: 32px; font-weight: 600; margin: 0 0 12px; color: var(--brand-blue); }
+.hp-section-dark h2 { color: #fbfaf7; margin: 0 0 18px; }
+
+.hp-services-strip a { font-size: 13.5px; font-weight: 600; color: var(--muted); text-decoration: none; }
+.hp-services-strip a:hover { color: var(--accent); }
+
+.hp-doors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.hp-door { display: block; border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; background: #ffffff; box-shadow: 0 1px 2px rgba(22,40,58,0.04); transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease; text-decoration: none; }
+.hp-door:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 28px rgba(22,40,58,0.09); text-decoration: none; }
+.hp-door:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.hp-advisor-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.hp-btn-light { background: #fbfaf7; color: var(--navy-panel); border: none; border-radius: 9px; padding: 14px 24px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; text-decoration: none; display: inline-block; }
+.hp-btn-light:hover { background: #e7e3d8; color: var(--navy-panel); text-decoration: none; }
+.hp-btn-light:active { transform: scale(0.98); }
+.hp-btn-light:focus-visible { outline: 2px solid var(--gold-on-dark); outline-offset: 2px; }
+
+.hp-care-row { display: flex; flex-direction: row; align-items: stretch; gap: 0; }
+.hp-care-cell { display: flex; flex-direction: row; align-items: center; flex: 1; width: 100%; }
+.hp-care-arrow { color: #cdb98a; font-size: 20px; padding: 0 10px; flex-shrink: 0; }
+.hp-care-arrow::before { content: "→"; }
+
+.hp-trust-grid { max-width: 820px; margin: 0 auto 36px; display: grid; grid-template-columns: repeat(2, 1fr); justify-items: center; gap: 20px 28px; }
+
+.hp-guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.hp-guide-card { display: block; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #ffffff; text-decoration: none; transition: border-color .18s ease; }
+.hp-guide-card:hover { border-color: var(--accent); text-decoration: none; }
+
+.hp-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 48px 20px 32px; }
+.hp-footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.hp-footer a { font-size: 13.5px; color: var(--muted); text-decoration: none; }
+.hp-footer a:hover { color: var(--accent); }
+
+/* Tablet (720–1039) */
+@media (max-width: 1039px) {
+  .hp-nav { display: none; }
+  .hp-phone { display: none; }
+  #cc-nav-toggle { display: flex; }
+  .hp-hero { padding: 56px 32px 12px; grid-template-columns: 1fr; gap: 48px; }
+  .hp-hero h1 { font-size: 44px; }
+  .hp-hero-img { height: 360px; }
+  .hp-section { padding: 64px 32px; }
+  .hp-section-dark { padding: 64px 32px; }
+  .hp-doors { grid-template-columns: repeat(2, 1fr); }
+  .hp-advisor-grid { grid-template-columns: 1fr; }
+  .hp-guides-grid { grid-template-columns: repeat(2, 1fr); }
+  .hp-footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* Mobile (<720) */
+@media (max-width: 719px) {
+  .hp-header-inner { padding: 14px 20px; }
+  .hp-logo img { height: 44px; }
+  .hp-hero { padding: 36px 20px 8px; gap: 28px; }
+  .hp-hero h1 { font-size: 34px; }
+  .hp-hero-sub { font-size: 15.5px; }
+  .hp-hero-img { height: 260px; }
+  .hp-section { padding: 48px 20px; }
+  .hp-section-dark { padding: 48px 20px; }
+  .hp-cta-section { padding: 48px 20px 60px; }
+  .hp h2 { font-size: 26px; }
+  .hp-doors { grid-template-columns: 1fr; }
+  .hp-care-row { flex-direction: column; }
+  .hp-care-cell { flex-direction: column; }
+  .hp-care-arrow { padding: 10px 0; }
+  .hp-care-arrow::before { content: "↓"; }
+  .hp-trust-grid { grid-template-columns: 1fr; }
+  .hp-guides-grid { grid-template-columns: 1fr; }
+  .hp-footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Caring Companions | The Trusted Guide for Aging at Home">
+<meta property="og:description" content="Caring Companions helps older adults in southwest Missouri remain safe, independent, and at home through companion care, personal care, dementia care, live-in care, overnight care, and 24-hour support.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeHealthCareService","name":"Caring Companions In-Home Senior Care","url":"https://cc16485.github.io/caring-companions-website/","logo":"https://cc16485.github.io/caring-companions-website/assets/cc-logo.webp","image":"https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg","telephone":"+1-417-234-8494","priceRange":"$30-$34/hour","address":{"@type":"PostalAddress","streetAddress":"1331 N Stewart Ave Ste B","addressLocality":"Springfield","addressRegion":"MO","postalCode":"65802","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":37.22244,"longitude":-93.25992},"openingHours":"Mo-Su 00:00-24:00","areaServed":["Greene County MO","Christian County MO","Douglas County MO","Phelps County MO","Taney County MO","Webster County MO"]}</script>
+</head>
+<body>
+<div class="hp">
+
+<header class="cc-header">
+<div class="hp-header-inner">
+<a href="index.html" class="hp-logo" style="display:flex;align-items:center"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<nav class="hp-nav">
+<a href="#services">Services</a>
+<a href="#decision-center">Decision Center</a>
+<a href="assessment.html">Assessment</a>
+<a href="cara.html">Cara</a>
+<a href="#library">Guides</a>
+<a href="family-workspace.html">My Workspace</a>
+</nav>
+<div class="hp-header-right">
+<a href="tel:14172348494" class="hp-phone">(417) 234-8494</a>
+<a href="assessment.html" class="hp-cta-sm">Start Assessment</a>
+<button id="cc-nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+</div>
+</div>
+<nav id="cc-mobile-menu">
+<a href="#services">Services</a>
+<a href="#decision-center">Decision Center</a>
+<a href="assessment.html">Assessment</a>
+<a href="cara.html">Cara</a>
+<a href="#library">Guides</a>
+<a href="family-workspace.html">My Workspace</a>
+</nav>
+</header>
+
+<section class="hp-hero">
+<div>
+<p class="kicker" style="margin-bottom:16px">You don't have to figure this out alone</p>
+<h1>Not sure what kind of care your loved one needs?</h1>
+<p class="hp-hero-sub">Whether you're worried after a fall, noticing memory changes, or simply planning ahead, we'll help you understand your options&nbsp;&mdash; clearly, and without pressure.</p>
+<p style="font-size:14px;line-height:1.65;color:#000000;margin:0 0 28px;max-width:520px">Caring Companions helps older adults remain safe, independent, and at home through companion care, personal care, dementia care, live-in care, overnight care, and 24-hour support.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:16px">
+<a href="assessment.html" class="hp-btn-hero">Start your free assessment</a><a href="cara.html" class="hp-btn-hero-outline">Ask Cara</a>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:16px 22px">
+<span style="font-size:13px;color:#55677a"><span style="color:#96692a;font-weight:700">✓</span> Locally owned in Springfield</span>
+<span style="font-size:13px;color:#55677a"><span style="color:#96692a;font-weight:700">✓</span> Serving families since 2017</span>
+<span style="font-size:13px;color:#55677a"><span style="color:#96692a;font-weight:700">✓</span> Private Pay · Medicaid · VA</span>
+</div>
+</div>
+<img src="assets/photos/hero-caregiver.jpg" alt="A Caring Companions caregiver holding hands and laughing with a senior client at home" class="hp-hero-img" style="object-fit:cover;border-radius:18px;max-width:100%">
+</section>
+
+<section id="services" style="max-width:1180px;margin:0 auto;padding:0 24px 8px">
+<div class="hp-services-strip" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;border-top:1px solid #e4e1d8;border-bottom:1px solid #e4e1d8;padding:18px 0">
+<span style="font-size:12px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em">Popular Services</span>
+<a href="services/companion-care.html">Companion Care</a>
+<a href="services/personal-care.html">Personal Care</a>
+<a href="guides/dementia-and-alzheimers.html">Dementia Care</a>
+<a href="guides/hospital-discharge.html">Hospital Recovery</a>
+<a href="services/live-in-care.html">Live-In Care</a>
+<a href="services/24-hour-care.html">24-Hour Care</a>
+<a href="services/overnight-care.html">Overnight Care</a>
+</div>
+</section>
+
+<section id="decision-center" class="hp-section reveal">
+<div style="text-align:center;max-width:640px;margin:0 auto 40px">
+<h2>Where are you today?</h2>
+<p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0">Tell us where you are, and we'll meet you there.</p>
+</div>
+<div class="hp-doors">
+<a href="decision-center.html" class="hp-door">
+<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">I'm worried about Mom or Dad</p>
+<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">Falls · Dementia &amp; wandering · Overnight safety · Caregiver burnout</p>
+</a>
+<a href="decision-center.html" class="hp-door">
+<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">We need help this week</p>
+<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">24-Hour Care · Live-In Care · Personal Care · Companion Care</p>
+</a>
+<a href="care-paths/live-in-care.html" class="hp-door">
+<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">What's the right kind of care?</p>
+<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">Home Care vs. Assisted Living · Live-In vs. 24-Hour · Medicaid vs. Private Pay</p>
+</a>
+<a href="care-paths/paying-for-care.html" class="hp-door">
+<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">Help me understand what's happening</p>
+<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">Costs · When it's time · How assessments work · Paying with VA or Medicaid</p>
+</a>
+</div>
+<div style="max-width:620px;margin:60px auto 0;text-align:center;border-top:1px solid #e4e1d8;padding-top:44px">
+<p style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;line-height:1.55;color:#2c3d4d;margin:0;font-style:italic;letter-spacing:-0.005em">"We believe families deserve clear information before making a difficult decision&nbsp;&mdash; and we'll always point you toward the care that's right for your situation, even when it isn't one of ours."</p>
+</div>
+</section>
+
+<section id="advisor" class="hp-section-dark reveal">
+<div class="hp-advisor-grid">
+<div>
+<p style="font-size:13px;font-weight:600;color:#e8c988;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 16px">Meet Cara, your care coordinator</p>
+<h2>Not sure where to start? Tell us what's happening.</h2>
+<p style="font-size:15.5px;line-height:1.65;color:#c3cdd6;margin:0 0 28px;max-width:460px">Cara will help you understand your options, in plain language, with no sales pressure and no account required&nbsp;&mdash; the same way an experienced coordinator would talk you through it.</p>
+<a href="cara.html" class="hp-btn-light">Ask Cara</a>
+</div>
+<div style="background:#122c42;border:1px solid #23415a;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 48px rgba(0,0,0,0.18)">
+<div style="align-self:flex-end;max-width:82%;background:#1c455f;color:#eef4f1;border-radius:14px 14px 3px 14px;padding:13px 17px;font-size:14px;line-height:1.55">My dad has Parkinson's, fell twice this month, and my mom can't lift him anymore.</div>
+<div style="align-self:flex-start;max-width:88%;background:#fbfaf7;color:#1c2b38;border-radius:14px 14px 14px 3px;padding:13px 17px;font-size:14px;line-height:1.6">I'm sorry&nbsp;&mdash; that's a lot to carry. A few questions first: how often does he need help standing or transferring, and has he had a hospital stay recently? That'll help me explain the right level of support.</div>
+</div>
+</div>
+</section>
+
+<section class="hp-section reveal">
+<div style="text-align:center;max-width:640px;margin:0 auto 40px">
+<h2>Care that grows with you</h2>
+<p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0">Five levels, one continuum. Move between them without switching providers.</p>
+</div>
+<div class="hp-care-row">
+<div class="hp-care-cell">
+<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
+<div style="width:26px;height:26px;border-radius:50%;background:#96692a;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">1</div>
+<p style="font-size:11px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Connection</p>
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">HomeTogether™</p>
+<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Virtual check-ins and monitoring, no caregiver in the home.</p>
+</div>
+<span class="hp-care-arrow"></span>
+</div>
+<div class="hp-care-cell">
+<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
+<div style="width:26px;height:26px;border-radius:50%;background:#96692a;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">2</div>
+<p style="font-size:11px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Everyday life</p>
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Wellness Care</p>
+<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Help with routines, meals, and light household tasks.</p>
+</div>
+<span class="hp-care-arrow"></span>
+</div>
+<div class="hp-care-cell">
+<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
+<div style="width:26px;height:26px;border-radius:50%;background:#96692a;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">3</div>
+<p style="font-size:11px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Hands-on</p>
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Personal Care</p>
+<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Bathing, dressing, mobility, and daily self-care support.</p>
+</div>
+<span class="hp-care-arrow"></span>
+</div>
+<div class="hp-care-cell">
+<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
+<div style="width:26px;height:26px;border-radius:50%;background:#96692a;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">4</div>
+<p style="font-size:11px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Recovery</p>
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Transition Care</p>
+<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Support after a hospital stay, surgery, or rehab.</p>
+</div>
+<span class="hp-care-arrow"></span>
+</div>
+<div class="hp-care-cell">
+<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
+<div style="width:26px;height:26px;border-radius:50%;background:#96692a;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">5</div>
+<p style="font-size:11px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Complex care</p>
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Specialized Care</p>
+<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Dementia, Parkinson's, stroke, and hospice needs.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="hp-section-dark reveal" style="background:#f2f0e9">
+<div class="hp-trust-grid">
+<div style="display:flex;align-items:center;gap:9px"><span style="color:#96692a;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">Transparent pricing</span></div>
+<div style="display:flex;align-items:center;gap:9px"><span style="color:#96692a;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">Missouri-based care coordinators</span></div>
+<div style="display:flex;align-items:center;gap:9px"><span style="color:#96692a;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">Personalized care plans</span></div>
+<div style="display:flex;align-items:center;gap:9px"><span style="color:#96692a;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">Caregiver training academy</span></div>
+<div style="display:flex;align-items:center;gap:9px"><span style="color:#96692a;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">AI guidance backed by human experts</span></div>
+</div>
+<div style="max-width:640px;margin:0 auto;text-align:center;border-top:1px solid #e2ddce;padding-top:28px">
+<p style="font-size:11.5px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Care starts at</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px">
+<span style="font-size:14px;color:#2c3d4d"><strong style="color:#122236">Wellness Care</strong>&nbsp;&mdash; from $30/hr</span>
+<span style="font-size:14px;color:#2c3d4d"><strong style="color:#122236">Personal Care</strong>&nbsp;&mdash; from $32/hr</span>
+<span style="font-size:14px;color:#2c3d4d"><strong style="color:#122236">Advanced Care</strong>&nbsp;&mdash; from $34/hr</span>
+</div>
+</div>
+</section>
+
+<section id="library" class="hp-section reveal">
+<div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:32px">
+<h2 style="margin:0">From the Resource Library</h2>
+<a href="resource-library.html" style="font-size:14.5px;font-weight:600">Explore the full library →</a>
+</div>
+<div class="hp-guides-grid">
+<a href="guides/dementia-and-alzheimers.html" class="hp-guide-card">
+<img src="assets/photos/walking-together.webp" alt="A caregiver steadying a senior while walking outdoors" style="width:100%;height:170px;object-fit:cover;display:block">
+<div style="padding:18px 20px">
+<p style="font-size:11.5px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Dementia &amp; Alzheimer's</p>
+<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Recognizing early signs of dementia</p>
+<p style="font-size:13px;line-height:1.55;color:#55677a;margin:0">What's normal aging, what isn't, and when to see a doctor.</p>
+</div>
+</a>
+<a href="guides/hospital-discharge.html" class="hp-guide-card">
+<img src="assets/photos/car-ride.webp" alt="A smiling senior man being helped out of a car by a caregiver" style="width:100%;height:170px;object-fit:cover;display:block">
+<div style="padding:18px 20px">
+<p style="font-size:11.5px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Hospital Discharge</p>
+<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Coming home after a hospital stay</p>
+<p style="font-size:13px;line-height:1.55;color:#55677a;margin:0">A checklist for the first 72 hours, and how to avoid readmission.</p>
+</div>
+</a>
+<a href="guides/missouri-medicaid-hcbs.html" class="hp-guide-card">
+<img src="assets/photos/helping-dress.webp" alt="Hands helping a senior button his vest" style="width:100%;height:170px;object-fit:cover;display:block">
+<div style="padding:18px 20px">
+<p style="font-size:11.5px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Paying for Care</p>
+<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Medicaid, VA, and long-term care insurance</p>
+<p style="font-size:13px;line-height:1.55;color:#55677a;margin:0">A plain-language guide to who pays for what, and how to start.</p>
+</div>
+</a>
+</div>
+</section>
+
+<section class="hp-cta-section">
+<h2>Whenever you're ready, we're here.</h2>
+<p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0 0 28px;max-width:480px;margin-left:auto;margin-right:auto">No pressure, no sales calls. Just answers, for as long as you need them.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+<a href="assessment.html" class="hp-btn-hero" style="transition:background .15s ease, transform .1s ease">Start your free assessment</a>
+<a href="tel:14172348494" style="display:inline-flex;align-items:center;font-size:15.5px;font-weight:600;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14.5px 26px;transition:border-color .15s ease;text-decoration:none">Call (417) 234-8494</a>
+</div>
+</section>
+
+<footer class="hp-footer">
+<div class="hp-footer-grid">
+<div>
+<img src="assets/cc-logo.webp" alt="Caring Companions" style="height:42px;display:block;margin-bottom:10px">
+<p style="font-family:'Source Serif 4',Georgia,serif;font-size:14px;font-style:italic;color:#55677a;line-height:1.5;margin:0 0 4px">The trusted guide for aging at home.</p>
+<p style="font-size:12.5px;color:#8a978f;line-height:1.5;margin:0">Helping families navigate aging at home.</p>
+</div>
+<div>
+<p style="font-size:12.5px;font-weight:700;color:#122236;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 12px">Explore</p>
+<div style="display:flex;flex-direction:column;gap:8px">
+<a href="decision-center.html">Decision Center</a>
+<a href="assessment.html">Digital Assessment</a>
+<a href="cara.html">Cara</a>
+<a href="resource-library.html">Resource Library</a>
+<a href="family-workspace.html">Your Family Workspace</a>
+</div>
+</div>
+<div>
+<p style="font-size:12.5px;font-weight:700;color:#122236;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 12px">Caring Companions</p>
+<div style="display:flex;flex-direction:column;gap:8px">
+<a href="https://mo-care.com/our-services">Our Services</a>
+<a href="https://mo-care.com/our-story">Our Story</a>
+<a href="https://mo-care.com/pricing">Pricing</a>
+</div>
+</div>
+<div>
+<p style="font-size:12.5px;font-weight:700;color:#122236;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 12px">Contact</p>
+<a href="tel:4172348494" style="display:block;margin-bottom:8px">(417) 234-8494</a>
+<p style="font-size:13.5px;color:#55677a;margin:0;line-height:1.6">1331 N Stewart Ave Ste B<br>Springfield, MO 65802</p>
+</div>
+</div>
+<p style="max-width:1180px;margin:32px auto 0;font-size:12px;color:#a3ada6">© 2026 Caring Companions In-Home Senior Care. All rights reserved.</p>
+</footer>
+
+</div>
+<script src="assets/site.js"></script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

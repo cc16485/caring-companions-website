@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facility Comparison | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.fx-hero { max-width: 820px; margin: 0 auto; padding: 48px 24px 10px; }
+.fx-h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; margin: 0 0 8px; color: var(--brand-blue); }
+@media (max-width: 639px) {
+  .fx-hero { padding: 32px 20px 10px; }
+  .fx-h1 { font-size: 24px; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/facility-comparison.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Add each place you visit and score it while it's fresh. Saved automatically, so you can compare side by side later.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Facility Comparison | Caring Companions">
+<meta property="og:description" content="Add each place you visit and score it while it's fresh. Saved automatically, so you can compare side by side later.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/facility-comparison.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="fx-hero">
+<p style="font-size:13px;font-weight:600;color:#96692a;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace.html" style="text-decoration:none;color:#96692a">Family Workspace</a> › Facility Comparison</p>
+<h1 class="fx-h1">Compare Facilities You're Touring</h1>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0">Add each place you visit and score it while it's fresh. Saved automatically, so you can compare side by side later.</p>
+</section>
+
+<section style="max-width:1080px;margin:0 auto;padding:20px 24px 30px">
+<button id="add-facility" class="btn-primary" style="padding:12px 22px;font-size:14px;white-space:nowrap">+ Add a Facility</button>
+</section>
+
+<section style="max-width:1080px;margin:0 auto;padding:0 24px 60px;overflow-x:auto" id="table-wrap">
+<p id="empty-note" style="text-align:center;font-size:14px;color:#8a978f;padding:30px 0">No facilities added yet&nbsp;&mdash; click "Add a Facility" to start comparing.</p>
+</section>
+
+<section style="max-width:780px;margin:0 auto;padding:0 24px 80px;text-align:center">
+<div style="background:#0E3760;border-radius:16px;padding:30px">
+<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Not sure this is the right path?</p>
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600;margin:0 0 20px;color:#fbfaf7">See how facility care compares to staying home.</h2>
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+<a href="compare-care.html" style="background:#fbfaf7;color:#0E3760;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Compare Care Options</a>
+<a href="counties/greene.html" style="background:transparent;color:#fbfaf7;border:1.5px solid #2d4a63;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Browse Greene County Facilities</a>
+</div>
+</div>
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+'use strict';
+var FIELDS = ['Distance', 'Rating', 'Price', 'Memory Care?', 'Pets Allowed?', 'Private Rooms?', 'Medicaid Accepted?', 'Activities', 'Notes'];
+
+function load() { try { return JSON.parse(localStorage.getItem('cc-facility-comparison') || '[]'); } catch (e) { return []; } }
+function save(list) {
+  try { localStorage.setItem('cc-facility-comparison', JSON.stringify(list)); } catch (e) {}
+  try {
+    var f = JSON.parse(localStorage.getItem('cc-workspace-flags') || '{}');
+    f.facilityComparisonStarted = list.length > 0;
+    localStorage.setItem('cc-workspace-flags', JSON.stringify(f));
+  } catch (e) {}
+}
+
+var facilities = load();
+
+function render() {
+  var wrap = document.getElementById('table-wrap');
+  var old = wrap.querySelector('table');
+  if (old) old.remove();
+  document.getElementById('empty-note').hidden = facilities.length > 0;
+  if (!facilities.length) return;
+
+  var table = document.createElement('table');
+  table.style.cssText = 'width:100%;min-width:' + (140 + facilities.length * 190) + 'px;border-collapse:collapse;font-size:13.5px';
+
+  var thead = document.createElement('thead');
+  var headRow = document.createElement('tr');
+  var fieldTh = document.createElement('th');
+  fieldTh.style.cssText = 'text-align:left;padding:10px;background:#122a40;color:#fff;width:140px';
+  fieldTh.textContent = 'Field';
+  headRow.appendChild(fieldTh);
+  facilities.forEach(function (f, i) {
+    var th = document.createElement('th');
+    th.style.cssText = 'text-align:left;padding:10px;background:#122a40;color:#fff;min-width:180px';
+    var input = document.createElement('input');
+    input.value = f.name || '';
+    input.placeholder = 'Facility name';
+    input.style.cssText = 'width:100%;padding:6px 8px;font-size:13px;border:none;border-radius:5px;font-family:inherit';
+    input.addEventListener('input', function () { facilities[i].name = input.value; save(facilities); });
+    th.appendChild(input);
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  var tbody = document.createElement('tbody');
+  FIELDS.forEach(function (label) {
+    var tr = document.createElement('tr');
+    tr.style.borderBottom = '1px solid #e4e1d8';
+    var td = document.createElement('td');
+    td.style.cssText = 'padding:10px;font-weight:600;color:#122236;background:#f6f5f0;white-space:nowrap';
+    td.textContent = label;
+    tr.appendChild(td);
+    facilities.forEach(function (f, i) {
+      var cell = document.createElement('td');
+      cell.style.cssText = 'padding:8px 10px';
+      var input = document.createElement('input');
+      input.value = (f.data && f.data[label]) || '';
+      input.placeholder = '—';
+      input.style.cssText = 'width:100%;padding:8px 10px;font-size:13px;border:1px solid #e4e1d8;border-radius:6px;font-family:inherit;color:#2c3d4d';
+      input.addEventListener('input', function () {
+        facilities[i].data = facilities[i].data || {};
+        facilities[i].data[label] = input.value;
+        save(facilities);
+      });
+      cell.appendChild(input);
+      tr.appendChild(cell);
+    });
+    tbody.appendChild(tr);
+  });
+
+  var removeRow = document.createElement('tr');
+  var removeLabel = document.createElement('td');
+  removeLabel.style.cssText = 'padding:10px;font-weight:600;color:#122236;background:#f6f5f0';
+  removeLabel.textContent = 'Remove';
+  removeRow.appendChild(removeLabel);
+  facilities.forEach(function (f, i) {
+    var td = document.createElement('td');
+    td.style.cssText = 'padding:8px 10px';
+    var b = document.createElement('button');
+    b.textContent = 'Remove';
+    b.style.cssText = 'background:none;border:1px solid #e4e1d8;border-radius:6px;padding:6px 12px;font-size:12.5px;color:#8a978f;cursor:pointer';
+    b.addEventListener('click', function () {
+      facilities.splice(i, 1);
+      save(facilities);
+      render();
+    });
+    td.appendChild(b);
+    removeRow.appendChild(td);
+  });
+  tbody.appendChild(removeRow);
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+}
+
+document.getElementById('add-facility').addEventListener('click', function () {
+  facilities.push({ name: '', data: {} });
+  save(facilities);
+  render();
+});
+render();
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cara | Guided Care Consultation | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.cara-page { max-width: 560px; margin: 0 auto; padding: 64px 24px 80px; }
+.cara-page.wide { max-width: 960px; }
+.cara-page.med { max-width: 640px; }
+.cara-h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); }
+.cara-q-grid { display: grid; grid-template-columns: 1fr 280px; gap: 28px; align-items: start; }
+.cara-hide-mobile { display: inline; }
+.cara-opt {
+  display: flex; align-items: center; gap: 12px; text-align: left; background: #ffffff;
+  border: 1.5px solid var(--border); border-radius: 9px; padding: 14px 16px;
+  font-size: 14.5px; color: var(--body-text); cursor: pointer; font-family: inherit;
+  transition: border-color .15s ease;
+}
+.cara-opt:hover { border-color: var(--accent); }
+.cara-opt.selected { background: #fbf6ec; border-color: var(--accent); }
+.cara-opt .mark {
+  width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c9d0cb; background: #ffffff;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fbfaf7;
+}
+.cara-opt.multi .mark { border-radius: 4px; }
+.cara-opt.selected .mark { background: var(--accent); border-color: var(--accent); }
+.cara-subject-opt {
+  text-align: left; background: #ffffff; border: 1px solid var(--border); border-radius: 10px;
+  padding: 15px 18px; font-size: 15px; color: var(--body-text); cursor: pointer; font-family: inherit;
+  transition: border-color .15s ease, background .15s ease;
+}
+.cara-subject-opt:hover { border-color: var(--accent); background: #fbf9f5; }
+@media (max-width: 1039px) { .cara-q-grid { grid-template-columns: 1fr 220px; } }
+@media (max-width: 719px) {
+  .cara-page { padding: 40px 20px 60px; }
+  .cara-h1 { font-size: 25px; }
+  .cara-q-grid { grid-template-columns: 1fr; }
+  .cara-hide-mobile { display: none; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/cara.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Talk through your family’s situation with Cara, our guided care consultation. A few questions, a personalized care recommendation, and clear next steps — free, no account needed.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Cara | Guided Care Consultation | Caring Companions">
+<meta property="og:description" content="Talk through your family’s situation with Cara, our guided care consultation. A few questions, a personalized care recommendation, and clear next steps — free, no account needed.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/cara.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+
+<header style="position:sticky;top:0;z-index:40;background:rgba(250,249,246,0.96);border-bottom:1px solid #e4e1d8;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)">
+<div style="max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+<a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+<img src="assets/cc-logo.webp" alt="Caring Companions" style="height:30px;display:block">
+<span class="cara-hide-mobile" style="width:1px;height:20px;background:#dfe6e2"></span>
+<span class="cara-hide-mobile" style="font-family:'Source Serif 4',Georgia,serif;font-size:15px;color:#55677a">Cara · Guided Care Consultation</span>
+</a>
+<a href="tel:14172348494" style="font-size:13.5px;color:#55677a;white-space:nowrap;text-decoration:none">(417) 234-8494</a>
+</div>
+</header>
+
+<!-- Stage: subject -->
+<section class="cara-page" id="stage-subject" style="text-align:center">
+<p class="kicker">Understanding Your Situation</p>
+<h1 class="cara-h1">Who are you looking for help with?</h1>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 28px">This helps me ask the right questions.</p>
+<div style="display:flex;flex-direction:column;gap:9px;text-align:left" id="subject-options"></div>
+</section>
+
+<!-- Stage: situation -->
+<section class="cara-page" id="stage-situation" hidden>
+<p class="kicker" style="text-align:center">Understanding Your Situation</p>
+<h1 class="cara-h1" style="text-align:center">Tell me what's happening.</h1>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px;text-align:center">In your own words&nbsp;&mdash; as much or as little as you'd like.</p>
+<textarea id="situation-text" placeholder="e.g. &ldquo;My dad has Parkinson's and keeps falling&rdquo;" rows="4" style="width:100%;padding:16px 18px;font-size:15px;border:1.5px solid #dfe6e2;border-radius:10px;font-family:inherit;color:#16283a;background:#ffffff;resize:vertical"></textarea>
+<div style="display:flex;justify-content:center;margin-top:20px">
+<button id="situation-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">Continue →</button>
+</div>
+</section>
+
+<!-- Stage: empathy -->
+<section class="cara-page" id="stage-empathy" hidden style="text-align:center">
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
+<p id="empathy-loading" style="font-size:15px;color:#8a978f;margin:0">Cara is reading what you shared&hellip;</p>
+<div id="empathy-content" hidden>
+<p id="empathy-ack" style="font-size:16.5px;line-height:1.7;color:#2c3d4d;margin:0 0 16px"></p>
+<p style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-style:italic;color:#122236;margin:0">I understand. Let's work through this together.</p>
+</div>
+</div>
+<p style="font-size:13px;color:#8a978f;margin:20px 0 24px">To point you toward the most helpful resources, I'll ask a few questions&nbsp;&mdash; about <span id="empathy-qcount">10</span> in total.</p>
+<button id="empathy-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">Continue →</button>
+</section>
+
+<!-- Stage: question -->
+<section class="cara-page wide" id="stage-question" hidden>
+<div style="margin-bottom:8px;display:flex;justify-content:space-between;font-size:12.5px;color:#8a978f"><span>Question <span id="q-num">1</span> of <span id="q-count"></span></span><span>Saved automatically</span></div>
+<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden;margin-bottom:30px"><div id="q-progress" style="height:100%;width:0%;background:#96692a;transition:width .3s ease"></div></div>
+
+<div class="cara-q-grid">
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
+<h2 id="q-text" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:0 0 24px;color:#0D365F"></h2>
+<div style="display:flex;flex-direction:column;gap:9px" id="q-options"></div>
+<div style="display:flex;justify-content:space-between;margin-top:26px">
+<button id="q-back" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">← Back</button>
+<button id="q-next" class="btn-primary" style="padding:12px 24px;font-size:14px;border-radius:9px" hidden>Continue →</button>
+</div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:22px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Understanding Your Situation</p>
+<div id="q-sidebar"></div>
+</div>
+</div>
+</section>
+
+<!-- Stage: reasoning -->
+<section class="cara-page med" id="stage-reasoning" hidden>
+<p class="kicker" style="text-align:center">Here's what I'm seeing</p>
+<h1 class="cara-h1" style="text-align:center;margin-bottom:22px">Because you've shared:</h1>
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:24px">
+<div id="reasoning-concerns"></div>
+<p style="font-size:15px;line-height:1.8;color:#2c3d4d;margin:18px 0 0">these situations often benefit from <strong style="color:#122236" id="reasoning-level"></strong> (<span id="reasoning-rate"></span>).</p>
+<p style="font-size:14px;line-height:1.7;color:#55677a;margin:12px 0 0" id="reasoning-explain"></p>
+</div>
+<p style="font-size:12.5px;line-height:1.6;color:#8a978f;margin:0 0 24px;text-align:center">Pricing starts at this rate and may vary based on schedule, hours, location, and level of support needed. A Care Coordinator can provide a personalized quote.</p>
+<div style="display:flex;justify-content:center">
+<button id="reasoning-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">See my full summary →</button>
+</div>
+</section>
+
+<!-- Stage: summary -->
+<section class="cara-page med" id="stage-summary" hidden>
+<p class="kicker" style="text-align:center">Recommended Care Level</p>
+
+<div style="background:#0E3760;border-radius:14px;padding:30px;margin-bottom:18px">
+<h1 style="font-family:'Source Serif 4',Georgia,serif;font-size:30px;font-weight:600;margin:0 0 6px;color:#fbfaf7" id="summary-level"></h1>
+<p style="font-size:16px;font-weight:600;color:#e8c988;margin:0 0 20px" id="summary-rate"></p>
+<p style="font-size:12px;font-weight:700;color:#c3cdd6;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Why this fits</p>
+<div id="summary-concerns"></div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:18px">
+<p style="font-size:12px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">You may also want to explore</p>
+<div id="summary-explore"></div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:18px">
+<p style="font-size:12px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Our Current Starting Rates</p>
+<div id="summary-ratecard"></div>
+<p style="font-size:12px;color:#8a978f;line-height:1.6;margin:12px 0 0">The exact rate depends on schedule, hours, location, and level of support needed. A Care Coordinator can provide a personalized quote.</p>
+</div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:18px">
+<p style="font-size:12px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Risk Level</p>
+<p style="font-size:17px;font-weight:600;color:#122236;margin:0" id="summary-risk"></p>
+</div>
+
+<div style="background:#f2f0e9;border-radius:14px;padding:28px;margin-bottom:24px">
+<p style="font-size:12px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Suggested Next Steps</p>
+<div id="summary-nextsteps"></div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:14px">
+<a href="tel:14172348494" style="background:#0D365F;color:#faf9f6;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Call (417) 234-8494</a>
+<a href="contact.html" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Message a Care Coordinator</a>
+</div>
+<div style="display:flex;justify-content:center">
+<button id="start-over" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">Start a New Consultation</button>
+</div>
+</section>
+
+</div>
+
+<script>
+(function () {
+'use strict';
+
+var SUBJECTS = [
+  { id: 'mom', label: 'Mom', noun: 'your mom', verb: 'has' },
+  { id: 'dad', label: 'Dad', noun: 'your dad', verb: 'has' },
+  { id: 'spouse', label: 'Spouse', noun: 'your spouse', verb: 'has' },
+  { id: 'myself', label: 'Myself', noun: 'you', verb: 'have' },
+  { id: 'other', label: 'Someone else', noun: 'your loved one', verb: 'has' },
+];
+
+var ACK_SCENARIOS = [
+  { keywords: ['parkinson', 'fell', 'fall', 'falling'], text: "I'm sorry you're dealing with that. Falls can be frightening, especially with a condition like Parkinson's. I'm glad you're looking into this before someone gets seriously hurt." },
+  { keywords: ['forget', 'memory', 'confus', 'dementia', 'alzheimer'], text: "Thank you for telling me — watching memory change in someone you love is one of the hardest things a family goes through." },
+  { keywords: ['discharge', 'hospital', 'rehab', 'surgery'], text: "Coming home from the hospital on a short timeline is stressful, and it's smart to plan ahead rather than scramble." },
+  { keywords: ['overnight', 'night', 'awake'], text: "Nighttime safety is one of the concerns families worry about most — and one of the hardest to plan for alone." },
+  { keywords: ['burnout', 'exhausted', 'overwhelmed', 'tired'], text: "I'm really glad you said that — your wellbeing matters here just as much as theirs." },
+];
+var DEFAULT_ACK = "Thank you for sharing that with me. I know reaching out about something like this isn't always easy.";
+
+function buildQuestions(subject) {
+  var n = subject.noun, v = subject.verb;
+  return [
+    { key: 'falls', category: 'Condition & Falls', text: 'Has ' + n + ' fallen in the last 6 months?', options: [
+      { value: 'none', label: 'No falls', weight: 0 },
+      { value: 'one', label: 'Once', weight: 2 },
+      { value: 'two', label: 'Twice', weight: 3 },
+      { value: 'three', label: 'Three or more', weight: 4 } ] },
+    { key: 'injuries', category: 'Condition & Falls', text: 'Were there any injuries from ' + (n === 'you' ? 'those falls' : n + '’s falls') + '?', skipIf: function (a) { return a.falls === 'none'; }, autoValue: 'none', options: [
+      { value: 'none', label: 'No injuries', weight: 0 },
+      { value: 'minor', label: 'Minor (bruises, soreness)', weight: 1 },
+      { value: 'medical', label: 'Required medical attention', weight: 3 } ] },
+    { key: 'mobility', category: 'Mobility', text: 'Can ' + n + ' walk without assistance?', options: [
+      { value: 'independent', label: 'Yes, independently', weight: 0 },
+      { value: 'device', label: 'With a cane or walker', weight: 2 },
+      { value: 'assist', label: 'Only with help from a person', weight: 4 } ] },
+    { key: 'memory', category: 'Memory', text: 'Have you noticed memory or confusion issues with ' + n + '?', options: [
+      { value: 'none', label: 'None noticed', weight: 0 },
+      { value: 'occasional', label: 'Occasional forgetfulness', weight: 1 },
+      { value: 'frequent', label: 'Frequent confusion', weight: 3 },
+      { value: 'significant', label: 'Significant — wandering or getting lost', weight: 5 } ] },
+    { key: 'medication', category: 'Medication', text: 'How ' + (v === 'have' ? 'do you' : 'does ' + n) + ' currently manage medications?', options: [
+      { value: 'independent', label: 'Manages independently', weight: 0 },
+      { value: 'reminders', label: 'Needs reminders', weight: 2 },
+      { value: 'managed', label: 'Needs full management by someone else', weight: 3 } ] },
+    { key: 'homeSafety', category: 'Home Safety', text: 'Are there any of these at ' + (n === 'you' ? 'your' : n + '’s') + ' home?', isMulti: true, options: [
+      { value: 'stairs', label: 'Stairs to navigate daily', weight: 1 },
+      { value: 'lighting', label: 'Poor lighting or loose rugs', weight: 1 },
+      { value: 'alone', label: 'Lives alone', weight: 2 },
+      { value: 'none', label: 'None of these', weight: 0 } ] },
+    { key: 'helper', category: 'Family Support', text: 'Who currently helps with day-to-day care?', options: [
+      { value: 'noone', label: 'No one right now', weight: 3 },
+      { value: 'sometimes', label: 'A family member, sometimes', weight: 1 },
+      { value: 'daily', label: 'A family member, daily — and feeling stretched', weight: 2 } ] },
+    { key: 'stress', category: 'Family Support', text: 'How would you describe your own stress level right now?', options: [
+      { value: 'fine', label: 'Fine for now', weight: 0 },
+      { value: 'stretched', label: 'Somewhat stretched', weight: 1 },
+      { value: 'overwhelmed', label: 'Overwhelmed', weight: 3 } ] },
+    { key: 'hospital', category: 'Recent Health Events', text: 'Any hospital stay, ER visit, or surgery in the last 3 months?', options: [
+      { value: 'no', label: 'No', weight: 0 },
+      { value: 'yes', label: 'Yes', weight: 3 } ] },
+    { key: 'payer', category: 'Payment', text: 'How do you expect to pay for care?', options: [
+      { value: 'private', label: 'Private pay', weight: 0 },
+      { value: 'ltci', label: 'Long-term care insurance', weight: 0 },
+      { value: 'medicaid', label: 'Medicaid', weight: 0 },
+      { value: 'va', label: 'VA benefits', weight: 0 },
+      { value: 'unsure', label: 'Not sure yet', weight: 0 } ] },
+  ];
+}
+
+function scoreConsultation(answers, subject) {
+  var points = 0;
+  var QS = buildQuestions(subject);
+  QS.forEach(function (q) {
+    var val = answers[q.key];
+    if (q.isMulti && Array.isArray(val)) val.forEach(function (v) { var o = q.options.find(function (x) { return x.value === v; }); if (o) points += o.weight; });
+    else if (val) { var o = q.options.find(function (x) { return x.value === val; }); if (o) points += o.weight; }
+  });
+
+  var urgent = answers.falls === 'three' || answers.memory === 'significant' || answers.hospital === 'yes' || answers.stress === 'overwhelmed';
+  var riskLabel = urgent ? 'High' : points >= 7 ? 'Moderate' : 'Low';
+  var riskEmoji = urgent ? '🔴' : points >= 7 ? '🟠' : '🟢';
+
+  var levelName, levelExplain, levelRate, exploreAlternatives;
+  if (answers.memory === 'significant') {
+    levelName = 'Advanced Care'; levelRate = 'Starting at $34/hour';
+    levelExplain = 'Higher-acuity support for advanced dementia and memory-related safety concerns like wandering — caregivers experienced in dementia care, with closer supervision.';
+    exploreAlternatives = ['Overnight Care (if nighttime wandering is a concern)', 'Live-In Care (for consistent daily coverage)'];
+  } else if (answers.hospital === 'yes') {
+    levelName = 'Personal Care'; levelRate = 'Starting at $32/hour';
+    levelExplain = 'Hands-on, ADL-level support suited to a safe recovery at home right after a hospital stay, reducing the risk of returning to the hospital.';
+    exploreAlternatives = ['Advanced Care (if recovery needs are more complex)', 'HomeTogether™ (for ongoing check-ins after recovery)'];
+  } else if (points >= 14) {
+    levelName = 'Advanced Care'; levelRate = 'Starting at $34/hour, or 24-Hour ($28–$32/hr) and Live-In ($450/day) plans for round-the-clock coverage';
+    levelExplain = 'The combination of needs here suggests higher-acuity, closely supervised support, likely spanning more of the day.';
+    exploreAlternatives = ['Overnight Care', 'Live-In Care'];
+  } else if (points >= 7) {
+    levelName = 'Personal Care'; levelRate = 'Starting at $32/hour';
+    levelExplain = 'Hands-on assistance with bathing, dressing, toileting, transfers, walking, and other activities of daily living.';
+    exploreAlternatives = ['Overnight Care (if nighttime supervision becomes necessary)', 'Advanced Care (if needs become more complex)'];
+  } else if (points >= 3) {
+    levelName = 'Wellness Care'; levelRate = 'Starting at $30/hour';
+    levelExplain = 'Companionship, meal preparation, transportation, light housekeeping, reminders, and wellness support — without hands-on personal care.';
+    exploreAlternatives = ['Personal Care (if daily self-care needs increase)', 'HomeTogether™ (to add virtual check-ins between visits)'];
+  } else {
+    levelName = 'HomeTogether™ Connection'; levelRate = 'Starting at $75/month';
+    levelExplain = 'Regular virtual check-ins and monitoring may be enough for now, with room to add more support later.';
+    exploreAlternatives = ['Wellness Care (for light hands-on help around the house)'];
+  }
+
+  var concerns = [];
+  if (answers.falls && answers.falls !== 'none') concerns.push(answers.falls === 'three' ? 'Three or more recent falls' : answers.falls === 'two' ? 'Two recent falls' : 'A recent fall');
+  if (answers.mobility === 'device') concerns.push('Uses a cane or walker');
+  if (answers.mobility === 'assist') concerns.push('Needs a person’s help to walk');
+  if (answers.memory === 'frequent') concerns.push('Frequent confusion');
+  if (answers.memory === 'significant') concerns.push('Wandering or getting lost');
+  if (answers.medication === 'managed') concerns.push('Needs full medication management');
+  if (Array.isArray(answers.homeSafety) && answers.homeSafety.indexOf('alone') !== -1) concerns.push('Currently lives alone');
+  if (answers.helper === 'noone') concerns.push('No regular caregiver support yet');
+  if (answers.stress === 'overwhelmed') concerns.push('Primary caregiver feeling overwhelmed');
+  if (answers.hospital === 'yes') concerns.push('Recent hospitalization');
+  if (concerns.length === 0) concerns.push('No major concerns flagged — mostly looking for a bit of extra connection and oversight');
+
+  var nextSteps = ['Talk with a physician about what you’ve shared here', 'Learn more about ' + levelName, 'Schedule a free consultation with a care coordinator'];
+  if (answers.falls && answers.falls !== 'none') nextSteps.unshift('Review our Fall Prevention guide');
+  if (answers.hospital === 'yes') nextSteps.unshift('Review our Hospital Discharge checklist');
+  if (Array.isArray(answers.homeSafety) && answers.homeSafety.some(function (v) { return v !== 'none'; })) nextSteps.push('Run through a Home Safety checklist');
+
+  var rateCard = [
+    { name: 'Wellness Care', rate: 'Starting at $30/hour', desc: 'Companionship, meal preparation, transportation, light housekeeping, reminders, and wellness support.' },
+    { name: 'Personal Care', rate: 'Starting at $32/hour', desc: 'Hands-on assistance with bathing, dressing, toileting, transfers, walking, and other activities of daily living.' },
+    { name: 'Advanced Care', rate: 'Starting at $34/hour', desc: 'Higher-acuity support for complex mobility needs, advanced dementia, Parkinson’s, stroke recovery, or clients requiring more specialized assistance.' },
+  ];
+
+  return { levelName: levelName, levelExplain: levelExplain, levelRate: levelRate, exploreAlternatives: exploreAlternatives, riskLabel: riskLabel, riskEmoji: riskEmoji, concerns: concerns, nextSteps: nextSteps, rateCard: rateCard };
+}
+
+// ---------- state + rendering ----------
+var CATEGORIES = ['Condition & Falls', 'Mobility', 'Memory', 'Medication', 'Home Safety', 'Family Support', 'Recent Health Events', 'Payment'];
+var STAGES = ['subject', 'situation', 'empathy', 'question', 'reasoning', 'summary'];
+var state = { stage: 'subject', subjectId: null, situationText: '', questionIndex: 0, answers: {} };
+
+function el(id) { return document.getElementById(id); }
+function subject() {
+  return SUBJECTS.find(function (s) { return s.id === state.subjectId; }) || SUBJECTS[4];
+}
+function show(stage) {
+  state.stage = stage;
+  STAGES.forEach(function (s) { el('stage-' + s).hidden = s !== stage; });
+  window.scrollTo({ top: 0 });
+}
+
+// Subject stage
+SUBJECTS.forEach(function (s) {
+  var b = document.createElement('button');
+  b.className = 'cara-subject-opt';
+  b.textContent = s.label;
+  b.addEventListener('click', function () {
+    state.subjectId = s.id;
+    show('situation');
+  });
+  el('subject-options').appendChild(b);
+});
+
+// Situation stage
+el('situation-continue').addEventListener('click', function () {
+  state.situationText = el('situation-text').value;
+  el('empathy-qcount').textContent = String(buildQuestions(subject()).length);
+  show('empathy');
+  fetchEmpathyAck();
+});
+
+function fallbackAck() {
+  var text = state.situationText.toLowerCase();
+  var match = ACK_SCENARIOS.find(function (s) { return s.keywords.some(function (k) { return text.indexOf(k) !== -1; }); });
+  return match ? match.text : DEFAULT_ACK;
+}
+
+function fetchEmpathyAck() {
+  el('empathy-loading').hidden = false;
+  el('empathy-content').hidden = true;
+  var endpoint = window.CC_CARA_ENDPOINT ||
+    'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/cara-chat';
+  var done = function (text) {
+    el('empathy-ack').textContent = text;
+    el('empathy-loading').hidden = true;
+    el('empathy-content').hidden = false;
+  };
+  if (!endpoint) {
+    setTimeout(function () { done(fallbackAck()); }, 900);
+    return;
+  }
+  fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      mode: 'empathy',
+      messages: [{ role: 'user', content: 'They are seeking help for ' + subject().noun + '. Here is what they shared: "' + (state.situationText || 'No additional detail given.') + '"' }],
+    }),
+  }).then(function (r) { return r.json(); })
+    .then(function (d) { done((d.reply || '').trim() || fallbackAck()); })
+    .catch(function () { done(fallbackAck()); });
+}
+
+el('empathy-continue').addEventListener('click', function () {
+  state.questionIndex = 0;
+  renderQuestion();
+  show('question');
+});
+
+// Question stage
+function renderQuestion() {
+  var questions = buildQuestions(subject());
+  var q = questions[state.questionIndex];
+  if (!q) return;
+  el('q-num').textContent = String(state.questionIndex + 1);
+  el('q-count').textContent = String(questions.length);
+  el('q-progress').style.width = Math.round(((state.questionIndex + 1) / questions.length) * 100) + '%';
+  el('q-text').textContent = q.text;
+  el('q-next').hidden = !q.isMulti;
+
+  var wrap = el('q-options');
+  wrap.innerHTML = '';
+  q.options.forEach(function (o) {
+    var val = state.answers[q.key];
+    var selected = q.isMulti ? Array.isArray(val) && val.indexOf(o.value) !== -1 : val === o.value;
+    var b = document.createElement('button');
+    b.className = 'cara-opt' + (q.isMulti ? ' multi' : '') + (selected ? ' selected' : '');
+    var mark = document.createElement('span');
+    mark.className = 'mark';
+    mark.textContent = selected ? '✓' : '';
+    b.appendChild(mark);
+    b.appendChild(document.createTextNode(o.label));
+    b.addEventListener('click', function () { answerQuestion(q, o.value); });
+    wrap.appendChild(b);
+  });
+
+  // sidebar
+  var answeredCategories = {};
+  questions.forEach(function (qq, i) {
+    if (i < state.questionIndex || (i === state.questionIndex && state.answers[qq.key] !== undefined)) answeredCategories[qq.category] = true;
+  });
+  var sidebar = el('q-sidebar');
+  sidebar.innerHTML = '';
+  CATEGORIES.forEach(function (cat) {
+    var done = answeredCategories[cat] && cat !== q.category;
+    var active = cat === q.category;
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:7px 0';
+    var dot = document.createElement('span');
+    dot.style.cssText = 'width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;border:none;background:' +
+      (done ? '#96692a' : active ? '#16283a' : '#eceae2') + ';color:' + (done || active ? '#fbfaf7' : '#8a978f');
+    dot.textContent = done ? '✓' : '';
+    var label = document.createElement('span');
+    label.style.cssText = 'font-size:13.5px;color:' + (active ? '#122236' : done ? '#55677a' : '#8a978f');
+    label.textContent = cat;
+    row.appendChild(dot);
+    row.appendChild(label);
+    sidebar.appendChild(row);
+  });
+}
+
+function answerQuestion(q, value) {
+  if (q.isMulti) {
+    var arr = Array.isArray(state.answers[q.key]) ? state.answers[q.key].slice() : [];
+    if (value === 'none') arr = arr.indexOf('none') !== -1 ? [] : ['none'];
+    else {
+      arr = arr.filter(function (v) { return v !== 'none'; });
+      arr = arr.indexOf(value) !== -1 ? arr.filter(function (v) { return v !== value; }) : arr.concat([value]);
+    }
+    state.answers[q.key] = arr;
+    renderQuestion();
+  } else {
+    state.answers[q.key] = value;
+    advance();
+  }
+}
+
+function advance() {
+  var questions = buildQuestions(subject());
+  var nextIndex = state.questionIndex + 1;
+  while (nextIndex < questions.length && questions[nextIndex].skipIf && questions[nextIndex].skipIf(state.answers)) {
+    if (questions[nextIndex].autoValue !== undefined) state.answers[questions[nextIndex].key] = questions[nextIndex].autoValue;
+    nextIndex++;
+  }
+  if (nextIndex >= questions.length) {
+    renderReasoning();
+    show('reasoning');
+  } else {
+    state.questionIndex = nextIndex;
+    renderQuestion();
+  }
+}
+
+el('q-next').addEventListener('click', advance);
+el('q-back').addEventListener('click', function () {
+  if (state.questionIndex === 0) show('empathy');
+  else { state.questionIndex -= 1; renderQuestion(); }
+});
+
+// Reasoning stage
+function checkRow(text, dark) {
+  var p = document.createElement('p');
+  p.style.cssText = dark
+    ? 'font-size:14.5px;line-height:1.9;color:#eef2ef;margin:0'
+    : 'font-size:15px;line-height:2;color:#2c3d4d;margin:0';
+  var check = document.createElement('span');
+  check.style.cssText = 'color:' + (dark ? '#e8c988' : '#96692a') + ';font-weight:700';
+  check.textContent = '✓';
+  p.appendChild(check);
+  p.appendChild(document.createTextNode('  ' + text));
+  return p;
+}
+
+function renderReasoning() {
+  var result = scoreConsultation(state.answers, subject());
+  var wrap = el('reasoning-concerns');
+  wrap.innerHTML = '';
+  result.concerns.forEach(function (c) { wrap.appendChild(checkRow(c, false)); });
+  el('reasoning-level').textContent = result.levelName;
+  el('reasoning-rate').textContent = result.levelRate;
+  el('reasoning-explain').textContent = result.levelExplain;
+}
+
+el('reasoning-continue').addEventListener('click', function () {
+  renderSummary();
+  show('summary');
+});
+
+// Summary stage
+function renderSummary() {
+  var result = scoreConsultation(state.answers, subject());
+  if (window.CCTrack) CCTrack('tool_completed', { tool: 'cara-consultation', level: result.levelName, risk: result.riskLabel });
+  el('summary-level').textContent = result.levelName;
+  el('summary-rate').textContent = result.levelRate;
+  var sc = el('summary-concerns');
+  sc.innerHTML = '';
+  result.concerns.forEach(function (c) { sc.appendChild(checkRow(c, true)); });
+
+  var ex = el('summary-explore');
+  ex.innerHTML = '';
+  result.exploreAlternatives.forEach(function (ea) {
+    var p = document.createElement('p');
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#2c3d4d;margin:0';
+    p.textContent = '• ' + ea;
+    ex.appendChild(p);
+  });
+
+  var rc = el('summary-ratecard');
+  rc.innerHTML = '';
+  result.rateCard.forEach(function (r) {
+    var row = document.createElement('div');
+    row.style.cssText = 'padding:10px 0;border-bottom:1px solid #ede9e0';
+    row.innerHTML = '<p style="font-size:14px;margin:0 0 3px"><strong style="color:#122236"></strong> <span style="color:#96692a;font-weight:600"></span></p><p style="font-size:12.5px;color:#55677a;line-height:1.5;margin:0"></p>';
+    row.querySelector('strong').textContent = r.name;
+    row.querySelector('span').textContent = ' — ' + r.rate;
+    row.querySelectorAll('p')[1].textContent = r.desc;
+    rc.appendChild(row);
+  });
+
+  el('summary-risk').textContent = result.riskEmoji + ' ' + result.riskLabel;
+
+  var ns = el('summary-nextsteps');
+  ns.innerHTML = '';
+  result.nextSteps.forEach(function (step) {
+    var p = document.createElement('p');
+    p.style.cssText = 'font-size:14.5px;line-height:1.9;color:#2c3d4d;margin:0';
+    var check = document.createElement('span');
+    check.style.cssText = 'color:#96692a;font-weight:700';
+    check.textContent = '✓';
+    p.appendChild(check);
+    p.appendChild(document.createTextNode('  ' + step));
+    ns.appendChild(p);
+  });
+}
+
+el('start-over').addEventListener('click', function () {
+  state = { stage: 'subject', subjectId: null, situationText: '', questionIndex: 0, answers: {} };
+  el('situation-text').value = '';
+  show('subject');
+});
+})();
+</script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

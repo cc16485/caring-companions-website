@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Care Decision Center | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.dc-search { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+.dc-journey { max-width: 1180px; margin: 0 auto; padding: 56px 24px 80px; }
+.dc-h1 { font-family: var(--serif); font-size: 40px; font-weight: 600; text-align: center; margin: 0 0 14px; color: var(--brand-blue); letter-spacing: -0.01em; }
+.dc-search-row { display: flex; gap: 10px; margin-bottom: 10px; flex-direction: row; }
+.dc-chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.dc-chip {
+  text-align: left; background: #ffffff; border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; font-size: 14px; font-weight: 500; color: var(--body-text); cursor: pointer;
+  font-family: inherit; transition: border-color .15s ease, background .15s ease;
+}
+.dc-chip:hover { border-color: var(--accent); background: #fbf9f5; }
+.dc-journey-grid { display: grid; grid-template-columns: 260px 1fr 260px; gap: 28px; align-items: start; }
+.dc-hide-mobile { display: inline; }
+@media (max-width: 1079px) { .dc-journey-grid { grid-template-columns: 220px 1fr; } .dc-journey-aside { grid-column: 1 / -1; } }
+@media (max-width: 719px) {
+  .dc-search, .dc-journey { padding: 32px 20px 60px; }
+  .dc-h1 { font-size: 30px; }
+  .dc-search-row { flex-direction: column; }
+  .dc-chips { grid-template-columns: 1fr; }
+  .dc-journey-grid { grid-template-columns: 1fr; }
+  .dc-hide-mobile { display: none; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/decision-center.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Tell us what’s happening — a fall, memory changes, a hospital discharge — and the Decision Center builds a step-by-step path for your family.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Home Care Decision Center | Caring Companions">
+<meta property="og:description" content="Tell us what’s happening — a fall, memory changes, a hospital discharge — and the Decision Center builds a step-by-step path for your family.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/decision-center.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+
+<header class="cc-header">
+<div class="cc-header-inner" style="max-width:1180px">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions">
+<span class="dc-hide-mobile" style="width:1px;height:22px;background:#dfe6e2"></span>
+<span class="dc-hide-mobile" style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;color:#55677a">Decision Center</span>
+</a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<!-- Search view -->
+<section class="dc-search" id="view-search">
+<button id="resume-banner" style="display:none;align-items:center;justify-content:space-between;width:100%;text-align:left;gap:12px;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:12px;padding:16px 18px;margin-bottom:28px;cursor:pointer">
+<span style="font-size:14px;color:#5a4726"><strong>Continue where you left off:</strong> <span id="resume-label"></span> · Step <span id="resume-step"></span> of 5</span>
+<span style="color:#96692a;font-weight:700;font-size:14px;white-space:nowrap">Resume →</span>
+</button>
+
+<p class="kicker" style="text-align:center">Home Care Decision Center</p>
+<h1 class="dc-h1">What's happening?</h1>
+<p style="font-size:15.5px;color:#55677a;text-align:center;line-height:1.6;margin:0 0 32px">Tell us in your own words, or choose what's closest&nbsp;&mdash; we'll build the right path for you.</p>
+
+<div class="dc-search-row">
+<input id="query" placeholder="e.g. &ldquo;Mom fell and I don't know what to do&rdquo;" style="flex:1;padding:15px 18px;font-size:15px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;color:#16283a;background:#ffffff">
+<button id="find-path" class="btn-primary" style="padding:15px 22px;font-size:15px;white-space:nowrap">Find my path</button>
+</div>
+
+<p id="no-match" hidden style="font-size:13.5px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:12px 16px;margin:12px 0 0">We're not quite sure yet&nbsp;&mdash; try one of the situations below, or ask Cara using the button in the corner.</p>
+
+<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:40px 0 14px">Or choose a common situation</p>
+<div class="dc-chips" id="situation-chips"></div>
+</section>
+
+<!-- Journey view -->
+<section class="dc-journey" id="view-journey" hidden>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px">
+<p style="font-size:14px;color:#55677a;margin:0;min-width:0;overflow-wrap:break-word">You said: <strong style="color:#122236" id="current-label"></strong></p>
+<button id="change-situation" style="background:none;border:none;color:#96692a;font-size:13.5px;font-weight:600;cursor:pointer;padding:0;white-space:nowrap;flex-shrink:0">Change situation</button>
+</div>
+
+<div style="margin-bottom:36px">
+<div style="display:flex;justify-content:space-between;font-size:12.5px;color:#8a978f;margin-bottom:6px"><span>Step <span id="step-num">1</span> of 5</span><span>Progress saved automatically</span></div>
+<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden"><div id="step-progress" style="height:100%;width:0%;background:#96692a;transition:width .3s ease"></div></div>
+</div>
+
+<div class="dc-journey-grid">
+<div style="display:flex;flex-direction:column;gap:0" id="step-list"></div>
+
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
+<p id="active-kind" style="font-size:12px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px"></p>
+<h2 id="active-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;margin:0 0 14px;color:#0D365F"></h2>
+<p id="active-body" style="font-size:15px;line-height:1.7;color:#45566a;margin:0 0 26px"></p>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<a id="active-action" href="cara.html" style="display:inline-block;background:#0D365F;color:#faf9f6;border:none;border-radius:9px;padding:13px 22px;font-size:14.5px;font-weight:600;text-decoration:none"></a>
+<button id="mark-complete" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:13px 22px;font-size:14.5px;font-weight:600;cursor:pointer">Mark complete &amp; continue</button>
+</div>
+</div>
+
+<div class="dc-journey-aside" style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:12px;padding:18px 20px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Related resources</p>
+<div id="related-list"></div>
+</div>
+<div style="background:#f2f0e9;border-radius:12px;padding:18px 20px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Suggested next step</p>
+<p id="suggested-next" style="font-size:14px;line-height:1.6;color:#2c3d4d;margin:0"></p>
+</div>
+<div style="background:#0E3760;border-radius:12px;padding:18px 20px">
+<p style="font-size:11.5px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Prefer to talk to a person?</p>
+<p style="font-size:13.5px;line-height:1.6;color:#c3cdd6;margin:0 0 14px">A care coordinator can walk through this with you directly.</p>
+<a href="tel:14172348494" style="display:block;text-align:center;background:#fbfaf7;color:#0E3760;border-radius:8px;padding:11px;font-size:13.5px;font-weight:600;text-decoration:none">Call (417) 234-8494</a>
+</div>
+</div>
+</div>
+</section>
+
+</div>
+
+<script>
+(function () {
+'use strict';
+
+var SITUATIONS = [
+  { id: 'fell', label: 'Mom fell yesterday', keywords: ['fell', 'fall', 'falling'],
+    steps: [
+      { kind: 'Assessment', title: 'Home Safety Assessment', body: 'Let’s check for the risks that led to this fall so it doesn’t happen again — flooring, lighting, bathroom setup, and mobility.', actionLabel: 'Start Safety Assessment', href: 'home-safety-check.html' },
+      { kind: 'Guide', title: 'Hospital & Recovery Guide', body: 'If she was seen at the hospital or an ER, here’s what to expect during recovery at home and what to watch for.', actionLabel: 'Read the Guide', href: 'guides/hospital-discharge.html' },
+      { kind: 'Consider', title: 'Fall Prevention Basics', body: 'A handful of small, immediate changes reduce fall risk right away — before any care plan is even in place.', actionLabel: 'See Fall Prevention Tips', href: 'guides/fall-prevention-at-home.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Based on what you’ve told us, here’s the level of in-home support that typically helps most after a fall like this.', actionLabel: 'See Recommended Care', href: 'care-paths/falls-and-mobility.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'Talk with a care coordinator about a safe, specific plan for your mom — no obligation.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Fall Prevention at Home', href: 'guides/fall-prevention-at-home.html' },
+      { label: 'Understanding Personal Care', href: 'services/personal-care.html' },
+      { label: 'What a Care Assessment Covers', href: 'assessment.html' },
+    ] },
+  { id: 'memory', label: 'Dad is forgetting things', keywords: ['forget', 'memory', 'dementia', 'alzheimer', 'confus'],
+    steps: [
+      { kind: 'Guide', title: 'Early Signs of Dementia', body: 'What’s normal aging, what isn’t, and when it’s time to talk to a doctor.', actionLabel: 'Read the Guide', href: 'guides/dementia-and-alzheimers.html' },
+      { kind: 'Assessment', title: 'Dementia Stage Guide', body: 'A short set of questions to help understand where he may be in the progression, in plain language.', actionLabel: 'Start the Stage Guide', href: 'care-paths/dementia.html' },
+      { kind: 'Consider', title: 'Caregiver Communication Tips', body: 'How to talk with someone experiencing memory loss without causing frustration or fear.', actionLabel: 'See Communication Tips', href: 'guides/best-practices-for-dementia-care.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Memory changes often call for Specialized Care — here’s what that looks like day to day.', actionLabel: 'See Recommended Care', href: 'care-paths/dementia.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'A coordinator experienced with dementia care can help you plan the next conversation with your dad.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Alzheimer’s & Dementia Guide', href: 'guides/dementia-and-alzheimers.html' },
+      { label: 'Caregiver Burnout', href: 'guides/caregiver-burnout.html' },
+      { label: 'Home Safety for Memory Loss', href: 'guides/home-safety-room-by-room.html' },
+    ] },
+  { id: 'discharge', label: 'Hospital discharge tomorrow', keywords: ['discharge', 'hospital', 'rehab'],
+    steps: [
+      { kind: 'Guide', title: 'Hospital Discharge Checklist', body: 'What to have ready at home before she arrives — medications, equipment, and follow-up appointments.', actionLabel: 'Get the Checklist', href: 'care-paths/hospital-discharge.html' },
+      { kind: 'Assessment', title: 'Home Safety Assessment', body: 'A fast check of the home for the first 72 hours — the highest-risk window for readmission.', actionLabel: 'Start Safety Assessment', href: 'home-safety-check.html' },
+      { kind: 'Consider', title: 'Medication Management', body: 'How to keep new prescriptions straight and avoid dangerous interactions in the first weeks home.', actionLabel: 'Read the Guide', href: 'guides/medication-management.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Transition Care is built exactly for this window — temporary, focused support during recovery.', actionLabel: 'See Recommended Care', href: 'care-paths/hospital-discharge.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We can often start Transition Care within 24 hours of discharge.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Transition Care Overview', href: 'guides/hospital-discharge.html' },
+      { label: 'Avoiding Hospital Readmission', href: 'guides/hospital-discharge.html' },
+      { label: 'Medication Management Guide', href: 'guides/medication-management.html' },
+    ] },
+  { id: 'alone', label: 'Can’t stay alone anymore', keywords: ['alone', 'unsafe', 'safe'],
+    steps: [
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A full picture of daily needs — mobility, meals, medication, and safety — to see what support actually makes sense.', actionLabel: 'Start Assessment', href: 'assessment.html' },
+      { kind: 'Guide', title: 'Signs It’s No Longer Safe Alone', body: 'A clear, honest checklist for a hard question many families are afraid to ask.', actionLabel: 'Read the Guide', href: 'guides/home-safety-room-by-room.html' },
+      { kind: 'Consider', title: 'Home Care vs. Assisted Living', body: 'An honest comparison — including when a facility may actually be the better fit.', actionLabel: 'Compare Options', href: 'compare-care.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Here’s the level of daily support that would let your loved one stay home safely.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'Talk through the options with a coordinator before any decision is final.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Home Care vs. Assisted Living', href: 'compare-care.html' },
+      { label: 'Personal Care Overview', href: 'services/personal-care.html' },
+      { label: 'Paying for Care', href: 'care-paths/paying-for-care.html' },
+    ] },
+  { id: 'overnight', label: 'Need overnight help', keywords: ['overnight', 'night', 'sleep'],
+    steps: [
+      { kind: 'Guide', title: 'Overnight & Live-In Care Guide', body: 'The difference between overnight shifts, 24-hour rotating care, and live-in caregivers.', actionLabel: 'Read the Guide', href: 'services/overnight-care.html' },
+      { kind: 'Consider', title: 'Cost Comparison', body: 'Overnight vs. 24-Hour vs. Live-In — published rates, side by side.', actionLabel: 'Compare Costs', href: 'cost-calculator.html' },
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A few questions about nighttime needs — wandering, falls, toileting — to size the right coverage.', actionLabel: 'Start Assessment', href: 'care-paths/overnight-care.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'Based on your answers, here’s the overnight arrangement that fits best.', actionLabel: 'See Recommended Care', href: 'care-paths/overnight-care.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We can usually schedule overnight coverage within days.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Live-In Care Overview', href: 'services/live-in-care.html' },
+      { label: '24-Hour Care Overview', href: 'services/24-hour-care.html' },
+      { label: 'Cost Calculator', href: 'cost-calculator.html' },
+    ] },
+  { id: 'medicaid', label: 'Need help with Medicaid', keywords: ['medicaid'],
+    steps: [
+      { kind: 'Guide', title: 'Missouri Medicaid HCBS Guide', body: 'How Missouri’s Home and Community-Based Services program works for in-home care.', actionLabel: 'Read the Guide', href: 'guides/missouri-medicaid-hcbs.html' },
+      { kind: 'Guide', title: 'Medicaid Spend-Down, Explained', body: 'A plain-language walkthrough of spend-down rules and eligibility.', actionLabel: 'Read the Guide', href: 'guides/missouri-medicaid-hcbs.html' },
+      { kind: 'Assessment', title: 'Benefits Eligibility Check', body: 'A few questions to get a sense of likely eligibility — not a substitute for a formal application.', actionLabel: 'Check Eligibility', href: 'care-paths/paying-for-care.html' },
+      { kind: 'Recommendation', title: 'Recommended Payment Plan', body: 'How Medicaid can combine with other payment sources for your situation.', actionLabel: 'See Payment Options', href: 'care-paths/paying-for-care.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We’ll help you navigate the paperwork, not just explain it.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Medicaid Spend Down', href: 'guides/missouri-medicaid-hcbs.html' },
+      { label: 'Paying for Care Overview', href: 'care-paths/paying-for-care.html' },
+      { label: 'Medicaid vs. Private Pay', href: 'guides/missouri-medicaid-hcbs.html' },
+    ] },
+  { id: 'va', label: 'Need VA benefits', keywords: ['va', 'veteran', 'veterans'],
+    steps: [
+      { kind: 'Guide', title: 'VA Community Care Guide', body: 'How VA Community Care and Aid & Attendance can pay for in-home caregiving.', actionLabel: 'Read the Guide', href: 'guides/va-benefits-for-home-care.html' },
+      { kind: 'Assessment', title: 'Veteran Eligibility Check', body: 'A quick look at whether your veteran or their spouse likely qualifies.', actionLabel: 'Check Eligibility', href: 'guides/va-benefits-for-home-care.html' },
+      { kind: 'Consider', title: 'Combining VA with Home Care', body: 'How VA benefits typically layer with private pay or other coverage.', actionLabel: 'Learn More', href: 'care-paths/paying-for-care.html' },
+      { kind: 'Recommendation', title: 'Recommended Payment Plan', body: 'A realistic picture of what VA coverage could mean for your monthly cost.', actionLabel: 'See Payment Options', href: 'care-paths/paying-for-care.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'We work directly with VA benefits regularly — we can help you apply.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'VA-Funded Home Care', href: 'guides/va-benefits-for-home-care.html' },
+      { label: 'Long-Term Care Insurance', href: 'care-paths/paying-for-care.html' },
+      { label: 'Paying for Care Overview', href: 'care-paths/paying-for-care.html' },
+    ] },
+  { id: 'siblings', label: 'My siblings and I disagree', keywords: ['sibling', 'disagree', 'family disagree', 'brother', 'sister'],
+    steps: [
+      { kind: 'Guide', title: 'Family Caregiver Communication Guide', body: 'How to get everyone looking at the same facts instead of arguing from different assumptions.', actionLabel: 'Read the Guide', href: 'family-meeting-planner.html' },
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'A neutral, shareable assessment the whole family can review together.', actionLabel: 'Start Assessment', href: 'assessment.html' },
+      { kind: 'Consider', title: 'Comparing Care Options Together', body: 'A side-by-side families can look at together, instead of debating from memory.', actionLabel: 'Compare Options', href: 'compare-care.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'A specific, written recommendation everyone can react to — not just opinions.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
+      { kind: 'Next Step', title: 'Schedule a Family Consultation', body: 'We can walk the whole family through it together, on one call.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Family Meeting Planner', href: 'family-meeting-planner.html' },
+      { label: 'Care Needs Assessment', href: 'assessment.html' },
+      { label: 'Comparing Care Options', href: 'compare-care.html' },
+    ] },
+  { id: 'burnout', label: 'I’m the caregiver and I’m exhausted', keywords: ['burnout', 'exhaust', 'tired', 'overwhelmed'],
+    steps: [
+      { kind: 'Guide', title: 'Caregiver Burnout Guide', body: 'What burnout actually looks like, and why asking for help isn’t giving up.', actionLabel: 'Read the Guide', href: 'guides/caregiver-burnout.html' },
+      { kind: 'Consider', title: 'Respite Care Options', body: 'Short-term relief — a few hours, a weekend, or ongoing regular breaks.', actionLabel: 'See Respite Options', href: 'services/hourly-care.html' },
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'Let’s look at what support would actually lighten your load, not just your loved one’s.', actionLabel: 'Start Assessment', href: 'assessment.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'A plan that gives you real breaks without losing continuity of care.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
+      { kind: 'Next Step', title: 'Schedule a Free Consultation', body: 'Let’s talk about what relief could look like this week, not eventually.', actionLabel: 'Schedule Consultation', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Caregiver Burnout', href: 'guides/caregiver-burnout.html' },
+      { label: 'Respite Care Overview', href: 'services/hourly-care.html' },
+      { label: 'Family Caregiver Support', href: 'guides/caregiver-burnout.html' },
+    ] },
+  { id: 'switching', label: 'Switching from another agency', keywords: ['switch', 'another agency', 'current agency', 'unhappy'],
+    steps: [
+      { kind: 'Guide', title: 'Switching Agencies Checklist', body: 'How to transition without a gap in coverage, and what to ask your current agency for.', actionLabel: 'Get the Checklist', href: 'family-checklist.html' },
+      { kind: 'Consider', title: 'Compare Pricing & Vetting', body: 'See our published rates and caregiver screening standards next to what you have now.', actionLabel: 'Compare', href: 'cost-calculator.html' },
+      { kind: 'Assessment', title: 'Care Needs Assessment', body: 'Bring your current care plan — we’ll build from what’s already working.', actionLabel: 'Start Assessment', href: 'assessment.html' },
+      { kind: 'Recommendation', title: 'Recommended Care Level', body: 'A plan that matches or improves on your current coverage.', actionLabel: 'See Recommended Care', href: 'assessment.html' },
+      { kind: 'Next Step', title: 'Schedule a Transition Call', body: 'We’ll coordinate the handoff so there’s no gap in care.', actionLabel: 'Schedule Call', href: 'contact.html' },
+    ],
+    related: [
+      { label: 'Our Transparent Pricing', href: 'cost-calculator.html' },
+      { label: 'Our Caregivers', href: 'https://mo-care.com/our-story' },
+      { label: 'Care Needs Assessment', href: 'assessment.html' },
+    ] },
+];
+
+var state = { view: 'search', selectedId: null, stepIndex: 0, completed: {} };
+function el(id) { return document.getElementById(id); }
+function situation() { return SITUATIONS.find(function (s) { return s.id === state.selectedId; }) || null; }
+function persist() {
+  try { localStorage.setItem('cc-decision-center-progress', JSON.stringify({ selectedId: state.selectedId, stepIndex: state.stepIndex, completed: state.completed })); } catch (e) {}
+}
+function show(view) {
+  state.view = view;
+  el('view-search').hidden = view !== 'search';
+  el('view-journey').hidden = view !== 'journey';
+  window.scrollTo({ top: 0 });
+}
+
+// situations chips
+SITUATIONS.forEach(function (s) {
+  var b = document.createElement('button');
+  b.className = 'dc-chip';
+  b.textContent = s.label;
+  b.addEventListener('click', function () { selectSituation(s.id); });
+  el('situation-chips').appendChild(b);
+});
+
+function selectSituation(id) {
+  state.selectedId = id;
+  state.stepIndex = 0;
+  state.completed = {};
+  persist();
+  renderJourney();
+  show('journey');
+}
+
+function renderJourney() {
+  var s = situation();
+  if (!s) return;
+  var idx = state.stepIndex;
+  el('current-label').textContent = s.label;
+  el('step-num').textContent = String(idx + 1);
+  el('step-progress').style.width = Math.round(((idx + 1) / s.steps.length) * 100) + '%';
+
+  var list = el('step-list');
+  list.innerHTML = '';
+  s.steps.forEach(function (st, i) {
+    var done = !!state.completed[i];
+    var current = i === idx;
+    var b = document.createElement('button');
+    b.style.cssText = 'display:flex;gap:12px;text-align:left;background:none;border:none;cursor:pointer;padding:10px 0;font-family:inherit;width:100%';
+    var badge = document.createElement('span');
+    badge.style.cssText = 'width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:none;background:' +
+      (done ? '#96692a' : current ? '#16283a' : '#eceae2') + ';color:' + (done || current ? '#fbfaf7' : '#8a978f');
+    badge.textContent = done ? '✓' : String(i + 1);
+    var text = document.createElement('span');
+    var kind = document.createElement('span');
+    kind.style.cssText = 'display:block;font-size:11px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px';
+    kind.textContent = st.kind;
+    var title = document.createElement('span');
+    title.style.cssText = 'display:block;font-size:14px;font-weight:600;color:' + (current ? '#122236' : done ? '#55677a' : '#8a978f');
+    title.textContent = st.title;
+    text.appendChild(kind);
+    text.appendChild(title);
+    b.appendChild(badge);
+    b.appendChild(text);
+    b.addEventListener('click', function () { state.stepIndex = i; persist(); renderJourney(); });
+    list.appendChild(b);
+  });
+
+  var active = s.steps[idx];
+  el('active-kind').textContent = active.kind;
+  el('active-title').textContent = active.title;
+  el('active-body').textContent = active.body;
+  var action = el('active-action');
+  action.textContent = active.actionLabel;
+  action.href = active.href || 'cara.html';
+  el('mark-complete').textContent = idx >= s.steps.length - 1 ? 'Mark complete' : 'Mark complete & continue';
+
+  var rel = el('related-list');
+  rel.innerHTML = '';
+  s.related.forEach(function (r) {
+    var a = document.createElement('a');
+    a.href = r.href;
+    a.textContent = r.label;
+    a.style.cssText = 'display:block;font-size:13.5px;line-height:1.8;color:#2c3d4d;border-bottom:1px solid #ede9e0;padding:6px 0;text-decoration:none';
+    rel.appendChild(a);
+  });
+
+  var next = s.steps[idx + 1];
+  el('suggested-next').textContent = next ? next.title : 'You’ve reached the final step — schedule your consultation when ready.';
+}
+
+el('mark-complete').addEventListener('click', function () {
+  var s = situation();
+  if (!s) return;
+  state.completed[state.stepIndex] = true;
+  state.stepIndex = Math.min(state.stepIndex + 1, s.steps.length - 1);
+  persist();
+  renderJourney();
+});
+el('change-situation').addEventListener('click', function () { show('search'); });
+
+el('find-path').addEventListener('click', function () {
+  var q = el('query').value.trim().toLowerCase();
+  if (!q) return;
+  var match = SITUATIONS.find(function (s) { return s.keywords.some(function (k) { return q.indexOf(k) !== -1; }); });
+  if (match) selectSituation(match.id);
+  else el('no-match').hidden = false;
+});
+el('query').addEventListener('input', function () { el('no-match').hidden = true; });
+el('query').addEventListener('keydown', function (e) { if (e.key === 'Enter') el('find-path').click(); });
+
+// resume banner
+try {
+  var saved = JSON.parse(localStorage.getItem('cc-decision-center-progress') || 'null');
+  if (saved && saved.selectedId) {
+    var savedSituation = SITUATIONS.find(function (s) { return s.id === saved.selectedId; });
+    if (savedSituation) {
+      el('resume-label').textContent = savedSituation.label;
+      el('resume-step').textContent = String((saved.stepIndex || 0) + 1);
+      el('resume-banner').style.display = 'flex';
+      el('resume-banner').addEventListener('click', function () {
+        state.selectedId = saved.selectedId;
+        state.stepIndex = saved.stepIndex || 0;
+        state.completed = saved.completed || {};
+        renderJourney();
+        show('journey');
+      });
+    }
+  }
+} catch (e) {}
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

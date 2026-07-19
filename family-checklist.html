@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Checklist | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.fc-hero { max-width: 680px; margin: 0 auto; padding: 48px 24px 20px; }
+.fc-h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; margin: 0 0 8px; color: var(--brand-blue); }
+.fc-item {
+  display: flex; align-items: center; gap: 12px; text-align: left; background: #ffffff;
+  border: 1px solid var(--border); border-radius: 9px; padding: 12px 16px;
+  font-size: 14px; color: var(--body-text); cursor: pointer; font-family: inherit; width: 100%;
+}
+.fc-item .mark {
+  width: 20px; height: 20px; border-radius: 5px; border: 1.5px solid #c9d0cb; background: #ffffff;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fbfaf7;
+}
+.fc-item.checked { background: #fbf6ec; border-color: #e8dcc4; }
+.fc-item.checked .mark { background: var(--accent); border-color: var(--accent); }
+.fc-item.checked .label { text-decoration: line-through; }
+@media (max-width: 639px) {
+  .fc-hero { padding: 32px 20px 16px; }
+  .fc-h1 { font-size: 25px; }
+}
+</style>
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/family-checklist.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Family Checklist | Caring Companions">
+<meta property="og:description" content="">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/family-checklist.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner" style="max-width:680px">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="fc-hero">
+<p style="font-size:13px;font-weight:600;color:#96692a;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace.html" style="text-decoration:none;color:#96692a">Family Workspace</a> › Checklist</p>
+<h1 class="fc-h1">Family Checklist</h1>
+<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px">Everything to gather and arrange, in one place. Checked items save automatically.</p>
+<div style="display:flex;justify-content:space-between;font-size:12.5px;color:#8a978f;margin-bottom:6px"><span><span id="done-count">0</span> of <span id="total-count">0</span> complete</span><span>Saved automatically</span></div>
+<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden"><div id="progress" style="height:100%;width:0%;background:#96692a;transition:width .3s ease"></div></div>
+</section>
+
+<section style="max-width:680px;margin:0 auto;padding:20px 24px 60px">
+<div id="categories"></div>
+
+<div style="margin-bottom:28px">
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;margin:0 0 12px;color:#0D365F">Add Your Own</h2>
+<div style="display:flex;gap:8px">
+<input id="custom-input" placeholder="e.g. Call insurance about coverage" style="flex:1;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<button id="custom-add" class="btn-primary" style="border-radius:8px;padding:12px 20px;font-size:14px">Add</button>
+</div>
+</div>
+
+<div style="background:#0E3760;border-radius:14px;padding:22px;text-align:center">
+<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Want help with any of this?</p>
+<a href="cara.html" style="display:inline-block;background:#fbfaf7;color:#0E3760;border-radius:9px;padding:12px 22px;font-size:14px;font-weight:600;text-decoration:none">Ask Cara</a>
+</div>
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner" style="max-width:680px">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+'use strict';
+var DEFAULT_CATEGORIES = [
+  { title: 'Documents', items: ['Power of attorney', 'Advance directive / healthcare proxy', 'Medication list', 'Insurance and Medicaid/VA cards'] },
+  { title: 'Home Safety', items: ['Grab bars installed', 'Loose rugs removed or secured', 'Nightlights in hallways', 'Clear path to bathroom'] },
+  { title: 'Equipment', items: ['Walker or cane', 'Shower chair', 'Raised toilet seat', 'Bed rail (if needed)'] },
+  { title: 'Care Setup', items: ['Care Needs Assessment completed', 'Care coordinator consultation scheduled', 'Emergency contact list posted', 'First caregiver visit confirmed'] },
+];
+
+var saved = null;
+try { saved = JSON.parse(localStorage.getItem('cc-family-checklist') || 'null'); } catch (e) {}
+var state = { checked: (saved && saved.checked) || {}, custom: (saved && saved.custom) || [] };
+
+function persist() {
+  try { localStorage.setItem('cc-family-checklist', JSON.stringify(state)); } catch (e) {}
+  try {
+    var f = JSON.parse(localStorage.getItem('cc-workspace-flags') || '{}');
+    f.checklistStarted = true;
+    localStorage.setItem('cc-workspace-flags', JSON.stringify(f));
+  } catch (e) {}
+}
+
+function render() {
+  var wrap = document.getElementById('categories');
+  wrap.innerHTML = '';
+  var total = 0, done = 0;
+
+  function addCategory(title, items, keyPrefix) {
+    if (!items.length) return;
+    var section = document.createElement('div');
+    section.style.marginBottom = '28px';
+    var h = document.createElement('h2');
+    h.style.cssText = "font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;margin:0 0 12px;color:#0D365F";
+    h.textContent = title;
+    section.appendChild(h);
+    var list = document.createElement('div');
+    list.style.cssText = 'display:flex;flex-direction:column;gap:8px';
+    items.forEach(function (label, i) {
+      var key = keyPrefix + '-' + i;
+      var isChecked = !!state.checked[key];
+      total += 1;
+      if (isChecked) done += 1;
+      var b = document.createElement('button');
+      b.className = 'fc-item' + (isChecked ? ' checked' : '');
+      var mark = document.createElement('span');
+      mark.className = 'mark';
+      mark.textContent = isChecked ? '✓' : '';
+      var text = document.createElement('span');
+      text.className = 'label';
+      text.textContent = label;
+      b.appendChild(mark);
+      b.appendChild(text);
+      b.addEventListener('click', function () {
+        state.checked[key] = !state.checked[key];
+        persist();
+        render();
+      });
+      list.appendChild(b);
+    });
+    section.appendChild(list);
+    wrap.appendChild(section);
+  }
+
+  DEFAULT_CATEGORIES.forEach(function (cat, ci) { addCategory(cat.title, cat.items, String(ci)); });
+  addCategory('Your Additions', state.custom, 'custom');
+
+  document.getElementById('done-count').textContent = String(done);
+  document.getElementById('total-count').textContent = String(total);
+  document.getElementById('progress').style.width = total ? Math.round((done / total) * 100) + '%' : '0%';
+}
+
+document.getElementById('custom-add').addEventListener('click', function () {
+  var input = document.getElementById('custom-input');
+  var val = input.value.trim();
+  if (!val) return;
+  state.custom.push(val);
+  input.value = '';
+  persist();
+  render();
+});
+document.getElementById('custom-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') document.getElementById('custom-add').click();
+});
+
+render();
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>

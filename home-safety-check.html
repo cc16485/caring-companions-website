@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Safety Assessment | Caring Companions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="canonical" href="https://cc16485.github.io/caring-companions-website/home-safety-check.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Six quick questions, room by room. You'll get a personalized safety checklist at the end — free, about 3 minutes.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Home Safety Assessment | Caring Companions">
+<meta property="og:description" content="Six quick questions, room by room. You'll get a personalized safety checklist at the end — free, about 3 minutes.">
+<meta property="og:url" content="https://cc16485.github.io/caring-companions-website/home-safety-check.html">
+<meta property="og:image" content="https://cc16485.github.io/caring-companions-website/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner w820">
+<a href="index.html" class="cc-logo"><img src="assets/cc-logo.webp" alt="Caring Companions"></a>
+<a href="tel:14172348494" class="cc-header-phone">(417) 234-8494</a>
+</div>
+</header>
+
+<section class="fun-hero" id="stage-intro">
+<p class="kicker">Home Safety Assessment</p>
+<h1 class="fun-h1">Let's check the home for fall risks.</h1>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto 30px;max-width:520px">Six quick questions, room by room. You'll get a personalized safety checklist at the end&nbsp;&mdash; free, about 3 minutes.</p>
+<button id="begin" class="btn-primary" style="padding:15px 28px;font-size:15px">Start the Assessment</button>
+</section>
+
+<section class="fun-result" id="stage-question" hidden>
+<div style="margin-bottom:30px">
+<div style="display:flex;justify-content:space-between;font-size:12.5px;color:#8a978f;margin-bottom:6px"><span>Question <span id="q-num">1</span> of <span id="q-count"></span></span><span>Checking the home</span></div>
+<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden"><div id="q-progress" style="height:100%;width:0%;background:#96692a;transition:width .3s ease"></div></div>
+</div>
+<p id="q-room" style="font-size:12px;font-weight:700;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px"></p>
+<h2 id="q-text" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:0 0 22px;color:#0D365F"></h2>
+<div style="display:flex;flex-direction:column;gap:9px" id="q-options"></div>
+<button id="q-back" style="background:none;border:none;color:#55677a;font-size:13.5px;font-weight:600;cursor:pointer;padding:20px 0 0">← Back</button>
+</section>
+
+<section class="fun-result" id="stage-result" hidden>
+<p style="font-size:12.5px;font-weight:600;color:#96692a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-align:center">Your Home Safety Report</p>
+<div style="background:#0E3760;border-radius:16px;padding:30px;margin-bottom:18px">
+<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Safety Score</p>
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:28px;font-weight:600;margin:0 0 10px;color:#fbfaf7"><span id="res-score"></span> / <span id="res-max"></span></h2>
+<p id="res-summary" style="font-size:14px;line-height:1.7;color:#c3cdd6;margin:0"></p>
+</div>
+<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;margin-bottom:18px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Your Fixes, In Order</p>
+<div id="res-flags"></div>
+</div>
+<div style="background:#f2f0e9;border-radius:14px;padding:22px;margin-bottom:24px">
+<p style="font-size:11.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Read next</p>
+<a href="guides/home-safety-room-by-room.html" style="display:block;font-size:14px;font-weight:600;color:#2c3d4d;text-decoration:none;padding:4px 0">Home Safety Room by Room →</a>
+<a href="guides/fall-prevention-at-home.html" style="display:block;font-size:14px;font-weight:600;color:#2c3d4d;text-decoration:none;padding:4px 0">Fall Prevention at Home →</a>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+<a href="contact.html" style="background:#0D365F;color:#faf9f6;border:none;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none;display:inline-block">Schedule a Free Consultation</a>
+<a href="cara.html" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Ask Cara a Follow-up</a>
+</div>
+</section>
+
+<footer class="cc-footer">
+<div class="cc-footer-inner">
+<img src="assets/cc-logo.webp" alt="Caring Companions">
+<p>Helping families navigate aging at home.</p>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+'use strict';
+var QUESTIONS = [
+  { key: 'stairs', room: 'Stairs & Entryways', text: 'Are there sturdy handrails on both sides of any staircase?', options: [{ l: 'Yes', risk: 0 }, { l: 'Only one side', risk: 1, flag: 'Add a second handrail to stairs' }, { l: 'No stairs / no handrails', risk: 2, flag: 'Install handrails on all stairs' }] },
+  { key: 'rugs', room: 'Living Areas', text: 'Are there any loose rugs or clutter in walking paths?', options: [{ l: 'No, paths are clear', risk: 0 }, { l: 'A few loose rugs', risk: 1, flag: 'Secure or remove loose rugs' }, { l: 'Yes, several hazards', risk: 2, flag: 'Clear clutter and secure all rugs' }] },
+  { key: 'bathroom', room: 'Bathroom', text: 'Are there grab bars near the toilet and in the shower or tub?', options: [{ l: 'Yes, both', risk: 0 }, { l: 'Just one', risk: 1, flag: 'Add a second grab bar in the bathroom' }, { l: 'No grab bars', risk: 2, flag: 'Install grab bars near toilet and shower' }] },
+  { key: 'lighting', room: 'Lighting', text: 'Are hallways and stairs well-lit at night?', options: [{ l: 'Yes, bright and clear', risk: 0 }, { l: 'Somewhat dim', risk: 1, flag: 'Add brighter bulbs or nightlights' }, { l: 'No, quite dark', risk: 2, flag: 'Install nightlights in hallways and stairs' }] },
+  { key: 'bedroom', room: 'Bedroom', text: 'Is there a phone or call button within reach of the bed?', options: [{ l: 'Yes', risk: 0 }, { l: 'Not always', risk: 1, flag: 'Keep a phone within arm’s reach of the bed' }, { l: 'No', risk: 2, flag: 'Add a phone or call button near the bed' }] },
+  { key: 'alone', room: 'Daily Supervision', text: 'How much time do they spend at home without anyone else present?', options: [{ l: 'Rarely alone', risk: 0 }, { l: 'Part of the day', risk: 1, flag: 'Consider a check-in schedule for solo hours' }, { l: 'Most of the day', risk: 2, flag: 'Consider daily companion or personal care support' }] },
+];
+
+var state = { qIndex: 0, answers: {} };
+function el(id) { return document.getElementById(id); }
+function show(stage) {
+  el('stage-intro').hidden = stage !== 'intro';
+  el('stage-question').hidden = stage !== 'question';
+  el('stage-result').hidden = stage !== 'result';
+  window.scrollTo({ top: 0 });
+}
+
+el('begin').addEventListener('click', function () { state.qIndex = 0; renderQuestion(); show('question'); });
+
+function renderQuestion() {
+  var q = QUESTIONS[state.qIndex];
+  el('q-num').textContent = String(state.qIndex + 1);
+  el('q-count').textContent = String(QUESTIONS.length);
+  el('q-progress').style.width = Math.round(((state.qIndex + 1) / QUESTIONS.length) * 100) + '%';
+  el('q-room').textContent = q.room;
+  el('q-text').textContent = q.text;
+  var wrap = el('q-options');
+  wrap.innerHTML = '';
+  q.options.forEach(function (o) {
+    var b = document.createElement('button');
+    b.className = 'fun-q-option' + (state.answers[q.key] === o ? ' selected' : '');
+    b.textContent = o.l;
+    b.addEventListener('click', function () {
+      state.answers[q.key] = o;
+      if (state.qIndex + 1 >= QUESTIONS.length) {
+        renderResult();
+        show('result');
+        try {
+          var f = JSON.parse(localStorage.getItem('cc-workspace-flags') || '{}');
+          f.homeSafety = true;
+          localStorage.setItem('cc-workspace-flags', JSON.stringify(f));
+        } catch (e) {}
+      } else {
+        state.qIndex += 1;
+        renderQuestion();
+      }
+    });
+    wrap.appendChild(b);
+  });
+}
+
+el('q-back').addEventListener('click', function () {
+  if (state.qIndex === 0) show('intro');
+  else { state.qIndex -= 1; renderQuestion(); }
+});
+
+function renderResult() {
+  var maxScore = QUESTIONS.length * 2;
+  var riskTotal = 0;
+  var flags = [];
+  QUESTIONS.forEach(function (q) {
+    var chosen = state.answers[q.key];
+    if (chosen) { riskTotal += chosen.risk; if (chosen.flag) flags.push(chosen.flag); }
+  });
+  var score = maxScore - riskTotal;
+  var summary = 'The home looks quite safe already — just a couple of small items to double check.';
+  if (riskTotal >= 7) summary = 'Several meaningful fall risks stood out — addressing these this week would make a real difference.';
+  else if (riskTotal >= 3) summary = 'A few fall risks are worth addressing soon, alongside considering some extra support.';
+  if (flags.length === 0) flags.push('No major hazards flagged — keep up the good habits!');
+
+  if (window.CCTrack) CCTrack('tool_completed', { tool: 'home-safety', score: score });
+  el('res-score').textContent = String(score);
+  el('res-max').textContent = String(maxScore);
+  el('res-summary').textContent = summary;
+  var wrap = el('res-flags');
+  wrap.innerHTML = '';
+  flags.forEach(function (f) {
+    var p = document.createElement('p');
+    p.style.cssText = 'font-size:14px;line-height:1.9;color:#2c3d4d;margin:0';
+    p.textContent = '☐ ' + f;
+    wrap.appendChild(p);
+  });
+}
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>
