@@ -51,6 +51,34 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cc-header-phone { font-size: 14px; color: var(--muted); white-space: nowrap; text-decoration: none; }
 .cc-header-phone:hover { text-decoration: none; color: var(--muted); }
 
+/* ---- Primary navigation ---- */
+.cc-nav { display: flex; align-items: center; gap: 22px; }
+.cc-nav > a { font-size: 14px; font-weight: 500; color: var(--ink-2); white-space: nowrap; text-decoration: none; }
+.cc-nav > a:hover { color: var(--accent); text-decoration: none; }
+.cc-nav .cc-nav-phone { color: var(--muted); font-weight: 600; }
+.cc-nav .cc-nav-cta { background: var(--brand-blue); color: var(--bg); padding: 9px 16px; border-radius: 8px; font-weight: 600; }
+.cc-nav .cc-nav-cta:hover { background: var(--brand-blue-hover); color: var(--bg); }
+.cc-navtog { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.cc-burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 34px; height: 34px; cursor: pointer; }
+.cc-burger span { display: block; height: 2px; width: 22px; background: var(--ink-2); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+@media (max-width: 860px) {
+  .cc-header-inner { position: relative; }
+  .cc-burger { display: flex; }
+  .cc-nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    padding: 4px 0 12px; box-shadow: 0 10px 24px rgba(0,0,0,.07);
+  }
+  .cc-navtog:checked ~ .cc-nav { display: flex; }
+  .cc-navtog:checked ~ .cc-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .cc-navtog:checked ~ .cc-burger span:nth-child(2) { opacity: 0; }
+  .cc-navtog:checked ~ .cc-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .cc-nav > a { padding: 13px 24px; font-size: 15px; border-top: 1px solid #efece3; }
+  .cc-nav .cc-nav-cta { margin: 12px 24px 4px; padding: 13px; text-align: center; border-top: none; }
+  .cc-nav .cc-nav-phone { color: var(--brand-blue); }
+}
+
 /* ---------- Shared footer ---------- */
 .cc-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 40px 20px; }
 .cc-footer-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
