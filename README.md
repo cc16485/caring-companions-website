@@ -3,8 +3,23 @@
 The public website + family decision platform for Caring Companions In-Home Senior Care,
 built from the July 2026 design handoff ("Caring Companions website overview.zip").
 
-**55 pages, plain HTML/CSS/JavaScript — no build step.** Open `index.html` or host the
-folder anywhere (GitHub Pages works as-is; the `.nojekyll` file is already included).
+**LIVE at https://cc16485.github.io/caring-companions-website/** (GitHub Pages, repo
+`cc16485/caring-companions-website`). 55 pages, plain HTML/CSS/JavaScript — no build
+step. Push to `main` to deploy. To move to a custom domain later (e.g. a subdomain of
+mo-care.com), add a CNAME in Pages settings and re-run the SEO canonicals for the new URL.
+
+**SEO:** every page has canonical URLs, meta descriptions, Open Graph tags, and favicons;
+service pages carry FAQ structured data, the homepage/contact carry LocalBusiness data;
+`sitemap.xml` + `robots.txt` are published. Still to do (needs Samantha's Google account):
+verify the site in Google Search Console, submit the sitemap, and link it from the
+Google Business Profile.
+
+**Analytics:** first-party and anonymous (`assets/site-events.js` → `website_events`
+table on the shared Supabase). Tracks page views, tool completions (with recommended
+level), lead submissions, Cara chat use, and phone-number clicks — the Funnel
+Blueprint's KPIs. No cookies, no personal data; localhost visits are ignored. The
+public key can only insert; hub logins can read. Ask Claude for a report anytime, or
+to add a dashboard page to the CC Hub.
 
 ## What's here
 
