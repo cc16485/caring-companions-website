@@ -2,8 +2,10 @@
    Design tokens from the design handoff (July 2026). */
 
 :root {
-  --brand-blue: #1F7A8C;
-  --brand-blue-hover: #155A68;
+  --brand-blue: #0D365F;
+  --brand-blue-hover: #092647;
+  --cta: #1F7A8C;
+  --cta-hover: #155A68;
   --navy-panel: #14606F;
   --navy-panel-2: #103D47;
   --ink: #16283a;
@@ -63,8 +65,8 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cc-nav > a { font-size: 14px; font-weight: 500; color: var(--ink-2); white-space: nowrap; text-decoration: none; }
 .cc-nav > a:hover { color: var(--accent); text-decoration: none; }
 .cc-nav .cc-nav-phone { color: var(--muted); font-weight: 600; }
-.cc-nav .cc-nav-cta { background: var(--brand-blue); color: var(--bg); padding: 9px 16px; border-radius: 8px; font-weight: 600; }
-.cc-nav .cc-nav-cta:hover { background: var(--brand-blue-hover); color: var(--bg); }
+.cc-nav .cc-nav-cta { background: var(--cta); color: var(--bg); padding: 9px 16px; border-radius: 8px; font-weight: 600; }
+.cc-nav .cc-nav-cta:hover { background: var(--cta-hover); color: var(--bg); }
 .cc-navtog { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .cc-burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 34px; height: 34px; cursor: pointer; }
 .cc-burger span { display: block; height: 2px; width: 22px; background: var(--ink-2); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
@@ -101,8 +103,8 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cc-siteftr .brand img { height: 40px; display: block; margin-bottom: 10px; }
 .cc-siteftr .brand .tag { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--muted); line-height: 1.5; margin: 0 0 10px; }
 .cc-siteftr .brand .meta { font-size: 12.5px; color: var(--muted-label); line-height: 1.6; margin: 0 0 12px; }
-.cc-siteftr .brand a.book { display: inline-block; background: var(--brand-blue); color: var(--bg); border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; }
-.cc-siteftr .brand a.book:hover { background: var(--brand-blue-hover); color: var(--bg); }
+.cc-siteftr .brand a.book { display: inline-block; background: var(--cta); color: var(--bg); border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; }
+.cc-siteftr .brand a.book:hover { background: var(--cta-hover); color: var(--bg); }
 .cc-siteftr-bottom { max-width: 1180px; margin: 26px auto 0; border-top: 1px solid var(--border); padding-top: 16px; font-size: 12px; color: #a3ada6; }
 @media (max-width: 899px) { .cc-siteftr-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .cc-siteftr-grid { grid-template-columns: 1fr; } }
@@ -178,17 +180,17 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 
 /* ---------- Buttons ---------- */
 .btn-primary {
-  display: inline-block; background: var(--brand-blue); color: var(--bg); border: none;
+  display: inline-block; background: var(--cta); color: var(--bg); border: none;
   border-radius: 9px; padding: 14px 26px; font-size: 14.5px; font-weight: 600;
   cursor: pointer; text-decoration: none; transition: background .15s ease;
 }
-.btn-primary:hover { background: var(--brand-blue-hover); color: var(--bg); text-decoration: none; }
+.btn-primary:hover { background: var(--cta-hover); color: var(--bg); text-decoration: none; }
 .btn-outline {
-  display: inline-block; background: transparent; color: var(--brand-blue);
+  display: inline-block; background: transparent; color: var(--cta);
   border: 1.5px solid #dfe6e2; border-radius: 9px; padding: 14px 26px;
   font-size: 14.5px; font-weight: 600; cursor: pointer; text-decoration: none;
 }
-.btn-outline:hover { text-decoration: none; color: var(--brand-blue); }
+.btn-outline:hover { text-decoration: none; color: var(--cta); }
 
 /* ---------- Generic accordion (FAQ) ---------- */
 .acc-item { border-bottom: 1px solid var(--border); }
