@@ -109,11 +109,11 @@
 <!-- Stage: question -->
 <section class="cara-page wide" id="stage-question" hidden>
 <div style="margin-bottom:8px;display:flex;justify-content:space-between;font-size:12.5px;color:#8a978f"><span>Question <span id="q-num">1</span> of <span id="q-count"></span></span><span>Saved automatically</span></div>
-<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden;margin-bottom:30px"><div id="q-progress" style="height:100%;width:0%;background:#96692a;transition:width .3s ease"></div></div>
+<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden;margin-bottom:30px"><div id="q-progress" style="height:100%;width:0%;background:#C17A12;transition:width .3s ease"></div></div>
 
 <div class="cara-q-grid">
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
-<h2 id="q-text" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:0 0 24px;color:#0D365F"></h2>
+<h2 id="q-text" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:0 0 24px;color:#1F7A8C"></h2>
 <div style="display:flex;flex-direction:column;gap:9px" id="q-options"></div>
 <div style="display:flex;justify-content:space-between;margin-top:26px">
 <button id="q-back" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">← Back</button>
@@ -147,7 +147,7 @@
 <section class="cara-page med" id="stage-summary" hidden>
 <p class="kicker" style="text-align:center">Recommended Care Level</p>
 
-<div style="background:#0E3760;border-radius:14px;padding:30px;margin-bottom:18px">
+<div style="background:#14606F;border-radius:14px;padding:30px;margin-bottom:18px">
 <h1 style="font-family:'Source Serif 4',Georgia,serif;font-size:30px;font-weight:600;margin:0 0 6px;color:#fbfaf7" id="summary-level"></h1>
 <p style="font-size:16px;font-weight:600;color:#e8c988;margin:0 0 20px" id="summary-rate"></p>
 <p style="font-size:12px;font-weight:700;color:#c3cdd6;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Why this fits</p>
@@ -176,9 +176,9 @@
 </div>
 
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:14px">
-<a href="book.html" style="background:#0D365F;color:#faf9f6;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Book a Free Consultation</a>
-<a href="tel:14172348494" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Call (417) 234-8494</a>
-<a href="contact.html" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Message a Care Coordinator</a>
+<a href="book.html" style="background:#1F7A8C;color:#faf9f6;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Book a Free Consultation</a>
+<a href="tel:14172348494" style="background:transparent;color:#1F7A8C;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Call (417) 234-8494</a>
+<a href="contact.html" style="background:transparent;color:#1F7A8C;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Message a Care Coordinator</a>
 </div>
 <div style="display:flex;justify-content:center">
 <button id="start-over" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">Start a New Consultation</button>
@@ -439,7 +439,7 @@ function renderQuestion() {
     row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:7px 0';
     var dot = document.createElement('span');
     dot.style.cssText = 'width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;border:none;background:' +
-      (done ? '#96692a' : active ? '#16283a' : '#eceae2') + ';color:' + (done || active ? '#fbfaf7' : '#8a978f');
+      (done ? '#C17A12' : active ? '#16283a' : '#eceae2') + ';color:' + (done || active ? '#fbfaf7' : '#8a978f');
     dot.textContent = done ? '✓' : '';
     var label = document.createElement('span');
     label.style.cssText = 'font-size:13.5px;color:' + (active ? '#122236' : done ? '#55677a' : '#8a978f');
@@ -495,7 +495,7 @@ function checkRow(text, dark) {
     ? 'font-size:14.5px;line-height:1.9;color:#eef2ef;margin:0'
     : 'font-size:15px;line-height:2;color:#2c3d4d;margin:0';
   var check = document.createElement('span');
-  check.style.cssText = 'color:' + (dark ? '#e8c988' : '#96692a') + ';font-weight:700';
+  check.style.cssText = 'color:' + (dark ? '#e8c988' : '#C17A12') + ';font-weight:700';
   check.textContent = '✓';
   p.appendChild(check);
   p.appendChild(document.createTextNode('  ' + text));
@@ -541,7 +541,7 @@ function renderSummary() {
   result.rateCard.forEach(function (r) {
     var row = document.createElement('div');
     row.style.cssText = 'padding:10px 0;border-bottom:1px solid #ede9e0';
-    row.innerHTML = '<p style="font-size:14px;margin:0 0 3px"><strong style="color:#122236"></strong> <span style="color:#96692a;font-weight:600"></span></p><p style="font-size:12.5px;color:#55677a;line-height:1.5;margin:0"></p>';
+    row.innerHTML = '<p style="font-size:14px;margin:0 0 3px"><strong style="color:#122236"></strong> <span style="color:#C17A12;font-weight:600"></span></p><p style="font-size:12.5px;color:#55677a;line-height:1.5;margin:0"></p>';
     row.querySelector('strong').textContent = r.name;
     row.querySelector('span').textContent = ' — ' + r.rate;
     row.querySelectorAll('p')[1].textContent = r.desc;
@@ -556,7 +556,7 @@ function renderSummary() {
     var p = document.createElement('p');
     p.style.cssText = 'font-size:14.5px;line-height:1.9;color:#2c3d4d;margin:0';
     var check = document.createElement('span');
-    check.style.cssText = 'color:#96692a;font-weight:700';
+    check.style.cssText = 'color:#C17A12;font-weight:700';
     check.textContent = '✓';
     p.appendChild(check);
     p.appendChild(document.createTextNode('  ' + step));

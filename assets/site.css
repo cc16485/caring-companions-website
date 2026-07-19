@@ -2,17 +2,17 @@
    Design tokens from the design handoff (July 2026). */
 
 :root {
-  --brand-blue: #0D365F;
-  --brand-blue-hover: #092647;
-  --navy-panel: #0E3760;
-  --navy-panel-2: #122c42;
+  --brand-blue: #1F7A8C;
+  --brand-blue-hover: #155A68;
+  --navy-panel: #14606F;
+  --navy-panel-2: #103D47;
   --ink: #16283a;
   --ink-2: #122236;
   --body-text: #2c3d4d;
   --muted: #55677a;
   --muted-label: #8a978f;
-  --accent: #96692a;
-  --accent-hover: #7a551f;
+  --accent: #C17A12;
+  --accent-hover: #9C6410;
   --bg: #faf9f6;
   --border: #e4e1d8;
   --soft-panel: #f2f0e9;

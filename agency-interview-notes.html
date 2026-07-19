@@ -50,7 +50,7 @@
 </header>
 
 <section class="an-hero">
-<p class="no-print" style="font-size:13px;font-weight:600;color:#96692a;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace.html" style="text-decoration:none;color:#96692a">Family Workspace</a> › Agency Interview Notes</p>
+<p class="no-print" style="font-size:13px;font-weight:600;color:#C17A12;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace.html" style="text-decoration:none;color:#C17A12">Family Workspace</a> › Agency Interview Notes</p>
 <h1 class="an-h1">Agency Interview Notes</h1>
 <p class="no-print" style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px">Calling around to compare agencies? A worksheet for each conversation, so your impressions don't blur together by the third call.</p>
 <button id="add-agency" class="btn-primary no-print" style="padding:12px 22px;font-size:14px;white-space:nowrap">+ Add an Agency</button>
@@ -196,7 +196,7 @@ function render() {
       var on = a.impression === label;
       b.textContent = label;
       b.style.cssText = 'border-radius:7px;padding:7px 14px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;background:' +
-        (on ? '#96692a' : '#ffffff') + ';color:' + (on ? '#fbfaf7' : '#55677a') + ';border:1px solid ' + (on ? '#96692a' : '#e4e1d8');
+        (on ? '#C17A12' : '#ffffff') + ';color:' + (on ? '#fbfaf7' : '#55677a') + ';border:1px solid ' + (on ? '#C17A12' : '#e4e1d8');
       b.addEventListener('click', function () { a.impression = label; save(agencies); render(); });
       impRow.appendChild(b);
     });
