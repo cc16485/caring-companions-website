@@ -62,4 +62,12 @@
 <url><loc>https://guide.mo-care.com/services/overnight-care.html</loc><priority>0.8</priority></url>
 <url><loc>https://guide.mo-care.com/services/personal-care.html</loc><priority>0.8</priority></url>
 <url><loc>https://guide.mo-care.com/services/private-duty-nursing.html</loc><priority>0.8</priority></url>
+<url><loc>https://guide.mo-care.com/getting-started.html</loc><priority>0.7</priority></url>
+<url><loc>https://guide.mo-care.com/hometogether.html</loc><priority>0.7</priority></url>
+<url><loc>https://guide.mo-care.com/medicare-guide.html</loc><priority>0.7</priority></url>
+<url><loc>https://guide.mo-care.com/services/respite-care.html</loc><priority>0.7</priority></url>
+<url><loc>https://guide.mo-care.com/services/light-housekeeping.html</loc><priority>0.7</priority></url>
+<url><loc>https://guide.mo-care.com/services/meal-preparation.html</loc><priority>0.7</priority></url>
+<url><loc>https://guide.mo-care.com/services/errands-transportation.html</loc><priority>0.7</priority></url>
+<url><loc>https://guide.mo-care.com/services/mobility-assistance.html</loc><priority>0.7</priority></url>
 </urlset>
