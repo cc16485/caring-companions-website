@@ -612,5 +612,6 @@ el('start-over').addEventListener('click', function () {
 <script src="assets/results-share.js"></script>
 <script>CCResultsShare.mount({mountId:'ccrs-mount',tool:'Ask Cara',getSummary:function(){var parts=[];['summary-level','summary-concerns','summary-risk','summary-nextsteps'].forEach(function(id){var e=document.getElementById(id);if(e&&e.innerText.trim())parts.push(e.innerText.trim());});return parts.join('\n');}});</script>
 <script src="assets/site-events.js"></script>
+<script src="/assets/accessibility.js" defer></script>
 </body>
 </html>
