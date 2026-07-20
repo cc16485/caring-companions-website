@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caregiver of the Year | Caring Companions</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon-32.png">
+<style>
+  :root{ --brand-blue:#0D365F; --cta:#1F7A8C; --cta-hover:#155A68; --accent:#C17A12;
+         --cream:#faf9f6; --ink:#16283a; --muted:#55677a; --border:#e4e1d8; --pale:#EAF4F6; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:Georgia,'Times New Roman',serif; background:var(--cream); color:var(--ink);
+        min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:28px 18px 60px; }
+  .logo{ width:190px; max-width:60vw; margin:6px auto 26px; display:block; }
+  .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:34px 26px;
+         max-width:520px; width:100%; box-shadow:0 2px 14px rgba(13,54,95,.06); }
+  .trophy{ text-align:center; font-size:46px; margin-bottom:10px; }
+  h1{ font-size:26px; color:var(--brand-blue); margin-bottom:10px; text-align:center; text-wrap:balance; }
+  .sub{ font-size:16px; color:var(--muted); line-height:1.5; margin-bottom:24px; text-align:center; }
+  label{ display:block; font-size:14px; font-weight:bold; color:var(--brand-blue);
+         margin:14px 0 5px; font-family:Arial,Helvetica,sans-serif; }
+  input,textarea{ width:100%; padding:11px 12px; font-size:16px; border:1px solid var(--border);
+                  border-radius:9px; font-family:inherit; background:var(--cream); }
+  input:focus,textarea:focus{ outline:2px solid var(--cta); border-color:var(--cta); background:#fff; }
+  textarea{ min-height:120px; resize:vertical; }
+  .send{ margin-top:22px; width:100%; padding:14px; font-size:17px; font-weight:bold; color:#fff;
+         background:var(--cta); border:none; border-radius:10px; cursor:pointer; font-family:Arial,Helvetica,sans-serif; }
+  .send:hover{ background:var(--cta-hover); }
+  .send:disabled{ opacity:.6; cursor:wait; }
+  .thanks{ display:none; text-align:center; }
+  .thanks .big{ font-size:52px; margin-bottom:8px; }
+  .home{ display:inline-block; margin-top:22px; color:var(--accent); font-weight:bold; text-decoration:none;
+         font-family:Arial,Helvetica,sans-serif; font-size:15px; }
+  .err{ display:none; color:#a33; font-size:14px; margin-top:12px; font-family:Arial,Helvetica,sans-serif; }
+</style>
+</head>
+<body>
+<a href="/"><img class="logo" src="/assets/cc-logo.webp" alt="Caring Companions"></a>
+
+<div class="card" id="main">
+  <div class="trophy">🏆</div>
+  <h1>Nominate a Caregiver of the Year</h1>
+  <p class="sub">Has a caregiver gone above and beyond for you or your loved one? Tell us. Every nomination is read aloud to our team, and it means the world to them.</p>
+  <form id="f">
+    <label for="n-cg">Which caregiver are you nominating?</label>
+    <input id="n-cg" required placeholder="Their first name is enough">
+    <label for="n-story">What makes them special?</label>
+    <textarea id="n-story" required placeholder="A moment, a habit, a kindness, tell us the story"></textarea>
+    <label for="n-name">Your name <span style="font-weight:normal;color:var(--muted);">(optional)</span></label>
+    <input id="n-name" autocomplete="name">
+    <button class="send" id="sendBtn" type="submit">Send my nomination</button>
+    <div class="err" id="err">That didn't go through. Please try again, or call us at (417) 234-8494.</div>
+  </form>
+</div>
+
+<div class="card thanks" id="thanks">
+  <div class="big">🏆</div>
+  <h1>Nomination received!</h1>
+  <p class="sub">Thank you for taking the time to recognize great care. Samantha reads every nomination herself.</p>
+  <a class="home" href="/">Visit our website &rarr;</a>
+</div>
+
+<script>
+(function(){
+  var ENDPOINT = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/cc-feedback?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a';
+  function esc(t){ var d=document.createElement('div'); d.textContent=t||''; return d.innerHTML; }
+  document.getElementById('f').addEventListener('submit', function(e){
+    e.preventDefault();
+    var cg = document.getElementById('n-cg').value.trim();
+    var story = document.getElementById('n-story').value.trim();
+    var name = document.getElementById('n-name').value.trim();
+    if (!cg || !story) return;
+    var btn = document.getElementById('sendBtn');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch(ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ kind:'nomination', caregiver: cg, message: story, name: name, who:'nominator' }) })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && d.ok){
+          document.getElementById('main').style.display = 'none';
+          document.getElementById('thanks').style.display = 'block';
+        } else { throw new Error('send failed'); }
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Send my nomination';
+        document.getElementById('err').style.display = 'block';
+      });
+  });
+})();
+</script>
+</body>
+</html>

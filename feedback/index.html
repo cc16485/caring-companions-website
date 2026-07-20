@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How are we doing? | Caring Companions</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon-32.png">
+<style>
+  :root{ --brand-blue:#0D365F; --cta:#1F7A8C; --cta-hover:#155A68; --accent:#C17A12;
+         --cream:#faf9f6; --ink:#16283a; --muted:#55677a; --border:#e4e1d8; --pale:#EAF4F6; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:Georgia,'Times New Roman',serif; background:var(--cream); color:var(--ink);
+        min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:28px 18px 60px; }
+  .logo{ width:190px; max-width:60vw; margin:6px auto 26px; display:block; }
+  .card{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:34px 26px;
+         max-width:520px; width:100%; box-shadow:0 2px 14px rgba(13,54,95,.06); text-align:center; }
+  h1{ font-size:26px; color:var(--brand-blue); margin-bottom:10px; text-wrap:balance; }
+  .sub{ font-size:16px; color:var(--muted); line-height:1.5; margin-bottom:24px; }
+  .stars{ display:flex; justify-content:center; gap:10px; margin-bottom:8px; }
+  .stars button{ font-size:44px; line-height:1; background:none; border:none; cursor:pointer;
+                 color:#d9d4c8; transition:transform .08s, color .12s; padding:4px; }
+  .stars button.on{ color:#F0A63A; }
+  .stars button:hover{ transform:scale(1.15); }
+  .star-hint{ font-size:13.5px; color:var(--muted); margin-bottom:22px; min-height:20px; font-style:italic; }
+  form{ display:none; text-align:left; }
+  form.show{ display:block; }
+  label{ display:block; font-size:14px; font-weight:bold; color:var(--brand-blue);
+         margin:14px 0 5px; font-family:Arial,Helvetica,sans-serif; }
+  input,textarea{ width:100%; padding:11px 12px; font-size:16px; border:1px solid var(--border);
+                  border-radius:9px; font-family:inherit; background:var(--cream); }
+  input:focus,textarea:focus{ outline:2px solid var(--cta); border-color:var(--cta); background:#fff; }
+  textarea{ min-height:96px; resize:vertical; }
+  .send{ margin-top:20px; width:100%; padding:14px; font-size:17px; font-weight:bold; color:#fff;
+         background:var(--cta); border:none; border-radius:10px; cursor:pointer; font-family:Arial,Helvetica,sans-serif; }
+  .send:hover{ background:var(--cta-hover); }
+  .send:disabled{ opacity:.6; cursor:wait; }
+  .low-note{ display:none; background:var(--pale); border-radius:10px; padding:14px 16px; font-size:14.5px;
+             line-height:1.5; color:var(--ink); margin-top:18px; text-align:left; }
+  .thanks{ display:none; }
+  .thanks h1{ margin-top:6px; }
+  .thanks .big{ font-size:52px; margin-bottom:8px; color:#14606F; line-height:1; }
+  .home{ display:inline-block; margin-top:22px; color:var(--accent); font-weight:bold; text-decoration:none;
+         font-family:Arial,Helvetica,sans-serif; font-size:15px; }
+  .err{ display:none; color:#a33; font-size:14px; margin-top:12px; font-family:Arial,Helvetica,sans-serif; }
+</style>
+</head>
+<body>
+<a href="/"><img class="logo" src="/assets/cc-logo.webp" alt="Caring Companions"></a>
+
+<div class="card" id="main">
+  <h1 id="headline">How are we doing?</h1>
+  <p class="sub" id="subline">Your honest answer helps us take better care of you and your family. It only takes a moment.</p>
+
+  <div class="stars" id="stars" role="radiogroup" aria-label="Rate your experience from 1 to 5 stars">
+    <button type="button" data-v="1" aria-label="1 star">&#9733;</button>
+    <button type="button" data-v="2" aria-label="2 stars">&#9733;</button>
+    <button type="button" data-v="3" aria-label="3 stars">&#9733;</button>
+    <button type="button" data-v="4" aria-label="4 stars">&#9733;</button>
+    <button type="button" data-v="5" aria-label="5 stars">&#9733;</button>
+  </div>
+  <div class="star-hint" id="hint">Tap a star to choose</div>
+
+  <form id="f">
+    <div class="low-note" id="lowNote">We're sorry it hasn't felt like five stars. Please tell us what happened. Samantha, our owner, reads every one of these herself and will make it right.</div>
+    <label for="fb-name">Your name</label>
+    <input id="fb-name" autocomplete="name" placeholder="First name is fine">
+    <label for="fb-contact">Phone or email <span style="font-weight:normal;color:var(--muted);">(optional)</span></label>
+    <input id="fb-contact" placeholder="Only if you'd like us to follow up">
+    <label for="fb-msg">Anything you'd like us to know? <span style="font-weight:normal;color:var(--muted);">(optional)</span></label>
+    <textarea id="fb-msg" placeholder="A kind word, a concern, an idea, we welcome all of it"></textarea>
+    <button class="send" id="sendBtn" type="submit">Send my feedback</button>
+    <div class="err" id="err">That didn't go through. Please try again, or call us at (417) 234-8494.</div>
+  </form>
+</div>
+
+<div class="card thanks" id="thanks">
+  <div class="big" id="thanksEmoji">&hearts;</div>
+  <h1 id="thanksHead">Thank you!</h1>
+  <p class="sub" id="thanksSub">Your feedback went straight to Samantha, our owner. It truly means a lot to our whole team.</p>
+  <div id="gReview" style="display:none;background:var(--pale);border-radius:12px;padding:16px 18px;margin:6px 0 4px;">
+    <div style="font-weight:bold;color:var(--brand-blue);font-family:Arial,Helvetica,sans-serif;font-size:15px;margin-bottom:6px;">Would you share that on Google?</div>
+    <div style="font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:12px;">It takes a minute, and it's how other local families find care they can trust.</div>
+    <a href="https://maps.google.com/?cid=7703435519276647029" target="_blank" rel="noopener" style="display:inline-block;background:#14606F;color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:15px;padding:11px 22px;border-radius:9px;text-decoration:none;">Review us on Google &rarr;</a>
+  </div>
+  <a class="home" href="/">Visit our website &rarr;</a>
+</div>
+
+<script>
+(function(){
+  var CFG = window.FEEDBACK_CFG || {
+    who: 'client family',
+    endpoint: 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/cc-feedback?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a',
+    campaign: 'feedback'
+  };
+  var rating = 0, sent = false;
+  var stars = document.querySelectorAll('#stars button');
+  var hints = { 1:'Oh no. Please tell us what went wrong.', 2:'We can do better. Tell us how.',
+                3:'Thank you for being honest with us.', 4:'So glad! What would make it five?',
+                5:'That makes our whole day!' };
+
+  function paint(n){
+    stars.forEach(function(b){ b.classList.toggle('on', +b.dataset.v <= n); });
+    document.getElementById('hint').textContent = hints[n] || 'Tap a star to choose';
+  }
+  function choose(n){
+    rating = n; paint(n);
+    document.getElementById('f').classList.add('show');
+    document.getElementById('lowNote').style.display = (n <= 3) ? 'block' : 'none';
+  }
+  stars.forEach(function(b){ b.addEventListener('click', function(){ choose(+b.dataset.v); }); });
+
+  var pre = parseInt(new URLSearchParams(location.search).get('r'), 10);
+  if (pre >= 1 && pre <= 5) choose(pre);
+
+  function starRow(n){ var s=''; for(var i=1;i<=5;i++) s += (i<=n?'★':'☆'); return s; }
+  function esc(t){ var d=document.createElement('div'); d.textContent=t||''; return d.innerHTML; }
+
+  function payload(extra){
+    return JSON.stringify({ kind:'rating', rating: rating, who: CFG.who,
+      name: document.getElementById('fb-name').value.trim(),
+      contact: document.getElementById('fb-contact').value.trim(),
+      message: document.getElementById('fb-msg').value.trim(),
+      partial: !!extra });
+  }
+
+  document.getElementById('f').addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!rating || sent) return;
+    var btn = document.getElementById('sendBtn');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch(CFG.endpoint, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: payload() })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && d.ok){
+          sent = true;
+          document.getElementById('main').style.display = 'none';
+          var low = rating <= 3;
+          document.getElementById('thanksEmoji').textContent = low ? '🤝' : '\u2665';
+          document.getElementById('thanksHead').textContent = low ? 'Thank you for telling us' : 'Thank you!';
+          document.getElementById('thanksSub').textContent = low
+            ? 'Samantha, our owner, will read this herself.' + (document.getElementById('fb-contact').value.trim() ? ' Since you left a way to reach you, expect a personal follow-up soon.' : ' If you would like a call back, you can reach us any time at (417) 234-8494.')
+            : 'Your feedback went straight to Samantha, our owner. It truly means a lot to our whole team.';
+          document.getElementById('thanks').style.display = 'block';
+          if(rating >= 4){ document.getElementById('gReview').style.display = 'block'; }
+        } else { throw new Error('send failed'); }
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Send my feedback';
+        document.getElementById('err').style.display = 'block';
+      });
+  });
+
+  // If they tapped a star in the email but leave without sending, still record the star.
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden' && rating && !sent){
+      sent = true;
+      navigator.sendBeacon(CFG.endpoint, new Blob([payload(' (star tap only)')], { type:'application/json' }));
+    }
+  });
+})();
+</script>
+</body>
+</html>
