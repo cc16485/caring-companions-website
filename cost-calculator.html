@@ -132,7 +132,7 @@ input[type=range] { accent-color: var(--accent); }
 <p style="font-size:19px;font-weight:700;color:#122236;margin:0">$6,500 – $9,000/mo</p>
 </div>
 </div>
-<p style="font-size:12px;color:#8a978f;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published $28–$34/hr rates. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
+<p style="font-size:12px;color:#8a978f;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published $30–$34/hr hourly rates ($28–$32/hr for 24-hour care). Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
 </section>
 
 <section style="max-width:680px;margin:0 auto;padding:0 24px 80px;text-align:center">
@@ -206,7 +206,7 @@ input[type=range] { accent-color: var(--accent); }
       note = 'At this many hours, Live-In (~$450/day) or 24-Hour Care usually fits better than hourly';
     } else {
       label = money(hours * 28 * weeksPerMonth) + ' – ' + money(hours * 34 * weeksPerMonth) + '/mo';
-      note = hours + ' hrs/week at $28–$34/hr';
+      note = hours + ' hrs/week at $30–$34/hr';
     }
     document.getElementById('hc-estimate').textContent = label;
     document.getElementById('hc-note').textContent = note;

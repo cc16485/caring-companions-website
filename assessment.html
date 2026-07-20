@@ -292,41 +292,48 @@ function scoreAssessment(answers) {
   else if (fallsMultiple) urgentReason = 'Two or more falls in six months significantly raises the risk of a serious injury.';
   else if (overwhelmed) urgentReason = 'An overwhelmed primary caregiver is itself a safety risk for both people.';
 
-  var levelName, levelExplain, costEstimate;
+  var levelName, levelExplain, costEstimate, levelUrl, levelLinkLabel;
   if (memory === 'significant') {
     levelName = 'Specialized Care';
     levelExplain = 'Memory-related safety concerns like wandering call for caregivers experienced in dementia care and closer supervision.';
-    costEstimate = '$28–$34/hour, typically 4+ hours per visit';
+    costEstimate = 'From $34/hour, typically 4+ hours per visit';
+    levelUrl = '/chronic-conditions.html'; levelLinkLabel = 'Learn about our memory & chronic condition care';
   } else if (recentHospital) {
     levelName = 'Transition Care';
     levelExplain = 'Temporary, focused support to recover safely at home and reduce the risk of returning to the hospital.';
-    costEstimate = '$28–$34/hour, typically 4+ hours per visit';
+    costEstimate = '$30–$34/hour, typically 4+ hours per visit';
+    levelUrl = '/services/personal-care.html'; levelLinkLabel = 'Learn about hands-on recovery support';
   } else if (points >= 14) {
     levelName = '24-Hour or Live-In Care';
     levelExplain = 'The combination of needs here suggests round-the-clock supervision would meaningfully improve safety.';
     costEstimate = '$28–$32/hour (24-Hour) or about $450/day (Live-In)';
+    levelUrl = '/services/24-hour-care.html'; levelLinkLabel = 'Learn about 24-Hour & Live-In care';
   } else if (points >= 7) {
     levelName = 'Personal Care';
     levelExplain = 'Hands-on help with bathing, dressing, and daily self-care, typically in 4+ hour visits.';
-    costEstimate = '$28–$34/hour, typically 4+ hours per visit';
+    costEstimate = 'From $32/hour, typically 4+ hours per visit';
+    levelUrl = '/services/personal-care.html'; levelLinkLabel = 'Learn about Personal Care';
   } else if (points >= 3) {
     levelName = 'Wellness Care';
     levelExplain = 'Help with everyday routines, meals, and light household tasks, support without full personal care.';
-    costEstimate = '$28–$34/hour, typically 4+ hours per visit';
+    costEstimate = 'From $30/hour, typically 4+ hours per visit';
+    levelUrl = '/services/companion-care.html'; levelLinkLabel = 'Learn about Wellness Care';
   } else {
     levelName = 'HomeTogether™ Connection';
-    levelExplain = 'Regular virtual check-ins and monitoring may be enough for now, with room to add more support later.';
-    costEstimate = 'Starting at $75/month';
+    levelExplain = 'Regular video calls, reminders, and safety sensing right on their TV may be enough for now, with room to add caregiver visits later.';
+    costEstimate = '$99/month for HomeTogether TV; optional caregiver visits from $75/week';
+    levelUrl = '/hometogether.html'; levelLinkLabel = 'Learn about HomeTogether';
   }
 
   var payerMap = {
-    private: 'Private pay, billed directly at our published hourly or daily rate.',
-    ltci: 'Long-term care insurance, we can help verify and bill your policy directly.',
-    medicaid: 'Missouri Medicaid Home and Community-Based Services (HCBS) may cover part or all of your cost.',
-    va: 'VA Community Care or Aid & Attendance may help cover the cost for a qualifying veteran or spouse.',
-    unsure: 'We’ll walk through private pay, LTC insurance, Medicaid, and VA options together, most families use a combination.',
+    private: { text: 'Private pay, billed directly at our published hourly or daily rate.', url: '/pricing.html', label: 'See our published pricing' },
+    ltci: { text: 'Long-term care insurance, we can help verify and bill your policy directly.', url: '/long-term-care-insurance.html', label: 'How we handle LTC insurance' },
+    medicaid: { text: 'Missouri Medicaid Home and Community-Based Services (HCBS) may cover part or all of your cost.', url: '/guides/missouri-medicaid-hcbs.html', label: 'Read our Missouri Medicaid guide' },
+    va: { text: 'VA Community Care or Aid & Attendance may help cover the cost for a qualifying veteran or spouse.', url: '/guides/va-benefits-for-home-care.html', label: 'Read our VA benefits guide' },
+    unsure: { text: 'We’ll walk through private pay, LTC insurance, Medicaid, and VA options together, most families use a combination.', url: '/care-paths/paying-for-care.html', label: 'Explore ways to pay for care' },
   };
-  var payerOptions = payerMap[answers.payer] || payerMap.unsure;
+  var payerInfo = payerMap[answers.payer] || payerMap.unsure;
+  var payerOptions = payerInfo.text;
 
   var doctorQuestions = [];
   if (fallsMultiple) doctorQuestions.push('What’s causing the falls, and should we screen for a fall-risk medication or condition?');
@@ -353,7 +360,7 @@ function scoreAssessment(answers) {
   ];
   var riskFlags = urgent ? urgentReason : 'No high-urgency flags identified from self-reported responses.';
 
-  return { levelName: levelName, levelExplain: levelExplain, costEstimate: costEstimate, payerOptions: payerOptions, doctorQuestions: doctorQuestions, checklist: checklist, urgent: urgent, urgentReason: urgentReason, clinicalRows: clinicalRows, riskFlags: riskFlags };
+  return { levelName: levelName, levelExplain: levelExplain, costEstimate: costEstimate, payerOptions: payerOptions, levelUrl: levelUrl, levelLinkLabel: levelLinkLabel, payerUrl: payerInfo.url, payerLinkLabel: payerInfo.label, doctorQuestions: doctorQuestions, checklist: checklist, urgent: urgent, urgentReason: urgentReason, clinicalRows: clinicalRows, riskFlags: riskFlags };
 }
 
 // ---------- state + rendering ----------
@@ -457,7 +464,9 @@ function renderReport() {
   el('r-urgent').hidden = !r.urgent;
   el('r-urgent-reason').textContent = r.urgentReason;
   el('r-cost').textContent = r.costEstimate;
+  el('r-cost').insertAdjacentHTML('afterend', '<p style="margin:0 0 8px"><a href="' + r.levelUrl + '" style="color:#1F7A8C;font-weight:700;font-size:14.5px;text-decoration:underline">' + r.levelLinkLabel + ' &rarr;</a></p>');
   el('r-payer').textContent = r.payerOptions;
+  el('r-payer').insertAdjacentHTML('afterend', '<p style="margin:8px 0 0"><a href="' + r.payerUrl + '" style="color:#1F7A8C;font-weight:700;font-size:14.5px;text-decoration:underline">' + r.payerLinkLabel + ' &rarr;</a></p>');
 
   var dq = el('r-doctor');
   dq.innerHTML = '';
