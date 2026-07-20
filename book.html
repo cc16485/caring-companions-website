@@ -29,6 +29,11 @@
 .bk-cal-wrap { max-width: 760px; margin: 0 auto; padding: 24px 24px 12px; }
 .bk-cta-card { background: linear-gradient(160deg, #ffffff 0%, #f6f5f0 100%); border: 1px solid var(--border); border-radius: 16px; padding: 40px 32px; text-align: center; box-shadow: 0 1px 2px rgba(22,40,58,0.04); }
 .bk-fallback { max-width: 760px; margin: 0 auto; padding: 8px 24px 70px; text-align: center; }
+.bk-opt { cursor: pointer; background: #ffffff; border: 1.5px solid var(--border); border-radius: 14px; padding: 26px 24px; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; position: relative; }
+.bk-opt:hover { border-color: var(--cta); }
+.bk-opt:focus-visible { outline: none; border-color: var(--cta); box-shadow: 0 0 0 3px rgba(31,122,140,.25); }
+.bk-opt.sel { border-color: var(--cta); background: var(--soft-teal); box-shadow: inset 0 0 0 1px var(--cta); }
+.bk-opt.sel::after { content: "\2713 Selected"; position: absolute; top: 12px; right: 14px; font-size: 11px; font-weight: 700; color: var(--cta); letter-spacing: .02em; }
 @media (max-width: 719px) {
   .bk-hero { padding: 36px 20px 8px; }
   .bk-h1 { font-size: 27px; }
@@ -101,19 +106,19 @@
 
 <section style="max-width:820px;margin:0 auto;padding:22px 24px 6px">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="bk-ways">
-<div style="background:#ffffff;border:1px solid var(--border);border-radius:14px;padding:26px 24px">
+<div class="bk-opt sel" id="bk-opt-phone" role="button" tabindex="0" aria-pressed="true" onclick="bkPick('phone')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();bkPick('phone')}">
 <div style="font-size:26px;margin-bottom:8px;color:transparent;text-shadow:0 0 0 var(--cta)">📞</div>
 <h2 style="font-family:var(--serif);font-size:19px;font-weight:600;color:var(--brand-blue);margin:0 0 6px">Start with a phone call</h2>
 <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0">A quick, friendly call to answer your questions and understand your situation. About 20 minutes, no pressure, a great first step if you're just starting to look.</p>
 </div>
-<div style="background:#ffffff;border:1.5px solid var(--accent);border-radius:14px;padding:26px 24px">
+<div class="bk-opt" id="bk-opt-home" role="button" tabindex="0" aria-pressed="false" onclick="bkPick('home')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();bkPick('home')}">
 <div style="font-size:26px;margin-bottom:8px;color:transparent;text-shadow:0 0 0 var(--cta)">🏡</div>
 <h2 style="font-family:var(--serif);font-size:19px;font-weight:600;color:var(--brand-blue);margin:0 0 6px">A free in-home &ldquo;living room&rdquo; visit</h2>
 <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 8px">We come to you, your living room, your kitchen table, to meet your loved one, see the home, and build the right care plan together.</p>
 <p style="font-size:12.5px;color:var(--accent);font-weight:600;margin:0">Always free &middot; and the first step before care begins</p>
 </div>
 </div>
-<p style="text-align:center;font-size:13.5px;color:var(--muted);margin:16px 0 0">Not sure which to pick? Start with a call, we'll take it from there.</p>
+<p id="bk-choice-note" style="text-align:center;font-size:13.5px;font-weight:600;color:var(--cta);margin:14px 0 0">You're booking a phone call. Prefer an in-home visit? Tap the card above.</p>
 </section>
 
 <section class="bk-expect">
@@ -204,12 +209,32 @@
 </footer>
 </div>
 <script>
+function bkPick(type) {
+  var phone = document.getElementById('bk-opt-phone');
+  var home = document.getElementById('bk-opt-home');
+  if (!phone || !home) return;
+  var isHome = (type === 'home');
+  var pick = isHome ? home : phone, other = isHome ? phone : home;
+  pick.classList.add('sel'); pick.setAttribute('aria-pressed', 'true');
+  other.classList.remove('sel'); other.setAttribute('aria-pressed', 'false');
+  var open = document.getElementById('bk-open');
+  if (open) {
+    var base = open.getAttribute('href').split('?')[0];
+    open.setAttribute('href', base + '?visit_type=' + (isHome ? 'in_home_visit' : 'phone_call'));
+  }
+  var note = document.getElementById('bk-choice-note');
+  if (note) note.textContent = isHome
+    ? "You're booking a free in-home visit. Prefer a phone call? Tap the card above."
+    : "You're booking a phone call. Prefer an in-home visit? Tap the card above.";
+  if (window.CCTrack) CCTrack('book_pick_' + (isHome ? 'in_home' : 'phone'));
+}
 (function () {
   if (window.CCTrack) CCTrack('book_view');
   var open = document.getElementById('bk-open');
   if (open) open.setAttribute('target', '_blank');
   if (open) open.setAttribute('rel', 'noopener');
   if (open) open.addEventListener('click', function () { if (window.CCTrack) CCTrack('book_click'); });
+  bkPick('phone'); // reflect the default selection in the link + note
 })();
 </script>
 <script src="assets/cara-widget.js"></script>
