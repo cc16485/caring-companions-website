@@ -40,7 +40,9 @@
       + '.a11y-reading-hl{background:#fff3bf!important;box-shadow:0 0 0 4px #fff3bf;border-radius:4px}';
   }
 
-  var readBtn, panel, voiceSel, reading = false, queue = [], qi = 0, voices = [], currentVoice = null;
+  var readBtn, panel, voiceSel, reading = false, queue = [], qi = 0, voices = [], currentVoice = null, keepTimer = null;
+  function startKeepAlive() { stopKeepAlive(); keepTimer = setInterval(function () { if (!reading) { stopKeepAlive(); return; } try { if (window.speechSynthesis.paused) window.speechSynthesis.resume(); } catch (e) {} }, 5000); }
+  function stopKeepAlive() { if (keepTimer) { clearInterval(keepTimer); keepTimer = null; } }
 
   function loadVoices() {
     voices = (window.speechSynthesis && speechSynthesis.getVoices) ? speechSynthesis.getVoices() : [];
@@ -51,10 +53,12 @@
     currentVoice = (saved && list.filter(function (v) { return v.name === saved; })[0]) || null;
     if (!currentVoice) {
       for (var p = 0; p < PREF.length && !currentVoice; p++) {
-        currentVoice = list.filter(function (v) { return v.name.toLowerCase().indexOf(PREF[p]) !== -1; })[0] || null;
+        var m = list.filter(function (v) { return v.name.toLowerCase().indexOf(PREF[p]) !== -1; });
+        currentVoice = m.filter(function (v) { return v.localService; })[0] || m[0] || null; // prefer on-device (reliable)
       }
     }
-    if (!currentVoice) currentVoice = list.filter(function (v) { return /en[-_]US/i.test(v.lang); })[0] || list[0] || null;
+    if (!currentVoice) currentVoice = list.filter(function (v) { return v.localService && /en[-_]US/i.test(v.lang); })[0]
+      || list.filter(function (v) { return /en[-_]US/i.test(v.lang); })[0] || list[0] || null;
     if (voiceSel) {
       if (!list.length) {
         voiceSel.innerHTML = '<option>Default voice</option>';
@@ -98,15 +102,23 @@
     if (currentVoice) { u.voice = currentVoice; u.lang = currentVoice.lang; }
     u.onend = u.onerror = function () { el.classList.remove('a11y-reading-hl'); qi++; speakNext(); };
     window.speechSynthesis.speak(u);
+    try { window.speechSynthesis.resume(); } catch (e) {} // unstick Chrome/WebKit
   }
   function startRead() {
     if (!('speechSynthesis' in window)) return;
-    reading = true; qi = 0; queue = collect();
-    window.speechSynthesis.cancel();
-    updateReadBtn(); speakNext();
+    queue = collect();
+    if (!queue.length) return;
+    reading = true; qi = 0;
+    updateReadBtn();
+    // Speak directly inside the click gesture, and do NOT pre-cancel: both
+    // the setTimeout and a cancel()-before-speak can leave Chrome/WebKit
+    // synthesis stuck (queued but silent). resume() below unsticks it.
+    speakNext();
+    startKeepAlive();
   }
   function stopRead() {
     reading = false;
+    stopKeepAlive();
     try { window.speechSynthesis.cancel(); } catch (e) {}
     var hls = document.querySelectorAll('.a11y-reading-hl');
     for (var i = 0; i < hls.length; i++) hls[i].classList.remove('a11y-reading-hl');
