@@ -3,7 +3,7 @@
 The public website + family decision platform for Caring Companions In-Home Senior Care,
 built from the July 2026 design handoff ("Caring Companions website overview.zip").
 
-**LIVE at https://guide.mo-care.com/** (GitHub Pages, repo
+**LIVE at https://mo-care.com/** (GitHub Pages, repo
 `cc16485/caring-companions-website`). 55 pages, plain HTML/CSS/JavaScript — no build
 step. Push to `main` to deploy. To move to a custom domain later (e.g. a subdomain of
 mo-care.com), add a CNAME in Pages settings and re-run the SEO canonicals for the new URL.

@@ -6,7 +6,7 @@ mo-care.com. Read this before we start executing._
 ## The goal, stated plainly
 
 Today you have **two websites**: `mo-care.com` (your brand site, built inside
-GoHighLevel) and `guide.mo-care.com` (the new 55-page platform, built in code).
+GoHighLevel) and `mo-care.com` (the new 55-page platform, built in code).
 Two sites that overlap is bad — it splits your Google ranking and confuses
 families. The goal is **one website** that families and Google see as the single
 home of Caring Companions.
@@ -66,7 +66,7 @@ fast, on-brand). None of this touches mo-care.com.
 
 **Phase 1 — Build the missing pages (zero risk, start anytime).**
 I build the ~10–12 pages above in the new site. mo-care.com keeps running
-untouched. At the end, `guide.mo-care.com` is a *complete* standalone site.
+untouched. At the end, `mo-care.com` is a *complete* standalone site.
 
 **Phase 2 — Wire in the back office + tracking (low risk).**
 Embed the GoHighLevel calendar in-page. Re-add Google Analytics + Facebook
