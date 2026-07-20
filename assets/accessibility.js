@@ -1,15 +1,17 @@
 /* Caring Companions / HomeTogether — Accessibility widget.
-   Self-contained: a floating button opens a panel with "larger text" (page
-   zoom, remembered across pages) and "read this page aloud" (browser
-   text-to-speech, highlights each line as it reads). No dependencies, no
-   backend. Include once per page: <script src="/assets/accessibility.js" defer></script> */
+   Floating button opens a panel with "larger text" (page zoom, remembered
+   across pages) and "read this page aloud" (browser text-to-speech, choose a
+   voice, highlights each line as it reads). No dependencies, no backend.
+   Include once per page: <script src="/assets/accessibility.js" defer></script> */
 (function () {
   'use strict';
   if (window.__ccA11y) return;
   window.__ccA11y = true;
 
-  var ZKEY = 'cc_a11y_zoom';
+  var ZKEY = 'cc_a11y_zoom', VKEY = 'cc_a11y_voice';
   var ZOOMS = [1, 1.15, 1.3, 1.5, 1.75];
+  // Preferred natural-sounding voices, first match wins.
+  var PREF = ['google us english', 'samantha', 'ava', 'allison', 'aria', 'jenny', 'zira', 'microsoft', 'daniel', 'karen', 'moira', 'alex'];
 
   function savedZoom() { var z = parseFloat(localStorage.getItem(ZKEY) || '1'); return isNaN(z) ? 1 : z; }
   function zIndex() { var i = ZOOMS.indexOf(savedZoom()); return i < 0 ? 0 : i; }
@@ -20,45 +22,70 @@
 
   function css() {
     return '.a11y-btn{position:fixed;left:18px;bottom:18px;z-index:2147483600;width:54px;height:54px;border-radius:50%;background:#1F7A8C;border:none;box-shadow:0 6px 20px rgba(16,40,58,.28);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}'
-      + '.a11y-btn:hover{background:#155A68}'
-      + '.a11y-btn svg{width:30px;height:30px;fill:#fff}'
-      + '.a11y-panel{position:fixed;left:18px;bottom:82px;z-index:2147483600;width:262px;max-width:calc(100vw - 36px);background:#fff;border:1px solid #e4e1d8;border-radius:16px;box-shadow:0 16px 44px rgba(16,40,58,.22);padding:16px 16px 14px;font-family:Inter,Helvetica,Arial,sans-serif;display:none}'
+      + '.a11y-btn:hover{background:#155A68}.a11y-btn svg{width:30px;height:30px;fill:#fff}'
+      + '.a11y-panel{position:fixed;left:18px;bottom:82px;z-index:2147483600;width:264px;max-width:calc(100vw - 36px);background:#fff;border:1px solid #e4e1d8;border-radius:16px;box-shadow:0 16px 44px rgba(16,40,58,.22);padding:16px 16px 14px;font-family:Inter,Helvetica,Arial,sans-serif;display:none}'
       + '.a11y-panel.open{display:block}'
       + '.a11y-panel h3{font-size:14px;font-weight:700;color:#0D365F;margin:0 0 2px}'
       + '.a11y-panel .sub{font-size:11.5px;color:#8a978f;margin:0 0 14px}'
-      + '.a11y-row{margin:0 0 14px}'
+      + '.a11y-row{margin:0 0 14px}.a11y-row:last-child{margin-bottom:0}'
       + '.a11y-row .lbl{font-size:11px;font-weight:700;color:#55677a;text-transform:uppercase;letter-spacing:.04em;margin:0 0 7px}'
       + '.a11y-sizebtns{display:flex;gap:8px}'
       + '.a11y-sizebtns button{flex:1;border:1.5px solid #dfe6e2;background:#fff;border-radius:9px;padding:10px;font-weight:700;color:#0D365F;cursor:pointer;font-size:15px}'
       + '.a11y-sizebtns button:hover{border-color:#1F7A8C}'
       + '.a11y-zlabel{font-size:12px;color:#55677a;text-align:center;margin:8px 0 0}'
+      + '.a11y-voice{width:100%;border:1.5px solid #dfe6e2;border-radius:9px;padding:9px 10px;font-size:13px;font-family:inherit;color:#16283a;background:#fff;margin:0 0 9px;cursor:pointer}'
       + '.a11y-read{width:100%;border:none;border-radius:9px;padding:12px;background:#1F7A8C;color:#fff;font-weight:600;font-size:14px;cursor:pointer}'
-      + '.a11y-read:hover{background:#155A68}'
-      + '.a11y-read.reading{background:#C17A12}'
+      + '.a11y-read:hover{background:#155A68}.a11y-read.reading{background:#C17A12}'
       + '.a11y-close{position:absolute;top:9px;right:12px;background:none;border:none;font-size:20px;color:#8a978f;cursor:pointer;line-height:1;padding:2px}'
       + '.a11y-reading-hl{background:#fff3bf!important;box-shadow:0 0 0 4px #fff3bf;border-radius:4px}';
   }
 
-  var readBtn, panel, reading = false, queue = [], qi = 0;
+  var readBtn, panel, voiceSel, reading = false, queue = [], qi = 0, voices = [], currentVoice = null;
 
+  function loadVoices() {
+    voices = (window.speechSynthesis && speechSynthesis.getVoices) ? speechSynthesis.getVoices() : [];
+    var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+    var list = en.length ? en : voices;
+    // choose current voice: saved -> preferred -> first en-US -> first
+    var saved = localStorage.getItem(VKEY);
+    currentVoice = (saved && list.filter(function (v) { return v.name === saved; })[0]) || null;
+    if (!currentVoice) {
+      for (var p = 0; p < PREF.length && !currentVoice; p++) {
+        currentVoice = list.filter(function (v) { return v.name.toLowerCase().indexOf(PREF[p]) !== -1; })[0] || null;
+      }
+    }
+    if (!currentVoice) currentVoice = list.filter(function (v) { return /en[-_]US/i.test(v.lang); })[0] || list[0] || null;
+    if (voiceSel) {
+      if (!list.length) {
+        voiceSel.innerHTML = '<option>Default voice</option>';
+        voiceSel.disabled = true;
+      } else {
+        voiceSel.disabled = false;
+        voiceSel.innerHTML = list.map(function (v) {
+          var label = v.name.replace(/\s*-\s*English.*$/i, '').replace(/\s*\(.*?\)\s*/g, ' ').trim();
+          return '<option value="' + v.name.replace(/"/g, '&quot;') + '">' + label + '</option>';
+        }).join('');
+        if (currentVoice) voiceSel.value = currentVoice.name;
+      }
+    }
+  }
+
+  function updateReadBtn() {
+    if (!readBtn) return;
+    readBtn.innerHTML = reading ? '&#9632;&nbsp; Stop reading' : '&#128266;&nbsp; Read this page aloud';
+    readBtn.classList.toggle('reading', reading);
+  }
   function collect() {
     var out = [], nodes = document.body.querySelectorAll('h1,h2,h3,h4,p,li,summary,blockquote,figcaption');
     for (var i = 0; i < nodes.length; i++) {
       var el = nodes[i];
       if (el.closest('.a11y-panel,.a11y-btn,header,footer,nav,.cc-header,.cc-siteftr,.cara-widget,#cara-root,script,style,noscript')) continue;
       var t = (el.innerText || '').replace(/\s+/g, ' ').trim();
-      if (t.length < 2) continue;
-      if (el.offsetParent === null) continue;
-      // skip a container whose text is already covered by a child we'll read
+      if (t.length < 2 || el.offsetParent === null) continue;
       if (el.querySelector('h1,h2,h3,h4,p,li')) continue;
       out.push(el);
     }
     return out;
-  }
-  function updateReadBtn() {
-    if (!readBtn) return;
-    readBtn.innerHTML = reading ? '&#9632;&nbsp; Stop reading' : '&#128266;&nbsp; Read this page aloud';
-    readBtn.classList.toggle('reading', reading);
   }
   function speakNext() {
     if (!reading) return;
@@ -68,6 +95,7 @@
     try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
     var u = new SpeechSynthesisUtterance((el.innerText || '').replace(/\s+/g, ' ').trim());
     u.rate = 0.95;
+    if (currentVoice) { u.voice = currentVoice; u.lang = currentVoice.lang; }
     u.onend = u.onerror = function () { el.classList.remove('a11y-reading-hl'); qi++; speakNext(); };
     window.speechSynthesis.speak(u);
   }
@@ -110,11 +138,24 @@
       + '<button type="button" id="a11y-smaller" aria-label="Smaller text">A&minus;</button>'
       + '<button type="button" id="a11y-larger" aria-label="Larger text">A+</button></div>'
       + '<p class="a11y-zlabel" id="a11y-zlabel"></p></div>'
-      + (hasTTS ? '<div class="a11y-row" style="margin-bottom:0"><p class="lbl">Read aloud</p><button type="button" class="a11y-read" id="a11y-read"></button></div>' : '');
+      + (hasTTS ? '<div class="a11y-row"><p class="lbl">Read aloud</p>'
+        + '<select class="a11y-voice" id="a11y-voice" aria-label="Choose a voice"></select>'
+        + '<button type="button" class="a11y-read" id="a11y-read"></button></div>' : '');
     document.body.appendChild(panel);
 
     readBtn = document.getElementById('a11y-read');
+    voiceSel = document.getElementById('a11y-voice');
     zLabel(); updateReadBtn();
+
+    if (hasTTS) {
+      loadVoices();
+      if (speechSynthesis.getVoices().length === 0) speechSynthesis.addEventListener('voiceschanged', loadVoices);
+      if (voiceSel) voiceSel.addEventListener('change', function () {
+        var v = voices.filter(function (x) { return x.name === voiceSel.value; })[0];
+        if (v) { currentVoice = v; try { localStorage.setItem(VKEY, v.name); } catch (e) {} }
+        if (reading) { stopRead(); startRead(); } // re-read in the new voice
+      });
+    }
 
     function toggle(open) { panel.classList.toggle('open', open); }
     btn.addEventListener('click', function () { toggle(!panel.classList.contains('open')); });
