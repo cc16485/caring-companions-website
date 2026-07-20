@@ -1,0 +1,26 @@
+# Old GHL URLs -> new pages (true 301). Cloudflare Pages reads this file.
+/24-hour-care-services /services/24-hour-care.html 301
+/companionship-care /services/companion-care.html 301
+/personal-care /services/personal-care.html 301
+/live-in-care-services /services/live-in-care.html 301
+/overnight-care /services/overnight-care.html 301
+/respite-care /services/respite-care.html 301
+/contact-us /contact.html 301
+/paying-for-care /care-paths/paying-for-care.html 301
+/medicaid-funded-home-care /guides/missouri-medicaid-hcbs.html 301
+/spend-down /guides/missouri-medicaid-hcbs.html 301
+/free-care-for-veterans /guides/va-benefits-for-home-care.html 301
+/medicare-guide-program /medicare-guide.html 301
+/schedule-consultation /book.html 301
+/explore-care-options /our-services.html 301
+/caregiver-matching-447924 /getting-started.html 301
+/caregiver-matching-survey /assessment.html 301
+/errands-transportation /our-services.html 301
+/light-housekeeping /our-services.html 301
+/meal-preparation /our-services.html 301
+/mobility-assistance /our-services.html 301
+/hourly-caregiver-services /our-services.html 301
+/private-duty-nursing /our-services.html 301
+/sw-missouri-senior-resources /resource-library.html 301
+/blog /resource-library.html 301
+/blog/category/long-term-care-insurance /long-term-care-insurance.html 301
