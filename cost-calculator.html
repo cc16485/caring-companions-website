@@ -111,6 +111,41 @@ input[type=range] { accent-color: var(--accent); }
 </div>
 </section>
 
+<section style="max-width:680px;margin:0 auto;padding:0 24px 24px">
+<div style="background:#ffffff;border:1.5px solid #1F7A8C;border-radius:14px;padding:24px 26px">
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+<svg style="width:26px;height:26px;flex:0 0 auto" aria-hidden="true"><use href="/assets/icons.svg#i-tv"/></svg>
+<div style="flex:1;min-width:200px">
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0">Add HomeTogether TV</p>
+<p style="font-size:12.5px;color:#55677a;margin:2px 0 0;line-height:1.5">Video calls, reminders &amp; radar safety sensing through their TV, $99/month flat. Many families pair it with a few in-home hours to cover the time in between.</p>
+</div>
+<label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:13.5px;font-weight:700;color:#1F7A8C"><input id="ht-on" type="checkbox" style="width:20px;height:20px;accent-color:#1F7A8C"> Include</label>
+</div>
+<div id="ht-opts" hidden style="margin-top:16px;border-top:1px solid #eef2ef;padding-top:14px;display:grid;gap:10px">
+<label style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#2c3d4d;cursor:pointer"><input id="ht-net" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Built-in cellular internet (no Wi-Fi needed) &middot; <b>$35/mo</b></label>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px;color:#2c3d4d">
+<label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input id="ht-sens" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Whole-home safety sensors &middot; <b>from $15/mo</b></label>
+<span id="ht-rooms-wrap" hidden style="display:inline-flex;align-items:center;gap:6px">Rooms:
+<select id="ht-rooms" style="padding:5px 8px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:13px"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+</span>
+</div>
+<label style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#2c3d4d;cursor:pointer"><input id="ht-health" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Connected health readings (blood pressure &amp; more) &middot; <b>$10/mo</b></label>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px;color:#2c3d4d">
+<span>Virtual caregiver visits (same caregiver, Mon&ndash;Fri):</span>
+<select id="ht-visits" style="padding:6px 9px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:13px">
+<option value="0">None</option>
+<option value="75">15 min &middot; once daily &middot; $75/wk</option>
+<option value="130">15 min &middot; twice daily &middot; $130/wk</option>
+<option value="180">15 min &middot; 3x daily &middot; $180/wk</option>
+<option value="125">30 min &middot; once daily &middot; $125/wk</option>
+<option value="220">30 min &middot; twice daily &middot; $220/wk</option>
+<option value="300">30 min &middot; 3x daily &middot; $300/wk</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+
 <section style="max-width:680px;margin:0 auto;padding:0 24px 40px">
 <div style="display:flex;flex-direction:column;gap:12px">
 <div style="background:#fbf6ec;border:1.5px solid #C17A12;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
@@ -119,6 +154,12 @@ input[type=range] { accent-color: var(--accent); }
 <p id="hc-note" style="font-size:12.5px;color:#55677a;margin:0;line-height:1.5"></p>
 </div>
 <p id="hc-estimate" style="font-size:19px;font-weight:700;color:#C17A12;margin:0"></p>
+<div id="ht-lines" hidden style="border-top:1px dashed #e2cfa5;padding-top:10px">
+<p style="font-size:13px;color:#55677a;margin:0 0 3px;display:flex;justify-content:space-between"><span>HomeTogether TV</span><span id="ht-base">$99/mo</span></p>
+<p id="ht-extra-row" style="font-size:13px;color:#55677a;margin:0 0 3px;display:flex;justify-content:space-between" hidden><span>Add-ons</span><span id="ht-extras"></span></p>
+<p id="ht-visit-row" style="font-size:13px;color:#55677a;margin:0 0 8px;display:flex;justify-content:space-between" hidden><span>Virtual caregiver visits</span><span id="ht-visits-amt"></span></p>
+<p style="font-size:16px;font-weight:700;color:#122236;margin:0;display:flex;justify-content:space-between"><span>Everything together</span><span id="combined"></span></p>
+</div>
 </div>
 <div style="background:#ffffff;border:1.5px solid #e4e1d8;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
 <div>
@@ -142,7 +183,7 @@ input[type=range] { accent-color: var(--accent); }
 <p style="font-size:19px;font-weight:700;color:#122236;margin:0">$6,500 – $9,000/mo</p>
 </div>
 </div>
-<p style="font-size:12px;color:#8a978f;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published $30–$34/hr hourly rates ($28–$32/hr for 24-hour care). Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
+<p style="font-size:12px;color:#8a978f;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published $30–$34/hr hourly rates ($28–$32/hr for 24-hour care). HomeTogether TV is $99/month flat with optional add-ons (internet $35, sensors from $15, health readings $10) and weekly-billed virtual visits. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
 </section>
 
 <section style="max-width:680px;margin:0 auto;padding:0 24px 80px;text-align:center">
@@ -205,29 +246,62 @@ input[type=range] { accent-color: var(--accent); }
 <script>
 (function () {
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
-  var slider = document.getElementById('hours');
+  function el(id) { return document.getElementById(id); }
+  var slider = el('hours');
+  var weeksPerMonth = 4.33;
+  var lowMo = 0, highMo = 0;
+
+  function htMonthly() {
+    if (!el('ht-on').checked) return null;
+    var base = 99, extras = 0;
+    if (el('ht-net').checked) extras += 35;
+    if (el('ht-sens').checked) extras += 15 + (parseInt(el('ht-rooms').value, 10) - 1) * 5;
+    if (el('ht-health').checked) extras += 10;
+    var visitsWk = parseInt(el('ht-visits').value, 10) || 0;
+    return { base: base, extras: extras, visits: visitsWk * weeksPerMonth, total: base + extras + visitsWk * weeksPerMonth };
+  }
+
   function update() {
     var hours = parseInt(slider.value, 10);
-    document.getElementById('hours-label').textContent = String(hours);
-    var weeksPerMonth = 4.33;
+    el('hours-label').textContent = String(hours);
     var label, note;
     if (hours >= 100) {
-      label = '~' + money(450 * 30) + '/mo (Live-In) or ' + money(hours * 30 * weeksPerMonth) + '+/mo (24-Hour)';
+      lowMo = 450 * 30; highMo = hours * 30 * weeksPerMonth;
+      label = '~' + money(lowMo) + '/mo (Live-In) or ' + money(highMo) + '+/mo (24-Hour)';
       note = 'At this many hours, Live-In (~$450/day) or 24-Hour Care usually fits better than hourly';
     } else {
-      label = money(hours * 28 * weeksPerMonth) + ' – ' + money(hours * 34 * weeksPerMonth) + '/mo';
+      lowMo = hours * 30 * weeksPerMonth; highMo = hours * 34 * weeksPerMonth;
+      label = money(lowMo) + ' – ' + money(highMo) + '/mo';
       note = hours + ' hrs/week at $30–$34/hr';
     }
-    document.getElementById('hc-estimate').textContent = label;
-    document.getElementById('hc-note').textContent = note;
+    el('hc-estimate').textContent = label;
+    el('hc-note').textContent = note;
+
+    var ht = htMonthly();
+    el('ht-opts').hidden = !el('ht-on').checked;
+    el('ht-lines').hidden = !ht;
+    if (ht) {
+      el('ht-extra-row').hidden = !ht.extras;
+      el('ht-extras').textContent = '+' + money(ht.extras) + '/mo';
+      el('ht-visit-row').hidden = !ht.visits;
+      el('ht-visits-amt').textContent = '+' + money(ht.visits) + '/mo';
+      el('combined').textContent = money(lowMo + ht.total) + ' – ' + money(highMo + ht.total) + '/mo';
+    }
+    el('ht-rooms-wrap').hidden = !el('ht-sens').checked;
   }
   slider.addEventListener('input', update);
+  ['ht-on','ht-net','ht-sens','ht-health'].forEach(function (id) { el(id).addEventListener('change', update); });
+  ['ht-rooms','ht-visits'].forEach(function (id) { el(id).addEventListener('change', update); });
+  window.__ccCalcSummary = function () {
+    var ht = htMonthly();
+    return ht ? ' Plus HomeTogether TV at ' + money(ht.total) + '/mo. Combined: ' + el('combined').textContent + '.' : '';
+  };
   update();
 })();
 </script>
 <script src="assets/forms.js"></script>
 <script src="assets/results-share.js"></script>
-<script>CCResultsShare.mount({mountId:'ccrs-mount',tool:'Cost Calculator',getSummary:function(){var h=document.getElementById('hours-label'),e=document.getElementById('hc-estimate');return (h?'About '+h.textContent+' hrs/week of care.':'')+(e&&e.textContent?' Home care estimate: '+e.textContent+'.':'');}});</script>
+<script>CCResultsShare.mount({mountId:'ccrs-mount',tool:'Cost Calculator',getSummary:function(){var h=document.getElementById('hours-label'),e=document.getElementById('hc-estimate');return (h?'About '+h.textContent+' hrs/week of care.':'')+(e&&e.textContent?' Home care estimate: '+e.textContent+'.':'')+(window.__ccCalcSummary?window.__ccCalcSummary():'');}});</script>
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
 <script src="/assets/accessibility.js" defer></script>
