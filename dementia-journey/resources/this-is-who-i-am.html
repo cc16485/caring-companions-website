@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>This Is Who I Am | The Dementia Journey | Caring Companions</title>
+<meta name="description" content="A one-page life story for someone living with dementia, to share with family, respite workers, hospital staff, and anyone who will ever care for them.">
+<link rel="canonical" href="https://mo-care.com/dementia-journey/resources/this-is-who-i-am.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family:'Inter',Helvetica,Arial,sans-serif; background:#faf8f3; color:#16283a; }
+.page { max-width: 700px; margin: 0 auto; padding: 34px 24px 60px; }
+.brandbar { height: 8px; background: linear-gradient(90deg,#c79a3b,#EFCE85); border-radius: 99px; margin-bottom: 22px; }
+.printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 22px; }
+.keep { background:#fffdf6; border:2px solid #e5d9bd; border-radius:20px; padding:36px 34px; position:relative; }
+.keep::before { content:""; position:absolute; inset:9px; border:1px solid #ead9ac; border-radius:14px; pointer-events:none; }
+h1.nm { font-family:'Source Serif 4',Georgia,serif; font-size:32px; font-weight:600; color:#143A5E; text-align:center; margin:0 0 4px; }
+p.sub { text-align:center; font-size:11.5px; font-weight:700; color:#a87f2c; text-transform:uppercase; letter-spacing:.1em; margin:0 0 22px; }
+.sec { margin-bottom:16px; page-break-inside: avoid; }
+.sec b { display:block; font-size:11px; font-weight:700; color:#a87f2c; text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px; }
+.sec p { font-family:'Source Serif 4',Georgia,serif; font-size:15.5px; line-height:1.75; color:#2c3d4d; }
+.sec .line { border-bottom:1.5px solid #d8d2c2; height:30px; }
+.intro { font-size:13.5px; line-height:1.7; color:#55677a; margin: 0 0 18px; }
+.footer { font-size: 12px; color: #9aa69e; line-height: 1.7; padding-top: 16px; }
+@media print { .printbtn, .intro { display:none; } body { background:#fff; } .page { padding-top: 6px; } }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="brandbar"></div>
+<p class="intro">This page fills itself in automatically if you built your person's story in <a href="/dementia-journey/module-6.html" style="font-weight:600">Module 6 of The Dementia Journey</a> on this device. Otherwise it prints as a beautiful blank to fill in by hand, at the kitchen table, maybe even together. Give copies to family, respite workers, and hospital staff: it makes strangers gentle.</p>
+<button class="printbtn" onclick="window.print()">Print this page</button>
+
+<div class="keep" id="keep"></div>
+
+<p class="footer">From <b>The Dementia Journey</b> · a free course for families from Caring Companions · mo-care.com/dementia-journey · (417) 234-8494</p>
+</div>
+<script>
+(function(){
+  var W={}; try { W=JSON.parse(localStorage.getItem('dj_whoiam')||'{}'); } catch(e){}
+  var any=Object.values(W).some(function(v){ return v && String(v).trim(); });
+  function esc(t){ return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>'); }
+  function sec(label, txt, blanks){
+    if (any) return txt ? '<div class="sec"><b>'+label+'</b><p>'+esc(txt)+'</p></div>' : '';
+    var lines=''; for (var i=0;i<(blanks||2);i++) lines+='<div class="line"></div>';
+    return '<div class="sec"><b>'+label+'</b>'+lines+'</div>';
+  }
+  var joined = function(arr){ return arr.filter(Boolean).join(' · '); };
+  document.getElementById('keep').innerHTML =
+    '<h1 class="nm">'+(any ? esc(W.name||'This Is Who I Am') : '________________')+'</h1>'
+    +'<p class="sub">This is who I am · please care for me like you know me</p>'
+    + sec('I come from', W.childhood, 2)
+    + sec('My people', any ? joined([W.people,W.pets]) : '', 2)
+    + sec('My life’s work', any ? joined([W.work,W.military,W.accomplishments,W.roles]) : '', 2)
+    + sec('What I hold sacred', W.faith, 1)
+    + sec('What I love', any ? joined([W.music,W.foods,W.hobbies,W.traditions]) : '', 3)
+    + sec('I often say', W.sayings, 1)
+    + sec('I find comfort in', W.comforts, 2)
+    + sec('Please avoid', W.distress, 2);
+})();
+</script>
+</body>
+</html>
