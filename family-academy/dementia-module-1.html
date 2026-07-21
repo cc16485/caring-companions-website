@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-.md-shell { max-width: 720px; margin: 0 auto; padding: 28px 20px 90px; }
+.md-shell { max-width:880px; margin: 0 auto; padding: 28px 20px 90px; }
 .md-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .md-top a.back { font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; }
 .md-top a.back:hover { color: var(--cta); }
@@ -69,6 +69,7 @@ textarea.md-reflect { width: 100%; min-height: 90px; resize: vertical; border: 1
 .md-brain .t { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
 .md-brain .d { font-size: 12.5px; line-height: 1.55; color: #55677a; margin: 0; }
 .md-brain .arrow { font-size: 22px; color: #C17A12; }
+@media (min-width: 880px) { .md-shell { max-width: 1000px; } .md-card { padding: 40px 48px; } .md-title { font-size: 29px; } }
 @media (max-width: 560px) { .md-card { padding: 22px 18px; } .md-title { font-size: 21px; } .md-brain { grid-template-columns: 1fr; } .md-brain .arrow { transform: rotate(90deg); text-align: center; } }
 </style>
 </head>

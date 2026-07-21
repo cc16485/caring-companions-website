@@ -46,18 +46,18 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   border-bottom: 1px solid var(--border);
 }
 .cc-header-inner {
-  max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+  max-width: 1200px; margin: 0 auto; padding: 14px 24px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
-.cc-header-inner.w820 { max-width: 820px; }
+.cc-header-inner.w820 { max-width: 1000px; }
 .cc-header-inner .cc-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
 .cc-header-inner .cc-logo img { height: 34px; display: block; }
 .cc-header-phone { font-size: 14px; color: var(--muted); white-space: nowrap; text-decoration: none; }
 .cc-header-phone:hover { text-decoration: none; color: var(--muted); }
 
 /* ---- Reviews widget section (decision-point social proof) ---- */
-.cc-reviews-sec { max-width: 1040px; margin: 0 auto 48px; padding: 34px 28px; background: var(--soft-teal); border-radius: 18px; }
-.cc-reviews-head { text-align: center; max-width: 640px; margin: 0 auto 20px; }
+.cc-reviews-sec { max-width: 1160px; margin: 0 auto 48px; padding: 34px 28px; background: var(--soft-teal); border-radius: 18px; }
+.cc-reviews-head { text-align: center; max-width: 780px; margin: 0 auto 20px; }
 .cc-reviews-head h2 { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
 .cc-reviews-head p { font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0; }
 .cc-reviews-frame { width: 100%; border: none; min-height: 760px; }
@@ -136,13 +136,13 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 
 /* ---------- Shared footer ---------- */
 .cc-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 40px 20px; }
-.cc-footer-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
+.cc-footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
 .cc-footer-inner img { height: 32px; display: block; margin: 0 auto 10px; }
 .cc-footer-inner p { font-size: 13px; color: var(--muted-label); margin: 0; }
 
 /* ---------- Rich site footer (shared across all pages) ---------- */
 .cc-siteftr { border-top: 1px solid var(--border); background: #f6f5f0; padding: 46px 24px 28px; }
-.cc-siteftr-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; }
+.cc-siteftr-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; }
 .cc-siteftr h4 { font-size: 12px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
 .cc-siteftr a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 3px 0; }
 .cc-siteftr a:hover { color: var(--accent); text-decoration: none; }
@@ -151,12 +151,12 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cc-siteftr .brand .meta { font-size: 12.5px; color: var(--muted-label); line-height: 1.6; margin: 0 0 12px; }
 .cc-siteftr .brand a.book { display: inline-block; background: var(--cta); color: var(--bg); border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; }
 .cc-siteftr .brand a.book:hover { background: var(--cta-hover); color: var(--bg); }
-.cc-siteftr-bottom { max-width: 1180px; margin: 26px auto 0; border-top: 1px solid var(--border); padding-top: 16px; font-size: 12px; color: #a3ada6; }
+.cc-siteftr-bottom { max-width: 1240px; margin: 26px auto 0; border-top: 1px solid var(--border); padding-top: 16px; font-size: 12px; color: #a3ada6; }
 @media (max-width: 899px) { .cc-siteftr-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .cc-siteftr-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Breadcrumb ---------- */
-.cc-breadcrumb { max-width: 1080px; margin: 0 auto; padding: 16px 24px 0; }
+.cc-breadcrumb { max-width: 1200px; margin: 0 auto; padding: 16px 24px 0; }
 .cc-breadcrumb p { font-size: 13px; color: var(--muted-label); margin: 0; }
 .cc-breadcrumb a { text-decoration: none; }
 .cc-breadcrumb .current { color: var(--muted); }
@@ -168,13 +168,13 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 }
 
 /* ---------- Guide / article pages (breakpoint 900px) ---------- */
-.guide-hero { max-width: 1080px; margin: 0 auto; padding: 40px 24px 20px; }
+.guide-hero { max-width: 1200px; margin: 0 auto; padding: 40px 24px 20px; }
 .guide-h1 {
   font-family: var(--serif); font-size: 36px; font-weight: 600;
-  margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; max-width: 720px;
+  margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; max-width: 880px;
 }
 .guide-body {
-  max-width: 1080px; margin: 0 auto; padding: 0 24px 90px;
+  max-width: 1200px; margin: 0 auto; padding: 0 24px 90px;
   display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start;
 }
 .guide-aside { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
@@ -187,7 +187,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 }
 
 /* ---------- Service pages (breakpoint 640px) ---------- */
-.svc-hero { max-width: 820px; margin: 0 auto; padding: 56px 24px 24px; text-align: center; }
+.svc-hero { max-width: 1000px; margin: 0 auto; padding: 56px 24px 24px; text-align: center; }
 .svc-h1 {
   font-family: var(--serif); font-size: 38px; font-weight: 600;
   margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em;
@@ -198,12 +198,12 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 }
 
 /* ---------- Funnel (care path) pages (breakpoint 640px) ---------- */
-.fun-hero { max-width: 640px; margin: 0 auto; padding: 56px 24px 24px; text-align: center; }
+.fun-hero { max-width: 780px; margin: 0 auto; padding: 56px 24px 24px; text-align: center; }
 .fun-h1 {
   font-family: var(--serif); font-size: 34px; font-weight: 600;
   margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em;
 }
-.fun-result { max-width: 640px; margin: 0 auto; padding: 48px 24px 80px; }
+.fun-result { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
 @media (max-width: 639px) {
   .fun-hero { padding: 36px 20px 20px; }
   .fun-h1 { font-size: 27px; }
@@ -259,14 +259,14 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .chip.selected-accent { background: var(--accent); color: #fbfaf7; border-color: var(--accent); }
 
 /* ---------- County resource centers (breakpoints: <720, 720–1039, ≥1040) ---------- */
-.cty-hero { max-width: 820px; margin: 0 auto; padding: 56px 24px 10px; text-align: center; }
+.cty-hero { max-width: 1000px; margin: 0 auto; padding: 56px 24px 10px; text-align: center; }
 .cty-h1 { font-family: var(--serif); font-size: 36px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
 .cty-stats { background: #122a40; border-radius: 12px; padding: 20px 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px 24px; }
 .cty-includes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; }
 .cty-situations { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .cty-tools { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
 .cty-crisis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
-.cty-body { max-width: 1180px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+.cty-body { max-width: 1240px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
 /* let wide content (e.g. the comparison table) scroll inside its own
    overflow container instead of stretching the grid column */
 .cty-body > *, .guide-body > * { min-width: 0; }
