@@ -186,6 +186,39 @@ input[type=range] { accent-color: var(--accent); }
 <p style="font-size:12px;color:#8a978f;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published $30–$34/hr hourly rates ($28–$32/hr for 24-hour care). HomeTogether TV is $99/month flat with optional add-ons (internet $35, sensors from $15, health readings $10) and weekly-billed virtual visits. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
 </section>
 
+<section style="max-width:680px;margin:0 auto;padding:0 24px 40px">
+<div style="background:#ffffff;border:1.5px solid #e4e1d8;border-radius:14px;padding:24px 26px">
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+<svg style="width:26px;height:26px;flex:0 0 auto" aria-hidden="true"><use href="/assets/icons.svg#i-clock"/></svg>
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0;flex:1;min-width:200px">Need someone around the clock? Compare Live-In vs 24-Hour.</p>
+</div>
+<p style="font-size:12.5px;color:#55677a;line-height:1.55;margin:0 0 14px">They solve the same problem two different ways, and the price difference is big. Play with the days below.</p>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;font-size:13.5px;color:#2c3d4d">
+<span style="font-weight:600">Coverage needed:</span>
+<select id="rc-days" style="padding:6px 10px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:13px">
+<option value="7" selected>7 days a week</option>
+<option value="6">6 days a week</option>
+<option value="5">5 days a week</option>
+<option value="4">4 days a week</option>
+<option value="3">3 days a week</option>
+</select>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" class="rc-grid">
+<div style="background:#EAF4F6;border:1.5px solid #1F7A8C;border-radius:12px;padding:18px">
+<p style="font-size:11.5px;font-weight:700;color:#1F7A8C;text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px">Live-In Care</p>
+<p id="rc-livein" style="font-size:19px;font-weight:700;color:#0D365F;margin:0 0 8px"></p>
+<p style="font-size:12.5px;line-height:1.6;color:#3d5568;margin:0">$450/day flat (includes the $25/day caregiver meal fee). One caregiver lives in the home across multi-day stretches, so your person sees the same face all day. The caregiver sleeps at night but is there if needed. Best when nights are mostly calm.</p>
+</div>
+<div style="background:#fdf6e8;border:1.5px solid #C17A12;border-radius:12px;padding:18px">
+<p style="font-size:11.5px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px">24-Hour Care</p>
+<p id="rc-24hr" style="font-size:19px;font-weight:700;color:#0D365F;margin:0 0 8px"></p>
+<p style="font-size:12.5px;line-height:1.6;color:#5c4a22;margin:0">$28&ndash;$32/hr in rotating shifts, so someone is <b>awake</b> around the clock. Best when nights aren't calm: wandering, frequent bathroom trips, or care needs that can't wait until morning.</p>
+</div>
+</div>
+<p id="rc-verdict" style="font-size:13px;line-height:1.6;color:#55677a;margin:14px 0 0;background:#f8f6f0;border-radius:10px;padding:12px 14px"></p>
+</div>
+</section>
+
 <section style="max-width:680px;margin:0 auto;padding:0 24px 80px;text-align:center">
 <div style="background:#14606F;border-radius:16px;padding:30px">
 <p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Want the exact number for your situation?</p>
@@ -292,9 +325,21 @@ input[type=range] { accent-color: var(--accent); }
   slider.addEventListener('input', update);
   ['ht-on','ht-net','ht-sens','ht-health'].forEach(function (id) { el(id).addEventListener('change', update); });
   ['ht-rooms','ht-visits'].forEach(function (id) { el(id).addEventListener('change', update); });
+  function rcUpdate() {
+    var days = parseInt(el('rc-days').value, 10);
+    var liveIn = 450 * days * weeksPerMonth;
+    var lo24 = 28 * 24 * days * weeksPerMonth, hi24 = 32 * 24 * days * weeksPerMonth;
+    el('rc-livein').textContent = '~' + money(liveIn) + '/mo';
+    el('rc-24hr').textContent = money(lo24) + ' – ' + money(hi24) + '/mo';
+    el('rc-verdict').textContent = 'At ' + days + ' days a week, Live-In runs about ' + money(lo24 - liveIn) + ' – ' + money(hi24 - liveIn) +
+      ' less per month than 24-Hour Care. The real question isn\u2019t price, it\u2019s nights: if they sleep soundly, Live-In usually fits; if they\u2019re up and about, you want awake staff. A free consultation settles it in one conversation.';
+  }
+  el('rc-days').addEventListener('change', rcUpdate);
+  rcUpdate();
   window.__ccCalcSummary = function () {
     var ht = htMonthly();
-    return ht ? ' Plus HomeTogether TV at ' + money(ht.total) + '/mo. Combined: ' + el('combined').textContent + '.' : '';
+    var rc = ' Round-the-clock comparison (' + el('rc-days').value + ' days/wk): Live-In ' + el('rc-livein').textContent + ' vs 24-Hour ' + el('rc-24hr').textContent + '.';
+    return (ht ? ' Plus HomeTogether TV at ' + money(ht.total) + '/mo. Combined: ' + el('combined').textContent + '.' : '') + rc;
   };
   update();
 })();
