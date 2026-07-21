@@ -185,11 +185,16 @@
 
 <div class="no-print" style="background:#fbf6ec;border:1px solid #e8dcc4;border-radius:14px;padding:26px;margin-top:24px">
 <div id="email-capture">
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px">Your results are yours.</p>
-<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0 0 16px">We don't save anything unless you ask. Add your email to get a copy, and if you'd like, a care coordinator can walk through it with you. No spam, and nothing is sent unless you choose to.</p>
+<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px">Send my results to the Caring Companions team</p>
+<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0 0 16px">Your results are yours, we save nothing unless you ask. Share them with our office and a care coordinator will personally review them, email you a copy, and reach out to talk through next steps. No spam, no obligation.</p>
+<div style="display:grid;gap:10px">
 <div style="display:flex;flex-wrap:wrap;gap:10px">
-<input id="email-input" type="email" placeholder="you@email.com" style="flex:1;min-width:200px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
-<button id="email-send" class="btn-primary" style="border-radius:8px;padding:12px 20px;font-size:14px">Email My Report</button>
+<input id="name-input" type="text" autocomplete="name" placeholder="Your name" style="flex:1;min-width:180px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<input id="phone-input" type="tel" autocomplete="tel" placeholder="Phone (optional)" style="flex:1;min-width:160px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+</div>
+<input id="email-input" type="email" autocomplete="email" placeholder="you@email.com" style="width:100%;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<textarea id="msg-input" placeholder="Anything you want us to know? (optional)" style="width:100%;min-height:70px;resize:vertical;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff"></textarea>
+<button id="email-send" class="btn-primary" style="border-radius:8px;padding:13px 20px;font-size:14.5px;width:100%">Send my results to the office</button>
 </div>
 </div>
 <p id="email-sent" hidden style="font-size:15px;font-weight:600;color:#0e6b5c;margin:0">✓ Request received, a care coordinator will email your report shortly.</p>
@@ -230,6 +235,10 @@ var DOMAINS = [
       { value: 'yes', label: 'Yes, independently', weight: 0 },
       { value: 'some', label: 'Needs some help', weight: 2 },
       { value: 'full', label: 'Needs full assistance', weight: 4 } ] },
+    { key: 'eating', text: 'How are meals and eating going?', type: 'single', options: [
+      { value: 'well', label: 'Eating well, meals are handled', weight: 0 },
+      { value: 'skips', label: 'Skipping meals or eating less than before', weight: 2 },
+      { value: 'loss', label: 'Noticeable weight loss or very poor appetite', weight: 3 } ] },
   ]},
   { id: 'medication', eyebrow: 'Medication', title: 'How are medications managed today?', questions: [
     { key: 'meds', text: 'How do they currently manage medications?', type: 'single', options: [
@@ -243,6 +252,10 @@ var DOMAINS = [
       { value: 'lighting', label: 'Poor lighting or loose rugs', weight: 1 },
       { value: 'alone', label: 'Lives alone', weight: 2 },
       { value: 'none', label: 'None of these', weight: 0 } ] },
+    { key: 'nights', text: 'How are nights going?', type: 'single', options: [
+      { value: 'fine', label: 'Sleeps through, nights are fine', weight: 0 },
+      { value: 'up', label: 'Up at night sometimes (bathroom trips, restlessness)', weight: 2 },
+      { value: 'wander', label: 'Regularly up, confused, or wandering at night', weight: 4 } ] },
   ]},
   { id: 'caregiver', eyebrow: 'Caregiver Capacity', title: 'Let’s talk about support at home.', questions: [
     { key: 'helper', text: 'Who currently helps care for them?', type: 'single', options: [
@@ -253,6 +266,10 @@ var DOMAINS = [
       { value: 'fine', label: 'Fine for now', weight: 0 },
       { value: 'stretched', label: 'Somewhat stretched', weight: 1 },
       { value: 'overwhelmed', label: 'Overwhelmed', weight: 3 } ] },
+    { key: 'lonely', text: 'How often does your loved one seem lonely or isolated?', type: 'single', options: [
+      { value: 'rare', label: 'Rarely, they stay social', weight: 0 },
+      { value: 'sometimes', label: 'Sometimes', weight: 1 },
+      { value: 'often', label: 'Often, most days feel isolated', weight: 2 } ] },
   ]},
   { id: 'hospital', eyebrow: 'Recent Health Events', title: 'Any recent hospital stays?', questions: [
     { key: 'recentHospital', text: 'Any hospital stay, ER visit, or surgery in the last 3 months?', type: 'single', options: [
@@ -266,6 +283,10 @@ var DOMAINS = [
       { value: 'medicaid', label: 'Medicaid', weight: 0 },
       { value: 'va', label: 'VA benefits', weight: 0 },
       { value: 'unsure', label: 'Not sure yet', weight: 0 } ] },
+    { key: 'timeline', text: 'When do you think you would want help to start?', type: 'single', options: [
+      { value: 'now', label: 'Right away, this is urgent', weight: 0 },
+      { value: 'weeks', label: 'In the next few weeks', weight: 0 },
+      { value: 'exploring', label: 'Just exploring for now', weight: 0 } ] },
   ]},
 ];
 
@@ -285,12 +306,14 @@ function scoreAssessment(answers) {
   var recentHospital = answers.recentHospital === 'yes';
   var fallsMultiple = answers.fallHistory === 'multiple';
   var overwhelmed = answers.stress === 'overwhelmed';
-  var urgent = fallsMultiple || recentHospital || overwhelmed || memory === 'significant';
+  var nightWander = answers.nights === 'wander';
+  var urgent = fallsMultiple || recentHospital || overwhelmed || memory === 'significant' || nightWander;
   var urgentReason = '';
   if (memory === 'significant') urgentReason = 'Wandering or significant confusion can create immediate safety risk.';
   else if (recentHospital) urgentReason = 'A recent hospitalization raises the risk of complications or readmission in the first weeks home.';
   else if (fallsMultiple) urgentReason = 'Two or more falls in six months significantly raises the risk of a serious injury.';
   else if (overwhelmed) urgentReason = 'An overwhelmed primary caregiver is itself a safety risk for both people.';
+  else if (nightWander) urgentReason = 'Being up, confused, or wandering at night is one of the strongest signals that closer supervision is needed.';
 
   var levelName, levelExplain, costEstimate, levelUrl, levelLinkLabel;
   if (memory === 'significant') {
@@ -303,17 +326,17 @@ function scoreAssessment(answers) {
     levelExplain = 'Temporary, focused support to recover safely at home and reduce the risk of returning to the hospital.';
     costEstimate = '$30–$34/hour, typically 4+ hours per visit';
     levelUrl = '/services/personal-care.html'; levelLinkLabel = 'Learn about hands-on recovery support';
-  } else if (points >= 14) {
+  } else if (points >= 17) {
     levelName = '24-Hour or Live-In Care';
     levelExplain = 'The combination of needs here suggests round-the-clock supervision would meaningfully improve safety.';
     costEstimate = '$28–$32/hour (24-Hour) or about $450/day (Live-In)';
     levelUrl = '/services/24-hour-care.html'; levelLinkLabel = 'Learn about 24-Hour & Live-In care';
-  } else if (points >= 7) {
+  } else if (points >= 9) {
     levelName = 'Personal Care';
     levelExplain = 'Hands-on help with bathing, dressing, and daily self-care, typically in 4+ hour visits.';
     costEstimate = 'From $32/hour, typically 4+ hours per visit';
     levelUrl = '/services/personal-care.html'; levelLinkLabel = 'Learn about Personal Care';
-  } else if (points >= 3) {
+  } else if (points >= 4) {
     levelName = 'Wellness Care';
     levelExplain = 'Help with everyday routines, meals, and light household tasks, support without full personal care.';
     costEstimate = 'From $30/hour, typically 4+ hours per visit';
@@ -515,22 +538,30 @@ el('print-report').addEventListener('click', function () { window.print(); });
 
 el('email-send').addEventListener('click', function () {
   var email = el('email-input').value.trim();
-  if (!email) return;
+  var name = el('name-input').value.trim();
+  var phone = el('phone-input').value.trim();
+  var note = el('msg-input').value.trim();
+  if (!email || !name) { el('email-error').hidden = false; el('email-error').textContent = 'Please add your name and email so we know who to send it to.'; return; }
   var btn = el('email-send');
   el('email-error').hidden = true;
   btn.disabled = true;
   btn.textContent = 'Sending…';
   var r = scoreAssessment(state.answers);
+  var tl = { now: 'Right away, urgent', weeks: 'In the next few weeks', exploring: 'Just exploring' }[state.answers.timeline] || 'not answered';
   CCForms.submitLead({
-    name: '(Assessment report request)',
+    name: name,
     email: email,
+    phone: phone,
     message: [
-      'Visitor completed the Digital Care Assessment and asked for their report by email.',
+      note ? 'Their note: ' + note : '',
+      'Completed the Digital Care Assessment and sent results to the office.',
       'Recommended level: ' + r.levelName,
       'Urgent flag: ' + (r.urgent ? 'YES, ' + r.urgentReason : 'no'),
+      'Timeline: ' + tl,
       'Cost estimate: ' + r.costEstimate,
       'Payer: ' + r.payerOptions,
-    ].join('\n'),
+      'Nutrition: ' + (state.answers.eating || 'n/a') + ' | Nights: ' + (state.answers.nights || 'n/a') + ' | Loneliness: ' + (state.answers.lonely || 'n/a'),
+    ].filter(Boolean).join('\n'),
   }).then(function () {
     el('email-capture').hidden = true;
     el('email-sent').hidden = false;
