@@ -227,19 +227,27 @@ var stage = document.getElementById('stage');
 function esc(t){ return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
 /* ---------- narration: Samantha's voice, browser voice as fallback ---------- */
+var player = new Audio();
+var playerUnlocked = false;
+var SILENCE = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+document.addEventListener('click', function(){
+  if (playerUnlocked) return;
+  playerUnlocked = true;
+  try { player.src = SILENCE; player.play().catch(function(){}); } catch(e){}
+}, true);
 function stopVoice(){
-  if (audioEl) { try { audioEl.pause(); } catch(e){} audioEl = null; }
+  try { player.pause(); } catch(e){}
   if (window.speechSynthesis) { try { speechSynthesis.cancel(); } catch(e){} }
 }
 function speak(text){
   stopVoice();
   if (!voiceOn || !text) return;
-  var play = function(url){ audioEl = new Audio(url); audioEl.play().catch(function(){ fallback(text); }); };
+  var play = function(url){ player.src = url; player.play().catch(function(){}); };
   if (ttsCache[text]) { play(ttsCache[text]); return; }
   fetch(TTS, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: text }) })
     .then(function(r){ return r.json(); })
-    .then(function(d){ if (d && d.url) { ttsCache[text] = d.url; play(d.url); } else { fallback(text); } })
-    .catch(function(){ fallback(text); });
+    .then(function(d){ if (d && d.url) { ttsCache[text] = d.url; play(d.url); } })
+    .catch(function(){ /* silent rather than robotic */ });
 }
 function fallback(text){
   if (!voiceOn || !window.speechSynthesis) return;

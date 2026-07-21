@@ -273,33 +273,40 @@ var SCREENS = [
 var BREATHE_VO = "Let's take a moment, together. Put both feet on the floor. Relax your shoulders... they've been up near your ears all day. Take one slow breath in... and let it out even slower. Now say to yourself... I am doing something difficult. Because you are. Continue whenever you're ready. There is no hurry here.";
 
 /* ------------------------------------------------------------------ */
-var idx = 0, voiceOn = true, audioEl = null, ttsCache = {};
+var idx = 0, voiceOn = true, ttsCache = {};
 var stage = document.getElementById('stage');
 function el(id){ return document.getElementById(id); }
 
+/* One reusable audio element, unlocked by the visitor's first tap. Browsers
+   (especially Safari and phones) only allow sound after a real gesture; once
+   this element has played inside a gesture, we can reuse it for every screen.
+   If sound can't play yet we stay SILENT rather than switching to a robot
+   voice; Samantha's voice or nothing. */
+var player = new Audio();
+var playerUnlocked = false;
+var SILENCE = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+document.addEventListener('click', function(){
+  if (playerUnlocked) return;
+  playerUnlocked = true;
+  try { player.src = SILENCE; player.play().catch(function(){}); } catch(e){}
+}, true);
+
 function stopVoice(){
-  if (audioEl) { try { audioEl.pause(); } catch(e){} audioEl = null; }
+  try { player.pause(); } catch(e){}
   if (window.speechSynthesis) { try { speechSynthesis.cancel(); } catch(e){} }
+}
+function playUrl(url){
+  player.src = url;
+  player.play().catch(function(){ /* stay quiet; next tap will unlock */ });
 }
 function speak(text){
   stopVoice();
   if (!voiceOn || !text) return;
-  var play = function(url){ audioEl = new Audio(url); audioEl.play().catch(function(){ fallback(text); }); };
-  if (ttsCache[text]) { play(ttsCache[text]); return; }
+  if (ttsCache[text]) { playUrl(ttsCache[text]); return; }
   fetch(TTS, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: text }) })
     .then(function(r){ return r.json(); })
-    .then(function(d){ if (d && d.url) { ttsCache[text] = d.url; play(d.url); } else { fallback(text); } })
-    .catch(function(){ fallback(text); });
-}
-function fallback(text){
-  if (!voiceOn || !window.speechSynthesis) return;
-  var u = new SpeechSynthesisUtterance(text.replace(/…/g,', '));
-  u.rate = 0.95; u.pitch = 1.02;
-  var vs = speechSynthesis.getVoices();
-  var v = vs.find(function(x){ return /en/i.test(x.lang) && /(samantha|jenny|aria|female|google us english)/i.test(x.name); })
-       || vs.find(function(x){ return /en-US/i.test(x.lang); });
-  if (v) u.voice = v;
-  speechSynthesis.speak(u);
+    .then(function(d){ if (d && d.url) { ttsCache[text] = d.url; playUrl(d.url); } })
+    .catch(function(){ /* no robot voice, ever */ });
 }
 
 el('voiceBtn').addEventListener('click', function(){
@@ -368,7 +375,9 @@ landing: function(){
     +'<p class="dj-lead">This module is about the feelings nobody warns you about: the grief that starts early, the guilt, the anger, the love that holds it all. About 20 minutes, self-paced, nothing is graded, and you can stop and come back anytime.</p>'
     +'<p class="dj-lead" style="font-size:14px;color:#55677a">Along the top you&rsquo;ll find <b>Pause &amp; breathe</b> for heavy moments, <b>My plan</b> which grows as you go, and <b>Get help now</b>, always one tap away.</p>'
     +'<div class="dj-callout"><p>This is a free community resource from Caring Companions. It is education and company for the road, not medical advice, and never a sales pitch.</p></div>'
+    +'<button class="dj-next soft" id="hearBtn" style="margin-top:20px">&#9654;&nbsp; Hear Samantha&rsquo;s welcome</button>'
     +nextBtn('Begin'));
+  el('hearBtn').addEventListener('click', function(){ speak(SCREENS[0].vo); });
   wireNext();
 },
 
@@ -536,7 +545,7 @@ function show(){
   el('count').textContent = 'Module 1 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
   renderers[s.type](s);
   window.scrollTo({ top:0, behavior:'smooth' });
-  speak(s.vo);
+  if (idx > 0) speak(s.vo);
 }
 show();
 })();
