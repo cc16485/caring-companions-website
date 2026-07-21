@@ -104,6 +104,18 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 .dj-summary p { font-size:15px; line-height:1.65; color:var(--dj-ink); margin:0; font-weight:600; }
 .dj-saveditem { border-top:1px solid #f0e9d8; padding:11px 0; font-size:14px; color:var(--dj-ink); }
 @media (max-width:560px) { .dj-card { padding:26px 20px; } .dj-title { font-size:23px; } .dj-card.dj-cine .dj-title { font-size:26px; } .dj-scene { padding:30px 24px; } .dj-pill span.lbl { display:none; } .dj-pill { padding:8px 11px; } .dj-panels { grid-template-columns:1fr; } .dj-panels .arr { transform:rotate(90deg); justify-content:center; } }
+@media (min-width: 880px) {
+  .dj-shell { max-width: 1040px; }
+  .dj-card { padding: 48px 56px; }
+  .dj-title { font-size: 31px; }
+  .dj-card.dj-cine .dj-title { font-size: 40px; }
+  .dj-card.dj-cine { padding: 56px 60px; }
+  .dj-scene { padding: 54px 50px; }
+  .dj-scene p { font-size: 18.5px; }
+  .dj-pts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; align-items: start; }
+  .dj-pts .dj-point { margin-bottom: 0; height: 100%; }
+  .dj-lead { font-size: 16px; }
+}
 @media print {
   body * { visibility:hidden; }
   #planModal, #planModal * { visibility:visible; }
@@ -483,7 +495,7 @@ visual: function(s){
 
 goals: function(s){
   stage.innerHTML = card(head(s)
-    + s.goals.map(function(g){ return '<div class="dj-point seen" style="cursor:default"><span class="dot"></span><p>'+g+'</p></div>'; }).join('')
+    + '<div class="dj-pts">' + s.goals.map(function(g){ return '<div class="dj-point seen" style="cursor:default"><span class="dot"></span><p>'+g+'</p></div>'; }).join('') + '</div>'
     + '<p class="dj-lead" style="font-size:13.5px;color:#9aa69e;margin-top:14px">No test at the end. Just things that help.</p>'
     + nextBtn());
   wireNext();
@@ -491,7 +503,7 @@ goals: function(s){
 
 learn: function(s){
   stage.innerHTML = card(head(s)
-    + s.points.map(function(p,i){ return '<div class="dj-point" data-i="'+i+'" role="button" tabindex="0"><span class="dot"></span><p>'+p+'</p></div>'; }).join('')
+    + '<div class="dj-pts">' + s.points.map(function(p,i){ return '<div class="dj-point" data-i="'+i+'" role="button" tabindex="0"><span class="dot"></span><p>'+p+'</p></div>'; }).join('') + '</div>'
     + callout(s)
     + '<div style="margin-top:14px">'+saveBtnHtml(s.id,'Save this lesson')+'</div>'
     + nextBtn());
@@ -566,7 +578,7 @@ persp: function(s){
 
 checklist: function(s){
   stage.innerHTML = card(head(s)
-    + s.items.map(function(q,i){ return '<div class="dj-point" data-i="'+i+'" role="button" tabindex="0"><span class="dot"></span><p>'+q+'</p></div>'; }).join('')
+    + '<div class="dj-pts">' + s.items.map(function(q,i){ return '<div class="dj-point" data-i="'+i+'" role="button" tabindex="0"><span class="dot"></span><p>'+q+'</p></div>'; }).join('') + '</div>'
     + callout(s)
     + '<div style="margin-top:14px">'+saveBtnHtml('detective','Save the detective questions')+'</div>'
     + nextBtn());
