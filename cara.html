@@ -391,8 +391,23 @@ SUBJECTS.forEach(function (s) {
 });
 
 // Situation stage
+function detectSubjectFromText(text) {
+  var t = ' ' + text.toLowerCase() + ' ';
+  var hits = [
+    { id: 'dad', re: /\b(dad|father|papa|grandpa|grandfather)\b/ },
+    { id: 'mom', re: /\b(mom|mother|mama|grandma|grandmother)\b/ },
+    { id: 'spouse', re: /\b(husband|wife|spouse|partner)\b/ },
+  ];
+  var found = hits.filter(function (h) { return h.re.test(t); });
+  return found.length === 1 ? found[0].id : null;
+}
+
 el('situation-continue').addEventListener('click', function () {
   state.situationText = el('situation-text').value;
+  var detected = detectSubjectFromText(state.situationText);
+  if (detected && detected !== state.subjectId && state.subjectId !== 'myself') {
+    state.subjectId = detected;
+  }
   el('empathy-qcount').textContent = String(buildQuestions(subject()).length);
   show('empathy');
   fetchEmpathyAck();
@@ -423,7 +438,7 @@ function fetchEmpathyAck() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       mode: 'empathy',
-      messages: [{ role: 'user', content: 'They are seeking help for ' + subject().noun + '. Here is what they shared: "' + (state.situationText || 'No additional detail given.') + '"' }],
+      messages: [{ role: 'user', content: 'Here is what they shared: "' + (state.situationText || 'No additional detail given.') + '" If they named who needs care (dad, mom, husband, a name), refer to that person exactly as they did. Otherwise they are seeking help for ' + subject().noun + '.' }],
     }),
   }).then(function (r) { return r.json(); })
     .then(function (d) { done((d.reply || '').trim() || fallbackAck()); })

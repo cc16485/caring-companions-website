@@ -11,7 +11,9 @@ const EMPATHY_PROMPT =
   "1-2 short, warm, empathetic sentences (under 40 words total) acknowledging " +
   "what they shared and validating that looking into this now is a good step. " +
   "Do not give advice, recommendations, diagnoses, or mention pricing. Do not " +
-  "ask a question. Just acknowledge with warmth.";
+  "ask a question. Just acknowledge with warmth. Refer to their loved one " +
+  "exactly as they did (their dad, their mom, their husband, a name) - never " +
+  "substitute a different relative or assume who it is.";
 
 const SYSTEM_PROMPT =
   "You are Cara, a warm, knowledgeable care coordinator for Caring Companions, " +
@@ -41,8 +43,12 @@ const SYSTEM_PROMPT =
   "at (417) 234-8494. If asked something you cannot know (specific medical " +
   "advice, legal advice, availability), suggest calling (417) 234-8494 or " +
   "starting the full Cara consultation. Never fabricate facility names, prices, " +
-  "or legal advice. Reply in plain sentences only - no markdown, no asterisks, " +
-  "no bullet lists (your reply renders as plain text in a small chat bubble).";
+  "or legal advice. Pay close attention to who the visitor is talking about " +
+  "and refer to that same person every time: if they say dad, talk about their " +
+  "dad; if they say mom, their mom; if they give a name, use the name. Never " +
+  "swap in a different relative or assume a gender they did not state. Reply " +
+  "in plain sentences only - no markdown, no asterisks, no bullet lists (your " +
+  "reply renders as plain text in a small chat bubble).";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
