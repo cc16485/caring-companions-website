@@ -250,16 +250,6 @@ function speak(text){
     .then(function(d){ if (d && d.url) { ttsCache[text] = d.url; play(d.url); } })
     .catch(function(){ /* silent rather than robotic */ });
 }
-function fallback(text){
-  if (!voiceOn || !window.speechSynthesis) return;
-  var u = new SpeechSynthesisUtterance(text);
-  u.rate = 0.97; u.pitch = 1.02;
-  var vs = speechSynthesis.getVoices();
-  var v = vs.find(function(x){ return /en/i.test(x.lang) && /(samantha|jenny|aria|female|google us english)/i.test(x.name); })
-       || vs.find(function(x){ return /en-US/i.test(x.lang); });
-  if (v) u.voice = v;
-  speechSynthesis.speak(u);
-}
 document.getElementById('voiceBtn').addEventListener('click', function(){
   voiceOn = !voiceOn;
   this.classList.toggle('on', voiceOn);

@@ -75,14 +75,6 @@
   }
   function updateReadBtn() { if (readBtn) { readBtn.innerHTML = reading ? '&#9632;&nbsp; Stop reading' : '&#128266;&nbsp; Read this page aloud'; readBtn.classList.toggle('reading', reading); } }
 
-  function browserSpeak(text, done) {
-    if (!('speechSynthesis' in window)) { done(); return; }
-    var u = new SpeechSynthesisUtterance(text); u.rate = 0.95;
-    if (browserVoice) { u.voice = browserVoice; u.lang = browserVoice.lang; }
-    u.onend = u.onerror = function () { done(); };
-    window.speechSynthesis.speak(u);
-    try { window.speechSynthesis.resume(); } catch (e) {}
-  }
   function elevenSpeak(text, done) {
     fetch(TTS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: text }) })
       .then(function (r) { if (!r.ok) throw 0; return r.json(); })
@@ -91,11 +83,11 @@
         var a = ensureAudio();
         a.src = d.url;
         a.onended = function () { if (reading) done(); };
-        a.onerror = function () { elevenOK = false; browserSpeak(text, done); };
+        a.onerror = function () { stopRead(); };
         var p = a.play();
-        if (p && p.catch) p.catch(function () { elevenOK = false; browserSpeak(text, done); });
+        if (p && p.catch) p.catch(function () { stopRead(); });
       })
-      .catch(function () { elevenOK = false; browserSpeak(text, done); }); // e.g. not deployed yet -> browser voice for the rest of the session
+      .catch(function () { stopRead(); }); // her voice or silence — never the browser voice
   }
   function speakNext() {
     if (!reading) return;
@@ -105,7 +97,7 @@
     try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
     var text = (el.innerText || '').replace(/\s+/g, ' ').trim();
     var done = function () { el.classList.remove('a11y-reading-hl'); qi++; speakNext(); };
-    if (elevenOK) elevenSpeak(text, done); else browserSpeak(text, done);
+    elevenSpeak(text, done);
   }
   function startRead() {
     queue = collect();
