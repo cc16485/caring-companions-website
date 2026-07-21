@@ -541,6 +541,53 @@ scene: function(s){
   wireNext();
 },
 
+scenequiet: function(s){
+  stage.innerHTML = card(
+    '<div class="dj-scene"><p class="who">'+s.kicker+'</p><p>'+s.scene+'</p></div>'
+    +'<p class="dj-quiet">'+s.after+'</p>'
+    +nextBtn());
+  wireNext();
+},
+
+goals: function(s){
+  stage.innerHTML = card(head(s)
+    + '<div class="dj-pts">' + s.goals.map(function(g){ return '<div class="dj-point seen" style="cursor:default"><span class="dot"></span><p>'+g+'</p></div>'; }).join('') + '</div>'
+    + '<p class="dj-lead" style="font-size:13.5px;color:#9aa69e;margin-top:14px">No test at the end. Just things that help.</p>'
+    + nextBtn());
+  wireNext();
+},
+
+learn: function(s){
+  stage.innerHTML = card(head(s)
+    + '<div class="dj-pts">' + s.points.map(function(p,i){ return '<div class="dj-point" data-i="'+i+'" role="button" tabindex="0"><span class="dot"></span><p>'+p+'</p></div>'; }).join('') + '</div>'
+    + callout(s)
+    + '<div style="margin-top:14px">'+saveBtnHtml(s.id,'Save this lesson')+'</div>'
+    + nextBtn());
+  stage.querySelectorAll('.dj-point').forEach(function(p){
+    var mark=function(){ p.classList.add('seen'); };
+    p.addEventListener('click',mark);
+    p.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();mark();} });
+  });
+  wireSaves(); wireNext();
+},
+
+steps: function(s){
+  var shown=0;
+  stage.innerHTML = card(head(s)
+    + s.steps.map(function(st,i){ return '<div class="dj-step" id="st-'+i+'"><span class="n">'+(i+1)+'</span><p>'+st+'</p></div>'; }).join('')
+    + '<button class="dj-next soft" id="stepBtn" style="margin-top:16px">Show me the first step</button>'
+    + '<div style="margin-top:14px">'+saveBtnHtml(s.id,'Save these steps')+'</div>'
+    + nextBtn());
+  el('next').style.display='none';
+  el('stepBtn').addEventListener('click',function(){
+    el('st-'+shown).classList.add('show');
+    shown++;
+    if (shown===1) this.textContent='Next step';
+    if (shown===s.steps.length){ this.style.display='none'; el('next').style.display='block'; }
+  });
+  wireSaves(); wireNext();
+},
+
 reveal: function(s){
   stage.innerHTML = card(head(s)
     + s.pairs.map(function(p,i){ return '<div class="dj-reveal" data-i="'+i+'" role="button" tabindex="0"><p class="you"><b>Instead of:</b> '+p.you+'</p><p class="them"><b>Try:</b> '+p.them+'</p></div>'; }).join('')
@@ -713,7 +760,9 @@ function show(){
   var s=SCREENS[idx];
   el('bar').style.width = Math.round(((idx+1)/SCREENS.length)*100)+'%';
   el('count').textContent = 'Module 6 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
-  renderers[s.type](s);
+  var r=renderers[s.type];
+  if (!r){ stage.innerHTML='<div class="dj-card"><p class="dj-lead">This screen hit a snag. Please tap continue.</p><button class="dj-next" id="next">Continue</button></div>'; console.error('missing renderer',s.type); wireNext(); }
+  else r(s);
   window.scrollTo({ top:0, behavior:'smooth' });
   if (idx > 0) speak(s.vo);
 }
