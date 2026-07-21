@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 1: Understanding Alzheimer's | Family Care Academy | Caring Companions</title>
+<meta name="description" content="A free interactive lesson for family caregivers: what dementia and Alzheimer's really are, normal aging vs. warning signs, and how to respond with confidence. Narrated, hands-on, about 15 minutes.">
+<link rel="canonical" href="https://mo-care.com/family-academy/dementia-module-1.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Module 1: Understanding Alzheimer's | Family Care Academy">
+<meta property="og:description" content="Free interactive dementia training for families, adapted from our professional caregiver curriculum.">
+<meta property="og:url" content="https://mo-care.com/family-academy/dementia-module-1.html">
+<meta property="og:image" content="https://mo-care.com/assets/photos/helping-dress.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+.md-shell { max-width: 720px; margin: 0 auto; padding: 28px 20px 90px; }
+.md-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.md-top a.back { font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; }
+.md-top a.back:hover { color: var(--cta); }
+.md-voice { margin-left: auto; display: flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid var(--border); border-radius: 999px; padding: 7px 14px; font-size: 12.5px; font-weight: 700; color: var(--muted); cursor: pointer; font-family: inherit; }
+.md-voice.on { border-color: var(--cta); color: var(--cta); background: var(--soft-teal); }
+.md-progress { height: 6px; background: #ece8dd; border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+.md-progress i { display: block; height: 100%; background: linear-gradient(90deg, #1F7A8C, #F0A63A); border-radius: 99px; transition: width .4s ease; }
+.md-count { font-size: 11.5px; font-weight: 700; color: var(--muted-label); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 18px; }
+.md-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; box-shadow: 0 10px 34px rgba(13,54,95,0.07); }
+.md-kicker { font-size: 11.5px; font-weight: 700; color: #C17A12; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+.md-title { font-family: var(--serif); font-size: 25px; font-weight: 600; color: var(--brand-blue); margin: 0 0 10px; line-height: 1.3; text-wrap: balance; }
+.md-lead { font-size: 15px; line-height: 1.7; color: var(--body-text); margin: 0 0 18px; }
+.md-point { display: flex; gap: 12px; align-items: flex-start; background: #f8f6f0; border: 1.5px solid transparent; border-radius: 11px; padding: 13px 15px; margin-bottom: 9px; cursor: pointer; transition: all .15s ease; }
+.md-point .dot { flex: 0 0 22px; height: 22px; border-radius: 50%; border: 2px solid #cfd8d3; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; transition: all .15s ease; }
+.md-point p { font-size: 14px; line-height: 1.6; color: #55677a; margin: 0; transition: color .15s ease; }
+.md-point.seen { background: #EAF4F6; border-color: #bcd9e0; }
+.md-point.seen .dot { background: var(--cta); border-color: var(--cta); }
+.md-point.seen .dot::after { content: "✓"; }
+.md-point.seen p { color: #1c2b38; }
+.md-callout { border-left: 4px solid #F0A63A; background: #fdf6e8; border-radius: 0 12px 12px 0; padding: 14px 16px; margin: 16px 0 0; }
+.md-callout p { font-size: 13.5px; line-height: 1.65; color: #5c4a22; margin: 0; }
+.md-callout b { color: #8a5a00; }
+.md-choice { display: block; width: 100%; text-align: left; background: #fff; border: 1.5px solid var(--border); border-radius: 11px; padding: 14px 16px; margin-bottom: 10px; font-size: 14px; line-height: 1.55; color: #2c3d4d; cursor: pointer; font-family: inherit; transition: all .13s ease; }
+.md-choice:hover:not(:disabled) { border-color: var(--cta); }
+.md-choice.right { border-color: #2c8a5f; background: #e9f6ef; color: #1d5c40; font-weight: 600; }
+.md-choice.wrong { border-color: #c96a5a; background: #fbeeec; color: #8a3a2d; }
+.md-choice:disabled { cursor: default; }
+.md-explain { border-radius: 11px; padding: 14px 16px; font-size: 13.5px; line-height: 1.65; margin-top: 6px; }
+.md-explain.good { background: #e9f6ef; color: #1d5c40; }
+.md-explain.bad { background: #fbeeec; color: #8a3a2d; }
+.md-chip { display: inline-block; background: #fff; border: 1.5px solid var(--border); border-radius: 999px; padding: 9px 15px; font-size: 13.5px; font-weight: 600; color: #2c3d4d; margin: 0 8px 8px 0; cursor: pointer; font-family: inherit; transition: all .13s ease; }
+.md-chip.sel { border-color: var(--cta); background: var(--soft-teal); color: var(--cta); }
+.md-chip.gone { opacity: 0; pointer-events: none; transform: scale(.85); transition: all .25s ease; }
+.md-bucket { border: 1.5px dashed #cfc9ba; border-radius: 13px; padding: 14px; min-height: 76px; margin-bottom: 10px; cursor: pointer; transition: border-color .13s ease, background .13s ease; }
+.md-bucket.armed { border-color: var(--cta); background: #f4fafb; }
+.md-bucket h4 { font-size: 13px; font-weight: 700; margin: 0 0 8px; }
+.md-bucket .got { display: inline-block; background: #e9f6ef; color: #1d5c40; border-radius: 999px; padding: 5px 12px; font-size: 12.5px; font-weight: 600; margin: 0 6px 6px 0; }
+.md-shake { animation: mdshake .35s ease; }
+@keyframes mdshake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 75%{transform:translateX(7px)} }
+.md-next { display: block; width: 100%; margin-top: 22px; background: var(--cta, #1F7A8C); color: #fff; border: none; border-radius: 11px; padding: 15px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity .15s ease, transform .1s ease; }
+.md-next:hover { transform: translateY(-1px); }
+.md-next:disabled { opacity: .35; cursor: default; transform: none; }
+.md-objectives li { font-size: 14px; line-height: 1.7; color: #2c3d4d; margin-bottom: 4px; }
+textarea.md-reflect { width: 100%; min-height: 90px; resize: vertical; border: 1.5px solid var(--border); border-radius: 11px; padding: 13px 15px; font-size: 14px; font-family: inherit; color: #16283a; margin-top: 6px; }
+.md-brain { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; margin: 18px 0 4px; }
+.md-brain .b { border-radius: 13px; padding: 16px 14px; text-align: center; }
+.md-brain .healthy { background: #EAF4F6; border: 1.5px solid #bcd9e0; }
+.md-brain .sick { background: #fdf3e2; border: 1.5px solid #ecd3a8; }
+.md-brain .t { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+.md-brain .d { font-size: 12.5px; line-height: 1.55; color: #55677a; margin: 0; }
+.md-brain .arrow { font-size: 22px; color: #C17A12; }
+@media (max-width: 560px) { .md-card { padding: 22px 18px; } .md-title { font-size: 21px; } .md-brain { grid-template-columns: 1fr; } .md-brain .arrow { transform: rotate(90deg); text-align: center; } }
+</style>
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+
+<div class="md-shell">
+<div class="md-top">
+<a class="back" href="/family-academy.html">&larr; Family Care Academy</a>
+<button class="md-voice on" id="voiceBtn" type="button" aria-pressed="true">
+<svg style="width:15px;height:15px" aria-hidden="true"><use href="/assets/icons.svg#i-music"/></svg>
+<span id="voiceLbl">Narration on</span>
+</button>
+</div>
+<div class="md-progress"><i id="bar" style="width:4%"></i></div>
+<p class="md-count" id="count">Module 1 &middot; Screen 1 of 13</p>
+<div id="stage"></div>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* Family adaptation of Caring Companions' professional dementia training,
+   Module 1. Same structure and interactions as the caregiver course;
+   copy and narration rewritten for family caregivers. */
+
+var TTS = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/elevenlabs-tts';
+
+var SCREENS = [
+{ id:'start', type:'start',
+  title:'Understanding Alzheimer’s Disease',
+  blurb:'Before you can help the person you love, it helps to understand what’s actually happening to them, and what isn’t. That’s where we’ll start.',
+  objectives:['Dementia vs. Alzheimer’s, in plain language','Normal aging vs. warning signs','Why "correcting" doesn’t work, and what does'],
+  vo:'Hi, I’m Samantha, the owner of Caring Companions. This is the same first lesson every one of our professional caregivers takes, rewritten for you: the daughter, the son, the husband, the wife. Before we can help someone living with dementia, we need to understand what it is, and what it isn’t. Press begin when you’re ready.' },
+
+{ id:'l-why', type:'learn', kicker:'Why this matters',
+  title:'Imagine waking up unsure where you are',
+  lead:'This is often what life feels like for your mom, your dad, or your spouse.',
+  points:[
+  'They wake somewhere familiar, but can’t remember why they’re there.',
+  'They recognize your face, but the name slips away.',
+  'They know they were doing something important, but not what.',
+  'Your job isn’t to fix their memory. It’s to help them keep living with dignity, purpose, and comfort.'],
+  callout:'<b>Hold onto this:</b> the person is still in there. Compassion, patience, and respect reach them even when facts and dates can’t.',
+  vo:'Imagine waking each morning somewhere familiar, but not remembering why you’re there. That’s often what this feels like for the person you love. Your job isn’t to fix their memory. It’s to help them keep their dignity. Tap each point as you read it.' },
+
+{ id:'l-dementia', type:'learn', kicker:'What is dementia?',
+  title:'A group of symptoms, not one disease',
+  lead:'Dementia is a general term for changes serious enough to interfere with daily life.',
+  points:[
+  'It affects memory, thinking, language, reasoning, and everyday tasks.',
+  'It has many causes; different types affect different parts of the brain.',
+  'Beyond memory, it can change mood, behavior, judgment, and how they communicate.',
+  'Common signs: confusion, trouble finding words, poor judgment, personality changes.'],
+  callout:'<b>Why it matters to you:</b> because different diseases cause dementia, no two people look alike. Comparing your dad to your friend’s mother will mislead you.',
+  vo:'Dementia isn’t one disease. It’s a group of symptoms affecting memory, thinking, and daily life, and it has many causes. That’s why no two people with dementia look exactly alike. Tap each point to reveal it.' },
+
+{ id:'l-alz', type:'learn', kicker:'What is Alzheimer’s?',
+  title:'The most common cause of dementia',
+  lead:'Alzheimer’s accounts for roughly 60 to 80 percent of dementia cases.',
+  points:[
+  'It’s a progressive brain disease: symptoms gradually worsen as brain cells are damaged.',
+  'It mostly affects older adults, but it is NOT a normal part of aging.',
+  'The cause is still being studied: likely a mix of age, genetics, lifestyle, and biology.',
+  'The changes come from the disease, not from stubbornness or lack of trying.'],
+  callout:'<b>Please hear this one:</b> if you catch yourself thinking "they’re just getting old," pause. Memory loss that interferes with daily life is not normal aging, and it deserves a doctor’s attention.',
+  vo:'Alzheimer’s is the most common cause of dementia, about 60 to 80 percent of cases. It’s a progressive brain disease, and it is not a normal part of aging. And those hard moments? They’re the disease, not stubbornness. Tap each point.' },
+
+{ id:'sort-aging', type:'sort', kicker:'Normal aging, or a red flag?',
+  title:'Sort each example',
+  prompt:'Tap an example, then tap the column it belongs in.',
+  buckets:[{id:'normal',label:'✓ Normal aging'},{id:'alz',label:'⚠ Worth a doctor visit'}],
+  items:[
+  {id:'a',text:'Forgetting a name but recalling it later',bucket:'normal'},
+  {id:'b',text:'Occasionally misplacing keys',bucket:'normal'},
+  {id:'c',text:'Needing an occasional reminder',bucket:'normal'},
+  {id:'d',text:'Frequently forgetting close family members’ names',bucket:'alz'},
+  {id:'e',text:'Getting lost in familiar places',bucket:'alz'},
+  {id:'f',text:'Forgetting how to do familiar tasks',bucket:'alz'}],
+  vo:'There’s a real difference between normal aging and signs worth a doctor visit. This exercise helps you stop second-guessing yourself. Sort each example into the right column.' },
+
+{ id:'v-brain', type:'brain', kicker:'How the brain changes',
+  title:'A highway that loses its roads',
+  lead:'Millions of nerve cells send messages to each other, like cars on a highway. In Alzheimer’s, the roads themselves become damaged.',
+  callout:'<b>Why this helps you:</b> when a task gets harder month by month, it’s because roads are closing, not because they’ve stopped trying. Blame the disease, never the person.',
+  vo:'Think of the brain as a highway of nerve cells sending messages. In Alzheimer’s, those pathways become damaged, cells stop communicating, and everyday tasks slowly get harder. It’s the disease, not effort.' },
+
+{ id:'myth1', type:'truefalse', kicker:'Myth or fact?',
+  title:'"If I correct Mom enough times, she’ll remember."',
+  answer:false,
+  explainTrue:'It feels like it should work, but it’s a myth. Repeated correcting raises her anxiety and frustration, and the memory still doesn’t come back. Reassure and redirect instead.',
+  explainFalse:'Right, it’s a myth. Correcting again and again just adds anxiety and hurt. Reassure her, answer warmly, and redirect. You’ll both have a better day.',
+  vo:'Myth or fact? If I correct Mom enough times, she’ll remember. Choose one.' },
+
+{ id:'s-mom', type:'scenario', kicker:'Scenario · Focus on what remains',
+  title:'A Saturday with your mother',
+  prompt:'Your mother, 82, lives alone. She keeps asking what day it is and forgot two appointments this month. But she still loves watering her flowers, folding laundry, and talking about her grandchildren.',
+  ask:'How should you shape your Saturday visit?',
+  choices:[
+  {text:'Quiz her on the date and the appointments until it sticks.',ok:false},
+  {text:'Build the visit around what she still enjoys and can do: water the plants together, look at photos, go over a large-print calendar side by side.',ok:true},
+  {text:'Do everything for her quickly so the visit is efficient.',ok:false}],
+  correct:1,
+  explain:'Yes. Building on what she still enjoys protects her dignity and gives you both a good day. This is called person-centered care, and it’s the heart of this whole course.',
+  wrong:'Quizzing her or taking over both backfire. Build the visit around what she still enjoys and can do. That protects her dignity, and your relationship.',
+  vo:'Your mother forgets the date, but still loves her flowers, her laundry, and her grandchildren. How should you shape your Saturday visit? Choose one.' },
+
+{ id:'match-types', type:'match', kicker:'Types of dementia',
+  title:'Match each type to its hallmark early sign',
+  prompt:'Knowing the type helps you know what’s coming. Tap a sign, then tap the type it fits.',
+  values:[
+  {id:'alz',name:'Alzheimer’s',def:'Memory loss and repeated questions'},
+  {id:'vascular',name:'Vascular',def:'Slowed thinking; step-wise decline after strokes'},
+  {id:'lewy',name:'Lewy Body',def:'Visual hallucinations and movement changes'},
+  {id:'ftd',name:'Frontotemporal',def:'Personality and behavior change first'}],
+  chipOrder:['lewy','alz','ftd','vascular'],
+  vo:'Dementia is an umbrella, and several diseases sit under it. If you know which type your person has, you’ll understand their symptoms better. Match each type to its hallmark early sign.' },
+
+{ id:'q1', type:'mc', kicker:'Quick check',
+  title:'Which statement is correct?',
+  options:[
+  'Alzheimer’s disease is one type of dementia.',
+  'Dementia and Alzheimer’s mean exactly the same thing.',
+  'Dementia only affects memory.',
+  'Dementia only happens in nursing homes.'],
+  correct:0,
+  explain:'Correct. Alzheimer’s is one type of dementia, the most common one. Now you can translate what doctors say better than most of the waiting room.',
+  wrong:'Not quite. Alzheimer’s is one type of dementia (the most common), but dementia is broader and affects more than memory.',
+  vo:'Quick check. Which statement is correct?' },
+
+{ id:'q2', type:'mc', kicker:'Quick check',
+  title:'Your dad asks the same question every five minutes. What works best?',
+  options:[
+  'Tell him he already asked.',
+  'Ignore the question.',
+  'Answer calmly and warmly, every time, like it’s the first.',
+  'Correct him until he remembers asking.'],
+  correct:2,
+  explain:'Correct, and this one takes real patience. The repetition usually signals a feeling underneath: anxiety, or a need for reassurance. Your calm answer treats the feeling.',
+  wrong:'Pointing out the repetition, ignoring, or correcting all increase his distress. Answer calmly and reassure, every time. It’s the feeling underneath that needs you.',
+  vo:'Your dad asks the same question every five minutes. What works best? Choose one.' },
+
+{ id:'reflect1', type:'reflection', kicker:'One quiet moment',
+  title:'If you woke up unable to remember where you were, how would you want to be helped?',
+  lead:'Sit with that for a second. What tone of voice would you hope for? What pace? Write a line if you’d like (it stays on your device), then carry that answer into every hard moment ahead.',
+  vo:'Imagine you suddenly woke unable to remember where you were. How would you want someone to help you? What tone, what pace, what kindness? Take a moment. That answer is your compass.' },
+
+{ id:'done', type:'done',
+  vo:'Well done, you’ve finished Module One. You now understand more about dementia than most families ever get taught. The rest of the course is on its way, and I’d love to send it to you the moment each module is ready. From all of us at Caring Companions: you’re doing something hard, and you’re not doing it alone.' }
+];
+
+var idx = 0, voiceOn = true, audioEl = null, ttsCache = {};
+var stage = document.getElementById('stage');
+
+function esc(t){ return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+/* ---------- narration: Samantha's voice, browser voice as fallback ---------- */
+function stopVoice(){
+  if (audioEl) { try { audioEl.pause(); } catch(e){} audioEl = null; }
+  if (window.speechSynthesis) { try { speechSynthesis.cancel(); } catch(e){} }
+}
+function speak(text){
+  stopVoice();
+  if (!voiceOn || !text) return;
+  var play = function(url){ audioEl = new Audio(url); audioEl.play().catch(function(){ fallback(text); }); };
+  if (ttsCache[text]) { play(ttsCache[text]); return; }
+  fetch(TTS, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: text }) })
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if (d && d.url) { ttsCache[text] = d.url; play(d.url); } else { fallback(text); } })
+    .catch(function(){ fallback(text); });
+}
+function fallback(text){
+  if (!voiceOn || !window.speechSynthesis) return;
+  var u = new SpeechSynthesisUtterance(text);
+  u.rate = 0.97; u.pitch = 1.02;
+  var vs = speechSynthesis.getVoices();
+  var v = vs.find(function(x){ return /en/i.test(x.lang) && /(samantha|jenny|aria|female|google us english)/i.test(x.name); })
+       || vs.find(function(x){ return /en-US/i.test(x.lang); });
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+document.getElementById('voiceBtn').addEventListener('click', function(){
+  voiceOn = !voiceOn;
+  this.classList.toggle('on', voiceOn);
+  this.setAttribute('aria-pressed', String(voiceOn));
+  document.getElementById('voiceLbl').textContent = voiceOn ? 'Narration on' : 'Narration off';
+  if (!voiceOn) stopVoice(); else speak(SCREENS[idx].vo);
+});
+
+/* ---------- rendering ---------- */
+function card(inner){ return '<div class="md-card">' + inner + '</div>'; }
+function nextBtn(label, disabled){ return '<button class="md-next" id="next"' + (disabled?' disabled':'') + '>' + (label||'Continue') + '</button>'; }
+function header(s){ return (s.kicker?'<p class="md-kicker">'+esc(s.kicker)+'</p>':'') + (s.title?'<h1 class="md-title">'+s.title+'</h1>':'') + (s.lead?'<p class="md-lead">'+s.lead+'</p>':''); }
+function callout(s){ return s.callout ? '<div class="md-callout"><p>'+s.callout+'</p></div>' : ''; }
+
+var renderers = {
+start: function(s){
+  stage.innerHTML = card(
+    '<p class="md-kicker">Family Care Academy &middot; Dementia course &middot; Module 1</p>'
+    + '<h1 class="md-title">'+s.title+'</h1>'
+    + '<p class="md-lead">'+s.blurb+'</p>'
+    + '<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.05em;margin:18px 0 8px">In this module</p>'
+    + '<ul class="md-objectives" style="margin:0;padding-left:20px">' + s.objectives.map(function(o){ return '<li>'+esc(o)+'</li>'; }).join('') + '</ul>'
+    + '<div class="md-callout" style="margin-top:18px"><p><b>Narration:</b> this lesson is read aloud by Samantha, the owner of Caring Companions. Use the button up top to turn it off any time.</p></div>'
+    + nextBtn('Begin Module 1'));
+  wireNext();
+},
+learn: function(s){
+  var seen = 0;
+  stage.innerHTML = card(header(s)
+    + s.points.map(function(p,i){ return '<div class="md-point" data-i="'+i+'" role="button" tabindex="0"><span class="dot"></span><p>'+p+'</p></div>'; }).join('')
+    + callout(s) + nextBtn('Continue', true));
+  var pts = stage.querySelectorAll('.md-point');
+  pts.forEach(function(el){
+    var mark = function(){ if (el.classList.contains('seen')) return; el.classList.add('seen'); seen++; if (seen === pts.length) document.getElementById('next').disabled = false; };
+    el.addEventListener('click', mark);
+    el.addEventListener('keydown', function(e){ if (e.key==='Enter'||e.key===' ') { e.preventDefault(); mark(); } });
+  });
+  wireNext();
+},
+brain: function(s){
+  stage.innerHTML = card(header(s)
+    + '<div class="md-brain">'
+    + '<div class="b healthy"><p class="t" style="color:#1F7A8C">Healthy brain</p><p class="d">Strong pathways. Messages travel quickly: names, steps of a task, the way home.</p></div>'
+    + '<div class="arrow">&rarr;</div>'
+    + '<div class="b sick"><p class="t" style="color:#C17A12">Alzheimer’s brain</p><p class="d">Pathways damaged and fading. Messages stall. Cells stop talking, then are lost, and the brain slowly shrinks.</p></div>'
+    + '</div>' + callout(s) + nextBtn());
+  wireNext();
+},
+sort: function(s){
+  var remaining = s.items.slice(), selected = null, correctCount = 0;
+  function draw(){
+    stage.innerHTML = card(header(s)
+      + '<p class="md-lead" style="font-size:13.5px;color:#8a978f">'+s.prompt+'</p>'
+      + '<div id="chips">' + remaining.map(function(it){ return '<button type="button" class="md-chip'+(selected===it.id?' sel':'')+'" data-id="'+it.id+'">'+esc(it.text)+'</button>'; }).join('') + '</div>'
+      + s.buckets.map(function(b){ return '<div class="md-bucket'+(selected?' armed':'')+'" data-b="'+b.id+'"><h4 style="color:'+(b.id==='normal'?'#1F7A8C':'#C17A12')+'">'+esc(b.label)+'</h4>'
+        + s.items.filter(function(it){ return it.placed===b.id; }).map(function(it){ return '<span class="got">'+esc(it.text)+'</span>'; }).join('') + '</div>'; }).join('')
+      + nextBtn('Continue', correctCount < s.items.length));
+    stage.querySelectorAll('.md-chip').forEach(function(c){ c.addEventListener('click', function(){ selected = (selected===c.dataset.id)?null:c.dataset.id; draw(); }); });
+    stage.querySelectorAll('.md-bucket').forEach(function(bk){ bk.addEventListener('click', function(){
+      if (!selected) return;
+      var it = s.items.find(function(x){ return x.id===selected; });
+      if (it.bucket === bk.dataset.b) {
+        it.placed = bk.dataset.b; remaining = remaining.filter(function(x){ return x.id!==it.id; });
+        correctCount++; selected = null; draw();
+      } else {
+        bk.classList.add('md-shake'); setTimeout(function(){ bk.classList.remove('md-shake'); }, 380);
+      }
+    }); });
+    wireNext();
+  }
+  draw();
+},
+truefalse: function(s){
+  stage.innerHTML = card(header(s)
+    + '<button type="button" class="md-choice" data-v="true">Fact</button>'
+    + '<button type="button" class="md-choice" data-v="false">Myth</button>'
+    + '<div id="fb"></div>' + nextBtn('Continue', true));
+  stage.querySelectorAll('.md-choice').forEach(function(b){ b.addEventListener('click', function(){
+    var val = b.dataset.v === 'true';
+    stage.querySelectorAll('.md-choice').forEach(function(x){ x.disabled = true; });
+    var right = (val === s.answer);
+    b.classList.add(right ? 'right' : 'wrong');
+    document.getElementById('fb').innerHTML = '<div class="md-explain '+(right?'good':'bad')+'">'+ (val ? s.explainTrue : s.explainFalse) +'</div>';
+    document.getElementById('next').disabled = false;
+  }); });
+  wireNext();
+},
+scenario: function(s){
+  stage.innerHTML = card(header(s)
+    + '<div style="background:#f8f6f0;border-radius:12px;padding:15px 17px;margin-bottom:14px"><p style="font-size:14px;line-height:1.65;color:#2c3d4d;margin:0">'+s.prompt+'</p></div>'
+    + '<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">'+s.ask+'</p>'
+    + s.choices.map(function(c,i){ return '<button type="button" class="md-choice" data-i="'+i+'">'+c.text+'</button>'; }).join('')
+    + '<div id="fb"></div>' + nextBtn('Continue', true));
+  stage.querySelectorAll('.md-choice').forEach(function(b){ b.addEventListener('click', function(){
+    stage.querySelectorAll('.md-choice').forEach(function(x){ x.disabled = true; });
+    var i = +b.dataset.i, right = (i === s.correct);
+    b.classList.add(right ? 'right' : 'wrong');
+    if (!right) stage.querySelectorAll('.md-choice')[s.correct].classList.add('right');
+    document.getElementById('fb').innerHTML = '<div class="md-explain '+(right?'good':'bad')+'">'+(right?s.explain:s.wrong)+'</div>';
+    document.getElementById('next').disabled = false;
+  }); });
+  wireNext();
+},
+match: function(s){
+  var chips = s.chipOrder.slice(), selected = null, placed = {};
+  function draw(){
+    stage.innerHTML = card(header(s)
+      + '<p class="md-lead" style="font-size:13.5px;color:#8a978f">'+s.prompt+'</p>'
+      + '<div>' + chips.map(function(id){ var v = s.values.find(function(x){ return x.id===id; }); return '<button type="button" class="md-chip'+(selected===id?' sel':'')+'" data-id="'+id+'">'+esc(v.def)+'</button>'; }).join('') + '</div>'
+      + s.values.map(function(v){ return '<div class="md-bucket'+(selected?' armed':'')+'" data-b="'+v.id+'"><h4 style="color:#0D365F">'+esc(v.name)+'</h4>' + (placed[v.id]?'<span class="got">'+esc(v.def)+'</span>':'') + '</div>'; }).join('')
+      + nextBtn('Continue', Object.keys(placed).length < s.values.length));
+    stage.querySelectorAll('.md-chip').forEach(function(c){ c.addEventListener('click', function(){ selected = (selected===c.dataset.id)?null:c.dataset.id; draw(); }); });
+    stage.querySelectorAll('.md-bucket').forEach(function(bk){ bk.addEventListener('click', function(){
+      if (!selected) return;
+      if (selected === bk.dataset.b) { placed[selected] = true; chips = chips.filter(function(x){ return x!==selected; }); selected = null; draw(); }
+      else { bk.classList.add('md-shake'); setTimeout(function(){ bk.classList.remove('md-shake'); }, 380); }
+    }); });
+    wireNext();
+  }
+  draw();
+},
+mc: function(s){
+  stage.innerHTML = card(header(s)
+    + s.options.map(function(o,i){ return '<button type="button" class="md-choice" data-i="'+i+'">'+o+'</button>'; }).join('')
+    + '<div id="fb"></div>' + nextBtn('Continue', true));
+  stage.querySelectorAll('.md-choice').forEach(function(b){ b.addEventListener('click', function(){
+    stage.querySelectorAll('.md-choice').forEach(function(x){ x.disabled = true; });
+    var i = +b.dataset.i, right = (i === s.correct);
+    b.classList.add(right ? 'right' : 'wrong');
+    if (!right) stage.querySelectorAll('.md-choice')[s.correct].classList.add('right');
+    document.getElementById('fb').innerHTML = '<div class="md-explain '+(right?'good':'bad')+'">'+(right?s.explain:s.wrong)+'</div>';
+    document.getElementById('next').disabled = false;
+  }); });
+  wireNext();
+},
+reflection: function(s){
+  stage.innerHTML = card(header(s)
+    + '<textarea class="md-reflect" id="refl" placeholder="Write a line for yourself… (optional, never leaves your device)"></textarea>'
+    + nextBtn('Finish the module'));
+  var saved = localStorage.getItem('fa_reflect_m1'); if (saved) document.getElementById('refl').value = saved;
+  document.getElementById('refl').addEventListener('input', function(){ localStorage.setItem('fa_reflect_m1', this.value); });
+  wireNext();
+},
+done: function(s){
+  stage.innerHTML = card(
+    '<div style="text-align:center">'
+    + '<svg style="width:52px;height:52px;margin-bottom:14px" aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>'
+    + '<p class="md-kicker">Module 1 complete</p>'
+    + '<h1 class="md-title">You just learned what most families are never taught.</h1>'
+    + '<p class="md-lead" style="max-width:480px;margin:0 auto 6px">Dementia vs. Alzheimer’s, aging vs. warning signs, and why warmth beats correcting, every time. Modules 2 through 13 cover person-centered care, communication, behaviors, and more. We’re adapting them for families right now.</p>'
+    + '<div style="background:#f6f4ee;border-radius:12px;padding:18px;margin:18px 0;text-align:left">'
+    + '<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 4px">Get Module 2 the day it launches</p>'
+    + '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">'
+    + '<input id="done-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:180px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#fff">'
+    + '<button type="button" id="done-notify" class="btn-primary" style="border-radius:8px;padding:12px 18px;font-size:14px">Notify me</button></div>'
+    + '<p id="done-sent" style="font-size:13px;font-weight:600;color:#1F7A8C;margin:8px 0 0" hidden>You’re on the list!</p></div>'
+    + '<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">'
+    + '<a href="/family-academy.html" class="btn-outline" style="font-size:14px">Back to the Academy</a>'
+    + '<a href="/book.html" class="btn-primary" style="font-size:14px">Talk to a real coordinator</a></div>'
+    + '</div>');
+  var btn = document.getElementById('done-notify');
+  btn.addEventListener('click', function(){
+    var em = document.getElementById('done-email').value.trim();
+    if (!em || em.indexOf('@') < 0) return;
+    btn.disabled = true;
+    if (window.CCForms) CCForms.submitLead({ name:'(Family Academy, finished Module 1)', email: em, message:'Completed dementia Module 1 on family-academy/dementia-module-1.html and wants Module 2 at launch.' })
+      .then(function(){ document.getElementById('done-sent').hidden = false; })
+      .catch(function(){ btn.disabled = false; });
+  });
+}
+};
+
+function wireNext(){
+  var n = document.getElementById('next');
+  if (n) n.addEventListener('click', function(){ idx++; show(); });
+}
+function show(){
+  var s = SCREENS[idx];
+  document.getElementById('bar').style.width = Math.round(((idx+1)/SCREENS.length)*100) + '%';
+  document.getElementById('count').textContent = 'Module 1 · Screen ' + (idx+1) + ' of ' + SCREENS.length;
+  renderers[s.type](s);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  speak(s.vo);
+  if (window.CCTrack && s.id === 'done') CCTrack('fa_module1_complete');
+}
+show();
+})();
+</script>
+<script src="/assets/forms.js"></script>
+<script src="/assets/site-events.js"></script>
+</body>
+</html>
