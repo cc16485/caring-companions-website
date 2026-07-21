@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 3: Stop Arguing With Dementia | The Dementia Journey | Caring Companions</title>
-<meta name="description" content="A free course for families caring for someone they love. Module 3: why facts and corrections backfire, hearing the feeling beneath the words, and the validate-then-redirect sequence.">
-<link rel="canonical" href="https://mo-care.com/dementia-journey/module-3.html">
+<title>Module 4: When Words and Behaviors Hurt | The Dementia Journey | Caring Companions</title>
+<meta name="description" content="A free course for families caring for someone they love. Module 4: accusations, anger, and the moments they don't recognize you. The hurt you feel is real, and there are ways through.">
+<link rel="canonical" href="https://mo-care.com/dementia-journey/module-4.html">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
-<meta property="og:title" content="Stop Arguing With Dementia | The Dementia Journey">
-<meta property="og:description" content="Connection is often more helpful than correction. A free module for family caregivers.">
-<meta property="og:url" content="https://mo-care.com/dementia-journey/module-3.html">
+<meta property="og:title" content="When Words and Behaviors Hurt | The Dementia Journey">
+<meta property="og:description" content="The behavior may come from the disease, but the hurt you feel is still real. A free module for family caregivers.">
+<meta property="og:url" content="https://mo-care.com/dementia-journey/module-4.html">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,6 +78,8 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 .dj-step p { font-size:14.5px; line-height:1.65; color:var(--dj-ink); margin:0; }
 .dj-phrase { display:flex; align-items:center; gap:12px; background:#f7f2e6; border-radius:14px; padding:15px 17px; margin-bottom:10px; }
 .dj-phrase p { flex:1; font-family:'Source Serif 4',Georgia,serif; font-size:16px; line-height:1.6; color:#1c2b38; margin:0; }
+.dj-still { text-align:center; padding:70px 20px; }
+.dj-still p { font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:19px; line-height:2.05; color:#3d5568; margin:0 0 8px; }
 .dj-stmt { background:linear-gradient(155deg,#0e2c49 0%, #1e4568 100%); border-radius:16px; padding:26px 24px; margin:0 0 16px; }
 .dj-stmt p { font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:20px; line-height:1.6; color:#f3efe4; margin:0; text-align:center; }
 .dj-under { background:#fbf3dd; border:1.5px solid #ead9ac; border-radius:14px; padding:16px 18px; margin-top:6px; display:none; }
@@ -130,7 +132,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <button class="dj-pill on" id="voiceBtn" type="button" aria-pressed="true" title="Narration"><svg style="width:14px;height:14px" aria-hidden="true"><use href="/assets/icons.svg#i-music"/></svg><span class="lbl" id="voiceLbl">Narration on</span></button>
 </div>
 <div class="dj-progress noprint"><i id="bar" style="width:6%"></i></div>
-<p class="dj-count noprint" id="count">Module 3 · You can pause anytime</p>
+<p class="dj-count noprint" id="count">Module 4 · You can pause anytime</p>
 <div id="stage"></div>
 </div>
 
@@ -210,126 +212,142 @@ var TTS = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/elevenlabs-tts'
 var SCREENS = [
 
 { id:'landing', type:'landing',
-  vo:"Welcome back. This module is about the arguments... the ones you keep having, the ones nobody wins. Today you'll meet Denise, and her father Walter. Forty years a machinist. Never late a day in his life. And most mornings now, he's at the door at six forty, trying to leave for a job that ended twenty years ago. By the end of this module, you'll know why the truth keeps failing... and what works instead. Press begin when you're ready." },
+  vo:"Welcome back. Before we begin, I want to be honest with you about this module. It holds the moments that hurt the most. The accusation. The anger. The evening they look at you... and don't know you. If today is already a heavy day, it is completely okay to save this one for another time. It will wait for you. But if you're ready... you'll meet Carol and Gene, married forty seven years. And I promise you this: we will not pretend any of it away. Press begin when you're ready." },
 
-{ id:'scene-door', type:'scene', kicker:'Denise &amp; Walter',
-  scene:"6:40 in the morning. Walter is at the front door with his jacket half on and his boots untied.<br><br><em>&ldquo;I need to leave for work.&rdquo;</em><br><br>Denise, still in her robe, coffee not yet made, says the true thing: <em>&ldquo;Dad, you&rsquo;re retired. You haven&rsquo;t worked in twenty years.&rdquo;</em><br><br>She watches it land. First his face goes blank. Then afraid. Then angry.<br><br><em>&ldquo;That&rsquo;s a lie. Why would you say that to me?&rdquo;</em>",
-  vo:"Six forty in the morning. Walter is at the front door, jacket half on, boots untied. I need to leave for work. And Denise, still in her robe, says the true thing. Dad... you're retired. You haven't worked in twenty years. Watch it land. His face goes blank. Then afraid. Then angry. That's a lie. Why would you say that to me? She told him the truth. And the truth made everything worse. Let's find out why." },
+{ id:'scene-tea', type:'scene', kicker:'Carol &amp; Gene',
+  scene:"Seven in the evening. Carol carries two cups of tea into the living room, the way she has ten thousand times.<br><br>Gene looks up from his chair. He studies her face for a long moment, polite and puzzled, and says:<br><br><em>&ldquo;Get out of my house. My wife will be home soon.&rdquo;</em>",
+  vo:"Seven in the evening. Carol carries two cups of tea into the living room... the way she has ten thousand times. Gene looks up from his chair. He studies her face for a long moment. Polite. Puzzled. And he says... Get out of my house. My wife will be home soon." },
 
-{ id:'m3l1', type:'learn', kicker:'Lesson 1',
-  title:'Why the facts don&rsquo;t stick',
-  lead:'Denise wasn&rsquo;t wrong. She was just answering a question Walter&rsquo;s brain can no longer ask.',
-  points:[
-   'For Walter, &ldquo;you&rsquo;re retired&rdquo; isn&rsquo;t a reminder. His brain can&rsquo;t hold that fact anymore, so each time, it can land as <b>news</b>: sudden, humiliating, and frightening.',
-   'Imagine being told, out of nowhere, that your working life ended twenty years ago and you somehow didn&rsquo;t know. That&rsquo;s the morning he keeps having.',
-   'Ten corrections aren&rsquo;t ten lessons. They can be ten small hurts, each one arriving fresh.',
-   'And when the facts can&rsquo;t get in, what gets through instead is the <b>tone</b>: frustration, pity, impatience. He may forget the words and keep the feeling.'],
-  callout:'When correction keeps failing, it isn&rsquo;t your delivery. It&rsquo;s the shelf. The fact has nowhere to live.',
-  vo:"Denise wasn't wrong. She was answering a question Walter's brain can no longer ask. For him, you're retired isn't a reminder. It can land as news. Sudden. Humiliating. Frightening. Imagine being told, out of nowhere, that your working life ended twenty years ago and somehow you didn't know. That's the morning he keeps having. Ten corrections aren't ten lessons. They're ten small hurts, each arriving fresh. And when facts can't get in, what gets through is your tone. He may forget the words... and keep the feeling. Tap through these." },
+{ id:'still', type:'still',
+  lines:["Stay here a moment.","Forty-seven years. Meals, mortgages, children, waiting rooms.","And tonight he asked her to leave.","If a sentence like that has ever knocked the wind out of you,","you are allowed to be heartbroken by it.","We are not going to explain it away. Not yet."],
+  vo:"Stay right here for a minute. Don't reach for a lesson yet... and neither will I. Forty seven years. Meals. Mortgages. Children. Hospital waiting rooms. And tonight, he looked at the woman who shared all of it... and asked her to leave. If a sentence like that has ever knocked the wind out of you, I want you to hear this before any technique. You are allowed to be heartbroken by it. You don't have to be strong about it this minute. The pause and breathe button is right up top. Use it if you need it. I'll be here when you're ready." },
 
 { id:'goals', type:'goals', kicker:'This module',
   title:'What I hope you leave with',
-  goals:['A translator&rsquo;s ear: hearing the feeling underneath the words','The sequence that replaces arguing: pause, validate, redirect','A pocket library of phrases that open doors instead of closing them','The one line that never bends: validation never means accepting danger'],
-  vo:"Here's what I hope you leave this module holding. A translator's ear, for hearing the feeling underneath the words. The sequence that replaces arguing... pause, validate, redirect. A pocket library of phrases that open doors instead of closing them. And the one line that never bends. Validation never means accepting danger." },
+  goals:['Why recognition fails, and why it isn&rsquo;t love failing','How to meet accusations without arguing your innocence on repeat','What to do, in your body and in the room, when anger rises','The safety lines that never bend, including for you','A way to recover after the moments that cut deep'],
+  vo:"Here's what I hope you leave this module holding. Why recognition fails... and why it isn't love failing. How to meet accusations without arguing your innocence on repeat. What to do, in your body and in the room, when anger rises. The safety lines that never bend... including for you. And a way to recover afterward. Because recovering is a skill, and you deserve to have it." },
 
-{ id:'m3l2', type:'learn', kicker:'Lesson 2',
-  title:'Listen for the feeling',
-  lead:'The words are the envelope. The feeling is the letter. &ldquo;I need to go home&rdquo; from someone sitting in their own kitchen can mean:',
+{ id:'m4l1', type:'learn', kicker:'Lesson 1',
+  title:'When they don&rsquo;t recognize you',
+  lead:'Gene isn&rsquo;t rejecting Carol. His brain is holding an older photograph of her.',
   points:[
-   '<b>I feel unsafe</b>, and &ldquo;home&rdquo; is the word for the place where safety lived.',
-   '<b>I don&rsquo;t recognize this place</b> right now, even if I&rsquo;ve lived here forty years.',
-   '<b>I miss familiarity</b>: my mother&rsquo;s kitchen, the sound of a house I grew up in.',
-   '<b>I&rsquo;m tired</b>, or over-stimulated, and I want the feeling of rest that home means.',
-   '<b>I want some control</b> over where I am and what happens next.',
-   'And Walter&rsquo;s &ldquo;I need to go to work&rdquo;? Often it means: <b>I need to be needed.</b> He was dependable for forty years. That part of him is still awake.'],
-  callout:'You don&rsquo;t have to guess right on the first try. Just switching from correcting the words to wondering about the feeling changes the whole conversation.',
-  vo:"The words are the envelope. The feeling is the letter. I need to go home, from someone sitting in their own kitchen, can mean... I feel unsafe. I don't recognize this place right now. I miss my mother. I'm tired. Or... I want some say over what happens next. And Walter's I need to go to work? That often means... I need to be needed. He was dependable for forty years. That part of him is still awake. You don't have to guess right the first time. Just switching from correcting the words to wondering about the feeling changes everything." },
+   '<b>Recognition is time-shifted.</b> The brain may keep its file of you from decades ago: the young wife, the little daughter. The person in front of them, older, gray, doesn&rsquo;t match the file. So the brain concludes: stranger.',
+   '<b>It is not love gone.</b> Gene told a &ldquo;stranger&rdquo; to leave because he was guarding his wife&rsquo;s home for her. The devotion is intact. It&rsquo;s the timeline that broke.',
+   '<b>Don&rsquo;t quiz.</b> &ldquo;Don&rsquo;t you know who I am?&rdquo; forces a test they will fail, and both of you pay for it.',
+   '<b>Introduce yourself softly.</b> &ldquo;It&rsquo;s Carol. I&rsquo;m here to keep you company.&rdquo; Familiar name, no demand attached.',
+   '<b>The re-entry trick.</b> Sometimes leaving the room for a few minutes and returning with a warm hello lets the brain re-file you correctly. A fresh arrival can succeed where an argument never will.'],
+  callout:'He isn&rsquo;t rejecting you. He&rsquo;s guarding the woman he loves. She&rsquo;s standing right in front of him.',
+  vo:"Gene isn't rejecting Carol. His brain is holding an older photograph of her. Recognition can be time shifted... the file it keeps of you may be from decades ago. The young wife. The little daughter. The person in front of them doesn't match the file, so the brain concludes... stranger. Hear what that means. Gene told a stranger to leave because he was guarding his wife's home... for her. The devotion is intact. It's the timeline that broke. So don't quiz. Introduce yourself softly. And remember the re-entry trick... sometimes leaving the room and coming back with a warm hello lets the brain re-file you, where an argument never will. Tap through these." },
 
-{ id:'under', type:'under', kicker:'Practice the translator&rsquo;s ear',
-  title:'What is the feeling beneath the words?',
-  lead:'Six things you may have heard. For each one, tap the feelings that might be underneath, then peek at what it often means. There is no single right answer, today&rsquo;s answer may not be tomorrow&rsquo;s.',
-  stmts:[
-   { say:'&ldquo;You stole my purse.&rdquo;', chips:['Fear','Things keep vanishing','Needing control','Embarrassment'], under:'When belongings keep disappearing and the brain can&rsquo;t track why, an accusation is the only story that makes sense of it. It usually means: <b>I&rsquo;m scared, and I can&rsquo;t explain my world anymore.</b>' },
-   { say:'&ldquo;I have to pick up the children.&rdquo;', chips:['Being needed','An old role calling','Worry for someone','Purpose'], under:'The children may be grown, but the mother or father in them isn&rsquo;t. This is often <b>love and duty looking for somewhere to go.</b>' },
-   { say:'&ldquo;This is not my house.&rdquo;', chips:['Nothing looks familiar','Feeling unsafe','Longing for an earlier home','Exhaustion'], under:'&ldquo;Home&rdquo; in their mind may be a house from 1965. This one, today, doesn&rsquo;t match it. It usually means: <b>nothing feels familiar right now, and that&rsquo;s frightening.</b>' },
-   { say:'&ldquo;You are not my daughter.&rdquo;', chips:['Remembering a younger you','Confusion','Fear','Grief moving through'], under:'The brain may hold a daughter who is twenty-five. The person in front of them is sixty. This one cuts deep, and it is almost never about love being gone. <b>The love is filed under a younger face.</b>' },
-   { say:'&ldquo;I need to go home.&rdquo;', chips:['Safety','Familiarity','Missing mother','Comfort','Tiredness'], under:'One of the most common sentences in dementia, and one of the least literal. It usually means: <b>I need to feel safe and known, the way home once felt.</b>' },
-   { say:'&ldquo;Leave me alone.&rdquo;', chips:['Overwhelm','Too many hands, too fast','Dignity','Needing rest'], under:'Sometimes it means exactly what it says, and honoring it for a few minutes is the kindest move. Often it means: <b>too much is happening at me, and none of it was my idea.</b>' }],
-  vo:"Let's practice. Six things you may have heard, maybe this very week. For each one, tap the feelings that might be underneath. Then peek at what it often means. There's no single right answer. The skill isn't guessing correctly. The skill is looking underneath at all." },
+{ id:'scene-answer', type:'scenequiet', kicker:'Carol&rsquo;s answer',
+  scene:"Carol sets down the tea, walks to the kitchen, and holds the edge of the counter. One breath. Two.<br><br>Then she comes back in with a small smile.<br><br><em>&ldquo;I hear Carol&rsquo;s running a little late. Mind if I keep you company until she&rsquo;s back? I was just making tea.&rdquo;</em><br><br>Gene relaxes. They drink their tea and watch the birds at the feeder.<br><br>Later that night, shuffling to bed, he pats her hand. <em>&ldquo;Night, my girl.&rdquo;</em>",
+  after:'Some nights the door back opens this easily. Some nights it doesn&rsquo;t open at all. The ache is real either way, and so is the &ldquo;my girl.&rdquo;',
+  vo:"Carol sets down the tea. Walks to the kitchen. Holds the edge of the counter. One breath. Two. Then she comes back in with a small smile. I hear Carol's running a little late. Mind if I keep you company until she's back? I was just making tea. Gene relaxes. They drink their tea and watch the birds. And later that night, shuffling to bed, he pats her hand... Night, my girl. Some nights the door back opens this easily. Some nights it doesn't open at all. The ache is real either way. And so is the my girl." },
 
-{ id:'seq', type:'steps', kicker:'Lesson 3',
-  title:'Validate first. Redirect second.',
-  lead:'Here is the sequence that replaces arguing. Six steps, and the first one is the hardest because it&rsquo;s a step you don&rsquo;t take.',
+{ id:'m4l2', type:'learn', kicker:'Lesson 2',
+  title:'Accusations',
+  lead:'Theft. Infidelity. Poisoning. &ldquo;You&rsquo;re not my family.&rdquo; &ldquo;You&rsquo;re keeping me prisoner.&rdquo; When the brain can&rsquo;t track its world, accusation becomes the only story that explains it.',
+  points:[
+   '<b>Check the ground first.</b> Before anything else: is anyone unsafe? Is this brand-new or sudden? Module 2&rsquo;s rule applies, sudden and severe means call the provider today.',
+   '<b>Look for the ordinary explanation underneath.</b> Lost objects plus lost memory equals theft. Failing vision turns shadows into intruders. A mixed-up timeline turns a devoted spouse into a suspected cheater.',
+   '<b>Don&rsquo;t re-argue your innocence.</b> One calm denial is enough: &ldquo;I would never do that. I&rsquo;m on your side.&rdquo; Then move to the feeling: fear, loss of control, confusion. Repeated self-defense just re-runs the trial.',
+   '<b>Infidelity accusations deserve their own sentence:</b> they are among the cruelest tricks this disease plays on devoted husbands and wives. It is the disease&rsquo;s story. It is not your record, and everyone who knows you knows that.',
+   '<b>Keep notes.</b> Your Module 2 observation sheet works here too; accusation patterns (time of day, after visitors, when tired) are clues you can act on.'],
+  callout:'An accusation from dementia is fear wearing a costume. You can refuse the trial and still comfort the fear.',
+  vo:"Theft. Infidelity. Poisoning. You're not my family. When the brain can't track its world, accusation becomes the only story that explains it. Check the ground first... is anyone unsafe, and is this sudden? Sudden and severe means call the provider today. Then look for the ordinary explanation underneath. Lost objects plus lost memory equals theft. Failing vision turns shadows into intruders. And a mixed up timeline can turn a devoted spouse into a suspect. Give one calm denial... I would never do that, I'm on your side... and then move to the feeling. Don't re-run the trial. And if it's an infidelity accusation... hear me. That is the disease's story. It is not your record. Everyone who knows you, knows that." },
+
+{ id:'tag', type:'tag', kicker:'Practice',
+  title:'Disease, need, danger, or all three?',
+  lead:'Five real moments. For each, tap everything you think might be in play, then see the coaching. Most honest answers are &ldquo;several at once.&rdquo;',
+  chips:['Brain change','Unmet need','Medical change','Safety concern','Time for outside help'],
+  items:[
+   { say:'She hides her purse, then accuses you of stealing it.',
+     coach:'Mostly brain change plus unmet need: hiding keeps treasures &ldquo;safe,&rdquo; forgetting the hiding spot creates the theft story, and fear does the accusing. Usually not medical, unless it appeared suddenly and intensely, then Module 2&rsquo;s rule kicks in. A duplicate &ldquo;decoy&rdquo; purse and the look-together response from Module 3 work wonders.' },
+   { say:'He swings an arm at you while you&rsquo;re helping him dress.',
+     coach:'Three at once: brain change (a touch he couldn&rsquo;t see coming reads as attack), unmet need (a sore shoulder? cold room? too fast?), and a real safety concern for you. Slow down, come to the front, name each step before you touch. If it keeps happening, that&rsquo;s a care-team conversation, and possibly a sign you need hands-on training or help.' },
+   { say:'Overnight, she&rsquo;s convinced her food is poisoned. She has never said anything like this before.',
+     coach:'Medical change, first and loudest. Overnight plus never-before is the delirium alarm from Module 2: infection, medication, dehydration. Call the provider today and say &ldquo;this is a sudden change from her normal.&rdquo; The brain-change explanation can wait its turn; the medical one cannot.' },
+   { say:'He shouts and slams his hand on the table when the grandkids visit.',
+     coach:'Unmet need in big letters: overstimulation. A busy room is a wall of noise and unlabeled faces (Module 2&rsquo;s lesson). Shorter visits, fewer people at once, a quiet room he can retreat to, and a grandkid assigned to sit with him one-on-one often transforms this. Brain change is the backdrop; the need is the lever.' },
+   { say:'She shoves past you at the front door, determined to leave.',
+     coach:'Safety concern first: exit-seeking with force needs a plan, not just a feeling-response. Door chimes, locks she can&rsquo;t work alone, a recent photo on hand, neighbors who know. Underneath sits the need (&ldquo;home,&rdquo; purpose, fear), so walk with her when it&rsquo;s safe, redirect when you can. And if this is regular, it is genuinely time for outside help and a wandering plan. Module 9 goes deep on this.' }],
+  vo:"Five real moments. For each one, tap everything you think might be in play. Brain change. Unmet need. Medical change. Safety concern. Or time for outside help. Then look at the coaching. I'll tell you now... most honest answers are several at once. That's not a trick. That's the truth of this disease." },
+
+{ id:'m4l3', type:'learn', kicker:'Lesson 3',
+  title:'When anger rises: your moves',
+  lead:'Verbal storms happen. Here is what experienced caregivers do with their voice, their body, and the room.',
+  points:[
+   '<b>Lower your voice.</b> Softer and slower, even if theirs gets louder. You set the thermostat.',
+   '<b>Add space.</b> Step back. Never corner them, and never let yourself be cornered.',
+   '<b>Stop the task.</b> Whatever you were doing, the shirt, the shower, the pills, can almost always wait twenty minutes.',
+   '<b>Don&rsquo;t match their intensity.</b> Two storms make a bigger storm. Your calm is not surrender; it&rsquo;s strategy.',
+   '<b>Cut the noise.</b> TV off, lights softer, fewer people in the room.',
+   '<b>Hunt for pain or fear.</b> Anger in dementia is often pain that can&rsquo;t find words. When was the last bathroom trip, meal, nap?',
+   '<b>Leave and return.</b> Twenty minutes later is often a different person. This is the disease flickering, use it in your favor.',
+   '<b>Call the provider if it&rsquo;s new or severe.</b> A personality change that arrives fast is a medical question. You know this rule by now.'],
+  callout:'Your calm is a tool, not a performance. And on the days you can&rsquo;t find it, step away, reset, and come back. That&rsquo;s the repair sequence from Module 1, and it never stops applying.',
+  vo:"Verbal storms happen. Here's what experienced caregivers do. Lower your voice... softer and slower, even if theirs gets louder. You set the thermostat. Add space, and never corner them... or let yourself be cornered. Stop the task. The shirt, the shower, the pills... they can almost always wait twenty minutes. Don't match the intensity. Cut the noise. Hunt for pain or fear... anger in dementia is often pain that can't find words. Leave and return... twenty minutes later is often a different person. And if the anger is new or severe... call the provider. You know that rule by now." },
+
+{ id:'m4l4', type:'learn', kicker:'Lesson 4 &middot; The serious one',
+  title:'Physical aggression: safety is not negotiable',
+  lead:'This is rarer, and it deserves plain words, not soft ones. If it happens in your home, these are the lines.',
+  points:[
+   '<b>Your safety comes first.</b> Not equal-first. First. You cannot care for anyone from a hospital bed, and you do not owe anyone your bruises.',
+   '<b>Create distance.</b> Step back, out of arm&rsquo;s reach. Put furniture between you if needed.',
+   '<b>Do not restrain.</b> Holding or pinning someone escalates danger for both of you, unless you are trained and it&rsquo;s the only way to prevent immediate serious harm.',
+   '<b>Keep an exit.</b> Position yourself so you can always leave the room. Never get trapped in a corner or a bathroom.',
+   '<b>Call for help.</b> A neighbor, a family member, and when there is immediate danger, 911. Tell dispatch it&rsquo;s a person with dementia so responders arrive informed.',
+   '<b>Repeated aggression is a medical conversation.</b> The care team has options: pain treatment, medication review, delirium checks, more support. Silence protects no one.',
+   '<b>Continuing alone when it&rsquo;s unsafe is not an option.</b> Not because you failed. Because the disease has outgrown what one person can safely do. Getting help at that point is the strong move, and the loving one.'],
+  callout:'The Get Help Now button is at the top of every screen: 911, the provider, APS, and the crisis line. Day and night.',
+  vo:"This lesson is rarer than the others, and it deserves plain words. If physical aggression happens in your home, these are the lines. Your safety comes first. Not equal first... first. Create distance. Do not restrain... holding someone down escalates danger for you both. Keep an exit, always. Call for help, and when there is immediate danger, that is 911... tell them it's a person with dementia so responders arrive informed. Repeated aggression is a medical conversation... the care team has real options. And hear this one clearly. Continuing alone when it's unsafe is not an option. Not because you failed. Because the disease has outgrown what one person can safely do. Getting help at that point is the strong move. And the loving one." },
+
+{ id:'scene-hardnight', type:'scenequiet', kicker:'Carol &amp; Gene, a harder night',
+  scene:"A Tuesday, weeks later. Gene refuses the bathroom before bed, and when Carol touches his elbow to guide him, his hand clamps her wrist. Hard. Harder than he&rsquo;s ever held anything.<br><br>She doesn&rsquo;t pull. She goes still, drops her voice: <em>&ldquo;Okay. We&rsquo;ll wait.&rdquo;</em> His grip loosens. She steps back out of reach, leaves the bathroom door open, and waits in the hall with her heart pounding.<br><br>Ten minutes later he walks in on his own, like nothing happened.<br><br>The next morning, Carol calls his doctor. Not because it was an emergency. Because it was the second time.",
+  after:'She handled the moment, and she refused to handle it alone. Both of those were the right call.',
+  vo:"A Tuesday, weeks later. Gene refuses the bathroom before bed... and when Carol touches his elbow, his hand clamps her wrist. Hard. She doesn't pull. She goes still, drops her voice. Okay. We'll wait. His grip loosens. She steps back out of reach, leaves the door open, and waits in the hall with her heart pounding. Ten minutes later, he walks in on his own... like nothing happened. And the next morning, Carol calls his doctor. Not because it was an emergency. Because it was the second time. She handled the moment. And she refused to handle it alone. Both of those were the right call." },
+
+{ id:'recovery', type:'steps', kicker:'Lesson 5',
+  title:'After the moment: how to recover',
+  lead:'The hardest part often isn&rsquo;t the moment. It&rsquo;s the hour after, when the house is quiet and the words replay. Recovery is a skill. Here it is, step by step.',
   steps:[
-   '<b>Pause.</b> Don&rsquo;t answer the words yet. One breath. The argument you don&rsquo;t start is the one you never have to lose.',
-   '<b>Listen.</b> What&rsquo;s the feeling under the sentence? Fear? Purpose? Loneliness?',
-   '<b>Name it or reflect it.</b> &ldquo;You seem worried.&rdquo; &ldquo;You&rsquo;ve got work on your mind.&rdquo; Being understood calms what being corrected inflames.',
-   '<b>Reassure.</b> &ldquo;I&rsquo;m here with you.&rdquo; &ldquo;You&rsquo;re safe.&rdquo; Say it with your voice and your shoulders, not just your words.',
-   '<b>Join their reality when it&rsquo;s safe to.</b> Ask about the job, the children, the old house. You are not lying. You are visiting where they live right now.',
-   '<b>Redirect gently.</b> Coffee. A task. A photograph. A walk to the window. Not a trick, an off-ramp you build together.'],
-  vo:"Here's the sequence that replaces arguing. Six steps... and the first is the hardest, because it's a step you don't take. Pause. Don't answer the words yet. Listen for the feeling underneath. Name it. You seem worried. Reassure. I'm here with you. Join their reality when it's safe... ask about the job, the old house. You're not lying. You're visiting where they live right now. And then, redirect gently. Coffee. A task. A photograph. Not a trick. An off-ramp you build together. Step through it with me." },
-
-{ id:'scene-replay', type:'scenequiet', kicker:'The same morning, replayed',
-  scene:"6:40 again. Walter at the door, jacket half on.<br><br><em>&ldquo;I need to leave for work.&rdquo;</em><br><br>This time Denise doesn&rsquo;t reach for the facts. She reaches for the man.<br><br><em>&ldquo;You were always the one they could count on. What kind of work is on your mind today?&rdquo;</em><br><br>He talks about the shop while she pours coffee. She slides him a cup. <em>&ldquo;Foreman says the morning shift can wait until after breakfast.&rdquo;</em><br><br>Walter almost smiles. He sits.",
-  after:'Same father. Same door. Same disease. Different morning.',
-  vo:"Six forty again. Walter at the door, jacket half on. I need to leave for work. This time, Denise doesn't reach for the facts. She reaches for the man. You were always the one they could count on. What kind of work is on your mind today? He talks about the shop while she pours the coffee. Foreman says the morning shift can wait til after breakfast. Walter almost smiles. And he sits. Same father. Same door. Same disease. Different morning." },
-
-{ id:'phrases', type:'phrases', kicker:'Lesson 4',
-  title:'Phrases that open doors',
-  lead:'Nine small sentences that do heavy lifting. Heart the ones that sound like you, they&rsquo;ll be saved and added to your care plan. They&rsquo;re tools, not scripts: say them in your own voice.',
-  phrases:['You seem worried.','I am here with you.','Tell me about home.','You were always someone people could count on.','Let&rsquo;s figure this out together.','We can take our time.','You are safe.','Would you help me with something?','Let&rsquo;s have a cup of coffee while we wait.'],
-  vo:"Nine small sentences that do heavy lifting. You seem worried. I am here with you. Tell me about home. Would you help me with something? Heart the ones that sound like you, and they'll go straight into your care plan. But remember... they're tools, not scripts. Said flat, they're furniture. Said in your own voice, with your own warmth... they're doors." },
-
-{ id:'branch', type:'branch', kicker:'Practice &middot; A moment you&rsquo;ve seen before',
-  title:'&ldquo;You stole my purse.&rdquo;',
-  lead:'Remember Ellen and Ruth, from Module 1? The purse is missing again, and Ruth is sure Ellen took it. You&rsquo;re standing in Ellen&rsquo;s shoes, with everything you now know. Try a response, see where it leads, then try another. Try as many doors as you like.',
-  options:[
-   { label:'&ldquo;Mom, nobody stole your purse. It&rsquo;s misplaced, like always.&rdquo;', out:'Ruth&rsquo;s eyes narrow. &ldquo;So I&rsquo;m a liar now?&rdquo; The fact bounced off; the correction landed as an attack. Her fear needed an explanation, and now it has a new one: you&rsquo;re against her too. It made sense to try, most of us reach for facts first. But her brain can&rsquo;t use the fact, only the tone.' },
-   { label:'&ldquo;Why would I steal from you? I&rsquo;m here every single day!&rdquo;', out:'Now there are two frightened people in the kitchen, and one argument nobody can win. Defending your innocence feels necessary, the accusation is unjust, and it stings. But the accusation was never really about evidence. It was fear wearing an accusation&rsquo;s clothes.' },
-   { label:'&ldquo;That&rsquo;s scary, your purse matters. Let&rsquo;s look together.&rdquo;', out:'Ruth exhales. Someone is on her side of the problem. You check the usual hiding places, and find it tucked in the pillowcase, again. She holds it to her chest and moves on; the storm passes without ever becoming a fight. One honest note: some days even this doesn&rsquo;t land on the first try. It&rsquo;s still your best odds, and it leaves the relationship standing.' },
-   { label:'&ldquo;I&rsquo;ll be back in a minute, Mom.&rdquo; Step onto the porch.', out:'Sometimes the wisest response is a short exit. If your own anger is rising, sixty seconds of porch air protects you both, and you can come back and try the open door. Stepping away isn&rsquo;t losing. It&rsquo;s keeping yourself in the game.' }],
-  nudge:'When you&rsquo;re ready, make sure you&rsquo;ve tried the door that starts with her fear instead of your facts.',
-  vo:"Remember Ellen and Ruth, from Module One? The purse is missing again... and Ruth is sure Ellen took it. This time, you're standing in Ellen's shoes, carrying everything you now know. Try a response. See where it leads. Then rewind and try another. There are no red screens here. Every door teaches you something about what opens... and what closes." },
-
-{ id:'m3l5', type:'learn', kicker:'Lesson 5',
-  title:'When agreeing isn&rsquo;t the answer',
-  lead:'Joining their reality has a boundary, and it&rsquo;s a firm one. Validation never means going along with danger.',
-  points:[
-   '<b>Driving, money, medications, unsafe exits:</b> the feeling gets honored, the action does not. &ldquo;You love being behind the wheel. Today I&rsquo;ll drive us, keep me company.&rdquo;',
-   '<b>Big decisions</b> (money, legal papers, medical choices) deserve real information, delivered gently, with support, sometimes with a professional in the room.',
-   '<b>Abuse is never validated.</b> If you are being hurt, or scared for your safety, that is not a communication puzzle. Step away and get help; the Get Help Now button is always at the top.',
-   'The pattern for all of it: <b>agree with the feeling, hold the line on the safety.</b> You can be warm and immovable at the same time.'],
-  callout:'Validation is a bridge to the person, never a permission slip for the danger.',
-  vo:"Joining their reality has a boundary, and it's firm. Validation never means going along with danger. Driving. Money. Medications. Unsafe wandering. The feeling gets honored... the action does not. You love being behind the wheel. Today I'll drive us. Keep me company. And hear this clearly. Abuse is never validated. If you are being hurt or you're scared, that is not a communication puzzle. Step away and get help. The pattern for all of it... agree with the feeling. Hold the line on the safety. You can be warm and immovable at the same time." },
+   '<b>Name what happened.</b> Out loud or on paper: &ldquo;He didn&rsquo;t know me tonight.&rdquo; &ldquo;She accused me again.&rdquo; Unnamed wounds fester.',
+   '<b>Let it be painful.</b> You don&rsquo;t have to rank it against the disease&rsquo;s excuse. Both are true: it came from the illness, and it hurt.',
+   '<b>Don&rsquo;t force &ldquo;getting over it.&rdquo;</b> There&rsquo;s no deadline. Some sentences take days to stop echoing. That&rsquo;s not weakness; that&rsquo;s a heart that was involved.',
+   '<b>Tell someone safe.</b> A sister, a friend, a support group, the Corner on our website. Pain that gets spoken weighs less. Pain that stays secret gains weight.',
+   '<b>Write the pattern down.</b> Your observation sheet, two minutes. Patterns turn awful nights into useful information.',
+   '<b>Rest before the next demand, when you can.</b> Even ten minutes. You just absorbed a blow; athletes get a corner between rounds, and so should you.',
+   '<b>If the pattern is growing, reassess the help.</b> More hurt more often is not a test of your endurance. It&rsquo;s the situation asking for reinforcements. Module 8 is entirely about how to get them.'],
+  vo:"The hardest part often isn't the moment. It's the hour after... when the house is quiet and the words replay. So here is recovery, step by step. Name what happened. Let it be painful... both things are true, it came from the illness, and it hurt. Don't force getting over it. There's no deadline. Tell someone safe... pain that gets spoken weighs less. Write the pattern down. Rest before the next demand, even ten minutes. And if the pattern is growing... reassess the help. More hurt, more often, is not a test of your endurance. It's the situation asking for reinforcements. Step through these with me." },
 
 { id:'check', type:'check', kicker:'A gentle check, not a test',
-  title:'Dad wants the car keys. Right now.',
-  intro:'Your father, whose license was surrendered last spring after two close calls, announces he&rsquo;s driving to the bank. He&rsquo;s got his coat on and he&rsquo;s asking where you hid the keys. What&rsquo;s your best move?',
+  title:'After the door',
+  intro:'One evening Gene is certain Carol is an intruder, shoulders past her at the front door, and stands rigid on the porch until the re-entry trick brings him back inside. Carol is shaken. What should tomorrow look like?',
   options:[
-   { label:'Hand him the keys. One little trip won&rsquo;t hurt, and it avoids a fight.', coach:'The wish to avoid the fight is so understandable, these standoffs are exhausting. But this is the one place validation can&rsquo;t bend: his license is gone because driving wasn&rsquo;t safe, for him or for the family in the next car. Honor the feeling, hold the keys: &ldquo;You&rsquo;ve driven your whole life, I get it. Today I&rsquo;m your driver. Let&rsquo;s go together.&rdquo;' },
-   { label:'&ldquo;Dad, we&rsquo;ve been over this. You lost your license. You can&rsquo;t drive anymore.&rdquo;', coach:'It&rsquo;s the truth, and you&rsquo;re tired of repeating it, that&rsquo;s real. But for him it may land as brand-new humiliation, every time. The fact won&rsquo;t stick; the sting will. Try leading with the feeling instead: &ldquo;You love being behind the wheel. I&rsquo;ll drive us, keep me company.&rdquo; Same boundary, kinder wrapping.' },
-   { label:'&ldquo;You love being behind the wheel. I&rsquo;ll drive us to the bank, keep me company.&rdquo;', coach:'Yes. The feeling is honored, he&rsquo;s still a man with somewhere to be, and the boundary never moves: he doesn&rsquo;t drive. You offered a role (company), a purpose (the bank), and your presence. If he refuses and stays agitated, park the errand: &ldquo;Coffee first, then we&rsquo;ll see about the bank.&rdquo; Most urgent errands soften with the feeling behind them.' },
-   { label:'Quietly hide the keys better and change the subject to the TV.', coach:'Securing the keys is genuinely wise, do that regardless, quietly and without ceremony. The missing half is the feeling left unattended: his sense of purpose is still standing at the door with its coat on. Pair the hidden keys with the open door: &ldquo;I&rsquo;m driving today, keep me company.&rdquo; Safety plus dignity beats safety alone.' }],
-  vo:"Your father's license was surrendered last spring, after two close calls. This morning he announces he's driving to the bank. Coat on. Asking where you hid the keys. What's your best move? Take your time. Every answer here teaches something." },
+   { label:'It&rsquo;s the disease. Shake it off and carry on like nothing happened.', coach:'Half of this is wisdom: it truly wasn&rsquo;t personal, and Carol shouldn&rsquo;t carry it as an insult. But &ldquo;carry on like nothing happened&rdquo; skips two things that matter: her own hurt, which deserves naming (recovery step one), and the record. Unlogged moments can&rsquo;t become patterns, and patterns are what doctors and safety plans are built from.' },
+   { label:'Log it on the observation sheet, tell someone safe how it felt, and raise it at Friday&rsquo;s appointment. If anything ever feels like immediate danger, 911.', coach:'Yes, all four pieces. The log turns a bad night into information. Telling someone safe treats her hurt as real, because it is. The doctor visit puts the care team in the loop while it&rsquo;s still a small pattern. And the 911 line stays bright and simple: immediate danger skips the queue, always.' },
+   { label:'This proves he needs a facility. Start looking tomorrow.', coach:'The fear behind this is legitimate, and if unsafe moments keep growing, more care, sometimes a different setting, becomes the loving choice, Module 9 walks that road with you. But one frightening evening isn&rsquo;t a placement decision; it&rsquo;s a data point. Decisions that big deserve patterns, the care team&rsquo;s input, and a family that isn&rsquo;t deciding at midnight.' },
+   { label:'Sit him down and firmly explain he must never treat her that way again.', coach:'If his brain could store that lesson, this module wouldn&rsquo;t exist. He cannot learn from the lecture, but he can absorb its tone, and it may plant fear without planting memory. The boundary Carol needs lives in her own moves: space, exits, the doctor&rsquo;s ear, and help that grows with the need. Boundaries in dementia are things you do, not things they remember.' }],
+  vo:"One evening, Gene is certain Carol is an intruder. He shoulders past her at the front door and stands rigid on the porch, until the re-entry trick brings him back inside. Carol is shaken. What should tomorrow look like? Take your time. Every answer teaches something." },
 
 { id:'reflect', type:'reflect', kicker:'Just between you and this page',
-  title:'Which argument do you keep having?',
-  lead:'The one on repeat, the keys, the shower, the &ldquo;I want to go home.&rdquo; After today: what feeling might be living underneath it? Write a guess. Nothing here leaves your device.',
-  vo:"Just between you and this page. Which argument do you keep having? The one on repeat. The keys. The shower. I want to go home. After today... what feeling might be living underneath it? Write a guess or two. Nobody will see it but you. And here's a gentle prediction. The argument will change the day you start answering the feeling instead of the words." },
+  title:'Which behavior has been hardest not to take personally?',
+  lead:'The accusation? The name they call you? The night they didn&rsquo;t know your face? Name it here, only for yourself. Naming it is the first recovery step, and you just learned the other six.',
+  vo:"Just between you and this page. Which behavior has been hardest not to take personally? The accusation. The name they call you. The night they didn't know your face. Name it here, only for yourself. Naming it is the first step of recovery... and you now have the other six." },
 
 { id:'download', type:'download', kicker:'A tool for you',
-  title:'What to Say Instead',
-  lead:'The most common corrections on the left, doors that open on the right. Print it, stick it on the refrigerator next to Ellen&rsquo;s observation sheet, and let anyone who helps with care read it too.',
-  vo:"Your tool for this module. What to Say Instead. The most common corrections on the left... and doors that open on the right. Print it. Put it on the refrigerator. And let everyone who helps with care read it, because these phrases work best when the whole family is using the same doors." },
+  title:'When Dementia Says Something Hurtful',
+  lead:'A small card of grounding statements for the hour after. Print it, fold it, keep it where you&rsquo;ll find it on the bad nights: a wallet, a nightstand, the kitchen drawer.',
+  vo:"Your tool for this module is small on purpose. A card of grounding statements for the hour after. This is painful, even when it comes from brain changes. I do not have to argue my innocence repeatedly. I am allowed to step away. I may need help. Print it. Fold it. Keep it where the bad nights can find it... a wallet, a nightstand, the kitchen drawer." },
 
 { id:'summary', type:'summary', kicker:'What&rsquo;s true now',
   title:'If you keep only four things from today',
-  truths:['Facts don&rsquo;t stick, but feelings do. Answer the feeling.','The sequence is pause, validate, redirect. The argument you don&rsquo;t start is the one you never lose.','Phrases are tools, not scripts. Say them in your own voice.','Validation never means accepting danger. Warm and immovable can be the same person.'],
-  extra:'And when you forget all of this at 6:40 some morning and argue anyway, because you will, because you&rsquo;re human, remember Module 1: repair beats perfection.',
-  vo:"If you keep only four things from today, keep these. Facts don't stick, but feelings do... answer the feeling. The sequence is pause, validate, redirect. Phrases are tools, not scripts. And validation never means accepting danger. One more thing. Some morning at six forty, you'll forget all of this and argue anyway. Because you're human. When that happens, remember Module One. Repair beats perfection. Every time." },
+  truths:['The hurt you feel is real, even when the cause is disease. Both facts get to exist.','Lost recognition is time-shifted love, not vanished love. Don&rsquo;t quiz; reintroduce.','Safety never bends, and yours counts. Distance, exits, help. Never endure danger alone.','Recovery is a skill: name it, feel it, tell someone, log it, rest, reassess.'],
+  extra:'And if this module pressed on a bruise, that&rsquo;s because the bruise is there. Be extra gentle with yourself tonight. Module 8 will be about getting you real help, not just kind words.',
+  vo:"If you keep only four things from today, keep these. The hurt you feel is real, even when the cause is disease... both facts get to exist. Lost recognition is time shifted love, not vanished love. Safety never bends, and yours counts. And recovery is a skill... name it, feel it, tell someone, log it, rest, reassess. If this module pressed on a bruise... that's because the bruise is there. Be extra gentle with yourself tonight." },
 
 { id:'done', type:'done',
-  vo:"These days, Denise keeps a docket for her father. Some mornings it's folding shop rags. Some mornings it's sorting the bolt jar. Walter inspects her work like a foreman... and she's learned to love the inspection. Thank you for spending this time. Module Four is next, and it's a tender one. When Words and Behaviors Hurt... for the accusations, the anger, and the moments they don't recognize you. The hurt you feel is real, and we won't pretend otherwise. Until then... answer one feeling this week instead of one fact. See what opens. And be gentle with yourself." },
+  vo:"Most evenings now, Carol doesn't wait to be recognized. She walks in already introducing herself, cheerful as a neighbor... It's Carol, I brought tea. Some nights she's his wife. Some nights she's his girl. Some nights she's a kind stranger he trusts. She has decided all three of those women love him. Thank you for staying through the hardest module. Module Five is a gentler road... Communication That Creates Calm, where small changes in approach and pace change whole days, including techniques from Teepa Snow that our own caregivers train in. Until then... if one hard sentence is still echoing from your own kitchen, do one recovery step tonight. Just one. And be gentle with yourself." },
 ];
 
 var BREATHE_VO = "Let's take a moment, together. Put both feet on the floor. Relax your shoulders... they've been up near your ears all day. Take one slow breath in... and let it out even slower. Now say to yourself... I am doing something difficult. Because you are. Continue whenever you're ready. There is no hurry here.";
@@ -448,11 +466,11 @@ var renderers = {
 
 landing: function(){
   stage.innerHTML = '<div class="dj-card dj-cine">' + (
-    '<p class="dj-kicker">The Dementia Journey &middot; Module 3 of 9</p>'
-    +'<h1 class="dj-title">Stop Arguing With Dementia</h1>'
-    +'<p class="dj-quiet">Connection is often more helpful than correction.</p>'
-    +'<p class="dj-lead">You cannot win an argument with dementia. Not because you&rsquo;re wrong, but because the facts have nowhere to land. This module is about what works instead. About 25 minutes, self-paced, nothing graded.</p>'
-    +'<div class="dj-callout"><p>You&rsquo;ll meet Denise and her father Walter, forty years a machinist, and revisit someone you already know. This is a free community resource: education, never a sales pitch.</p></div>'
+    '<p class="dj-kicker">The Dementia Journey &middot; Module 4 of 9</p>'
+    +'<h1 class="dj-title">When Words and Behaviors Hurt</h1>'
+    +'<p class="dj-quiet">The behavior may come from the disease, but the hurt you feel is still real.</p>'
+    +'<p class="dj-lead">Accusations. Anger. The night they don&rsquo;t know your face. This module holds the most painful moments, and it will not pretend them away. About 27 minutes, self-paced, and it&rsquo;s okay to take it in pieces.</p>'
+    +'<div class="dj-callout"><p>A gentle note before you begin: if today is already heavy, this module will wait for you. And the <b>Pause &amp; breathe</b> and <b>Get help now</b> buttons are at the top of every screen.</p></div>'
     +'<button class="dj-next soft" id="hearBtn" style="margin-top:20px">&#9654;&nbsp; Hear Samantha&rsquo;s welcome</button>'
     +nextBtn('Begin')) + '</div>';
   el('hearBtn').addEventListener('click', function(){ speak(SCREENS[0].vo); });
@@ -462,8 +480,38 @@ landing: function(){
 scene: function(s){
   stage.innerHTML = card(
     '<div class="dj-scene"><p class="who">'+s.kicker+'</p><p>'+s.scene+'</p></div>'
-    +nextBtn('Why did the truth make it worse?'));
+    +nextBtn('Stay with her'));
   wireNext();
+},
+
+still: function(s){
+  stage.innerHTML = card(
+    '<div class="dj-still">'+s.lines.map(function(l,i){ return '<p style="opacity:0;transition:opacity 1.4s ease" data-l="'+i+'">'+l+'</p>'; }).join('')+'</div>'
+    +nextBtn('I&rsquo;m ready to go on'));
+  var lines=stage.querySelectorAll('[data-l]');
+  lines.forEach(function(l,i){ setTimeout(function(){ l.style.opacity=1; }, 700+i*1900); });
+  wireNext();
+},
+
+tag: function(s){
+  var si=0;
+  function draw(){
+    var it=s.items[si];
+    stage.innerHTML = card(head(s)
+      + '<p style="font-size:12px;font-weight:700;color:#a99f89;margin:0 0 10px">'+(si+1)+' of '+s.items.length+'</p>'
+      + '<div class="dj-stmt"><p>'+it.say+'</p></div>'
+      + '<p style="font-size:13px;font-weight:600;color:#55677a;margin:0 0 10px">What might be in play? Tap all that feel true:</p>'
+      + '<div>'+s.chips.map(function(c,i){ return '<button type="button" class="dj-chip" data-i="'+i+'">'+c+'</button>'; }).join('')+'</div>'
+      + '<button class="dj-next soft" id="peek" style="margin-top:8px">Show the coaching</button>'
+      + '<div class="dj-under" id="underOut"><p>'+it.coach+'</p></div>'
+      + (si < s.items.length-1 ? '<button class="dj-next" id="nextStmt">Next moment</button>' : nextBtn('Continue'))
+    );
+    stage.querySelectorAll('.dj-chip').forEach(function(c){ c.addEventListener('click',function(){ c.classList.toggle('sel'); }); });
+    el('peek').addEventListener('click',function(){ el('underOut').classList.add('show'); this.style.display='none'; });
+    if (si < s.items.length-1) el('nextStmt').addEventListener('click',function(){ si++; draw(); window.scrollTo({top:0,behavior:'smooth'}); });
+    else wireNext();
+  }
+  draw();
 },
 
 scenequiet: function(s){
@@ -522,7 +570,7 @@ steps: function(s){
   stage.innerHTML = card(head(s)
     + s.steps.map(function(st,i){ return '<div class="dj-step" id="st-'+i+'"><span class="n">'+(i+1)+'</span><p>'+st+'</p></div>'; }).join('')
     + '<button class="dj-next soft" id="stepBtn" style="margin-top:16px">Show me the first step</button>'
-    + '<div style="margin-top:14px">'+saveBtnHtml('seq','Save the sequence')+'</div>'
+    + '<div style="margin-top:14px">'+saveBtnHtml('recovery','Save the recovery steps')+'</div>'
     + nextBtn());
   el('next').style.display='none';
   el('stepBtn').addEventListener('click',function(){
@@ -598,8 +646,8 @@ reflect: function(s){
     + '<p style="font-size:12.5px;color:#9aa69e;margin:10px 0 0">Saved only on this device. Skip freely; thinking it counts too.</p>'
     + nextBtn());
   var ta=el('reflectTa');
-  try { ta.value=localStorage.getItem('dj_m3_reflect')||''; } catch(e){}
-  ta.addEventListener('input',function(){ try { localStorage.setItem('dj_m3_reflect',ta.value); } catch(e){} });
+  try { ta.value=localStorage.getItem('dj_m4_reflect')||''; } catch(e){}
+  ta.addEventListener('input',function(){ try { localStorage.setItem('dj_m4_reflect',ta.value); } catch(e){} });
   wireNext();
 },
 
@@ -617,25 +665,25 @@ summary: function(s){
   stage.innerHTML = card(head(s)
     + s.truths.map(function(t){ return '<div class="dj-summary"><p>'+t+'</p></div>'; }).join('')
     + '<p class="dj-quiet" style="margin-top:16px">'+s.extra+'</p>'
-    + '<div style="margin-top:6px">'+saveBtnHtml('truths3','Save these four truths')+'</div>'
+    + '<div style="margin-top:6px">'+saveBtnHtml('truths4','Save these four truths')+'</div>'
     + nextBtn('Finish Module 3'));
   wireSaves(); wireNext();
 },
 
 done: function(){
   stage.innerHTML = card(
-    '<div class="dj-scene"><p class="who">Denise &amp; Walter, these days</p><p>Denise keeps a &ldquo;docket&rdquo; for her father now. Some mornings it&rsquo;s folding shop rags. Some mornings it&rsquo;s sorting the bolt jar.<br><br>Walter inspects her work like a foreman. She has learned to love the inspection.</p></div>'
-    +'<p class="dj-kicker" style="text-align:center">Module 3 complete</p>'
-    +'<h1 class="dj-title" style="text-align:center">You just retired from arguing.</h1>'
-    +'<p class="dj-lead" style="text-align:center">Module 4, <em>When Words and Behaviors Hurt</em>, is next: accusations, anger, and the moments they don&rsquo;t recognize you. The hurt you feel is real, and we won&rsquo;t pretend otherwise.</p>'
+    '<div class="dj-scene"><p class="who">Carol &amp; Gene, most evenings now</p><p>Carol walks in already introducing herself, cheerful as a neighbor: <em>&ldquo;It&rsquo;s Carol. I brought tea.&rdquo;</em><br><br>Some nights she&rsquo;s his wife. Some nights she&rsquo;s his girl. Some nights she&rsquo;s a kind stranger he trusts.<br><br>She has decided all three of those women love him.</p></div>'
+    +'<p class="dj-kicker" style="text-align:center">Module 4 complete</p>'
+    +'<h1 class="dj-title" style="text-align:center">You stayed through the hardest one.</h1>'
+    +'<p class="dj-lead" style="text-align:center">Module 5, <em>Communication That Creates Calm</em>, is a gentler road: approach, pace, and choices that change whole days, including techniques from Teepa Snow&rsquo;s Positive Approach to Care&reg;.</p>'
     +'<div style="background:#f7f2e6;border-radius:14px;padding:18px;margin:6px 0 16px">'
-    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">Want Module 4 the day it opens?</p>'
+    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">Want Module 5 the day it opens?</p>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px">'
     +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:170px;padding:12px 14px;font-size:14px;border:1.5px solid #ddd3ba;border-radius:9px;font-family:inherit;background:#fff">'
     +'<button type="button" id="dj-notify" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Tell me</button></div>'
-    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>You&rsquo;re on the list. Answer one feeling this week.</p></div>'
+    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>You&rsquo;re on the list. Do one recovery step tonight.</p></div>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">'
-    +'<a href="/dementia-journey/resources/what-to-say-instead.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My phrase card</a>'
+    +'<a href="/dementia-journey/resources/when-dementia-hurts.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My grounding card</a>'
     +'<button class="dj-next soft" style="width:auto" id="donePlan">My care plan</button>'
     +'<a href="/dementia-journey/" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">Course home</a>'
     +'</div>');
@@ -644,11 +692,11 @@ done: function(){
     var em=el('dj-email').value.trim();
     if(!em||em.indexOf('@')<0) return;
     var btn=el('dj-notify'); btn.disabled=true;
-    if(window.CCForms) CCForms.submitLead({ name:'(Dementia Journey, finished Module 3)', email:em, message:'Completed The Dementia Journey Module 3 (Stop Arguing With Dementia) and wants Module 4 at launch.' })
+    if(window.CCForms) CCForms.submitLead({ name:'(Dementia Journey, finished Module 4)', email:em, message:'Completed The Dementia Journey Module 4 (When Words and Behaviors Hurt) and wants Module 5 at launch.' })
       .then(function(){ el('dj-sent').hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });
-  if (window.CCTrack) CCTrack('dj_module3_complete');
+  if (window.CCTrack) CCTrack('dj_module4_complete');
 }
 };
 
@@ -659,7 +707,7 @@ function wireNext(){
 function show(){
   var s=SCREENS[idx];
   el('bar').style.width = Math.round(((idx+1)/SCREENS.length)*100)+'%';
-  el('count').textContent = 'Module 3 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
+  el('count').textContent = 'Module 4 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
   renderers[s.type](s);
   window.scrollTo({ top:0, behavior:'smooth' });
   if (idx > 0) speak(s.vo);
