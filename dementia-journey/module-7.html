@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 6: The Stories That Still Exist | The Dementia Journey | Caring Companions</title>
-<meta name="description" content="A free course for families caring for someone they love. Module 6: identity, music, photographs, and meaningful moments. A person is more than what they can remember today.">
-<link rel="canonical" href="https://mo-care.com/dementia-journey/module-6.html">
+<title>Module 7: Daily Care Without the Battle | The Dementia Journey | Caring Companions</title>
+<meta name="description" content="A free course for families caring for someone they love. Module 7: bathing, dressing, meals, and medications with dignity and less conflict, including Teepa Snow's Hand-under-Hand.">
+<link rel="canonical" href="https://mo-care.com/dementia-journey/module-7.html">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
-<meta property="og:title" content="The Stories That Still Exist | The Dementia Journey">
-<meta property="og:description" content="A person is more than what they can remember today. The most beautiful road on the journey, free for families.">
-<meta property="og:url" content="https://mo-care.com/dementia-journey/module-6.html">
+<meta property="og:title" content="Daily Care Without the Battle | The Dementia Journey">
+<meta property="og:description" content="Not a nursing course. A dignity course. Bathing, dressing, and meals with less battle, free for families.">
+<meta property="og:url" content="https://mo-care.com/dementia-journey/module-7.html">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -170,7 +170,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <button class="dj-pill on" id="voiceBtn" type="button" aria-pressed="true" title="Narration"><svg style="width:14px;height:14px" aria-hidden="true"><use href="/assets/icons.svg#i-music"/></svg><span class="lbl" id="voiceLbl">Narration on</span></button>
 </div>
 <div class="dj-progress noprint"><i id="bar" style="width:6%"></i></div>
-<p class="dj-count noprint" id="count">Module 6 · You can pause anytime</p>
+<p class="dj-count noprint" id="count">Module 7 · You can pause anytime</p>
 <div id="stage"></div>
 </div>
 
@@ -254,157 +254,159 @@ var TTS = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/elevenlabs-tts'
 var SCREENS = [
 
 { id:'landing', type:'landing',
-  vo:"Welcome back. Every module so far has been about problems... how to soften them, survive them, work around them. This one is different. This one is about treasure. The stories that still exist. The parts of the person you love that dementia never touched. You'll meet Tia, and her grandmother Opal. And by the end, you'll have built something you can hold in your hands. Press begin when you're ready. This is the beautiful road." },
+  vo:"Welcome back. Let me say the most important sentence of this module first. This is not a nursing course. It's a dignity course. Bathing. Dressing. The bathroom. Meals. Medications. The daily tasks where love and resistance collide... and where a few changes to the room, the timing, and the words can lower the temperature of your whole day. Ellen is back to walk it with us... and this time, she's facing the hardest daily battle there is. Press begin when you're ready." },
 
-{ id:'scene-photos', type:'scenequiet', kicker:'Tia &amp; Opal',
-  scene:"Sunday afternoon. Tia sits close to her grandmother with the old album open across both their laps.<br><br><em>&ldquo;Grandma, who&rsquo;s this? It&rsquo;s me, Tia. Remember?&rdquo;</em> Opal&rsquo;s face does the polite, lost thing Tia has learned to dread.<br><br>Then the page turns to a photograph of a kitchen. Yellow curtains. A long table dusted with flour.<br><br><em>&ldquo;Forty pies,&rdquo;</em> Opal says suddenly, tapping the picture. <em>&ldquo;Forty pies by Friday, every church dinner. And my sister, bless her, never could crimp a crust.&rdquo;</em><br><br>Tia closes her mouth. Puts down the quiz. And picks up the listening.",
-  after:'The name was locked. The kitchen was wide open. The trick is knowing which doors still are.',
-  vo:"Sunday afternoon. Tia sits close to her grandmother, the old album open across both their laps. Grandma, who's this? It's me. Tia. Remember? And Opal's face does the polite, lost thing Tia has learned to dread. Then the page turns... to a photograph of a kitchen. Yellow curtains. A long table dusted with flour. Forty pies, Opal says suddenly. Forty pies by Friday, every church dinner. And my sister, bless her, never could crimp a crust. Tia closes her mouth. Puts down the quiz. And picks up the listening. The name was locked. The kitchen was wide open. This module is about knowing which doors still are." },
+{ id:'scene-bath', type:'scenequiet', kicker:'Ellen &amp; Ruth',
+  scene:"Tuesday morning. Day four of no bath.<br><br>Ellen has tried asking, coaxing, and finally insisting. She turns on the water and reaches gently for her mother&rsquo;s sleeve.<br><br>Ruth grips the doorframe with both hands, knuckles white, and cries out:<br><br><em>&ldquo;You&rsquo;re trying to drown me!&rdquo;</em>",
+  after:'That is not stubbornness. That is fear, in the only words it could find.',
+  vo:"Tuesday morning. Day four of no bath. Ellen has tried asking. Coaxing. And finally, insisting. She turns on the water, and reaches gently for her mother's sleeve. And Ruth grips the doorframe with both hands... knuckles white... and cries out. You're trying to drown me. Stay with that for a second. That is not stubbornness. That is fear... in the only words it could find." },
+
+{ id:'m7l1', type:'learn', kicker:'Lesson 1',
+  title:'Why care can feel threatening',
+  lead:'Walk into the bathroom scene from inside Ruth&rsquo;s world, where the explanations are missing:',
+  points:[
+   'Someone, familiar? a stranger? the file flickers, is <b>taking my clothes off</b>, and I don&rsquo;t know why.',
+   'Water is <b>roaring</b> into a hard, slippery room. (Remember Module 2: sounds arrive bigger, floors deceive.)',
+   '<b>Hands are on me.</b> I didn&rsquo;t ask for help; I don&rsquo;t recall needing it. I&rsquo;ve bathed myself for eighty years.',
+   'This is my <b>most private</b> act, and privacy is the last adult possession anyone surrenders.',
+   'Add it up: undressed, cold, handled, and confused. Fighting back isn&rsquo;t defiance. It&rsquo;s self-defense against a scene nobody explained.'],
+  callout:'Resistance is dignity defending itself with the tools it has left. Our job is to make defense unnecessary.',
+  vo:"Walk into the bathroom from inside Ruth's world... where all the explanations are missing. Someone is taking my clothes off, and I don't know why. Water is roaring into a hard, slippery room. Hands are on me... and I've bathed myself for eighty years. This is my most private act. And privacy is the last adult possession anyone surrenders. Add it up... undressed, cold, handled, and confused. Fighting back isn't defiance. It's self defense against a scene nobody explained. Our whole job in this module... is to make defense unnecessary." },
 
 { id:'goals', type:'goals', kicker:'This module',
   title:'What I hope you leave with',
-  goals:['A map of what dementia usually cannot take: the identity underneath','The trade that changes visits: interviews out, invitations in','Eleven sensory doors into long-term memory, and your three to try this week','Activities with meaning instead of busy work','A finished keepsake: their story, on one page, ready to share with anyone who ever cares for them'],
-  vo:"Here's what I hope you leave this module holding. A map of what dementia usually cannot take. The trade that changes visits... interviews out, invitations in. Eleven sensory doors into long term memory, and your three to try this week. Activities with meaning instead of busy work. And something no other module gives you... a finished keepsake. Their story, on one page, ready to share with anyone who will ever care for them." },
+  goals:['The inside view: why help with private things feels like an attack','Hand-under-Hand&trade;: the gentlest way two hands ever shared a task','Room-first tactics for bathing, dressing, the bathroom, and meals','The red flags in eating, toileting, and medications that mean call a professional','A tracker that turns your hard-won discoveries into the family playbook'],
+  vo:"Here's what I hope you leave this module holding. The inside view... why help with private things can feel like an attack. Hand under Hand, the gentlest way two hands ever shared a task. Room first tactics for bathing, dressing, the bathroom, and meals. The red flags that mean call a professional. And a tracker that turns your hard won discoveries into the family playbook." },
 
-{ id:'m6identity', type:'learn', kicker:'Lesson 1',
-  title:'Identity remains',
-  lead:'Dementia is hard on facts: names, dates, appointments. It is far gentler on the things that made them <em>them</em>. Tap through what tends to stay.',
+{ id:'huh', type:'steps', kicker:'From Teepa Snow&rsquo;s Positive Approach to Care&reg;',
+  title:'Hand-under-Hand&trade;',
+  lead:'The technique our caregivers use for washing, teeth, shaving, and meals, licensed, credited, and gentle enough to feel like holding hands. Because it is.',
+  steps:[
+   '<b>Offer your hand</b> the way you learned in Module 5, like a handshake, and let them take it.',
+   '<b>Slide yours underneath.</b> Their palm rests on the back of your hand, your thumb wrapped gently around theirs. From the outside it looks like affection. It is.',
+   '<b>Your hand does the guiding from below</b>, holding the washcloth, the toothbrush, the spoon, while their hand rides on top, feeling every motion as its own.',
+   '<b>Their brain reads it as &ldquo;I am doing this.&rdquo;</b> Control stays theirs; the startle and the swat never get invited.',
+   '<b>Ease off the moment they take over.</b> Some days their hand finishes the job alone. That&rsquo;s the win to chase.',
+   '<b>Where it shines:</b> face and hands washing, brushing teeth, eating when utensils get hard, shaving, hair brushing. Anywhere hands once knew the way.'],
+  vo:"Now the technique our caregivers use every day. Hand under Hand, from Teepa Snow's Positive Approach to Care. We're licensed to teach it, and it's gentle enough to feel like holding hands... because it is. Offer your hand, and let them take it. Slide yours underneath, so their palm rests on the back of your hand. Your hand guides from below... holding the washcloth, the toothbrush, the spoon... while their hand rides on top, feeling every motion as its own. Their brain reads it as... I am doing this. Control stays theirs. And ease off the moment they take over. Some days their hand finishes the job alone. That's the win to chase." },
+
+{ id:'m7bath', type:'learn', kicker:'Lesson 2',
+  title:'Bathing without the battle',
+  lead:'The bath is won or lost before the water turns on. Prepare the room, then invite the person.',
   points:[
-   '<b>Roles.</b> The mother, the foreman, the deacon, the fixer of things. Roles are worn into the hands, not just the memory.',
-   '<b>Values and faith.</b> Honesty, thrift, hospitality, prayer. The compass usually outlives the map.',
-   '<b>Humor.</b> The tease, the eye-roll, the perfectly timed &ldquo;hmph.&rdquo; Laughter is stored deep.',
-   '<b>Music.</b> Songs from their teens and twenties often stay singable after sentences are gone.',
-   '<b>Skills in the hands.</b> Kneading, sanding, shuffling cards, casting a line. The body remembers what the mind misplaces.',
-   '<b>Taste and preference.</b> The coffee order. The blue over the beige. The window seat. Still theirs.',
-   '<b>Warmth and personality.</b> The flirt still flirts. The hostess still offers you a seat. The gentle one is still gentle.'],
-  callout:'Memory is one room in the house. Identity lives in every room.',
-  vo:"Dementia is hard on facts. Names. Dates. Appointments. But it is far gentler on the things that made them... them. Roles stay. The mother. The foreman. The deacon. Values and faith stay... the compass usually outlives the map. Humor stays. Music from their teens and twenties often stays singable after sentences are gone. The hands remember kneading, and sanding, and shuffling cards. The coffee order is still the coffee order. Tap through what tends to stay. Memory is one room in the house. Identity lives in every room." },
+   '<b>Pick their best time of day</b>, and it may not be morning. An afternoon or evening wash for a slow-starter changes everything.',
+   '<b>Warm the room first.</b> Cold is half of every bath refusal. Space heater, towels from the dryer, door closed.',
+   '<b>Stage everything before she enters:</b> soap, towels, robe, fresh clothes. No leaving her wet and waiting.',
+   '<b>Protect privacy inside the help:</b> a towel over shoulders and lap while washing beneath. Covered feels safe.',
+   '<b>Her products, her ritual:</b> the lavender soap she&rsquo;s used for fifty years is a sensory door (Module 6) standing right in the soap dish.',
+   '<b>Watch the word.</b> If &ldquo;bath&rdquo; triggers the fight, retire it: &ldquo;let&rsquo;s freshen up,&rdquo; &ldquo;spa morning,&rdquo; &ldquo;warm washcloth.&rdquo;',
+   '<b>Partial counts.</b> A thorough sink wash is hygiene, not failure. And if distress climbs high, stop; today&rsquo;s battle isn&rsquo;t worth tomorrow&rsquo;s fear. For skin problems, wounds, or hygiene concerns that worry you, that&rsquo;s a call to a professional, not a harder scrub.'],
+  callout:'Two good mornings out of three beats winning the war zero times.',
+  vo:"The bath is won or lost before the water ever turns on. Pick their best time of day... and it may not be morning. Warm the room first... cold is half of every refusal. Stage everything before she enters. Protect privacy inside the help... a towel over the shoulders while you wash beneath. Covered feels safe. Use her products... that lavender soap is a sensory door standing right in the soap dish. Watch the word... if bath starts the fight, try spa morning. And hear this. Partial counts. A thorough sink wash is hygiene, not failure. Two good mornings out of three... beats winning the war zero times." },
 
-{ id:'invites', type:'reveal', kicker:'Lesson 2',
-  title:'Stop interviewing. Start inviting.',
-  lead:'Every quiz is a test they might fail. Every invitation has no wrong answer. Tap each one to make the trade.',
-  pairs:[
-   {you:'&ldquo;Who is this? Do you know who this is?&rdquo;', them:'&ldquo;Tell me about this photograph.&rdquo;'},
-   {you:'&ldquo;What year was that? Where were you living?&rdquo;', them:'&ldquo;This looks like a happy day.&rdquo;'},
-   {you:'&ldquo;Do you remember your wedding?&rdquo;', them:'&ldquo;You two look like trouble in this picture.&rdquo;'},
-   {you:'&ldquo;What was her name? You know her name.&rdquo;', them:'&ldquo;She has a kind face. Tell me about her.&rdquo;'},
-   {you:'&ldquo;What did you used to cook?&rdquo;', them:'&ldquo;What was cooking like in your family?&rdquo; or simply: &ldquo;That kitchen looks like a busy place.&rdquo;'},
-   {you:'&ldquo;Don&rsquo;t you remember the farm?&rdquo;', them:'&ldquo;You were always proud of your work. I&rsquo;d love to hear about it.&rdquo;'}],
-  callout:'The interview asks them to retrieve. The invitation lets them wander in and pick up whatever is lying around. Wandering in is the part that feels good.',
-  vo:"Every quiz is a test they might fail. Every invitation has no wrong answer. So make the trade. Instead of... who is this, do you know who this is... try... tell me about this photograph. Instead of what year was that... this looks like a happy day. Instead of don't you remember... you were always proud of your work. I'd love to hear about it. The interview asks them to retrieve. The invitation lets them wander in, and pick up whatever's lying around. Wandering in is the part that feels good." },
+{ id:'scene-spa', type:'scenequiet', kicker:'Ellen &amp; Ruth &middot; the bath, replayed',
+  scene:"Thursday, mid-morning, after coffee, Ruth&rsquo;s best hour.<br><br>The bathroom has been warm for twenty minutes. Towels from the dryer. The lavender soap. Hymns playing low on Ellen&rsquo;s phone.<br><br><em>&ldquo;Spa morning, Mama. Warm washcloth first?&rdquo;</em><br><br>Ellen offers her hand; Ruth takes it. Hand under hand, they wash her face, her arms. A towel stays over her shoulders the whole time. Somewhere in the middle, Ruth starts humming along to In the Garden.<br><br>Not a full bath. A good wash, a dry robe, and no war.",
+  after:'The room did half the work. The hymns did a quarter. Ellen&rsquo;s two hands did the rest.',
+  vo:"Thursday. Mid morning, after coffee... Ruth's best hour. The bathroom has been warm for twenty minutes. Towels from the dryer. The lavender soap. Hymns playing low. Spa morning, Mama. Warm washcloth first? Ellen offers her hand. Ruth takes it. Hand under hand, they wash her face... her arms... a towel over her shoulders the whole time. And somewhere in the middle, Ruth starts humming along... to In the Garden. Not a full bath. A good wash. A dry robe. And no war. The room did half the work. The hymns did a quarter. Ellen's two hands did the rest." },
 
-{ id:'scene-try', type:'scenequiet', kicker:'Tia tries it',
-  scene:"Next Sunday, Tia doesn&rsquo;t ask who anyone is. She turns to the kitchen photo on purpose.<br><br><em>&ldquo;That kitchen looks like a busy place.&rdquo;</em><br><br><em>&ldquo;Busy!&rdquo;</em> Opal laughs from somewhere young. <em>&ldquo;Forty pies by Friday. Apple and shoofly. The men always said they came for the sermon. They came for the pie.&rdquo;</em><br><br>Two pages later, a photograph of a lake gets nothing at all. Silence. Tia just turns the page. <em>&ldquo;Ooh, look at this hat.&rdquo;</em>",
-  after:'Some doors open. Some don&rsquo;t, today. No door is ever ruined by knocking gently.',
-  vo:"Next Sunday, Tia doesn't ask who anyone is. She turns to the kitchen photo on purpose. That kitchen looks like a busy place. Busy! Opal laughs, from somewhere young. Forty pies by Friday. Apple and shoofly. The men always said they came for the sermon... they came for the pie. Two pages later, a photograph of a lake gets nothing at all. Silence. And Tia just turns the page. Ooh, look at this hat. Some doors open. Some don't, today. No door is ever ruined by knocking gently." },
-
-{ id:'doors', type:'doors', kicker:'Lesson 3',
-  title:'Eleven doors into memory',
-  lead:'Long-term memory answers to the senses more than to questions. Tap each door to peek through it, then choose the <b>three</b> you&rsquo;ll open for your person this week.',
-  doors:[
-   {n:'Music', ex:'The songs of their teens and twenties. Build that playlist; it&rsquo;s the strongest door on this list, and it works even late in the journey.'},
-   {n:'Smell', ex:'Cinnamon. Coffee. Sawdust. Lilacs. Their old cologne or powder. Smell goes straight past the broken hallways.'},
-   {n:'Texture', ex:'A ball of dough. Sandpaper. A silk scarf. Yarn. Hands recognize what eyes may not.'},
-   {n:'Food', ex:'The taste of a church-dinner pie, a summer tomato, the family recipe made right.'},
-   {n:'Clothing', ex:'The Sunday hat. The work shirt. An apron with deep pockets. What we wore is who we were.'},
-   {n:'Tools of their trade', ex:'A level, a rolling pin, jars of buttons, a stethoscope, a tackle box. Safe versions, within reach.'},
-   {n:'Photographs', ex:'Places and doings over faces and names. Kitchens, porches, ball fields, front steps.'},
-   {n:'Nature', ex:'Birdsong, a tomato plant on the sill, wind on the porch, the dog&rsquo;s visit. Older than memory itself.'},
-   {n:'Holidays &amp; traditions', ex:'The carol, the decoration box, the recipe that only appears in December.'},
-   {n:'Familiar prayers', ex:'Words worn smooth by repetition: table grace, the 23rd Psalm, a rosary. Often intact, word for word, to the end.'},
-   {n:'Recorded voices', ex:'A grandchild&rsquo;s voicemail saved and replayed. An old home video. And going the other way: record THEM telling their stories, while the stories still tell.'}],
-  vo:"Long term memory answers to the senses more than to questions. Eleven doors. Music... the songs of their teens and twenties. Build that playlist. It's the strongest door on this list. Smell goes straight past the broken hallways... cinnamon, coffee, sawdust, their old cologne. Texture. Food. The Sunday hat. The tools of their trade. Photographs of places and doings, more than faces and names. Nature. The holiday box. Familiar prayers, worn smooth by repetition... often intact, word for word, to the very end. And recorded voices... including theirs. Record them telling their stories, while the stories still tell. Tap each door to peek through. Then pick the three you'll open this week." },
-
-{ id:'activities', type:'learn', kicker:'Lesson 4',
-  title:'Meaningful activity, not busy work',
-  lead:'The difference between an activity that lands and one that insults is simple: does it connect to who they were, and are? Match the task to the person.',
+{ id:'m7dress', type:'learn', kicker:'Lesson 3',
+  title:'Dressing',
+  lead:'Getting dressed is forty decisions wearing a shirt. Remove decisions, keep dignity.',
   points:[
-   'Folding warm towels, for the woman who kept a household humming for fifty years.',
-   'Sorting safe bolts and washers, for the machinist. Denise calls it the docket; Walter calls it work.',
-   'Seed packets and potting soil, for the gardener. A windowsill counts as an acre when it needs you.',
-   'Hymns on a Sunday morning, for the one whose faith was the spine of the week.',
-   'A baby doll, held and rocked, for someone it genuinely comforts. If it brings peace, it is not childish. It is mothering, still flowing.',
-   'Maps and postcards for the traveler. Brushing the dog. Setting the table. Kneading dough. Sorting the greeting cards. An old ball game on a quiet afternoon.',
-   'And check your assumptions at the door: plenty of men fold beautiful towels, and plenty of women want the socket set. Follow <em>their</em> history, not the catalog&rsquo;s.'],
-  callout:'Watch today&rsquo;s energy, too; the same beloved task can be too much on an amber day and perfect on an emerald one. (Remember the GEMS from Module 2: states, not stages.) For demonstrations of turning a role into an activity, Teepa Snow&rsquo;s public videos are wonderful: <a href="https://www.youtube.com/@teepasnow" target="_blank" rel="noopener" style="font-weight:700">youtube.com/@teepasnow</a>.',
-  vo:"The difference between an activity that lands and one that insults is simple. Does it connect to who they were... and are? Warm towels, for the woman who kept a household humming for fifty years. Safe bolts and washers for the machinist... Denise calls it the docket. Walter calls it work. Seed packets for the gardener. Hymns for the faithful. And yes... a baby doll, held and rocked, for someone it genuinely comforts. If it brings peace, it is not childish. It is mothering... still flowing. Check your assumptions at the door. Plenty of men fold beautiful towels. Plenty of women want the socket set. Follow their history. Not the catalog's." },
+   '<b>Two choices, laid out.</b> The Module 5 rule, now with hangers. Everything else stays in the closet, out of sight.',
+   '<b>One garment at a time,</b> handed in the order it goes on. The sequence is the hard part; you carry the sequence, she does the wearing.',
+   '<b>Budget the time.</b> Twenty unhurried minutes beat ten pressured ones, and usually finish sooner.',
+   '<b>Easier clothing, same style.</b> Elastic waists, front closures, slip-ons, bigger buttons, chosen to look like what she&rsquo;s always worn. Adaptation shouldn&rsquo;t cost identity.',
+   '<b>Her taste rules.</b> If she was never a sweatpants woman, don&rsquo;t make her one now.',
+   '<b>And let the mismatches ride.</b> Brown socks with the navy dress hurt no one. Corrections cost more than coordination is worth.'],
+  callout:'Ask the Module 5 question every time: which rung of the ladder? Maybe she needs the first button started, and can finish the rest herself.',
+  vo:"Getting dressed is forty decisions wearing a shirt. So remove decisions, and keep dignity. Two choices, laid out on hangers. One garment at a time, handed over in the order it goes on... you carry the sequence, she does the wearing. Budget the time... twenty unhurried minutes beat ten pressured ones, and usually finish sooner. Choose easier clothing that still looks like her... elastic waists and front closures, in the style she's always worn. Adaptation shouldn't cost identity. And let the mismatches ride. Brown socks with the navy dress hurt no one." },
 
-{ id:'joy', type:'learn', kicker:'Lesson 5',
-  title:'Joy counts, even when it isn&rsquo;t remembered',
-  lead:'The question every family asks, sometimes out loud: <em>&ldquo;What&rsquo;s the point, if she won&rsquo;t remember the visit?&rdquo;</em> Here is the honest answer.',
+{ id:'m7toilet', type:'learn', kicker:'Lesson 4',
+  title:'The bathroom, with dignity intact',
+  lead:'The tenderest territory in caregiving, and the one families whisper about. Plain, kind, practical:',
   points:[
-   'The moment may not be archived. The comfort was still real while it was happening. Warmth, safety, laughter, belonging: these are experienced in the present tense, which is exactly where your person lives.',
-   'A good hour is a good hour. It does not need to be remembered to have been lived.',
-   'Calm tends to carry. A peaceful, connected afternoon often flows into an easier evening, even when the afternoon itself is forgotten.',
-   'And one more truth: <b>you</b> will remember it. Half of every visit belongs to your memory. Tia will have the pie story forever.'],
-  callout:'You are not pouring water into sand. You are watering a garden that blooms in the present tense.',
-  vo:"Here's the question every family asks, sometimes out loud. What's the point, if she won't remember the visit? So let me give you the honest answer. The moment may not be archived. But the comfort was real while it was happening. Warmth. Safety. Laughter. Belonging. These are experienced in the present tense... which is exactly where your person lives. A good hour is a good hour. It doesn't need to be remembered to have been lived. And one more truth. You will remember it. Half of every visit belongs to your memory. Tia will have the pie story forever." },
+   '<b>Watch the patterns, then schedule.</b> Most bodies run on rhythms: after coffee, before bed, every couple of hours. Offer trips on the rhythm and many accidents simply stop happening.',
+   '<b>Make the bathroom findable:</b> door open or marked with a picture sign, a contrasting toilet seat (white-on-white vanishes, Module 2), and a lit path at night.',
+   '<b>Clothing that cooperates:</b> elastic waists beat buttons when the need is urgent.',
+   '<b>Zero shame, ever.</b> Accidents are the disease, not defiance and not childishness. Your calm &ldquo;let&rsquo;s get comfortable&rdquo; is the entire script; matter-of-fact is the kindest tone in the house.',
+   '<b>New or sudden changes are medical questions:</b> constipation, infection (yes, the famous UTI), a new medication, or mobility trouble are all treatable suspects. Call the provider.',
+   '<b>Protect your own back too:</b> if physical help with toileting is getting hard, that&rsquo;s a real signal, and Module 8 is about answering it.'],
+  callout:'The person who once cleaned you up as a baby kept your dignity intact. This is that, returned.',
+  vo:"The tenderest territory in caregiving... and the one families whisper about. So let's be plain and kind. Watch the patterns, then schedule... after coffee, before bed, every couple of hours. Offer the trip on the rhythm, and many accidents simply stop happening. Make the bathroom findable... a picture on the door, a contrasting seat, a lit path at night. Clothing that cooperates. And zero shame. Ever. Accidents are the disease... not defiance, not childishness. Matter of fact is the kindest tone in the house. New or sudden changes are medical questions... constipation, infection, a new medication. And if the physical help is getting hard on your body... that's a real signal too. Module Eight is about answering it." },
 
-{ id:'buildA', type:'build', step:0, kicker:'Build their story &middot; 1 of 4', title:'The person',
-  lead:'Now we build the keepsake. Everything is optional; skip anything, and it all stays on your device until you choose to print it.',
-  fields:[
-   {k:'name', input:true, label:'What they like to be called', ph:'Opal · Miss Opal · Grandma O'},
-   {k:'childhood', label:'Where they come from', ph:'A farm outside Ava, Missouri. One of six kids.'},
-   {k:'people', label:'The important people', ph:'Husband Earl (passed 2011). Daughters Ruth Ann and Kaye. Granddaughter Tia, the one with the curls.'},
-   {k:'pets', label:'Pets, past and present', ph:'Barn cats always. A beagle named Duke she still asks about.'}],
-  vo:"Now we build the keepsake. This is the page that travels with them... to respite workers, to the hospital, to anyone who ever cares for them. Four gentle steps. Everything is optional. Skip anything. It all stays on your device until you choose to print it. Start with the person. What they like to be called. Where they come from. Their people. Their pets." },
+{ id:'m7eat', type:'learn', kicker:'Lesson 5',
+  title:'Meals and hydration',
+  lead:'When eating falters, look at the table before you worry about the appetite.',
+  points:[
+   '<b>Quiet the room.</b> TV off, table cleared of everything but the meal. A busy table is a busy brain.',
+   '<b>Contrast makes food visible:</b> mashed potatoes vanish on a white plate. A colored plate can raise eating all by itself.',
+   '<b>Smaller servings, familiar foods.</b> A full plate can overwhelm; the childhood favorites usually land. One dish at a time if a full setting confuses.',
+   '<b>Finger foods are freedom</b> when utensils turn strange: sandwiches cut small, cheese, fruit slices, chicken strips. Eating with hands is independence, not regression.',
+   '<b>Hunt the hidden culprits:</b> dentures that hurt, a sore mouth, fatigue at day&rsquo;s end, or simply needing Hand-under-Hand&trade; to restart the fork.',
+   '<b>Never force food. And know the red flags:</b> choking, coughing during meals, food pocketed in the cheek, notable weight loss, any swallowing concern, these go to the provider or a swallowing specialist, promptly. Not one of them is a push-harder problem.'],
+  callout:'Sips count all day: small glasses, favorite cups, water she can see. Dehydration is the quiet troublemaker behind many bad afternoons (and Module 2&rsquo;s delirium alarm).',
+  vo:"When eating falters, look at the table before you worry about the appetite. Quiet the room... TV off. Contrast makes food visible... mashed potatoes vanish on a white plate. A colored plate can raise eating all by itself. Smaller servings. Familiar foods. Finger foods when utensils turn strange... eating with hands is independence, not regression. Hunt the hidden culprits... dentures that hurt, a sore mouth, or simply needing hand under hand to restart the fork. And never force food. Know the red flags. Choking. Coughing during meals. Weight loss. Any swallowing concern. Those go to the provider, promptly. Not one of them is a push harder problem." },
 
-{ id:'buildB', type:'build', step:1, kicker:'Build their story &middot; 2 of 4', title:'The life',
-  fields:[
-   {k:'work', label:'Their work', ph:'School cook for 30 years, and the unofficial pie supplier for three churches.'},
-   {k:'military', label:'Military service, if any', ph:'Earl was Army. She ran the house and the victory garden.'},
-   {k:'faith', label:'Faith or traditions they hold', ph:'Baptist. Knows every hymn by heart. Table grace before meals matters.'},
-   {k:'accomplishments', label:'What they&rsquo;re proud of', ph:'Fed every funeral in the county. Quilt won the fair, 1987.'},
-   {k:'roles', label:'The roles that made them', ph:'The feeder of everyone. The one you called first.'}],
-  vo:"Step two. The life. Their work. Their service, if any. The faith or traditions they hold. What they're proud of. And the roles that made them... the feeder of everyone. The fixer of things. The one you called first." },
+{ id:'m7meds', type:'learn', kicker:'Lesson 6',
+  title:'Medication safety, the family&rsquo;s part',
+  lead:'On purpose, this course teaches none of the medical decisions. Here is the part that <em>is</em> yours:',
+  points:[
+   '<b>The prescriber&rsquo;s instructions are the law of the land.</b> Timing, dose, with-food rules: follow them exactly, and ask when anything is unclear.',
+   '<b>One organized system:</b> a weekly pill organizer, filled the same day each week, by the same person, double-checked once. Most medication errors are organization errors.',
+   '<b>Secured storage.</b> As judgment fades, yesterday&rsquo;s capable hands can double-dose or wander into the cabinet. Locked or well out of reach protects the person they&rsquo;ve been.',
+   '<b>Never crush, split, or hide medication in food without professional approval.</b> Some pills become dangerous when crushed. If swallowing pills is the battle, the pharmacist likely has another form, ask.',
+   '<b>Report what you see:</b> missed doses, new dizziness, sudden changes after a medication switch (Module 2&rsquo;s alarm again). You are the eyes the care team doesn&rsquo;t have.',
+   '<b>The pharmacist is free expertise.</b> Interactions, timing, easier forms, blister packing: one phone call, no appointment. The most underused professional in dementia care.'],
+  callout:'When in doubt about anything medication-shaped, the answer is always a professional&rsquo;s phone number, never a guess.',
+  vo:"On purpose, this course teaches none of the medical decisions. But here's the part that is yours. The prescriber's instructions are the law of the land. One organized system... a weekly pill organizer, filled the same day each week, by the same person. Most medication errors are organization errors. Secured storage, as judgment fades. Never crush, split, or hide medication in food without professional approval... some pills become dangerous when crushed. If swallowing pills is the battle, the pharmacist likely has another form. Report what you see... you are the eyes the care team doesn't have. And when in doubt about anything medication shaped... the answer is always a professional's phone number. Never a guess." },
 
-{ id:'buildC', type:'build', step:2, kicker:'Build their story &middot; 3 of 4', title:'The joys',
-  fields:[
-   {k:'music', label:'Their music', ph:'Patsy Cline. Hank Williams. Church hymns, especially In the Garden.'},
-   {k:'foods', label:'Foods they love', ph:'Peach pie. Tomatoes with salt. Coffee, cream, no sugar, in a real cup.'},
-   {k:'hobbies', label:'Hobbies and pleasures', ph:'Quilting, birdwatching, tending violets on the sill.'},
-   {k:'sayings', label:'Things they always say', ph:'&ldquo;Many hands make light work.&rdquo; &ldquo;Well, bless your heart.&rdquo;'},
-   {k:'traditions', label:'Family traditions', ph:'Shoofly pie at Christmas. Porch sitting after supper.'}],
-  vo:"Step three. The joys. Their music... be specific, the singer and the song. The foods they love, right down to how they take their coffee. Hobbies and pleasures. The things they always say. And the family traditions... shoofly pie at Christmas. Porch sitting after supper. These are the doors, written down." },
+{ id:'easier', type:'easier', kicker:'Practice',
+  title:'What might make this easier?',
+  lead:'Four kitchen-table scenarios. Tap every change you&rsquo;d try, environment or words, then see the coaching. Most good answers are combinations.',
+  items:[
+   { say:'Mom fights the morning bath, every single morning.',
+     chips:['Warm the room 20 minutes early','Try afternoon instead','Call it a &ldquo;spa morning&rdquo;','Stage towels &amp; soap first','Insist firmly; hygiene matters','Use her own lavender soap'],
+     coach:'Five of those six are levers, and the sleeper hit is <b>try afternoon</b>: &ldquo;every single morning&rdquo; may just mean mornings are wrong. The one that never helps is insisting; firmness reads as force in a scene her brain can&rsquo;t explain. And remember: if today collapses anyway, a sink wash is hygiene too.' },
+   { say:'The shirt battle: buttons abandoned halfway, frustration rising.',
+     chips:['Two shirts, everything else hidden','Start the first button, hand it over','Bigger buttons or a zip pull','Point out the mismatched socks','Budget 15 unhurried minutes','One garment at a time'],
+     coach:'Everything helps except the socks, let them ride, forever. The elegant move is <b>start the first button, hand it over</b>: that&rsquo;s the cueing ladder&rsquo;s top rung, doing only the part she can&rsquo;t. Finishing the rest herself is the whole victory.' },
+   { say:'Dinner untouched again. Third night this week.',
+     chips:['Swap to a colored plate','TV off, table cleared','Smaller portion','Switch to finger foods','Coax: &ldquo;three more bites for me&rdquo;','Check dentures &amp; mouth pain'],
+     coach:'The plate, the quiet, the portion, the finger foods, and especially the <b>dentures check</b>, sore mouths sink more dinners than lost appetites do. Coaxing bites is the one to drop: pressure at the table builds resistance that outlasts the meal. Three nights running also earns a weight-and-provider check.' },
+   { say:'Nighttime accidents started this month.',
+     chips:['Scheduled bathroom trip at bedtime','Night-light path + picture on the door','Easy pajama bottoms','A gentle talking-to about trying harder','Ease evening fluids (not daytime!)','Tell the provider it&rsquo;s new'],
+     coach:'Schedule, light, clothing, and easing <b>evening</b> fluids (never daytime, dehydration causes worse problems) all help. The talking-to never does: the lesson can&rsquo;t be stored, but the shame can. And &ldquo;started this month&rdquo; is the key phrase: <b>new means call</b>, a urinary infection or medication change is very possibly the whole story.' }],
+  vo:"Four kitchen table scenarios. For each one, tap every change you'd try... the room, the timing, the words. Then look at the coaching. You'll notice a pattern. Most good answers are combinations... and the one option that never helps is the one with pressure in it." },
 
-{ id:'buildD', type:'build', step:3, kicker:'Build their story &middot; 4 of 4', title:'The care notes',
-  fields:[
-   {k:'comforts', label:'What brings comfort', ph:'Holding a warm mug. Hymns low on the radio. Duke stories. Hand cream, rubbed in slow.'},
-   {k:'distress', label:'What causes distress (please avoid)', ph:'Being rushed. Loud TV. Talk of selling the farm. Being called &ldquo;sweetie&rdquo; by strangers.'}],
-  vo:"Last step, and for the people who will care for them someday, the most important one. What brings comfort... and what causes distress. The warm mug. The hymns turned low. And on the other side... being rushed. The loud TV. Being called sweetie by strangers. Write these down, and every future caregiver starts where you are now... instead of learning it the hard way." },
-
-{ id:'keepsake', type:'keepsake', kicker:'Your keepsake',
-  title:'This Is Who I Am',
-  vo:"And here it is. Their story. One page. Look at what you just made... not a chart, not a care file. A person. Print it. Make copies. Give one to every family member, every respite worker, every hospital nurse who will ever meet them. In Module Nine, we'll tuck one into the hospital go bag. This page does quiet, powerful work... it makes strangers gentle. Because it's very hard to rush a woman once you know about the forty pies." },
-
-{ id:'check', type:'check', kicker:'A gentle check, not a test',
-  title:'The pie story changes',
-  intro:'Today Opal tells the pie story, but says it happened in her sister&rsquo;s kitchen, and that her sister crimped every crust. Tia knows that&rsquo;s backwards. What&rsquo;s the kind move?',
+{ id:'check', type:'check', kicker:'The safety-critical check',
+  title:'Coughing at meals',
+  intro:'This week Ruth has coughed hard during two different meals, and refused lunch twice. Ellen&rsquo;s instinct is to switch to soups and carry on. What&rsquo;s actually the right move?',
   options:[
-   { label:'Let the story be hers today. &ldquo;She must have loved baking with you.&rdquo;', coach:'Yes. The story&rsquo;s facts drifted; its heart, pies, sisterhood, being the woman who fed everyone, is perfectly intact. Stories don&rsquo;t need fact-checking to be true about who someone is. Tia&rsquo;s correction would win the point and lose the afternoon.' },
-   { label:'Gently correct the record: &ldquo;No Grandma, it was YOUR kitchen.&rdquo;', coach:'A loving impulse, guarding her history for her. But Module 3&rsquo;s rule holds even for happy memories: the correction asks her brain for the one thing it can&rsquo;t do, and may swap her pleasure for embarrassment. The story is hers to bake in whichever kitchen it lands today.' },
-   { label:'Quiz her toward accuracy: &ldquo;Think, whose kitchen had the yellow curtains?&rdquo;', coach:'This one turns a warm memory back into a test, and the module&rsquo;s whole trade was interviews out, invitations in. When details drift, follow the feeling, not the facts. The curtains can be any color the joy needs.' },
-   { label:'Change the subject before she embarrasses herself.', coach:'Kindly meant, but no rescue is needed: she isn&rsquo;t embarrassed, she&rsquo;s delighted. The wrong-kitchen version of the story is doing everything a story is supposed to do. Pull up a chair and ask about the shoofly.' }],
-  vo:"Today, Opal tells the pie story... but says it happened in her sister's kitchen, and that her sister crimped every crust. Tia knows that's backwards. What's the kind move? You already know. Trust it." },
+   { label:'Soft foods and soups for a while. Problem solved.', coach:'The instinct is sensible, and it may even be part of the eventual plan. But choosing it <b>yourself</b> skips the crucial step: coughing at meals is a swallowing red flag, and swallowing trouble can quietly send food toward the lungs. The provider decides what texture is safe, after they&rsquo;ve looked. Kind idea; wrong sequence.' },
+   { label:'Call the provider today and say: &ldquo;new coughing during meals, twice this week.&rdquo;', coach:'Yes. That sentence gets attention fast, because clinicians know what families often don&rsquo;t: mealtime coughing can mean food and liquid are heading the wrong way, which can lead to pneumonia. A swallowing evaluation is quick and painless, and it comes back with a safe plan, textures, positioning, pacing, built by people trained for exactly this.' },
+   { label:'Smaller bites, and remind her to chew thoroughly.', coach:'Gentler pacing rarely hurts, but reminders can&rsquo;t fix a swallowing mechanism, and &ldquo;chew thoroughly&rdquo; is exactly the kind of instruction that no longer stores. The real move is the phone call; the coughing has already earned it.' },
+   { label:'Thicken her drinks; that&rsquo;s what they do in facilities.', coach:'You&rsquo;ve seen the thickened cups somewhere, and here&rsquo;s the catch: thickening is a prescribed treatment, matched to a specific swallowing evaluation. The wrong thickness can make things worse, and it&rsquo;s miserable to drink besides. Facilities do it <b>after</b> the evaluation. That&rsquo;s the step to copy.' }],
+  vo:"This week, Ruth has coughed hard during two different meals... and refused lunch twice. Ellen's instinct is to switch to soups and carry on. What's actually the right move? This is the safety critical check of the module. Take your time." },
 
 { id:'reflect', type:'reflect', kicker:'Just between you and this page',
-  title:'What did they love, that nobody has offered them lately?',
-  lead:'The fishing pole. The hymnal. The deck of cards. The Patsy Cline record. Name one, and name the day this week you&rsquo;ll bring it to them.',
-  vo:"Just between you and this page. What did they love... that nobody has offered them lately? The fishing pole. The hymnal. The deck of cards. The Patsy Cline record. Name one. And name the day this week you'll bring it to them. That's the whole assignment. It might be the best one in this course." },
+  title:'Which task costs you both the most?',
+  lead:'The bath? The buttons? The dinner table? Name it, and name one thing from today, about the room, the timing, or the words, that you&rsquo;ll change before the next attempt. Rooms are easier to change than people. Start with the room.',
+  vo:"Just between you and this page. Which task costs you both the most? The bath. The buttons. The dinner table. Name it. And name one thing from today... about the room, the timing, or the words... that you'll change before the next attempt. Rooms are easier to change than people. Start with the room." },
 
 { id:'download', type:'download', kicker:'A tool for you',
-  title:'100 Story Prompts',
-  lead:'A hundred invitations, zero interviews: childhood, work, love, food, holidays, music, faith, travel, and everyday life. For visits, for car rides, for the family member who says &ldquo;I never know what to talk about with her anymore.&rdquo;',
-  vo:"Your download for this module is a hundred story prompts. A hundred invitations. Zero interviews. Organized by childhood, work, love, food, holidays, music, faith, travel... and everyday life. Print it for the family member who says... I never know what to talk to her about anymore. Now they do. They have a hundred of them." },
+  title:'The Daily Routine &amp; Trigger Tracker',
+  lead:'A one-page grid for the family playbook: each daily task, its best time, what helps, and what makes it harder. Two weeks of honest entries and you&rsquo;ll know things about your person&rsquo;s rhythms that no doctor could tell you.',
+  vo:"Your tool for this module is the family playbook. One page. Each daily task... its best time... what helps... what makes it harder. Fill it in for two weeks and you'll know things about your person's rhythms that no doctor could tell you. And then... every sibling, every respite worker, every helper starts from your discoveries. Instead of starting the war over from scratch." },
 
 { id:'summary', type:'summary', kicker:'What&rsquo;s true now',
   title:'If you keep only four things from today',
-  truths:['A person is more than what they can remember today. Identity lives in every room.','Invitations open what interviews lock. Retire the quiz forever.','The senses are doors: music first, and record their voice while the stories still tell.','Joy counts in the present tense. A good hour is a good hour, remembered or not.'],
-  extra:'And the keepsake you built today will someday make a stranger gentle with the person you love. That may be the most important thing this course ever helps you do.',
-  vo:"If you keep only four things from today, keep these. A person is more than what they can remember today. Invitations open what interviews lock. The senses are doors... music first, and record their voice while the stories still tell. And joy counts in the present tense. A good hour is a good hour... remembered or not. One more thing. The keepsake you built today will someday make a stranger gentle with the person you love. That may be the most important thing this course ever helps you do." },
+  truths:['Resistance is dignity defending itself. Make defense unnecessary.','Prepare the room before you invite the person. Warmth, quiet, contrast, and staging do half the work.','Hands under, never over. Their hand on top means the doing stays theirs.','Know the call-a-professional flags: coughing at meals, weight loss, sudden bathroom changes, anything medication-shaped.'],
+  extra:'And on the days when the bath still doesn&rsquo;t happen, a sink wash, a dry robe, and an unbroken relationship is a caregiving triumph. Write it in the tracker as a win, because it is one.',
+  vo:"If you keep only four things from today, keep these. Resistance is dignity defending itself... make defense unnecessary. Prepare the room before you invite the person. Hands under, never over. And know the call a professional flags... coughing at meals, weight loss, sudden bathroom changes, anything medication shaped. On the days the bath still doesn't happen... a sink wash, a dry robe, and an unbroken relationship is a caregiving triumph. Write it down as a win. Because it is one." },
 
 { id:'done', type:'done',
-  vo:"Last Sunday, Tia set her phone on the arm of the sofa and pressed record before she opened the album. She has the pie story now... in Opal's own voice, with the laugh in the middle where the sister ruins another crust. Forty seconds long. Hers forever. Thank you for walking the beautiful road with me. Module Seven is next... Daily Care Without the Battle. Bathing, dressing, and mealtimes with dignity, including Teepa Snow's Hand under Hand technique. Until then... open one door this week. And be gentle with yourself." },
+  vo:"Spa mornings are Tuesdays and Thursdays now. Ruth hums through most of them. Ellen keeps the lavender soap stocked like it's medicine... because honestly, it is. Thank you for spending this time. Module Eight is next, and I want to be straight with you about it. It's not about the person you care for. It's about you. Burnout. Asking for help. The family members who don't get it. And what to do when love alone stops being enough hands. It's the module I most hope you won't skip. Until then... change one room before you change one person. And be gentle with yourself." },
 ];
 
 var BREATHE_VO = "Let's take a moment, together. Put both feet on the floor. Relax your shoulders... they've been up near your ears all day. Take one slow breath in... and let it out even slower. Now say to yourself... I am doing something difficult. Because you are. Continue whenever you're ready. There is no hurry here.";
@@ -523,11 +525,11 @@ var renderers = {
 
 landing: function(){
   stage.innerHTML = '<div class="dj-card dj-cine">' + (
-    '<p class="dj-kicker">The Dementia Journey &middot; Module 6 of 9</p>'
-    +'<h1 class="dj-title">The Stories That Still Exist</h1>'
-    +'<p class="dj-quiet">A person is more than what they can remember today.</p>'
-    +'<p class="dj-lead">Every module so far has been about problems. This one is about treasure: identity, music, photographs, and the meaningful moments still waiting behind the right doors. About 31 minutes, self-paced, and you&rsquo;ll leave with something you can hold.</p>'
-    +'<div class="dj-callout"><p>By the end you&rsquo;ll have built <b>&ldquo;This Is Who I Am&rdquo;</b>: your person&rsquo;s story on one page, ready to share with family, respite workers, hospital staff, anyone who will ever care for them.</p></div>'
+    '<p class="dj-kicker">The Dementia Journey &middot; Module 7 of 9</p>'
+    +'<h1 class="dj-title">Daily Care Without the Battle</h1>'
+    +'<p class="dj-quiet">This is not a nursing course. It&rsquo;s a dignity course.</p>'
+    +'<p class="dj-lead">Bathing, dressing, the bathroom, meals, and medications: the daily ground where love and resistance collide. About 27 minutes, self-paced, with Ellen and Ruth walking it beside you.</p>'
+    +'<div class="dj-callout"><p>Inside: <b>Hand-under-Hand&trade;</b> from Teepa Snow&rsquo;s Positive Approach to Care&reg; (licensed). And one boundary we hold throughout: truly clinical skills, wounds, lifting, transfers, swallowing plans, deserve in-person professional instruction, and this module will always say so.</p></div>'
     +'<button class="dj-next soft" id="hearBtn" style="margin-top:20px">&#9654;&nbsp; Hear Samantha&rsquo;s welcome</button>'
     +nextBtn('Begin')) + '</div>';
   el('hearBtn').addEventListener('click', function(){ speak(SCREENS[0].vo); });
@@ -541,93 +543,27 @@ scene: function(s){
   wireNext();
 },
 
-reveal: function(s){
-  stage.innerHTML = card(head(s)
-    + s.pairs.map(function(p,i){ return '<div class="dj-reveal" data-i="'+i+'" role="button" tabindex="0"><p class="you"><b>Instead of:</b> '+p.you+'</p><p class="them"><b>Try:</b> '+p.them+'</p></div>'; }).join('')
-    + callout(s)
-    + '<div style="margin-top:14px">'+saveBtnHtml('invites','Save the invitations')+'</div>'
-    + nextBtn());
-  stage.querySelectorAll('.dj-reveal').forEach(function(r){
-    var open=function(){ r.classList.add('open'); };
-    r.addEventListener('click',open);
-    r.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} });
-  });
-  wireSaves(); wireNext();
-},
-
-doors: function(s){
-  var mine={};
-  stage.innerHTML = card(head(s)
-    + '<div class="dj-doors">'+s.doors.map(function(d,i){ return '<div class="dj-door" data-i="'+i+'" role="button" tabindex="0"><p class="n">'+d.n+'</p><p class="ex">'+d.ex+'</p><p class="pickme" data-pick="'+i+'">&#9825; open this one this week</p></div>'; }).join('')+'</div>'
-    + '<p class="dj-quiet" id="doorsMsg" style="margin-top:16px;opacity:0;transition:opacity .8s ease">Three doors chosen. That&rsquo;s a week of visits transformed.</p>'
-    + nextBtn());
-  stage.querySelectorAll('.dj-door').forEach(function(d){
-    d.addEventListener('click',function(e){
-      if (e.target.dataset && e.target.dataset.pick!==undefined){
-        var i=+e.target.dataset.pick;
-        mine[i]=!mine[i];
-        d.classList.toggle('mine',mine[i]);
-        e.target.innerHTML = mine[i] ? '&#10084; opening this week' : '&#9825; open this one this week';
-        var n=Object.values(mine).filter(Boolean).length;
-        el('doorsMsg').style.opacity = n>=3 ? 1 : 0;
-        try { localStorage.setItem('dj_doors', JSON.stringify(Object.keys(mine).filter(function(k){return mine[k];}).map(function(k){ return s.doors[+k].n; }))); } catch(err){}
-        return;
-      }
-      d.classList.add('open');
-    });
-  });
-  wireNext();
-},
-
-build: function(s){
-  var W={}; try { W=JSON.parse(localStorage.getItem('dj_whoiam')||'{}'); } catch(e){}
-  stage.innerHTML = card(head(s)
-    + s.fields.map(function(f){
-        return '<div class="dj-bfield"><label>'+f.label+'</label>'
-          + (f.input ? '<input id="bf-'+f.k+'" type="text" placeholder="'+f.ph+'">' : '<textarea id="bf-'+f.k+'" placeholder="'+f.ph+'"></textarea>')
-          + '</div>';
-      }).join('')
-    + '<p style="font-size:12.5px;color:#9aa69e;margin:4px 0 0">Optional, private, saved on this device as you type.</p>'
-    + nextBtn(s.step===3 ? 'Show me the keepsake' : 'Continue'));
-  s.fields.forEach(function(f){
-    var elx=el('bf-'+f.k);
-    elx.value=W[f.k]||'';
-    elx.addEventListener('input',function(){
-      W[f.k]=elx.value;
-      try { localStorage.setItem('dj_whoiam', JSON.stringify(W)); } catch(e){}
-    });
-  });
-  wireNext();
-},
-
-keepsake: function(s){
-  var W={}; try { W=JSON.parse(localStorage.getItem('dj_whoiam')||'{}'); } catch(e){}
-  function sec(label, txt){ return txt ? '<div class="sec"><b>'+label+'</b><p>'+txt.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</p></div>' : ''; }
-  var any = Object.values(W).some(function(v){ return v && v.trim(); });
-  var inner;
-  if (any){
-    inner = '<div class="dj-keep">'
-      + '<h2 class="nm">'+((W.name||'This is who I am').replace(/</g,'&lt;'))+'</h2>'
-      + '<p class="sub">This is who I am &middot; please care for me like you know me</p>'
-      + sec('I come from', W.childhood)
-      + sec('My people', [W.people,W.pets].filter(Boolean).join(' · '))
-      + sec('My life&rsquo;s work', [W.work,W.military,W.accomplishments,W.roles].filter(Boolean).join(' · '))
-      + sec('What I hold sacred', W.faith)
-      + sec('What I love', [W.music,W.foods,W.hobbies,W.traditions].filter(Boolean).join(' · '))
-      + sec('I often say', W.sayings)
-      + sec('I find comfort in', W.comforts)
-      + sec('Please avoid', W.distress)
-      + '</div>';
-  } else {
-    inner = '<p class="dj-lead">You skipped the builder, and that&rsquo;s completely fine. The blank version prints beautifully for filling in by hand, at the kitchen table, maybe even together.</p>';
+easier: function(s){
+  var si=0;
+  function draw(){
+    var it=s.items[si];
+    stage.innerHTML = card(head(s)
+      + '<p style="font-size:12px;font-weight:700;color:#a99f89;margin:0 0 10px">'+(si+1)+' of '+s.items.length+'</p>'
+      + '<div class="dj-stmt"><p>'+it.say+'</p></div>'
+      + '<p style="font-size:13px;font-weight:600;color:#55677a;margin:0 0 10px">Tap every change you&rsquo;d try:</p>'
+      + '<div>'+it.chips.map(function(c,i){ return '<button type="button" class="dj-chip" data-i="'+i+'">'+c+'</button>'; }).join('')+'</div>'
+      + '<button class="dj-next soft" id="peek" style="margin-top:8px">Show the coaching</button>'
+      + '<div class="dj-under" id="underOut"><p>'+it.coach+'</p></div>'
+      + (si < s.items.length-1 ? '<button class="dj-next" id="nextStmt">Next scenario</button>' : nextBtn('Continue'))
+    );
+    stage.querySelectorAll('.dj-chip').forEach(function(c){ c.addEventListener('click',function(){ c.classList.toggle('sel'); }); });
+    el('peek').addEventListener('click',function(){ el('underOut').classList.add('show'); this.style.display='none'; });
+    if (si < s.items.length-1) el('nextStmt').addEventListener('click',function(){ si++; draw(); window.scrollTo({top:0,behavior:'smooth'}); });
+    else wireNext();
   }
-  stage.innerHTML = card(head(s)
-    + inner
-    + '<a class="dj-next" style="text-decoration:none;text-align:center;display:block" href="/dementia-journey/resources/this-is-who-i-am.html" target="_blank" rel="noopener">Open my printable page</a>'
-    + '<p style="font-size:13px;line-height:1.6;color:#55677a;margin:12px 0 0;text-align:center">Print copies for family, respite workers, and the hospital go-bag (Module 9 will ask for one). It makes strangers gentle.</p>'
-    + nextBtn());
-  wireNext();
+  draw();
 },
+
 
 
 check: function(s){
@@ -652,8 +588,8 @@ reflect: function(s){
     + '<p style="font-size:12.5px;color:#9aa69e;margin:10px 0 0">Saved only on this device. Skip freely; thinking it counts too.</p>'
     + nextBtn());
   var ta=el('reflectTa');
-  try { ta.value=localStorage.getItem('dj_m6_reflect')||''; } catch(e){}
-  ta.addEventListener('input',function(){ try { localStorage.setItem('dj_m6_reflect',ta.value); } catch(e){} });
+  try { ta.value=localStorage.getItem('dj_m7_reflect')||''; } catch(e){}
+  ta.addEventListener('input',function(){ try { localStorage.setItem('dj_m7_reflect',ta.value); } catch(e){} });
   wireNext();
 },
 
@@ -671,37 +607,38 @@ summary: function(s){
   stage.innerHTML = card(head(s)
     + s.truths.map(function(t){ return '<div class="dj-summary"><p>'+t+'</p></div>'; }).join('')
     + '<p class="dj-quiet" style="margin-top:16px">'+s.extra+'</p>'
-    + '<div style="margin-top:6px">'+saveBtnHtml('truths6','Save these four truths')+'</div>'
+    + '<div style="margin-top:6px">'+saveBtnHtml('truths7','Save these four truths')+'</div>'
     + nextBtn('Finish Module 3'));
   wireSaves(); wireNext();
 },
 
 done: function(){
   stage.innerHTML = card(
-    '<div class="dj-scene"><p class="who">Tia &amp; Opal, last Sunday</p><p>Tia set her phone on the arm of the sofa and pressed record before she opened the album.<br><br>She has the pie story now, in Opal&rsquo;s own voice, with the laugh in the middle where the sister ruins another crust.<br><br>Forty seconds long. Hers forever.</p></div>'
-    +'<p class="dj-kicker" style="text-align:center">Module 6 complete</p>'
-    +'<h1 class="dj-title" style="text-align:center">You walked the beautiful road.</h1>'
-    +'<p class="dj-lead" style="text-align:center">Module 7, <em>Daily Care Without the Battle</em>, brings the craft to bathing, dressing, and mealtimes, with dignity, and with Teepa Snow&rsquo;s Hand-under-Hand&trade;.</p>'
+    '<div class="dj-scene"><p class="who">Ellen &amp; Ruth, these days</p><p>Spa mornings are Tuesdays and Thursdays now. Ruth hums through most of them.<br><br>Ellen keeps the lavender soap stocked like it&rsquo;s medicine.<br><br>Because honestly, it is.</p></div>'
+    +'<p class="dj-kicker" style="text-align:center">Module 7 complete</p>'
+    +'<h1 class="dj-title" style="text-align:center">The battles are optional. You just proved it.</h1>'
+    +'<p class="dj-lead" style="text-align:center">Module 8, <em>Caregiver Burnout and Accepting Help</em>, is not about the person you care for. It&rsquo;s about you. It&rsquo;s the module we most hope you won&rsquo;t skip.</p>'
     +'<div style="background:#f7f2e6;border-radius:14px;padding:18px;margin:6px 0 16px">'
-    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">Want Module 7 the day it opens?</p>'
+    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">Want Module 8 the day it opens?</p>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px">'
     +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:170px;padding:12px 14px;font-size:14px;border:1.5px solid #ddd3ba;border-radius:9px;font-family:inherit;background:#fff">'
     +'<button type="button" id="dj-notify" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Tell me</button></div>'
-    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>You&rsquo;re on the list. Open one door this week.</p></div>'
+    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>You&rsquo;re on the list. Change one room this week.</p></div>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">'
-    +'<a href="/dementia-journey/resources/this-is-who-i-am.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">This Is Who I Am</a>'
-    +'<a href="/dementia-journey/resources/story-prompts.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">100 story prompts</a>'
+    +'<a href="/dementia-journey/resources/daily-routine-tracker.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My routine tracker</a>'
+    +'<button class="dj-next soft" style="width:auto" id="donePlan">My care plan</button>'
     +'<a href="/dementia-journey/" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">Course home</a>'
     +'</div>');
+  el('donePlan').addEventListener('click',function(){ loadPlan(); djOpen('planModal'); });
   el('dj-notify').addEventListener('click',function(){
     var em=el('dj-email').value.trim();
     if(!em||em.indexOf('@')<0) return;
     var btn=el('dj-notify'); btn.disabled=true;
-    if(window.CCForms) CCForms.submitLead({ name:'(Dementia Journey, finished Module 6)', email:em, message:'Completed The Dementia Journey Module 6 (The Stories That Still Exist) and wants Module 7 at launch.' })
+    if(window.CCForms) CCForms.submitLead({ name:'(Dementia Journey, finished Module 7)', email:em, message:'Completed The Dementia Journey Module 7 (Daily Care Without the Battle) and wants Module 8 at launch.' })
       .then(function(){ el('dj-sent').hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });
-  if (window.CCTrack) CCTrack('dj_module6_complete');
+  if (window.CCTrack) CCTrack('dj_module7_complete');
 }
 };
 
@@ -712,7 +649,7 @@ function wireNext(){
 function show(){
   var s=SCREENS[idx];
   el('bar').style.width = Math.round(((idx+1)/SCREENS.length)*100)+'%';
-  el('count').textContent = 'Module 6 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
+  el('count').textContent = 'Module 7 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
   renderers[s.type](s);
   window.scrollTo({ top:0, behavior:'smooth' });
   if (idx > 0) speak(s.vo);
