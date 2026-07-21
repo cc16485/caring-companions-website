@@ -3,44 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Family Academy | Caring Companions</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
-<style>
-.fa-hero { max-width: 820px; margin: 0 auto; padding: 64px 24px 24px; text-align: center; }
-.fa-h1 { font-family: var(--serif); font-size: 36px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
-.fa-course { max-width: 1080px; margin: 0 auto; padding: 36px 24px 80px; }
-.fa-cert { max-width: 640px; margin: 0 auto; padding: 64px 24px 80px; }
-.fa-course-grid { display: grid; grid-template-columns: 260px 1fr; gap: 28px; align-items: start; }
-.fa-hide-mobile { display: inline; }
-@media (max-width: 1039px) { .fa-course-grid { grid-template-columns: 220px 1fr; } }
-@media (max-width: 719px) {
-  .fa-hero { padding: 40px 20px 20px; }
-  .fa-h1 { font-size: 27px; }
-  .fa-course { padding: 24px 20px 60px; }
-  .fa-cert { padding: 40px 20px 60px; }
-  .fa-course-grid { grid-template-columns: 1fr; }
-  .fa-hide-mobile { display: none; }
-}
-@media print { .no-print { display: none !important; } }
-</style>
+<title>Family Care Academy | Free Caregiver Training for Families | Caring Companions</title>
+<meta name="description" content="Free, plain-language caregiver training for families, built from the same curriculum we use to train our professional caregivers. Start with the dementia care course.">
 <link rel="canonical" href="https://mo-care.com/family-academy.html">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="Short, structured courses built from our Resource Library, for families who want more than one article can cover.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
-<meta property="og:title" content="Family Academy | Caring Companions">
-<meta property="og:description" content="Short, structured courses built from our Resource Library, for families who want more than one article can cover.">
+<meta property="og:title" content="Family Care Academy | Free Caregiver Training for Families">
+<meta property="og:description" content="The same training we give our professional caregivers, rebuilt in plain language for families. Free, no sign-up.">
 <meta property="og:url" content="https://mo-care.com/family-academy.html">
-<meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
+<meta property="og:image" content="https://mo-care.com/assets/photos/helping-dress.webp">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Caring for a Loved One with Dementia","description":"A free six-lesson course for family caregivers, adapted from Caring Companions' professional dementia training.","provider":{"@type":"Organization","name":"Caring Companions In-Home Senior Care","sameAs":"https://mo-care.com"},"isAccessibleForFree":true,"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT1H"}}</script>
+<style>
+.fa-hero { max-width: 820px; margin: 0 auto; padding: 56px 24px 14px; text-align: center; }
+.fa-h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
+.fa-why { max-width: 940px; margin: 0 auto; padding: 20px 24px 8px; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.fa-why-card { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.fa-why-card svg { width: 26px; height: 26px; margin-bottom: 10px; }
+.fa-why-card p.t { font-size: 14.5px; font-weight: 600; color: var(--ink-2); margin: 0 0 5px; }
+.fa-why-card p.d { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 0; }
+.fa-course { max-width: 820px; margin: 0 auto; padding: 26px 24px 8px; }
+.fa-course-card { background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 30px 28px; }
+.fa-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
+.fa-badge.live { background: var(--soft-teal); color: var(--cta); }
+.fa-badge.soon { background: #fdf3e2; color: #C17A12; }
+.fa-course-card h2 { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
+.fa-course-card > p.sub { font-size: 14.5px; line-height: 1.65; color: var(--muted); margin: 0 0 20px; }
+.fa-lesson { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid #f0ede4; text-decoration: none; }
+.fa-lesson:hover .lt { color: var(--cta); }
+.fa-lesson .num { flex: 0 0 30px; height: 30px; border-radius: 50%; background: #EAF4F6; color: var(--cta); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.fa-lesson .lt { font-size: 15px; font-weight: 600; color: var(--ink-2); margin: 0 0 3px; transition: color .12s ease; }
+.fa-lesson .ld { font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0; }
+.fa-lesson .min { margin-left: auto; flex: 0 0 auto; font-size: 12px; color: var(--muted-label); white-space: nowrap; padding-top: 4px; }
+.fa-plan { display: flex; gap: 12px; align-items: center; padding: 11px 0; border-top: 1px solid #f0ede4; }
+.fa-plan svg { width: 20px; height: 20px; flex: 0 0 auto; }
+.fa-plan p { font-size: 14px; color: var(--body-text); margin: 0; }
+.fa-cta { max-width: 820px; margin: 0 auto; padding: 26px 24px 80px; text-align: center; }
+@media (max-width: 719px) {
+  .fa-hero { padding: 36px 20px 10px; }
+  .fa-h1 { font-size: 28px; }
+  .fa-why { grid-template-columns: 1fr; }
+  .fa-course-card { padding: 24px 20px; }
+  .fa-lesson .min { display: none; }
+}
+</style>
 </head>
 <body>
 <div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
-
-<header class="cc-header no-print">
+<header class="cc-header">
 <div class="cc-header-inner">
 <a href="/index.html" class="cc-logo"><img src="/assets/cc-logo.webp" alt="Caring Companions"></a>
 <input type="checkbox" id="cc-navtog" class="cc-navtog" aria-hidden="true" tabindex="-1">
@@ -55,9 +70,10 @@
 <a href="/services/overnight-care.html">Overnight Care</a>
 <a href="/services/24-hour-care.html">24-Hour Care</a>
 <a href="/services/respite-care.html">Respite Care</a>
+<a href="/care-paths/dementia.html">Dementia &amp; Memory Care</a>
 <span class="cc-dd-sep"></span>
 <a href="/our-services.html">All services &amp; pricing &rarr;</a>
-<a href="/hometogether.html">HomeTogether<span class="cc-dd-sub">Virtual caregiving visits</span></a>
+<a href="/hometogether.html">HomeTogether<span class="cc-dd-sub">Stay close through their TV</span></a>
 </span>
 </span>
 <a href="/service-area.html">Service Areas</a>
@@ -77,6 +93,7 @@
 <a href="/resource-library.html" class="cc-nav-top">Resources<i class="cc-caret"></i></a>
 <span class="cc-dropdown">
 <a href="/resource-library.html">Guide Library</a>
+<a href="/family-academy.html">Family Care Academy<span class="cc-dd-sub">Free training for family caregivers</span></a>
 <a href="/cara.html">Ask Cara<span class="cc-dd-sub">Free AI care advisor</span></a>
 <a href="/cost-calculator.html">Cost Calculator</a>
 <a href="/assessment.html">Care Assessment</a>
@@ -96,64 +113,107 @@
 <a href="/contact.html">Contact Us</a>
 </span>
 </span>
-<a href="/getting-started.html" class="cc-nav-cta">Get Started</a>
+<a href="/book.html" class="cc-nav-cta">Book Free Consultation</a>
 <a href="tel:14172348494" class="cc-nav-phone">(417) 234-8494</a>
 </nav>
 </div>
 </header>
 
-<!-- Catalog -->
-<div id="view-catalog" class="no-print">
 <section class="fa-hero">
-<p class="kicker">Family Academy</p>
-<h1 class="fa-h1">Learn at your own pace.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:560px">Short, structured courses built from our Resource Library, for families who want more than one article can cover.</p>
+<p class="kicker">Free for families &middot; no sign-up</p>
+<h1 class="fa-h1">Family Care Academy</h1>
+<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:620px">The same training we give our professional caregivers, rebuilt in plain language for the people who love someone and are learning to care for them. Take it at your own pace, share it with your siblings, come back any time.</p>
 </section>
-<section style="max-width:820px;margin:0 auto;padding:30px 24px 80px;display:flex;flex-direction:column;gap:16px" id="course-list"></section>
-</div>
 
-<!-- Course -->
-<section class="fa-course no-print" id="view-course" hidden>
-<button class="js-back-catalog" style="background:none;border:none;color:#C17A12;font-size:13.5px;font-weight:600;cursor:pointer;padding:0;margin-bottom:20px">← All courses</button>
-<p id="course-tag" style="font-size:12px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px"></p>
-<h1 id="course-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:600;margin:0 0 20px;color:#0D365F"></h1>
-
-<div class="fa-course-grid">
-<div style="display:flex;flex-direction:column;gap:0" id="lesson-list"></div>
-<div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
-<div style="background:#103D47;border-radius:10px;height:200px;display:flex;align-items:center;justify-content:center;margin-bottom:22px">
-<p style="font-size:13px;color:#8fd8c8;margin:0">▶ Video: <span id="lesson-video-title"></span></p>
+<section class="fa-why">
+<div class="fa-why-card">
+<svg aria-hidden="true"><use href="/assets/icons.svg#i-grad"/></svg>
+<p class="t">Built from real caregiver training</p>
+<p class="d">Adapted from the curriculum our own employees complete before they ever enter a client's home.</p>
 </div>
-<h2 id="lesson-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:21px;font-weight:600;margin:0 0 16px;color:#0D365F"></h2>
-<p id="lesson-body" style="font-size:15px;line-height:1.75;color:#2c3d4d;margin:0 0 22px"></p>
-<p style="display:inline-block;font-size:13.5px;font-weight:600;color:#C17A12;margin:0 0 24px">↓ Download: <span id="lesson-worksheet"></span> <span style="font-weight:400;color:#8a978f">(coming soon)</span></p>
-<div style="display:flex;justify-content:space-between;gap:12px">
-<button id="lesson-back" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">← Back</button>
-<button id="lesson-complete" class="btn-primary" style="padding:12px 24px;font-size:14px">Mark complete &amp; continue</button>
+<div class="fa-why-card">
+<svg aria-hidden="true"><use href="/assets/icons.svg#i-chat"/></svg>
+<p class="t">Plain language, no jargon</p>
+<p class="d">Written for a daughter, son, or spouse at the kitchen table, not for a classroom.</p>
 </div>
-</div>
+<div class="fa-why-card">
+<svg aria-hidden="true"><use href="/assets/icons.svg#i-heart"/></svg>
+<p class="t">Free, because it should be</p>
+<p class="d">Better-supported family caregivers mean safer seniors. That's the whole mission.</p>
 </div>
 </section>
 
-<!-- Certificate -->
-<section class="fa-cert" id="view-certificate" hidden>
-<div class="no-print" style="text-align:center;margin-bottom:24px">
-<button class="js-back-catalog" style="background:none;border:none;color:#C17A12;font-size:13.5px;font-weight:600;cursor:pointer;padding:0">← All courses</button>
-</div>
-<div style="background:#ffffff;border:2px solid #C17A12;border-radius:16px;padding:48px;text-align:center">
-<p style="font-size:12px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 20px">Certificate of Completion</p>
-<img src="assets/cc-logo.webp" alt="Caring Companions" style="height:36px;display:block;margin:0 auto 24px">
-<p style="font-family:'Source Serif 4',Georgia,serif;font-size:15px;color:#55677a;margin:0 0 10px">This certifies that a dedicated family caregiver has completed</p>
-<h1 id="cert-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:600;margin:0 0 16px;color:#0D365F"></h1>
-<p id="cert-date" style="font-size:13.5px;color:#8a978f;margin:0 0 32px"></p>
-<p style="font-size:13px;color:#8a978f;margin:0">Caring Companions Family Academy</p>
-</div>
-<div class="no-print" style="display:flex;justify-content:center;gap:12px;margin-top:24px">
-<button id="print-cert" class="btn-primary" style="padding:13px 24px;font-size:14px">Print / Save Certificate</button>
+<section class="fa-course">
+<div class="fa-course-card">
+<span class="fa-badge live">Available now</span>
+<h2>Caring for a Loved One with Dementia</h2>
+<p class="sub">Six short lessons, about an hour all together. Start at the top or jump to what tonight's problem is.</p>
+<a class="fa-lesson" href="/guides/dementia-and-alzheimers.html">
+<span class="num">1</span>
+<span><p class="lt">Understanding dementia &amp; Alzheimer's</p><p class="ld">What's actually happening, and why the behaviors that hurt aren't aimed at you.</p></span>
+<span class="min">~10 min</span>
+</a>
+<a class="fa-lesson" href="/guides/best-practices-for-dementia-care.html">
+<span class="num">2</span>
+<span><p class="lt">Day-to-day dementia care that works</p><p class="ld">Routines, redirection, and communication techniques our caregivers use every shift.</p></span>
+<span class="min">~12 min</span>
+</a>
+<a class="fa-lesson" href="/guides/home-safety-room-by-room.html">
+<span class="num">3</span>
+<span><p class="lt">Making the home safe, room by room</p><p class="ld">A walk-through checklist: kitchen, bathroom, bedroom, stairs, and doors.</p></span>
+<span class="min">~10 min</span>
+</a>
+<a class="fa-lesson" href="/guides/fall-prevention-at-home.html">
+<span class="num">4</span>
+<span><p class="lt">Preventing falls</p><p class="ld">The habits and small home changes that prevent the injury that changes everything.</p></span>
+<span class="min">~9 min</span>
+</a>
+<a class="fa-lesson" href="/guides/medication-management.html">
+<span class="num">5</span>
+<span><p class="lt">Managing medications</p><p class="ld">Keeping a growing pill list safe, on schedule, and drama-free.</p></span>
+<span class="min">~8 min</span>
+</a>
+<a class="fa-lesson" href="/guides/caregiver-burnout.html">
+<span class="num">6</span>
+<span><p class="lt">Protecting yourself from burnout</p><p class="ld">You are part of the care plan. How to spot the warning signs in the mirror and what to do.</p></span>
+<span class="min">~9 min</span>
+</a>
 </div>
 </section>
 
-<footer class="cc-siteftr no-print">
+<section class="fa-course">
+<div class="fa-course-card">
+<span class="fa-badge soon">In production</span>
+<h2>Hands-On Care Skills at Home</h2>
+<p class="sub">We're adapting our hands-on caregiver training, the physical skills, for families right now. Planned lessons:</p>
+<div class="fa-plan"><svg aria-hidden="true"><use href="/assets/icons.svg#i-strength"/></svg><p>Safe transfers &amp; lifting without hurting your back (or them)</p></div>
+<div class="fa-plan"><svg aria-hidden="true"><use href="/assets/icons.svg#i-wave"/></svg><p>Helping with bathing &amp; dressing while protecting dignity</p></div>
+<div class="fa-plan"><svg aria-hidden="true"><use href="/assets/icons.svg#i-alert"/></svg><p>What to do in the first minutes after a fall</p></div>
+<div class="fa-plan"><svg aria-hidden="true"><use href="/assets/icons.svg#i-pill"/></svg><p>Toileting &amp; incontinence care with grace</p></div>
+<div class="fa-plan"><svg aria-hidden="true"><use href="/assets/icons.svg#i-sun"/></svg><p>Meals, hydration &amp; appetite when eating gets hard</p></div>
+<div style="margin-top:20px;background:#f6f4ee;border-radius:12px;padding:18px">
+<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 4px">Want to know the moment it's ready?</p>
+<p style="font-size:13px;line-height:1.6;color:#55677a;margin:0 0 12px">Leave your email and we'll send you the first lesson when it launches. Nothing else, no spam.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<input id="fa-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:200px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<button id="fa-notify" class="btn-primary" style="border-radius:8px;padding:12px 20px;font-size:14px">Notify me</button>
+</div>
+<p id="fa-sent" style="font-size:13.5px;font-weight:600;color:#1F7A8C;margin:10px 0 0" hidden>You're on the list. We'll email you when the first hands-on lesson is live.</p>
+<p id="fa-err" style="font-size:13px;color:#a33;font-weight:600;margin:10px 0 0" hidden>Please enter your email address.</p>
+</div>
+</div>
+</section>
+
+<section class="fa-cta">
+<h2 style="font-family:var(--serif);font-size:23px;font-weight:600;color:#0D365F;margin:0 0 10px">Sometimes the best training is a break.</h2>
+<p style="font-size:14.5px;line-height:1.7;color:#55677a;margin:0 auto 20px;max-width:520px">If you're doing all of this yourself, you don't have to. Even a few hours of <a href="/services/respite-care.html" style="font-weight:600">respite care</a> a week keeps you strong enough to keep going.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+<a href="/book.html" class="btn-primary">Book a Free Consultation</a>
+<a href="/cara.html" class="btn-outline">Ask Cara a Question</a>
+</div>
+</section>
+
+<footer class="cc-siteftr">
 <div class="cc-siteftr-grid">
 <div class="brand">
 <img src="/assets/cc-logo.webp" alt="Caring Companions">
@@ -179,6 +239,7 @@
 <a href="/cara.html">Ask Cara</a>
 <a href="/cost-calculator.html">Cost Calculator</a>
 <a href="/resource-library.html">Resource Library</a>
+<a href="/family-academy.html">Family Care Academy</a>
 <a href="/service-area.html">Service Areas</a>
 </div>
 <div>
@@ -194,132 +255,29 @@
 <p class="cc-siteftr-bottom">&copy; 2026 Caring Companions In-Home Senior Care. All rights reserved.</p>
 </footer>
 </div>
-
+<script src="assets/forms.js"></script>
 <script>
 (function () {
-'use strict';
-var COURSES = [
-  { id: 'dementia', tag: 'Dementia Care Academy', title: 'Understanding & Supporting Someone with Dementia', desc: 'Five lessons on recognizing changes, communicating well, staying safe at home, and caring for yourself along the way.',
-    lessons: [
-      { title: 'Recognizing the Early Signs', body: 'Learn the difference between normal aging and the warning signs that call for a doctor’s visit, and why catching changes early gives your family more options.', worksheet: 'Early Signs Checklist (PDF)' },
-      { title: 'Communicating Well as Memory Changes', body: 'Simple shifts in how you ask questions and respond to confusion can reduce frustration for everyone, without pretending nothing has changed.', worksheet: 'Communication Tip Sheet (PDF)' },
-      { title: 'Creating a Safer Home', body: 'Practical, specific changes that reduce wandering risk, fall risk, and kitchen or medication accidents.', worksheet: 'Home Safety Walkthrough (PDF)' },
-      { title: 'Building a Daily Routine', body: 'Predictable routines reduce anxiety for someone with dementia, here’s how to build one that still fits your family’s life.', worksheet: 'Sample Daily Routine (PDF)' },
-      { title: 'Caring for Yourself, Too', body: 'Burnout is common and treatable. What respite actually looks like, and how to ask for help without guilt.', worksheet: 'Caregiver Self-Check (PDF)' },
-    ] },
-  { id: 'caregiver', tag: 'Family Caregiver Academy', title: 'The Family Caregiver Foundations Course', desc: 'Four lessons for anyone newly caring for an aging parent or spouse, the basics nobody hands you a manual for.',
-    lessons: [
-      { title: 'Is It Time to Ask for Help?', body: 'Honest signs that a loved one may need more support than family alone can safely provide.', worksheet: 'Readiness Checklist (PDF)' },
-      { title: 'Understanding the Care Continuum', body: 'From occasional check-ins to full-time hands-on care, how the levels differ and how they can change over time.', worksheet: 'Care Levels Overview (PDF)' },
-      { title: 'Talking to Siblings and Family', body: 'How to get everyone on the same page using facts, not just opinions.', worksheet: 'Family Meeting Guide (PDF)' },
-      { title: 'Paying for Care', body: 'A plain-language overview of private pay, Medicaid, VA benefits, and long-term care insurance.', worksheet: 'Payment Options Summary (PDF)' },
-    ] },
-];
-
-function loadProgress() {
-  try { return JSON.parse(localStorage.getItem('cc-family-academy-progress') || '{}'); } catch (e) { return {}; }
-}
-function saveProgress(p) {
-  try { localStorage.setItem('cc-family-academy-progress', JSON.stringify(p)); } catch (e) {}
-}
-
-var state = { view: 'catalog', courseId: null, lessonIndex: 0, progress: loadProgress() };
-function el(id) { return document.getElementById(id); }
-function course() { return COURSES.find(function (c) { return c.id === state.courseId; }) || COURSES[0]; }
-function show(view) {
-  state.view = view;
-  el('view-catalog').hidden = view !== 'catalog';
-  el('view-course').hidden = view !== 'course';
-  el('view-certificate').hidden = view !== 'certificate';
-  window.scrollTo({ top: 0 });
-}
-
-function renderCatalog() {
-  var wrap = el('course-list');
-  wrap.innerHTML = '';
-  COURSES.forEach(function (c) {
-    var done = (state.progress[c.id] || []).length;
-    var total = c.lessons.length;
-    var pct = Math.round((done / total) * 100);
-    var b = document.createElement('button');
-    b.style.cssText = 'text-align:left;background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;cursor:pointer;font-family:inherit';
-    b.innerHTML = '<p style="font-size:11.5px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px"></p>' +
-      '<p style="font-size:19px;font-weight:600;color:#122236;margin:0 0 8px"></p>' +
-      '<p style="font-size:14px;line-height:1.6;color:#55677a;margin:0 0 16px"></p>' +
-      '<div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden;margin-bottom:8px"><div style="height:100%;width:' + pct + '%;background:#C17A12"></div></div>' +
-      '<p style="font-size:12.5px;color:#8a978f;margin:0"></p>';
-    var ps = b.querySelectorAll('p');
-    ps[0].textContent = c.tag;
-    ps[1].textContent = c.title;
-    ps[2].textContent = c.desc;
-    ps[3].textContent = done === 0 ? total + ' lessons' : done === total ? 'Completed, view certificate' : done + ' of ' + total + ' lessons complete';
-    b.addEventListener('click', function () {
-      state.courseId = c.id;
-      if (done === total) { renderCertificate(); show('certificate'); }
-      else { state.lessonIndex = Math.min(done, total - 1); renderCourse(); show('course'); }
+  var btn = document.getElementById('fa-notify');
+  btn.addEventListener('click', function () {
+    var email = document.getElementById('fa-email').value.trim();
+    var err = document.getElementById('fa-err');
+    err.hidden = true;
+    if (!email || email.indexOf('@') < 0) { err.hidden = false; return; }
+    btn.disabled = true; btn.textContent = 'Adding you\u2026';
+    CCForms.submitLead({
+      name: '(Family Academy waitlist)',
+      email: email,
+      message: 'Wants to be notified when the Hands-On Care Skills family course launches (family-academy.html).',
+    }).then(function () {
+      document.getElementById('fa-sent').hidden = false;
+      btn.parentElement.style.display = 'none';
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = 'Notify me';
+      err.textContent = 'Something went wrong. Please try again or email us at samantha@mo-care.com.';
+      err.hidden = false;
     });
-    wrap.appendChild(b);
   });
-}
-
-function renderCourse() {
-  var c = course();
-  var completedSet = state.progress[c.id] || [];
-  el('course-tag').textContent = c.tag;
-  el('course-title').textContent = c.title;
-
-  var list = el('lesson-list');
-  list.innerHTML = '';
-  c.lessons.forEach(function (l, i) {
-    var done = completedSet.indexOf(i) !== -1;
-    var active = i === state.lessonIndex;
-    var b = document.createElement('button');
-    b.style.cssText = 'display:flex;gap:12px;text-align:left;background:' + (active ? '#fbf6ec' : 'transparent') + ';border:none;border-radius:8px;cursor:pointer;padding:12px;font-family:inherit;width:100%';
-    var badge = document.createElement('span');
-    badge.style.cssText = 'width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:' +
-      (done ? '#C17A12' : active ? '#16283a' : '#eceae2') + ';color:' + (done || active ? '#fbfaf7' : '#8a978f');
-    badge.textContent = done ? '✓' : String(i + 1);
-    var title = document.createElement('span');
-    title.style.cssText = 'font-size:13.5px;font-weight:600;color:' + (active ? '#122236' : done ? '#55677a' : '#8a978f');
-    title.textContent = l.title;
-    b.appendChild(badge);
-    b.appendChild(title);
-    b.addEventListener('click', function () { state.lessonIndex = i; renderCourse(); });
-    list.appendChild(b);
-  });
-
-  var lesson = c.lessons[state.lessonIndex];
-  el('lesson-video-title').textContent = lesson.title;
-  el('lesson-title').textContent = lesson.title;
-  el('lesson-body').textContent = lesson.body;
-  el('lesson-worksheet').textContent = lesson.worksheet;
-  el('lesson-complete').textContent = state.lessonIndex === c.lessons.length - 1 ? 'Mark complete & finish course' : 'Mark complete & continue';
-}
-
-function renderCertificate() {
-  el('cert-title').textContent = course().title;
-  el('cert-date').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-}
-
-document.querySelectorAll('.js-back-catalog').forEach(function (b) {
-  b.addEventListener('click', function () { renderCatalog(); show('catalog'); });
-});
-el('lesson-back').addEventListener('click', function () {
-  if (state.lessonIndex === 0) { renderCatalog(); show('catalog'); }
-  else { state.lessonIndex -= 1; renderCourse(); }
-});
-el('lesson-complete').addEventListener('click', function () {
-  var c = course();
-  var arr = state.progress[c.id] || [];
-  if (arr.indexOf(state.lessonIndex) === -1) arr.push(state.lessonIndex);
-  state.progress[c.id] = arr;
-  saveProgress(state.progress);
-  if (state.lessonIndex === c.lessons.length - 1) { renderCertificate(); show('certificate'); }
-  else { state.lessonIndex += 1; renderCourse(); }
-});
-el('print-cert').addEventListener('click', function () { window.print(); });
-
-renderCatalog();
 })();
 </script>
 <script src="assets/cara-widget.js"></script>
