@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Burnout Self-Check &amp; Support Plan | The Dementia Journey | Caring Companions</title>
+<meta name="description" content="A free printable for family caregivers: the burnout warning-sign checklist, your circle of support, crisis numbers, and this week's one ask.">
+<link rel="canonical" href="https://mo-care.com/dementia-journey/resources/burnout-support-plan.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family:'Inter',Helvetica,Arial,sans-serif; background:#faf8f3; color:#16283a; }
+.page { max-width: 700px; margin: 0 auto; padding: 34px 24px 60px; }
+.brandbar { height: 8px; background: linear-gradient(90deg,#c79a3b,#EFCE85); border-radius: 99px; margin-bottom: 26px; }
+.kicker { font-size: 11.5px; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
+h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 600; color: #143A5E; margin-bottom: 10px; line-height:1.3; }
+.intro { font-size: 14.5px; line-height: 1.7; color: #55677a; margin-bottom: 18px; }
+.sec { border: 1.5px solid #e8e0cd; border-radius: 14px; padding: 18px 20px; margin-bottom: 14px; page-break-inside: avoid; background:#fffdf8; }
+.sec h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 17px; font-weight: 600; color: #143A5E; margin-bottom: 10px; }
+.sec p, .sec li { font-size: 13.5px; line-height: 1.75; color: #2c3d4d; }
+.chk { font-size: 13.5px; line-height: 2.1; color: #2c3d4d; }
+.crisis { background:#fbf5e4; border-left:4px solid #c79a3b; border-radius:0 12px 12px 0; border-top:none; border-right:none; border-bottom:none; }
+.crisis p { color:#5c4a22; }
+.f { margin-bottom: 10px; }
+.f b { display:block; font-size: 11px; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+.f p { font-family:'Source Serif 4',Georgia,serif; font-size:14.5px; }
+.f .line { border-bottom: 1.5px solid #d8d2c2; height: 24px; }
+.printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 22px; }
+.footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
+@media print { .printbtn, .intro { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="brandbar"></div>
+<p class="kicker">The Dementia Journey · A free resource from Caring Companions</p>
+<h1>Burnout Self-Check &amp; Support Plan</h1>
+<p class="intro">Revisit this monthly, you check your car's oil more often than most caregivers check themselves. The Circle of Support fills in automatically if you built it in Module 8 on this device; otherwise the blanks print for filling in by hand.</p>
+<button class="printbtn" onclick="window.print()">Print this page</button>
+
+<div class="sec">
+<h2>Monthly self-check · mark any that are true lately</h2>
+<p class="chk">
+&#9634; Exhausted even after sleep &nbsp;&nbsp; &#9634; Snapping over small things &nbsp;&nbsp; &#9634; Sick more often<br>
+&#9634; Skipping my own appointments &nbsp;&nbsp; &#9634; Dreading the morning &nbsp;&nbsp; &#9634; Withdrawn from friends<br>
+&#9634; Crying more days than not &nbsp;&nbsp; &#9634; Feeling trapped &nbsp;&nbsp; &#9634; Numb toward them<br>
+&#9634; Hopeless about all of it &nbsp;&nbsp; &#9634; Thoughts of escape or self-harm
+</p>
+<p style="margin-top:8px"><b>Three or more?</b> The load needs to change: make one specific ask this week. <b>Either of the last two?</b> That's today's business, see the box below, and tell one human being how hard it has gotten.</p>
+</div>
+
+<div class="sec crisis">
+<h2 style="color:#8a5a00">Crisis numbers, no waiting required</h2>
+<p><b>988</b> — Suicide &amp; Crisis Lifeline, call or text, free, 24/7. Caregivers use it too.<br><b>911</b> — any immediate danger.<br><b>(800) 272-3900</b> — Alzheimer's Association 24/7 Helpline, for the 2 a.m. questions.<br>Your own doctor — burnout is a medical issue. Book the appointment.</p>
+</div>
+
+<div class="sec">
+<h2>My Circle of Support</h2>
+<div id="circle"></div>
+</div>
+
+<p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice.</p>
+</div>
+<script>
+(function(){
+  var C={}; try { C=JSON.parse(localStorage.getItem('dj_circle')||'{}'); } catch(e){}
+  var F=[['time','Time with them (sitting, visits, overnights)'],['rides','Rides (appointments, errands)'],['money','Money & paperwork'],['checkins','Checks in on ME'],['emergency','Emergency contacts (besides 911)'],['professional','Professional resources I will contact'],['ask','This week’s ONE ask (name + task + time)']];
+  function esc(t){ return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>'); }
+  document.getElementById('circle').innerHTML = F.map(function(f){
+    var v=C[f[0]];
+    return '<div class="f"><b>'+f[1]+'</b>'+(v&&v.trim()?'<p>'+esc(v)+'</p>':'<div class="line"></div><div class="line"></div>')+'</div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

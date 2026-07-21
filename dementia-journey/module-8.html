@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 5: Communication That Creates Calm | The Dementia Journey | Caring Companions</title>
-<meta name="description" content="A free course for families caring for someone they love. Module 5: approach, pace, choices, and dignity. Small changes that change whole days, including Teepa Snow's Positive Physical Approach.">
-<link rel="canonical" href="https://mo-care.com/dementia-journey/module-5.html">
+<title>Module 8: Caregiver Burnout and Accepting Help | The Dementia Journey | Caring Companions</title>
+<meta name="description" content="A free course for families caring for someone they love. Module 8 is about you: burnout, asking for specific help, the family meeting, and when one pair of hands is no longer enough.">
+<link rel="canonical" href="https://mo-care.com/dementia-journey/module-8.html">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
-<meta property="og:title" content="Communication That Creates Calm | The Dementia Journey">
-<meta property="og:description" content="Small changes in approach, words, and pace change whole days. A free module for family caregivers.">
-<meta property="og:url" content="https://mo-care.com/dementia-journey/module-5.html">
+<meta property="og:title" content="Caregiver Burnout and Accepting Help | The Dementia Journey">
+<meta property="og:description" content="This module is about you. And it will not tell you to take a bubble bath. Free for family caregivers.">
+<meta property="og:url" content="https://mo-care.com/dementia-journey/module-8.html">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,6 +78,27 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 .dj-step p { font-size:14.5px; line-height:1.65; color:var(--dj-ink); margin:0; }
 .dj-phrase { display:flex; align-items:center; gap:12px; background:#f7f2e6; border-radius:14px; padding:15px 17px; margin-bottom:10px; }
 .dj-phrase p { flex:1; font-family:'Source Serif 4',Georgia,serif; font-size:16px; line-height:1.6; color:#1c2b38; margin:0; }
+.dj-door { background:#f7f2e6; border:1.5px solid transparent; border-radius:14px; padding:15px 16px; cursor:pointer; transition:all .18s ease; }
+.dj-door p.n { font-size:14.5px; font-weight:700; color:var(--dj-navy); margin:0; }
+.dj-door p.ex { display:none; font-size:13px; line-height:1.6; color:#8a5a00; margin:7px 0 0; }
+.dj-door.open { background:#fbf3dd; border-color:#ead9ac; }
+.dj-door.open p.ex { display:block; animation:djfade .4s ease; }
+.dj-door.mine { outline:2.5px solid var(--dj-gold-deep); outline-offset:2px; }
+.dj-door .pickme { display:none; font-size:11px; font-weight:700; color:var(--dj-gold-ink); text-transform:uppercase; letter-spacing:.05em; margin-top:6px; }
+.dj-door.open .pickme { display:block; }
+.dj-doors { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media (min-width:880px){ .dj-doors { grid-template-columns:1fr 1fr 1fr; } }
+.dj-bfield { margin-bottom:14px; }
+.dj-bfield label { display:block; font-size:13px; font-weight:700; color:var(--dj-navy); margin-bottom:6px; }
+.dj-bfield input, .dj-bfield textarea { width:100%; border:1.5px solid #ddd3ba; border-radius:12px; padding:12px 14px; font-size:14.5px; font-family:inherit; color:#16283a; background:#fffdf8; }
+.dj-bfield textarea { min-height:58px; resize:vertical; line-height:1.6; }
+.dj-keep { background:#fffdf6; border:2px solid #e5d9bd; border-radius:20px; padding:34px 32px; position:relative; }
+.dj-keep::before { content:""; position:absolute; inset:8px; border:1px solid #ead9ac; border-radius:14px; pointer-events:none; }
+.dj-keep h2.nm { font-family:'Source Serif 4',Georgia,serif; font-size:30px; font-weight:600; color:var(--dj-navy); text-align:center; margin:0 0 4px; }
+.dj-keep p.sub { text-align:center; font-size:11.5px; font-weight:700; color:var(--dj-gold-ink); text-transform:uppercase; letter-spacing:.1em; margin:0 0 18px; }
+.dj-keep .sec { margin-bottom:14px; }
+.dj-keep .sec b { display:block; font-size:11px; font-weight:700; color:var(--dj-gold-ink); text-transform:uppercase; letter-spacing:.07em; margin-bottom:3px; }
+.dj-keep .sec p { font-family:'Source Serif 4',Georgia,serif; font-size:15.5px; line-height:1.7; color:#2c3d4d; margin:0; }
 .dj-ring { display:flex; flex-direction:column; align-items:center; padding:26px 0 6px; }
 .dj-ring svg { width:130px; height:130px; transform:rotate(-90deg); }
 .dj-ring circle.bg { fill:none; stroke:#ece5d3; stroke-width:9; }
@@ -149,7 +170,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <button class="dj-pill on" id="voiceBtn" type="button" aria-pressed="true" title="Narration"><svg style="width:14px;height:14px" aria-hidden="true"><use href="/assets/icons.svg#i-music"/></svg><span class="lbl" id="voiceLbl">Narration on</span></button>
 </div>
 <div class="dj-progress noprint"><i id="bar" style="width:6%"></i></div>
-<p class="dj-count noprint" id="count">Module 5 · You can pause anytime</p>
+<p class="dj-count noprint" id="count">Module 8 · You can pause anytime</p>
 <div id="stage"></div>
 </div>
 
@@ -233,159 +254,146 @@ var TTS = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/elevenlabs-tts'
 var SCREENS = [
 
 { id:'landing', type:'landing',
-  vo:"Welcome back. After the last module, you've earned a gentler road... and this is it. Module Five is about the small mechanical things... how you approach, how many words you use, how long you wait, how you offer a choice... that quietly decide whether a morning goes well or falls apart. We're back with Frank and June. And this time, the techniques come straight from the training our own professional caregivers receive, including the work of Teepa Snow. Press begin when you're ready." },
+  vo:"Welcome back. Eight modules in, and every one of them has been about the person you love. This one is about you. And I want to make you two promises before we start. First... I will not tell you to take a bubble bath. You have been handed enough advice that assumes you have time you don't have. This module is practical or it is nothing. And second... some of the feelings we'll name today have a phone number. Nine eight eight. Free, day and night, and using it is caregiving too. Alright. You'll ride along with Marcus this morning. Press begin when you're ready." },
 
-{ id:'scene-one', type:'scenequiet', kicker:'Frank &amp; June &middot; the morning, take one',
-  scene:"The appointment is at nine. Frank is behind, and he knows it.<br><br><em>&ldquo;June, come on, we&rsquo;re late.&rdquo;</em> He&rsquo;s at the closet behind her, pulling hangers. <em>&ldquo;Get your shoes, grab your coat, and meet me at the door.&rdquo;</em><br><br>She picks up the brown socks. <em>&ldquo;No, not those, the white ones.&rdquo;</em><br><br>June sets the socks down. She sits on the edge of the bed and stops moving entirely. Frank checks his watch, and hates himself a little.",
-  after:'Frank isn&rsquo;t unkind. He&rsquo;s love in a hurry. And the hurry is the problem.',
-  vo:"The appointment is at nine, and Frank is behind. June, come on, we're late. He's at the closet behind her, pulling hangers. Get your shoes, grab your coat, meet me at the door. She picks up the brown socks. No, not those... the white ones. And June sets the socks down. Sits on the edge of the bed. And stops moving entirely. Frank checks his watch... and hates himself a little. I want to be careful here. Frank isn't unkind. He's love in a hurry. And the hurry... is the problem." },
+{ id:'scene-truck', type:'scenequiet', kicker:'Marcus',
+  scene:"5:50 a.m. Marcus sits in his truck in the driveway, coffee going cold in the cup holder.<br><br>His dad, Leon, was up at 2:00 and again at 4:00, looking for his boots to &ldquo;walk the fence line.&rdquo; The science fair project is due Thursday. His shift starts at 8:00. Renee, his sister, texted last night: a link to an article about caregiver stress.<br><br>At the gym door yesterday a coworker clapped his shoulder: <em>&ldquo;You look rough, man. You gotta take care of yourself.&rdquo;</em><br><br>Marcus stares at the garage door and says it out loud, to no one:<br><br><em>&ldquo;When?&rdquo;</em>",
+  after:'If that word has ever been your whole answer, this module was built for you. And it will respect your &ldquo;when&rdquo; by being practical.',
+  vo:"Five fifty in the morning. Marcus sits in his truck in the driveway, coffee going cold in the cup holder. His dad was up at two, and again at four, looking for his boots to walk the fence line. The science fair project is due Thursday. His shift starts at eight. And yesterday at the gym door, a coworker clapped his shoulder and said... you look rough, man. You gotta take care of yourself. Marcus stares at the garage door, and says it out loud, to no one. When. If that word has ever been your whole answer... this module was built for you. And it's going to respect your when... by being practical." },
 
 { id:'goals', type:'goals', kicker:'This module',
   title:'What I hope you leave with',
-  goals:['An approach that starts moments well instead of rescuing them later','The one-thought rule, and the ten seconds most of us never give','Choices that empower without overwhelming','A ladder of help that keeps their hands in their own life','A dignity list: the habits worth retiring today'],
-  vo:"Here's what I hope you leave this module holding. An approach that starts moments well, instead of rescuing them later. The one thought rule... and the ten seconds most of us never actually give. Choices that empower without overwhelming. A ladder of help that keeps their hands in their own life. And a dignity list... a few habits worth retiring today." },
+  goals:['A real name for what&rsquo;s happening to you: a caregiving injury, not a character flaw','The specific-ask scripts that actually get help moving','A playbook for the family members who don&rsquo;t get it','Your Circle of Support, built and written down','The honest map of outside help, and the signs that it&rsquo;s time'],
+  vo:"Here's what I hope you leave this module holding. A real name for what's happening to you... a caregiving injury, not a character flaw. The specific ask scripts that actually get help moving. A playbook for the family members who don't get it. Your circle of support, built and written down. And the honest map of outside help... including the signs that it's time." },
 
-{ id:'ppa', type:'steps', kicker:'Lesson 1 &middot; From Teepa Snow&rsquo;s Positive Approach to Care&reg;',
-  title:'The Positive Physical Approach&trade;',
-  lead:'How you arrive decides how the moment goes. This is the approach our own caregivers train in, taught by dementia educator Teepa Snow, and we&rsquo;re licensed to share it with you.',
-  steps:[
-   '<b>Come from the front.</b> Inside her line of sight, never from behind, never from the side out of nowhere. Surprises read as threats.',
-   '<b>Slow down.</b> Walk at half your normal speed, and pause about an arm&rsquo;s length away. Let her see all of you before anything is asked of her.',
-   '<b>Greet with an open hand.</b> Raise your palm in a small, friendly wave. An open hand is a signal older brains read fast: friend, not threat.',
-   '<b>Say her name first.</b> &ldquo;June.&rdquo; Then, if the day needs it, your own: &ldquo;It&rsquo;s Frank.&rdquo; A name lands before a sentence can.',
-   '<b>Offer your hand,</b> the way you&rsquo;d offer a handshake, and let her take it. Taking beats being taken.',
-   '<b>Come alongside.</b> Shift to her side rather than staying square in front. Head-on is a confrontation; side-by-side is a partnership.',
-   '<b>Get to eye level.</b> Sit, kneel, or lean down. Never talk down onto the top of someone&rsquo;s head.',
-   '<b>Connect before the task.</b> A smile, a beat, one warm sentence, and <em>then</em> the ask. Greeting first, agenda second.'],
-  vo:"How you arrive decides how the moment goes. This is the Positive Physical Approach, from Teepa Snow's Positive Approach to Care. We're licensed to teach it, and every caregiver on our team trains in it. Come from the front, inside her line of sight. Slow down... half your normal speed, and pause an arm's length away. Greet with an open hand, a small friendly wave. Say her name first. June. Offer your hand and let her take it... taking beats being taken. Come alongside instead of staying head on. Get to eye level. And connect before the task... greeting first, agenda second. Step through it with me." },
-
-{ id:'spot', type:'spot', kicker:'Look again',
-  title:'Spot what went wrong, and what didn&rsquo;t',
-  lead:'Here&rsquo;s take one again, in pieces. Tap each moment and see which ones fought against June&rsquo;s brain, and which ones were actually fine.',
-  items:[
-   { t:'&ldquo;June, come on, we&rsquo;re late.&rdquo;', bad:true, why:'Pressure arrives before connection. Her body hears alarm before her brain hears words. Approach and greet first; the clock news can wait thirty seconds.' },
-   { t:'Frank is at the closet behind her, pulling hangers.', bad:true, why:'Activity behind her back reads as commotion, or threat. Everything goes better from the front, in her line of sight.' },
-   { t:'&ldquo;Get your shoes, grab your coat, and meet me at the door.&rdquo;', bad:true, why:'Three instructions in one breath. Each extra step costs more than it used to; the pile lands as noise with pressure attached.' },
-   { t:'&ldquo;No, not those, the white ones.&rdquo;', bad:true, why:'A correction over something harmless. Brown socks never hurt anyone; a correction stings every time. Save the vetoes for safety.' },
-   { t:'Frank had laid her coat out on the bed earlier.', bad:false, why:'This one&rsquo;s actually good: a visual cue, quietly doing its work. More of this.' },
-   { t:'&ldquo;Dr. Hale will be glad to see you.&rdquo;', bad:false, why:'Warm, personal, zero pressure. A sentence like this is connection, keep it.' }],
-  vo:"Here's take one again, in pieces. Tap each moment... and see which ones fought against June's brain, and which ones were actually fine. Because two of them were fine. Even on his worst morning, Frank was already doing some things right. You probably are too." },
-
-{ id:'m5one', type:'learn', kicker:'Lesson 2',
-  title:'One thought at a time',
-  lead:'A stacked sentence collapses under its own weight. Watch it split.',
+{ id:'m8l1', type:'learn', kicker:'Lesson 1',
+  title:'Burnout is not weakness',
+  lead:'If you lifted alone, every day, for two years, and your back gave out, nobody would call that weakness. Burnout is the same injury, in a different place. Its signs:',
   points:[
-   '<b>The stack:</b> &ldquo;Go to your room, get your shoes, grab your coat, and meet me at the door.&rdquo; Four instructions. For a brain that processes slowly, it&rsquo;s a truck backing up beeping.',
-   '<b>The split:</b> &ldquo;Let&rsquo;s put on your shoes.&rdquo; &hellip;done&hellip; &ldquo;Now the coat.&rdquo; &hellip;done&hellip; &ldquo;Out we go.&rdquo; Same errand. Three calm wins instead of one overwhelmed freeze.',
-   '<b>Say the noun, skip the pronoun.</b> &ldquo;Put on the blue coat&rdquo; beats &ldquo;put it on.&rdquo; By the time &ldquo;it&rdquo; arrives, &ldquo;it&rdquo; may be gone.',
-   '<b>Pair words with the object.</b> Hold up the coat while you say &ldquo;coat.&rdquo; Two channels beat one.'],
-  callout:'If a sentence has an &ldquo;and&rdquo; in it, it can probably be two sentences with a breath between them.',
-  vo:"A stacked sentence collapses under its own weight. Go to your room, get your shoes, grab your coat, and meet me at the door... four instructions, arriving like a truck backing up beeping. Now the split. Let's put on your shoes. Done. Now the coat. Done. Out we go. Same errand... three calm wins instead of one overwhelmed freeze. Say the noun, skip the pronoun. And hold up the coat while you say coat. Two channels beat one." },
+   '<b>Chronic exhaustion</b> that sleep doesn&rsquo;t fix (when sleep even happens), and <b>getting sick more often</b>: the body billing you for overtime.',
+   '<b>Irritability on a hair trigger</b>: snapping at the kids, the spouse, the dog, over nothing, then the guilt spiral after.',
+   '<b>Withdrawal.</b> Skipped calls, dropped friendships, hobbies that quietly died. The world shrinking to the size of the caregiving.',
+   '<b>Hopelessness and feeling trapped:</b> the sense that this only ends one way and there&rsquo;s no door out of the hallway.',
+   '<b>Loss of empathy</b>, going numb toward the very person you love. This one frightens caregivers most, and it is a symptom of depletion, not proof about your heart.',
+   '<b>Neglecting your own health:</b> the skipped checkups, the refilled-for-them-but-not-for-you prescriptions.',
+   '<b>And the serious ones: thoughts of escape, of not waking up, of self-harm.</b> If these are visiting you, that is a medical emergency of your own, and it has a phone number: call or text <b>988</b>, free, 24/7, staffed by people who talk with exhausted caregivers every single day. Please treat this exactly as seriously as you&rsquo;d treat their chest pain.'],
+  callout:'Burnout is caused by load, not by weakness. The treatment is never &ldquo;try harder.&rdquo; It is always &ldquo;more hands.&rdquo;',
+  vo:"If you lifted alone, every day, for two years, and your back gave out... nobody would call that weakness. Burnout is the same injury, in a different place. Chronic exhaustion that sleep doesn't fix. A hair trigger, then the guilt spiral after. Withdrawal... the world shrinking to the size of the caregiving. Hopelessness. Feeling trapped. And the one that frightens caregivers most... going numb toward the person you love. That is a symptom of depletion. Not proof about your heart. And hear me on the serious ones. Thoughts of escape. Of not waking up. Of self harm. If those are visiting you, that is a medical emergency of your own... and it has a phone number. Nine eight eight. Free. Day and night. Please treat it exactly as seriously as you would treat their chest pain." },
 
-{ id:'pause', type:'pause', kicker:'Lesson 3',
-  title:'Give time. Really give it.',
-  lead:'After you say one thing, the words need time to travel. Most of us re-ask within three seconds, and every re-ask restarts her clock from zero. Want to feel what a real pause is?',
-  after:'That&rsquo;s ten seconds. That&rsquo;s what one sentence can need.',
+{ id:'signs', type:'signs', kicker:'A private check-in',
+  title:'Which of these are visiting you?',
+  lead:'Tap any that are true lately. Nobody sees this but you, and whatever you mark can be added, quietly, to the &ldquo;signs I need a break&rdquo; page of your care plan.',
+  chips:[
+   {t:'Exhausted even after sleep'},{t:'Snapping over small things'},{t:'Sick more often'},{t:'Skipping my own appointments'},
+   {t:'Dreading the morning'},{t:'Withdrawn from friends'},{t:'Crying more days than not'},{t:'Feeling trapped'},
+   {t:'Numb toward them', severe:false},{t:'Hopeless about all of it', severe:true},{t:'Thoughts of escape or self-harm', severe:true}],
+  vo:"A private check in, just between you and this screen. Tap any that are true lately. Nobody sees this but you. And if you tap one of the heavy ones... I'm going to say something to you right there on the screen, because some answers shouldn't wait until the end of a module." },
+
+{ id:'m8l2', type:'learn', kicker:'Lesson 2',
+  title:'Ask for specific help',
+  lead:'&ldquo;I need help&rdquo; hands the listener a planning job, so they freeze, and you hear silence. A specific ask is accept-or-decline. Steal these:',
   points:[
-   'Rephrasing too soon isn&rsquo;t helping; it&rsquo;s handing her a brand-new sentence to start over on.',
-   'Count silently if it helps: one-Mississippi to ten-Mississippi, eyes soft, hands still.',
-   'Silence isn&rsquo;t failure. Silence is the sound of processing.'],
-  vo:"After you say one thing... the words need time to travel. Most of us re-ask within three seconds. And every re-ask restarts her clock from zero. So I want to offer you something a little unusual. A chance to feel what ten seconds of waiting actually feels like. Press the button, and wait with me. Or skip it, that's fine too. But if you try it... notice how long it feels. That's the gift you'll be giving." },
+   '&ldquo;Can you stay with Dad <b>Tuesday from 2:00 to 4:00</b>?&rdquo;',
+   '&ldquo;Can you <b>pick up groceries</b> this week? List&rsquo;s on my phone.&rdquo;',
+   '&ldquo;Can you <b>handle the pharmacy calls</b>? They need someone monthly.&rdquo;',
+   '&ldquo;Can you <b>sit with Mom during my doctor&rsquo;s appointment</b> Thursday morning?&rdquo;',
+   '&ldquo;Can you take <b>one overnight a month</b>? Pick the weekend that works.&rdquo;',
+   '&ldquo;Can you <b>research local respite programs</b>? I don&rsquo;t have the bandwidth to Google.&rdquo;',
+   '&ldquo;Can you <b>run the family update text</b> so I stop telling the same story five times?&rdquo;'],
+  callout:'People who love you mostly aren&rsquo;t refusing to help. They&rsquo;re waiting for an assignment. Give assignments.',
+  vo:"I need help... hands the listener a planning job. So they freeze, and you hear silence, and you decide nobody cares. A specific ask is different... it's accept or decline. Can you stay with Dad Tuesday from two to four. Can you handle the pharmacy calls. Can you take one overnight a month... pick the weekend that works. Can you run the family update text, so I stop telling the same story five times. People who love you mostly aren't refusing to help. They're waiting for an assignment. Give assignments." },
 
-{ id:'m5choices', type:'learn', kicker:'Lesson 4',
-  title:'Two choices, never a menu',
-  lead:'Choice is dignity. Too much choice is fog. The sweet spot is two.',
+{ id:'scene-renee', type:'scenequiet', kicker:'Marcus &amp; Renee &middot; the call',
+  scene:"Sunday night. Renee calls with another article. Marcus takes a breath, and instead of &ldquo;we&rsquo;re fine,&rdquo; he reads off his phone:<br><br><em>&ldquo;Two things. Can you take the pharmacy calls, monthly, starting tomorrow? And can you do one weekend a month out here with Dad?&rdquo;</em><br><br>Silence. Then: <em>&ldquo;I can do the pharmacy thing tomorrow.&rdquo;</em> A pause. <em>&ldquo;The weekend... let me look at flights.&rdquo;</em><br><br>The pharmacy handoff happens Monday. The weekend takes two more calls and one tense conversation before it lands on the calendar.",
+  after:'Progress, not a miracle. But Marcus sleeps differently knowing the second Saturday of the month is coming.',
+  vo:"Sunday night. Renee calls with another article. And Marcus takes a breath... and instead of we're fine, he reads off his phone. Two things. Can you take the pharmacy calls, monthly, starting tomorrow? And can you do one weekend a month out here with Dad? Silence. Then... I can do the pharmacy thing tomorrow. A pause. The weekend... let me look at flights. The pharmacy handoff happens Monday. The weekend takes two more calls, and one tense conversation, before it lands on the calendar. Progress. Not a miracle. But Marcus sleeps differently... knowing the second Saturday of the month is coming." },
+
+{ id:'m8l3', type:'learn', kicker:'Lesson 3',
+  title:'The family members who don&rsquo;t understand',
+  lead:'The sibling who visits for two hours and pronounces Dad &ldquo;fine.&rdquo; The cousin with opinions. The playbook is a document, not an argument:',
   points:[
-   '<b>&ldquo;What do you want to wear?&rdquo;</b> opens a closet with forty answers. Fog.',
-   '<b>&ldquo;Blue blouse, or the yellow?&rdquo;</b> Two doors, both good. She picks; she&rsquo;s in charge; you move forward.',
-   '<b>It works everywhere:</b> tea or coffee &middot; shower now or after breakfast &middot; sit by the window or at the table &middot; walk before lunch or after.',
-   '<b>Show the two things when you can.</b> Hold up both blouses. Seeing the choice beats imagining it.',
-   '<b>And when even two is too many</b> on a hard day, one warm suggestion works: &ldquo;The blue one&rsquo;s your favorite. Here we go.&rdquo;'],
-  callout:'Every real choice she makes is a small vote that her life is still hers. Stack those votes daily.',
-  vo:"Choice is dignity. Too much choice is fog. The sweet spot... is two. What do you want to wear opens a closet with forty answers. Blue blouse or the yellow gives her two doors, both good. She picks. She's in charge. You move forward. It works everywhere. Tea or coffee. Shower now or after breakfast. Hold up both blouses when you can... seeing beats imagining. And on the hard days, when even two is too many... one warm suggestion. The blue one's your favorite. Here we go." },
+   '<b>Track two ordinary weeks:</b> hours of hands-on care, every night interruption with its time stamp, each medical task, appointment, and near-miss.',
+   '<b>Add the money and the invisible load:</b> what you&rsquo;ve spent, what you&rsquo;ve turned down at work, the mental tabs that never close.',
+   '<b>Call a family meeting</b>, calm day, video call counts, and <b>share the document, not the resentment.</b> Numbers argue better than adjectives.',
+   '<b>End with assignments, not feelings:</b> the specific-ask list, with names attached. &ldquo;Who takes the second weekend? Who owns pharmacy? Who is the 2 a.m. backup?&rdquo;',
+   '<b>Expect discomfort, and one hard truth said kindly:</b> distance-guilt often dresses up as criticism. &ldquo;You should try...&rdquo; usually means &ldquo;I feel terrible that I&rsquo;m not here.&rdquo; Answer the guilt with a job: &ldquo;Great idea. It&rsquo;s yours.&rdquo;',
+   '<b>If nobody steps up,</b> you haven&rsquo;t failed; you&rsquo;ve gathered evidence. Take the same document to the Area Agency on Aging or a care manager: it&rsquo;s exactly what they need to help you.'],
+  callout:'The document does double duty forever after: doctors, care managers, and Medicaid applications all speak its language.',
+  vo:"The sibling who visits for two hours and pronounces Dad fine. The cousin with opinions. Don't argue. Document. Track two ordinary weeks... the hours, every two a m wake up with its time stamp, each medical task and appointment. Add the money, and the invisible load. Then call a family meeting, and share the document... not the resentment. Numbers argue better than adjectives. End with assignments, not feelings. Who takes the second weekend. Who owns pharmacy. And one hard truth, said kindly. Distance guilt often dresses up as criticism. You should try... usually means... I feel terrible that I'm not there. Answer the guilt with a job. Great idea. It's yours." },
 
-{ id:'cueing', type:'steps', kicker:'Lesson 5',
-  title:'The ladder of help',
-  lead:'Help has rungs. Start on the lowest one that works, and only climb when you must. The goal isn&rsquo;t a finished task. It&rsquo;s her hands still in her own life.',
-  steps:[
-   '<b>Words first.</b> &ldquo;Your comb is on the sink.&rdquo; Sometimes a sentence is all the help needed.',
-   '<b>Then show.</b> Point, or set the comb in view. A visual cue rescues what words alone can&rsquo;t.',
-   '<b>Then demonstrate.</b> Mime combing your own hair. Brains that lose language keep mirroring far longer.',
-   '<b>Then guide gently.</b> Your hand lightly helping hers begin the motion, and easing off the moment she takes over. (Module 7 teaches Teepa&rsquo;s Hand-under-Hand&trade; for exactly this.)',
-   '<b>Do only the part she can&rsquo;t.</b> Maybe she can&rsquo;t start the buttons but can finish them. Do the first one, hand it over. Finishing something feels like being someone.'],
-  vo:"Help has rungs. Start on the lowest one that works, and only climb when you must. Words first... your comb is on the sink. Then show... point, or set it in view. Then demonstrate... mime combing your own hair. Brains that lose language keep mirroring far longer. Then guide gently, your hand helping hers begin, and easing off the moment she takes over. And finally... do only the part she can't. Maybe she can't start the buttons, but she can finish them. Finishing something feels like being someone. That's the whole ladder." },
+{ id:'circle', type:'circle', kicker:'Build it now',
+  title:'My Circle of Support',
+  lead:'Names in boxes beat intentions in heads. Fill what you can; guesses are allowed; blanks are honest too, they show you exactly what to build next. It saves to your device and prints with your support plan.',
+  fields:[
+   {k:'time', label:'Who can give time with them (sitting, visits, overnights)?', ph:'Renee, 2nd weekends · neighbor Dale, Tues afternoons'},
+   {k:'rides', label:'Who can drive (appointments, errands)?', ph:'Church van Thursdays · brother-in-law for VA visits'},
+   {k:'money', label:'Who can help with money or paperwork?', ph:'Renee owns pharmacy + insurance calls'},
+   {k:'checkins', label:'Who can call or check in on ME?', ph:'Coach Danny, Fridays · support group, 1st Mondays'},
+   {k:'emergency', label:'Who do I call in an emergency (besides 911)?', ph:'Dale next door has a key · Renee&rsquo;s cell'},
+   {k:'professional', label:'Which professional resources will I contact?', ph:'Area Agency on Aging · Dad&rsquo;s doctor re: sleep · adult day program tour'},
+   {k:'ask', label:'The ONE ask I will make this week (name + task + time)', ph:'Ask Renee: pharmacy calls, monthly, starting Monday'}],
+  vo:"Now build it. Names in boxes beat intentions in heads. Who can give time. Who can drive. Who handles money and paperwork. Who checks in on you... you're in this circle too. Who you call in an emergency. Which professionals you'll contact. And the one ask you will make this week... a name, a task, and a time. Blanks are honest answers here. They just show you what to build next." },
 
-{ id:'dignity', type:'retire', kicker:'Lesson 6',
-  title:'The dignity list: retire these today',
-  lead:'Six habits almost every loving family falls into. Tap each one to retire it. No shame here, just a quiet ceremony.',
-  items:[
-   'Talking about her as if she isn&rsquo;t in the room. (&ldquo;She had a bad night.&rdquo; She&rsquo;s right there. &ldquo;We had a long night, didn&rsquo;t we?&rdquo;)',
-   'Correcting her in front of other people. Whatever it is, it can wait or it can go.',
-   'Baby talk and sing-song. She raised children; she isn&rsquo;t one.',
-   'Quizzing. &ldquo;Who&rsquo;s this? What&rsquo;s my name? What did you have for lunch?&rdquo; Every quiz is a test she might fail.',
-   '&ldquo;Don&rsquo;t you remember?&rdquo; Retire it completely. It has never once produced the memory.',
-   'Discussing her bathroom needs, bathing, or medications in front of visitors. Privacy is dignity&rsquo;s last name.'],
-  vo:"Six habits almost every loving family falls into... and I mean every. No shame in this room. Just a quiet ceremony. Talking about her like she isn't there. Correcting her in front of people. Baby talk. Quizzing. Don't you remember... retire that one completely, it has never once produced the memory. And discussing her private care in front of visitors. Tap each one, and let it go. Dignity is felt long after words are lost." },
+{ id:'m8l4', type:'learn', kicker:'Lesson 4',
+  title:'The honest map of outside help',
+  lead:'What exists, in plain words. Availability and eligibility vary; the free first phone call is your local <b>Area Agency on Aging</b>, they exist precisely to map this for your county.',
+  points:[
+   '<b>Family, friends, and faith communities:</b> the original respite network. Churches often have people actively wishing someone would give them an assignment.',
+   '<b>Adult day programs:</b> safe, social daytime hours for them; working hours or recovery hours for you.',
+   '<b>Respite care:</b> the umbrella word for any arranged break, an afternoon, a weekend, or a short facility stay. Respite is maintenance for the caregiver, not abandonment of the person.',
+   '<b>Home care agencies:</b> trained caregivers in the home, hours you choose. <em>Plain disclosure: Caring Companions, who made this free course, is one. This lesson&rsquo;s only agenda is whatever keeps your family safe and sane, including every option on this list that isn&rsquo;t us.</em>',
+   '<b>Medicaid home &amp; community-based services (HCBS):</b> in many states, including Missouri, Medicaid can fund in-home care for those who qualify. No promises here, eligibility is individual, but it&rsquo;s worth a real look before assuming you can&rsquo;t afford help.',
+   '<b>VA benefits:</b> veterans and some surviving spouses may qualify for meaningful help (Aid &amp; Attendance among others). Chronically under-used; worth the application.',
+   '<b>Long-term care insurance:</b> if a policy exists in a drawer somewhere, this is its moment. Have it verified.',
+   '<b>Support groups:</b> in person or online, the rooms where your unsayable sentences turn out to be everyone&rsquo;s sentences. (Our Caregivers Corner is one such room.)',
+   '<b>Hospice and palliative care, when clinically appropriate:</b> not &ldquo;giving up,&rdquo; comfort-focused expertise plus real family support, often available far earlier than families realize.',
+   '<b>Assisted living and memory care, when needed:</b> a different setting for care, not the end of your caregiving. Module 9 walks that road gently.'],
+  callout:'Nobody uses all of these. Most families who survive intact use two or three. The failure mode is using zero.',
+  vo:"Here's the map, in plain words. Family, friends, and faith communities... churches are full of people wishing someone would give them an assignment. Adult day programs. Respite care... the umbrella word for any arranged break. Maintenance for the caregiver, not abandonment of the person. Home care agencies... and plain disclosure here. Caring Companions, who made this free course, is one. This lesson's only agenda is whatever keeps your family safe and sane... including every option on this list that isn't us. Medicaid home and community based services... worth a real look before assuming you can't afford help. V A benefits, chronically underused. Long term care insurance, if a policy exists in a drawer. Support groups... the rooms where your unsayable sentences turn out to be everyone's. And hospice or palliative care, when clinically appropriate... which is not giving up. Nobody uses all of these. Most families who survive intact use two or three. The failure mode... is using zero." },
 
-{ id:'builder', type:'builder', kicker:'Put it together',
-  title:'Build the calm morning',
-  lead:'Five moments, three options each. Build Frank&rsquo;s new morning line by line; every choice gets coaching, and there are no buzzers.',
-  slots:[
-   { name:'The opening', opts:[
-     { t:'&ldquo;Come on, we&rsquo;ve got to get moving.&rdquo;', c:'The most natural opener in the world when you&rsquo;re late, and it delivers alarm before connection. Try the greeting first; the clock can have the second sentence.' },
-     { t:'From the front, pause, open hand: &ldquo;June. Good morning, sweetheart.&rdquo;', c:'That&rsquo;s the Positive Physical Approach in one motion: seen, named, greeted. The whole morning tilts friendly from here.' },
-     { t:'&ldquo;Did you forget the doctor&rsquo;s today?&rdquo;', c:'It&rsquo;s a quiz with a built-in blame. She may well have forgotten, and now the morning starts with her failure. Greet first; inform later, gently.' }]},
-   { name:'The instruction', opts:[
-     { t:'&ldquo;Let&rsquo;s get dressed, have breakfast, and get in the car.&rdquo;', c:'A kind voice carrying a three-part stack. Split it: one step, then the next. The errand survives being said slowly.' },
-     { t:'&ldquo;Let&rsquo;s put on your blouse.&rdquo;', c:'One thought, five words, a &ldquo;let&rsquo;s&rdquo; that makes it a team. Perfect.' },
-     { t:'&ldquo;You need to hurry up and get dressed.&rdquo;', c:'&ldquo;Hurry&rdquo; is pressure wearing work boots. It slows dementia down instead of speeding it up. One calm step does more.' }]},
-   { name:'The reassurance', opts:[
-     { t:'&ldquo;We have plenty of time.&rdquo;', c:'Even if it&rsquo;s only mostly true, this sentence lowers both your shoulders. The calm clock is a kindness you give each other.' },
-     { t:'&ldquo;Don&rsquo;t be nervous.&rdquo;', c:'Naming the feeling can plant the feeling. Offer safety instead of forbidding fear: &ldquo;I&rsquo;m right here with you.&rdquo;' },
-     { t:'&ldquo;You&rsquo;ll be fine, just keep moving.&rdquo;', c:'Half comfort, half cattle drive. Keep the first half, retire the second.' }]},
-   { name:'The choice', opts:[
-     { t:'&ldquo;What do you want to wear today?&rdquo;', c:'Generous, and too open: forty answers behind one closet door. Narrow it to two and the generosity actually lands.' },
-     { t:'Holding up both: &ldquo;Blue blouse, or the yellow?&rdquo;', c:'Two doors, shown not described. She picks, she&rsquo;s in charge, the morning moves. Textbook.' },
-     { t:'&ldquo;I picked your clothes. Just put them on.&rdquo;', c:'Efficient, and it spends a little of her dignity to buy two minutes. Most mornings, the two-choice version costs hardly more time.' }]},
-   { name:'The close', opts:[
-     { t:'&ldquo;After we&rsquo;re dressed, coffee at the table, like always.&rdquo;', c:'Anchoring to a loved routine is the gentlest engine there is. The morning now leads somewhere warm.' },
-     { t:'&ldquo;If you do well at the doctor&rsquo;s, we&rsquo;ll get ice cream.&rdquo;', c:'Sweet intention, parenting grammar. She&rsquo;s not earning treats; she&rsquo;s living her life. &ldquo;Ice cream on the way home?&rdquo; keeps the treat and returns the adulthood.' },
-     { t:'&ldquo;Let&rsquo;s just get this over with.&rdquo;', c:'Honest, tired, and it makes the whole morning a chore for both of you. Borrow the routine-anchor instead, even on the tired days. Especially then.' }]}],
-  vo:"Now put it together. Five moments. Three options each. Build Frank's new morning, line by line. Every choice gets coaching, and there are no buzzers in this room. When you're done, you'll have a script... and you can keep it." },
+{ id:'m8l5', type:'learn', kicker:'Lesson 5',
+  title:'When one pair of hands is no longer enough',
+  lead:'Not a failure list. A load-limit list, the signs the disease has outgrown what one person can safely carry:',
+  points:[
+   '<b>Repeated wandering</b> or exit-seeking that locks and chimes no longer contain.',
+   '<b>Aggression that keeps returning</b> despite the medical workup and every technique in Module 4.',
+   '<b>Your body is losing:</b> caregiver injury, unsafe transfers, falls you can&rsquo;t prevent or get them up from.',
+   '<b>Medical needs beyond your training:</b> wounds, complex medications, swallowing plans.',
+   '<b>Sleep has collapsed</b>, theirs and therefore yours, for weeks, not days.',
+   '<b>Fire, stove, and medication dangers</b> that supervision can&rsquo;t realistically cover.',
+   '<b>They can&rsquo;t safely be alone</b>, and you cannot physically be there every hour. Arithmetic, not character.',
+   '<b>And you: collapsing health, or a mind sending up flares.</b> The caregiver falling is the fastest way for both people to end up in crisis.'],
+  callout:'When several of these are true at once, &ldquo;more help&rdquo; stops being optional and becomes the plan. Module 9 walks through the decisions with you, and Module 4&rsquo;s words still hold: not because you failed. Because the disease outgrew what one person can safely do.',
+  vo:"This is not a failure list. It's a load limit list. Repeated wandering that locks and chimes no longer contain. Aggression that keeps returning despite the medical workup and every technique you know. Your body losing... unsafe transfers, falls you can't prevent. Medical needs beyond your training. Sleep collapsed for weeks. Fire and medication dangers that supervision can't realistically cover. They can't safely be alone, and you cannot physically be there every hour... that's arithmetic, not character. And you. Collapsing health. A mind sending up flares. When several of these are true at once... more help stops being optional, and becomes the plan. Not because you failed. Because the disease outgrew what one person can safely do." },
 
-{ id:'scene-two', type:'scenequiet', kicker:'Frank &amp; June &middot; the morning, take two',
-  scene:"Nine o&rsquo;clock appointment. Frank comes around where June can see him, slows his feet, raises a palm.<br><br><em>&ldquo;June. Good morning, sweetheart.&rdquo;</em> He offers his hand; she takes it.<br><br><em>&ldquo;Let&rsquo;s put on your blouse.&rdquo;</em> He holds up two. <em>&ldquo;Blue, or the yellow?&rdquo;</em><br><br>&ldquo;The yellow. Blue&rsquo;s for church.&rdquo;<br><br>They&rsquo;re dressed with twenty minutes to spare. Coffee at the kitchen table, like always.",
-  after:'Not every morning will go like this one. But the odds just changed.',
-  vo:"Nine o'clock appointment. Frank comes around where June can see him. Slows his feet. Raises a palm. June. Good morning, sweetheart. He offers his hand... she takes it. Let's put on your blouse. He holds up two. Blue, or the yellow? The yellow, she says. Blue's for church. They're dressed with twenty minutes to spare. Coffee at the kitchen table... like always. Not every morning will go like this one. But the odds just changed." },
-
-{ id:'check', type:'check', kicker:'A gentle check, not a test',
-  title:'The toothbrush freeze',
-  intro:'You&rsquo;ve asked your mother to brush her teeth. She&rsquo;s standing at the sink, toothbrush in hand, not moving. Ten seconds pass. What&rsquo;s your best next move?',
+{ id:'check', type:'check', kicker:'A realistic check',
+  title:'Three weeks without a full night',
+  intro:'Marcus hasn&rsquo;t slept a whole night in three weeks. He snapped at both kids yesterday, and this morning he called in sick, then just sat in a parking lot for two hours. What actually helps?',
   options:[
-   { label:'Wait quietly a little longer, eyes soft, hands still.', coach:'Yes. She may be mid-processing, and your stillness protects the work her brain is doing. If the freeze outlasts your patience, climb one rung of the ladder: point at the toothpaste, or mime brushing. Loudness isn&rsquo;t on the ladder at all.' },
-   { label:'Repeat it louder: &ldquo;BRUSH YOUR TEETH, MOM.&rdquo;', coach:'The volume instinct is universal, and it treats a processing problem like a hearing problem. Same sentence, louder, is the same traffic jam with a horn. Wait first; then show, don&rsquo;t shout.' },
-   { label:'Take the toothbrush and do it for her.', coach:'Kind, fast, and it skips four rungs of the ladder. Every skipped rung is a bit of her life handed over early. Try the demonstration first, mime brushing your own teeth, and let mirroring do what words couldn&rsquo;t.' },
-   { label:'Immediately rephrase: &ldquo;I mean, clean your teeth, use the brush!&rdquo;', coach:'The most loving mistake on this list: three fresh sentences, three restarted clocks. She wasn&rsquo;t stuck on your wording; she was processing it. Give the first sentence its full ten seconds before you send another.' }],
-  vo:"You've asked your mother to brush her teeth. She's standing at the sink, toothbrush in hand... not moving. Ten seconds pass. What's your best next move? You know more about this than you did an hour ago. Trust it." },
+   { label:'Push through. Caregiving has hard seasons; this one will pass.', coach:'Some seasons do pass, and this thinking is exactly how strong people deepen the injury. Three weeks of broken sleep plus the parking lot is not a rough patch; it&rsquo;s the body pulling the emergency brake. Pushing through a load injury adds load. The season won&rsquo;t pass until the load changes.' },
+   { label:'Schedule a self-care Sunday: gym, a movie, early bed.', coach:'And here&rsquo;s why that answer, kindly meant, makes caregivers like Marcus want to throw the pamphlet: one recovery day against three broken weeks isn&rsquo;t arithmetic that works, and it quietly blames the sufferer for not relaxing hard enough. Rest matters, but rest is the dessert. The meal is fewer 2 a.m. shifts, which takes other hands, not better attitudes.' },
+   { label:'Three moves this week: two specific asks (one overnight, one sitting shift), a call about Leon&rsquo;s nighttime wandering to his doctor, and a checkup for HIMSELF.', coach:'Yes, and notice what it targets: the load, the cause, and the injury. The overnight buys immediate sleep. The doctor call attacks the root (2 a.m. wandering is a medical conversation, sleep issues in dementia often have treatable pieces). And his own checkup treats the caregiver as a patient too, which after three weeks like this, he is.' },
+   { label:'This proves it: start facility tours this week.', coach:'It may genuinely come to a different care setting, and Module 9 will treat that choice with respect. But big decisions made at the bottom of exhaustion tend to be aimed at escaping the week, not building the years. First stabilize the sleep and the support; then, if the load-limit list still reads true, walk the Module 9 road with a rested mind and the family document in hand.' }],
+  vo:"Marcus hasn't slept a whole night in three weeks. He snapped at both kids yesterday. And this morning he called in sick... then just sat in a parking lot for two hours. What actually helps? I promised you no bubble baths. Let's see what that promise looks like here." },
 
 { id:'reflect', type:'reflect', kicker:'Just between you and this page',
-  title:'Where&rsquo;s the friction in your day?',
-  lead:'Morning dressing? Dinner? The car? Pick the one moment with the most friction, and name the single change from today you&rsquo;ll try there tomorrow. One change. Small is how this works.',
-  vo:"Just between you and this page. Where's the friction in your day? The morning dressing. Dinner. Getting into the car. Pick the one moment with the most friction... and name the single change from today that you'll try there tomorrow. Just one. Small is how this works. Small is how it lasts." },
+  title:'What would you ask for, if asking didn&rsquo;t feel like failing?',
+  lead:'Write the real one. The overnight. The weekend. The permission to see your own doctor. Then look at what you wrote, because that&rsquo;s not a failure. That&rsquo;s this week&rsquo;s ask, and you have the scripts now.',
+  vo:"Just between you and this page. What would you ask for... if asking didn't feel like failing? Write the real one. The overnight. The weekend. The permission to see your own doctor. Then look at what you wrote. Because that's not a failure. That's this week's ask. And you have the scripts now." },
 
 { id:'download', type:'download', kicker:'A tool for you',
-  title:'The Calm Communication Guide',
-  lead:'Everything from today on one printable page: the approach, the one-thought rule, the pause, two choices, the ladder, and the dignity list. Refrigerator-ready, next to Ellen&rsquo;s observation sheet and your phrase card.',
-  vo:"Your tool for this module puts everything on one page. The approach. The one thought rule. The pause. Two choices. The ladder. And the dignity list. Print it, and put it where the whole family will see it... because these work best when everyone uses them. I've also added a new line to your care plan. Daily routines that work. You know at least one already... write it down before it has to be rediscovered." },
+  title:'The Burnout Self-Check &amp; Support Plan',
+  lead:'One printable: the warning-sign checklist to revisit monthly, your Circle of Support (it fills in automatically if you built it), the crisis numbers, and a line for this week&rsquo;s one ask.',
+  vo:"Your tool for this module is the one to revisit monthly. The warning sign checklist. Your circle of support... it fills in automatically if you built it a few screens ago. The crisis numbers. And a line for this week's one ask. Print it. Put it somewhere you'll see it. You check the oil in your car more often than most caregivers check themselves. This page is the dipstick." },
 
 { id:'summary', type:'summary', kicker:'What&rsquo;s true now',
   title:'If you keep only four things from today',
-  truths:['Approach before words: front, slow, name, open hand, eye level.','One thought, then ten real seconds. Re-asking restarts her clock.','Two choices beat twenty questions, and both doors should be good ones.','Dignity is felt long after words are lost. Guard it in every sentence.'],
-  extra:'And when a morning still falls apart, because some will, that&rsquo;s not the technique failing or you failing. That&rsquo;s dementia being dementia. Coffee at the table still counts, even when it&rsquo;s late.',
-  vo:"If you keep only four things from today, keep these. Approach before words... front, slow, name, open hand, eye level. One thought, then ten real seconds. Two choices beat twenty questions. And dignity is felt long after words are lost... guard it in every sentence. When a morning still falls apart, and some will... that's not the technique failing, or you failing. That's dementia being dementia. Coffee at the table still counts. Even when it's late." },
+  truths:['Burnout is a load injury, not a character flaw. The treatment is more hands, never &ldquo;try harder.&rdquo;','Specific asks get help moving. Vague asks get silence. Give assignments.','Document, then meet. Numbers argue better than adjectives, and guilt answers best to a job.','Needing help is not the opposite of loving them. It has never once been that.'],
+  extra:'And if the heavy feelings from Lesson 1 are yours tonight: 988, call or text, free, right now, mid-module. The course will hold your place.',
+  vo:"If you keep only four things from today, keep these. Burnout is a load injury, not a character flaw... the treatment is more hands, never try harder. Specific asks get help moving. Document, then meet... numbers argue better than adjectives. And needing help is not the opposite of loving them. It has never once been that. One more time, because it matters. If the heavy feelings are yours tonight... nine eight eight. Call or text. Free. Right now, mid module. The course will hold your place." },
 
 { id:'done', type:'done',
-  vo:"These days, Frank keeps two blouses on the same hanger by the closet door... tomorrow's choice, pre-staged. He says the Positive Physical Approach felt like theater for about a week. Now it's just how he says good morning. Thank you for spending this time. Module Six is the one I've been waiting to make for you... The Stories That Still Exist. Music, photographs, and the parts of her that dementia never touched. It's the most beautiful road on this journey. Until then... one change, one moment, tomorrow morning. And be gentle with yourself." },
+  vo:"Renee's first weekend happened last month. Marcus took the kids to the lake, and on Saturday afternoon he sat at his son's ballgame and did absolutely nothing... except watch it. He says it felt strange for about an hour. Then it just felt like being a dad. Resting isn't leaving. It never was. Thank you for letting this module be about you. One module remains... Hard Decisions, Safety, and What Comes Next. Driving. Living alone. The conversations nobody wants and everybody needs. We'll walk it slowly, and we'll walk it together. Until then... make the one ask. This week. And be gentle with yourself. You, specifically." },
 ];
 
 var BREATHE_VO = "Let's take a moment, together. Put both feet on the floor. Relax your shoulders... they've been up near your ears all day. Take one slow breath in... and let it out even slower. Now say to yourself... I am doing something difficult. Because you are. Continue whenever you're ready. There is no hurry here.";
@@ -504,11 +512,11 @@ var renderers = {
 
 landing: function(){
   stage.innerHTML = '<div class="dj-card dj-cine">' + (
-    '<p class="dj-kicker">The Dementia Journey &middot; Module 5 of 9</p>'
-    +'<h1 class="dj-title">Communication That Creates Calm</h1>'
-    +'<p class="dj-quiet">Small changes in approach, words, and pace change whole days.</p>'
-    +'<p class="dj-lead">A gentler module: the practical craft of talking with someone whose brain needs more room. About 28 minutes, self-paced, nothing graded.</p>'
-    +'<div class="dj-callout"><p>The techniques here include the Positive Physical Approach&trade; from <b>Teepa Snow&rsquo;s Positive Approach to Care&reg;</b>, which Caring Companions is licensed to use and trains every professional caregiver in. You&rsquo;re getting the same craft, free.</p></div>'
+    '<p class="dj-kicker">The Dementia Journey &middot; Module 8 of 9</p>'
+    +'<h1 class="dj-title">Caregiver Burnout and Accepting Help</h1>'
+    +'<p class="dj-quiet">This module is about you. And it will not tell you to take a bubble bath.</p>'
+    +'<p class="dj-lead">Practical or nothing: naming the injury, getting real help moving, handling the family members who don&rsquo;t get it, and knowing when one pair of hands is no longer enough. About 27 minutes.</p>'
+    +'<div class="dj-callout"><p>Some feelings in this module have a phone number: <b>988</b>, call or text, free, 24/7. Using it is caregiving too. It&rsquo;s also behind the <b>Get help now</b> button on every screen.</p></div>'
     +'<button class="dj-next soft" id="hearBtn" style="margin-top:20px">&#9654;&nbsp; Hear Samantha&rsquo;s welcome</button>'
     +nextBtn('Begin')) + '</div>';
   el('hearBtn').addEventListener('click', function(){ speak(SCREENS[0].vo); });
@@ -521,97 +529,6 @@ scene: function(s){
     +nextBtn('Stay with her'));
   wireNext();
 },
-
-spot: function(s){
-  stage.innerHTML = card(head(s)
-    + s.items.map(function(it,i){ return '<div class="dj-spot" data-i="'+i+'" role="button" tabindex="0"><p class="t">'+it.t+'</p><p class="why">'+it.why+'</p></div>'; }).join('')
-    + nextBtn());
-  stage.querySelectorAll('.dj-spot').forEach(function(sp){
-    var open=function(){ var it=s.items[+sp.dataset.i]; sp.classList.add(it.bad?'bad':'fine'); };
-    sp.addEventListener('click',open);
-    sp.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} });
-  });
-  wireNext();
-},
-
-pause: function(s){
-  stage.innerHTML = card(head(s)
-    + '<div class="dj-ring">'
-    + '<button class="dj-next" id="feelBtn" style="margin:0;width:auto;padding:14px 30px">Feel ten seconds with me</button>'
-    + '<svg id="ringSvg" style="display:none;margin-top:18px" viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="54"></circle><circle class="fg" id="ringFg" cx="60" cy="60" r="54"></circle></svg>'
-    + '<p class="after" id="ringAfter">'+s.after+'</p>'
-    + '<button class="dj-next soft" id="skipBtn" style="margin-top:14px;width:auto;padding:10px 22px;font-size:13px">skip this, I&rsquo;ll take your word for it</button>'
-    + '</div>'
-    + '<div class="dj-pts" style="margin-top:20px">'+s.points.map(function(p){ return '<div class="dj-point seen" style="cursor:default"><span class="dot"></span><p>'+p+'</p></div>'; }).join('')+'</div>'
-    + nextBtn());
-  el('skipBtn').addEventListener('click',function(){ this.style.display='none'; });
-  el('feelBtn').addEventListener('click',function(){
-    var btn=this; btn.style.display='none'; el('skipBtn').style.display='none';
-    var svg=el('ringSvg'); svg.style.display='block';
-    var fg=el('ringFg'); var total=339.3; var t0=Date.now();
-    stopVoice();
-    var iv=setInterval(function(){
-      var p=Math.min(1,(Date.now()-t0)/10000);
-      fg.style.strokeDashoffset=String(total*(1-p));
-      if(p>=1){ clearInterval(iv); el('ringAfter').style.opacity=1; }
-    },50);
-  });
-  wireNext();
-},
-
-retire: function(s){
-  stage.innerHTML = card(head(s)
-    + s.items.map(function(it,i){ return '<div class="dj-retire" data-i="'+i+'" role="button" tabindex="0"><p>'+it+'</p></div>'; }).join('')
-    + '<div style="margin-top:14px">'+saveBtnHtml('dignity','Save the dignity list')+'</div>'
-    + nextBtn());
-  stage.querySelectorAll('.dj-retire').forEach(function(r){
-    var t=function(){ r.classList.toggle('done'); };
-    r.addEventListener('click',t);
-    r.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();t();} });
-  });
-  wireSaves(); wireNext();
-},
-
-builder: function(s){
-  var si=0, picks=[];
-  function draw(){
-    if (si < s.slots.length){
-      var slot=s.slots[si];
-      stage.innerHTML = card(head(s)
-        + '<p style="font-size:12px;font-weight:700;color:#a99f89;margin:0 0 6px">'+(si+1)+' of '+s.slots.length+'</p>'
-        + '<p style="font-size:15px;font-weight:700;color:var(--dj-navy);margin:0 0 12px">'+slot.name+'</p>'
-        + slot.opts.map(function(o,i){ return '<button type="button" class="dj-choice" data-i="'+i+'">'+o.t+'</button>'; }).join('')
-        + '<div id="coach"></div>'
-        + '<button class="dj-next" id="lockBtn" style="display:none">Use this line</button>');
-      stage.querySelectorAll('.dj-choice').forEach(function(b){
-        b.addEventListener('click',function(){
-          stage.querySelectorAll('.dj-choice').forEach(function(x){ x.classList.remove('picked'); });
-          b.classList.add('picked');
-          el('coach').innerHTML='<div class="dj-coach">'+slot.opts[+b.dataset.i].c+'</div>';
-          el('lockBtn').style.display='block';
-          el('lockBtn').dataset.pick=b.dataset.i;
-        });
-      });
-      el('lockBtn').addEventListener('click',function(){
-        picks[si]=+this.dataset.pick; si++; draw(); window.scrollTo({top:0,behavior:'smooth'});
-      });
-    } else {
-      var ideal=[1,1,0,1,0];
-      stage.innerHTML = card(head({kicker:s.kicker,title:'Your morning, assembled'})
-        + '<div class="dj-scene"><p class="who">The script you built</p><p>'
-        + s.slots.map(function(slot,i){ return '<b style="color:#8FD1C7;font-family:Inter,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.07em">'+slot.name+'</b><br>'+slot.opts[picks[i]].t+'<br><br>'; }).join('')
-        + '</p></div>'
-        + (picks.join()===ideal.join()
-            ? '<p class="dj-quiet">Every line a door-opener. Frank would hire you.</p>'
-            : '<p class="dj-quiet">A fine morning. If you ever want the gentlest possible version, it&rsquo;s in your printable guide, but scripts matter less than the warmth you say them with.</p>')
-        + '<div style="margin-top:8px">'+saveBtnHtml('calmscript','Save my script')+'</div>'
-        + nextBtn());
-      wireSaves(); wireNext();
-    }
-  }
-  draw();
-},
-
 
 scenequiet: function(s){
   stage.innerHTML = card(
@@ -643,27 +560,6 @@ learn: function(s){
   wireSaves(); wireNext();
 },
 
-under: function(s){
-  var si=0;
-  function draw(){
-    var st=s.stmts[si];
-    stage.innerHTML = card(head(s)
-      + '<p style="font-size:12px;font-weight:700;color:#a99f89;margin:0 0 10px">'+(si+1)+' of '+s.stmts.length+'</p>'
-      + '<div class="dj-stmt"><p>'+st.say+'</p></div>'
-      + '<p style="font-size:13px;font-weight:600;color:#55677a;margin:0 0 10px">What might be underneath? Tap any that feel possible:</p>'
-      + '<div>'+st.chips.map(function(c,i){ return '<button type="button" class="dj-chip" data-i="'+i+'">'+c+'</button>'; }).join('')+'</div>'
-      + '<button class="dj-next soft" id="peek" style="margin-top:8px">What it often means</button>'
-      + '<div class="dj-under" id="underOut"><p>'+st.under+'</p></div>'
-      + (si < s.stmts.length-1 ? '<button class="dj-next" id="nextStmt">Next sentence</button>' : nextBtn('Continue'))
-    );
-    stage.querySelectorAll('.dj-chip').forEach(function(c){ c.addEventListener('click',function(){ c.classList.toggle('sel'); }); });
-    el('peek').addEventListener('click',function(){ el('underOut').classList.add('show'); this.style.display='none'; });
-    if (si < s.stmts.length-1) el('nextStmt').addEventListener('click',function(){ si++; draw(); window.scrollTo({top:0,behavior:'smooth'}); });
-    else wireNext();
-  }
-  draw();
-},
-
 steps: function(s){
   var shown=0;
   stage.innerHTML = card(head(s)
@@ -681,47 +577,49 @@ steps: function(s){
   wireSaves(); wireNext();
 },
 
-phrases: function(s){
+signs: function(s){
+  var picked={};
   stage.innerHTML = card(head(s)
-    + s.phrases.map(function(p){
-        var key='phrase|'+p.replace(/&rsquo;/g,'’');
-        return '<div class="dj-phrase"><p>&ldquo;'+p+'&rdquo;</p>'+saveBtnHtml(key,'Keep')+'</div>';
-      }).join('')
-    + '<button class="dj-next soft" id="saveAll">Add all nine to my care plan</button>'
-    + '<p id="allSaved" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>All nine are in your plan, under Helpful phrases.</p>'
+    + '<div>'+s.chips.map(function(c,i){ return '<button type="button" class="dj-chip" data-i="'+i+'">'+c.t+'</button>'; }).join('')+'</div>'
+    + '<div class="dj-under" id="urgent"><p><b>Thank you for being honest, and please hear this now, not later:</b> hopelessness and thoughts of escape or self-harm are a medical emergency of your own. Call or text <a href="tel:988" style="font-weight:700">988</a>, free, 24/7, staffed by people who talk with exhausted caregivers every day. And tell one human being this week how hard it has gotten. You should not be carrying this part alone for one more day.</p></div>'
+    + '<button class="dj-next soft" id="toPlan" style="display:none">Add my checked signs to my care plan</button>'
+    + '<p id="planAdded" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>Added, under &ldquo;Signs I need a break.&rdquo;</p>'
     + nextBtn());
-  el('saveAll').addEventListener('click',function(){
-    s.phrases.forEach(function(p){
-      var clean=p.replace(/&rsquo;/g,'’');
-      planAddPhrase(clean);
-      saved['phrase|'+clean]=true;
+  stage.querySelectorAll('.dj-chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      var i=+c.dataset.i;
+      picked[i]=!picked[i];
+      c.classList.toggle('sel',picked[i]);
+      if (s.chips[i].severe && picked[i]) el('urgent').classList.add('show');
+      el('toPlan').style.display = Object.values(picked).some(Boolean) ? 'block' : 'none';
     });
-    localStorage.setItem('dj_saved', JSON.stringify(saved));
-    stage.querySelectorAll('[data-savekey]').forEach(function(b){ b.classList.add('did'); b.innerHTML='&#10084; Saved'; });
-    el('allSaved').hidden=false;
   });
-  wireSaves(); wireNext();
-},
-
-branch: function(s){
-  var tried={};
-  stage.innerHTML = card(head(s)
-    + s.options.map(function(o,i){ return '<button type="button" class="dj-choice" data-i="'+i+'">'+o.label+'</button>'; }).join('')
-    + '<div id="out"></div>'
-    + '<p id="nudge" class="dj-lead" style="font-size:13px;color:#a99f89;margin-top:10px">'+s.nudge+'</p>'
-    + nextBtn());
-  stage.querySelectorAll('.dj-choice').forEach(function(b){
-    b.addEventListener('click',function(){
-      var i=+b.dataset.i;
-      tried[i]=true;
-      stage.querySelectorAll('.dj-choice').forEach(function(x){ x.classList.remove('picked'); if(tried[+x.dataset.i]) x.classList.add('tried'); });
-      b.classList.add('picked');
-      el('out').innerHTML='<div class="dj-coach">'+s.options[i].out+'</div>';
-      if (tried[2]) el('nudge').style.display='none';
-    });
+  el('toPlan').addEventListener('click',function(){
+    var p={}; try { p=JSON.parse(localStorage.getItem('dj_plan')||'{}'); } catch(e){}
+    var chosen=s.chips.filter(function(c,i){ return picked[i]; }).map(function(c){ return c.t; });
+    p.signs=(p.signs?p.signs+'\n':'')+chosen.join('\n');
+    localStorage.setItem('dj_plan', JSON.stringify(p));
+    el('planAdded').hidden=false; this.style.display='none';
   });
   wireNext();
 },
+
+circle: function(s){
+  var C={}; try { C=JSON.parse(localStorage.getItem('dj_circle')||'{}'); } catch(e){}
+  stage.innerHTML = card(head(s)
+    + s.fields.map(function(f){ return '<div class="dj-bfield"><label>'+f.label+'</label><textarea id="cf-'+f.k+'" placeholder="'+f.ph+'"></textarea></div>'; }).join('')
+    + '<p style="font-size:12.5px;color:#9aa69e;margin:4px 0 0">Saved on this device as you type; prints with your support plan.</p>'
+    + nextBtn());
+  s.fields.forEach(function(f){
+    var elx=el('cf-'+f.k);
+    elx.value=C[f.k]||'';
+    elx.addEventListener('input',function(){ C[f.k]=elx.value; try { localStorage.setItem('dj_circle', JSON.stringify(C)); } catch(e){} });
+  });
+  wireNext();
+},
+
+
+
 
 check: function(s){
   stage.innerHTML = card(head(s)
@@ -745,8 +643,8 @@ reflect: function(s){
     + '<p style="font-size:12.5px;color:#9aa69e;margin:10px 0 0">Saved only on this device. Skip freely; thinking it counts too.</p>'
     + nextBtn());
   var ta=el('reflectTa');
-  try { ta.value=localStorage.getItem('dj_m5_reflect')||''; } catch(e){}
-  ta.addEventListener('input',function(){ try { localStorage.setItem('dj_m5_reflect',ta.value); } catch(e){} });
+  try { ta.value=localStorage.getItem('dj_m8_reflect')||''; } catch(e){}
+  ta.addEventListener('input',function(){ try { localStorage.setItem('dj_m8_reflect',ta.value); } catch(e){} });
   wireNext();
 },
 
@@ -764,25 +662,25 @@ summary: function(s){
   stage.innerHTML = card(head(s)
     + s.truths.map(function(t){ return '<div class="dj-summary"><p>'+t+'</p></div>'; }).join('')
     + '<p class="dj-quiet" style="margin-top:16px">'+s.extra+'</p>'
-    + '<div style="margin-top:6px">'+saveBtnHtml('truths5','Save these four truths')+'</div>'
+    + '<div style="margin-top:6px">'+saveBtnHtml('truths8','Save these four truths')+'</div>'
     + nextBtn('Finish Module 3'));
   wireSaves(); wireNext();
 },
 
 done: function(){
   stage.innerHTML = card(
-    '<div class="dj-scene"><p class="who">Frank &amp; June, these mornings</p><p>Two blouses hang together on one hanger by the closet door: tomorrow&rsquo;s choice, pre-staged.<br><br>Frank says the approach felt like theater for about a week. Now it&rsquo;s just how he says good morning.</p></div>'
-    +'<p class="dj-kicker" style="text-align:center">Module 5 complete</p>'
-    +'<h1 class="dj-title" style="text-align:center">You just changed your mornings.</h1>'
-    +'<p class="dj-lead" style="text-align:center">Module 6, <em>The Stories That Still Exist</em>, is the most beautiful road on this journey: music, photographs, and the parts of them dementia never touched.</p>'
+    '<div class="dj-scene"><p class="who">Marcus, last month</p><p>Renee&rsquo;s first weekend happened. Marcus took the kids to the lake, and on Saturday he sat at his son&rsquo;s ballgame and did absolutely nothing, except watch it.<br><br>He says it felt strange for about an hour.<br><br>Then it just felt like being a dad.</p></div>'
+    +'<p class="dj-kicker" style="text-align:center">Module 8 complete</p>'
+    +'<h1 class="dj-title" style="text-align:center">Resting isn&rsquo;t leaving. It never was.</h1>'
+    +'<p class="dj-lead" style="text-align:center">One module remains: <em>Hard Decisions, Safety, and What Comes Next</em>. Driving, living alone, and the conversations nobody wants and everybody needs. We&rsquo;ll walk it slowly, together.</p>'
     +'<div style="background:#f7f2e6;border-radius:14px;padding:18px;margin:6px 0 16px">'
-    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">Want Module 6 the day it opens?</p>'
+    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">Want Module 9 the day it opens?</p>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px">'
     +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:170px;padding:12px 14px;font-size:14px;border:1.5px solid #ddd3ba;border-radius:9px;font-family:inherit;background:#fff">'
     +'<button type="button" id="dj-notify" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Tell me</button></div>'
-    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>You&rsquo;re on the list. One change, one moment, tomorrow morning.</p></div>'
+    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>You&rsquo;re on the list. Make the one ask this week.</p></div>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">'
-    +'<a href="/dementia-journey/resources/calm-communication-guide.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My calm guide</a>'
+    +'<a href="/dementia-journey/resources/burnout-support-plan.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My support plan</a>'
     +'<button class="dj-next soft" style="width:auto" id="donePlan">My care plan</button>'
     +'<a href="/dementia-journey/" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">Course home</a>'
     +'</div>');
@@ -791,11 +689,11 @@ done: function(){
     var em=el('dj-email').value.trim();
     if(!em||em.indexOf('@')<0) return;
     var btn=el('dj-notify'); btn.disabled=true;
-    if(window.CCForms) CCForms.submitLead({ name:'(Dementia Journey, finished Module 5)', email:em, message:'Completed The Dementia Journey Module 5 (Communication That Creates Calm) and wants Module 6 at launch.' })
+    if(window.CCForms) CCForms.submitLead({ name:'(Dementia Journey, finished Module 8)', email:em, message:'Completed The Dementia Journey Module 8 (Caregiver Burnout and Accepting Help) and wants Module 9 at launch.' })
       .then(function(){ el('dj-sent').hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });
-  if (window.CCTrack) CCTrack('dj_module5_complete');
+  if (window.CCTrack) CCTrack('dj_module8_complete');
 }
 };
 
@@ -806,8 +704,10 @@ function wireNext(){
 function show(){
   var s=SCREENS[idx];
   el('bar').style.width = Math.round(((idx+1)/SCREENS.length)*100)+'%';
-  el('count').textContent = 'Module 5 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
-  renderers[s.type](s);
+  el('count').textContent = 'Module 8 · ' + (idx+1) + ' of ' + SCREENS.length + ' · you can pause anytime';
+  var r=renderers[s.type];
+  if (!r){ stage.innerHTML='<div class="dj-card"><p class="dj-lead">This screen hit a snag. Please tap continue.</p><button class="dj-next" id="next">Continue</button></div>'; console.error('missing renderer',s.type); wireNext(); }
+  else r(s);
   window.scrollTo({ top:0, behavior:'smooth' });
   if (idx > 0) speak(s.vo);
 }
