@@ -47,7 +47,10 @@ const SYSTEM_PROMPT =
   "$130/week twice, $180/week three times; 30-minute visits $125/week, " +
   "$220/week, $300/week. HomeTogether device questions or support: " +
   "tryhometogether.com/help or support@tryhometogether.com. HomeTogether Local " +
-  "(find and hire caregivers directly) is in preview at tryhometogether.com/local. " +
+  "(find and hire caregivers directly) is LIVE at tryhometogether.com/local: " +
+  "families and caregivers can sign up now, and our team personally matches " +
+  "them (every caregiver interviewed and background-checked first; free to talk " +
+  "to matches, families hire directly). " +
   "Exact in-home care quotes depend on the care plan - offer a free consultation " +
   "at (417) 234-8494. If asked something you cannot know (specific medical " +
   "advice, legal advice, availability), suggest calling (417) 234-8494 or " +
