@@ -17,60 +17,112 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-.djh-hero { max-width: 760px; margin: 0 auto; padding: 58px 24px 20px; text-align: center; }
-.djh-h1 { font-family: var(--serif); font-size: 40px; font-weight: 600; margin: 0 0 8px; color: var(--brand-blue); letter-spacing: -0.01em; }
-.djh-sub { font-family: var(--serif); font-style: italic; font-size: 19px; color: #3d5568; margin: 0 0 16px; line-height: 1.55; }
-.djh-wrap { max-width: 720px; margin: 0 auto; padding: 10px 24px 80px; }
-.djh-mod { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 12px; }
-.djh-mod.open { border: 1.5px solid var(--cta); }
-.djh-mod .n { flex: 0 0 40px; height: 40px; border-radius: 50%; background: #EAF4F6; color: var(--cta); font-family: var(--serif); font-size: 18px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
-.djh-mod.soon .n { background: #f3f1e9; color: #9aa69e; }
-.djh-mod h2 { font-family: var(--serif); font-size: 18.5px; font-weight: 600; color: var(--brand-blue); margin: 2px 0 4px; }
-.djh-mod p { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0; }
-.djh-badge { display: inline-block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; border-radius: 999px; padding: 3px 10px; margin-bottom: 6px; }
-.djh-badge.now { background: var(--soft-teal); color: var(--cta); }
-.djh-badge.soon { background: #f3f1e9; color: #9aa69e; }
-@media (max-width: 639px) { .djh-h1 { font-size: 30px; } }
+:root { --djh-navy:#143A5E; --djh-navy-deep:#0e2c49; --djh-gold:#EFCE85; --djh-gold-deep:#c79a3b; --djh-gold-ink:#a87f2c; }
+body { background:#faf8f3; }
+.djh-wrap { max-width: 760px; margin: 0 auto; padding: 26px 22px 90px; font-family:'Inter',Helvetica,Arial,sans-serif; color:#16283a; }
+.djh-hero { background: linear-gradient(150deg,#0e2c49 0%, #1b4266 58%, #2a5478 100%); border-radius: 26px; padding: 56px 46px; position: relative; overflow: hidden; margin-bottom: 30px; }
+.djh-hero::after { content:""; position:absolute; right:-80px; top:-80px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle,rgba(239,206,133,.32),transparent 66%); pointer-events:none; }
+.djh-hero > * { position: relative; }
+.djh-hero .k { font-size: 11.5px; font-weight: 700; color: var(--djh-gold); text-transform: uppercase; letter-spacing: .1em; margin: 0 0 16px; }
+.djh-hero h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 46px; font-weight: 600; color: #fbf7ee; margin: 0 0 10px; letter-spacing: -0.01em; line-height:1.15; }
+.djh-hero .sub { font-family:'Source Serif 4',Georgia,serif; font-style: italic; font-size: 19px; color: #e9dcbb; margin: 0 0 18px; line-height: 1.55; }
+.djh-hero .d { font-size: 15px; line-height: 1.75; color: #c9d4de; margin: 0 0 26px; max-width: 520px; }
+.djh-begin { display: inline-flex; align-items: center; gap: 10px; background: var(--djh-gold); color: var(--djh-navy-deep); border-radius: 999px; padding: 15px 30px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .15s ease, transform .12s ease; }
+.djh-begin:hover { background:#e8c46f; transform: translateY(-1px); }
+.djh-meta { display: inline-flex; gap: 18px; margin-left: 18px; font-size: 12.5px; color: #9fb2c2; font-weight: 600; }
+.djh-sect { font-size: 11.5px; font-weight: 700; color: var(--djh-gold-ink); text-transform: uppercase; letter-spacing: .1em; text-align: center; margin: 38px 0 8px; }
+.djh-h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 30px; font-weight: 600; color: var(--djh-navy); text-align: center; margin: 0 0 8px; }
+.djh-sub2 { font-size: 14.5px; line-height: 1.65; color: #55677a; text-align: center; max-width: 520px; margin: 0 auto 26px; }
+.djh-fam { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+.djh-famchip { background: #fff; border: 1.5px solid #e2dbc9; border-radius: 999px; padding: 9px 16px; font-size: 13px; font-weight: 600; color: #2c3d4d; }
+.djh-famchip b { color: var(--djh-navy); }
+.djh-ep { display: flex; gap: 18px; align-items: center; border-radius: 20px; padding: 24px 26px; margin-bottom: 12px; text-decoration: none; transition: transform .13s ease, box-shadow .13s ease; }
+.djh-ep.live { background: linear-gradient(140deg,#0e2c49 0%, #1c4368 70%, #295175 100%); position: relative; overflow: hidden; box-shadow: 0 14px 36px rgba(20,58,94,.18); }
+.djh-ep.live::after { content:""; position:absolute; right:-50px; top:-60px; width:190px; height:190px; border-radius:50%; background:radial-gradient(circle,rgba(239,206,133,.25),transparent 66%); }
+.djh-ep.live:hover { transform: translateY(-2px); box-shadow: 0 20px 44px rgba(20,58,94,.26); }
+.djh-ep.live > * { position: relative; }
+.djh-ep .num { flex: 0 0 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family:'Source Serif 4',Georgia,serif; font-size: 20px; font-weight: 600; }
+.djh-ep.live .num { background: rgba(239,206,133,.16); color: var(--djh-gold); border: 1.5px solid rgba(239,206,133,.4); }
+.djh-ep .body { flex: 1; min-width: 0; }
+.djh-ep .badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; border-radius: 999px; padding: 3px 10px; margin-bottom: 7px; }
+.djh-ep.live .badge { background: rgba(239,206,133,.16); color: var(--djh-gold); }
+.djh-ep.live h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 20px; font-weight: 600; color: #fbf7ee; margin: 0 0 5px; }
+.djh-ep.live p { font-size: 13px; line-height: 1.6; color: #b7c5d2; margin: 0; }
+.djh-ep .play { flex: 0 0 46px; height: 46px; border-radius: 50%; background: var(--djh-gold); display: flex; align-items: center; justify-content: center; color: var(--djh-navy-deep); font-size: 16px; }
+.djh-ep.soon { background: #fffdf8; border: 1px solid #ece4d2; }
+.djh-ep.soon .num { background: #f3ecdc; color: #a99f89; }
+.djh-ep.soon .badge { background: #f3ecdc; color: #a99f89; }
+.djh-ep.soon h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 18px; font-weight: 600; color: #61707f; margin: 0 0 4px; }
+.djh-ep.soon p { font-size: 13px; line-height: 1.6; color: #94a0ab; margin: 0; }
+.djh-card { background: #fffdf8; border: 1px solid #ece4d2; border-radius: 20px; padding: 26px; margin-top: 14px; }
+.djh-card h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 19px; font-weight: 600; color: var(--djh-navy); margin: 0 0 8px; }
+.djh-card p { font-size: 13.5px; line-height: 1.65; color: #55677a; margin: 0 0 12px; }
+.djh-card a.res { display: block; font-size: 14px; font-weight: 600; color: #1F7A8C; margin-bottom: 8px; text-decoration: none; }
+.djh-card a.res:hover { text-decoration: underline; }
+.djh-help { background: #fdf6e8; border: 1.5px solid #e3c98f; }
+.djh-help p { color: #5c4a22; margin: 0; line-height: 1.9; }
+@media (max-width: 620px) {
+  .djh-hero { padding: 38px 26px; }
+  .djh-hero h1 { font-size: 33px; }
+  .djh-meta { display: block; margin: 14px 0 0; }
+  .djh-ep { padding: 18px; gap: 13px; }
+  .djh-ep .play { display: none; }
+}
 </style>
 </head>
 <body>
-<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
-
-<section class="djh-hero">
-<p class="kicker">Free for families · from Caring Companions</p>
-<h1 class="djh-h1">The Dementia Journey</h1>
-<p class="djh-sub">A free course for families caring for someone they love.</p>
-<p style="font-size:15.5px;line-height:1.7;color:#45566a;margin:0 auto;max-width:580px">Understand the changes, protect the relationship, and learn how to care without losing yourself. Nine self-paced modules, narrated by Samantha, the owner of Caring Companions. No sign-up, no grades, no pressure. Just company for the road.</p>
-</section>
-
 <div class="djh-wrap">
-<a href="/dementia-journey/module-1.html" style="text-decoration:none"><div class="djh-mod open">
-<span class="n">1</span>
-<span><span class="djh-badge now">Available now · ~20 min</span><h2>You Are Not Failing</h2><p>The feelings nobody warns you about: grief that starts early, guilt, anger, and the love that holds it all. Includes the Emotional Check-In and the start of your Family Care Plan.</p></span>
-</div></a>
-<a href="/dementia-journey/module-2.html" style="text-decoration:none"><div class="djh-mod open">
-<span class="n">2</span>
-<span><span class="djh-badge now">Available now · ~25 min</span><h2>Understanding the Changes in the Brain</h2><p>They are not giving you a hard time. They are having a hard time. Why behaviors are symptoms, why abilities flicker, the ten detective questions, and the one firm rule about sudden confusion.</p></span>
-</div></a>
-<div class="djh-mod soon"><span class="n">3</span><span><span class="djh-badge soon">Coming next</span><h2>Stop Arguing With Dementia</h2><p>Why facts and corrections fail, and what reaches them instead.</p></span></div>
-<div class="djh-mod soon"><span class="n">4</span><span><span class="djh-badge soon">Coming</span><h2>When Words and Behaviors Hurt</h2><p>Accusations, rejection, and anger. The hurt you feel is still real.</p></span></div>
-<div class="djh-mod soon"><span class="n">5</span><span><span class="djh-badge soon">Coming</span><h2>Communication That Creates Calm</h2><p>Small changes in approach, words, and pace that change whole days.</p></span></div>
-<div class="djh-mod soon"><span class="n">6</span><span><span class="djh-badge soon">Coming</span><h2>The Stories That Still Exist</h2><p>A person is more than what they can remember today.</p></span></div>
-<div class="djh-mod soon"><span class="n">7</span><span><span class="djh-badge soon">Coming</span><h2>Daily Care Without the Battle</h2><p>Bathing, dressing, meals, and routines, with dignity and less conflict.</p></span></div>
-<div class="djh-mod soon"><span class="n">8</span><span><span class="djh-badge soon">Coming</span><h2>Caregiver Burnout and Accepting Help</h2><p>Honest talk about limits, and help that doesn't mean abandonment.</p></span></div>
-<div class="djh-mod soon"><span class="n">9</span><span><span class="djh-badge soon">Coming</span><h2>Hard Decisions, Safety, and What Comes Next</h2><p>Driving, living alone, wandering, planning, and facing choices together.</p></span></div>
 
-<div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;margin-top:22px">
-<h2 style="font-family:var(--serif);font-size:18.5px;font-weight:600;color:var(--brand-blue);margin:0 0 8px">Family tool library</h2>
-<p style="font-size:13.5px;line-height:1.6;color:var(--muted);margin:0 0 12px">Printable tools from the course, free to anyone, no course completion required. The library grows with each module.</p>
-<a href="/dementia-journey/resources/emotional-check-in.html" style="display:block;font-size:14px;font-weight:600;margin-bottom:8px">Family Caregiver Emotional Check-In &rarr;</a>
-<a href="/dementia-journey/resources/behavior-observation.html" style="display:block;font-size:14px;font-weight:600">What Might This Behavior Be Communicating? &rarr;</a>
+<div class="djh-hero">
+<p class="k">Free for families &middot; from Caring Companions</p>
+<h1>The Dementia Journey</h1>
+<p class="sub">A free course for families caring for someone they love.</p>
+<p class="d">Understand the changes, protect the relationship, and learn how to care without losing yourself. Narrated by Samantha, the owner of Caring Companions. No sign-up, no grades, no pressure. Just company for the road.</p>
+<a class="djh-begin" href="/dementia-journey/module-1.html">Begin Module 01 &rarr;</a>
+<span class="djh-meta"><span>9 modules</span><span>~3 hours in all</span><span>Self-paced</span></span>
 </div>
 
-<div style="background:#fdf6e8;border:1.5px solid #ecd3a8;border-radius:16px;padding:22px;margin-top:14px">
-<h2 style="font-family:var(--serif);font-size:17px;font-weight:600;color:#0D365F;margin:0 0 8px">If you need help right now</h2>
-<p style="font-size:13.5px;line-height:1.8;color:#5c4a22;margin:0">Emergencies: <a href="tel:911" style="font-weight:700">911</a> &middot; Emotional crisis: call or text <a href="tel:988" style="font-weight:700">988</a> &middot; Alzheimer&rsquo;s Association 24/7 Helpline: <a href="tel:18002723900" style="font-weight:700">(800) 272-3900</a> &middot; Sudden changes in your loved one: call their healthcare provider.</p>
+<p class="djh-sect">The families you&rsquo;ll walk with</p>
+<h2 class="djh-h2">Real roads, walked together.</h2>
+<p class="djh-sub2">Each module follows a family that could live down the street. Their stories carry the lessons, so you&rsquo;re never learning alone.</p>
+<div class="djh-fam">
+<span class="djh-famchip"><b>Ellen &amp; Ruth</b> &middot; a daughter and her mother</span>
+<span class="djh-famchip"><b>Frank &amp; June</b> &middot; married 52 years</span>
+<span class="djh-famchip"><b>More families</b> &middot; joining as modules open</span>
 </div>
+
+<p class="djh-sect" style="margin-top:44px">The journey</p>
+<h2 class="djh-h2">Nine modules, one road.</h2>
+<p class="djh-sub2">Start at the beginning or jump to tonight&rsquo;s problem. Each module stands on its own, and they&rsquo;re better together.</p>
+
+<a class="djh-ep live" href="/dementia-journey/module-1.html">
+<span class="num">1</span>
+<span class="body"><span class="badge">Available now &middot; ~20 min</span><h2>You Are Not Failing</h2><p>The feelings nobody warns you about: grief that starts early, guilt, anger, and the love that holds it all.</p></span>
+<span class="play">&#9654;</span>
+</a>
+<a class="djh-ep live" href="/dementia-journey/module-2.html">
+<span class="num">2</span>
+<span class="body"><span class="badge">Available now &middot; ~25 min</span><h2>Understanding the Changes in the Brain</h2><p>They are not giving you a hard time. They are having a hard time. The detective questions, and the one firm rule about sudden confusion.</p></span>
+<span class="play">&#9654;</span>
+</a>
+<div class="djh-ep soon"><span class="num">3</span><span class="body"><span class="badge">Coming next</span><h2>Stop Arguing With Dementia</h2><p>Why facts and corrections fail, and what reaches them instead.</p></span></div>
+<div class="djh-ep soon"><span class="num">4</span><span class="body"><span class="badge">Coming</span><h2>When Words and Behaviors Hurt</h2><p>Accusations, rejection, and anger. The hurt you feel is still real.</p></span></div>
+<div class="djh-ep soon"><span class="num">5</span><span class="body"><span class="badge">Coming</span><h2>Communication That Creates Calm</h2><p>Small changes in approach, words, and pace that change whole days.</p></span></div>
+<div class="djh-ep soon"><span class="num">6</span><span class="body"><span class="badge">Coming</span><h2>The Stories That Still Exist</h2><p>A person is more than what they can remember today.</p></span></div>
+<div class="djh-ep soon"><span class="num">7</span><span class="body"><span class="badge">Coming</span><h2>Daily Care Without the Battle</h2><p>Bathing, dressing, meals, and routines, with dignity and less conflict.</p></span></div>
+<div class="djh-ep soon"><span class="num">8</span><span class="body"><span class="badge">Coming</span><h2>Caregiver Burnout and Accepting Help</h2><p>Honest talk about limits, and help that doesn&rsquo;t mean abandonment.</p></span></div>
+<div class="djh-ep soon"><span class="num">9</span><span class="body"><span class="badge">Coming</span><h2>Hard Decisions, Safety, and What Comes Next</h2><p>Driving, living alone, wandering, planning, and facing choices together.</p></span></div>
+
+<div class="djh-card">
+<h2>Family tool library</h2>
+<p>Printable tools from the course, free to anyone, no course completion required. The library grows with each module.</p>
+<a class="res" href="/dementia-journey/resources/emotional-check-in.html">Family Caregiver Emotional Check-In &rarr;</a>
+<a class="res" href="/dementia-journey/resources/behavior-observation.html">What Might This Behavior Be Communicating? &rarr;</a>
+</div>
+
+<div class="djh-card djh-help">
+<h2 style="color:#0D365F">If you need help right now</h2>
+<p style="font-size:13.5px">Emergencies: <a href="tel:911" style="font-weight:700">911</a> &middot; Emotional crisis: call or text <a href="tel:988" style="font-weight:700">988</a> &middot; Alzheimer&rsquo;s Association 24/7 Helpline: <a href="tel:18002723900" style="font-weight:700">(800) 272-3900</a> &middot; Sudden changes in your loved one: call their healthcare provider.</p>
 </div>
 
 </div>
