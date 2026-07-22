@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Module 6: The Stories That Still Exist | The Dementia Journey | Caring Companions</title>
 <meta name="description" content="A free course for families caring for someone they love. Module 6: identity, music, photographs, and meaningful moments. A person is more than what they can remember today.">
-<link rel="canonical" href="https://mo-care.com/dementia-journey/module-6.html">
+<link rel="canonical" href="https://mo-care.com/dementia-journey/module-6">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="The Stories That Still Exist | The Dementia Journey">
 <meta property="og:description" content="A person is more than what they can remember today. The most beautiful road on the journey, free for families.">
-<meta property="og:url" content="https://mo-care.com/dementia-journey/module-6.html">
+<meta property="og:url" content="https://mo-care.com/dementia-journey/module-6">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -195,7 +195,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <div class="dj-help-item"><b>A sudden or concerning change in your loved one</b><p>Contact their healthcare provider. Sudden confusion can come from infection, dehydration, pain, constipation, or a medication effect, not just dementia.</p></div>
 <div class="dj-help-item"><b>You are in emotional crisis, or having thoughts of harming yourself</b><p>Call or text <a href="tel:988" style="font-weight:700">988</a>, the Suicide &amp; Crisis Lifeline. It is free and open 24/7. Caregivers use it too.</p></div>
 <div class="dj-help-item"><b>You suspect abuse, neglect, or exploitation</b><p>Contact your local Adult Protective Services. In Missouri: <a href="tel:18003920210" style="font-weight:700">(800) 392-0210</a>.</p></div>
-<div class="dj-help-item"><b>You need caregiver support and local resources</b><p>In Southwest Missouri, <b>SeniorAge</b> (our Area Agency on Aging) maps respite, meals, rides, and support: <a href="tel:14178620762" style="font-weight:700">(417) 862-0762</a>. See our <a href="/sw-missouri-caregiver-resources.html" style="font-weight:700">Caregiver Resource Directory</a> for the full local list. Alzheimer&rsquo;s 24/7 Helpline: <a href="tel:18002723900" style="font-weight:700">(800) 272-3900</a>.</p></div>
+<div class="dj-help-item"><b>You need caregiver support and local resources</b><p>In Southwest Missouri, <b>SeniorAge</b> (our Area Agency on Aging) maps respite, meals, rides, and support: <a href="tel:14178620762" style="font-weight:700">(417) 862-0762</a>. See our <a href="/sw-missouri-caregiver-resources" style="font-weight:700">Caregiver Resource Directory</a> for the full local list. Alzheimer&rsquo;s 24/7 Helpline: <a href="tel:18002723900" style="font-weight:700">(800) 272-3900</a>.</p></div>
 <button class="dj-next soft" onclick="djClose('helpModal')">Close</button>
 </div>
 </div>
@@ -670,7 +670,7 @@ keepsake: function(s){
   }
   stage.innerHTML = card(head(s)
     + inner
-    + '<a class="dj-next" style="text-decoration:none;text-align:center;display:block" href="/dementia-journey/resources/this-is-who-i-am.html" target="_blank" rel="noopener">Open my printable page</a>'
+    + '<a class="dj-next" style="text-decoration:none;text-align:center;display:block" href="/dementia-journey/resources/this-is-who-i-am" target="_blank" rel="noopener">Open my printable page</a>'
     + '<p style="font-size:13px;line-height:1.6;color:#55677a;margin:12px 0 0;text-align:center">Print copies for family, respite workers, and the hospital go-bag (Module 9 will ask for one). It makes strangers gentle.</p>'
     + nextBtn());
   wireNext();
@@ -707,7 +707,7 @@ reflect: function(s){
 download: function(s){
   stage.innerHTML = card(head(s)
     + '<div class="dj-summary" style="background:#fbf3dd;border:1.5px solid #ead9ac"><p style="font-weight:400;font-size:14px;line-height:1.7">&ldquo;You already asked me that&rdquo; &rarr; answer warmly, like the first time &middot; &ldquo;Don&rsquo;t you remember?&rdquo; &rarr; retire it &middot; &ldquo;You can&rsquo;t drive anymore&rdquo; &rarr; &ldquo;Today I&rsquo;m your driver, keep me company&rdquo; &hellip; and more.</p></div>'
-    + '<a class="dj-next" style="text-decoration:none;text-align:center;display:block" href="/dementia-journey/resources/what-to-say-instead.html" target="_blank" rel="noopener">Open my printable phrase card</a>'
+    + '<a class="dj-next" style="text-decoration:none;text-align:center;display:block" href="/dementia-journey/resources/what-to-say-instead" target="_blank" rel="noopener">Open my printable phrase card</a>'
     + '<button class="dj-next soft" id="openPlan">See my helpful phrases in the plan</button>'
     + nextBtn('Almost done'));
   el('openPlan').addEventListener('click',function(){ loadPlan(); djOpen('planModal'); });
@@ -736,8 +736,8 @@ done: function(){
     +'<button type="button" id="dj-notify" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Tell me</button></div>'
     +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>You&rsquo;re on the list. Open one door this week.</p></div>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">'
-    +'<a href="/dementia-journey/resources/this-is-who-i-am.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">This Is Who I Am</a>'
-    +'<a href="/dementia-journey/resources/story-prompts.html" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">100 story prompts</a>'
+    +'<a href="/dementia-journey/resources/this-is-who-i-am" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">This Is Who I Am</a>'
+    +'<a href="/dementia-journey/resources/story-prompts" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">100 story prompts</a>'
     +'<a href="/dementia-journey/" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">Course home</a>'
     +'</div>');
   el('dj-notify').addEventListener('click',function(){
