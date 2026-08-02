@@ -202,8 +202,18 @@
     <label class="f" for="avail">When can you work?</label>
     <div class="sub">Rough is fine. We build schedules around people.</div>
     <textarea class="t" id="avail" rows="2" placeholder="e.g. weekday mornings, every other weekend, overnights, up to 30 hours"></textarea>
+    <!-- Where they have actually worked, asked as fields rather than as a box.
+         "Fifteen years, hospice and in-home" is not something anybody can
+         check. Three lines with a supervisor's number are, and they are the
+         same three lines the reference requests are built from later, so
+         nobody retypes a phone number at offer time. -->
+    <label class="f">Where have you worked?</label>
+    <div class="sub">The last three jobs is plenty, caregiving or not. If you have only cared for family, say that here too.</div>
+    <div id="wh"></div>
+    <button type="button" class="back" id="whAdd" style="margin:2px 0 14px;" onclick="whAddRow()">+ Add another job</button>
+
     <label class="f" for="exp">Anything you would like us to know? <span class="opt">(optional)</span></label>
-    <textarea class="t" id="exp" rows="3" placeholder="Where you have worked, what kind of care, anything you are certified in (CNA, CMT, LPN)…"></textarea>
+    <textarea class="t" id="exp" rows="3" placeholder="What kind of care you have done, anything you are certified in (CNA, CMT, LPN)…"></textarea>
     <label class="f" for="ref">How did you hear about us? <span class="opt">(optional)</span></label>
     <input class="t" id="ref" placeholder="Indeed, Google, a friend who works here…">
 
@@ -374,6 +384,59 @@ function goStep(n){
 
 const val = id => g(id).value.trim();
 
+/* ---- Work history -------------------------------------------------------
+   Three rows at most, one shown to begin with, because a wall of empty fields
+   is how somebody decides not to bother. Everything is optional: an applicant
+   who leaves it blank still gets through, and the office can see that they
+   did rather than being told nothing at all. */
+let WH_ROWS = 0;
+function whAddRow(){
+  if (WH_ROWS >= 3) return;
+  const i = WH_ROWS++;
+  const d = document.createElement('div');
+  d.className = 'ap-card';
+  d.style.cssText = 'padding:14px;margin:0 0 10px;background:#fbfaf7;';
+  d.innerHTML =
+    '<div class="row2">'
+    + '<div><label class="f" for="wh_emp' + i + '">Employer</label><input class="t" id="wh_emp' + i + '" placeholder="Ozarks Healthcare"></div>'
+    + '<div><label class="f" for="wh_role' + i + '">What you did there</label><input class="t" id="wh_role' + i + '" placeholder="Caregiver, CNA, server…"></div>'
+    + '</div>'
+    + '<div class="row2">'
+    + '<div><label class="f" for="wh_from' + i + '">From</label><input class="t" id="wh_from' + i + '" placeholder="March 2023"></div>'
+    + '<div><label class="f" for="wh_to' + i + '">Until</label><input class="t" id="wh_to' + i + '" placeholder="August 2025"></div>'
+    + '</div>'
+    + '<label class="consent" style="margin:2px 0 10px;"><input type="checkbox" id="wh_now' + i + '" '
+    + 'onchange="var t=document.getElementById(\'wh_to' + i + '\'); t.disabled=this.checked; if(this.checked) t.value=\'\';">'
+    + '<span>I still work here</span></label>'
+    + '<div class="row2">'
+    + '<div><label class="f" for="wh_sup' + i + '">Supervisor’s name <span class="opt">(optional)</span></label><input class="t" id="wh_sup' + i + '" placeholder="Dana Whitfield"></div>'
+    + '<div><label class="f" for="wh_tel' + i + '">Their phone <span class="opt">(optional)</span></label><input class="t" id="wh_tel' + i + '" type="tel" inputmode="tel" placeholder="(417) 555-0123"></div>'
+    + '</div>'
+    + '<label class="consent" style="margin:2px 0 0;"><input type="checkbox" id="wh_ok' + i + '" checked>'
+    + '<span>You may contact them as a reference</span></label>';
+  g('wh').appendChild(d);
+  if (WH_ROWS >= 3) g('whAdd').style.display = 'none';
+}
+whAddRow();
+
+function workHistory(){
+  const out = [];
+  for (let i = 0; i < WH_ROWS; i++) {
+    const emp = val('wh_emp' + i), role = val('wh_role' + i);
+    if (!emp && !role) continue;                    // an untouched row is not an answer
+    out.push({
+      employer: emp || null, role: role || null,
+      from: val('wh_from' + i) || null,
+      to: g('wh_now' + i).checked ? null : (val('wh_to' + i) || null),
+      current: !!g('wh_now' + i).checked,
+      supervisor: val('wh_sup' + i) || null,
+      supervisor_phone: val('wh_tel' + i) || null,
+      may_contact: !!g('wh_ok' + i).checked,
+    });
+  }
+  return out.length ? out : null;
+}
+
 async function save(patch, done){
   const { data, error } = await sb.rpc('apply_save',
     { p_id: ROW, p_data: patch, p_done: !!done });
@@ -483,7 +546,8 @@ async function finish(){
   const b = g('btn3'); b.disabled = true; b.textContent = 'Sending…';
   try {
     await save({ experience_years: val('years') || null, availability: val('avail'),
-      experience: val('exp') || null, referral_source: val('ref') || null }, true);
+      experience: val('exp') || null, referral_source: val('ref') || null,
+      work_history: workHistory() }, true);
     g('bookName').textContent = val('first');
     g('doneName').textContent = val('first');
     g('formView').style.display = 'none';
