@@ -268,17 +268,20 @@ async function loadRoleQuestions(){
   if (!POSITION) return;
   try {
     const { data } = await sb.from('job_positions')
-      .select('label,screener,pay_min,pay_max').eq('key', POSITION).maybeSingle();
+      .select('label,screener,pay_min,pay_max,pay_unit').eq('key', POSITION).maybeSingle();
     if (!data) return;
     ROLE_QS = Array.isArray(data.screener) ? data.screener : [];
     if (!TITLE && data.label) g('bandTitle').textContent = data.label + ' in Springfield, MO';
     /* A CNA should never be shown caregiver pay. The posting wins if it sets
        its own; otherwise the role's rate is the honest number. */
     if (!PAY_SET && data.pay_min) {
+      /* Live-in is paid by the day. Saying "an hour" on that page would be
+         wrong in the one place an applicant is deciding whether to bother. */
+      const per = { HOUR:' an hour', DAY:' a day', WEEK:' a week', YEAR:' a year' }[data.pay_unit || 'HOUR'] || ' an hour';
       const lo = Number(data.pay_min).toFixed(2).replace(/\.00$/, '');
       const hi = data.pay_max && Number(data.pay_max) > Number(data.pay_min)
         ? '–$' + Number(data.pay_max).toFixed(2).replace(/\.00$/, '') : '';
-      g('bandPay').innerHTML = '$' + lo + hi + ' an hour';
+      g('bandPay').innerHTML = '$' + lo + hi + per;
     }
     renderRoleQuestions(data.label);
   } catch (e) { /* extras are a bonus; the core screen still works without them */ }
