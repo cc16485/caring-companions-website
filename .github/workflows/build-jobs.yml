@@ -1,0 +1,54 @@
+# Rebuild the public job pages from whatever is published in the hub.
+#
+# Samantha publishes a posting in the Recruit tab; within the hour this writes
+# the matching page under /jobs, refreshes the list on /careers, and deletes
+# pages for anything unpublished. Nobody has to touch the website repo.
+#
+# Needs one repository secret: SUPABASE_ANON_KEY. It is the public key that is
+# already in the hub and in every public form, so it is not sensitive; it lives
+# in a secret only so it is not duplicated in a fourth place.
+name: Build job pages
+
+on:
+  schedule:
+    - cron: '17 * * * *'      # hourly, off the hour so it is not queued with everyone else
+  workflow_dispatch:           # and a button, for when you have just published one
+  push:
+    branches: [main]
+    paths:
+      - 'tools/build-jobs.mjs'
+      - '.github/workflows/build-jobs.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-jobs
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate pages from the published postings
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: node tools/build-jobs.mjs .
+
+      - name: Commit whatever changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No change, nothing to publish."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jobs careers.html
+          git commit -m "Job pages: rebuild from published postings"
+          git push
