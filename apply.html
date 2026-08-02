@@ -161,6 +161,8 @@
         <input class="t" id="states" placeholder="Kansas, Arkansas…">
       </div></div>
 
+    <div id="roleQs"></div>
+
     <button class="go" id="btn2" onclick="next2()">Continue</button>
     <div class="err" id="err2"></div>
     <button class="back" onclick="goStep(1)">&larr; Back</button>
@@ -245,6 +247,9 @@ const SUPA_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn
 const sb = window.supabase.createClient(SUPA_URL, SUPA_ANON);
 const P = new URLSearchParams(location.search);
 const JOB = P.get('job') || '';
+/* ?position= lets a role be previewed without a live posting behind it, which
+   is how the office checks what each screener asks. */
+const POSITION_HINT = P.get('position') || '';
 const CHANNEL = P.get('channel_source') || P.get('channel') || '';
 const g = id => document.getElementById(id);
 const A = {};                 // answers
@@ -253,11 +258,47 @@ let TITLE = null;
 
 /* Which advert they came from, and its real pay, so the banner is never a
    number somebody has to remember to update in two places. */
+let POSITION = POSITION_HINT || null;
+let ROLE_QS = [];
+
+/* The role's own questions on top of the shared ones. A shared core plus a
+   couple of extras beats seven near-identical screeners that drift apart. */
+async function loadRoleQuestions(){
+  if (!POSITION) return;
+  try {
+    const { data } = await sb.from('job_positions').select('label,screener').eq('key', POSITION).maybeSingle();
+    if (!data) return;
+    ROLE_QS = Array.isArray(data.screener) ? data.screener : [];
+    if (!TITLE && data.label) g('bandTitle').textContent = data.label + ' in Springfield, MO';
+    renderRoleQuestions(data.label);
+  } catch (e) { /* extras are a bonus; the core screen still works without them */ }
+}
+
+function renderRoleQuestions(label){
+  if (!ROLE_QS.length) { g('roleQs').innerHTML = ''; return; }
+  g('roleQs').innerHTML =
+    '<div class="sub" style="margin:16px 0 2px;font-weight:600;color:#1f2a36;">' +
+    'A few just for the ' + (label || 'role') + '</div>' +
+    ROLE_QS.map((q, i) => {
+      const id = 'rq' + i;
+      if (q.type === 'text')
+        return '<div class="q"><div class="qt">' + q.q + '</div>' +
+               '<input class="t" id="' + id + '" style="margin-top:6px;"></div>';
+      return '<div class="q"><div class="qt">' + q.q + '</div>' +
+             '<div class="chips" data-k="' + id + '">' +
+             '<button type="button" onclick="yn(this,1)">Yes</button>' +
+             '<button type="button" onclick="yn(this,0)">No</button></div></div>';
+    }).join('');
+}
+
+if (POSITION_HINT) loadRoleQuestions();
+
 if (JOB) {
-  sb.from('job_postings').select('title,pay_min,pay_max').eq('slug', JOB).maybeSingle()
+  sb.from('job_postings').select('title,pay_min,pay_max,position').eq('slug', JOB).maybeSingle()
     .then(({ data }) => {
       if (!data) return;
       TITLE = data.title;
+      if (data.position) { POSITION = data.position; loadRoleQuestions(); }
       g('bandTitle').textContent = data.title + ' in Springfield, MO';
       if (data.pay_min) {
         const lo = Number(data.pay_min).toFixed(2).replace(/\.00$/, '');
@@ -341,6 +382,16 @@ const KNOCKOUTS = [
     next: 'If that changes, please apply again. And if you think we have this wrong, call us on (417) 234-8494 and we will talk it through.' },
 ];
 
+function roleAnswers(){
+  if (!ROLE_QS.length) return null;
+  const out = {};
+  ROLE_QS.forEach((q, i) => {
+    const id = 'rq' + i;
+    out[q.q] = q.type === 'text' ? (g(id) ? g(id).value.trim() : '') : (A[id] ?? null);
+  });
+  return out;
+}
+
 async function next2(){
   const err = g('err2');
   if ([ 'age_ok','work_auth','has_transport' ].some(k => A[k] === undefined)){
@@ -348,13 +399,22 @@ async function next2(){
   }
   err.style.display = 'none';
   const b = g('btn2'); b.disabled = true; b.textContent = 'Saving…';
-  const stop = KNOCKOUTS.find(x => A[x.k] === x.when);
+  let stop = KNOCKOUTS.find(x => A[x.k] === x.when);
+  /* A role can have its own dealbreaker: no CNA certificate for a CNA post. */
+  if (!stop) {
+    const failed = ROLE_QS.findIndex((q, i) => q.knockout && A['rq' + i] === false);
+    if (failed > -1) stop = { reason: ROLE_QS[failed].q,
+      why: 'This role needs that, so we are not able to take your application further for it.',
+      next: 'We do hire for other roles that do not, so please do apply for one of those. Or call us on (417) 234-8494 and we will point you at the right one.' };
+  }
   try {
     await save({ age_ok: A.age_ok, work_auth: A.work_auth, has_transport: A.has_transport,
       has_license: A.has_license ?? null, has_insurance: A.has_insurance ?? null,
       can_pass_background: A.can_pass_background ?? null,
       lived_outside_mo: A.lived_outside_mo ?? null,
       states_lived: A.lived_outside_mo ? (val('states') || null) : null,
+      position: POSITION || null,
+      role_answers: roleAnswers(),
       ...(stop ? { decline_reason: stop.reason } : {}) });
 
     if (stop){
