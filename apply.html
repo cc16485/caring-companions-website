@@ -259,6 +259,7 @@ let TITLE = null;
 /* Which advert they came from, and its real pay, so the banner is never a
    number somebody has to remember to update in two places. */
 let POSITION = POSITION_HINT || null;
+let PAY_SET = false;   // a posting's own rate beats the role's
 let ROLE_QS = [];
 
 /* The role's own questions on top of the shared ones. A shared core plus a
@@ -266,10 +267,19 @@ let ROLE_QS = [];
 async function loadRoleQuestions(){
   if (!POSITION) return;
   try {
-    const { data } = await sb.from('job_positions').select('label,screener').eq('key', POSITION).maybeSingle();
+    const { data } = await sb.from('job_positions')
+      .select('label,screener,pay_min,pay_max').eq('key', POSITION).maybeSingle();
     if (!data) return;
     ROLE_QS = Array.isArray(data.screener) ? data.screener : [];
     if (!TITLE && data.label) g('bandTitle').textContent = data.label + ' in Springfield, MO';
+    /* A CNA should never be shown caregiver pay. The posting wins if it sets
+       its own; otherwise the role's rate is the honest number. */
+    if (!PAY_SET && data.pay_min) {
+      const lo = Number(data.pay_min).toFixed(2).replace(/\.00$/, '');
+      const hi = data.pay_max && Number(data.pay_max) > Number(data.pay_min)
+        ? '–$' + Number(data.pay_max).toFixed(2).replace(/\.00$/, '') : '';
+      g('bandPay').innerHTML = '$' + lo + hi + ' an hour';
+    }
     renderRoleQuestions(data.label);
   } catch (e) { /* extras are a bonus; the core screen still works without them */ }
 }
@@ -301,6 +311,7 @@ if (JOB) {
       if (data.position) { POSITION = data.position; loadRoleQuestions(); }
       g('bandTitle').textContent = data.title + ' in Springfield, MO';
       if (data.pay_min) {
+        PAY_SET = true;
         const lo = Number(data.pay_min).toFixed(2).replace(/\.00$/, '');
         const hi = data.pay_max && Number(data.pay_max) > Number(data.pay_min)
           ? '–$' + Number(data.pay_max).toFixed(2).replace(/\.00$/, '') : '';
