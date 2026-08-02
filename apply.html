@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply | Caring Companions In-Home Senior Care</title>
+<meta name="description" content="Apply to join the Caring Companions caregiving team in Springfield, MO. Takes about five minutes, no uploads required.">
+<link rel="canonical" href="https://mo-care.com/apply">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<!--
+  Applications used to go to Augusta, which is why somebody could exist in one
+  system while their hiring happened in another. This writes to job_applicants
+  in the hub, insert-only as anon, and never reads anything back.
+-->
+<style>
+  .ap-wrap{max-width:640px;margin:0 auto;padding:48px 22px 70px;}
+  .ap-h1{font-family:var(--serif);font-size:36px;line-height:1.15;font-weight:600;color:var(--brand-blue);margin:10px 0 10px;letter-spacing:-.015em;}
+  .ap-lede{font-size:15.5px;line-height:1.7;color:var(--body-text);margin:0 0 6px;}
+  .ap-for{display:inline-block;background:#e8f1ec;color:#1c6b45;border-radius:999px;padding:5px 14px;font-size:13.5px;font-weight:700;margin:0 0 18px;}
+  .ap-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;margin:0 0 16px;}
+  .ap-card h2{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--brand-blue);margin:0 0 4px;}
+  .ap-card .hint{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.55;}
+  label.f{display:block;font-size:13.5px;font-weight:600;color:var(--ink-2);margin:14px 0 5px;}
+  label.f .opt{font-weight:400;color:var(--muted);}
+  input.t,select.t,textarea.t{width:100%;font:inherit;font-size:16px;padding:11px 13px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--ink-2);}
+  textarea.t{resize:vertical;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+  .yn{display:flex;gap:8px;margin:5px 0 0;}
+  .yn button{flex:0 0 auto;font:inherit;font-size:14px;font-weight:600;padding:9px 20px;border-radius:9px;border:1px solid var(--border);background:#fff;color:var(--ink-2);cursor:pointer;}
+  .yn button.on{background:var(--brand-blue);border-color:var(--brand-blue);color:#fbfaf7;}
+  .q{padding:13px 0;border-bottom:1px solid #f0ede6;}
+  .q:last-child{border-bottom:none;}
+  .q .qt{font-size:14.5px;font-weight:600;color:var(--ink-2);line-height:1.45;}
+  .q .qs{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.5;}
+  .go{width:100%;background:var(--accent);color:#fbfaf7;border:0;border-radius:11px;padding:17px;font:inherit;font-size:17px;font-weight:700;cursor:pointer;margin-top:6px;}
+  .go:disabled{opacity:.6;cursor:default;}
+  .err{display:none;color:#b00020;font-size:14px;margin-top:12px;line-height:1.5;}
+  .done{display:none;text-align:center;padding:40px 10px;}
+  .check{width:60px;height:60px;border-radius:50%;background:#dcfce7;color:#15803d;font-size:32px;line-height:60px;margin:0 auto 6px;}
+  .foot{font-size:13px;color:var(--muted);text-align:center;margin-top:22px;line-height:1.6;}
+  @media(max-width:560px){ .row2{grid-template-columns:1fr;} .ap-h1{font-size:29px;} }
+</style>
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<div class="ap-wrap">
+
+  <div id="formView">
+    <a href="/careers" style="font-size:13.5px;color:var(--muted);text-decoration:none;">&larr; All careers</a>
+    <h1 class="ap-h1">Come work with us.</h1>
+    <div id="apFor" class="ap-for" style="display:none;"></div>
+    <p class="ap-lede">About five minutes, and nothing to upload. Everything here is something we would ask on a first phone call anyway, so answering it now means we can move straight to talking about the work.</p>
+
+    <div class="ap-card">
+      <h2>About you</h2>
+      <p class="hint">Use the name that matches your ID, since it has to match your background check later.</p>
+      <div class="row2">
+        <div><label class="f" for="first">First name</label><input class="t" id="first" autocomplete="given-name"></div>
+        <div><label class="f" for="last">Last name</label><input class="t" id="last" autocomplete="family-name"></div>
+      </div>
+      <div class="row2">
+        <div><label class="f" for="phone">Mobile phone</label><input class="t" id="phone" type="tel" autocomplete="tel" placeholder="(417) 555-0123"></div>
+        <div><label class="f" for="email">Email</label><input class="t" id="email" type="email" autocomplete="email" placeholder="name@email.com"></div>
+      </div>
+      <label class="f" for="city">Which town do you live in?</label>
+      <input class="t" id="city" placeholder="Springfield, Nixa, Ozark…">
+    </div>
+
+    <div class="ap-card">
+      <h2>A few quick questions</h2>
+      <p class="hint">Answer honestly. A no is not automatically a problem, and knowing now saves us both a wasted phone call.</p>
+
+      <div class="q"><div class="qt">Are you 18 or older?</div>
+        <div class="yn" data-k="age_ok"><button type="button" onclick="pick(this,1)">Yes</button><button type="button" onclick="pick(this,0)">No</button></div></div>
+
+      <div class="q"><div class="qt">Are you legally authorized to work in the United States?</div>
+        <div class="yn" data-k="work_auth"><button type="button" onclick="pick(this,1)">Yes</button><button type="button" onclick="pick(this,0)">No</button></div></div>
+
+      <div class="q"><div class="qt">Do you have reliable transportation to get to shifts?</div>
+        <div class="yn" data-k="has_transport"><button type="button" onclick="pick(this,1)">Yes</button><button type="button" onclick="pick(this,0)">No</button></div></div>
+
+      <div class="q"><div class="qt">Do you have a valid driver's license?</div>
+        <div class="qs">Only needed if you would be driving clients. Plenty of our shifts do not involve driving.</div>
+        <div class="yn" data-k="has_license"><button type="button" onclick="pick(this,1)">Yes</button><button type="button" onclick="pick(this,0)">No</button></div></div>
+
+      <div class="q"><div class="qt">Do you have current auto insurance?</div>
+        <div class="yn" data-k="has_insurance"><button type="button" onclick="pick(this,1)">Yes</button><button type="button" onclick="pick(this,0)">No</button></div></div>
+
+      <div class="q"><div class="qt">Can you pass a background check?</div>
+        <div class="qs">Missouri requires one for every caregiver. If there is something on your record, tell us at the interview rather than here. It is not always a no.</div>
+        <div class="yn" data-k="can_pass_background"><button type="button" onclick="pick(this,1)">Yes</button><button type="button" onclick="pick(this,0)">Not sure</button></div></div>
+
+      <div class="q"><div class="qt">Have you lived outside Missouri in the last five years?</div>
+        <div class="qs">Not a problem at all. It just means the state asks for a fingerprint check as well, and we start it sooner if we know now.</div>
+        <div class="yn" data-k="lived_outside_mo"><button type="button" onclick="pick(this,1)">Yes</button><button type="button" onclick="pick(this,0)">No</button></div>
+        <div id="statesWrap" style="display:none;">
+          <label class="f" for="states">Which states?</label>
+          <input class="t" id="states" placeholder="Kansas, Arkansas…">
+        </div></div>
+    </div>
+
+    <div class="ap-card">
+      <h2>Your experience</h2>
+      <p class="hint">Caring for a family member counts. Say so if that is what you have.</p>
+      <label class="f" for="years">How long have you been caregiving?</label>
+      <select class="t" id="years">
+        <option value="">Choose one</option>
+        <option>No paid experience yet</option>
+        <option>Family caregiving only</option>
+        <option>Less than a year</option>
+        <option>1 to 3 years</option>
+        <option>3 to 5 years</option>
+        <option>More than 5 years</option>
+      </select>
+      <label class="f" for="exp">Tell us a little about it <span class="opt">(optional)</span></label>
+      <textarea class="t" id="exp" rows="3" placeholder="Where you worked, what kind of care, anything you are certified in (CNA, CMT, LPN)…"></textarea>
+      <label class="f" for="avail">When can you work?</label>
+      <textarea class="t" id="avail" rows="2" placeholder="e.g. weekday mornings, every other weekend, overnights, up to 30 hours"></textarea>
+      <label class="f" for="ref">How did you hear about us? <span class="opt">(optional)</span></label>
+      <input class="t" id="ref" placeholder="Indeed, Google, a friend who works here…">
+    </div>
+
+    <button class="go" id="submitBtn" onclick="send()">Send my application</button>
+    <div class="err" id="err"></div>
+    <p class="foot">Prefer to talk first? Call or text <a href="tel:+14172348494" style="color:var(--brand-blue)">(417) 234-8494</a>.<br>
+      We use what you tell us here to consider you for work with Caring Companions, and nothing else.</p>
+  </div>
+
+  <div class="done" id="doneView">
+    <div class="check">&#10003;</div>
+    <h1 class="ap-h1" style="font-size:30px;">Thank you, <span id="doneName">that is in</span>.</h1>
+    <p class="ap-lede" id="doneLede"></p>
+    <p class="foot">Caring Companions In-Home Senior Care &middot; (417) 234-8494 &middot; Springfield, MO</p>
+  </div>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL='https://zngsgedlsxinbygwmxwn.supabase.co';
+const SUPA_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZ3NnZWRsc3hpbmJ5Z3dteHduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NDIzNDQsImV4cCI6MjA5ODExODM0NH0.L_31_UKdccyRH9n7p1GaBlZTqcJipB008H-GIvxwLxM';
+const sb = window.supabase.createClient(SUPA_URL, SUPA_ANON);
+const P = new URLSearchParams(location.search);
+const JOB = P.get('job') || '';
+const g = id => document.getElementById(id);
+const answers = {};
+
+/* Which advert they came from, so we learn which postings actually work. */
+if (JOB) {
+  sb.from('job_postings').select('title').eq('slug', JOB).maybeSingle()
+    .then(({ data }) => { if (data && data.title) {
+      const el = g('apFor'); el.textContent = 'Applying for: ' + data.title; el.style.display = 'inline-block';
+      answers._title = data.title;
+    }}).catch(() => {});
+}
+
+function pick(btn, val){
+  const wrap = btn.parentElement;
+  [...wrap.children].forEach(b => b.classList.toggle('on', b === btn));
+  answers[wrap.dataset.k] = !!val;
+  if (wrap.dataset.k === 'lived_outside_mo') g('statesWrap').style.display = val ? 'block' : 'none';
+}
+
+async function send(){
+  const err = g('err');
+  const v = id => g(id).value.trim();
+  const missing = [];
+  if (!v('first') || !v('last')) missing.push('your name');
+  if (!v('phone') && !v('email')) missing.push('a phone number or an email');
+  ['age_ok','work_auth','has_transport'].forEach(k => {
+    if (answers[k] === undefined && !missing.includes('the quick questions')) missing.push('the quick questions');
+  });
+  if (missing.length){
+    err.textContent = 'Still needed: ' + missing.join(', ') + '.';
+    err.style.display = 'block';
+    err.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+
+  const btn = g('submitBtn');
+  btn.disabled = true; btn.textContent = 'Sending…'; err.style.display = 'none';
+  try {
+    const { error } = await sb.from('job_applicants').insert({
+      posting_slug: JOB || null,
+      posting_title: answers._title || null,
+      source: 'website',
+      first_name: v('first'), last_name: v('last'),
+      phone: v('phone') || null, email: v('email') || null, city: v('city') || null,
+      age_ok: answers.age_ok ?? null,
+      work_auth: answers.work_auth ?? null,
+      has_transport: answers.has_transport ?? null,
+      has_license: answers.has_license ?? null,
+      has_insurance: answers.has_insurance ?? null,
+      can_pass_background: answers.can_pass_background ?? null,
+      lived_outside_mo: answers.lived_outside_mo ?? null,
+      states_lived: answers.lived_outside_mo ? (v('states') || null) : null,
+      experience_years: v('years') || null,
+      experience: v('exp') || null,
+      availability: v('avail') || null,
+      referral_source: v('ref') || null,
+    });
+    if (error) throw error;
+
+    g('doneName').textContent = v('first');
+    /* Someone who told us they are under 18 or cannot work here should not be
+       promised a call. Everyone else gets a straight answer about timing. */
+    const blocked = answers.age_ok === false || answers.work_auth === false;
+    g('doneLede').textContent = blocked
+      ? 'We have your application. Right now we can only hire people who are 18 or over and authorized to work in the United States, so we may not be able to take this further, but we will be in touch either way.'
+      : 'Someone from our office will call you within one business day. If you told us you have lived outside Missouri, we will get your fingerprint check moving straight away so it does not hold you up.';
+    g('formView').style.display = 'none';
+    g('doneView').style.display = 'block';
+    window.scrollTo(0, 0);
+  } catch (e) {
+    btn.disabled = false; btn.textContent = 'Send my application';
+    err.textContent = 'That did not go through. Please call or text us on (417) 234-8494 and we will take your details over the phone.';
+    err.style.display = 'block';
+    console.error(e);
+  }
+}
+</script>
+</body>
+</html>

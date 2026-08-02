@@ -23,9 +23,9 @@ const SITE = 'https://mo-care.com';
 const ROOT = path.resolve(process.argv[2] || '.');
 const JOBS = path.join(ROOT, 'jobs');
 
-/* Applying still goes through Augusta while the contract runs. When our own
-   pre-screener is live, this is the single line that changes. */
-const APPLY_URL = 'https://jobs.augusta.care/apply/caring-companions-inhome-senior-care-springfield-mo?channel_source=Website';
+/* Our own pre-screener. Augusta's postings keep their own apply flow, so the
+   two funnels run side by side and can be compared honestly. */
+const applyUrl = slug => '/apply' + (slug ? '?job=' + encodeURIComponent(slug) : '');
 
 const ORG = {
   name: 'Caring Companions In-Home Senior Care',
@@ -99,7 +99,7 @@ function jsonLd(p) {
         addressCountry: 'US',
       },
     },
-    directApply: false,
+    directApply: true,      // they apply on our own site now, which Google prefers
   };
   if (p.valid_through) d.validThrough = p.valid_through + 'T23:59:59-05:00';
   if (p.openings > 1) d.totalJobOpenings = p.openings;
@@ -180,7 +180,7 @@ ${p.benefits ? '<h2>What we offer</h2>' + bullets(p.benefits) : ''}
 <div class="jb-apply">
 <p style="font-size:16px;font-weight:600;color:#122236;margin:0 0 8px">Interested?</p>
 <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 auto 20px;max-width:440px">The application takes about five minutes. No uploads required.</p>
-<a href="${APPLY_URL}" class="btn-apply" style="display:inline-block;background:var(--accent);color:#fbfaf7;border-radius:9px;padding:14px 28px;font-size:15px;font-weight:600;text-decoration:none">Apply for this role &rarr;</a>
+<a href="${applyUrl(p.slug)}" class="btn-apply" style="display:inline-block;background:var(--accent);color:#fbfaf7;border-radius:9px;padding:14px 28px;font-size:15px;font-weight:600;text-decoration:none">Apply for this role &rarr;</a>
 <p class="jb-note">Questions first? Call us on ${ORG.phone}.</p>
 </div>
 </main>
@@ -199,7 +199,7 @@ function openingsHtml(list) {
     return `<div class="cr-openings-card">
 <p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 8px">No openings posted right now</p>
 <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 auto 20px;max-width:460px">We are always glad to hear from good caregivers. Send an application and we will be in touch when something opens.</p>
-<a href="${APPLY_URL}" class="js-apply btn-apply">Apply anyway &rarr;</a>
+<a href="${applyUrl()}" class="js-apply btn-apply">Apply anyway &rarr;</a>
 </div>`;
   }
   return '<div style="display:grid;gap:12px;max-width:760px;margin:0 auto">\n' + list.map(p => {
