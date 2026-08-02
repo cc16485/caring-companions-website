@@ -230,6 +230,8 @@
      <div style="font-size:15px;color:var(--body-text);line-height:1.55;" id="whereAddr"></div>
      <a id="whereMap" href="#" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:14px;color:var(--brand-blue);font-weight:600;">Open in maps &rarr;</a>
      <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin:12px 0 0;" id="whereNote"></p>
+     <!-- A picture of the right door saves more calls than any wording does. -->
+     <img id="wherePhoto" alt="The entrance to our office" style="display:none;width:100%;border-radius:10px;margin-top:12px;">
    </div>
    <p class="foot">Caring Companions In-Home Senior Care &middot; (417) 234-8494 &middot; Springfield, MO</p>
  </div>
@@ -489,6 +491,7 @@ function fillWhere(){
   g('whereNote').textContent = WHERE.note || '';
   g('whereMap').href = 'https://maps.google.com/?q=' +
     encodeURIComponent([WHERE.name, WHERE.line1, WHERE.line2].filter(Boolean).join(', '));
+  if (WHERE.photo){ g('wherePhoto').src = WHERE.photo; g('wherePhoto').style.display = 'block'; }
   g('whereCard').style.display = 'block';
 }
 </script>
