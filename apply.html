@@ -75,7 +75,7 @@
 <div class="ap-band">
   <div class="ap-band-in">
     <h1 id="bandTitle">Join our caregiving team</h1>
-    <div class="ap-pay" id="bandPay">$15&ndash;$18 an hour</div>
+    <div class="ap-pay" id="bandPay">$15&ndash;$17 an hour</div>
     <div class="ap-perks">
       <span>Paid training</span><span>Weekly pay</span><span>W-2 employee, not a contractor</span>
       <span>Flexible schedules</span><span>Full time &amp; part time</span>
@@ -258,7 +258,10 @@ let TITLE = null;
 
 /* Which advert they came from, and its real pay, so the banner is never a
    number somebody has to remember to update in two places. */
-let POSITION = POSITION_HINT || null;
+/* Somebody who lands on /apply with nothing after it is applying for the job
+   we hire most of. Defaulting to it means the banner shows a rate that came
+   from the role rather than a number typed into this page months ago. */
+let POSITION = POSITION_HINT || (JOB ? null : 'caregiver');
 let PAY_SET = false;   // a posting's own rate beats the role's
 let ROLE_QS = [];
 
@@ -271,7 +274,9 @@ async function loadRoleQuestions(){
       .select('label,screener,pay_min,pay_max,pay_unit').eq('key', POSITION).maybeSingle();
     if (!data) return;
     ROLE_QS = Array.isArray(data.screener) ? data.screener : [];
-    if (!TITLE && data.label) g('bandTitle').textContent = data.label + ' in Springfield, MO';
+    /* Only when they came for a named role. A bare /apply keeps the general
+       headline, because they have not told us which job they want yet. */
+    if (!TITLE && data.label && (POSITION_HINT || JOB)) g('bandTitle').textContent = data.label + ' in Springfield, MO';
     /* A CNA should never be shown caregiver pay. The posting wins if it sets
        its own; otherwise the role's rate is the honest number. */
     if (!PAY_SET && data.pay_min) {
@@ -304,7 +309,7 @@ function renderRoleQuestions(label){
     }).join('');
 }
 
-if (POSITION_HINT) loadRoleQuestions();
+if (POSITION && !JOB) loadRoleQuestions();
 
 if (JOB) {
   sb.from('job_postings').select('title,pay_min,pay_max,position').eq('slug', JOB).maybeSingle()

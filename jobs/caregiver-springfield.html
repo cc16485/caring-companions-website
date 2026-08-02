@@ -228,5 +228,24 @@
 <script src="/assets/accessibility.js" defer></script>
 
 </div>
+<script>
+(function(){
+  var q = new URLSearchParams(location.search);
+  var src = q.get('src') || q.get('utm_source') || '';
+  if (!src) {
+    var r = document.referrer || '';
+    src = /indeed\./i.test(r) ? 'indeed'
+        : /google\./i.test(r) ? 'google'
+        : /facebook\.|fb\./i.test(r) ? 'facebook'
+        : /linkedin\./i.test(r) ? 'linkedin'
+        : r && r.indexOf(location.host) === -1 ? 'referral' : '';
+  }
+  if (!src) return;
+  document.querySelectorAll('a[href*="/apply"]').forEach(function(a){
+    if (a.href.indexOf('channel=') > -1) return;
+    a.href += (a.href.indexOf('?') === -1 ? '?' : '&') + 'channel=' + encodeURIComponent(src);
+  });
+})();
+</script>
 </body>
 </html>

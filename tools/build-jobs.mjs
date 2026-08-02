@@ -27,6 +27,30 @@ const JOBS = path.join(ROOT, 'jobs');
    two funnels run side by side and can be compared honestly. */
 const applyUrl = slug => '/apply' + (slug ? '?job=' + encodeURIComponent(slug) : '');
 
+/* Where a job page keeps the channel it was reached by, so it survives the hop
+   into the apply form. Indeed sends people here with ?src=indeed, Google for
+   Jobs sends them with no marker at all, and both end up as a word on the
+   applicant's record rather than a guess made later. */
+const CHANNEL_SCRIPT = `<script>
+(function(){
+  var q = new URLSearchParams(location.search);
+  var src = q.get('src') || q.get('utm_source') || '';
+  if (!src) {
+    var r = document.referrer || '';
+    src = /indeed\\./i.test(r) ? 'indeed'
+        : /google\\./i.test(r) ? 'google'
+        : /facebook\\.|fb\\./i.test(r) ? 'facebook'
+        : /linkedin\\./i.test(r) ? 'linkedin'
+        : r && r.indexOf(location.host) === -1 ? 'referral' : '';
+  }
+  if (!src) return;
+  document.querySelectorAll('a[href*="/apply"]').forEach(function(a){
+    if (a.href.indexOf('channel=') > -1) return;
+    a.href += (a.href.indexOf('?') === -1 ? '?' : '&') + 'channel=' + encodeURIComponent(src);
+  });
+})();
+</script>`;
+
 const ORG = {
   name: 'Caring Companions In-Home Senior Care',
   site: SITE,
@@ -113,9 +137,13 @@ function jsonLd(p) {
   return JSON.stringify(d, null, 2);
 }
 
+/* Live-in work is paid by the day, so the unit comes off the posting. Saying
+   "/hr" next to a day rate is the kind of wrong that ends up in a complaint. */
+const PAY_PER = { HOUR: '/hr', DAY: '/day', WEEK: '/wk', YEAR: '/yr' };
 const payLabel = p => !p.pay_min ? '' :
   '$' + Number(p.pay_min).toFixed(2) +
-  (p.pay_max && Number(p.pay_max) > Number(p.pay_min) ? '–$' + Number(p.pay_max).toFixed(2) : '') + '/hr';
+  (p.pay_max && Number(p.pay_max) > Number(p.pay_min) ? '–$' + Number(p.pay_max).toFixed(2) : '') +
+  (PAY_PER[p.pay_unit || 'HOUR'] || '/hr');
 
 function page(p, c) {
   const url = `${SITE}/jobs/${p.slug}`;
@@ -187,6 +215,7 @@ ${p.benefits ? '<h2>What we offer</h2>' + bullets(p.benefits) : ''}
 
 ${c.foot}
 </div>
+${CHANNEL_SCRIPT}
 </body>
 </html>
 `;
@@ -235,6 +264,94 @@ async function updateCareersIndex(list) {
   await writeFile(file, html);
 }
 
+/* ---------------------------------------------------------------------------
+   The Indeed feed.
+
+   This is the part of Augusta that is actually worth $340: it puts our jobs on
+   Indeed, where three quarters of applicants come from. Indeed will take a feed
+   directly from any employer who publishes one, at no cost, and it is a file at
+   a fixed address that Indeed fetches on its own schedule.
+
+   Give Indeed https://mo-care.com/indeed-jobs.xml once, in the employer account
+   under Job Feeds, and every posting published in the hub from then on appears
+   on Indeed without anybody logging into anything.
+
+   Do NOT feed a role Augusta is also posting while the contract runs. Two
+   listings for one job on one Indeed account split the applicants between them
+   and one of the two gets suppressed as a duplicate. The `indeed_feed` flag on
+   the posting decides, so a role can be moved across one at a time.
+   --------------------------------------------------------------------------- */
+const INDEED_TYPE = {
+  FULL_TIME: 'fulltime', PART_TIME: 'parttime', PER_DIEM: 'parttime',
+  TEMPORARY: 'temporary', CONTRACTOR: 'contract', OTHER: '',
+};
+const INDEED_PER = { HOUR: 'per hour', DAY: 'per day', WEEK: 'per week', YEAR: 'per year' };
+
+const cdata = s => '<![CDATA[' + String(s ?? '').replace(/\]\]>/g, ']]]]><![CDATA[>') + ']]>';
+
+/* Indeed wants RFC 822. Anything else is accepted inconsistently, so be exact. */
+const rfc822 = d => new Date(d + 'T12:00:00Z').toUTCString();
+
+function indeedFeed(list) {
+  const jobs = list.map(p => {
+    const salary = p.pay_min
+      ? '$' + Number(p.pay_min).toFixed(2) +
+        (p.pay_max && Number(p.pay_max) > Number(p.pay_min) ? ' - $' + Number(p.pay_max).toFixed(2) : '') +
+        ' ' + (INDEED_PER[p.pay_unit || 'HOUR'] || 'per hour')
+      : '';
+    const body = `<div>${para(p.description)}${
+      p.responsibilities ? '<h3>Responsibilities</h3>' + bullets(p.responsibilities) : ''}${
+      p.qualifications ? '<h3>Qualifications</h3>' + bullets(p.qualifications) : ''}${
+      p.benefits ? '<h3>Benefits</h3>' + bullets(p.benefits) : ''}</div>`;
+    return [
+      '<job>',
+      `<title>${cdata(p.title)}</title>`,
+      `<date>${cdata(rfc822(p.date_posted || new Date().toISOString().slice(0, 10)))}</date>`,
+      `<referencenumber>${cdata(p.slug)}</referencenumber>`,
+      `<url>${cdata(`${SITE}/jobs/${p.slug}?src=indeed`)}</url>`,
+      `<company>${cdata(ORG.name)}</company>`,
+      `<city>${cdata(p.city || 'Springfield')}</city>`,
+      `<state>${cdata(p.region || 'MO')}</state>`,
+      `<postalcode>${cdata(p.postal_code || '65802')}</postalcode>`,
+      `<country>${cdata('US')}</country>`,
+      `<description>${cdata(body)}</description>`,
+      salary ? `<salary>${cdata(salary)}</salary>` : '',
+      INDEED_TYPE[p.employment_type] ? `<jobtype>${cdata(INDEED_TYPE[p.employment_type])}</jobtype>` : '',
+      '</job>',
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+
+  return `<?xml version="1.0" encoding="utf-8"?>
+<source>
+<publisher>${cdata(ORG.name)}</publisher>
+<publisherurl>${cdata(SITE)}</publisherurl>
+<lastBuildDate>${cdata(new Date().toUTCString())}</lastBuildDate>
+${jobs}
+</source>
+`;
+}
+
+/* Google finds job pages by crawling, and it crawls the sitemap first. A page
+   that exists but is listed nowhere can sit unindexed for weeks, which for a
+   job posting is the whole life of the posting. Kept between markers so this
+   is safe to run over and over, and so unpublished roles drop back out. */
+async function updateSitemap(list) {
+  const file = path.join(ROOT, 'sitemap.xml');
+  if (!existsSync(file)) return;
+  const START = '  <!-- JOBS:START (generated by tools/build-jobs.mjs) -->';
+  const END = '  <!-- JOBS:END -->';
+  const today = new Date().toISOString().slice(0, 10);
+  const lines = list.map(p =>
+    `  <url><loc>${SITE}/jobs/${esc(p.slug)}</loc><lastmod>${esc(p.updated_at ? String(p.updated_at).slice(0, 10) : today)}</lastmod></url>`);
+  const block = [START, ...lines, END].join('\n');
+
+  let xml = await readFile(file, 'utf8');
+  const a = xml.indexOf(START), b = xml.indexOf(END);
+  if (a !== -1 && b !== -1) xml = xml.slice(0, a) + block + xml.slice(b + END.length);
+  else xml = xml.replace('</urlset>', block + '\n</urlset>');
+  await writeFile(file, xml);
+}
+
 async function main() {
   const list = await fetchPostings();
   const c = await chrome();
@@ -255,6 +372,15 @@ async function main() {
      than that the agency has stopped hiring. */
   if (list.length) await updateCareersIndex(list);
   else console.log('no published postings — careers.html left untouched');
+
+  await updateSitemap(list);
+
+  /* Only the roles marked for it, so nothing competes with an Augusta listing
+     for the same job while both are running. */
+  const feed = list.filter(p => p.indeed_feed);
+  await writeFile(path.join(ROOT, 'indeed-jobs.xml'), indeedFeed(feed));
+  console.log(`indeed feed: ${feed.length} of ${list.length} posting(s)`
+    + (feed.length ? ' — ' + feed.map(p => p.slug).join(', ') : ' (none flagged for Indeed yet)'));
 
   console.log(`${list.length} posting(s) published: ${list.map(p => p.slug).join(', ') || '(none)'}`);
 }
