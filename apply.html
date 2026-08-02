@@ -205,10 +205,32 @@
    <p class="foot">Caring Companions In-Home Senior Care &middot; (417) 234-8494 &middot; Springfield, MO</p>
  </div>
 
+ <!-- The most willing somebody will ever be is the moment they finish the
+      form. Offering real times here is what stops a good caregiver going cold
+      in a week of phone tag. -->
+ <div id="bookView" style="display:none;">
+   <div style="text-align:center;padding:6px 0 4px;">
+     <div class="check" style="width:52px;height:52px;font-size:27px;line-height:52px;">&#10003;</div>
+     <h1 style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
+     <p style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are here at our office and take about <span id="bookMins">45</span> minutes. Choose whatever suits you and we will confirm it straight away.</p>
+   </div>
+   <div class="ap-card" id="slotsCard">
+     <div id="slotsBody"><p class="sub" style="margin:0;">Finding times…</p></div>
+   </div>
+   <button class="back" id="skipBtn" onclick="skipBooking()">I would rather you called me to arrange it</button>
+ </div>
+
  <div class="done" id="doneView">
    <div class="check">&#10003;</div>
    <h1 style="font-family:var(--serif);font-size:29px;font-weight:600;color:var(--brand-blue);margin:0 0 10px;">Thank you, <span id="doneName">that is in</span>.</h1>
-   <p style="font-size:15.5px;line-height:1.7;color:var(--body-text);margin:0 auto;max-width:440px;" id="doneLede"></p>
+   <p style="font-size:15.5px;line-height:1.7;color:var(--body-text);margin:0 auto 16px;max-width:460px;" id="doneLede"></p>
+   <div id="whereCard" style="display:none;background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;margin:0 auto;max-width:420px;text-align:left;">
+     <div style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Where to come</div>
+     <div style="font-size:15.5px;font-weight:600;color:var(--ink-2);line-height:1.5;" id="whereName"></div>
+     <div style="font-size:15px;color:var(--body-text);line-height:1.55;" id="whereAddr"></div>
+     <a id="whereMap" href="#" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:14px;color:var(--brand-blue);font-weight:600;">Open in maps &rarr;</a>
+     <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin:12px 0 0;" id="whereNote"></p>
+   </div>
    <p class="foot">Caring Companions In-Home Senior Care &middot; (417) 234-8494 &middot; Springfield, MO</p>
  </div>
 </div>
@@ -358,19 +380,116 @@ async function finish(){
   try {
     await save({ experience_years: val('years') || null, availability: val('avail'),
       experience: val('exp') || null, referral_source: val('ref') || null }, true);
+    g('bookName').textContent = val('first');
     g('doneName').textContent = val('first');
-    /* Anyone reaching this point cleared step two, so this is the only ending
-       they can get here: a straight answer about what happens next. */
-    g('doneLede').textContent =
-      'Someone from our office will call you within one business day. If you told us you have lived outside Missouri, we will get your fingerprint check moving straight away so it does not hold up your start.';
     g('formView').style.display = 'none';
-    g('doneView').style.display = 'block';
+    g('bookView').style.display = 'block';
     window.scrollTo(0, 0);
+    loadSlots();
   } catch (e) {
     b.disabled = false; b.textContent = 'Send my application';
     err.textContent = 'That did not go through, but we have your details from the first step and will call you. If you would rather not wait, ring us on (417) 234-8494.';
     err.style.display = 'block'; console.error(e);
   }
+}
+
+/* ---- Booking ------------------------------------------------------------
+   Times come back as real instants; everything shown is America/Chicago, so
+   an applicant on a phone set to another timezone still sees office hours. */
+const TZ = 'America/Chicago';
+const dayLabel = d => d.toLocaleDateString('en-US',
+  { weekday:'long', month:'long', day:'numeric', timeZone:TZ });
+const timeLabel = d => d.toLocaleTimeString('en-US',
+  { hour:'numeric', minute:'2-digit', timeZone:TZ }).replace(' ', ' ');
+
+let WHERE = null;
+
+async function loadSlots(){
+  const box = g('slotsBody');
+  try {
+    const [{ data: slots, error }, { data: where }] = await Promise.all([
+      sb.rpc('interview_open_slots'),
+      sb.rpc('interview_where'),
+    ]);
+    if (error) throw error;
+    WHERE = where || null;
+    if (WHERE && WHERE.minutes) g('bookMins').textContent = WHERE.minutes;
+
+    if (!slots || !slots.length){
+      box.innerHTML = '<p class="sub" style="margin:0;">We do not have times online just now. '
+        + 'Someone will call you within one business day to set one up, or you can ring us on (417) 234-8494.</p>';
+      g('skipBtn').style.display = 'none';
+      return;
+    }
+    /* Grouped by day, because "Tuesday" is how people think about it. */
+    const byDay = new Map();
+    slots.forEach(s => {
+      const d = new Date(s.starts_at);
+      const key = d.toLocaleDateString('en-CA', { timeZone: TZ });
+      if (!byDay.has(key)) byDay.set(key, { label: dayLabel(d), times: [] });
+      byDay.get(key).times.push({ iso: s.starts_at, label: timeLabel(d) });
+    });
+    box.innerHTML = [...byDay.values()].map(day =>
+      '<div style="margin:0 0 16px;">'
+      + '<div style="font-size:14.5px;font-weight:700;color:var(--brand-blue);margin:0 0 8px;">' + day.label + '</div>'
+      + '<div class="chips">' + day.times.map(t =>
+          '<button type="button" onclick="bookSlot(this,\'' + t.iso + '\')">' + t.label + '</button>').join('')
+      + '</div></div>').join('');
+  } catch (e) {
+    box.innerHTML = '<p class="sub" style="margin:0;">We could not load times just now. '
+      + 'Someone will call you within one business day, or ring us on (417) 234-8494.</p>';
+    console.error(e);
+  }
+}
+
+async function bookSlot(btn, iso){
+  const all = [...document.querySelectorAll('#slotsBody button')];
+  all.forEach(b => b.disabled = true);
+  btn.textContent = 'Booking…';
+  try {
+    const { error } = await sb.rpc('interview_book', { p_applicant: ROW, p_starts: iso });
+    if (error) throw error;
+    const d = new Date(iso);
+    showBooked(dayLabel(d) + ' at ' + timeLabel(d));
+  } catch (e) {
+    /* Somebody else may have taken it a second earlier. Reload rather than
+       leaving a time on screen that no longer exists. */
+    all.forEach(b => b.disabled = false);
+    btn.textContent = timeLabel(new Date(iso));
+    g('slotsBody').insertAdjacentHTML('afterbegin',
+      '<p class="sub" style="color:#b00020;margin:0 0 10px;">That time was just taken. Here are the ones still free.</p>');
+    loadSlots();
+    console.error(e);
+  }
+}
+
+function showBooked(when){
+  g('doneLede').innerHTML = 'Your interview is booked for <b>' + when + '</b>. '
+    + 'We have sent you a confirmation, and we will remind you the day before and an hour before.';
+  fillWhere();
+  g('bookView').style.display = 'none';
+  g('doneView').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function skipBooking(){
+  g('doneLede').textContent = 'Someone from our office will call you within one business day to arrange your interview. '
+    + 'If you told us you have lived outside Missouri, we will get your fingerprint check moving straight away so it does not hold up your start.';
+  g('bookView').style.display = 'none';
+  g('doneView').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+/* The address belongs on the screen as well as in the messages. People screenshot
+   this page and never open the email. */
+function fillWhere(){
+  if (!WHERE) return;
+  g('whereName').textContent = WHERE.name || '';
+  g('whereAddr').innerHTML = (WHERE.line1 || '') + '<br>' + (WHERE.line2 || '');
+  g('whereNote').textContent = WHERE.note || '';
+  g('whereMap').href = 'https://maps.google.com/?q=' +
+    encodeURIComponent([WHERE.name, WHERE.line1, WHERE.line2].filter(Boolean).join(', '));
+  g('whereCard').style.display = 'block';
 }
 </script>
 </body>
