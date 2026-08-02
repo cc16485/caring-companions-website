@@ -113,6 +113,25 @@
       <button type="button" onclick="oneOf(this)">Either is fine</button>
     </div>
 
+    <label class="f">How many hours a week are you hoping for?</label>
+    <div class="chips" data-k="hours_wanted" data-single="1">
+      <button type="button" onclick="oneOf(this)">Under 20</button>
+      <button type="button" onclick="oneOf(this)">20 to 30</button>
+      <button type="button" onclick="oneOf(this)">30 to 40</button>
+      <button type="button" onclick="oneOf(this)">40 or more</button>
+    </div>
+
+    <!-- Asked here rather than at interview, because the answer decides whether
+         an interview is worth either side's time. Hours in home care are built
+         from clients, and a caregiver who needs forty from day one is often
+         somebody we cannot say yes to yet. -->
+    <label class="f">If we could not start you on that many hours straight away, would you start with fewer and build up?</label>
+    <div class="sub">Hours here come from the clients we match you with, so most people start smaller and grow. It is worth knowing what works for you.</div>
+    <div class="chips" data-k="will_build_up" data-single="1">
+      <button type="button" onclick="oneOf(this)">Yes, I would build up</button>
+      <button type="button" onclick="oneOf(this)">I need those hours from the start</button>
+    </div>
+
     <label class="f">Have you worked with older adults before?</label>
     <div class="sub">Pick everything that applies. No experience is genuinely fine.</div>
     <div class="chips stack" data-k="experience_kinds">
@@ -378,6 +397,10 @@ async function next1(){
       first_name: val('first'), last_name: val('last'),
       phone: val('phone') || null, email: val('email') || null,
       zip: val('zip') || null, job_type: A.job_type || null,
+      hours_wanted: A.hours_wanted || null,
+      /* Stored as a yes or a no rather than the words on the button, so the
+         office can filter on it without matching text. */
+      will_build_up: A.will_build_up ? A.will_build_up.startsWith('Yes') : null,
       experience_kinds: A.experience_kinds || [], sms_consent: !!g('sms').checked });
     goStep(2);
   } catch (e) {
