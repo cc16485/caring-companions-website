@@ -121,6 +121,11 @@
 <p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">I'm looking into care for</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px" id="who-chips"></div>
 <textarea id="f-message" class="ct-input" placeholder="Tell us a bit about your situation" rows="4" style="width:100%;resize:vertical;margin-bottom:14px"></textarea>
+<!-- Nobody was ever asked, so every website enquiry arrived with no idea who
+     sent it. One optional line is worth more than a year of guessing which
+     partner is actually working. -->
+<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">How did you hear about us? <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></p>
+<input id="f-heard" class="ct-input" placeholder="A doctor, a hospital, a friend, Google…" style="width:100%;margin-bottom:14px">
 <p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">Best way to reach you</p>
 <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap" id="method-chips"></div>
 <button id="f-submit" class="btn-primary">Send Message</button>
@@ -233,6 +238,7 @@
       errEl.hidden = false;
       return;
     }
+    var heard = document.getElementById('f-heard').value.trim();
     var parts = [message];
     if (method) parts.push('Preferred contact method: ' + method);
     btn.disabled = true;
@@ -243,6 +249,7 @@
       email: email,
       message: parts.filter(Boolean).join('\n'),
       care_for: who || '',
+      heard_from: heard,
     }).then(function () {
       document.getElementById('thanks-name').textContent = name ? ', ' + name : '';
       document.getElementById('contact-form').hidden = true;
@@ -256,7 +263,7 @@
     });
   });
   document.getElementById('f-reset').addEventListener('click', function () {
-    ['f-name', 'f-phone', 'f-email', 'f-message'].forEach(function (id) { document.getElementById(id).value = ''; });
+    ['f-name', 'f-phone', 'f-email', 'f-message', 'f-heard'].forEach(function (id) { document.getElementById(id).value = ''; });
     who = null; method = null;
     document.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('selected', 'selected-accent'); });
     document.getElementById('contact-thanks').hidden = true;
