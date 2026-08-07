@@ -95,6 +95,14 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   transform: translateY(2px);
   transition: opacity .18s ease 0s, transform .18s ease 0s, visibility 0s;
 }
+
+/* Switching between menus should be instant. The generous close delay above is
+   for LEAVING the navigation, not for moving along it — while the cursor is
+   still somewhere in the nav, any panel it has left gets out of the way at
+   once instead of hanging around for half a second. */
+.cc-nav:hover .cc-nav-group:not(:hover):not(:focus-within) .cc-dropdown {
+  transition: opacity .1s ease 0s, transform .1s ease 0s, visibility 0s linear .1s;
+}
 /* invisible hover bridge so the menu stays open while the cursor crosses the gap */
 /* invisible bridge above the panel: the cursor has to cross this gap on its
    way down, and losing the menu mid-journey is maddening */
