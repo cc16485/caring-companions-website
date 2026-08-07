@@ -169,14 +169,14 @@
     <div class="step" data-step="2">
       <p class="qn">Question 3 of 7</p>
       <h2 class="q">When is the hardest part of the day?</h2>
-      <p class="qsub">This is the question that changes everything. Care put in the right window is worth twice as much as care spread thin.</p>
-      <div class="opts" data-key="worst" data-single>
-        <button class="opt" data-v="mornings">Mornings<span class="sm">Getting up, washed, dressed, breakfast, medication</span></button>
-        <button class="opt" data-v="middle of the day">The middle of the day<span class="sm">Lunch, appointments, the long empty hours</span></button>
-        <button class="opt" data-v="evenings">Evenings<span class="sm">Dinner, confusion setting in, the hardest stretch</span></button>
-        <button class="opt" data-v="nights" data-w="4">Nights<span class="sm">Up and wandering, falls, not sleeping</span></button>
-        <button class="opt" data-v="all of it, honestly" data-w="4">All of it, honestly<span class="sm">There is no easy part right now</span></button>
+      <p class="qsub">Pick as many as apply. If it is all of it, tick them all, that tells us something important.</p>
+      <div class="opts" data-key="worst">
+        <button class="opt" data-v="mornings" data-w="2">Mornings<span class="sm">Getting up, washed, dressed, breakfast, medication</span></button>
+        <button class="opt" data-v="the middle of the day" data-w="2">The middle of the day<span class="sm">Lunch, appointments, the long empty hours</span></button>
+        <button class="opt" data-v="evenings" data-w="3">Evenings<span class="sm">Dinner, confusion setting in, the hardest stretch</span></button>
+        <button class="opt" data-v="nights" data-w="5">Nights<span class="sm">Up and wandering, falls, not sleeping</span></button>
       </div>
+      <button class="go" data-next disabled>Continue</button>
       <button class="back" data-back>Back</button>
     </div>
 
@@ -422,21 +422,25 @@
     var managing = (A.managing && A.managing.v) || '';
     var weight = (A.needs || []).reduce(function (a, n) { return a + n.w; }, 0)
                + ((A.managing && A.managing.w) || 0)
-               + ((A.worst && A.worst.w) || 0);
+               + (A.worst || []).reduce(function (a, x) { return a + x.w; }, 0);
 
     // what kind of care, which is what sets the rate
-    var worst = (A.worst && A.worst.v) || '';
-    if (managing === 'not safe on her own' || has('memory and supervision') || worst === 'nights') plan.level = LEVELS.advanced;
+    var w = windows();
+    if (managing === 'not safe on her own' || has('memory and supervision') || w.indexOf('nights') > -1) plan.level = LEVELS.advanced;
     else if (has('bathing and dressing')) plan.level = LEVELS.personal;
     else plan.level = LEVELS.home;
 
     // how long a visit needs to be
     plan.len = weight >= 26 ? 12 : weight >= 18 ? 8 : weight >= 11 ? 6 : MIN_VISIT;
+    // a visit has to be long enough to actually span the parts of the day they
+    // told us are hard, whatever the needs add up to
+    var floorByWindows = { 1: MIN_VISIT, 2: 6, 3: 10, 4: 24 }[w.length] || MIN_VISIT;
+    plan.len = Math.max(plan.len, floorByWindows);
 
     // how many days, before they move it themselves
-    plan.days = managing === 'not safe on her own' ? 7
+    plan.days = w.length >= 4 ? 7 : managing === 'not safe on her own' ? 7
               : managing === 'struggling some days' ? 5
-              : has('memory and supervision') ? 5 : 3;
+              : w.length >= 2 ? 5 : has('memory and supervision') ? 5 : 3;
     if ((A.helping && A.helping.v) === 'nobody yet' && plan.days < 5) plan.days += 1;
     plan.days = Math.max(1, Math.min(7, plan.days));
   }
@@ -447,32 +451,69 @@
      the two hours that are actually hard beats one spread thinly over a day
      that was fine anyway, and the rest of the day can be covered by a
      check-in on the TV for a fraction of the price. */
-  var WINDOW = {
-    'mornings':            { put: 'in the mornings',        other: 'at dinner time' },
-    'middle of the day':   { put: 'through the middle of the day', other: 'first thing in the morning' },
-    'evenings':            { put: 'in the late afternoon and evening', other: 'in the morning' },
-    'nights':              { put: 'in the evening, right up to bedtime', other: 'first thing in the morning' },
-    'all of it, honestly': { put: 'across the hardest stretch of the day', other: 'at the other end of the day' }
+  var ORDER = ['mornings', 'the middle of the day', 'evenings', 'nights'];
+  var PUT = {
+    'mornings': 'in the mornings',
+    'the middle of the day': 'through the middle of the day',
+    'evenings': 'in the late afternoon and evening',
+    'nights': 'in the evening, right up to bedtime'
   };
-  function shape() {
-    var w = (A.worst && A.worst.v) || 'all of it, honestly';
-    var win = WINDOW[w] || WINDOW['all of it, honestly'];
-    var days = plan.days;
-    $('rShapeLine').textContent = 'A caregiver ' + win.put + ', ' + plan.len + ' hours at a time, '
-      + days + (days === 1 ? ' day' : ' days') + ' a week.';
+  var OTHER = {
+    'mornings': 'first thing in the morning',
+    'the middle of the day': 'around lunchtime',
+    'evenings': 'at dinner time',
+    'nights': 'in the evening'
+  };
+  function windows() {
+    var picked = (A.worst || []).map(function (w) { return w.v; });
+    return ORDER.filter(function (o) { return picked.indexOf(o) > -1; });
+  }
+  function join(list) {
+    if (list.length === 1) return list[0];
+    if (list.length === 2) return list[0] + ' and ' + list[1];
+    return list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+  }
 
+  function shape() {
+    var w = windows();
+    if (!w.length) w = ['mornings'];
+    var days = plan.days;
+    var allDay = w.length >= 4;
+
+    // where the hours go
+    if (allDay) {
+      $('rShapeLine').textContent = 'Somebody there around the clock, or as close to it as you can manage.';
+    } else if (w.length === 1) {
+      $('rShapeLine').textContent = 'A caregiver ' + PUT[w[0]] + ', ' + plan.len + ' hours at a time, '
+        + days + (days === 1 ? ' day' : ' days') + ' a week.';
+    } else {
+      // mornings and evenings with nothing in between is a split day, not one
+      // long shift, and saying so is the difference between a calculator and
+      // somebody who has actually built a schedule before
+      var idx = w.map(function (x) { return ORDER.indexOf(x); });
+      var split = (idx[idx.length - 1] - idx[0]) > (idx.length - 1);
+      $('rShapeLine').textContent = 'A caregiver across ' + join(w.map(function (x) { return x === 'nights' ? 'the evening' : x; }))
+        + ', ' + plan.len + ' hours' + (split ? ' a day, likely split into two visits' : ' at a time') + ', '
+        + days + (days === 1 ? ' day' : ' days') + ' a week.';
+    }
+
+    // and what covers the rest
+    var free = ORDER.filter(function (o) { return w.indexOf(o) === -1 && o !== 'nights'; });
     var note;
-    if (w === 'nights') {
-      note = 'Nights are the one thing a screen cannot cover. If ' + V0().S + ' ' + V0().IS
-        + ' up and wandering, that usually needs somebody in the home overnight, and we should talk about it properly. '
-        + 'A caregiver on the television ' + win.other + ' still helps with the rest of the day. Weekdays, from $75 a week.';
-    } else if (days >= 6) {
-      note = 'At this many days you have most of the week covered. A caregiver appearing on the television ' + win.other
-        + ' is the cheap way to close the gap. Once, twice or three times a day, weekdays, from $75 a week.';
+    if (allDay) {
+      note = 'When every part of the day is hard, the honest answer is live-in or 24-hour care rather than visits, '
+        + 'and it is usually less than families fear. Let us talk it through properly before you decide anything.';
+    } else if (w.indexOf('nights') > -1) {
+      note = 'Nights are the one thing a screen cannot cover. If ' + V0().S + ' ' + V0().IS + ' up and wandering, '
+        + 'that needs somebody in the home overnight and we should talk about it properly. '
+        + (free.length ? 'A caregiver on the television ' + OTHER[free[0]] + ' still helps with the rest of the day, weekdays, from $75 a week.' : '');
+    } else if (free.length) {
+      note = 'For the hours nobody is there, a caregiver can appear on the television ' + OTHER[free[0]]
+        + '. Watches the medication go down, prompts blood pressure, stays for a proper conversation. '
+        + 'Once, twice or three times a day, Monday through Friday, from $75 a week.';
     } else {
       note = 'On the ' + (7 - days) + (7 - days === 1 ? ' day' : ' days') + ' nobody is there, a caregiver can still '
-        + 'appear on the television ' + win.other + '. Watches the medication go down, prompts blood pressure, '
-        + 'stays for a proper conversation. Once, twice or three times a day, Monday through Friday, from $75 a week.';
+        + 'appear on the television and check in. Once, twice or three times a day, weekdays, from $75 a week.';
     }
     $('rShapeNote').textContent = note;
   }
@@ -481,16 +522,33 @@
 
   function paint() {
     var hours = hoursNow();
-    $('rLen').textContent = plan.len;
-    $('rLevel').textContent = plan.level.name;
-    $('rHours').textContent = hours + ' hours a week';
 
     // Past about eight hours a day, every day, hourly pricing stops being the
     // right answer. Live-in and 24-hour care are priced differently and work
     // out lower per hour, so quoting an hourly total here would frighten off a
     // family we could actually help.
-    if (hours >= 56) {
-      $('rCost').textContent = 'Live-in or 24-hour care';
+    // Live-in is not a number of visits, so stop pretending it is: no visit
+    // length, no days dial, no "168 hours a week".
+    var liveIn = hours >= 56;
+    document.querySelector('.days .dq').style.display = liveIn ? 'none' : '';
+    document.querySelector('.days .dsub').style.display = liveIn ? 'none' : '';
+    $('dBtns').style.display = liveIn ? 'none' : '';
+    if (liveIn) {
+      $('rLen').textContent = '24/7';
+      $('rLen').style.fontSize = '46px';
+      document.querySelector('.res-num .lab').textContent = 'somebody there around the clock';
+      $('rLevel').textContent = 'Live-in or 24-hour care, priced by the day';
+      $('rHours').textContent = 'Live-in or 24-hour care';
+    } else {
+      $('rLen').textContent = plan.len;
+      $('rLen').style.fontSize = '';
+      document.querySelector('.res-num .lab').textContent = 'hours a visit';
+      $('rLevel').textContent = plan.level.name;
+      $('rHours').textContent = hours + ' hours a week';
+    }
+
+    if (liveIn) {
+      $('rCost').textContent = 'Ask us what it really costs';
       $('rCostNote').innerHTML = 'At this much cover, families almost always move to live-in or 24-hour care. '
         + 'It is priced by the day rather than the hour and usually works out <b>a good deal lower</b> than the '
         + 'hourly figure would suggest. <b>Our office will walk you through what it really costs</b> for {P} situation.';
@@ -565,7 +623,7 @@
       'FROM THE FACEBOOK FUNNEL (mo-care.com/tv)',
       'They built: ' + plan.len + '-hour visits x ' + plan.days + ' days = ' + hours + ' hrs/week',
       'Care level: ' + plan.level.name + (hours >= 56 ? ' — QUOTE AS LIVE-IN / 24-HOUR, not hourly' : ''),
-      'Hardest time of day: ' + ((A.worst && A.worst.v) || 'not said') + ' — sell virtual check-ins for the rest',
+      'Hardest times of day: ' + (windows().join(', ') || 'not said') + (windows().length >= 4 ? ' — ALL DAY, quote live-in' : ' — sell virtual check-ins for the rest'),
       hours >= 20 ? 'QUALIFIES for HomeTogether TV included.'
         : 'Under 20 hrs by ' + (20 - hours) + '. Offer them: more hours, the TV at $99/mo, or virtual visits from $75/wk.',
       '',
