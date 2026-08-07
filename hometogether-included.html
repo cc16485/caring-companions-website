@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HomeTogether TV, Included at 20+ Hours a Week | Caring Companions</title>
-<meta name="description" content="Private-pay families receiving 20 or more hours of care a week get HomeTogether TV included at no charge. Video calls and daily check-ins on the television she already uses.">
+<meta name="description" content="The caregiver leaves, your peace of mind doesn't. Private-pay families receiving 20 or more hours of care a week get HomeTogether TV included at no charge: video calls, reminders, and quiet safety sensing on the television she already watches.">
 <link rel="canonical" href="https://mo-care.com/hometogether-included">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
-<meta property="og:title" content="HomeTogether TV, Included at 20+ Hours a Week | Caring Companions">
-<meta property="og:description" content="Private-pay families receiving 20 or more hours of care a week get HomeTogether TV included at no charge. Video calls and daily check-ins on the television she already uses.">
+<meta property="og:title" content="The caregiver leaves. Your peace of mind doesn't. | Caring Companions">
+<meta property="og:description" content="The caregiver leaves, your peace of mind doesn't. Private-pay families receiving 20 or more hours of care a week get HomeTogether TV included at no charge: video calls, reminders, and quiet safety sensing on the television she already watches.">
 <meta property="og:url" content="https://mo-care.com/hometogether-included">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -64,7 +64,25 @@
 .ht-hero .cta:hover { background:#e09a2e; }
 .ht-hero .under { font-size:13.5px; color:#9fb6c2; margin:14px 0 0; }
 .ht-hero img { width:100%; border-radius:18px; box-shadow:0 20px 50px rgba(0,0,0,.28); }
-.ht-badge { display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:8px 18px; font-size:14px; font-weight:600; margin-bottom:20px; }
+.ht-hero .ht-hero-sub { font-size:15.5px; color:#a9c2cc; margin:0 0 22px; }
+/* the value line sits under the promise, never above it */
+.ht-badge { display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:9px 20px; font-size:14.5px; font-weight:600; margin-bottom:26px; }
+.ht-badge svg { width:17px; height:17px; flex:0 0 auto; color:#8FD1C7; }
+.ht-badge em { font-style:normal; font-weight:500; color:#a9c2cc; }
+/* a pill that wraps to three ragged lines is not a pill */
+@media (max-width:639px){
+  .ht-badge { align-items:flex-start; flex-wrap:wrap; border-radius:14px; padding:12px 16px; }
+  .ht-badge svg { margin-top:3px; }
+  .ht-badge em { flex-basis:100%; padding-left:26px; margin-top:2px; }
+}
+
+.ht-fears { display:grid; gap:14px; }
+.ht-fear { background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 28px;
+  display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:28px; align-items:start; }
+.ht-fear .q { font-family:var(--serif); font-size:21px; line-height:1.4; color:var(--brand-blue); margin:0; text-wrap:balance; }
+.ht-fear .a h3 { font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#C17A12; margin:0 0 9px; }
+.ht-fear .a p { font-size:15px; line-height:1.7; color:var(--muted); margin:0; }
+@media (max-width:760px){ .ht-fear{ grid-template-columns:1fr; gap:14px; padding:24px 22px; } .ht-fear .q{ font-size:19px; } }
 
 .ht-wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
 .ht-sec { padding:58px 0 0; }
@@ -239,10 +257,11 @@
 <section class="ht-hero">
   <div class="in">
     <div>
-      <p class="kicker">Included with care, at no charge</p>
-      <div class="ht-badge">A $99/month value, included at 20+ hours a week</div>
-      <h1>See her face. Not just hear how she's doing.</h1>
-      <p>Every private-pay family we care for 20 or more hours a week gets HomeTogether TV included. Video calls and gentle daily check-ins, right on the television she already watches. No tablet, no app for her to learn, no password to forget.</p>
+      <p class="kicker">For families receiving 20+ hours of care a week</p>
+      <h1>The caregiver leaves. Your peace of mind doesn't.</h1>
+      <p>When your family receives 20 or more hours of weekly care, HomeTogether TV is included at no additional cost. Video calls, gentle reminders, daily connection, and quiet safety monitoring, all through the television she already watches.</p>
+      <p class="ht-hero-sub">No smartphone. No tablet. No password to forget, and nothing new for her to learn.</p>
+      <div class="ht-badge"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Included free with 20+ hours a week <em>(a $99/month value)</em></div>
       <a class="cta" href="/book">Book a free consultation &rarr;</a>
       <p class="under">Already a client at 20+ hours? Call (417) 234-8494 and we will get one out to you.</p>
     </div>
@@ -252,24 +271,50 @@
 
 <div class="ht-wrap">
   <section class="ht-sec">
-    <h2>The hardest part of hiring help is not being there</h2>
-    <p class="lede">You can read a care note and still not know how your mother sounded today. Families tell us the same thing constantly: the care is good, and they still lie awake wondering. This closes that gap without anybody driving across town.</p>
-    <div class="ht-3">
-      <div class="ht-c">
-        <div class="n">1</div>
-        <h3>She answers by doing nothing</h3>
-        <p>The call comes up on her TV and she can be set to answer automatically. No swiping, no squinting at a phone, no asking a caregiver to work the tablet for her.</p>
+    <h2>Every worry, and the thing that answers it</h2>
+    <p class="lede">You can read a care note and still not know how your mother sounded today. Families tell us the same thing constantly: the care is good, and they still lie awake. Nobody wants another device in the house. What they want is one less thing to be afraid of, so here is what each piece is actually for.</p>
+    <div class="ht-fears">
+
+      <div class="ht-fear">
+        <p class="q">&ldquo;I'm afraid she's lonely.&rdquo;</p>
+        <div class="a">
+          <h3>Family video calls on her TV</h3>
+          <p>Up to ten people on one call, and she can be set to answer automatically. No swiping, no squinting at a phone, no asking the caregiver to work a tablet for her. Grandchildren in three states on a Sunday afternoon, on a screen big enough for her to actually see their faces.</p>
+        </div>
       </div>
-      <div class="ht-c">
-        <div class="n">10</div>
-        <h3>The whole family at once</h3>
-        <p>Up to ten people on a call. Grandchildren in three states on a Sunday afternoon, on a screen big enough for her to actually see them.</p>
+
+      <div class="ht-fear">
+        <p class="q">&ldquo;I'm afraid she'll forget her medications.&rdquo;</p>
+        <div class="a">
+          <h3>Reminders on screen</h3>
+          <p>Medication times, appointments, and the days you are coming appear on the television at the moment they matter, in the room she is already sitting in. Not a note on the counter she walks past.</p>
+        </div>
       </div>
-      <div class="ht-c">
-        <div class="n">24</div>
-        <h3>Quiet awareness, not cameras watching</h3>
-        <p>Motion and environment sensing with a physical privacy shutter. It notices when a normal day stops looking normal. It is not a camera anyone sits and watches.</p>
+
+      <div class="ht-fear">
+        <p class="q">&ldquo;I'm afraid something will happen when nobody is there.&rdquo;</p>
+        <div class="a">
+          <h3>Quiet safety sensing</h3>
+          <p>Motion and environment sensing runs in the background and notices when a normal day stops looking normal. It does not use the camera, and the camera it does have, for calls, sits behind a physical shutter she can close with her thumb. Nobody watches a live feed of your mother.</p>
+        </div>
       </div>
+
+      <div class="ht-fear">
+        <p class="q">&ldquo;I'm afraid the caregiver leaves and nobody knows what's happening.&rdquo;</p>
+        <div class="a">
+          <h3>You can look in yourself, any hour</h3>
+          <p>Evenings, weekends, the gaps between visits. You call, her TV lights up, and you see her instead of hearing &ldquo;I'm fine.&rdquo; If you would rather someone from our office look in on the days no caregiver is scheduled, virtual visits start at $75 a week.</p>
+        </div>
+      </div>
+
+      <div class="ht-fear">
+        <p class="q">&ldquo;I'm afraid I'm missing something important.&rdquo;</p>
+        <div class="a">
+          <h3>The whole family sees the same thing</h3>
+          <p>Everyone you approve gets the same updates, so one adult child is not the family switchboard, repeating the day to four siblings every night. Changes get noticed by the people who know her, not just by us.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
