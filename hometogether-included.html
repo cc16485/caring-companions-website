@@ -84,6 +84,21 @@
 .ht-fear .a p { font-size:15px; line-height:1.7; color:var(--muted); margin:0; }
 @media (max-width:760px){ .ht-fear{ grid-template-columns:1fr; gap:14px; padding:24px 22px; } .ht-fear .q{ font-size:19px; } }
 
+.ht-feat { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.ht-feat .g { background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 26px 22px; }
+.ht-feat .g > h3 { font-family:var(--serif); font-size:19px; color:var(--brand-blue); margin:0 0 4px; }
+.ht-feat .g > .sub { font-size:13.5px; line-height:1.6; color:#8a8477; margin:0 0 16px; }
+.ht-feat ul { list-style:none; margin:0; padding:0; }
+.ht-feat li { position:relative; padding:9px 0 9px 26px; font-size:14.5px; line-height:1.6; color:var(--muted); border-top:1px solid var(--border); }
+.ht-feat li:first-child { border-top:none; padding-top:0; }
+.ht-feat li b { color:var(--brand-blue); font-weight:600; }
+.ht-feat li::before { content:""; position:absolute; left:6px; top:18px; width:6px; height:6px; border-radius:50%; background:#8FD1C7; }
+.ht-feat li:first-child::before { top:9px; }
+.ht-feat .g.wide { grid-column:1 / -1; }
+.ht-feat .g.wide ul { columns:2; column-gap:34px; }
+.ht-feat .g.wide li { break-inside:avoid; }
+@media (max-width:860px){ .ht-feat{ grid-template-columns:1fr; } .ht-feat .g.wide ul{ columns:1; } }
+
 .ht-wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
 .ht-sec { padding:58px 0 0; }
 .ht-sec h2 { font-family:var(--serif); font-size:32px; color:var(--brand-blue); margin:0 0 12px; text-wrap:balance; }
@@ -115,6 +130,7 @@
 .ht-qual li:last-child { border-bottom:none; }
 .ht-qual li::before { content:"✓"; position:absolute; left:0; color:#8FD1C7; font-weight:700; }
 .ht-qual b { color:#fff; }
+.ht-qual-note { margin:20px 0 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.14); font-size:15px; line-height:1.6; color:#8FD1C7; font-weight:600; }
 
 .ht-steps { counter-reset:s; list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 .ht-steps li { position:relative; background:#fff; border:1px solid var(--border); border-radius:16px; padding:26px 22px 22px; }
@@ -319,6 +335,74 @@
   </section>
 
   <section class="ht-sec">
+    <h2>Everything it actually does</h2>
+    <p class="lede">Families ask us what is in the box, so here is the whole thing. She only ever touches the television and the remote. Everything else happens on your phone or quietly in the background.</p>
+    <div class="ht-feat">
+
+      <div class="g">
+        <h3>On her television</h3>
+        <p class="sub">The only part she has to learn, and there is almost nothing to learn.</p>
+        <ul>
+          <li><b>Video calls with the family.</b> A wide-angle HD camera built into the hub, up to ten people on a call, and it can be set to answer automatically so she never has to press a thing.</li>
+          <li><b>Photos and videos you send.</b> Anything the family shares plays right on her TV. Grandchildren's ball games and vacation pictures land on a screen she can see, not a phone she has to hold.</li>
+          <li><b>Activity channels made for her.</b> Programming chosen for older adults, on the same screen, on the same remote.</li>
+          <li><b>Medication and appointment reminders.</b> They appear on screen at the time they matter, in the room she is already sitting in.</li>
+          <li><b>One simple remote.</b> No new box to figure out, no smartphone, no tablet, no password.</li>
+        </ul>
+      </div>
+
+      <div class="g">
+        <h3>Quiet safety, running in the background</h3>
+        <p class="sub">None of this uses the camera. It watches for patterns, not for pictures.</p>
+        <ul>
+          <li><b>Motion sensing</b> in the rooms that matter, so a day that stops looking like her normal day gets noticed.</li>
+          <li><b>Room temperature and humidity.</b> A furnace that quits in January or an air conditioner that dies in July shows up before she thinks to mention it.</li>
+          <li><b>Ambient light sensing,</b> which tells you a great deal about whether someone got up, opened the curtains, and started their day.</li>
+          <li><b>Sound detection</b> that can pick out sounds worth knowing about without anybody listening in.</li>
+          <li><b>A physical camera shutter</b> that closes over the lens, so you can see with your own eyes when the camera is off.</li>
+        </ul>
+      </div>
+
+      <div class="g">
+        <h3>Health readings, if you want them</h3>
+        <p class="sub">Optional. Plenty of families never turn this on, and that is fine.</p>
+        <ul>
+          <li><b>The hub connects to home health devices</b> over its built-in connection, so readings do not have to be written on a notepad.</li>
+          <li><b>Blood pressure, blood sugar, weight, temperature, and pulse oximetry</b> from compatible devices.</li>
+          <li><b>Readings sync to the family portal</b> automatically, so the numbers are already there when the doctor asks.</li>
+          <li><b>Ask us which devices</b> before you buy any. We will tell you what pairs and what does not.</li>
+        </ul>
+      </div>
+
+      <div class="g">
+        <h3>For you, on your phone</h3>
+        <p class="sub">The family app, on iPhone and Android, plus a web portal.</p>
+        <ul>
+          <li><b>Call her from anywhere,</b> and see her instead of hearing that she is fine.</li>
+          <li><b>Set her reminders and tasks</b> yourself, from your kitchen in another state.</li>
+          <li><b>A dashboard</b> showing how things have been going, not just a snapshot of this minute.</li>
+          <li><b>Manage who can call her.</b> Only the contacts you approve can reach her television.</li>
+          <li><b>Roles for everyone involved.</b> Family, friends, and caregivers each get their own level of access, so a neighbor who calls on Sundays does not see her blood pressure.</li>
+        </ul>
+      </div>
+
+      <div class="g wide">
+        <h3>The parts you should never have to think about</h3>
+        <p class="sub">We set it up, we keep it running, and we are the ones you call.</p>
+        <ul>
+          <li><b>No broadband at the house?</b> It can run on the cellular network instead. Ask us, because a good number of homes out in the county do not have decent internet and this is the whole reason that matters.</li>
+          <li><b>We install it.</b> Somebody from our office brings it out and sets it up in her living room. Nothing arrives in a box for you to figure out.</li>
+          <li><b>Software updates happen on their own,</b> remotely, without anybody bothering her about it.</li>
+          <li><b>Repair and replacement</b> are handled through us if a piece of it ever fails.</li>
+          <li><b>You call our Springfield office,</b> not a manufacturer's support line in another time zone.</li>
+          <li><b>It leaves with the care.</b> If care ends, we come pick it up. There is nothing to cancel and nothing to ship back.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="ht-sec">
     <h2>What changes when it is included</h2>
     <p class="lede">Same hours of care, same caregivers, same rate. One more thing in the house that the rest of the family can actually use.</p>
     <div class="ht-split">
@@ -381,14 +465,15 @@
       <ul>
         <li><b>20 or more hours of care a week.</b> That is roughly three hours a day, or two longer visits.</li>
         <li><b>Private pay.</b> Including long-term care insurance and VA benefits paid privately. Medicaid-funded care is not eligible for this offer.</li>
-        <li><b>Thirty days of service.</b> The device ships once care is up and running, so it arrives to a settled household.</li>
+        <li><b>You are in our service area.</b> Springfield and the surrounding southwest Missouri communities we serve.</li>
       </ul>
+      <p class="ht-qual-note">No waiting period. It goes in when care starts, not thirty days later.</p>
     </div>
     <div class="ht-fine">
       <h3>The honest fine print</h3>
-      <p>The equipment stays ours and comes back to us when care ends, the same as any loaned equipment. Getting it back is all we ask. There is a $300 charge only if it is never returned.</p>
-      <p>If care drops below 20 hours a week for two months running, we will ask whether you would like to keep it at the regular $99 a month or send it back. Nobody gets a surprise bill.</p>
-      <p>Internet in the home is required. It plugs into an HDMI port on almost any television made in the last fifteen years.</p>
+      <p><b>The equipment stays ours.</b> It is loaned to you for as long as we are providing the care, the same as any loaned equipment, and it comes back to us when services end. We come pick it up. There is a $300 charge only if it is never returned.</p>
+      <p><b>If your hours drop below 20 a week,</b> you can keep it at the regular $99 a month or hand it back. We will ask you first either way, so nobody gets a surprise charge.</p>
+      <p><b>It plugs into an HDMI port</b> on almost any television made in the last fifteen years. Home internet is the usual setup, and if the house does not have broadband, ask us about running it on the cellular network instead.</p>
     </div>
   </section>
 
@@ -397,7 +482,7 @@
     <ol class="ht-steps">
       <li><h3>We talk</h3><p>A free consultation, in your home or on the phone. No pressure and no obligation.</p></li>
       <li><h3>Care starts</h3><p>Your caregiver is matched and the schedule begins. Twenty hours a week or more.</p></li>
-      <li><h3>Day thirty</h3><p>We ship it to you free. It plugs into the TV in about ten minutes.</p></li>
+      <li><h3>We bring it out</h3><p>That same week. Somebody from our office sets it up on her television, shows her the one button, and makes the first call with her.</p></li>
       <li><h3>You call her</h3><p>From your phone, from anywhere. Her TV lights up with your face on it.</p></li>
     </ol>
   </section>
