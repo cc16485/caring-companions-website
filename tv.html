@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How many hours of care do they actually need? | Caring Companions</title>
-<meta name="description" content="Six questions, about a minute. We will tell you roughly how many hours of care she needs, what it costs, and whether HomeTogether TV is included.">
+<meta name="description" content="Seven questions, about a minute. We will tell you roughly how many hours of care she needs, what it costs, and whether HomeTogether TV is included.">
 <!-- A paid-traffic landing page. Deliberately kept out of search so it never
      competes with /hometogether-included, which is the page for people who
      found us on their own. -->
@@ -65,9 +65,24 @@
   .res-num{ text-align:center; padding:6px 0 2px; }
   .res-num .big{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:62px; color:var(--navy); line-height:1; }
   .res-num .lab{ font-size:15px; color:var(--muted); margin-top:4px; }
-  .res-cost{ background:var(--panel); border-radius:14px; padding:18px 20px; margin:20px 0 0; text-align:center; }
-  .res-cost .c{ font-family:'Source Serif 4',Georgia,serif; font-size:27px; color:var(--navy); }
-  .res-cost .n{ font-size:13.5px; color:var(--muted); margin-top:4px; line-height:1.5; }
+  .minnote{ font-size:13.5px; color:var(--muted); line-height:1.55; max-width:38ch; margin:10px auto 0; text-align:center; }
+  .days{ margin:22px 0 0; }
+  .dq{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:21px; color:var(--navy); text-align:center; margin:0 0 4px; }
+  .dsub{ font-size:13.5px; color:var(--muted); text-align:center; margin:0 0 14px; }
+  .dbtns{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
+  .dbtn{ font-family:inherit; font-size:17px; font-weight:700; color:var(--navy); background:#fff;
+    border:2px solid var(--border); border-radius:12px; padding:14px 0; cursor:pointer; }
+  .dbtn:hover{ border-color:var(--cta); }
+  .dbtn.on{ background:var(--cta); border-color:var(--cta); color:#fff; }
+  .tot{ background:var(--panel); border-radius:14px; padding:18px 20px; margin:16px 0 0; text-align:center; }
+  .tot .th{ font-family:'Source Serif 4',Georgia,serif; font-size:23px; color:var(--navy); }
+  .tot .tc{ font-family:'Source Serif 4',Georgia,serif; font-size:27px; color:var(--navy); margin-top:2px; }
+  .tot .tn{ font-size:13px; color:var(--muted); margin-top:8px; line-height:1.55; }
+  .shape{ background:#fff; border:2px solid var(--cta); border-radius:16px; padding:20px 22px; margin:20px 0 0; }
+  .shape .sh{ font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+    color:var(--cta); margin:0 0 8px; }
+  .shape .sl{ font-family:'Source Serif 4',Georgia,serif; font-size:20px; line-height:1.45; color:var(--navy); margin:0; }
+  .shape .sn{ font-size:14.5px; line-height:1.6; color:var(--muted); margin:10px 0 0; }
   .win{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; border-radius:16px; padding:24px 22px; margin:20px 0 0; }
   .win h3{ font-family:'Source Serif 4',Georgia,serif; font-size:22px; margin:0 0 8px; }
   .win p{ font-size:15.5px; line-height:1.6; color:#dbe7ec; margin:0; }
@@ -116,7 +131,7 @@
 <section class="hero">
   <div class="badge">HomeTogether TV included at 20+ hours a week</div>
   <h1>How many hours of care do they actually need?</h1>
-  <p>Six questions, about a minute. We will give you a straight answer, a cost range, and whether the TV is included.</p>
+  <p>Seven questions, about a minute. We will give you a straight answer, a cost range, and whether the TV is included.</p>
 </section>
 
 <div class="wrap">
@@ -125,7 +140,7 @@
 
     <!-- ===== questions ===== -->
     <div class="step on" data-step="0">
-      <p class="qn">Question 1 of 6</p>
+      <p class="qn">Question 1 of 7</p>
       <h2 class="q">Who are we talking about?</h2>
       <div class="opts" data-key="who" data-single>
         <button class="opt" data-v="my mother">My mother</button>
@@ -136,7 +151,7 @@
     </div>
 
     <div class="step" data-step="1">
-      <p class="qn">Question 2 of 6</p>
+      <p class="qn">Question 2 of 7</p>
       <h2 class="q">What {DOES} {S} need a hand with?</h2>
       <p class="qsub">Pick as many as apply. There are no wrong answers here.</p>
       <div class="opts" data-key="needs">
@@ -152,7 +167,21 @@
     </div>
 
     <div class="step" data-step="2">
-      <p class="qn">Question 3 of 6</p>
+      <p class="qn">Question 3 of 7</p>
+      <h2 class="q">When is the hardest part of the day?</h2>
+      <p class="qsub">This is the question that changes everything. Care put in the right window is worth twice as much as care spread thin.</p>
+      <div class="opts" data-key="worst" data-single>
+        <button class="opt" data-v="mornings">Mornings<span class="sm">Getting up, washed, dressed, breakfast, medication</span></button>
+        <button class="opt" data-v="middle of the day">The middle of the day<span class="sm">Lunch, appointments, the long empty hours</span></button>
+        <button class="opt" data-v="evenings">Evenings<span class="sm">Dinner, confusion setting in, the hardest stretch</span></button>
+        <button class="opt" data-v="nights" data-w="4">Nights<span class="sm">Up and wandering, falls, not sleeping</span></button>
+        <button class="opt" data-v="all of it, honestly" data-w="4">All of it, honestly<span class="sm">There is no easy part right now</span></button>
+      </div>
+      <button class="back" data-back>Back</button>
+    </div>
+
+    <div class="step" data-step="3">
+      <p class="qn">Question 4 of 7</p>
       <h2 class="q">How {IS} {S} managing on {P} own right now?</h2>
       <div class="opts" data-key="managing" data-single>
         <button class="opt" data-v="doing alright most days" data-w="0">Doing alright most days<span class="sm">A little help would keep it that way</span></button>
@@ -162,8 +191,8 @@
       <button class="back" data-back>Back</button>
     </div>
 
-    <div class="step" data-step="3">
-      <p class="qn">Question 4 of 6</p>
+    <div class="step" data-step="4">
+      <p class="qn">Question 5 of 7</p>
       <h2 class="q">Who is helping now?</h2>
       <div class="opts" data-key="helping" data-single>
         <button class="opt" data-v="me and my family" data-w="2">Me and my family<span class="sm">And it is a lot</span></button>
@@ -173,8 +202,8 @@
       <button class="back" data-back>Back</button>
     </div>
 
-    <div class="step" data-step="4">
-      <p class="qn">Question 5 of 6</p>
+    <div class="step" data-step="5">
+      <p class="qn">Question 6 of 7</p>
       <h2 class="q">When would you want to start?</h2>
       <div class="opts" data-key="timing" data-single>
         <button class="opt" data-v="as soon as possible">As soon as possible</button>
@@ -184,8 +213,8 @@
       <button class="back" data-back>Back</button>
     </div>
 
-    <div class="step" data-step="5">
-      <p class="qn">Question 6 of 6</p>
+    <div class="step" data-step="6">
+      <p class="qn">Question 7 of 7</p>
       <h2 class="q">Where {DOES} {S} live?</h2>
       <div class="opts" data-key="town" data-single>
         <button class="opt" data-v="Springfield">Springfield</button>
@@ -198,16 +227,31 @@
     </div>
 
     <!-- ===== result ===== -->
-    <div class="step" data-step="6">
+    <div class="step" data-step="7">
       <p class="qn">Based on what you told us</p>
-      <h2 class="q" id="rTitle">{SC} would likely need</h2>
+      <h2 class="q" id="rTitle">What {S} would likely need</h2>
       <div class="res-num">
-        <div class="big" id="rHours">20</div>
-        <div class="lab">hours of care a week, roughly</div>
+        <div class="big" id="rLen">4</div>
+        <div class="lab">hours a visit</div>
+        <p class="minnote" id="rLevel">Help around the house, around $30 an hour</p>
       </div>
-      <div class="res-cost">
-        <div class="c" id="rCost">$2,050 to $2,400 a month</div>
-        <div class="n">A range, based on our published $30 to $34 an hour. <b>Our office will call you with the exact number</b> for {P} situation, and it is often less than families expect once we look at it properly.</div>
+
+      <div class="days">
+        <p class="dq">How many days a week?</p>
+        <p class="dsub">Move it around and watch what changes.</p>
+        <div class="dbtns" id="dBtns"></div>
+        <div class="tot">
+          <div class="th" id="rHours">20 hours a week</div>
+          <div class="tc" id="rCost">$2,450 to $2,750 a month</div>
+          <div class="tn" id="rCostNote">A range at our published rates. <b>Our office will call you with the exact number</b> for {P} situation, and it is often less than families expect once we look at it properly.</div>
+        </div>
+        <p class="minnote" style="margin-top:12px;">Our shortest visit is 4 hours, so a caregiver has time to actually do something rather than rush in and back out.</p>
+      </div>
+
+      <div class="shape" id="rShape">
+        <p class="sh">What we would actually suggest</p>
+        <p class="sl" id="rShapeLine"></p>
+        <p class="sn" id="rShapeNote"></p>
       </div>
 
       <div class="win hide" id="rWin">
@@ -222,8 +266,8 @@
         <h3>Three ways to get it anyway</h3>
         <p style="margin-bottom:14px;">You do not have to change a thing to have the TV. Pick whichever of these actually suits you.</p>
         <div class="path">
-          <b>Go to 20 hours a week</b>
-          <span>About <i id="rGap">two more hours</i> a week from where you are, and the TV is included free. Most families who do this were already wondering whether they had enough hours.</span>
+          <b>Add a day or two</b>
+          <span>About <i id="rGap">one more day</i> a week gets you to 20 hours, and the TV is included free. Most families who do this were already wondering whether they had enough.</span>
         </div>
         <div class="path">
           <b>Keep your hours, add the TV for $99 a month</b>
@@ -258,7 +302,7 @@
     </div>
 
     <!-- ===== done ===== -->
-    <div class="step" data-step="7">
+    <div class="step" data-step="8">
       <div style="text-align:center;">
         <div style="font-size:56px;line-height:1;">☎️</div>
         <h2 class="q" style="margin-top:12px;">Got it. We will call you shortly.</h2>
@@ -294,7 +338,6 @@
   var $ = function (id) { return document.getElementById(id); };
   var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
   var at = 0, A = {}, hours = 0, busy = false;
-  var RATE = 32;               // middle of the published $30 to $34
 
   /* Until they answer the first question we have no idea whether we are
      talking about somebody's mother or somebody's husband, so the page says
@@ -323,7 +366,8 @@
   function show(i) {
     at = i;
     steps.forEach(function (s, n) { s.classList.toggle('on', n === i); });
-    $('prog').style.width = Math.round((Math.min(i, 6) / 6) * 100) + '%';
+    var last = steps.length - 3;                    // the last question
+    $('prog').style.width = Math.round((Math.min(i, last + 1) / (last + 1)) * 100) + '%';
     if (i > 0) window.scrollTo({ top: 0, behavior: 'smooth' });
     if (window.CCTrack) { try { CCTrack('tv_funnel_step_' + i); } catch (e) {} }
   }
@@ -359,46 +403,146 @@
     b.addEventListener('click', function () { show(Math.max(0, at - 1)); });
   });
 
-  // ---- the estimate ----
-  // Deliberately conservative. A number that is too high reads as a sales pitch
-  // and the family stops believing the rest of the page.
+  // ---- the estimate ----------------------------------------------------
+  // Two numbers, not one: how long a visit needs to be, and how many days.
+  // Visits start at 4 hours because that is the real minimum booking, which
+  // also means the honest floor for a weekday schedule is 4 x 5 = 20 hours,
+  // exactly where the TV becomes free. That is not a coincidence worth hiding.
+  var MIN_VISIT = 4;
+  var LEVELS = {
+    home:     { rate: 30, name: 'Help around the house, around $30 an hour' },
+    personal: { rate: 32, name: 'Personal care, around $32 an hour' },
+    advanced: { rate: 34, name: 'Advanced care, around $34 an hour' }
+  };
+  var plan = { len: MIN_VISIT, days: 5, level: LEVELS.home };
+
   function estimate() {
-    var h = 5;
-    (A.needs || []).forEach(function (n) { h += n.w; });
-    h += (A.managing && A.managing.w) || 0;
-    h += (A.helping && A.helping.w) || 0;
-    if (A.managing && A.managing.v === 'not safe on her own') h = Math.max(h, 24);
-    h = Math.max(4, Math.min(48, h));
-    return Math.round(h / 2) * 2;
+    var picked = (A.needs || []).map(function (n) { return n.v; });
+    var has = function (t) { return picked.indexOf(t) > -1; };
+    var managing = (A.managing && A.managing.v) || '';
+    var weight = (A.needs || []).reduce(function (a, n) { return a + n.w; }, 0)
+               + ((A.managing && A.managing.w) || 0)
+               + ((A.worst && A.worst.w) || 0);
+
+    // what kind of care, which is what sets the rate
+    var worst = (A.worst && A.worst.v) || '';
+    if (managing === 'not safe on her own' || has('memory and supervision') || worst === 'nights') plan.level = LEVELS.advanced;
+    else if (has('bathing and dressing')) plan.level = LEVELS.personal;
+    else plan.level = LEVELS.home;
+
+    // how long a visit needs to be
+    plan.len = weight >= 26 ? 12 : weight >= 18 ? 8 : weight >= 11 ? 6 : MIN_VISIT;
+
+    // how many days, before they move it themselves
+    plan.days = managing === 'not safe on her own' ? 7
+              : managing === 'struggling some days' ? 5
+              : has('memory and supervision') ? 5 : 3;
+    if ((A.helping && A.helping.v) === 'nobody yet' && plan.days < 5) plan.days += 1;
+    plan.days = Math.max(1, Math.min(7, plan.days));
   }
 
+  function hoursNow() { return plan.len * plan.days; }
+
+  /* Where the hours go matters more than how many there are. A caregiver in
+     the two hours that are actually hard beats one spread thinly over a day
+     that was fine anyway, and the rest of the day can be covered by a
+     check-in on the TV for a fraction of the price. */
+  var WINDOW = {
+    'mornings':            { put: 'in the mornings',        other: 'at dinner time' },
+    'middle of the day':   { put: 'through the middle of the day', other: 'first thing in the morning' },
+    'evenings':            { put: 'in the late afternoon and evening', other: 'in the morning' },
+    'nights':              { put: 'in the evening, right up to bedtime', other: 'first thing in the morning' },
+    'all of it, honestly': { put: 'across the hardest stretch of the day', other: 'at the other end of the day' }
+  };
+  function shape() {
+    var w = (A.worst && A.worst.v) || 'all of it, honestly';
+    var win = WINDOW[w] || WINDOW['all of it, honestly'];
+    var days = plan.days;
+    $('rShapeLine').textContent = 'A caregiver ' + win.put + ', ' + plan.len + ' hours at a time, '
+      + days + (days === 1 ? ' day' : ' days') + ' a week.';
+
+    var note;
+    if (w === 'nights') {
+      note = 'Nights are the one thing a screen cannot cover. If ' + V0().S + ' ' + V0().IS
+        + ' up and wandering, that usually needs somebody in the home overnight, and we should talk about it properly. '
+        + 'A check-in on the TV ' + win.other + ' still helps with the rest of the day, from $75 a week.';
+    } else if (days >= 6) {
+      note = 'At this many days you have most of the week covered. A virtual check-in ' + win.other
+        + ' is the cheap way to close the gap, from $75 a week, Monday through Friday.';
+    } else {
+      note = 'On the ' + (7 - days) + (7 - days === 1 ? ' day' : ' days') + ' nobody is there, a caregiver can still '
+        + 'check in ' + win.other + ' on the television. Watches the medication go down, prompts blood pressure, '
+        + 'stays for a proper conversation. Monday through Friday, from $75 a week, and you can stop it any time.';
+    }
+    $('rShapeNote').textContent = note;
+  }
+  function V0(){ return V || VOICE['someone else I care about']; }
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
 
-  function result() {
-    hours = estimate();
-    $('rHours').textContent = hours;
-    // A range, not a number. A single figure invites somebody to hold us to it
-    // before anyone has actually looked at her situation.
-    var lo = Math.floor((hours * 30 * WEEKS) / 50) * 50;
-    var hi = Math.ceil((hours * 34 * WEEKS) / 50) * 50;
-    $('rCost').textContent = money(lo) + ' to ' + money(hi) + ' a month';
-    // built here rather than left in the HTML, so it matches whoever they told
-    // us about instead of quietly calling somebody's father "she"
-    var sc = cap((V || VOICE['someone else I care about']).S);
-    $('rTitle').textContent = sc + (hours >= 24 ? ' would likely need daily help' : ' would likely need');
+  function paint() {
+    var hours = hoursNow();
+    $('rLen').textContent = plan.len;
+    $('rLevel').textContent = plan.level.name;
+    $('rHours').textContent = hours + ' hours a week';
 
-    // Nobody leaves without an offer. Twenty hours gets it free; under that,
-    // they can buy it, add hours, or take virtual visits instead.
+    // Past about eight hours a day, every day, hourly pricing stops being the
+    // right answer. Live-in and 24-hour care are priced differently and work
+    // out lower per hour, so quoting an hourly total here would frighten off a
+    // family we could actually help.
+    if (hours >= 56) {
+      $('rCost').textContent = 'Live-in or 24-hour care';
+      $('rCostNote').innerHTML = 'At this much cover, families almost always move to live-in or 24-hour care. '
+        + 'It is priced by the day rather than the hour and usually works out <b>a good deal lower</b> than the '
+        + 'hourly figure would suggest. <b>Our office will walk you through what it really costs</b> for {P} situation.';
+    } else {
+      var mid = hours * plan.level.rate * WEEKS;
+      $('rCost').textContent = money(Math.floor((mid * 0.95) / 50) * 50) + ' to '
+                             + money(Math.ceil((mid * 1.05) / 50) * 50) + ' a month';
+      $('rCostNote').innerHTML = 'A range at our published rates. <b>Our office will call you with the exact number</b> '
+        + 'for {P} situation, and it is often less than families expect once we look at it properly.';
+    }
+    // the note is rebuilt, so refill the pronouns it carries
+    if (V) {
+      var n = $('rCostNote');
+      n.innerHTML = n.innerHTML.replace(/\{P\}/g, V.P);
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('.dbtn'), function (b) {
+      b.classList.toggle('on', +b.getAttribute('data-d') === plan.days);
+    });
+
+    shape();
     if (hours >= 20) {
       $('rWin').classList.remove('hide');
       $('rNear').classList.add('hide');
     } else {
-      $('rNear').classList.remove('hide');
       $('rWin').classList.add('hide');
-      var gap = 20 - hours;
-      $('rGap').textContent = (gap <= 2 ? 'two' : gap <= 4 ? 'four' : gap <= 6 ? 'six' : String(gap)) + ' more hours';
+      $('rNear').classList.remove('hide');
+      var moreDays = Math.ceil((20 - hours) / plan.len);
+      $('rGap').textContent = moreDays === 1 ? 'one more day' : moreDays + ' more days';
     }
-    show(6);
+  }
+
+  function buildDays() {
+    var box = $('dBtns');
+    box.innerHTML = '';
+    for (var d = 1; d <= 7; d++) {
+      var b = document.createElement('button');
+      b.className = 'dbtn'; b.textContent = d; b.setAttribute('data-d', d);
+      b.addEventListener('click', function () {
+        plan.days = +this.getAttribute('data-d');
+        paint();
+        if (window.CCTrack) { try { CCTrack('tv_funnel_days_' + plan.days); } catch (e) {} }
+      });
+      box.appendChild(b);
+    }
+  }
+
+  function result() {
+    estimate();
+    buildDays();
+    paint();
+    show(steps.length - 2);
   }
 
   // ---- the lead ----
@@ -415,11 +559,13 @@
     busy = true;
     $('send').disabled = true; $('send').textContent = 'Sending...';
 
+    var hours = hoursNow();
     var needs = (A.needs || []).map(function (n) { return n.v; }).join(', ') || 'not said';
     var msg = [
       'FROM THE FACEBOOK FUNNEL (mo-care.com/tv)',
-      'Estimated need: ' + hours + ' hours a week (' + money(Math.floor((hours*30*WEEKS)/50)*50) + ' to '
-        + money(Math.ceil((hours*34*WEEKS)/50)*50) + '/mo at the published rate)',
+      'They built: ' + plan.len + '-hour visits x ' + plan.days + ' days = ' + hours + ' hrs/week',
+      'Care level: ' + plan.level.name + (hours >= 56 ? ' — QUOTE AS LIVE-IN / 24-HOUR, not hourly' : ''),
+      'Hardest time of day: ' + ((A.worst && A.worst.v) || 'not said') + ' — sell virtual check-ins for the rest',
       hours >= 20 ? 'QUALIFIES for HomeTogether TV included.'
         : 'Under 20 hrs by ' + (20 - hours) + '. Offer them: more hours, the TV at $99/mo, or virtual visits from $75/wk.',
       '',
@@ -437,7 +583,7 @@
       heard_from: 'Facebook ad (HomeTogether TV offer)'
     }).then(function () {
       if (window.CCTrack) { try { CCTrack('tv_funnel_lead'); } catch (e) {} }
-      show(7);
+      show(steps.length - 1);
     }).catch(function () {
       busy = false;
       $('send').disabled = false; $('send').textContent = "Send me this, and let's talk";
