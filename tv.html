@@ -478,7 +478,8 @@
     var w = windows();
     if (!w.length) w = ['mornings'];
     var days = plan.days;
-    var allDay = w.length >= 4;
+    // round the clock is about the total cover, not only about ticking all four
+    var allDay = w.length >= 4 || hoursNow() >= 56;
 
     // where the hours go
     if (allDay) {
@@ -501,12 +502,22 @@
     var free = ORDER.filter(function (o) { return w.indexOf(o) === -1 && o !== 'nights'; });
     var note;
     if (allDay) {
-      note = 'When every part of the day is hard, the honest answer is live-in or 24-hour care rather than visits, '
-        + 'and it is usually less than families fear. Let us talk it through properly before you decide anything.';
+      note = windows().indexOf('nights') > -1
+        ? 'These two get muddled constantly, so worth being clear: live-in is one caregiver who lives in the home and '
+          + 'sleeps at night. 24-hour is a rota of caregivers who stay awake. Because you have told us the nights are '
+          + 'hard, 24-hour is the honest answer, and it is the more expensive of the two. If the nights turn out to be '
+          + 'quieter than they feel right now, live-in may be enough, and that is worth half an hour of conversation.'
+        : 'These two get muddled constantly, so worth being clear: 24-hour care is a rota of caregivers who stay awake '
+          + 'all night. Live-in is one caregiver who lives in the home and sleeps at night, charged by the day, and it '
+          + 'costs a great deal less. From what you have told us, live-in is likely enough. If the nights get harder, '
+          + 'we move you across.';
     } else if (w.indexOf('nights') > -1) {
       note = 'Nights are the one thing a screen cannot cover. If ' + V0().S + ' ' + V0().IS + ' up and wandering, '
         + 'that needs somebody in the home overnight and we should talk about it properly. '
         + (free.length ? 'A caregiver on the television ' + OTHER[free[0]] + ' still helps with the rest of the day, weekdays, from $75 a week.' : '');
+    } else if (days >= 7) {
+      note = 'Somebody is there every day already. A caregiver on the television is the cheap way to add a second '
+        + 'pair of eyes at the other end of the day, once, twice or three times a day, weekdays, from $75 a week.';
     } else if (free.length) {
       note = 'For the hours nobody is there, a caregiver can appear on the television ' + OTHER[free[0]]
         + '. Watches the medication go down, prompts blood pressure, stays for a proper conversation. '
@@ -534,11 +545,18 @@
     document.querySelector('.days .dsub').style.display = liveIn ? 'none' : '';
     $('dBtns').style.display = liveIn ? 'none' : '';
     if (liveIn) {
+      // Live-in and 24-hour are not two words for the same thing. Live-in is one
+      // caregiver who lives in the home and sleeps at night, charged by the day.
+      // 24-hour is a rota of caregivers who stay awake, charged by the hour, and
+      // costs a great deal more. Which one a family needs turns entirely on
+      // whether the nights are hard, so that is what decides it here.
+      var awake = windows().indexOf('nights') > -1;
       $('rLen').textContent = '24/7';
       $('rLen').style.fontSize = '46px';
       document.querySelector('.res-num .lab').textContent = 'somebody there around the clock';
-      $('rLevel').textContent = 'Live-in or 24-hour care, priced by the day';
-      $('rHours').textContent = 'Live-in or 24-hour care';
+      $('rLevel').textContent = awake ? '24-hour care, caregivers awake in shifts'
+                                      : 'Live-in care, one caregiver living in the home';
+      $('rHours').textContent = awake ? '24-hour care' : 'Live-in care';
     } else {
       $('rLen').textContent = plan.len;
       $('rLen').style.fontSize = '';
@@ -548,10 +566,16 @@
     }
 
     if (liveIn) {
-      $('rCost').textContent = 'Ask us what it really costs';
-      $('rCostNote').innerHTML = 'At this much cover, families almost always move to live-in or 24-hour care. '
-        + 'It is priced by the day rather than the hour and usually works out <b>a good deal lower</b> than the '
-        + 'hourly figure would suggest. <b>Our office will walk you through what it really costs</b> for {P} situation.';
+      var awake2 = windows().indexOf('nights') > -1;
+      $('rCost').textContent = awake2 ? '$28 to $32 an hour' : '$450 a day';
+      $('rCostNote').innerHTML = awake2
+        ? 'Because the nights are hard, this needs <b>24-hour care</b>: two or three caregivers in shifts so '
+          + 'somebody is awake all night rather than asleep down the hall. It is charged by the hour. '
+          + '<b>Our office will work out the real weekly figure</b> for {P} situation.'
+        : 'Because the nights are alright, this can be <b>live-in care</b>: one caregiver lives in the home, works '
+          + 'through the day and sleeps at night. It is charged by the day, not the hour, so it costs a great deal '
+          + 'less than round-the-clock shifts. It needs a bed for them and a proper night of sleep. '
+          + '<b>Our office will go through it properly</b> with you.';
     } else {
       var mid = hours * plan.level.rate * WEEKS;
       $('rCost').textContent = money(Math.floor((mid * 0.95) / 50) * 50) + ' to '
@@ -622,7 +646,7 @@
     var msg = [
       'FROM THE FACEBOOK FUNNEL (mo-care.com/tv)',
       'They built: ' + plan.len + '-hour visits x ' + plan.days + ' days = ' + hours + ' hrs/week',
-      'Care level: ' + plan.level.name + (hours >= 56 ? ' — QUOTE AS LIVE-IN / 24-HOUR, not hourly' : ''),
+      'Care level: ' + plan.level.name + (hours >= 56 ? (windows().indexOf('nights') > -1 ? ' — QUOTE 24-HOUR (nights are hard, needs awake staff)' : ' — QUOTE LIVE-IN at the day rate, nights are alright') : ''),
       'Hardest times of day: ' + (windows().join(', ') || 'not said') + (windows().length >= 4 ? ' — ALL DAY, quote live-in' : ' — sell virtual check-ins for the rest'),
       hours >= 20 ? 'QUALIFIES for HomeTogether TV included.'
         : 'Under 20 hrs by ' + (20 - hours) + '. Offer them: more hours, the TV at $99/mo, or virtual visits from $75/wk.',
