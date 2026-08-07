@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How many hours does she actually need? | Caring Companions</title>
+<title>How many hours of care do they actually need? | Caring Companions</title>
 <meta name="description" content="Six questions, about a minute. We will tell you roughly how many hours of care she needs, what it costs, and whether HomeTogether TV is included.">
 <!-- A paid-traffic landing page. Deliberately kept out of search so it never
      competes with /hometogether-included, which is the page for people who
@@ -115,8 +115,8 @@
 
 <section class="hero">
   <div class="badge">HomeTogether TV included at 20+ hours a week</div>
-  <h1>How many hours does she actually need?</h1>
-  <p>Six questions, about a minute. We will give you a straight answer, what it would cost, and whether the TV is included.</p>
+  <h1>How many hours of care do they actually need?</h1>
+  <p>Six questions, about a minute. We will give you a straight answer, a cost range, and whether the TV is included.</p>
 </section>
 
 <div class="wrap">
@@ -137,7 +137,7 @@
 
     <div class="step" data-step="1">
       <p class="qn">Question 2 of 6</p>
-      <h2 class="q">What does she need a hand with?</h2>
+      <h2 class="q">What {DOES} {S} need a hand with?</h2>
       <p class="qsub">Pick as many as apply. There are no wrong answers here.</p>
       <div class="opts" data-key="needs">
         <button class="opt" data-v="meals" data-w="4">Meals and cooking</button>
@@ -153,7 +153,7 @@
 
     <div class="step" data-step="2">
       <p class="qn">Question 3 of 6</p>
-      <h2 class="q">How is she managing on her own right now?</h2>
+      <h2 class="q">How {IS} {S} managing on {P} own right now?</h2>
       <div class="opts" data-key="managing" data-single>
         <button class="opt" data-v="doing alright most days" data-w="0">Doing alright most days<span class="sm">A little help would keep it that way</span></button>
         <button class="opt" data-v="struggling some days" data-w="5">Struggling some days<span class="sm">Good days and bad days</span></button>
@@ -186,7 +186,7 @@
 
     <div class="step" data-step="5">
       <p class="qn">Question 6 of 6</p>
-      <h2 class="q">Where does she live?</h2>
+      <h2 class="q">Where {DOES} {S} live?</h2>
       <div class="opts" data-key="town" data-single>
         <button class="opt" data-v="Springfield">Springfield</button>
         <button class="opt" data-v="Nixa or Ozark">Nixa or Ozark</button>
@@ -200,21 +200,21 @@
     <!-- ===== result ===== -->
     <div class="step" data-step="6">
       <p class="qn">Based on what you told us</p>
-      <h2 class="q" id="rTitle">She would likely need</h2>
+      <h2 class="q" id="rTitle">{SC} would likely need</h2>
       <div class="res-num">
         <div class="big" id="rHours">20</div>
         <div class="lab">hours of care a week, roughly</div>
       </div>
       <div class="res-cost">
         <div class="c" id="rCost">$2,050 to $2,400 a month</div>
-        <div class="n">A range, based on our published $30 to $34 an hour. <b>Our office will call you with the exact number</b> for her situation, and it is often less than families expect once we look at it properly.</div>
+        <div class="n">A range, based on our published $30 to $34 an hour. <b>Our office will call you with the exact number</b> for {P} situation, and it is often less than families expect once we look at it properly.</div>
       </div>
 
       <div class="win hide" id="rWin">
         <span class="tag">Yours at no charge</span>
         <h3>At this many hours, the TV is free</h3>
         <p>HomeTogether TV normally costs $99 a month. For our private-pay families at 20 or more hours a week, it is <b>included with the care, at no charge, for as long as care continues</b>. Not a trial, not a discount, and nothing added to your bill.</p>
-        <p style="margin-top:10px;">It turns her own television into a video call. You ring from your phone, her TV comes on with your face on it, and she does not press a button or find a password. Up to ten of you at once. It also carries her medication reminders, her activity channels, and camera-free safety sensing.</p>
+        <p style="margin-top:10px;">It turns {P} own television into a video call. You ring from your phone, {P} TV comes on with your face on it, and {S} {DOESNT} press a button or find a password. Up to ten of you at once. It also carries {P} medication reminders, {P} activity channels, and camera-free safety sensing.</p>
         <p style="margin-top:10px;">We ship it free after the first month of care and it takes about ten minutes to plug in.</p>
       </div>
 
@@ -231,15 +231,15 @@
         </div>
         <div class="path">
           <b>Add virtual visits from $75 a week</b>
-          <span>A trained caregiver checks in on her television every weekday. Watches her take her medication, prompts her blood pressure or blood sugar, and gives her real company. Far less than an in-person visit.</span>
+          <span>A trained caregiver checks in on {P} television every weekday. Watches {O} take {P} medication, prompts {P} blood pressure or blood sugar, and gives {O} real company. Far less than an in-person visit.</span>
         </div>
       </div>
 
       <div class="visits" id="rVisits">
         <span class="tag">Worth knowing either way</span>
         <h3>A caregiver can check in on her TV, every weekday</h3>
-        <p>Not instead of care in the home, alongside it. A trained caregiver appears on her television, watches her take her medication, prompts her vitals, and stays for real conversation. Monday through Friday, from $75 a week, and you can start or stop it any time.</p>
-        <p style="margin-top:10px;"><b>It is the cheapest way to have eyes on her every single day.</b></p>
+        <p>Not instead of care in the home, alongside it. A trained caregiver appears on {P} television, watches {O} take {P} medication, prompts {P} vitals, and stays for real conversation. Monday through Friday, from $75 a week, and you can start or stop it any time.</p>
+        <p style="margin-top:10px;"><b>It is the cheapest way to have eyes on {O} every single day.</b></p>
       </div>
 
       <label for="fName">Your name</label>
@@ -295,6 +295,29 @@
   var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
   var at = 0, A = {}, hours = 0, busy = false;
   var RATE = 32;               // middle of the published $30 to $34
+
+  /* Until they answer the first question we have no idea whether we are
+     talking about somebody's mother or somebody's husband, so the page says
+     "they" and then quietly corrects itself. Walking text nodes rather than
+     rewriting innerHTML, so nothing loses its click handler. */
+  var VOICE = {
+    'my mother':            { S:'she',  O:'her',  P:'her',   IS:'is',  DOES:'does', DOESNT:"doesn't" },
+    'my father':            { S:'he',   O:'him',  P:'his',   IS:'is',  DOES:'does', DOESNT:"doesn't" },
+    'my husband or wife':   { S:'they', O:'them', P:'their', IS:'are', DOES:'do',   DOESNT:"don't"  },
+    'someone else I care about': { S:'they', O:'them', P:'their', IS:'are', DOES:'do', DOESNT:"don't" }
+  };
+  function cap(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
+  var V = null;
+  function personalise(who){
+    var v = V = VOICE[who] || VOICE['someone else I care about'];
+    var map = { S:v.S, O:v.O, P:v.P, IS:v.IS, DOES:v.DOES, DOESNT:v.DOESNT, SC:cap(v.S), PC:cap(v.P) };
+    var walk = document.createTreeWalker(document.querySelector('.card'), NodeFilter.SHOW_TEXT);
+    var n;
+    while ((n = walk.nextNode())) {
+      if (n.nodeValue.indexOf('{') === -1) continue;
+      n.nodeValue = n.nodeValue.replace(/\{(S|O|P|IS|DOES|DOESNT|SC|PC)\}/g, function (_, k) { return map[k]; });
+    }
+  }
   var WEEKS = 4.33;
 
   function show(i) {
@@ -315,6 +338,7 @@
           Array.prototype.forEach.call(box.querySelectorAll('.opt'), function (x) { x.classList.remove('on'); });
           b.classList.add('on');
           A[key] = { v: b.getAttribute('data-v'), w: parseFloat(b.getAttribute('data-w') || '0') };
+          if (key === 'who') personalise(A.who.v);
           setTimeout(function () { at === steps.length - 3 ? result() : show(at + 1); }, 180);
         } else {
           b.classList.toggle('on');
@@ -358,8 +382,10 @@
     var lo = Math.floor((hours * 30 * WEEKS) / 50) * 50;
     var hi = Math.ceil((hours * 34 * WEEKS) / 50) * 50;
     $('rCost').textContent = money(lo) + ' to ' + money(hi) + ' a month';
-    $('rTitle').textContent = hours >= 24 ? 'She would likely need daily help'
-      : hours >= 20 ? 'She would likely need' : 'She would likely need';
+    // built here rather than left in the HTML, so it matches whoever they told
+    // us about instead of quietly calling somebody's father "she"
+    var sc = cap((V || VOICE['someone else I care about']).S);
+    $('rTitle').textContent = sc + (hours >= 24 ? ' would likely need daily help' : ' would likely need');
 
     // Nobody leaves without an offer. Twenty hours gets it free; under that,
     // they can buy it, add hours, or take virtual visits instead.
