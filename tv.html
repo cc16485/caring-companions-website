@@ -275,14 +275,14 @@
         </div>
         <div class="path">
           <b>Add virtual visits from $75 a week</b>
-          <span>A trained caregiver checks in on {P} television every weekday. Watches {O} take {P} medication, prompts {P} blood pressure or blood sugar, and gives {O} real company. Far less than an in-person visit.</span>
+          <span>A trained caregiver checks in on {P} television, once, twice or three times a day, Monday through Friday. Watches {O} take {P} medication, prompts {P} blood pressure or blood sugar, and gives {O} real company. Far less than an in-person visit.</span>
         </div>
       </div>
 
       <div class="visits" id="rVisits">
         <span class="tag">Worth knowing either way</span>
         <h3>A caregiver can check in on her TV, every weekday</h3>
-        <p>Not instead of care in the home, alongside it. A trained caregiver appears on {P} television, watches {O} take {P} medication, prompts {P} vitals, and stays for real conversation. Monday through Friday, from $75 a week, and you can start or stop it any time.</p>
+        <p>Not instead of care in the home, alongside it. A trained caregiver appears on {P} television, watches {O} take {P} medication, prompts {P} vitals, and stays for real conversation. Once, twice or three times a day, Monday through Friday, from $75 a week, and you can start or stop it any time.</p>
         <p style="margin-top:10px;"><b>It is the cheapest way to have eyes on {O} every single day.</b></p>
       </div>
 
@@ -465,14 +465,14 @@
     if (w === 'nights') {
       note = 'Nights are the one thing a screen cannot cover. If ' + V0().S + ' ' + V0().IS
         + ' up and wandering, that usually needs somebody in the home overnight, and we should talk about it properly. '
-        + 'A check-in on the TV ' + win.other + ' still helps with the rest of the day, from $75 a week.';
+        + 'A caregiver on the television ' + win.other + ' still helps with the rest of the day. Weekdays, from $75 a week.';
     } else if (days >= 6) {
-      note = 'At this many days you have most of the week covered. A virtual check-in ' + win.other
-        + ' is the cheap way to close the gap, from $75 a week, Monday through Friday.';
+      note = 'At this many days you have most of the week covered. A caregiver appearing on the television ' + win.other
+        + ' is the cheap way to close the gap. Once, twice or three times a day, weekdays, from $75 a week.';
     } else {
       note = 'On the ' + (7 - days) + (7 - days === 1 ? ' day' : ' days') + ' nobody is there, a caregiver can still '
-        + 'check in ' + win.other + ' on the television. Watches the medication go down, prompts blood pressure, '
-        + 'stays for a proper conversation. Monday through Friday, from $75 a week, and you can stop it any time.';
+        + 'appear on the television ' + win.other + '. Watches the medication go down, prompts blood pressure, '
+        + 'stays for a proper conversation. Once, twice or three times a day, Monday through Friday, from $75 a week.';
     }
     $('rShapeNote').textContent = note;
   }
