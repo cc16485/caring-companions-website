@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How many hours does she actually need? | Caring Companions</title>
+<meta name="description" content="Six questions, about a minute. We will tell you roughly how many hours of care she needs, what it costs, and whether HomeTogether TV is included.">
+<!-- A paid-traffic landing page. Deliberately kept out of search so it never
+     competes with /hometogether-included, which is the page for people who
+     found us on their own. -->
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0D365F; --cta:#1F7A8C; --cta-h:#155A68; --honey:#F0A63A; --deep-honey:#C17A12;
+         --cream:#faf9f6; --panel:#f2f0e9; --ink:#16283a; --muted:#55677a; --border:#e4e1d8; --pale:#EAF4F6; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Inter',Helvetica,Arial,sans-serif; background:var(--cream); color:var(--ink);
+        font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .serif{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; }
+  .wrap{ max-width:620px; margin:0 auto; padding:0 20px; }
+
+  /* one bar, one phone number, no way to wander off */
+  .bar{ background:var(--navy); padding:12px 20px; display:flex; align-items:center; gap:14px; }
+  /* the logo is navy type, so it needs something light to sit on */
+  .bar .chip{ background:var(--cream); border-radius:9px; padding:6px 10px; display:flex; align-items:center; }
+  .bar img{ height:26px; display:block; }
+  .bar a{ margin-left:auto; color:#fff; font-weight:700; font-size:15px; text-decoration:none; white-space:nowrap; }
+
+  .hero{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; padding:40px 20px 44px; text-align:center; }
+  .hero .badge{ display:inline-block; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.28);
+    border-radius:999px; padding:7px 16px; font-size:13.5px; font-weight:600; margin-bottom:18px; }
+  .hero h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:34px; line-height:1.15;
+    letter-spacing:-.015em; margin:0 0 14px; text-wrap:balance; }
+  .hero p{ font-size:17px; line-height:1.65; color:#dbe7ec; max-width:44ch; margin:0 auto; }
+
+  .card{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 22px;
+    box-shadow:0 4px 24px rgba(13,54,95,.07); margin:-26px 0 0; position:relative; }
+  .prog{ height:6px; background:var(--border); border-radius:999px; overflow:hidden; margin:0 0 20px; }
+  .prog i{ display:block; height:100%; width:0; background:var(--honey); border-radius:999px; transition:width .3s; }
+  .step{ display:none; }
+  .step.on{ display:block; animation:fade .25s ease; }
+  @keyframes fade{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+  .qn{ font-size:12.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--deep-honey); margin:0 0 8px; }
+  .q{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:25px; line-height:1.3;
+      color:var(--navy); margin:0 0 6px; text-wrap:balance; }
+  .qsub{ font-size:14.5px; color:var(--muted); margin:0 0 18px; }
+  .opts{ display:grid; gap:10px; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16.5px; font-weight:600;
+    color:var(--navy); background:#fff; border:2px solid var(--border); border-radius:14px;
+    padding:16px 18px; cursor:pointer; transition:border-color .12s, background .12s; }
+  .opt:hover{ border-color:var(--cta); }
+  .opt.on{ border-color:var(--cta); background:var(--pale); }
+  .opt .sm{ display:block; font-size:13.5px; font-weight:400; color:var(--muted); margin-top:3px; }
+  .go{ width:100%; margin-top:18px; font-family:inherit; font-size:17px; font-weight:700; color:#fff;
+    background:var(--cta); border:none; border-radius:13px; padding:16px; cursor:pointer; }
+  .go:hover{ background:var(--cta-h); }
+  .go:disabled{ opacity:.45; cursor:not-allowed; }
+  .back{ display:block; width:100%; margin-top:12px; background:none; border:none; font-family:inherit;
+    font-size:14.5px; color:var(--muted); cursor:pointer; text-decoration:underline; }
+
+  .res-num{ text-align:center; padding:6px 0 2px; }
+  .res-num .big{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:62px; color:var(--navy); line-height:1; }
+  .res-num .lab{ font-size:15px; color:var(--muted); margin-top:4px; }
+  .res-cost{ background:var(--panel); border-radius:14px; padding:18px 20px; margin:20px 0 0; text-align:center; }
+  .res-cost .c{ font-family:'Source Serif 4',Georgia,serif; font-size:27px; color:var(--navy); }
+  .res-cost .n{ font-size:13.5px; color:var(--muted); margin-top:4px; line-height:1.5; }
+  .win{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; border-radius:16px; padding:24px 22px; margin:20px 0 0; }
+  .win h3{ font-family:'Source Serif 4',Georgia,serif; font-size:22px; margin:0 0 8px; }
+  .win p{ font-size:15.5px; line-height:1.6; color:#dbe7ec; margin:0; }
+  .win .tag{ display:inline-block; background:var(--honey); color:#3d2a06; font-weight:700; font-size:13px;
+    padding:5px 13px; border-radius:999px; margin-bottom:12px; }
+  .near{ background:#fdf6e9; border:1px solid #efdcb8; border-radius:16px; padding:22px 20px; margin:20px 0 0; }
+  .near h3{ font-family:'Source Serif 4',Georgia,serif; font-size:20px; color:var(--navy); margin:0 0 8px; }
+  .near p{ font-size:15px; line-height:1.6; color:var(--ink); margin:0; }
+  .path{ background:#fff; border:1px solid #efdcb8; border-radius:12px; padding:14px 16px; margin-top:10px; }
+  .path b{ display:block; font-size:16px; color:var(--navy); margin-bottom:3px; }
+  .path span{ display:block; font-size:14.5px; line-height:1.6; color:var(--muted); }
+  .path i{ font-style:normal; font-weight:700; color:var(--deep-honey); }
+  .visits{ background:var(--pale); border:1px solid #cfe3e8; border-radius:16px; padding:22px 20px; margin:20px 0 0; }
+  .visits .tag{ display:inline-block; background:#14606F; color:#fff; font-weight:700; font-size:12.5px;
+    padding:5px 12px; border-radius:999px; margin-bottom:10px; }
+  .visits h3{ font-family:'Source Serif 4',Georgia,serif; font-size:20px; color:var(--navy); margin:0 0 8px; }
+  .visits p{ font-size:15px; line-height:1.6; color:var(--ink); margin:0; }
+
+  label{ display:block; font-size:14px; font-weight:700; color:var(--navy); margin:16px 0 6px; }
+  input{ width:100%; padding:15px 14px; font-size:16px; font-family:inherit; color:var(--ink);
+    background:var(--cream); border:1px solid var(--border); border-radius:12px; }
+  input:focus{ outline:2px solid var(--cta); border-color:var(--cta); background:#fff; }
+  .err{ display:none; background:#fdf0f0; color:#a33; border-radius:11px; padding:12px 14px; font-size:14.5px; margin-top:14px; }
+  .err.on{ display:block; }
+  .fine{ font-size:13px; color:var(--muted); line-height:1.6; margin-top:14px; text-align:center; }
+
+  .trust{ padding:34px 0 10px; }
+  .trust h2{ font-family:'Source Serif 4',Georgia,serif; font-size:21px; color:var(--navy); text-align:center; margin:0 0 16px; }
+  .trust ul{ list-style:none; }
+  .trust li{ position:relative; padding:10px 0 10px 32px; font-size:15.5px; line-height:1.6; border-bottom:1px solid var(--border); }
+  .trust li:last-child{ border-bottom:none; }
+  .trust li::before{ content:"✓"; position:absolute; left:4px; color:#14606F; font-weight:700; }
+  footer{ text-align:center; padding:30px 20px 50px; font-size:13.5px; color:var(--muted); line-height:1.7; }
+  footer a{ color:var(--cta); font-weight:600; }
+  .hide{ display:none !important; }
+  @media (max-width:520px){ .hero h1{ font-size:28px; } .q{ font-size:22px; } .res-num .big{ font-size:52px; } }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <span class="chip"><img src="/assets/cc-logo.webp" alt="Caring Companions"></span>
+  <a href="tel:14172348494">(417) 234-8494</a>
+</div>
+
+<section class="hero">
+  <div class="badge">HomeTogether TV included at 20+ hours a week</div>
+  <h1>How many hours does she actually need?</h1>
+  <p>Six questions, about a minute. We will give you a straight answer, what it would cost, and whether the TV is included.</p>
+</section>
+
+<div class="wrap">
+  <div class="card">
+    <div class="prog"><i id="prog"></i></div>
+
+    <!-- ===== questions ===== -->
+    <div class="step on" data-step="0">
+      <p class="qn">Question 1 of 6</p>
+      <h2 class="q">Who are we talking about?</h2>
+      <div class="opts" data-key="who" data-single>
+        <button class="opt" data-v="my mother">My mother</button>
+        <button class="opt" data-v="my father">My father</button>
+        <button class="opt" data-v="my husband or wife">My husband or wife</button>
+        <button class="opt" data-v="someone else I care about">Someone else I care about</button>
+      </div>
+    </div>
+
+    <div class="step" data-step="1">
+      <p class="qn">Question 2 of 6</p>
+      <h2 class="q">What does she need a hand with?</h2>
+      <p class="qsub">Pick as many as apply. There are no wrong answers here.</p>
+      <div class="opts" data-key="needs">
+        <button class="opt" data-v="meals" data-w="4">Meals and cooking</button>
+        <button class="opt" data-v="bathing and dressing" data-w="6">Bathing and dressing</button>
+        <button class="opt" data-v="medication reminders" data-w="2">Remembering medication</button>
+        <button class="opt" data-v="errands and driving" data-w="3">Errands, appointments, driving</button>
+        <button class="opt" data-v="memory and supervision" data-w="10">Memory, or being alone safely</button>
+        <button class="opt" data-v="company" data-w="4">Company. She is lonely.</button>
+      </div>
+      <button class="go" data-next disabled>Continue</button>
+      <button class="back" data-back>Back</button>
+    </div>
+
+    <div class="step" data-step="2">
+      <p class="qn">Question 3 of 6</p>
+      <h2 class="q">How is she managing on her own right now?</h2>
+      <div class="opts" data-key="managing" data-single>
+        <button class="opt" data-v="doing alright most days" data-w="0">Doing alright most days<span class="sm">A little help would keep it that way</span></button>
+        <button class="opt" data-v="struggling some days" data-w="5">Struggling some days<span class="sm">Good days and bad days</span></button>
+        <button class="opt" data-v="not safe on her own" data-w="14">Not really safe on her own<span class="sm">Someone needs to be there</span></button>
+      </div>
+      <button class="back" data-back>Back</button>
+    </div>
+
+    <div class="step" data-step="3">
+      <p class="qn">Question 4 of 6</p>
+      <h2 class="q">Who is helping now?</h2>
+      <div class="opts" data-key="helping" data-single>
+        <button class="opt" data-v="me and my family" data-w="2">Me and my family<span class="sm">And it is a lot</span></button>
+        <button class="opt" data-v="nobody yet" data-w="5">Nobody yet</button>
+        <button class="opt" data-v="another agency" data-w="0">Another agency<span class="sm">We are comparing options</span></button>
+      </div>
+      <button class="back" data-back>Back</button>
+    </div>
+
+    <div class="step" data-step="4">
+      <p class="qn">Question 5 of 6</p>
+      <h2 class="q">When would you want to start?</h2>
+      <div class="opts" data-key="timing" data-single>
+        <button class="opt" data-v="as soon as possible">As soon as possible</button>
+        <button class="opt" data-v="in the next few weeks">In the next few weeks</button>
+        <button class="opt" data-v="just looking ahead">Just looking ahead for now</button>
+      </div>
+      <button class="back" data-back>Back</button>
+    </div>
+
+    <div class="step" data-step="5">
+      <p class="qn">Question 6 of 6</p>
+      <h2 class="q">Where does she live?</h2>
+      <div class="opts" data-key="town" data-single>
+        <button class="opt" data-v="Springfield">Springfield</button>
+        <button class="opt" data-v="Nixa or Ozark">Nixa or Ozark</button>
+        <button class="opt" data-v="Republic or Willard">Republic or Willard</button>
+        <button class="opt" data-v="Branson area">Branson area</button>
+        <button class="opt" data-v="somewhere else in southwest Missouri">Somewhere else nearby</button>
+      </div>
+      <button class="back" data-back>Back</button>
+    </div>
+
+    <!-- ===== result ===== -->
+    <div class="step" data-step="6">
+      <p class="qn">Based on what you told us</p>
+      <h2 class="q" id="rTitle">She would likely need</h2>
+      <div class="res-num">
+        <div class="big" id="rHours">20</div>
+        <div class="lab">hours of care a week, roughly</div>
+      </div>
+      <div class="res-cost">
+        <div class="c" id="rCost">$2,600 a month</div>
+        <div class="n">At our published rate of $30 to $34 an hour. A coordinator confirms the real number with you, and it is often less than families expect.</div>
+      </div>
+
+      <div class="win hide" id="rWin">
+        <span class="tag">Included at this level</span>
+        <h3>HomeTogether TV comes with it</h3>
+        <p>At 20 hours a week or more, private-pay families get HomeTogether TV at no charge. Her television becomes a video call, she does not press a thing, and up to ten of you can be on it at once. It is $99 a month on its own.</p>
+      </div>
+
+      <div class="near hide" id="rNear">
+        <h3>Three ways to get it anyway</h3>
+        <p style="margin-bottom:14px;">You do not have to change a thing to have the TV. Pick whichever of these actually suits you.</p>
+        <div class="path">
+          <b>Go to 20 hours a week</b>
+          <span>About <i id="rGap">two more hours</i> a week from where you are, and the TV is included free. Most families who do this were already wondering whether they had enough hours.</span>
+        </div>
+        <div class="path">
+          <b>Keep your hours, add the TV for $99 a month</b>
+          <span>Same care, same schedule. The device on its own, free shipping, cancel any time, 30-day money-back guarantee.</span>
+        </div>
+        <div class="path">
+          <b>Add virtual visits from $75 a week</b>
+          <span>A trained caregiver checks in on her television every weekday. Watches her take her medication, prompts her blood pressure or blood sugar, and gives her real company. Far less than an in-person visit.</span>
+        </div>
+      </div>
+
+      <div class="visits" id="rVisits">
+        <span class="tag">Worth knowing either way</span>
+        <h3>A caregiver can check in on her TV, every weekday</h3>
+        <p>Not instead of care in the home, alongside it. A trained caregiver appears on her television, watches her take her medication, prompts her vitals, and stays for real conversation. Monday through Friday, from $75 a week, and you can start or stop it any time.</p>
+        <p style="margin-top:10px;"><b>It is the cheapest way to have eyes on her every single day.</b></p>
+      </div>
+
+      <label for="fName">Your name</label>
+      <input id="fName" autocomplete="name" placeholder="First and last">
+      <label for="fPhone">Best number to reach you</label>
+      <input id="fPhone" autocomplete="tel" inputmode="tel" placeholder="(417) 555-0134">
+      <label for="fEmail">Email <span style="font-weight:400;color:var(--muted);">so we can send this to you</span></label>
+      <input id="fEmail" type="email" autocomplete="email" placeholder="you@example.com">
+      <div style="position:absolute;left:-9999px;" aria-hidden="true">
+        <input id="fWebsite" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button class="go" id="send">Send me this, and let's talk</button>
+      <div class="err" id="err"></div>
+      <p class="fine">No obligation and no pressure. A real care coordinator here in Springfield calls you, usually the same day.</p>
+      <button class="back" data-back>Back</button>
+    </div>
+
+    <!-- ===== done ===== -->
+    <div class="step" data-step="7">
+      <div style="text-align:center;">
+        <div style="font-size:56px;line-height:1;">☎️</div>
+        <h2 class="q" style="margin-top:12px;">Got it. We will call you shortly.</h2>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65;">A coordinator here in Springfield has your details and will be in touch, usually within the hour during the day. Nothing else for you to do.</p>
+        <a href="/book" style="display:inline-block;margin-top:20px;background:var(--cta);color:#fff;font-weight:700;font-size:16.5px;padding:15px 28px;border-radius:13px;text-decoration:none;">Rather pick a time yourself? →</a>
+        <p class="fine">Or call us now on <a href="tel:14172348494" style="color:var(--cta);font-weight:700;">(417) 234-8494</a>. We answer 24 hours a day.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="trust">
+    <h2 class="serif">Why families here choose us</h2>
+    <ul>
+      <li>Locally owned in Springfield, not a franchise taking orders from out of state</li>
+      <li>Caregivers are our employees, background checked, trained and insured. Never contractors.</li>
+      <li>Somebody answers the phone at 2am, and it is one of us</li>
+      <li>HomeTogether TV included for private-pay families at 20+ hours a week</li>
+      <li>We will tell you honestly if we are not the right fit for her</li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  Caring Companions In-Home Senior Care<br>
+  1331 N Stewart Ave Ste B, Springfield MO 65802 &middot; <a href="tel:14172348494">(417) 234-8494</a><br>
+  <span style="font-size:12.5px;">The hours shown are an estimate to help you plan, not a clinical assessment. HomeTogether TV is included for private-pay families at 20 or more hours a week and is not available on Medicaid-funded care.</span>
+</footer>
+
+<script src="assets/forms.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var at = 0, A = {}, hours = 0, busy = false;
+  var RATE = 32;               // middle of the published $30 to $34
+  var WEEKS = 4.33;
+
+  function show(i) {
+    at = i;
+    steps.forEach(function (s, n) { s.classList.toggle('on', n === i); });
+    $('prog').style.width = Math.round((Math.min(i, 6) / 6) * 100) + '%';
+    if (i > 0) window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.CCTrack) { try { CCTrack('tv_funnel_step_' + i); } catch (e) {} }
+  }
+
+  // ---- answering ----
+  Array.prototype.forEach.call(document.querySelectorAll('.opts'), function (box) {
+    var key = box.getAttribute('data-key');
+    var single = box.hasAttribute('data-single');
+    Array.prototype.forEach.call(box.querySelectorAll('.opt'), function (b) {
+      b.addEventListener('click', function () {
+        if (single) {
+          Array.prototype.forEach.call(box.querySelectorAll('.opt'), function (x) { x.classList.remove('on'); });
+          b.classList.add('on');
+          A[key] = { v: b.getAttribute('data-v'), w: parseFloat(b.getAttribute('data-w') || '0') };
+          setTimeout(function () { at === steps.length - 3 ? result() : show(at + 1); }, 180);
+        } else {
+          b.classList.toggle('on');
+          var picked = box.querySelectorAll('.opt.on');
+          A[key] = Array.prototype.map.call(picked, function (x) {
+            return { v: x.getAttribute('data-v'), w: parseFloat(x.getAttribute('data-w') || '0') };
+          });
+          var go = steps[at].querySelector('[data-next]');
+          if (go) go.disabled = !picked.length;
+        }
+      });
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-next]'), function (b) {
+    b.addEventListener('click', function () { show(at + 1); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-back]'), function (b) {
+    b.addEventListener('click', function () { show(Math.max(0, at - 1)); });
+  });
+
+  // ---- the estimate ----
+  // Deliberately conservative. A number that is too high reads as a sales pitch
+  // and the family stops believing the rest of the page.
+  function estimate() {
+    var h = 5;
+    (A.needs || []).forEach(function (n) { h += n.w; });
+    h += (A.managing && A.managing.w) || 0;
+    h += (A.helping && A.helping.w) || 0;
+    if (A.managing && A.managing.v === 'not safe on her own') h = Math.max(h, 24);
+    h = Math.max(4, Math.min(48, h));
+    return Math.round(h / 2) * 2;
+  }
+
+  function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function result() {
+    hours = estimate();
+    $('rHours').textContent = hours;
+    var monthly = hours * RATE * WEEKS;
+    $('rCost').textContent = money(monthly) + ' a month';
+    $('rTitle').textContent = hours >= 24 ? 'She would likely need daily help'
+      : hours >= 20 ? 'She would likely need' : 'She would likely need';
+
+    // Nobody leaves without an offer. Twenty hours gets it free; under that,
+    // they can buy it, add hours, or take virtual visits instead.
+    if (hours >= 20) {
+      $('rWin').classList.remove('hide');
+      $('rNear').classList.add('hide');
+    } else {
+      $('rNear').classList.remove('hide');
+      $('rWin').classList.add('hide');
+      var gap = 20 - hours;
+      $('rGap').textContent = (gap <= 2 ? 'two' : gap <= 4 ? 'four' : gap <= 6 ? 'six' : String(gap)) + ' more hours';
+    }
+    show(6);
+  }
+
+  // ---- the lead ----
+  $('send').addEventListener('click', function () {
+    if (busy) return;
+    if ($('fWebsite').value) return;            // bot
+    $('err').classList.remove('on');
+    var name = $('fName').value.trim();
+    var phone = $('fPhone').value.trim();
+    var email = $('fEmail').value.trim();
+    if (!name) { fail('Please add your name so we know who we are talking to.'); $('fName').focus(); return; }
+    if (!phone && !email) { fail('Please add a phone number or an email so we can answer you.'); $('fPhone').focus(); return; }
+
+    busy = true;
+    $('send').disabled = true; $('send').textContent = 'Sending...';
+
+    var needs = (A.needs || []).map(function (n) { return n.v; }).join(', ') || 'not said';
+    var msg = [
+      'FROM THE FACEBOOK FUNNEL (mo-care.com/tv)',
+      'Estimated need: ' + hours + ' hours a week (~' + money(hours * RATE * WEEKS) + '/mo at $' + RATE + ')',
+      hours >= 20 ? 'QUALIFIES for HomeTogether TV included.'
+        : 'Under 20 hrs by ' + (20 - hours) + '. Offer them: more hours, the TV at $99/mo, or virtual visits from $75/wk.',
+      '',
+      'Caring for: ' + ((A.who && A.who.v) || 'not said'),
+      'Needs help with: ' + needs,
+      'Managing alone: ' + ((A.managing && A.managing.v) || 'not said'),
+      'Help now: ' + ((A.helping && A.helping.v) || 'not said'),
+      'Timing: ' + ((A.timing && A.timing.v) || 'not said'),
+      'Lives in: ' + ((A.town && A.town.v) || 'not said')
+    ].join('\n');
+
+    window.CCForms.submitLead({
+      name: name, phone: phone, email: email, message: msg,
+      care_for: (A.who && A.who.v) || '', city: (A.town && A.town.v) || '',
+      heard_from: 'Facebook ad (HomeTogether TV offer)'
+    }).then(function () {
+      if (window.CCTrack) { try { CCTrack('tv_funnel_lead'); } catch (e) {} }
+      show(7);
+    }).catch(function () {
+      busy = false;
+      $('send').disabled = false; $('send').textContent = "Send me this, and let's talk";
+      fail('That did not go through. Please try again, or call us on (417) 234-8494 and we will take it over the phone.');
+    });
+  });
+  function fail(m) { $('err').textContent = m; $('err').classList.add('on'); }
+
+  show(0);
+})();
+</script>
+<script src="assets/site-events.js"></script>
+</body>
+</html>
