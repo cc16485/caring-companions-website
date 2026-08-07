@@ -3,168 +3,337 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How many hours of care do they actually need? | Caring Companions</title>
-<meta name="description" content="Seven questions, about a minute. We will tell you roughly how many hours of care she needs, what it costs, and whether HomeTogether TV is included.">
-<!-- A paid-traffic landing page. Deliberately kept out of search so it never
-     competes with /hometogether-included, which is the page for people who
-     found us on their own. -->
+<title>In-Home Care in Springfield, MO | Caring Companions</title>
+<meta name="description" content="You should not have to wonder if she is okay. In-home care from people who live here, and a free visit at her kitchen table to talk it through.">
+<!-- Built for cold Facebook traffic. Kept out of search so it never competes
+     with the pages people find on their own. One job: book the consultation. -->
 <meta name="robots" content="noindex, follow">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/photos/hero-caregiver.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --navy:#0D365F; --cta:#1F7A8C; --cta-h:#155A68; --honey:#F0A63A; --deep-honey:#C17A12;
-         --cream:#faf9f6; --panel:#f2f0e9; --ink:#16283a; --muted:#55677a; --border:#e4e1d8; --pale:#EAF4F6; }
+  :root{
+    --navy:#0D365F; --deep:#14606F; --cta:#1F7A8C; --cta-h:#155A68;
+    --honey:#F0A63A; --deep-honey:#C17A12;
+    --cream:#faf9f6; --panel:#f2f0e9; --ink:#16283a; --muted:#55677a;
+    --border:#e4e1d8; --pale:#EAF4F6; --white:#fff;
+    --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    --sp:clamp(64px,10vw,116px);
+  }
   *{ margin:0; padding:0; box-sizing:border-box; }
-  body{ font-family:'Inter',Helvetica,Arial,sans-serif; background:var(--cream); color:var(--ink);
-        font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; }
-  .serif{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; }
-  .wrap{ max-width:620px; margin:0 auto; padding:0 20px; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--sans); background:var(--cream); color:var(--ink);
+    font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  img{ max-width:100%; display:block; height:auto; }   /* height attrs must not beat aspect-ratio */
+  a{ color:var(--cta); }
+  :focus-visible{ outline:3px solid var(--honey); outline-offset:3px; border-radius:6px; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 22px; }
+  .narrow{ max-width:620px; margin:0 auto; padding:0 22px; }
+  .skip{ position:absolute; left:-9999px; }
+  .skip:focus{ left:12px; top:12px; z-index:99; background:#fff; padding:12px 18px; border-radius:10px; }
 
-  /* one bar, one phone number, no way to wander off */
-  .bar{ background:var(--navy); padding:16px 20px 14px; display:flex; flex-direction:column;
-        align-items:center; gap:10px; text-align:center; }
-  /* the logo is navy type, so it needs something light to sit on */
-  .bar .chip{ background:var(--cream); border-radius:12px; padding:10px 18px; display:inline-flex; align-items:center; }
-  .bar img{ height:46px; display:block; }
-  .bar a{ color:#fff; font-weight:700; font-size:17px; text-decoration:none; white-space:nowrap; letter-spacing:.01em; }
+  h1,h2,h3{ font-family:var(--serif); font-weight:600; letter-spacing:-.015em; line-height:1.15; }
+  .eyebrow{ font-family:var(--sans); font-size:12.5px; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; }
 
-  .hero{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; padding:40px 20px 44px; text-align:center; }
-  .hero .badge{ display:inline-block; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.28);
-    border-radius:999px; padding:7px 16px; font-size:13.5px; font-weight:600; margin-bottom:18px; }
-  .hero h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:34px; line-height:1.15;
-    letter-spacing:-.015em; margin:0 0 14px; text-wrap:balance; }
-  .hero p{ font-size:17px; line-height:1.65; color:#dbe7ec; max-width:44ch; margin:0 auto; }
-  .peek{ max-width:420px; margin:24px auto 0; }
-  .peek img{ width:100%; border-radius:14px; display:block; box-shadow:0 14px 34px rgba(0,0,0,.28); }
-  .peek .cap{ font-size:14.5px; color:#9fb6c2; margin:10px auto 0; max-width:36ch; }
+  /* ---- reveal, gently, and never for anyone who asked us not to ---- */
+  .rv{ opacity:0; transform:translateY(18px); transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+  .rv.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .rv{ opacity:1; transform:none; transition:none; }
+    *{ animation:none !important; }
+  }
 
-  .card{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 22px;
-    box-shadow:0 4px 24px rgba(13,54,95,.07); margin:-26px 0 0; position:relative; }
-  .prog{ height:6px; background:var(--border); border-radius:999px; overflow:hidden; margin:0 0 20px; }
-  .prog i{ display:block; height:100%; width:0; background:var(--honey); border-radius:999px; transition:width .3s; }
+  /* ---- buttons ---- */
+  .btn{ display:inline-block; font-family:var(--sans); font-size:17px; font-weight:700; text-decoration:none;
+    padding:17px 34px; border-radius:14px; border:none; cursor:pointer; transition:transform .12s, background .16s;
+    background:var(--honey); color:#3a2705; box-shadow:0 6px 20px rgba(240,166,58,.28); }
+  .btn:hover{ background:#e79c2c; transform:translateY(-1px); }
+  .btn.teal{ background:var(--cta); color:#fff; box-shadow:0 6px 20px rgba(31,122,140,.26); }
+  .btn.teal:hover{ background:var(--cta-h); }
+  .btn.ghost{ background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.5); box-shadow:none; }
+  .btn.wide{ width:100%; text-align:center; }
+  .callnote{ font-size:14.5px; margin-top:14px; }
+
+  /* ---- 1. hero ---- */
+  .bar{ position:absolute; top:0; left:0; right:0; z-index:5; display:flex; align-items:center;
+    justify-content:space-between; padding:16px 22px; }
+  .bar .chip{ background:rgba(250,249,246,.94); border-radius:12px; padding:8px 14px; }
+  .bar .chip img{ height:34px; }
+  .bar a.tel{ color:#fff; font-weight:700; font-size:16px; text-decoration:none; text-shadow:0 1px 10px rgba(0,0,0,.5); }
+  .hero{ position:relative; min-height:min(94vh,860px); display:flex; align-items:flex-end;
+    background:var(--navy); overflow:hidden; }
+  .hero picture,.hero>img{ position:absolute; inset:0; }
+  .hero img.bg{ width:100%; height:100%; object-fit:cover; object-position:52% 32%; }
+  .hero .veil{ position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(13,54,95,.62) 0%,rgba(13,54,95,.34) 34%,rgba(13,54,95,.86) 78%,rgba(13,54,95,.96) 100%); }
+  .hero .in{ position:relative; padding:0 22px clamp(44px,7vw,80px); max-width:760px; margin:0 auto; text-align:center; color:#fff; }
+  .hero .eyebrow{ color:#8FD1C7; margin-bottom:16px; }
+  .hero h1{ font-size:clamp(34px,7.4vw,58px); margin:0 0 18px; text-wrap:balance; }
+  .hero p{ font-size:clamp(17px,2.4vw,20px); line-height:1.6; color:#dfeaef; max-width:34ch; margin:0 auto 28px; }
+  .hero .micro{ margin-top:20px; font-size:13.5px; color:#a9c0cc; line-height:1.7; }
+  .hero .micro b{ color:#fff; font-weight:600; }
+
+  /* ---- 2. is this you ---- */
+  .you{ padding:var(--sp) 0; }
+  .you h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); text-align:center; margin:0 0 10px; text-wrap:balance; }
+  .you .sub{ text-align:center; color:var(--muted); font-size:17px; margin:0 auto 40px; max-width:40ch; }
+  .you ul{ list-style:none; max-width:620px; margin:0 auto; }
+  .you li{ font-family:var(--serif); font-size:clamp(19px,2.9vw,23px); line-height:1.5; color:var(--navy);
+    padding:22px 0 22px 44px; border-bottom:1px solid var(--border); position:relative; }
+  .you li:last-child{ border-bottom:none; }
+  .you li::before{ content:""; position:absolute; left:8px; top:34px; width:10px; height:10px;
+    border-radius:50%; background:var(--honey); }
+  .you .land{ margin:36px auto 0; max-width:560px; text-align:center; font-size:18px; line-height:1.65; color:var(--ink); }
+  .you .land b{ color:var(--navy); }
+
+  /* ---- 3+4. assessment ---- */
+  .quiz{ background:var(--panel); padding:var(--sp) 0; }
+  .quiz .head{ text-align:center; max-width:600px; margin:0 auto 34px; }
+  .quiz .eyebrow{ color:var(--deep-honey); margin-bottom:12px; }
+  .quiz h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); margin:0 0 12px; text-wrap:balance; }
+  .quiz .head p{ color:var(--muted); font-size:17px; }
+  .card{ background:#fff; border:1px solid var(--border); border-radius:22px; padding:clamp(24px,4vw,38px);
+    max-width:640px; margin:0 auto; box-shadow:0 10px 40px rgba(13,54,95,.07); }
+  .prog{ height:6px; background:var(--border); border-radius:999px; overflow:hidden; margin:0 0 24px; }
+  .prog i{ display:block; height:100%; width:0; background:var(--honey); border-radius:999px; transition:width .35s; }
   .step{ display:none; }
-  .step.on{ display:block; animation:fade .25s ease; }
-  @keyframes fade{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
-  .qn{ font-size:12.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--deep-honey); margin:0 0 8px; }
-  .q{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:25px; line-height:1.3;
-      color:var(--navy); margin:0 0 6px; text-wrap:balance; }
-  .qsub{ font-size:14.5px; color:var(--muted); margin:0 0 18px; }
-  .opts{ display:grid; gap:10px; }
-  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:16.5px; font-weight:600;
-    color:var(--navy); background:#fff; border:2px solid var(--border); border-radius:14px;
-    padding:16px 18px; cursor:pointer; transition:border-color .12s, background .12s; }
-  .opt:hover{ border-color:var(--cta); }
+  .step.on{ display:block; animation:fade .3s ease; }
+  @keyframes fade{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+  .qn{ font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--deep-honey); margin:0 0 10px; }
+  .q{ font-family:var(--serif); font-size:clamp(23px,3.6vw,29px); line-height:1.28; color:var(--navy); margin:0 0 8px; text-wrap:balance; }
+  .qsub{ font-size:15px; color:var(--muted); margin:0 0 20px; }
+  .opts{ display:grid; gap:11px; }
+  .opt{ display:block; width:100%; text-align:left; font-family:inherit; font-size:17px; font-weight:600;
+    color:var(--navy); background:#fff; border:2px solid var(--border); border-radius:15px;
+    padding:17px 19px; cursor:pointer; transition:border-color .14s, background .14s, transform .1s; }
+  .opt:hover{ border-color:var(--cta); transform:translateY(-1px); }
   .opt.on{ border-color:var(--cta); background:var(--pale); }
-  .opt .sm{ display:block; font-size:13.5px; font-weight:400; color:var(--muted); margin-top:3px; }
-  .go{ width:100%; margin-top:18px; font-family:inherit; font-size:17px; font-weight:700; color:#fff;
-    background:var(--cta); border:none; border-radius:13px; padding:16px; cursor:pointer; }
+  .opt .sm{ display:block; font-size:14px; font-weight:400; color:var(--muted); margin-top:4px; }
+  .go{ width:100%; margin-top:20px; font-family:inherit; font-size:17px; font-weight:700; color:#fff;
+    background:var(--cta); border:none; border-radius:14px; padding:17px; cursor:pointer; }
   .go:hover{ background:var(--cta-h); }
-  .go:disabled{ opacity:.45; cursor:not-allowed; }
-  .back{ display:block; width:100%; margin-top:12px; background:none; border:none; font-family:inherit;
+  .go:disabled{ opacity:.42; cursor:not-allowed; }
+  .back{ display:block; width:100%; margin-top:14px; background:none; border:none; font-family:inherit;
     font-size:14.5px; color:var(--muted); cursor:pointer; text-decoration:underline; }
 
-  .res-num{ text-align:center; padding:6px 0 2px; }
-  .res-num .big{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:62px; color:var(--navy); line-height:1; }
-  .res-num .lab{ font-size:15px; color:var(--muted); margin-top:4px; }
-  .minnote{ font-size:13.5px; color:var(--muted); line-height:1.55; max-width:38ch; margin:10px auto 0; text-align:center; }
-  .days{ margin:22px 0 0; }
-  .dq{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:21px; color:var(--navy); text-align:center; margin:0 0 4px; }
-  .dsub{ font-size:13.5px; color:var(--muted); text-align:center; margin:0 0 14px; }
+  .res-num{ text-align:center; padding:8px 0 2px; }
+  .res-num .big{ font-family:var(--serif); font-weight:600; font-size:clamp(54px,11vw,74px); color:var(--navy); line-height:1; }
+  .res-num .lab{ font-size:15.5px; color:var(--muted); margin-top:6px; }
+  .minnote{ font-size:14px; color:var(--muted); line-height:1.6; max-width:38ch; margin:12px auto 0; text-align:center; }
+  .days{ margin:26px 0 0; }
+  .dq{ font-family:var(--serif); font-size:22px; color:var(--navy); text-align:center; margin:0 0 4px; }
+  .dsub{ font-size:14px; color:var(--muted); text-align:center; margin:0 0 16px; }
   .dbtns{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
   .dbtn{ font-family:inherit; font-size:17px; font-weight:700; color:var(--navy); background:#fff;
-    border:2px solid var(--border); border-radius:12px; padding:14px 0; cursor:pointer; }
+    border:2px solid var(--border); border-radius:13px; padding:15px 0; cursor:pointer; transition:all .12s; }
   .dbtn:hover{ border-color:var(--cta); }
   .dbtn.on{ background:var(--cta); border-color:var(--cta); color:#fff; }
-  .tot{ background:var(--panel); border-radius:14px; padding:18px 20px; margin:16px 0 0; text-align:center; }
-  .tot .th{ font-family:'Source Serif 4',Georgia,serif; font-size:23px; color:var(--navy); }
-  .tot .tc{ font-family:'Source Serif 4',Georgia,serif; font-size:27px; color:var(--navy); margin-top:2px; }
-  .tot .tn{ font-size:13px; color:var(--muted); margin-top:8px; line-height:1.55; }
-  .shape{ background:#fff; border:2px solid var(--cta); border-radius:16px; padding:20px 22px; margin:20px 0 0; }
-  .shape .sh{ font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
-    color:var(--cta); margin:0 0 8px; }
-  .shape .sl{ font-family:'Source Serif 4',Georgia,serif; font-size:20px; line-height:1.45; color:var(--navy); margin:0; }
-  .shape .sn{ font-size:14.5px; line-height:1.6; color:var(--muted); margin:10px 0 0; }
-  .win{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; border-radius:16px; padding:24px 22px; margin:20px 0 0; }
-  .win h3{ font-family:'Source Serif 4',Georgia,serif; font-size:22px; margin:0 0 8px; }
-  .win p{ font-size:15.5px; line-height:1.6; color:#dbe7ec; margin:0; }
-  .win .tag{ display:inline-block; background:var(--honey); color:#3d2a06; font-weight:700; font-size:13px;
-    padding:5px 13px; border-radius:999px; margin-bottom:12px; }
-  .near{ background:#fdf6e9; border:1px solid #efdcb8; border-radius:16px; padding:22px 20px; margin:20px 0 0; }
-  .near h3{ font-family:'Source Serif 4',Georgia,serif; font-size:20px; color:var(--navy); margin:0 0 8px; }
-  .near p{ font-size:15px; line-height:1.6; color:var(--ink); margin:0; }
-  .path{ background:#fff; border:1px solid #efdcb8; border-radius:12px; padding:14px 16px; margin-top:10px; }
-  .path b{ display:block; font-size:16px; color:var(--navy); margin-bottom:3px; }
-  .path span{ display:block; font-size:14.5px; line-height:1.6; color:var(--muted); }
+  .tot{ background:var(--panel); border-radius:16px; padding:20px; margin:18px 0 0; text-align:center; }
+  .tot .th{ font-family:var(--serif); font-size:23px; color:var(--navy); }
+  .tot .tc{ font-family:var(--serif); font-size:28px; color:var(--navy); margin-top:2px; }
+  .tot .tn{ font-size:13.5px; color:var(--muted); margin-top:10px; line-height:1.6; }
+  .shape{ background:#fff; border:2px solid var(--cta); border-radius:18px; padding:22px 24px; margin:22px 0 0; }
+  .shape .sh{ font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--cta); margin:0 0 8px; }
+  .shape .sl{ font-family:var(--serif); font-size:21px; line-height:1.45; color:var(--navy); margin:0; }
+  .shape .sn{ font-size:15px; line-height:1.65; color:var(--muted); margin:12px 0 0; }
+  .win{ background:linear-gradient(160deg,var(--deep),var(--navy)); color:#fff; border-radius:18px; padding:26px 24px; margin:22px 0 0; }
+  .win h3{ font-size:23px; margin:0 0 10px; }
+  .win p{ font-size:15.5px; line-height:1.65; color:#dbe7ec; margin:0; }
+  .win .tag{ display:inline-block; background:var(--honey); color:#3a2705; font-weight:700; font-size:13px;
+    padding:6px 14px; border-radius:999px; margin-bottom:14px; }
+  .near{ background:#fdf6e9; border:1px solid #efdcb8; border-radius:18px; padding:24px 22px; margin:22px 0 0; }
+  .near h3{ font-size:21px; color:var(--navy); margin:0 0 8px; }
+  .near p{ font-size:15.5px; line-height:1.65; color:var(--ink); margin:0; }
+  .path{ background:#fff; border:1px solid #efdcb8; border-radius:14px; padding:16px 18px; margin-top:11px; }
+  .path b{ display:block; font-size:16.5px; color:var(--navy); margin-bottom:4px; }
+  .path span{ display:block; font-size:15px; line-height:1.6; color:var(--muted); }
   .path i{ font-style:normal; font-weight:700; color:var(--deep-honey); }
-  .visits{ background:var(--pale); border:1px solid #cfe3e8; border-radius:16px; padding:22px 20px; margin:20px 0 0; }
-  .visits .tag{ display:inline-block; background:#14606F; color:#fff; font-weight:700; font-size:12.5px;
-    padding:5px 12px; border-radius:999px; margin-bottom:10px; }
-  .visits h3{ font-family:'Source Serif 4',Georgia,serif; font-size:20px; color:var(--navy); margin:0 0 8px; }
-  .visits p{ font-size:15px; line-height:1.6; color:var(--ink); margin:0; }
-
-  label{ display:block; font-size:14px; font-weight:700; color:var(--navy); margin:16px 0 6px; }
-  input{ width:100%; padding:15px 14px; font-size:16px; font-family:inherit; color:var(--ink);
-    background:var(--cream); border:1px solid var(--border); border-radius:12px; }
+  .visits{ background:var(--pale); border:1px solid #cfe3e8; border-radius:18px; padding:24px 22px; margin:22px 0 0; }
+  .visits .tag{ display:inline-block; background:var(--deep); color:#fff; font-weight:700; font-size:12.5px;
+    padding:6px 13px; border-radius:999px; margin-bottom:11px; }
+  .visits h3{ font-size:21px; color:var(--navy); margin:0 0 8px; }
+  .visits p{ font-size:15.5px; line-height:1.65; color:var(--ink); margin:0; }
+  label{ display:block; font-size:14.5px; font-weight:700; color:var(--navy); margin:18px 0 7px; }
+  input{ width:100%; padding:16px 15px; font-size:16px; font-family:inherit; color:var(--ink);
+    background:var(--cream); border:1px solid var(--border); border-radius:13px; }
   input:focus{ outline:2px solid var(--cta); border-color:var(--cta); background:#fff; }
-  .err{ display:none; background:#fdf0f0; color:#a33; border-radius:11px; padding:12px 14px; font-size:14.5px; margin-top:14px; }
+  .err{ display:none; background:#fdf0f0; color:#a33; border-radius:12px; padding:13px 15px; font-size:15px; margin-top:16px; }
   .err.on{ display:block; }
-  .fine{ font-size:13px; color:var(--muted); line-height:1.6; margin-top:14px; text-align:center; }
+  .fine{ font-size:13.5px; color:var(--muted); line-height:1.65; margin-top:16px; text-align:center; }
 
-  .explain{ padding:38px 0 6px; }
-  .explain h2{ font-family:'Source Serif 4',Georgia,serif; font-size:24px; color:var(--navy); text-align:center; margin:0 0 8px; }
-  .ex-lede{ font-size:15.5px; line-height:1.65; color:var(--muted); text-align:center; max-width:46ch; margin:0 auto 20px; }
-  .ex-grid{ display:grid; gap:12px; }
-  .ex-grid div{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
-  .ex-grid b{ display:block; font-size:16px; color:var(--navy); margin-bottom:4px; }
-  .ex-grid span{ display:block; font-size:14.5px; line-height:1.6; color:var(--muted); }
-  .whyfree{ padding:38px 0 6px; }
-  .whyfree h2{ font-family:'Source Serif 4',Georgia,serif; font-size:24px; color:var(--navy); text-align:center; margin:0 0 16px; }
-  .wf-quote{ font-family:'Source Serif 4',Georgia,serif; font-size:21px; line-height:1.5; color:var(--navy);
-    text-align:center; border-left:4px solid var(--honey); background:#fff; border-radius:0 14px 14px 0;
-    padding:20px 22px; margin:0 0 18px; }
-  .wf-quote span{ display:block; font-family:'Inter',sans-serif; font-size:13.5px; color:var(--muted); margin-top:8px; }
-  .wf-list{ display:grid; gap:12px; }
-  .wf-list div{ padding:14px 0; border-bottom:1px solid var(--border); }
-  .wf-list div:last-child{ border-bottom:none; }
-  .wf-list b{ display:block; font-size:16.5px; color:var(--navy); margin-bottom:4px; }
-  .wf-list span{ display:block; font-size:15px; line-height:1.65; color:var(--muted); }
-  .wf-end{ background:var(--pale); border-radius:14px; padding:18px 20px; font-size:15px; line-height:1.65;
-    color:var(--ink); margin:18px 0 0; }
-  .trust{ padding:34px 0 10px; }
-  .trust h2{ font-family:'Source Serif 4',Georgia,serif; font-size:21px; color:var(--navy); text-align:center; margin:0 0 16px; }
-  .trust ul{ list-style:none; }
-  .trust li{ position:relative; padding:10px 0 10px 32px; font-size:15.5px; line-height:1.6; border-bottom:1px solid var(--border); }
-  .trust li:last-child{ border-bottom:none; }
-  .trust li::before{ content:"✓"; position:absolute; left:4px; color:#14606F; font-weight:700; }
-  footer{ text-align:center; padding:30px 20px 50px; font-size:13.5px; color:var(--muted); line-height:1.7; }
-  footer a{ color:var(--cta); font-weight:600; }
+  /* ---- 5. how we help ---- */
+  .help{ padding:var(--sp) 0; }
+  .help .head{ text-align:center; max-width:620px; margin:0 auto clamp(36px,6vw,60px); }
+  .help h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); margin:0 0 12px; text-wrap:balance; }
+  .help .head p{ color:var(--muted); font-size:17px; }
+  .duo{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,64px); align-items:center;
+    margin-bottom:clamp(48px,7vw,88px); }
+  .duo:last-child{ margin-bottom:0; }
+  .duo img{ width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; border-radius:22px; box-shadow:0 16px 44px rgba(13,54,95,.14); }
+  .duo.flip .txt{ order:-1; }
+  .duo h3{ font-size:clamp(23px,3.4vw,30px); color:var(--navy); margin:0 0 14px; text-wrap:balance; }
+  .duo p{ font-size:17px; line-height:1.7; color:var(--muted); }
+  .duo .kick{ color:var(--deep-honey); margin-bottom:10px; }
+
+  /* ---- 6. hometogether ---- */
+  .ht{ background:linear-gradient(165deg,var(--deep),var(--navy)); color:#fff; padding:var(--sp) 0; }
+  .ht .head{ text-align:center; max-width:660px; margin:0 auto 40px; }
+  .ht .eyebrow{ color:var(--honey); margin-bottom:14px; }
+  .ht h2{ font-size:clamp(27px,4.6vw,40px); margin:0 0 14px; text-wrap:balance; }
+  .ht .head p{ color:#cfe0e6; font-size:17.5px; line-height:1.7; }
+  .ht .shot{ max-width:620px; margin:0 auto 40px; }
+  .ht .shot img{ border-radius:20px; box-shadow:0 22px 56px rgba(0,0,0,.34); }
+  .ht .shot figcaption{ font-size:14.5px; color:#9fb6c2; text-align:center; margin-top:14px; }
+  .ht-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:940px; margin:0 auto; }
+  .ht-grid div{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:24px 22px; }
+  .ht-grid b{ display:block; font-family:var(--serif); font-size:19px; margin-bottom:8px; }
+  .ht-grid span{ font-size:15px; line-height:1.65; color:#cfe0e6; }
+  .ht-why{ max-width:640px; margin:44px auto 0; background:rgba(255,255,255,.07);
+    border-left:4px solid var(--honey); border-radius:0 18px 18px 0; padding:26px 28px; }
+  .ht-why q{ font-family:var(--serif); font-size:22px; line-height:1.5; display:block; }
+  .ht-why cite{ display:block; font-style:normal; font-size:14px; color:#9fb6c2; margin-top:12px; }
+  .ht-why p{ font-size:15.5px; line-height:1.7; color:#cfe0e6; margin-top:16px; }
+
+  /* ---- 7. steps ---- */
+  .steps{ padding:var(--sp) 0; }
+  .steps h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); text-align:center; margin:0 0 12px; text-wrap:balance; }
+  .steps .sub{ text-align:center; color:var(--muted); font-size:17px; max-width:44ch; margin:0 auto clamp(36px,5vw,56px); }
+  .st-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; counter-reset:st; }
+  .st{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:30px 24px 26px; position:relative; }
+  .st::before{ counter-increment:st; content:counter(st); position:absolute; top:-16px; left:24px;
+    width:34px; height:34px; border-radius:50%; background:var(--honey); color:#3a2705;
+    font-weight:700; font-size:15px; display:flex; align-items:center; justify-content:center; }
+  .st h3{ font-size:20px; color:var(--navy); margin:8px 0 8px; }
+  .st p{ font-size:15px; line-height:1.65; color:var(--muted); }
+
+  /* ---- 8. reviews ---- */
+  .revs{ background:var(--panel); padding:var(--sp) 0 clamp(40px,6vw,70px); }
+  .revs h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); text-align:center; margin:0 0 10px; text-wrap:balance; }
+  .revs .sub{ text-align:center; color:var(--muted); font-size:17px; max-width:46ch; margin:0 auto 12px; }
+  .stars{ text-align:center; font-size:26px; color:var(--honey); letter-spacing:4px; margin-bottom:6px; }
+  .revs .score{ text-align:center; font-size:15px; color:var(--muted); margin-bottom:30px; }
+  .revs .score b{ color:var(--navy); }
+  .revs iframe{ width:100%; border:none; min-height:760px; background:transparent; }
+
+  /* ---- 9. trust ---- */
+  .trust{ padding:var(--sp) 0; }
+  .trust h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); text-align:center; margin:0 0 clamp(32px,5vw,50px); text-wrap:balance; }
+  .tstats{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:34px; }
+  .tstat{ text-align:center; background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 16px; }
+  .tstat .n{ font-family:var(--serif); font-size:clamp(28px,4.4vw,38px); color:var(--navy); line-height:1; }
+  .tstat .l{ font-size:14px; color:var(--muted); margin-top:8px; line-height:1.5; }
+  .tlist{ list-style:none; max-width:640px; margin:0 auto; }
+  .tlist li{ position:relative; padding:14px 0 14px 36px; font-size:16.5px; line-height:1.6;
+    border-bottom:1px solid var(--border); }
+  .tlist li:last-child{ border-bottom:none; }
+  .tlist li::before{ content:"✓"; position:absolute; left:4px; color:var(--deep); font-weight:700; font-size:18px; }
+
+  /* ---- 10. faq ---- */
+  .faq{ background:var(--panel); padding:var(--sp) 0; }
+  .faq h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); text-align:center; margin:0 0 clamp(30px,5vw,46px); text-wrap:balance; }
+  .faq details{ background:#fff; border:1px solid var(--border); border-radius:16px; margin-bottom:12px; overflow:hidden; }
+  .faq summary{ font-family:var(--serif); font-size:19px; color:var(--navy); padding:22px 54px 22px 24px;
+    cursor:pointer; position:relative; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; position:absolute; right:24px; top:19px; font-size:26px;
+    color:var(--honey); font-family:var(--sans); transition:transform .2s; }
+  .faq details[open] summary::after{ content:"–"; }
+  .faq .a{ padding:0 24px 24px; font-size:16px; line-height:1.7; color:var(--muted); }
+
+  /* ---- 11. final ---- */
+  .final{ background:linear-gradient(165deg,var(--deep),var(--navy)); color:#fff; padding:var(--sp) 0; text-align:center; }
+  .final h2{ font-size:clamp(29px,5.4vw,46px); margin:0 0 18px; text-wrap:balance; }
+  .final p{ font-size:18px; line-height:1.7; color:#cfe0e6; max-width:44ch; margin:0 auto 32px; }
+  .final .fcard{ background:#fff; border-radius:22px; padding:clamp(26px,4vw,36px); max-width:520px;
+    margin:0 auto; text-align:left; color:var(--ink); box-shadow:0 20px 60px rgba(0,0,0,.28); }
+  .final .fcard h3{ font-size:23px; color:var(--navy); margin:0 0 6px; text-align:center; }
+  .final .fcard .fs{ font-size:15px; color:var(--muted); text-align:center; margin-bottom:8px; }
+  .final .or{ margin-top:26px; font-size:15.5px; color:#9fb6c2; }
+  .final .or a{ color:#fff; font-weight:700; }
+
+  footer{ background:var(--navy); color:#9fb6c2; text-align:center; padding:34px 22px 40px; font-size:13.5px; line-height:1.8; }
+  footer a{ color:#cfe0e6; }
+  footer .fl{ font-size:12.5px; opacity:.75; margin-top:10px; }
+
+  /* ---- sticky mobile CTA ---- */
+  .sticky{ position:fixed; left:0; right:0; bottom:0; z-index:40; background:rgba(13,54,95,.97);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom)); display:flex; gap:10px; align-items:center;
+    transform:translateY(110%); transition:transform .3s; backdrop-filter:blur(8px); }
+  .sticky.on{ transform:none; }
+  .sticky a.b{ flex:1; text-align:center; background:var(--honey); color:#3a2705; font-weight:700;
+    font-size:16px; padding:14px; border-radius:12px; text-decoration:none; }
+  .sticky a.p{ color:#fff; font-weight:700; font-size:15px; text-decoration:none; padding:0 8px; white-space:nowrap; }
+  @media (min-width:800px){ .sticky{ display:none; } }
+
   .hide{ display:none !important; }
-  @media (max-width:520px){ .hero h1{ font-size:28px; } .q{ font-size:22px; } .res-num .big{ font-size:52px; } }
+
+  @media (max-width:860px){
+    .duo{ grid-template-columns:1fr; gap:22px; }
+    .duo.flip .txt{ order:0; }
+    .ht-grid{ grid-template-columns:1fr; }
+    .st-grid{ grid-template-columns:1fr 1fr; }
+    .tstats{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:520px){
+    .st-grid{ grid-template-columns:1fr; }
+    body{ font-size:16.5px; }
+    .hero .in{ padding-bottom:38px; }
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#assessment">Skip to the care assessment</a>
 
-<div class="bar">
-  <span class="chip"><img src="/assets/cc-logo.webp" alt="Caring Companions"></span>
-  <a href="tel:14172348494">(417) 234-8494</a>
-</div>
+<!-- ============ 1. HERO ============ -->
+<header class="hero">
+  <img class="bg" src="assets/photos/hero-caregiver.jpg" alt="A caregiver sitting with an older woman in her own living room" fetchpriority="high">
+  <div class="veil"></div>
+  <div class="bar">
+    <span class="chip"><img src="assets/cc-logo.webp" alt="Caring Companions In-Home Senior Care" width="150" height="52"></span>
+    <a class="tel" href="tel:14172348494">(417) 234-8494</a>
+  </div>
+  <div class="in">
+    <p class="eyebrow">Springfield &amp; southwest Missouri</p>
+    <h1>You shouldn't have to wonder if she's okay.</h1>
+    <p>In-home care from people who live here. Start with a free visit at her kitchen table, and we will tell you honestly what she needs.</p>
+    <a class="btn" href="#assessment">See what she needs &rarr;</a>
+    <p class="micro"><b>Family-owned since 2017</b> &middot; <b>5.0 stars</b> from 54 Google reviews &middot; Somebody answers at 2am</p>
+  </div>
+</header>
 
-<section class="hero">
-  <div class="badge">A $99/month device, included free at 20+ hours a week</div>
-  <h1>How many hours of care do they actually need?</h1>
-  <p>Seven questions, about a minute. You get a straight answer, a cost range, and whether <b style="color:#fff;font-weight:600;">HomeTogether TV</b> comes with it, free.</p>
-  <div class="peek">
-    <img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="An older man watching his daughter and grandson on a video call on his television" loading="lazy">
-    <p class="cap">Her television becomes a video call. She does not press a thing.</p>
+<!-- ============ 2. IS THIS YOU ============ -->
+<section class="you rv">
+  <div class="narrow">
+    <h2>Some of this will sound familiar</h2>
+    <p class="sub">If two or three of these land, you are not being dramatic. You are paying attention.</p>
+  </div>
+  <div class="narrow">
+    <ul>
+      <li>You call every day, and you still don't really know how she is.</li>
+      <li>You are doing the pills, the groceries, the driving, and your own job.</li>
+      <li>She says she's fine. The kitchen says otherwise.</li>
+      <li>You've started sleeping with your phone turned up.</li>
+      <li>Nobody in the family agrees on what happens next.</li>
+    </ul>
+    <p class="land">None of that means you have failed her. <b>It means it is time for help, and that is a normal place to arrive.</b></p>
   </div>
 </section>
 
-<div class="wrap">
-  <div class="card">
+<!-- ============ 3 + 4. ASSESSMENT AND RESULT ============ -->
+<section class="quiz" id="assessment">
+  <div class="head rv">
+    <p class="eyebrow">Free, one minute, no email required to see it</p>
+    <h2>Start with what she actually needs</h2>
+    <p>Seven questions. You will get an honest estimate of the hours, a cost range, and what we would suggest, before anybody calls you.</p>
+  </div>
+  <div class="card rv">
     <div class="prog"><i id="prog"></i></div>
-
     <!-- ===== questions ===== -->
     <div class="step on" data-step="0">
       <p class="qn">Question 1 of 7</p>
@@ -339,51 +508,234 @@
       </div>
     </div>
   </div>
+</section>
 
-  <section class="explain">
-    <h2 class="serif">What HomeTogether TV actually is</h2>
-    <p class="ex-lede">A small device that plugs into the television she already watches. There is no tablet, no app for her to learn, and no password for her to lose.</p>
-    <div class="ex-grid">
-      <div><b>You call, her TV comes on</b><span>From your phone, from anywhere. It can answer automatically, so she does not press a button. Up to ten of you on one call.</span></div>
-      <div><b>Reminders on the screen</b><span>Medication and appointments appear in front of her, in large type, at the time they matter.</span></div>
-      <div><b>Health readings, if you want them</b><span>Blood pressure, blood sugar and weight sync through to your family app, so a change is something you can see rather than guess at.</span></div>
-      <div><b>Camera-free safety sensing</b><span>Radar notices movement and whether a normal day has stopped looking normal. The camera itself sits behind a shutter that physically closes when a call ends.</span></div>
-      <div><b>Something to do on a long afternoon</b><span>Music, exercise, faith and travel channels made for older adults, on the screen she is already sitting in front of.</span></div>
-      <div><b>The doctor, without the drive</b><span>You drop the appointment link into the portal and the visit appears on her TV at the right time. She presses one button.</span></div>
+<!-- ============ 5. HOW WE HELP ============ -->
+<section class="help">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>What is different about us</h2>
+      <p>Three things families tell us they could not find anywhere else.</p>
     </div>
-  </section>
 
-  <section class="whyfree">
-    <h2 class="serif">Why we give it away with care</h2>
-    <p class="wf-quote">&ldquo;We could sell this. We would rather it was part of the care.&rdquo;<span>Samantha, owner</span></p>
-    <div class="wf-list">
-      <div><b>Loneliness is a medical problem, not a mood</b><span>Isolation is tied to faster decline, and there is no medication for it. A device that gets her talking to her people most days does more for her than a good deal of what we could bill you for.</span></div>
-      <div><b>Families see change before charts do</b><span>A daughter on a video call notices the slur, the untouched plate, the same story twice, weeks before it shows up in an assessment. That head start is worth more than anything we can write in a note.</span></div>
-      <div><b>It makes our own supervision better</b><span>A coordinator can call in and see how she and her caregiver are actually getting on, instead of reading how it was written up. Announced, always, and never a hidden camera.</span></div>
-      <div><b>There is nothing new for her to learn</b><span>Most technology aimed at older adults fails because it asks them to become someone else. This one asks nothing. It is the television she has used for forty years.</span></div>
+    <div class="duo rv">
+      <img src="assets/photos/walking-together.webp" alt="A caregiver walking arm in arm with an older woman outdoors" loading="lazy" width="800" height="600">
+      <div class="txt">
+        <p class="eyebrow kick">The same face at the door</p>
+        <h3>She gets to know one person, not a rota of strangers</h3>
+        <p>We match on temperament as much as on schedule, and we protect that match. An older adult letting somebody into her home is not a staffing problem to be solved with whoever is free.</p>
+      </div>
     </div>
-    <p class="wf-end">At 20 hours a week or more, a family is trusting us with most of their week. Including this is how we say thank you for that, and honestly, it makes us better at the job.</p>
-  </section>
 
-  <section class="trust">
-    <h2 class="serif">Why families here choose us</h2>
-    <ul>
-      <li>Locally owned in Springfield, not a franchise taking orders from out of state</li>
-      <li>Caregivers are our employees, background checked, trained and insured. Never contractors.</li>
-      <li>Somebody answers the phone at 2am, and it is one of us</li>
-      <li>HomeTogether TV included for private-pay families at 20+ hours a week</li>
-      <li>We will tell you honestly if we are not the right fit for her</li>
+    <div class="duo flip rv">
+      <img src="assets/photos/helping-dress.webp" alt="A caregiver helping an older woman get dressed" loading="lazy" width="800" height="600">
+      <div class="txt">
+        <p class="eyebrow kick">Employees, not contractors</p>
+        <h3>Everyone who walks in is ours, trained and insured</h3>
+        <p>Background checked, on our payroll, covered by our insurance, supervised by us. If an agency sends contractors, the liability quietly becomes yours. Ask any agency you speak to which one they use.</p>
+      </div>
+    </div>
+
+    <div class="duo rv">
+      <img src="assets/photos/car-ride.webp" alt="A caregiver driving an older adult to an appointment" loading="lazy" width="800" height="600">
+      <div class="txt">
+        <p class="eyebrow kick">Somebody answers at 2am</p>
+        <h3>A real person here, not a call centre in another state</h3>
+        <p>Nights and weekends included. When a caregiver calls in sick at 5am, that is our problem to solve before it becomes yours, and we solve it here in Springfield.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. HOMETOGETHER TV ============ -->
+<section class="ht">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">Part of the care, not an add-on</p>
+      <h2>And a way to see her, on the days you can't be there</h2>
+      <p>Every private-pay family at 20 or more hours a week gets HomeTogether TV included, at no charge. It is a $99 a month device. We would rather it was part of the care.</p>
+    </div>
+    <figure class="shot rv">
+      <img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="An older man watching his daughter and grandson on a video call on his television" loading="lazy">
+      <figcaption>Her television becomes a video call. She does not press a thing.</figcaption>
+    </figure>
+    <div class="ht-grid rv">
+      <div><b>You call, her TV comes on</b><span>From your phone, from anywhere. It can answer by itself, so there is no button to find and no password to lose. Up to ten of you at once.</span></div>
+      <div><b>Reminders and readings</b><span>Medication and appointments appear on screen in large type. Blood pressure and blood sugar sync to your family app, so a change is something you see rather than guess at.</span></div>
+      <div><b>Camera-free safety sensing</b><span>Radar notices movement and whether a normal day has stopped looking normal. The camera itself sits behind a shutter that closes when a call ends.</span></div>
+    </div>
+    <div class="ht-why rv">
+      <q>We could sell this. We would rather it was part of the care.</q>
+      <cite>Samantha, owner</cite>
+      <p>Isolation is tied to faster decline and there is no medication for it. A daughter on a video call notices the slur, the untouched plate, the same story twice, weeks before it turns up in an assessment. And our coordinators can call in and see how she and her caregiver are getting on, rather than reading how it was written up. Announced, always. Never a hidden camera.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. FOUR STEPS ============ -->
+<section class="steps">
+  <div class="wrap">
+    <h2 class="rv">How it actually starts</h2>
+    <p class="sub rv">Most families are surprised how quickly this part goes.</p>
+    <div class="st-grid">
+      <div class="st rv"><h3>We talk</h3><p>A free visit at her kitchen table, or a phone call if that is easier. No cost, no obligation, no salesperson.</p></div>
+      <div class="st rv"><h3>We listen properly</h3><p>What her days look like, what worries you at night, what she would hate. We tell you honestly if we are not the right fit.</p></div>
+      <div class="st rv"><h3>We match her caregiver</h3><p>On temperament, not just availability. You meet them before anything begins.</p></div>
+      <div class="st rv"><h3>Care begins</h3><p>Often within a few days. At 20 hours a week or more, the TV ships free after the first month.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. REVIEWS ============ -->
+<section class="revs">
+  <div class="wrap">
+    <h2 class="rv">What families here say</h2>
+    <div class="stars rv" aria-hidden="true">★★★★★</div>
+    <p class="score rv"><b>5.0</b> from 54 verified Google reviews</p>
+    <p class="sub rv">Not selected quotes. This is the live feed, straight from Google, good and bad.</p>
+    <iframe class="rv" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" loading="lazy" title="Verified Google reviews for Caring Companions"></iframe>
+  </div>
+</section>
+
+<!-- ============ 9. TRUST ============ -->
+<section class="trust">
+  <div class="wrap">
+    <h2 class="rv">Why families trust us with their mother</h2>
+    <div class="tstats">
+      <div class="tstat rv"><div class="n">2017</div><div class="l">family-owned, here, ever since</div></div>
+      <div class="tstat rv"><div class="n">5.0</div><div class="l">from 54 Google reviews</div></div>
+      <div class="tstat rv"><div class="n">24/7</div><div class="l">a real person answers</div></div>
+      <div class="tstat rv"><div class="n">6</div><div class="l">counties across southwest Missouri</div></div>
+    </div>
+    <ul class="tlist rv">
+      <li>Every caregiver is our W-2 employee, background checked before they meet anybody</li>
+      <li>Fully insured and bonded, with supervision by our own coordinators</li>
+      <li>Missouri-compliant training, kept current, documented and auditable</li>
+      <li>Locally owned in Springfield. No franchise fees, no out-of-state call centre</li>
+      <li>We accept private pay, long-term care insurance and VA benefits, and we help you use them</li>
+      <li>If we are not right for her, we will tell you and point you somewhere better</li>
     </ul>
-  </section>
-</div>
+  </div>
+</section>
+
+<!-- ============ 10. FAQ ============ -->
+<section class="faq">
+  <div class="narrow">
+    <h2 class="rv">The things families ask us first</h2>
+    <details class="rv"><summary>What does it cost?</summary><div class="a">Help around the house is around $30 an hour, personal care around $32, and advanced or bed-bound care around $34. Live-in care is charged by the day at $450 rather than by the hour. Our shortest visit is 4 hours. The assessment above gives you a range in about a minute, and a coordinator confirms the real number with you.</div></details>
+    <details class="rv"><summary>Is the consultation really free?</summary><div class="a">Yes, and there is no obligation of any kind. We come to her home, or we talk on the phone if that is easier. If we think she needs something other than what we sell, we will say so.</div></details>
+    <details class="rv"><summary>What if she says she doesn't want anyone in the house?</summary><div class="a">Almost everybody says that at first. It is not stubbornness, it is dignity. We start small, often with something practical like a ride or the laundry rather than personal care, and we let her get to know one person. Most of the time the resistance was about losing control, not about the help.</div></details>
+    <details class="rv"><summary>How fast can care start?</summary><div class="a">Often within a few days of the consultation, and we have started same-day for a hospital discharge. Tell us the situation and we will tell you honestly what we can do.</div></details>
+    <details class="rv"><summary>Do you take Medicaid?</summary><div class="a">Yes, we serve Medicaid HCBS clients. Note that the free HomeTogether TV offer is for private-pay families only, which includes long-term care insurance and privately paid VA benefits.</div></details>
+    <details class="rv"><summary>Can we change the schedule later?</summary><div class="a">Yes. Most families start with less than they end up needing, or more. There is no long contract and no penalty for changing your mind as her needs change.</div></details>
+    <details class="rv"><summary>What if we live out of state?</summary><div class="a">A great many of the families we work with do. That is exactly who HomeTogether TV is for, and why our coordinators call you rather than waiting for you to call us.</div></details>
+  </div>
+</section>
+
+<!-- ============ 11. FINAL CTA ============ -->
+<section class="final" id="book">
+  <div class="wrap">
+    <h2 class="rv">One conversation, and you will know</h2>
+    <p class="rv">Free, at her kitchen table, with somebody local who does this every day. You will leave it knowing what she needs, whether or not you ever use us.</p>
+    <div class="fcard rv">
+      <h3>Book a free consultation</h3>
+      <p class="fs">A coordinator calls you back, usually the same day.</p>
+      <label for="bName">Your name</label>
+      <input id="bName" autocomplete="name" placeholder="First and last">
+      <label for="bPhone">Best number to reach you</label>
+      <input id="bPhone" autocomplete="tel" inputmode="tel" placeholder="(417) 555-0134">
+      <label for="bEmail">Email <span style="font-weight:400;color:var(--muted);">optional</span></label>
+      <input id="bEmail" type="email" autocomplete="email" placeholder="you@example.com">
+      <div style="position:absolute;left:-9999px;" aria-hidden="true"><input id="bWebsite" tabindex="-1" autocomplete="off"></div>
+      <button class="go" id="bSend">Book my free consultation</button>
+      <div class="err" id="bErr"></div>
+      <p class="fine">No obligation, no sales script, and we will tell you honestly if we are not the right fit.</p>
+    </div>
+    <p class="or rv">Rather pick a time yourself? <a href="/book">See the calendar</a> &nbsp;·&nbsp; Or call <a href="tel:14172348494">(417) 234-8494</a>, day or night.</p>
+  </div>
+</section>
 
 <footer>
   Caring Companions In-Home Senior Care<br>
-  1331 N Stewart Ave Ste B, Springfield MO 65802 &middot; <a href="tel:14172348494">(417) 234-8494</a><br>
-  <span style="font-size:12.5px;">The hours shown are an estimate to help you plan, not a clinical assessment. HomeTogether TV is included for private-pay families at 20 or more hours a week and is not available on Medicaid-funded care.</span>
+  1331 N Stewart Ave Ste B, Springfield MO 65802 &middot; <a href="tel:14172348494">(417) 234-8494</a>
+  <p class="fl">Hours shown in the assessment are an estimate to help you plan, not a clinical assessment. HomeTogether TV is included for private-pay families at 20 or more hours a week and is not available on Medicaid-funded care.</p>
 </footer>
 
+<div class="sticky" id="sticky">
+  <a class="b" href="#assessment">See what she needs</a>
+  <a class="p" href="tel:14172348494">Call</a>
+</div>
+
 <script src="assets/forms.js"></script>
+<script>
+/* reveal on scroll, once, and never if the visitor asked for less motion */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(els, function (e) { e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    Array.prototype.forEach.call(els, function (e, i) {
+      e.style.transitionDelay = Math.min(i % 4, 3) * 70 + 'ms';
+      io.observe(e);
+    });
+  }
+
+  /* the bottom bar appears once the hero is behind you, and gets out of the
+     way while somebody is actually filling something in */
+  var bar = document.getElementById('sticky');
+  var hero = document.querySelector('.hero');
+  if ('IntersectionObserver' in window && bar && hero) {
+    new IntersectionObserver(function (e) {
+      bar.classList.toggle('on', !e[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+  document.addEventListener('focusin', function (e) {
+    if (e.target.tagName === 'INPUT' && bar) bar.classList.remove('on');
+  });
+})();
+
+/* the booking form at the foot of the page, for anyone who scrolled past the quiz */
+(function () {
+  var $ = function (i) { return document.getElementById(i); };
+  var busy = false;
+  $('bSend').addEventListener('click', function () {
+    if (busy) return;
+    if ($('bWebsite').value) return;
+    $('bErr').classList.remove('on');
+    var name = $('bName').value.trim(), phone = $('bPhone').value.trim(), email = $('bEmail').value.trim();
+    if (!name) return fail('Please add your name so we know who we are talking to.');
+    if (!phone && !email) return fail('Please add a phone number or an email so we can answer you.');
+    busy = true;
+    $('bSend').disabled = true; $('bSend').textContent = 'Sending...';
+    window.CCForms.submitLead({
+      name: name, phone: phone, email: email,
+      message: 'Asked for a free consultation from the bottom of the Facebook landing page (mo-care.com/tv).',
+      heard_from: 'Facebook ad (HomeTogether TV offer)'
+    }).then(function () {
+      if (window.CCTrack) { try { CCTrack('tv_funnel_lead'); } catch (e) {} }
+      $('bSend').closest('.fcard').innerHTML =
+        '<div style="text-align:center;padding:14px 0;">'
+        + '<div style="font-size:52px;line-height:1;">&#9742;</div>'
+        + '<h3 style="margin-top:12px;">Got it. We will call you shortly.</h3>'
+        + '<p class="fs" style="margin-top:8px;">A coordinator here in Springfield has your details, usually within the hour during the day. '
+        + 'Or call us now on <a href="tel:14172348494">(417) 234-8494</a>.</p></div>';
+    }).catch(function () {
+      busy = false;
+      $('bSend').disabled = false; $('bSend').textContent = 'Book my free consultation';
+      fail('That did not go through. Please try again, or call us on (417) 234-8494.');
+    });
+  });
+  function fail(m) { $('bErr').textContent = m; $('bErr').classList.add('on'); return false; }
+})();
+</script>
 <script>
 (function () {
   'use strict';
