@@ -113,6 +113,53 @@
   .hp-guides-grid { grid-template-columns: 1fr; }
   .hp-footer-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Care that grows with you: the continuum, on navy so it lands ---- */
+.cg-band{ background:linear-gradient(168deg,#14606F 0%,#0D365F 62%); color:#fff; padding:clamp(56px,8vw,92px) 0; }
+.cg-in{ max-width:1200px; margin:0 auto; padding:0 24px; }
+.cg-head{ max-width:760px; margin:0 0 clamp(32px,4vw,44px); }
+.cg-eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#F0A63A; margin:0 0 12px; }
+.cg-band h2{ font-size:clamp(28px,4.4vw,42px); color:#fff; margin:0 0 12px; letter-spacing:-.015em; }
+.cg-sub{ font-size:16.5px; line-height:1.7; color:#cfe0e6; margin:0; max-width:56ch; }
+.cg-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; align-items:stretch; }
+.cg-cell{ display:flex; align-items:stretch; }
+.cg-card{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px;
+  padding:22px 20px; flex:1; }
+.cg-n{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#8FD1C7; margin:0 0 10px; }
+.cg-card h3{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:19px; font-weight:600; color:#fff; margin:0 0 8px; }
+.cg-d{ font-size:13.5px; line-height:1.6; color:#cfe0e6; margin:0; }
+.cg-arrow{ flex:0 0 auto; width:34px; align-self:center; position:relative; }
+.cg-arrow::before{ content:""; position:absolute; left:8px; right:8px; top:50%; height:1.5px; background:rgba(240,166,58,.55); }
+.cg-arrow::after{ content:""; position:absolute; right:8px; top:50%; width:7px; height:7px;
+  border-top:1.5px solid #F0A63A; border-right:1.5px solid #F0A63A; transform:translateY(-50%) rotate(45deg); }
+.cg-foot{ margin-top:clamp(26px,3.5vw,38px); background:rgba(0,0,0,.18); border-radius:18px;
+  padding:24px 26px; display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+.cg-pl{ font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#9fb6c2; margin:0 0 6px; }
+.cg-rates{ display:flex; gap:22px; }
+.cg-rates span{ display:flex; align-items:baseline; gap:3px; flex-wrap:wrap; }
+.cg-rates b{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:27px; font-weight:600; color:#fff; }
+.cg-rates i{ font-style:normal; font-size:13px; color:#9fb6c2; }
+.cg-rates em{ font-style:normal; display:block; width:100%; font-size:12px; color:#9fb6c2; }
+.cg-pay{ display:flex; gap:8px; flex-wrap:wrap; }
+.cg-chip{ font-size:12.5px; font-weight:600; color:#dbe7ec; background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:6px 13px; }
+.cg-cta{ margin-left:auto; background:#F0A63A; color:#3a2705; font-weight:700; font-size:15.5px;
+  padding:13px 24px; border-radius:12px; text-decoration:none; white-space:nowrap; }
+.cg-cta:hover{ background:#e79c2c; }
+@media (max-width:1000px){
+  .cg-row{ grid-template-columns:1fr 1fr; gap:14px; }
+  .cg-arrow{ display:none; }
+  .cg-cta{ margin-left:0; width:100%; text-align:center; }
+}
+@media (max-width:600px){
+  .cg-row{ grid-template-columns:1fr; gap:0; }
+  .cg-cell{ flex-direction:column; }
+  /* stacked, the arrows point down instead of across */
+  .cg-arrow{ display:block; width:100%; height:30px; }
+  .cg-arrow::before{ left:50%; right:auto; top:6px; bottom:6px; height:auto; width:1.5px; }
+  .cg-arrow::after{ left:50%; right:auto; top:auto; bottom:7px; transform:translateX(-50%) rotate(135deg); }
+  .cg-rates{ gap:16px; }
+}
 </style>
 <link rel="canonical" href="https://mo-care.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -271,56 +318,37 @@
 </div>
 </section>
 
-<section class="hp-section reveal">
-<div style="text-align:center;max-width:780px;margin:0 auto 40px">
-<h2>Care that grows with you</h2>
-<p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0">Five levels, one continuum. Move between them without switching providers.</p>
-</div>
-<div class="hp-care-row">
-<div class="hp-care-cell">
-<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
-<div style="width:26px;height:26px;border-radius:50%;background:#C17A12;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">1</div>
-<p style="font-size:11px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Connection</p>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">HomeTogether™</p>
-<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Virtual check-ins and monitoring, no caregiver in the home.</p>
-</div>
-<span class="hp-care-arrow"></span>
-</div>
-<div class="hp-care-cell">
-<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
-<div style="width:26px;height:26px;border-radius:50%;background:#C17A12;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">2</div>
-<p style="font-size:11px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Everyday life</p>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Wellness Care</p>
-<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Help with routines, meals, and light household tasks.</p>
-</div>
-<span class="hp-care-arrow"></span>
-</div>
-<div class="hp-care-cell">
-<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
-<div style="width:26px;height:26px;border-radius:50%;background:#C17A12;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">3</div>
-<p style="font-size:11px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Hands-on</p>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Personal Care</p>
-<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Bathing, dressing, mobility, and daily self-care support.</p>
-</div>
-<span class="hp-care-arrow"></span>
-</div>
-<div class="hp-care-cell">
-<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
-<div style="width:26px;height:26px;border-radius:50%;background:#C17A12;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">4</div>
-<p style="font-size:11px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Recovery</p>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Transition Care</p>
-<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Support after a hospital stay, surgery, or rehab.</p>
-</div>
-<span class="hp-care-arrow"></span>
-</div>
-<div class="hp-care-cell">
-<div style="border:1px solid #e4e1d8;border-radius:12px;padding:22px 18px;background:#ffffff;width:100%;text-align:center;position:relative">
-<div style="width:26px;height:26px;border-radius:50%;background:#C17A12;color:#fbfaf7;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">5</div>
-<p style="font-size:11px;font-weight:700;color:#C17A12;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px">Complex care</p>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 8px">Specialized Care</p>
-<p style="font-size:12.5px;line-height:1.55;color:#55677a;margin:0">Dementia, Parkinson's, stroke, and hospice needs.</p>
-</div>
-</div>
+<section class="hp-section reveal cg-band">
+<div class="cg-in">
+  <div class="cg-head">
+    <p class="cg-eyebrow">Care that grows with you</p>
+    <h2>Five levels, one continuum.</h2>
+    <p class="cg-sub">Move between levels as needs change, without ever switching providers or starting over with a new agency.</p>
+  </div>
+  <div class="cg-row">
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">01 &middot; Connection</p><h3>HomeTogether™</h3><p class="cg-d">Virtual check-ins and monitoring, with no caregiver in the home.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">02 &middot; Everyday life</p><h3>Wellness Care</h3><p class="cg-d">Help with routines, meals, and light household tasks.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">03 &middot; Hands-on</p><h3>Personal Care</h3><p class="cg-d">Bathing, dressing, mobility, and daily self-care support.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">04 &middot; Recovery</p><h3>Transition Care</h3><p class="cg-d">Support after a hospital stay, surgery, or rehab.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">05 &middot; Complex care</p><h3>Specialized Care</h3><p class="cg-d">Dementia, Parkinson’s, stroke, and hospice needs.</p></div></div>
+  </div>
+  <div class="cg-foot">
+    <div class="cg-price">
+      <p class="cg-pl">Care starts at</p>
+      <div class="cg-rates">
+        <span><b>$30</b><i>/hr</i><em>Wellness</em></span>
+        <span><b>$32</b><i>/hr</i><em>Personal</em></span>
+        <span><b>$34</b><i>/hr</i><em>Advanced</em></span>
+      </div>
+    </div>
+    <div class="cg-pay">
+      <span class="cg-chip">Private pay</span>
+      <span class="cg-chip">Long-term care insurance</span>
+      <span class="cg-chip">Medicaid (HCBS)</span>
+      <span class="cg-chip">VA Aid &amp; Attendance</span>
+    </div>
+    <a class="cg-cta" href="/pricing">Talk through pricing &rarr;</a>
+  </div>
 </div>
 </section>
 
