@@ -163,6 +163,23 @@
   .cg-arrow::after{ left:50%; right:auto; top:auto; bottom:7px; transform:translateX(-50%) rotate(135deg); }
   .cg-rates{ gap:16px; }
 }
+
+/* ---- Cara, lightened ----
+   She used to sit on a dark teal band directly above the navy continuum,
+   which put roughly 1500px of dark in the middle of an otherwise light
+   page and blunted both. Dark is emphasis; the continuum earns it, a
+   friendly "tell us what's happening" does not. */
+.hp-section.cara-band{ background:#f2f0e9; max-width:none; width:100%; padding:clamp(58px,8vw,88px) 24px; margin:0; }
+.cara-band .hp-advisor-grid{ max-width:1200px; margin:0 auto; }
+.cara-kick{ font-size:13px; font-weight:700; color:#C17A12; letter-spacing:.06em; text-transform:uppercase; margin:0 0 16px; }
+.cara-band h2.cara-h{ color:var(--brand-blue); margin:0 0 18px; }
+.cara-p{ font-size:15.5px; line-height:1.65; color:var(--muted); margin:0 0 28px; max-width:460px; }
+.cara-chat{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px;
+  display:flex; flex-direction:column; gap:14px; box-shadow:0 14px 38px rgba(13,54,95,.10); }
+.cara-them{ align-self:flex-end; max-width:82%; background:var(--brand-blue); color:#f4f8fa;
+  border-radius:14px 14px 3px 14px; padding:13px 17px; font-size:14px; line-height:1.55; }
+.cara-her{ align-self:flex-start; max-width:88%; background:var(--soft-teal); color:#1c2b38;
+  border-radius:14px 14px 14px 3px; padding:13px 17px; font-size:14px; line-height:1.6; }
 </style>
 <link rel="canonical" href="https://mo-care.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -349,17 +366,17 @@
 </div>
 </section>
 
-<section id="advisor" class="hp-section-dark reveal">
+<section id="advisor" class="hp-section reveal cara-band">
 <div class="hp-advisor-grid">
 <div>
-<p style="font-size:13px;font-weight:600;color:#e8c988;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 16px">Meet Cara, your care coordinator</p>
-<h2>Not sure where to start? Tell us what's happening.</h2>
-<p style="font-size:15.5px;line-height:1.65;color:#c3cdd6;margin:0 0 28px;max-width:460px">Cara will help you understand your options, in plain language, with no sales pressure and no account required, the same way an experienced coordinator would talk you through it.</p>
-<a href="cara" class="hp-btn-light">Ask Cara</a>
+<p class="cara-kick">Meet Cara, your care coordinator</p>
+<h2 class="cara-h">Not sure where to start? Tell us what's happening.</h2>
+<p class="cara-p">Cara will help you understand your options, in plain language, with no sales pressure and no account required, the same way an experienced coordinator would talk you through it.</p>
+<a href="cara" class="hp-btn-hero">Ask Cara</a>
 </div>
-<div style="background:#103D47;border:1px solid #23415a;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 48px rgba(0,0,0,0.18)">
-<div style="align-self:flex-end;max-width:82%;background:#1c455f;color:#eef4f1;border-radius:14px 14px 3px 14px;padding:13px 17px;font-size:14px;line-height:1.55">My dad has Parkinson's, fell twice this month, and my mom can't lift him anymore.</div>
-<div style="align-self:flex-start;max-width:88%;background:#fbfaf7;color:#1c2b38;border-radius:14px 14px 14px 3px;padding:13px 17px;font-size:14px;line-height:1.6">I'm sorry, that's a lot to carry. A few questions first: how often does he need help standing or transferring, and has he had a hospital stay recently? That'll help me explain the right level of support.</div>
+<div class="cara-chat">
+<div class="cara-them">My dad has Parkinson's, fell twice this month, and my mom can't lift him anymore.</div>
+<div class="cara-her">I'm sorry, that's a lot to carry. A few questions first: how often does he need help standing or transferring, and has he had a hospital stay recently? That'll help me explain the right level of support.</div>
 </div>
 </div>
 </section>
