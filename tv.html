@@ -36,6 +36,9 @@
   .hero h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:34px; line-height:1.15;
     letter-spacing:-.015em; margin:0 0 14px; text-wrap:balance; }
   .hero p{ font-size:17px; line-height:1.65; color:#dbe7ec; max-width:44ch; margin:0 auto; }
+  .peek{ max-width:420px; margin:24px auto 0; }
+  .peek img{ width:100%; border-radius:14px; display:block; box-shadow:0 14px 34px rgba(0,0,0,.28); }
+  .peek .cap{ font-size:14.5px; color:#9fb6c2; margin:10px auto 0; max-width:36ch; }
 
   .card{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 22px;
     box-shadow:0 4px 24px rgba(13,54,95,.07); margin:-26px 0 0; position:relative; }
@@ -109,6 +112,26 @@
   .err.on{ display:block; }
   .fine{ font-size:13px; color:var(--muted); line-height:1.6; margin-top:14px; text-align:center; }
 
+  .explain{ padding:38px 0 6px; }
+  .explain h2{ font-family:'Source Serif 4',Georgia,serif; font-size:24px; color:var(--navy); text-align:center; margin:0 0 8px; }
+  .ex-lede{ font-size:15.5px; line-height:1.65; color:var(--muted); text-align:center; max-width:46ch; margin:0 auto 20px; }
+  .ex-grid{ display:grid; gap:12px; }
+  .ex-grid div{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
+  .ex-grid b{ display:block; font-size:16px; color:var(--navy); margin-bottom:4px; }
+  .ex-grid span{ display:block; font-size:14.5px; line-height:1.6; color:var(--muted); }
+  .whyfree{ padding:38px 0 6px; }
+  .whyfree h2{ font-family:'Source Serif 4',Georgia,serif; font-size:24px; color:var(--navy); text-align:center; margin:0 0 16px; }
+  .wf-quote{ font-family:'Source Serif 4',Georgia,serif; font-size:21px; line-height:1.5; color:var(--navy);
+    text-align:center; border-left:4px solid var(--honey); background:#fff; border-radius:0 14px 14px 0;
+    padding:20px 22px; margin:0 0 18px; }
+  .wf-quote span{ display:block; font-family:'Inter',sans-serif; font-size:13.5px; color:var(--muted); margin-top:8px; }
+  .wf-list{ display:grid; gap:12px; }
+  .wf-list div{ padding:14px 0; border-bottom:1px solid var(--border); }
+  .wf-list div:last-child{ border-bottom:none; }
+  .wf-list b{ display:block; font-size:16.5px; color:var(--navy); margin-bottom:4px; }
+  .wf-list span{ display:block; font-size:15px; line-height:1.65; color:var(--muted); }
+  .wf-end{ background:var(--pale); border-radius:14px; padding:18px 20px; font-size:15px; line-height:1.65;
+    color:var(--ink); margin:18px 0 0; }
   .trust{ padding:34px 0 10px; }
   .trust h2{ font-family:'Source Serif 4',Georgia,serif; font-size:21px; color:var(--navy); text-align:center; margin:0 0 16px; }
   .trust ul{ list-style:none; }
@@ -129,9 +152,13 @@
 </div>
 
 <section class="hero">
-  <div class="badge">HomeTogether TV included at 20+ hours a week</div>
+  <div class="badge">A $99/month device, included free at 20+ hours a week</div>
   <h1>How many hours of care do they actually need?</h1>
-  <p>Seven questions, about a minute. We will give you a straight answer, a cost range, and whether the TV is included.</p>
+  <p>Seven questions, about a minute. You get a straight answer, a cost range, and whether <b style="color:#fff;font-weight:600;">HomeTogether TV</b> comes with it, free.</p>
+  <div class="peek">
+    <img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="An older man watching his daughter and grandson on a video call on his television" loading="lazy">
+    <p class="cap">Her television becomes a video call. She does not press a thing.</p>
+  </div>
 </section>
 
 <div class="wrap">
@@ -312,6 +339,31 @@
       </div>
     </div>
   </div>
+
+  <section class="explain">
+    <h2 class="serif">What HomeTogether TV actually is</h2>
+    <p class="ex-lede">A small device that plugs into the television she already watches. There is no tablet, no app for her to learn, and no password for her to lose.</p>
+    <div class="ex-grid">
+      <div><b>You call, her TV comes on</b><span>From your phone, from anywhere. It can answer automatically, so she does not press a button. Up to ten of you on one call.</span></div>
+      <div><b>Reminders on the screen</b><span>Medication and appointments appear in front of her, in large type, at the time they matter.</span></div>
+      <div><b>Health readings, if you want them</b><span>Blood pressure, blood sugar and weight sync through to your family app, so a change is something you can see rather than guess at.</span></div>
+      <div><b>Camera-free safety sensing</b><span>Radar notices movement and whether a normal day has stopped looking normal. The camera itself sits behind a shutter that physically closes when a call ends.</span></div>
+      <div><b>Something to do on a long afternoon</b><span>Music, exercise, faith and travel channels made for older adults, on the screen she is already sitting in front of.</span></div>
+      <div><b>The doctor, without the drive</b><span>You drop the appointment link into the portal and the visit appears on her TV at the right time. She presses one button.</span></div>
+    </div>
+  </section>
+
+  <section class="whyfree">
+    <h2 class="serif">Why we give it away with care</h2>
+    <p class="wf-quote">&ldquo;We could sell this. We would rather it was part of the care.&rdquo;<span>Samantha, owner</span></p>
+    <div class="wf-list">
+      <div><b>Loneliness is a medical problem, not a mood</b><span>Isolation is tied to faster decline, and there is no medication for it. A device that gets her talking to her people most days does more for her than a good deal of what we could bill you for.</span></div>
+      <div><b>Families see change before charts do</b><span>A daughter on a video call notices the slur, the untouched plate, the same story twice, weeks before it shows up in an assessment. That head start is worth more than anything we can write in a note.</span></div>
+      <div><b>It makes our own supervision better</b><span>A coordinator can call in and see how she and her caregiver are actually getting on, instead of reading how it was written up. Announced, always, and never a hidden camera.</span></div>
+      <div><b>There is nothing new for her to learn</b><span>Most technology aimed at older adults fails because it asks them to become someone else. This one asks nothing. It is the television she has used for forty years.</span></div>
+    </div>
+    <p class="wf-end">At 20 hours a week or more, a family is trusting us with most of their week. Including this is how we say thank you for that, and honestly, it makes us better at the job.</p>
+  </section>
 
   <section class="trust">
     <h2 class="serif">Why families here choose us</h2>
