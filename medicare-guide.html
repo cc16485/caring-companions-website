@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Medicare GUIDE Program, 75 Hours of Covered Respite | Caring Companions</title>
-<meta name="description" content="Caring Companions is an approved Medicare GUIDE Program provider. Eligible families with a dementia diagnosis get 75 hours/year of Medicare-covered respite care at home.">
+<meta name="description" content="Medicare's GUIDE program covers about 75 hours a year of respite care, a monthly dementia care navigator, and a 24/7 support line. Check eligibility in two minutes. Caring Companions is an approved GUIDE respite provider in Springfield MO.">
 <link rel="canonical" href="https://mo-care.com/medicare-guide">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Medicare GUIDE Program, 75 Hours of Covered Respite">
-<meta property="og:description" content="An approved Medicare GUIDE provider. Eligible families with a dementia diagnosis get 75 hours/year of Medicare-covered respite care at home.">
+<meta property="og:description" content="About 75 hours a year of covered respite, a dementia care navigator, and a 24/7 line. Check eligibility in two minutes.">
 <meta property="og:url" content="https://mo-care.com/medicare-guide">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,25 +19,111 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
-.mg-hero { max-width:940px; margin: 0 auto; padding: 56px 24px 8px; text-align: center; }
-.mg-h1 { font-family: var(--serif); font-size: 36px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
-.mg-stats { max-width:1060px; margin: 0 auto; padding: 20px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.mg-stat { background: var(--navy-panel); border-radius: 14px; padding: 24px 20px; text-align: center; }
-.mg-stat .big { font-family: var(--serif); font-size: 30px; font-weight: 600; color: #fbfaf7; margin: 0 0 4px; }
-.mg-stat .lbl { font-size: 12.5px; color: #c3cdd6; margin: 0; line-height: 1.4; }
-.mg-body { max-width:880px; margin: 0 auto; padding: 20px 24px; }
-.mg-body h2 { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--brand-blue); margin: 30px 0 12px; }
-.mg-li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.6; color: var(--body-text); padding: 5px 0; }
-.mg-li .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
-.mg-steps { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
-.mg-step { display: flex; gap: 14px; align-items: flex-start; background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
-.mg-step .n { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fbfaf7; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.mg-cta { max-width:880px; margin: 0 auto; padding: 10px 24px 80px; text-align: center; }
-@media (max-width: 639px) { .mg-hero { padding: 36px 20px 8px; } .mg-h1 { font-size: 27px; } .mg-stats { grid-template-columns: 1fr; } }
+.g-hero{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; padding:60px 24px 54px; }
+.g-hero .in{ max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:center; }
+.g-hero .kick{ font-size:12.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:#F0A63A; margin:0 0 14px; }
+.g-hero h1{ font-family:var(--serif); font-size:43px; font-weight:600; line-height:1.12; letter-spacing:-.02em; margin:0 0 18px; text-wrap:balance; }
+.g-hero p{ font-size:17.5px; line-height:1.7; color:#dbe7ec; margin:0 0 14px; max-width:54ch; }
+.g-hero .sub{ font-size:15px; color:#a9c2cc; margin-bottom:24px; }
+.g-hero .cta{ display:inline-block; background:#F0A63A; color:#3d2a06; font-weight:700; font-size:17px; padding:16px 32px; border-radius:12px; text-decoration:none; }
+.g-hero .cta:hover{ background:#e09a2e; }
+.g-hero .under{ font-size:13.5px; color:#9fb6c2; margin:14px 0 0; }
+.g-card{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:26px 28px; }
+.g-card h2{ font-family:var(--serif); font-size:19px; margin:0 0 16px; color:#fff; }
+.g-card .li{ display:flex; gap:13px; padding:11px 0; border-top:1px solid rgba(255,255,255,.12); }
+.g-card .li:first-of-type{ border-top:none; padding-top:0; }
+.g-card .li .n{ font-family:var(--serif); font-size:20px; color:#F0A63A; line-height:1.2; flex:0 0 auto; }
+.g-card .li b{ display:block; font-size:14.5px; color:#fff; }
+.g-card .li span{ font-size:13.5px; color:#bdd2da; line-height:1.55; }
+
+.g-wrap{ max-width:1040px; margin:0 auto; padding:0 24px; }
+.g-sec{ padding:56px 0 0; }
+.g-sec h2{ font-family:var(--serif); font-size:30px; color:var(--brand-blue); margin:0 0 12px; text-wrap:balance; }
+.g-sec .lede{ font-size:16.5px; line-height:1.75; color:var(--muted); max-width:66ch; margin:0 0 26px; }
+.g-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.g-c{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 24px; }
+.g-c h3{ font-family:var(--serif); font-size:19px; color:var(--brand-blue); margin:0 0 8px; }
+.g-c p{ font-size:14.5px; line-height:1.68; color:var(--muted); margin:0; }
+.g-c .icn{ width:40px; height:40px; border-radius:11px; background:var(--soft-teal); color:var(--cta);
+  display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+.g-c .icn svg{ width:21px; height:21px; }
+
+/* the checker */
+.g-check{ background:#f2f0e9; margin-top:56px; padding:56px 24px; }
+.g-check .box{ max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--border);
+  border-radius:20px; padding:34px 34px 30px; box-shadow:0 16px 44px rgba(13,54,95,.09); }
+.g-check h2{ font-family:var(--serif); font-size:27px; color:var(--brand-blue); margin:0 0 8px; text-align:center; }
+.g-check .sub{ font-size:15px; color:var(--muted); text-align:center; margin:0 0 6px; }
+.g-prog{ height:5px; background:var(--border); border-radius:99px; margin:22px 0 26px; overflow:hidden; }
+.g-prog i{ display:block; height:100%; background:var(--cta); border-radius:99px; width:0; transition:width .3s ease; }
+.g-step{ display:none; } .g-step.on{ display:block; }
+.g-q{ font-family:var(--serif); font-size:22px; color:var(--brand-blue); margin:0 0 6px; line-height:1.35; text-wrap:balance; }
+.g-help{ font-size:14.5px; color:var(--muted); margin:0 0 20px; line-height:1.6; }
+.g-opts{ display:flex; flex-direction:column; gap:10px; }
+.g-opt{ font-family:inherit; text-align:left; font-size:16px; font-weight:600; color:#2c3d4d; background:#fff;
+  border:1.5px solid var(--border); border-radius:13px; padding:15px 18px; cursor:pointer; }
+.g-opt:hover{ border-color:var(--cta); background:var(--soft-teal); color:var(--cta); }
+.g-opt small{ display:block; font-weight:500; font-size:13.5px; color:var(--muted); margin-top:3px; }
+.g-opt:hover small{ color:var(--cta); }
+.g-back{ background:none; border:none; font-family:inherit; font-size:14px; color:var(--muted);
+  cursor:pointer; padding:14px 0 0; text-decoration:underline; }
+.g-res{ text-align:center; }
+.g-res .badge{ display:inline-block; border-radius:999px; padding:7px 18px; font-size:13px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.05em; margin-bottom:16px; }
+.g-res .badge.yes{ background:#e8f6ef; color:#0f7a4d; }
+.g-res .badge.no{ background:#fdf0f0; color:#a33; }
+.g-res h3{ font-family:var(--serif); font-size:26px; color:var(--brand-blue); margin:0 0 12px; text-wrap:balance; }
+.g-res p{ font-size:15.5px; line-height:1.7; color:var(--muted); margin:0 auto 16px; max-width:52ch; }
+.g-form{ text-align:left; margin-top:24px; }
+.g-form label{ display:block; font-size:13px; font-weight:700; color:var(--brand-blue); margin:14px 0 5px; }
+.g-form input,.g-form textarea{ width:100%; padding:12px 13px; font-size:15.5px; font-family:inherit; color:#16283a;
+  background:#faf9f6; border:1px solid var(--border); border-radius:11px; }
+.g-form input:focus,.g-form textarea:focus{ outline:2px solid var(--cta); border-color:var(--cta); background:#fff; }
+.g-form textarea{ min-height:80px; resize:vertical; }
+.g-form .go{ width:100%; margin-top:18px; background:var(--cta); color:#fff; font-family:inherit; font-size:16.5px;
+  font-weight:700; padding:15px; border:none; border-radius:12px; cursor:pointer; }
+.g-form .go:hover{ background:#155A68; }
+.g-form .go:disabled{ opacity:.6; cursor:default; }
+.g-fine{ font-size:12.5px; color:var(--muted); text-align:center; margin-top:14px; line-height:1.6; }
+.g-err{ background:#fdf0f0; color:#a33; border-radius:10px; padding:11px 14px; font-size:14px; margin-top:12px; }
+.hp-hide{ position:absolute; left:-9999px; }
+
+.g-split{ display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border);
+  border-radius:18px; overflow:hidden; background:#fff; }
+.g-split > div{ padding:28px 26px; }
+.g-split .a{ background:#f6f5f0; }
+.g-split h3{ font-family:var(--serif); font-size:18px; margin:0 0 14px; }
+.g-split .a h3{ color:var(--muted); } .g-split .b h3{ color:var(--brand-blue); }
+.g-split ul{ list-style:none; margin:0; padding:0; }
+.g-split li{ position:relative; padding:9px 0 9px 27px; font-size:14.8px; line-height:1.6; border-bottom:1px solid var(--border); }
+.g-split li:last-child{ border-bottom:none; }
+.g-split .a li{ color:var(--muted); }
+.g-split .a li::before{ content:"\2013"; position:absolute; left:4px; color:#b9b2a4; font-weight:700; }
+.g-split .b li::before{ content:"\2713"; position:absolute; left:0; color:#14606F; font-weight:700; }
+
+.g-faq details{ border-bottom:1px solid var(--border); }
+.g-faq summary{ cursor:pointer; font-weight:600; font-size:16px; color:var(--brand-blue); padding:16px 0; list-style:none; }
+.g-faq summary::-webkit-details-marker{ display:none; }
+.g-faq summary::after{ content:"+"; float:right; color:var(--accent); font-weight:700; }
+.g-faq details[open] summary::after{ content:"\2013"; }
+.g-faq .a{ font-size:15px; line-height:1.72; color:var(--muted); padding:0 0 18px; max-width:70ch; }
+
+.g-close{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; margin-top:60px; padding:58px 24px; text-align:center; }
+.g-close h2{ font-family:var(--serif); font-size:32px; margin:0 0 14px; text-wrap:balance; }
+.g-close p{ font-size:16.5px; line-height:1.7; color:#dbe7ec; max-width:56ch; margin:0 auto 26px; }
+.g-close .cta{ display:inline-block; background:#F0A63A; color:#3d2a06; font-weight:700; font-size:17px;
+  padding:16px 32px; border-radius:12px; text-decoration:none; margin:0 8px 10px; }
+.g-close .alt{ display:inline-block; color:#fff; font-weight:700; font-size:16px; padding:16px 20px; text-decoration:underline; }
+
+@media (max-width:900px){ .g-hero .in{ grid-template-columns:1fr; gap:32px; } .g-3{ grid-template-columns:1fr; } }
+@media (max-width:639px){
+  .g-hero{ padding:44px 20px 40px; } .g-hero h1{ font-size:32px; } .g-hero p{ font-size:16px; }
+  .g-sec h2{ font-size:25px; } .g-split{ grid-template-columns:1fr; }
+  .g-check{ padding:40px 16px; } .g-check .box{ padding:26px 20px 24px; } .g-q{ font-size:20px; }
+}
 </style>
 </head>
 <body>
-<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
 <header class="cc-header">
 <div class="cc-header-inner">
 <a href="/" class="cc-logo"><img src="/assets/cc-logo.webp" alt="Caring Companions"></a>
@@ -148,53 +234,174 @@
 </div>
 </header>
 
-<section class="mg-hero">
-<p class="kicker">Medicare GUIDE Program</p>
-<h1 class="mg-h1">75 hours of Medicare-covered respite care, delivered by us.</h1>
-<p style="font-size:15.5px;line-height:1.7;color:#45566a;margin:0 auto;max-width:720px">Caring Companions is an approved provider under Medicare's GUIDE Program, so we can bill Medicare directly for in-home respite care for eligible individuals enrolled in GUIDE.</p>
+<main>
+<section class="g-hero">
+  <div class="in">
+    <div>
+      <p class="kick">Medicare GUIDE Program &middot; Southwest Missouri</p>
+      <h1>Medicare will pay for someone to sit with her. Most families never find out.</h1>
+      <p>GUIDE is a Medicare program for people living with dementia at home. It covers <b>about 75 hours of respite care a year</b>, gives you a dementia care navigator who checks in every month, and a line you can call at three in the morning when something happens and you do not know what to do.</p>
+      <p class="sub">It costs the family nothing. It does not replace her doctor. Caring Companions is an approved GUIDE respite provider.</p>
+      <a class="cta" href="#check">Check eligibility &rarr;</a>
+      <p class="under">Two minutes, nine questions. Or call (417) 234-8494 and we will do it with you.</p>
+    </div>
+    <div class="g-card">
+      <h2>What it covers</h2>
+      <div class="li"><div class="n">1</div><div><b>Respite care</b><span>About 75 hours a year, roughly nineteen four-hour visits, delivered by our caregivers and billed to Medicare rather than to you.</span></div></div>
+      <div class="li"><div class="n">2</div><div><b>A dementia care navigator</b><span>A trained person who calls you every month. Education, resources, help finding things, someone to talk to who has seen this before.</span></div></div>
+      <div class="li"><div class="n">3</div><div><b>A 24/7 support line</b><span>Dementia does not keep business hours. Urgent questions, behavior nobody prepared you for, any hour of the night.</span></div></div>
+    </div>
+  </div>
 </section>
 
-<section class="mg-stats">
-<div class="mg-stat"><p class="big">75 hrs</p><p class="lbl">of respite care covered per year</p></div>
-<div class="mg-stat"><p class="big">4-hour</p><p class="lbl">segments, scheduled around you</p></div>
-<div class="mg-stat"><p class="big">July 1</p><p class="lbl">hours reset every year</p></div>
-</section>
+<div class="g-wrap">
+  <section class="g-sec">
+    <div class="g-3" style="margin-bottom:8px;">
+      <div class="g-c" style="text-align:center;"><div style="font-family:var(--serif);font-size:34px;color:var(--brand-blue);line-height:1.1;">75 hrs</div><p style="margin-top:6px;">of respite care covered per year</p></div>
+      <div class="g-c" style="text-align:center;"><div style="font-family:var(--serif);font-size:34px;color:var(--brand-blue);line-height:1.1;">4-hour</div><p style="margin-top:6px;">segments, scheduled around you</p></div>
+      <div class="g-c" style="text-align:center;"><div style="font-family:var(--serif);font-size:34px;color:var(--brand-blue);line-height:1.1;">July 1</div><p style="margin-top:6px;">hours reset every year, and they do not roll over</p></div>
+    </div>
+  </section>
 
-<section class="mg-body">
-<p style="font-size:15.5px;line-height:1.75;color:#2c3d4d;margin:0 0 8px">These hours are designed to give unpaid family caregivers meaningful breaks, while making sure their loved one stays safe, supported, and cared for at home. The GUIDE Program focuses on:</p>
-<div class="mg-li"><span class="mk">✓</span> Dementia-specific care coordination</div>
-<div class="mg-li"><span class="mk">✓</span> Education and support for unpaid caregivers</div>
-<div class="mg-li"><span class="mk">✓</span> Access to respite care services, when eligible</div>
-<p style="font-size:14px;line-height:1.7;color:#55677a;margin:14px 0 0">GUIDE is built to reduce caregiver burnout, improve coordination of care, and help people living with dementia remain at home longer.</p>
+  <section class="g-sec">
+    <h2>What this is actually for</h2>
+    <p class="lede">Medicare built GUIDE because families caring for someone with dementia at home tend to run out of road. The caregiver gets sick, or exhausted, or has to go back to work, and a person who could have stayed home for another two years ends up in a facility instead. The program pays for the three things that usually break first.</p>
+    <div class="g-3">
+      <div class="g-c">
+        <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 3 12 2.5-8 1.5 4h5"/></svg></div>
+        <h3>You are worn out</h3>
+        <p>Respite is not a luxury and it is not admitting defeat. It is the afternoon you get to go to your own doctor, or your daughter's wedding, or just sleep. Families who take regular breaks keep someone home years longer than families who wait until they collapse.</p>
+      </div>
+      <div class="g-c">
+        <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>Nobody told you what happens next</h3>
+        <p>Most families are handed a diagnosis and sent home. The care navigator is the person who tells you what the next stage looks like, which paperwork matters, and which of the things you are worrying about are actually worth worrying about.</p>
+      </div>
+      <div class="g-c">
+        <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 7-3.7A4.5 4.5 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+        <h3>It is 2am and she will not settle</h3>
+        <p>The 24/7 line exists for exactly that. Not an answering service that takes a message, a clinical line that can talk you through it and get a telehealth visit going if it needs one.</p>
+      </div>
+    </div>
+  </section>
 
-<h2>Who may be eligible?</h2>
-<p style="font-size:14.5px;color:#55677a;margin:0 0 10px">The GUIDE Program is intended for individuals who:</p>
-<div class="mg-li"><span class="mk">✓</span> Have Original Medicare (Parts A &amp; B)</div>
-<div class="mg-li"><span class="mk">✓</span> Have a documented dementia diagnosis</div>
-<div class="mg-li"><span class="mk">✓</span> Do not live in a long-term nursing facility</div>
-<div class="mg-li"><span class="mk">✓</span> Are not enrolled in hospice or certain Medicare Advantage plans</div>
-
-<h2>How to get started</h2>
-<div class="mg-steps">
-<div class="mg-step"><span class="n">1</span><div><p style="font-size:14.5px;font-weight:600;color:#122236;margin:0 0 2px">Call Caring Companions</p><p style="font-size:13.5px;color:#55677a;margin:0;line-height:1.55">(417) 234-8494, we can check eligibility in just a few minutes.</p></div></div>
-<div class="mg-step"><span class="n">2</span><div><p style="font-size:14.5px;font-weight:600;color:#122236;margin:0 0 2px">We explain how GUIDE respite works</p><p style="font-size:13.5px;color:#55677a;margin:0;line-height:1.55">Clear answers about coverage, timing, and what to expect.</p></div></div>
-<div class="mg-step"><span class="n">3</span><div><p style="font-size:14.5px;font-weight:600;color:#122236;margin:0 0 2px">We coordinate approval</p><p style="font-size:13.5px;color:#55677a;margin:0;line-height:1.55">If eligible, we work with our GUIDE partner to begin the process. Medicare approval typically takes 7&ndash;20 days, and care can begin right after.</p></div></div>
+  <section class="g-sec">
+    <h2>Who qualifies</h2>
+    <p class="lede">Four things decide it, and the second one is where most families find out the hard way. Check it yourself below, or call us and we will look at it with you.</p>
+    <div class="g-split">
+      <div class="a">
+        <h3>Rules it out</h3>
+        <ul>
+          <li>A Medicare Advantage plan (Humana, Aetna, UnitedHealthcare, Anthem, any plan name)</li>
+          <li>Living in a nursing home</li>
+          <li>Enrolled in Medicare hospice</li>
+          <li>Enrolled in PACE</li>
+          <li>No dementia or memory impairment diagnosis</li>
+        </ul>
+      </div>
+      <div class="b">
+        <h3>Perfectly fine</h3>
+        <ul>
+          <li>Traditional or Original Medicare</li>
+          <li>Living at home, alone or with family</li>
+          <li>Living in assisted living</li>
+          <li>Memory care, if the unit is licensed as assisted living</li>
+          <li>Palliative care (this is not hospice)</li>
+          <li>Having Medicaid or VA benefits as well</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </div>
 
-<div style="background:#fbf6ec;border:1px solid #e8dcc4;border-radius:12px;padding:18px 20px;margin-top:24px">
-<p style="font-size:11.5px;font-weight:700;color:#8a5a2a;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Good to know</p>
-<p style="font-size:13.5px;line-height:1.7;color:#5a4726;margin:0">The 75 respite hours don't roll over, unused hours expire June 30, and new hours become available each July 1. We can bill Medicare only after GUIDE enrollment is approved, and respite availability follows Medicare's eligibility guidelines.</p>
-</div>
+<!-- ================= THE CHECKER ================= -->
+<section class="g-check" id="check">
+  <div class="box">
+    <h2>Check eligibility</h2>
+    <p class="sub">Nine questions about your loved one. Nothing is submitted to Medicare and nothing happens until you ask us to.</p>
+    <div class="g-prog"><i id="gBar"></i></div>
+
+    <div id="gSteps"></div>
+
+    <div class="g-step" id="gResult">
+      <div class="g-res">
+        <div class="badge" id="gBadge"></div>
+        <h3 id="gTitle"></h3>
+        <p id="gBody"></p>
+      </div>
+      <form class="g-form" id="gForm">
+        <div id="gFields">
+          <label for="gName">Your name</label>
+          <input id="gName" name="name" autocomplete="name" placeholder="Linda Wheeler">
+          <label for="gPhone">Phone</label>
+          <input id="gPhone" name="phone" type="tel" autocomplete="tel" placeholder="(417) 555-0188">
+          <label for="gEmail">Email</label>
+          <input id="gEmail" name="email" type="email" autocomplete="email" placeholder="linda@example.com">
+          <label for="gWho">Who are we helping, and what is going on right now?</label>
+          <textarea id="gWho" placeholder="My mother Dorothy, 84, diagnosed two years ago. I work full time and I am running out of vacation days."></textarea>
+          <input class="hp-hide" id="gHp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        </div>
+        <button type="submit" class="go" id="gGo">Send this to Caring Companions</button>
+        <div class="g-err" id="gErr" hidden></div>
+        <p class="g-fine">A real person here reads it, usually the same day. We will tell you honestly whether it is worth pursuing. No cost, and no obligation to use us for anything.</p>
+      </form>
+      <div id="gThanks" hidden style="text-align:center;">
+        <h3 class="g-q" style="margin-top:20px;">Thank you. We have it.</h3>
+        <p style="font-size:15.5px;color:var(--muted);line-height:1.7;max-width:52ch;margin:0 auto;">Somebody from our office will call you, usually the same day and always within one business day. If you would rather not wait, call us at <a href="tel:14172348494" style="color:var(--cta);font-weight:600;">(417) 234-8494</a>.</p>
+      </div>
+      <button class="g-back" id="gRestart" type="button">Start over</button>
+    </div>
+  </div>
 </section>
 
-<section class="mg-cta">
-<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;color:#0D365F;margin:0 0 10px">Let's check your eligibility.</h2>
-<p style="font-size:15px;line-height:1.7;color:#55677a;margin:0 auto 22px;max-width:520px">It takes just a few minutes, and there's no cost to find out.</p>
-<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
-<a href="tel:14172348494" class="btn-primary">Call (417) 234-8494</a>
-<a href="book" class="btn-outline">Book a Consultation</a>
+<div class="g-wrap">
+  <section class="g-sec">
+    <h2>How it goes from here</h2>
+    <p class="lede">The honest version, including the part where you wait.</p>
+    <div class="g-3">
+      <div class="g-c"><h3>1. We talk</h3><p>Free, no obligation, in your home or on the phone. We confirm the eligibility questions and answer whatever you want to ask.</p></div>
+      <div class="g-c"><h3>2. The assessment</h3><p>We come out and complete a comprehensive assessment with you and your loved one, then submit it. Assessments go to Medicare on Fridays and approval comes back the following Tuesday of the next week, so plan on two to three weeks.</p></div>
+      <div class="g-c"><h3>3. Care starts</h3><p>We do not make you wait on paperwork. If you need help this week, we start this week and let the Medicare side catch up behind it.</p></div>
+    </div>
+  </section>
+
+  <section class="g-sec">
+    <h2>Good to know before you count on it</h2>
+    <p class="lede">The respite hours do not roll over. Unused hours expire on June 30 and a fresh set becomes available July 1, so a family that saves them all for a rainy day tends to lose them. We would rather you use them steadily through the year. We can only bill Medicare once GUIDE enrollment is approved, and how many hours are available follows Medicare's rules rather than ours.</p>
+  </section>
+
+  <section class="g-sec">
+    <h2>Questions families actually ask</h2>
+    <div class="g-faq">
+      <details><summary>Is this really free?</summary><div class="a">The GUIDE services are covered by Medicare, so there is no bill to you for them. What it is not is unlimited free care. The respite benefit is about $2,563 a year, which is roughly nineteen four-hour visits. If you need more care than that, and most families eventually do, the rest is regular private-pay care and we will tell you exactly what it costs before you commit to anything.</div></details>
+      <details><summary>Does this replace her doctor?</summary><div class="a">No. Nothing changes about her doctor, her neurologist, or anyone else on her team. GUIDE adds a care navigator and a support line alongside them. Her regular care goes on exactly as it is.</div></details>
+      <details><summary>She has a Humana plan. Can we switch?</summary><div class="a">Medicare Advantage plans are not eligible for GUIDE, and we would not tell you to change plans over it. Switching back to traditional Medicare has real consequences for her other coverage and it is a decision to make with a licensed Medicare counselor, not with a home care agency. Call us anyway. There are other things we can do for you.</div></details>
+      <details><summary>My father is in memory care. Does he still qualify?</summary><div class="a">Very likely yes. Assisted living residents are eligible, and memory care counts as long as that unit is licensed as assisted living rather than as a nursing facility. Ask the community which license they hold, or give us their name and we will call and ask.</div></details>
+      <details><summary>How long does it take?</summary><div class="a">Assessments go to Medicare on Fridays and alignment comes back the following Tuesday of the next week, so plan on two to three weeks. That is exactly why we would rather start care now than have you sitting at home waiting on a form.</div></details>
+      <details><summary>What is the catch?</summary><div class="a">The real one: GUIDE covers a set amount, and people sometimes fall out of the program without much warning, usually because they go on hospice, move to a nursing home, or switch to a Medicare Advantage plan. When that happens, visits after that date are not covered anymore. So we ask every family to sign a service agreement saying that anything Medicare does not cover is billable to them. We are not trying to catch anybody out. We are trying to make sure nobody opens a surprise bill.</div></details>
+      <details><summary>Do we have to use Caring Companions?</summary><div class="a">No. You can be aligned to GUIDE and use a different respite provider, or use adult day services instead. We would obviously like to be the ones, and we think we are worth choosing, but the program belongs to you and not to us.</div></details>
+      <details><summary>What if we are outside Springfield?</summary><div class="a">We cover Springfield and the surrounding communities. If you are further out, you may still be eligible for GUIDE and we can point you to the people who can align you. Call and ask, it costs you nothing to find out.</div></details>
+    </div>
+  </section>
+
+  <section class="g-sec">
+    <h2>If you work with families</h2>
+    <p class="lede">Discharge planners, memory clinics, home health, elder law, social workers. Most professionals have not heard of GUIDE yet, which means your dementia families are sitting on a Medicare benefit nobody has told them about. We are an approved respite provider and we are glad to walk your team through who qualifies, at no cost and with nothing to sign.</p>
+    <div class="g-c" style="max-width:640px;">
+      <h3>Get the fifteen-minute version</h3>
+      <p style="margin-bottom:16px;">Call <a href="tel:14172348494" style="color:var(--cta);font-weight:600;">(417) 234-8494</a> or email <a href="mailto:info@mo-care.com" style="color:var(--cta);font-weight:600;">info@mo-care.com</a> and we will come to you. We will bring one-pagers your families can take home.</p>
+      <p class="muted" style="font-size:13.5px;color:var(--muted);">Caring Companions is a contracted GUIDE partner organization delivering respite services and comprehensive assessments in southwest Missouri.</p>
+    </div>
+  </section>
 </div>
+
+<section class="g-close">
+  <h2>You do not have to figure out whether you qualify by yourself.</h2>
+  <p>Answer nine questions here, or call and we will go through them with you in about five minutes. Either way you will know where you stand.</p>
+  <a class="cta" href="#check">Check eligibility</a>
+  <a class="alt" href="tel:14172348494">Or call (417) 234-8494</a>
 </section>
+</main>
 
 <footer class="cc-siteftr">
 <div class="cc-siteftr-grid">
@@ -243,8 +450,182 @@
 <p class="cc-siteftr-bottom">&copy; 2026 Caring Companions In-Home Senior Care. All rights reserved.</p>
 </footer>
 </div>
+
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
 <script src="/assets/accessibility.js" defer></script>
+</body>
+
+
+<script src="assets/forms.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* Nine questions, family-facing. Same rules the office screener uses, in the
+     order that ends the conversation soonest for people who cannot qualify. */
+  var Q = [
+    { k:'dx', q:'Has a doctor diagnosed dementia or memory loss?',
+      help:'Alzheimer\'s, vascular dementia, Lewy body, frontotemporal, or a general memory impairment diagnosis. It has to be an actual diagnosis, not just a worry.',
+      opts:[ {v:'yes', t:'Yes'}, {v:'no', t:'No, not yet', kill:'GUIDE requires a dementia or memory impairment diagnosis from a doctor.'},
+             {v:'unk', t:'I am not sure', ask:'the diagnosis'} ] },
+    { k:'mcare', q:'What kind of Medicare does she have?',
+      help:'Look at the card. If it says Humana, Aetna, UnitedHealthcare, Anthem, Wellcare, or any other plan name, that is Medicare Advantage.',
+      opts:[ {v:'trad', t:'Traditional Medicare', s:'The red, white and blue card'},
+             {v:'ma', t:'Medicare Advantage', s:'A plan through Humana, Aetna, UHC, or similar', kill:'GUIDE is only open to people with traditional Medicare. Medicare Advantage plans are not eligible.'},
+             {v:'unk', t:'I am not sure', ask:'which kind of Medicare she has'} ] },
+    { k:'live', q:'Where does she live?',
+      help:'A nursing home is the only one that rules a person out.',
+      opts:[ {v:'home', t:'Her own home'}, {v:'family', t:'With family'},
+             {v:'al', t:'Assisted living', s:'Eligible, and most communities do not know it'},
+             {v:'mc', t:'Memory care', s:'Eligible if the unit is licensed as assisted living', note:'Memory care qualifies as long as that unit is licensed as assisted living rather than as a nursing facility. We can call the community and ask for you.'},
+             {v:'nh', t:'A nursing home', kill:'People living in a nursing home are not eligible for GUIDE.'} ] },
+    { k:'hospice', q:'Is she on hospice?',
+      help:'Hospice and palliative care get mixed up constantly, and they are different here. Palliative care is fine.',
+      opts:[ {v:'no', t:'No'}, {v:'pall', t:'Palliative care, not hospice', s:'This does not affect eligibility'},
+             {v:'yes', t:'Yes, on hospice', kill:'People enrolled in the Medicare hospice benefit are not eligible for GUIDE.'},
+             {v:'unk', t:'I am not sure', ask:'whether it is hospice or palliative care'} ] },
+    { k:'pace', q:'Is she enrolled in PACE?',
+      help:'Program of All-Inclusive Care for the Elderly. Uncommon, and most people will say no.',
+      opts:[ {v:'no', t:'No'}, {v:'yes', t:'Yes', kill:'People enrolled in PACE are not eligible for GUIDE.'},
+             {v:'unk', t:'I am not sure', ask:'whether she is in PACE'} ] },
+    { k:'cg', q:'Is there someone unpaid helping care for her?',
+      help:'A spouse, an adult child, a sibling, a neighbor. Somebody who is not being paid to be there. That may well be you.',
+      opts:[ {v:'yes', t:'Yes'}, {v:'me', t:'Yes, it is mostly me'},
+             {v:'no', t:'No, all of her help is paid', kill:'GUIDE respite exists to give an unpaid caregiver a break, so the program needs one.'},
+             {v:'unk', t:'I am not sure', ask:'who is helping without being paid'} ] },
+    { k:'guide', q:'Has anyone already signed her up for a dementia program like this?',
+      help:'A person can only be enrolled with one GUIDE provider at a time. If a clinic or another agency already did it, she is set.',
+      opts:[ {v:'no', t:'No'}, {v:'yes', t:'Yes, already enrolled', kill:'She can only be aligned with one GUIDE provider at a time. If you are not happy with the current one, call us and we will tell you what your options are.'},
+             {v:'unk', t:'I do not think so', ask:'whether she is already enrolled somewhere'} ] },
+    { k:'area', q:'Is she in the Springfield area?',
+      help:'We provide the respite hours ourselves, so we have to be able to get to her.',
+      opts:[ {v:'yes', t:'Yes, Springfield or nearby'},
+             {v:'no', t:'Somewhere else in Missouri', note:'She may still be eligible for GUIDE even if we cannot be the ones providing the care. Tell us where she is and we will point you to who can help.'},
+             {v:'out', t:'Out of state', note:'GUIDE runs in all 50 states, so she may well qualify. We cannot provide the care ourselves, but we will tell you where to start.'} ] },
+    { k:'when', q:'How soon do you need help?',
+      help:'This does not affect eligibility. It tells us how fast to move.',
+      opts:[ {v:'now', t:'As soon as possible'}, {v:'weeks', t:'In the next few weeks'},
+             {v:'plan', t:'Just planning ahead for now'} ] }
+  ];
+
+  var A = {}, i = 0, killed = null, notes = [], asks = [];
+
+  function render() {
+    var wrap = $('gSteps');
+    wrap.innerHTML = '';
+    Q.forEach(function (q, n) {
+      var d = document.createElement('div');
+      d.className = 'g-step' + (n === i ? ' on' : '');
+      d.innerHTML = '<p class="g-q">' + q.q + '</p><p class="g-help">' + q.help + '</p>' +
+        '<div class="g-opts">' + q.opts.map(function (o, oi) {
+          return '<button type="button" class="g-opt" data-n="' + n + '" data-o="' + oi + '">' +
+                 o.t + (o.s ? '<small>' + o.s + '</small>' : '') + '</button>';
+        }).join('') + '</div>' +
+        (n > 0 ? '<button class="g-back" type="button" data-back="1">Back</button>' : '');
+      wrap.appendChild(d);
+    });
+    Array.prototype.forEach.call(wrap.querySelectorAll('.g-opt'), function (b) {
+      b.addEventListener('click', function () {
+        var q = Q[+b.getAttribute('data-n')], o = q.opts[+b.getAttribute('data-o')];
+        A[q.k] = o;
+        if (o.kill && !killed) killed = o.kill;
+        if (o.note) notes.push(o.note);
+        if (o.ask) asks.push(o.ask);
+        next();
+      });
+    });
+    Array.prototype.forEach.call(wrap.querySelectorAll('[data-back]'), function (b) {
+      b.addEventListener('click', function () { i = Math.max(0, i - 1); paint(); });
+    });
+    paint();
+  }
+
+  function paint() {
+    Array.prototype.forEach.call($('gSteps').children, function (el, n) { el.classList.toggle('on', n === i && !$('gResult').classList.contains('on')); });
+    $('gBar').style.width = Math.round((i / Q.length) * 100) + '%';
+  }
+
+  function next() {
+    // a hard no ends it immediately rather than marching someone through
+    // six more questions we already know the answer does not matter to
+    if (killed) return finish();
+    i++;
+    if (i >= Q.length) return finish();
+    paint();
+    $('check').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function finish() {
+    Array.prototype.forEach.call($('gSteps').children, function (el) { el.classList.remove('on'); });
+    $('gResult').classList.add('on');
+    $('gBar').style.width = '100%';
+    var eligible = !killed;
+    $('gBadge').className = 'badge ' + (eligible ? 'yes' : 'no');
+    $('gBadge').textContent = eligible ? 'Looks eligible' : 'Not eligible for GUIDE';
+    if (eligible) {
+      $('gTitle').textContent = 'From what you have told us, she looks eligible.';
+      var body = 'Medicare makes the final call, not us, so nobody can promise you anything today. But nothing you have said rules her out, and that is worth a phone call.';
+      if (asks.length) body += ' We will need to pin down ' + list(asks) + ', and we can do that together.';
+      notes.forEach(function (n) { body += ' ' + n; });
+      $('gBody').textContent = body;
+      $('gGo').textContent = 'Have someone call me';
+    } else {
+      $('gTitle').textContent = 'She is not eligible for GUIDE.';
+      $('gBody').textContent = killed + ' We would rather tell you that now than have you wait three weeks to hear it. That does not mean nobody can help you, and if you want to talk through what else is out there, we will do that for free and we will not pressure you.';
+      $('gGo').textContent = 'I would still like to talk to someone';
+    }
+    $('check').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (window.CCTrack) CCTrack(eligible ? 'guide_eligible' : 'guide_not_eligible');
+  }
+  function list(a) {
+    if (a.length === 1) return a[0];
+    return a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+  }
+
+  $('gRestart').addEventListener('click', function () {
+    A = {}; i = 0; killed = null; notes = []; asks = [];
+    $('gResult').classList.remove('on');
+    $('gForm').hidden = false; $('gThanks').hidden = true; $('gErr').hidden = true;
+    render();
+    $('check').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  $('gForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if ($('gHp').value) return;                       // a bot filled the hidden field
+    var name = $('gName').value.trim(), phone = $('gPhone').value.trim(), email = $('gEmail').value.trim();
+    if (!phone && !email) {
+      $('gErr').textContent = 'We need a phone number or an email address so we can reach you.';
+      $('gErr').hidden = false; return;
+    }
+    $('gErr').hidden = true;
+    var btn = $('gGo'); btn.disabled = true; btn.textContent = 'Sending...';
+
+    var lines = ['GUIDE eligibility check from the website.',
+                 'Result: ' + (killed ? 'NOT ELIGIBLE. ' + killed : 'Looks eligible.')];
+    Q.forEach(function (q) { if (A[q.k]) lines.push(q.q + ' ' + A[q.k].t); });
+    if (asks.length) lines.push('Still to confirm: ' + list(asks) + '.');
+    if ($('gWho').value.trim()) lines.push('In their words: ' + $('gWho').value.trim());
+
+    window.CCForms.submitLead({
+      name: name, phone: phone, email: email,
+      message: lines.join('\n'),
+      care_for: killed ? 'GUIDE, not eligible' : 'GUIDE, looks eligible'
+    }).then(function () {
+      $('gForm').hidden = true; $('gThanks').hidden = false;
+      $('check').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = 'Try again';
+      $('gErr').textContent = 'That did not go through. Please call us at (417) 234-8494 and we will take it down over the phone.';
+      $('gErr').hidden = false;
+    });
+  });
+
+  render();
+})();
+</script>
+
 </body>
 </html>
