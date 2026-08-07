@@ -310,3 +310,52 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+
+/* ---- Mega-menu columns (Services, Ways to Pay, Resources, About Us) ----
+   Ten links stacked in one narrow strip is past the point where anybody
+   reads them. Same open/close machinery as .cc-dropdown, laid out in
+   labelled columns with room for a featured panel on the right. */
+.cc-mega { min-width: 0; width: max-content; max-width: min(94vw, 900px); padding: 20px; }
+
+/* Anchored to the header rather than to the button, so a wide panel under a
+   menu near the right edge can never run off the screen. All four share the
+   same right edge, which also reads as deliberate rather than ragged. */
+@media (min-width: 861px) {
+  .cc-header-inner { position: relative; }
+  .cc-nav-group { position: static; }
+  .cc-mega { left: auto; right: 24px; }
+}
+.cc-cols { display: flex; gap: 8px; align-items: stretch; }
+.cc-col { display: flex; flex-direction: column; min-width: 196px; }
+.cc-colh {
+  display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--muted); padding: 2px 12px 9px;
+}
+.cc-mega a { white-space: normal; }
+.cc-col.cc-feat {
+  background: var(--soft-teal); border-radius: 12px; padding: 12px 6px; margin-left: 10px; min-width: 214px;
+}
+.cc-col.cc-feat .cc-colh { color: var(--brand-blue); }
+.cc-col.cc-feat a:hover { background: #fff; }
+.cc-feat-tel {
+  font-family: var(--serif); font-size: 20px !important; font-weight: 600 !important;
+  color: var(--brand-blue) !important; padding: 2px 12px 4px !important;
+}
+.cc-feat-note { display: block; font-size: 11.5px; line-height: 1.5; color: var(--muted); padding: 0 12px 6px; }
+
+@media (max-width: 860px) {
+  /* stacked in the burger menu: the column headers become section labels */
+  .cc-mega { width: auto; max-width: none; padding: 0; }
+  .cc-mega.cc-mega-r { right: auto; }
+  .cc-cols { flex-direction: column; gap: 0; }
+  .cc-col { min-width: 0; }
+  .cc-colh {
+    padding: 12px 24px 6px; font-size: 10.5px; color: var(--muted);
+    background: #f6f5f0; border-top: 1px solid #efece3;
+  }
+  .cc-col.cc-feat { background: #f1ede1; border-radius: 0; padding: 0; margin-left: 0; }
+  .cc-col.cc-feat .cc-colh { background: #f1ede1; }
+  .cc-feat-tel { padding: 11px 24px !important; font-size: 17px !important; border-top: 1px solid #efece3; }
+  .cc-feat-note { padding: 0 24px 12px; }
+}
