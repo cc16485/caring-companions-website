@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>In-Home Care in Springfield, MO | Caring Companions</title>
-<meta name="description" content="You should not have to wonder if she is okay. In-home care from people who live here, and a free visit at her kitchen table to talk it through.">
+<title>HomeTogether TV, Included With Care | Caring Companions</title>
+<meta name="description" content="Her television becomes a video call. HomeTogether TV is $99 a month, and it is included free for families receiving 20 or more hours of care a week in southwest Missouri.">
 <!-- Built for cold Facebook traffic. Kept out of search so it never competes
      with the pages people find on their own. One job: book the consultation. -->
 <meta name="robots" content="noindex, follow">
@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/photos/hero-caregiver.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="https://tryhometogether.com/assets/hero-family-tv.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -66,13 +66,17 @@
   .bar .chip{ background:rgba(250,249,246,.94); border-radius:12px; padding:8px 14px; }
   .bar .chip img{ height:34px; }
   .bar a.tel{ color:#fff; font-weight:700; font-size:16px; text-decoration:none; text-shadow:0 1px 10px rgba(0,0,0,.5); }
-  .hero{ position:relative; min-height:min(94vh,860px); display:flex; align-items:flex-end;
-    background:var(--navy); overflow:hidden; }
+  .hero{ position:relative; display:flex; align-items:flex-end;
+    background:linear-gradient(168deg,#176a79 0%,var(--navy) 62%); overflow:hidden; padding-top:86px; }
   .hero picture,.hero>img{ position:absolute; inset:0; }
   .hero img.bg{ width:100%; height:100%; object-fit:cover; object-position:52% 32%; }
   .hero .veil{ position:absolute; inset:0;
     background:linear-gradient(180deg,rgba(13,54,95,.62) 0%,rgba(13,54,95,.34) 34%,rgba(13,54,95,.86) 78%,rgba(13,54,95,.96) 100%); }
-  .hero .in{ position:relative; padding:0 22px clamp(44px,7vw,80px); max-width:760px; margin:0 auto; text-align:center; color:#fff; }
+  .hero .in{ position:relative; padding:clamp(18px,4vw,34px) 22px clamp(48px,7vw,84px); max-width:760px; margin:0 auto; text-align:center; color:#fff; }
+  .hero .veil.solid{ background:none; }
+  .hshot{ margin:clamp(30px,5vw,44px) auto 0; max-width:600px; }
+  .hshot img{ width:100%; border-radius:20px; box-shadow:0 26px 60px rgba(0,0,0,.4); }
+  .hshot figcaption{ font-size:14.5px; color:#a9c0cc; margin-top:14px; }
   .hero .eyebrow{ color:#8FD1C7; margin-bottom:16px; }
   .hero h1{ font-size:clamp(34px,7.4vw,58px); margin:0 0 18px; text-wrap:balance; }
   .hero p{ font-size:clamp(17px,2.4vw,20px); line-height:1.6; color:#dfeaef; max-width:34ch; margin:0 auto 28px; }
@@ -92,7 +96,21 @@
   .you .land{ margin:36px auto 0; max-width:560px; text-align:center; font-size:18px; line-height:1.65; color:var(--ink); }
   .you .land b{ color:var(--navy); }
 
-  /* ---- 3+4. assessment ---- */
+  /* ---- 3. what it is ---- */
+  .what{ padding:var(--sp) 0; }
+  .what .head{ text-align:center; max-width:640px; margin:0 auto clamp(32px,5vw,48px); }
+  .what .eyebrow{ color:var(--deep-honey); margin-bottom:12px; }
+  .what h2{ font-size:clamp(27px,4.6vw,40px); color:var(--navy); margin:0 0 12px; text-wrap:balance; }
+  .what .head p{ color:var(--muted); font-size:17px; line-height:1.7; }
+  .wgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .wgrid > div{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 24px; }
+  .wgrid b{ display:block; font-family:var(--serif); font-size:19px; color:var(--navy); margin-bottom:8px; }
+  .wgrid span{ font-size:15px; line-height:1.65; color:var(--muted); }
+  .wnote{ max-width:640px; margin:clamp(28px,4vw,40px) auto 0; background:var(--pale); border-radius:18px;
+    padding:24px 26px; text-align:center; font-size:17px; line-height:1.7; }
+  .wnote b{ color:var(--navy); }
+
+  /* ---- 4+5. assessment ---- */
   .quiz{ background:var(--panel); padding:var(--sp) 0; }
   .quiz .head{ text-align:center; max-width:600px; margin:0 auto 34px; }
   .quiz .eyebrow{ color:var(--deep-honey); margin-bottom:12px; }
@@ -199,6 +217,7 @@
   .ht-why q{ font-family:var(--serif); font-size:22px; line-height:1.5; display:block; }
   .ht-why cite{ display:block; font-style:normal; font-size:14px; color:#9fb6c2; margin-top:12px; }
   .ht-why p{ font-size:15.5px; line-height:1.7; color:#cfe0e6; margin-top:16px; }
+  .htend{ max-width:620px; margin:30px auto 0; text-align:center; font-size:16.5px; line-height:1.7; color:#cfe0e6; }
 
   /* ---- 7. steps ---- */
   .steps{ padding:var(--sp) 0; }
@@ -276,7 +295,7 @@
   @media (max-width:860px){
     .duo{ grid-template-columns:1fr; gap:22px; }
     .duo.flip .txt{ order:0; }
-    .ht-grid{ grid-template-columns:1fr; }
+    .ht-grid,.wgrid{ grid-template-columns:1fr; }
     .st-grid{ grid-template-columns:1fr 1fr; }
     .tstats{ grid-template-columns:1fr 1fr; }
   }
@@ -292,45 +311,68 @@
 
 <!-- ============ 1. HERO ============ -->
 <header class="hero">
-  <img class="bg" src="assets/photos/hero-caregiver.jpg" alt="A caregiver sitting with an older woman in her own living room" fetchpriority="high">
-  <div class="veil"></div>
+  <div class="veil solid"></div>
   <div class="bar">
     <span class="chip"><img src="assets/cc-logo.webp" alt="Caring Companions In-Home Senior Care" width="150" height="52"></span>
     <a class="tel" href="tel:14172348494">(417) 234-8494</a>
   </div>
   <div class="in">
-    <p class="eyebrow">Springfield &amp; southwest Missouri</p>
-    <h1>You shouldn't have to wonder if she's okay.</h1>
-    <p>In-home care from people who live here. Start with a free visit at her kitchen table, and we will tell you honestly what she needs.</p>
-    <a class="btn" href="#assessment">See what she needs &rarr;</a>
-    <p class="micro"><b>Family-owned since 2017</b> &middot; <b>5.0 stars</b> from 54 Google reviews &middot; Somebody answers at 2am</p>
+    <p class="eyebrow">A $99/month device, included with care</p>
+    <h1>See her face. Not just hear how she's doing.</h1>
+    <p>HomeTogether TV turns the television she already watches into a video call. No tablet, no app, no password. Free for our families at 20 or more hours of care a week.</p>
+    <a class="btn" href="#assessment">See if she qualifies &rarr;</a>
+    <figure class="hshot">
+      <img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="An older man watching his daughter and grandson on a video call on his own television" fetchpriority="high" width="1387" height="1015">
+      <figcaption>You call from your phone. Her TV comes on. She does not press a thing.</figcaption>
+    </figure>
+    <p class="micro"><b>Caring Companions</b>, family-owned in Springfield since 2017 &middot; <b>5.0 stars</b> from 54 Google reviews</p>
   </div>
 </header>
 
 <!-- ============ 2. IS THIS YOU ============ -->
 <section class="you rv">
   <div class="narrow">
-    <h2>Some of this will sound familiar</h2>
-    <p class="sub">If two or three of these land, you are not being dramatic. You are paying attention.</p>
+    <h2>You call. She says she's fine.</h2>
+    <p class="sub">And you hang up knowing about as much as you did before. That is the part nobody warns you about.</p>
   </div>
   <div class="narrow">
     <ul>
-      <li>You call every day, and you still don't really know how she is.</li>
-      <li>You are doing the pills, the groceries, the driving, and your own job.</li>
-      <li>She says she's fine. The kitchen says otherwise.</li>
-      <li>You've started sleeping with your phone turned up.</li>
-      <li>Nobody in the family agrees on what happens next.</li>
+      <li>You are two hours away, or two states away, and the phone tells you nothing.</li>
+      <li>You cannot see whether she has eaten, or dressed, or been out of the chair.</li>
+      <li>She would never say if she were struggling. She has never asked for help in her life.</li>
+      <li>Somebody has to drive over to find out, and that somebody is usually you.</li>
+      <li>You have started sleeping with your phone turned up.</li>
     </ul>
-    <p class="land">None of that means you have failed her. <b>It means it is time for help, and that is a normal place to arrive.</b></p>
+    <p class="land">Seeing her face changes that in about four seconds. <b>That is the whole idea, and it is why we put a television in it rather than an app.</b></p>
   </div>
 </section>
 
-<!-- ============ 3 + 4. ASSESSMENT AND RESULT ============ -->
+
+<section class="what">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow kick">The device</p>
+      <h2>What HomeTogether TV actually is</h2>
+      <p>A small camera that sits on the television she already watches. She learns nothing, installs nothing, and remembers no password. It takes about ten minutes to plug in.</p>
+    </div>
+    <div class="wgrid">
+      <div class="rv"><b>You call, her TV comes on</b><span>From your phone, from anywhere. It can answer by itself, so there is no button to find. Up to ten of you on one call, which is how the grandchildren end up on it on a Sunday.</span></div>
+      <div class="rv"><b>Reminders on the screen</b><span>Medication and appointments appear in front of her in large type, at the time they matter, whether or not anybody is there.</span></div>
+      <div class="rv"><b>Health readings in your app</b><span>Blood pressure, blood sugar and weight sync through to the family app, so a change is something you can see rather than guess at.</span></div>
+      <div class="rv"><b>Camera-free safety sensing</b><span>Radar notices movement and whether a normal day has stopped looking normal. The camera itself sits behind a shutter that physically closes when a call ends.</span></div>
+      <div class="rv"><b>Something for a long afternoon</b><span>Music, exercise, faith and travel channels made for older adults, on the screen she is already sitting in front of.</span></div>
+      <div class="rv"><b>The doctor, without the drive</b><span>Drop the appointment link into the portal and the visit appears on her TV at the right time. She presses one button to join.</span></div>
+    </div>
+    <p class="wnote rv">On its own it is <b>$99 a month</b>. With 20 or more hours of care a week from us, it is <b>included, at no charge, for as long as care continues</b>. Not a trial. Not a discount. Nothing added to your bill.</p>
+  </div>
+</section>
+
+<!-- ============ 4 + 5. ASSESSMENT AND RESULT ============ -->
 <section class="quiz" id="assessment">
   <div class="head rv">
     <p class="eyebrow">Free, one minute, no email required to see it</p>
-    <h2>Start with what she actually needs</h2>
-    <p>Seven questions. You will get an honest estimate of the hours, a cost range, and what we would suggest, before anybody calls you.</p>
+    <h2>Would she qualify?</h2>
+    <p>Seven questions about her day. You will see roughly what care she needs, what it would cost, and whether the television comes with it, before anybody calls you.</p>
   </div>
   <div class="card rv">
     <div class="prog"><i id="prog"></i></div>
@@ -514,8 +556,8 @@
 <section class="help">
   <div class="wrap">
     <div class="head rv">
-      <h2>What is different about us</h2>
-      <p>Three things families tell us they could not find anywhere else.</p>
+      <h2>The care behind the screen</h2>
+      <p>The television is the part you can see. This is the part that actually looks after her.</p>
     </div>
 
     <div class="duo rv">
@@ -547,35 +589,31 @@
   </div>
 </section>
 
-<!-- ============ 6. HOMETOGETHER TV ============ -->
+<!-- ============ 6. WHY IT IS INCLUDED ============ -->
 <section class="ht">
   <div class="wrap">
     <div class="head rv">
-      <p class="eyebrow">Part of the care, not an add-on</p>
-      <h2>And a way to see her, on the days you can't be there</h2>
-      <p>Every private-pay family at 20 or more hours a week gets HomeTogether TV included, at no charge. It is a $99 a month device. We would rather it was part of the care.</p>
-    </div>
-    <figure class="shot rv">
-      <img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="An older man watching his daughter and grandson on a video call on his television" loading="lazy">
-      <figcaption>Her television becomes a video call. She does not press a thing.</figcaption>
-    </figure>
-    <div class="ht-grid rv">
-      <div><b>You call, her TV comes on</b><span>From your phone, from anywhere. It can answer by itself, so there is no button to find and no password to lose. Up to ten of you at once.</span></div>
-      <div><b>Reminders and readings</b><span>Medication and appointments appear on screen in large type. Blood pressure and blood sugar sync to your family app, so a change is something you see rather than guess at.</span></div>
-      <div><b>Camera-free safety sensing</b><span>Radar notices movement and whether a normal day has stopped looking normal. The camera itself sits behind a shutter that closes when a call ends.</span></div>
+      <p class="eyebrow">The part people ask about</p>
+      <h2>Why we give away a $99 device</h2>
+      <p>Because it makes us better at the job, and because a family at 20 hours a week is trusting us with most of their week.</p>
     </div>
     <div class="ht-why rv">
       <q>We could sell this. We would rather it was part of the care.</q>
       <cite>Samantha, owner</cite>
-      <p>Isolation is tied to faster decline and there is no medication for it. A daughter on a video call notices the slur, the untouched plate, the same story twice, weeks before it turns up in an assessment. And our coordinators can call in and see how she and her caregiver are getting on, rather than reading how it was written up. Announced, always. Never a hidden camera.</p>
     </div>
+    <div class="ht-grid rv" style="margin-top:26px;">
+      <div><b>Loneliness is a medical problem</b><span>Isolation is tied to faster decline and there is no medication for it. A device that gets her talking to her people most days does more for her than a good deal of what we could bill you for.</span></div>
+      <div><b>Families see change first</b><span>A daughter on a video call notices the slur, the untouched plate, the same story twice, weeks before it turns up in an assessment. That head start is worth more than anything we can write in a note.</span></div>
+      <div><b>It makes our supervision real</b><span>A coordinator can call in and see how she and her caregiver are actually getting on, instead of reading how it was written up. Announced, always. Never a hidden camera.</span></div>
+    </div>
+    <p class="htend rv">And it costs us far less than the discount we would otherwise be tempted to give you, which is the honest version of the answer.</p>
   </div>
 </section>
 
 <!-- ============ 7. FOUR STEPS ============ -->
 <section class="steps">
   <div class="wrap">
-    <h2 class="rv">How it actually starts</h2>
+    <h2 class="rv">How it starts</h2>
     <p class="sub rv">Most families are surprised how quickly this part goes.</p>
     <div class="st-grid">
       <div class="st rv"><h3>We talk</h3><p>A free visit at her kitchen table, or a phone call if that is easier. No cost, no obligation, no salesperson.</p></div>
@@ -622,21 +660,22 @@
 <section class="faq">
   <div class="narrow">
     <h2 class="rv">The things families ask us first</h2>
-    <details class="rv"><summary>What does it cost?</summary><div class="a">Help around the house is around $30 an hour, personal care around $32, and advanced or bed-bound care around $34. Live-in care is charged by the day at $450 rather than by the hour. Our shortest visit is 4 hours. The assessment above gives you a range in about a minute, and a coordinator confirms the real number with you.</div></details>
-    <details class="rv"><summary>Is the consultation really free?</summary><div class="a">Yes, and there is no obligation of any kind. We come to her home, or we talk on the phone if that is easier. If we think she needs something other than what we sell, we will say so.</div></details>
-    <details class="rv"><summary>What if she says she doesn't want anyone in the house?</summary><div class="a">Almost everybody says that at first. It is not stubbornness, it is dignity. We start small, often with something practical like a ride or the laundry rather than personal care, and we let her get to know one person. Most of the time the resistance was about losing control, not about the help.</div></details>
-    <details class="rv"><summary>How fast can care start?</summary><div class="a">Often within a few days of the consultation, and we have started same-day for a hospital discharge. Tell us the situation and we will tell you honestly what we can do.</div></details>
-    <details class="rv"><summary>Do you take Medicaid?</summary><div class="a">Yes, we serve Medicaid HCBS clients. Note that the free HomeTogether TV offer is for private-pay families only, which includes long-term care insurance and privately paid VA benefits.</div></details>
-    <details class="rv"><summary>Can we change the schedule later?</summary><div class="a">Yes. Most families start with less than they end up needing, or more. There is no long contract and no penalty for changing your mind as her needs change.</div></details>
-    <details class="rv"><summary>What if we live out of state?</summary><div class="a">A great many of the families we work with do. That is exactly who HomeTogether TV is for, and why our coordinators call you rather than waiting for you to call us.</div></details>
+    <details class="rv"><summary>Is it really free, or is it built into the price?</summary><div class="a">Really free. Our rates are the same whether you take the device or not: around $30 an hour for help around the house, $32 for personal care, $34 for advanced care. Nothing is added to your bill for it, and there is no contract for the device itself.</div></details>
+    <details class="rv"><summary>What if we do not need 20 hours a week?</summary><div class="a">Then you have three choices and none of them is a dead end. Add a day and reach 20. Keep your hours and buy the device on its own at $99 a month. Or add virtual caregiver visits from $75 a week, where a caregiver appears on her television once, twice or three times a day, Monday through Friday. The assessment above will tell you which one fits.</div></details>
+    <details class="rv"><summary>Is there a camera watching her?</summary><div class="a">There is a camera, because that is how she sees your face. It sits behind a shutter that physically closes when a call ends. The safety sensing uses radar rather than video, so nothing is watching her between calls. Your family also chooses whether calls answer automatically or whether she presses the button on her remote.</div></details>
+    <details class="rv"><summary>What does the care itself cost?</summary><div class="a">Around $30 an hour for help around the house, $32 for personal care, and $34 for advanced or bed-bound care. Our shortest visit is 4 hours. Live-in care is charged by the day at $450 rather than by the hour. The assessment gives you a range in about a minute and a coordinator confirms the real number with you.</div></details>
+    <details class="rv"><summary>Does she need to be good with technology?</summary><div class="a">No, and that is rather the point. There is no tablet, no app on her end and no password. It is the television she has used for forty years. Most of the setup is done before it reaches her, and it plugs in with one cable.</div></details>
+    <details class="rv"><summary>Do you take Medicaid?</summary><div class="a">Yes, we serve Medicaid HCBS clients. The free device offer is for private-pay families only, which includes long-term care insurance and privately paid VA benefits.</div></details>
+    <details class="rv"><summary>What if she says she does not want anyone in the house?</summary><div class="a">Almost everybody says that at first. It is not stubbornness, it is dignity. We start small, often with something practical like a ride or the laundry rather than personal care, and we let her get to know one person. The device helps here too, because it gives her something rather than only taking her independence.</div></details>
+    <details class="rv"><summary>What happens to the device if care ends?</summary><div class="a">It comes back to us, the same as any loaned equipment, and that is all we ask. There is a $300 charge only if it is never returned. If your hours drop below 20 for two months running, we will ask whether you would like to keep it at $99 a month or send it back. Nobody gets a surprise bill.</div></details>
   </div>
 </section>
 
 <!-- ============ 11. FINAL CTA ============ -->
 <section class="final" id="book">
   <div class="wrap">
-    <h2 class="rv">One conversation, and you will know</h2>
-    <p class="rv">Free, at her kitchen table, with somebody local who does this every day. You will leave it knowing what she needs, whether or not you ever use us.</p>
+    <h2 class="rv">Start with a conversation, not a purchase</h2>
+    <p class="rv">A free visit at her kitchen table. We will tell you honestly what she needs, what it costs, and whether the television comes with it. You will leave knowing where you stand, whether or not you ever use us.</p>
     <div class="fcard rv">
       <h3>Book a free consultation</h3>
       <p class="fs">A coordinator calls you back, usually the same day.</p>
@@ -662,7 +701,7 @@
 </footer>
 
 <div class="sticky" id="sticky">
-  <a class="b" href="#assessment">See what she needs</a>
+  <a class="b" href="#assessment">See if she qualifies</a>
   <a class="p" href="tel:14172348494">Call</a>
 </div>
 
@@ -717,7 +756,7 @@
     $('bSend').disabled = true; $('bSend').textContent = 'Sending...';
     window.CCForms.submitLead({
       name: name, phone: phone, email: email,
-      message: 'Asked for a free consultation from the bottom of the Facebook landing page (mo-care.com/tv).',
+      message: 'Asked for a free consultation from the bottom of the HomeTogether TV landing page (mo-care.com/tv). Did not complete the assessment.',
       heard_from: 'Facebook ad (HomeTogether TV offer)'
     }).then(function () {
       if (window.CCTrack) { try { CCTrack('tv_funnel_lead'); } catch (e) {} }
