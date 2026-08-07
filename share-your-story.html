@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Share Your Story | Caring Companions</title>
+<meta name="description" content="Record a short video about your experience with Caring Companions. About a minute, from your own phone, no editing and no pressure.">
+<link rel="canonical" href="https://mo-care.com/share-your-story">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Share Your Story | Caring Companions">
+<meta property="og:description" content="Record a short video about your experience with Caring Companions. About a minute, from your own phone.">
+<meta property="og:url" content="https://mo-care.com/share-your-story">
+<meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.sty-wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.sty-hero { padding: 52px 0 8px; text-align: center; }
+.sty-eyebrow { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 12px; }
+.sty-h1 { font-family: var(--serif); font-size: 40px; font-weight: 600; color: var(--brand-blue); margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance; }
+.sty-lede { font-size: 17.5px; line-height: 1.7; color: var(--muted); margin: 0 auto; max-width: 60ch; }
+.sty-toggle { display: flex; justify-content: center; gap: 8px; margin: 28px 0 6px; flex-wrap: wrap; }
+.sty-toggle button { font-family: inherit; font-size: 14.5px; font-weight: 600; color: var(--muted); background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 11px 20px; cursor: pointer; transition: all .14s; }
+.sty-toggle button:hover { border-color: var(--cta); color: var(--cta); }
+.sty-toggle button.on { background: var(--cta); border-color: var(--cta); color: #fff; }
+
+.sty-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; margin: 22px 0; box-shadow: 0 2px 16px rgba(13,54,95,.05); }
+.sty-card h2 { font-family: var(--serif); font-size: 23px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
+.sty-card p.note { font-size: 15px; line-height: 1.7; color: var(--muted); margin: 0 0 18px; }
+
+.sty-prompts { list-style: none; margin: 0; padding: 0; counter-reset: q; }
+.sty-prompts li { position: relative; padding: 14px 0 14px 46px; border-bottom: 1px solid var(--border); font-size: 16.5px; line-height: 1.6; color: var(--body-text); }
+.sty-prompts li:last-child { border-bottom: none; }
+.sty-prompts li::before { counter-increment: q; content: counter(q); position: absolute; left: 0; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: #EAF4F6; color: var(--brand-blue); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.sty-tip { background: #f6f5f0; border-radius: 12px; padding: 15px 18px; font-size: 14.5px; line-height: 1.65; color: var(--muted); margin: 18px 0 0; }
+.sty-tip b { color: var(--brand-blue); }
+
+.sty-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 4px 0 0; }
+.sty-choice { display: block; width: 100%; text-align: left; font-family: inherit; background: #fff; border: 2px solid var(--border); border-radius: 14px; padding: 20px 20px; cursor: pointer; transition: all .14s; }
+.sty-choice:hover { border-color: var(--cta); transform: translateY(-1px); }
+.sty-choice .k { display: block; font-size: 16.5px; font-weight: 700; color: var(--brand-blue); margin-bottom: 5px; }
+.sty-choice .d { display: block; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+.sty-write { display: block; text-align: center; margin: 16px 0 0; font-size: 14.5px; color: var(--cta); font-weight: 600; background: none; border: none; cursor: pointer; font-family: inherit; width: 100%; text-decoration: underline; }
+
+.sty-stage { display: none; }
+.sty-stage.on { display: block; }
+
+.sty-video-shell { position: relative; background: #0D365F; border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 3; max-height: 62vh; max-width: 620px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+.sty-video-shell video { width: 100%; height: 100%; object-fit: cover; display: block; background: #0D365F; }
+.sty-video-shell video.mirror { transform: scaleX(-1); }
+.sty-teleprompt { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(13,54,95,.94), rgba(13,54,95,0)); color: #fff; padding: 40px 18px 16px; font-size: 17px; line-height: 1.5; text-align: center; font-family: var(--serif); }
+.sty-timer { position: absolute; top: 12px; right: 12px; background: rgba(13,54,95,.82); color: #fff; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; padding: 6px 12px; border-radius: 999px; letter-spacing: .02em; }
+.sty-timer .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #e5484d; margin-right: 6px; vertical-align: -1px; animation: styblink 1.1s infinite; }
+@keyframes styblink { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+.sty-count { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(13,54,95,.72); color: #fff; font-family: var(--serif); font-size: 96px; font-weight: 600; }
+.sty-ctrls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 16px 0 0; }
+.sty-btn { font-family: inherit; font-size: 16px; font-weight: 700; padding: 14px 26px; border-radius: 11px; border: none; cursor: pointer; transition: background .14s; }
+.sty-btn-primary { background: var(--cta); color: #fff; }
+.sty-btn-primary:hover { background: #155A68; }
+.sty-btn-primary:disabled { opacity: .55; cursor: wait; }
+.sty-btn-ghost { background: #fff; color: var(--brand-blue); border: 1px solid var(--border); }
+.sty-btn-ghost:hover { border-color: var(--cta); color: var(--cta); }
+.sty-btn-rec { background: #e5484d; color: #fff; }
+.sty-btn-rec:hover { background: #c93a3f; }
+.sty-nudge { font-size: 13.5px; color: var(--muted); text-align: center; margin: 12px 0 0; line-height: 1.6; }
+
+.sty-field { margin: 0 0 16px; }
+.sty-field label { display: block; font-size: 14px; font-weight: 700; color: var(--brand-blue); margin: 0 0 6px; }
+.sty-field .hint { font-weight: 400; color: var(--muted); }
+.sty-field input, .sty-field textarea, .sty-field select { width: 100%; padding: 12px 13px; font-size: 16px; font-family: inherit; color: var(--body-text); background: #faf9f6; border: 1px solid var(--border); border-radius: 10px; }
+.sty-field input:focus, .sty-field textarea:focus, .sty-field select:focus { outline: 2px solid var(--cta); border-color: var(--cta); background: #fff; }
+.sty-field textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+.sty-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.sty-release { background: #EAF4F6; border-radius: 12px; padding: 18px 20px; margin: 20px 0 0; }
+.sty-release label.check { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.6; color: var(--body-text); cursor: pointer; font-weight: 600; }
+.sty-release input[type=checkbox] { width: 21px; height: 21px; min-width: 21px; margin-top: 2px; accent-color: var(--cta); cursor: pointer; }
+.sty-release .full { font-size: 13.5px; line-height: 1.7; color: var(--muted); margin: 12px 0 0; }
+.sty-release summary { font-size: 13.5px; font-weight: 700; color: var(--cta); cursor: pointer; margin-top: 12px; }
+.sty-progress { display: none; margin: 18px 0 0; }
+.sty-progress.on { display: block; }
+.sty-bar { height: 10px; background: #e4e1d8; border-radius: 999px; overflow: hidden; }
+.sty-bar i { display: block; height: 100%; width: 0; background: var(--cta); border-radius: 999px; transition: width .25s; }
+.sty-progress .pct { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; text-align: center; }
+.sty-err { display: none; background: #fdf0f0; color: #a33; border-radius: 10px; padding: 13px 16px; font-size: 14.5px; line-height: 1.6; margin: 16px 0 0; }
+.sty-err.on { display: block; }
+
+.sty-thanks { display: none; text-align: center; }
+.sty-thanks.on { display: block; }
+.sty-thanks .big { font-size: 60px; line-height: 1; margin: 0 0 12px; color: #14606F; }
+.sty-thanks h2 { font-size: 30px; }
+.sty-google { background: #EAF4F6; border-radius: 14px; padding: 22px 24px; margin: 22px 0 0; }
+.sty-google a { display: inline-block; background: #14606F; color: #fff; font-weight: 700; font-size: 15.5px; padding: 12px 24px; border-radius: 10px; text-decoration: none; margin-top: 12px; }
+
+.sty-safety { max-width: 880px; margin: 0 auto; padding: 8px 24px 70px; }
+.sty-safety h3 { font-family: var(--serif); font-size: 19px; color: var(--brand-blue); margin: 0 0 10px; }
+.sty-safety p { font-size: 14.5px; line-height: 1.75; color: var(--muted); margin: 0 0 10px; }
+
+@media (max-width: 639px) {
+  .sty-hero { padding: 34px 0 4px; }
+  .sty-h1 { font-size: 30px; }
+  .sty-lede { font-size: 16px; }
+  .sty-card { padding: 24px 20px; border-radius: 14px; }
+  .sty-choices { grid-template-columns: 1fr; }
+  .sty-two { grid-template-columns: 1fr; }
+  .sty-video-shell { aspect-ratio: 3 / 4; }
+  .sty-count { font-size: 72px; }
+  .sty-btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<header class="cc-header">
+<div class="cc-header-inner">
+<a href="/" class="cc-logo"><img src="/assets/cc-logo.webp" alt="Caring Companions"></a>
+<input type="checkbox" id="cc-navtog" class="cc-navtog" aria-hidden="true" tabindex="-1">
+<label for="cc-navtog" class="cc-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+<nav class="cc-nav">
+<a href="/service-area">Service Areas</a>
+<span class="cc-nav-group">
+<a href="/our-services" class="cc-nav-top">Services<i class="cc-caret"></i></a>
+<span class="cc-dropdown">
+<a href="/services/companion-care">Wellness Care</a>
+<a href="/services/personal-care">Personal Care</a>
+<a href="/services/live-in-care">Live-In Care</a>
+<a href="/services/overnight-care">Overnight Care</a>
+<a href="/services/24-hour-care">24-Hour Care</a>
+<a href="/services/respite-care">Respite Care</a>
+<a href="/care-paths/dementia">Dementia &amp; Memory Care</a>
+<span class="cc-dd-sep"></span>
+<a href="/our-services">All services &amp; pricing &rarr;</a>
+<a href="/hometogether">Virtual Caregiving<span class="cc-dd-sub">Video visits &amp; check-ins on their TV</span></a>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/pricing" class="cc-nav-top">Ways to Pay<i class="cc-caret"></i></a>
+<span class="cc-dropdown">
+<a href="/pricing">Our Rates &amp; Guarantee</a>
+<span class="cc-dd-sep"></span>
+<a href="/care-paths/paying-for-care">Private Pay</a>
+<a href="/long-term-care-insurance">Long-Term Care Insurance<span class="cc-dd-sub">We verify &amp; bill your policy</span></a>
+<a href="/guides/missouri-medicaid-hcbs">Medicaid (HCBS)</a>
+<a href="/guides/va-benefits-for-home-care">VA Benefits<span class="cc-dd-sub">Aid &amp; Attendance</span></a>
+<a href="/medicare-guide">Medicare GUIDE<span class="cc-dd-sub">Up to 75 free respite hours</span></a>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/resource-library" class="cc-nav-top">Resources<i class="cc-caret"></i></a>
+<span class="cc-dropdown">
+<a href="/resource-library">Guide Library</a>
+<a href="/family-academy">Family Care Academy<span class="cc-dd-sub">Free training for family caregivers</span></a>
+<a href="/caregivers-corner">Caregivers Corner<span class="cc-dd-sub">A support community</span></a>
+<a href="/417-caring-community">417 Caring Community<span class="cc-dd-sub">One question, one minute, from local pros</span></a>
+<a href="/cara">Ask Cara<span class="cc-dd-sub">Free AI care advisor</span></a>
+<a href="/cost-calculator">Cost Calculator</a>
+<a href="/assessment">Care Assessment</a>
+<a href="/decision-center">Decision Center</a>
+<span class="cc-dd-sep"></span>
+<a href="/counties/">County Resource Centers</a>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/our-story" class="cc-nav-top">About Us<i class="cc-caret"></i></a>
+<span class="cc-dropdown">
+<a href="/our-story">Our Story</a>
+<a href="/family">Our Family of Care<span class="cc-dd-sub">Three ways we care for you</span></a>
+<a href="/our-caregivers">Our Caregivers<span class="cc-dd-sub">Who comes to your door</span></a>
+<a href="/share-your-story">Share Your Story<span class="cc-dd-sub">Record a minute for us</span></a>
+<span class="cc-dd-sep"></span>
+<a href="/careers">Careers<span class="cc-dd-sub">Join our team</span></a>
+<a href="/contact">Contact Us</a>
+</span>
+</span>
+<a href="/book" class="cc-nav-cta">Book Free Consultation</a>
+<a href="tel:14172348494" class="cc-nav-phone">(417) 234-8494</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="sty-wrap sty-hero">
+  <p class="sty-eyebrow">A favor, if you have a minute</p>
+  <h1 class="sty-h1" id="styH1">Share your story</h1>
+  <p class="sty-lede" id="styLede">Families looking for care trust other families far more than they trust any advertisement. If we have been good to you, sixty seconds of your voice would mean more to the next family than anything we could write ourselves.</p>
+  <div class="sty-toggle" role="group" aria-label="Who is sharing">
+    <button type="button" id="styWhoFamily" class="on">I am a client or family member</button>
+    <button type="button" id="styWhoCaregiver">I am a Caring Companions caregiver</button>
+  </div>
+</section>
+
+<div class="sty-wrap">
+
+  <!-- ============ STEP 1: the questions ============ -->
+  <section class="sty-card" id="styIntro">
+    <h2>Three questions, that is the whole thing</h2>
+    <p class="note" id="styPromptNote">No script and nothing to prepare. Just answer these the way you would tell a friend. Skip any of them you want.</p>
+    <ol class="sty-prompts" id="styPrompts"></ol>
+    <div class="sty-tip">
+      <b>What makes a good one:</b> hold your phone upright, sit facing a window so the light is on your face, and pick a quiet room. About a minute is perfect. Nobody expects it to be polished, and the real ones work better anyway.
+    </div>
+  </section>
+
+  <!-- ============ STEP 2: how ============ -->
+  <section class="sty-card" id="styPick">
+    <h2>Ready when you are</h2>
+    <p class="note">Two ways to do this, whichever feels easier.</p>
+    <div class="sty-choices">
+      <button type="button" class="sty-choice" id="styPickRecord">
+        <span class="k">Record it right here</span>
+        <span class="d">Use the camera on this phone or computer. You can watch it back and start over as many times as you like.</span>
+      </button>
+      <button type="button" class="sty-choice" id="styPickUpload">
+        <span class="k">Upload a video I already have</span>
+        <span class="d">Recorded something on your phone already? Pick it from your camera roll.</span>
+      </button>
+    </div>
+    <input type="file" id="styFile" accept="video/*" style="display:none">
+    <button type="button" class="sty-write" id="styPickWrite">I would rather write it out than be on camera &rarr;</button>
+  </section>
+
+  <!-- ============ STEP 2a: recorder ============ -->
+  <section class="sty-card sty-stage" id="styRecorder">
+    <h2 id="styRecHead">Take your time</h2>
+    <p class="note" id="styRecNote">When you press record you will get a three count, then just talk. It stops on its own after two minutes.</p>
+    <div class="sty-video-shell">
+      <video id="styVideo" playsinline muted class="mirror"></video>
+      <div class="sty-teleprompt" id="styTele"></div>
+      <div class="sty-timer" id="styTimer" style="display:none;"><span class="dot"></span><span id="styTimerText">0:00</span></div>
+      <div class="sty-count" id="styCount" style="display:none;">3</div>
+    </div>
+    <div class="sty-ctrls" id="styRecCtrls">
+      <button type="button" class="sty-btn sty-btn-rec" id="styStart">Start recording</button>
+      <button type="button" class="sty-btn sty-btn-ghost" id="styNextPrompt">Next question</button>
+    </div>
+    <div class="sty-ctrls" id="styStopCtrls" style="display:none;">
+      <button type="button" class="sty-btn sty-btn-rec" id="styStop">Stop recording</button>
+    </div>
+    <div class="sty-ctrls" id="styDoneCtrls" style="display:none;">
+      <button type="button" class="sty-btn sty-btn-primary" id="styUseIt">Use this one</button>
+      <button type="button" class="sty-btn sty-btn-ghost" id="styRetake">Start over</button>
+    </div>
+    <p class="sty-nudge" id="styRecNudge">Nothing is sent anywhere until you fill in your name and press send on the next step.</p>
+  </section>
+
+  <!-- ============ STEP 3: details + release ============ -->
+  <section class="sty-card sty-stage" id="styDetails">
+    <h2>Last part, then you are done</h2>
+    <p class="note" id="styDetailsNote">We need to know who you are and whether we have your permission to use this.</p>
+
+    <div class="sty-two">
+      <div class="sty-field">
+        <label for="styName">Your name</label>
+        <input id="styName" autocomplete="name" placeholder="First and last">
+      </div>
+      <div class="sty-field">
+        <label for="styContact">Phone or email <span class="hint">so we can thank you</span></label>
+        <input id="styContact" placeholder="(417) 555-0134">
+      </div>
+    </div>
+
+    <div class="sty-two">
+      <div class="sty-field" id="styRelWrap">
+        <label for="styRelationship" id="styRelLabel">Your connection to the person receiving care <span class="hint">optional</span></label>
+        <input id="styRelationship" placeholder="Daughter, son, spouse, or the client themselves">
+      </div>
+      <div class="sty-field">
+        <label for="styCaregiver" id="styCgLabel">Caregiver you want to mention <span class="hint">optional</span></label>
+        <input id="styCaregiver" placeholder="First name is fine">
+      </div>
+    </div>
+
+    <div class="sty-field" id="styMsgWrap">
+      <label for="styMessage" id="styMsgLabel">Anything you want us to know <span class="hint">optional</span></label>
+      <textarea id="styMessage" placeholder="A note just for our team, or anything you forgot to say on camera."></textarea>
+    </div>
+
+    <div class="sty-field">
+      <label for="styDisplay">If we share this, how should we name you?</label>
+      <select id="styDisplay">
+        <option>First name and last initial</option>
+        <option>First name only</option>
+        <option>My full name is fine</option>
+        <option>Please do not show my name at all</option>
+      </select>
+    </div>
+
+    <div class="sty-release">
+      <label class="check">
+        <input type="checkbox" id="styRelease">
+        <span id="styReleaseShort">Yes, Caring Companions may use my video and my words in their marketing.</span>
+      </label>
+      <details>
+        <summary>Read the full permission</summary>
+        <p class="full" id="styReleaseFull"></p>
+      </details>
+    </div>
+
+    <div class="sty-ctrls" style="margin-top:22px;">
+      <button type="button" class="sty-btn sty-btn-primary" id="stySend">Send my story</button>
+      <button type="button" class="sty-btn sty-btn-ghost" id="styBack">Go back</button>
+    </div>
+
+    <div class="sty-progress" id="styProgress">
+      <div class="sty-bar"><i id="styBarFill"></i></div>
+      <p class="pct" id="styPct">Sending your video, please keep this page open.</p>
+    </div>
+    <div class="sty-err" id="styErr"></div>
+  </section>
+
+  <!-- ============ DONE ============ -->
+  <section class="sty-card sty-thanks" id="styThanks">
+    <p class="big">&#10084;</p>
+    <h2 id="styThanksHead">Thank you. Truly.</h2>
+    <p class="note" id="styThanksNote" style="margin-bottom:0;">It went straight to Samantha, our owner, and she watches every one of these herself. If we use it anywhere, we will let you know first.</p>
+    <div class="sty-google" id="styGoogle">
+      <div style="font-weight:700;color:var(--brand-blue);font-size:16px;margin-bottom:4px;">One more minute, if you have it?</div>
+      <div style="font-size:14.5px;color:var(--muted);line-height:1.6;">A Google review is the first thing most local families read. Even two sentences helps someone find care they can trust.</div>
+      <a href="https://maps.google.com/?cid=7703435519276647029" target="_blank" rel="noopener">Review us on Google &rarr;</a>
+    </div>
+  </section>
+
+</div>
+
+<section class="sty-safety">
+  <h3>What happens to your video</h3>
+  <p>It goes into our private system where only our office can see it. It is not posted anywhere the moment you send it, and we will always reach out before we use it publicly.</p>
+  <p>Sharing a story is completely up to you. It will never affect the care you receive, your schedule, or your job, and you can change your mind at any time. Call us at <a href="tel:14172348494" style="color:var(--cta);font-weight:600;">(417) 234-8494</a> or email <a href="mailto:samantha@mo-care.com" style="color:var(--cta);font-weight:600;">samantha@mo-care.com</a> and we will take it down and delete it.</p>
+</section>
+</main>
+
+<footer class="cc-siteftr">
+<div class="cc-siteftr-grid">
+<div class="brand">
+<img src="/assets/cc-logo.webp" alt="Caring Companions">
+<p class="tag">The trusted guide for aging at home.</p>
+<p class="meta">1331 N Stewart Ave Ste B<br>Springfield, MO 65802<br><a href="tel:14172348494" style="display:inline;padding:0;color:inherit">(417) 234-8494</a> &middot; available 24/7</p>
+<a class="book" href="/book">Book a Free Consultation</a>
+</div>
+<div>
+<h4>Care Services</h4>
+<a href="/services/companion-care">Wellness Care</a>
+<a href="/services/personal-care">Personal Care</a>
+<a href="/services/live-in-care">Live-In Care</a>
+<a href="/services/overnight-care">Overnight Care</a>
+<a href="/services/24-hour-care">24-Hour Care</a>
+<a href="/services/respite-care">Respite Care</a>
+<a href="/our-services">All services &rarr;</a>
+</div>
+<div>
+<h4>Explore</h4>
+<a href="/getting-started">Getting Started</a>
+<a href="/decision-center">Decision Center</a>
+<a href="/assessment">Care Assessment</a>
+<a href="/cara">Ask Cara</a>
+<a href="/cost-calculator">Cost Calculator</a>
+<a href="/resource-library">Resource Library</a>
+<a href="/family-academy">Family Care Academy</a>
+<a href="/caregivers-corner">Caregivers Corner</a>
+<a href="/417-caring-community">417 Caring Community</a>
+<a href="/417-directory">The 417 Directory</a>
+<a href="/service-area">Service Areas</a>
+</div>
+<div>
+<h4>Company</h4>
+<a href="/our-story">Our Story</a>
+<a href="/family">Our Family of Care</a>
+<a href="/our-caregivers">Our Caregivers</a>
+<a href="/share-your-story">Share Your Story</a>
+<a href="/pricing">Pricing</a>
+<a href="/careers">Careers</a>
+<a href="/contact">Contact Us</a>
+</div>
+</div>
+<p class="cc-siteftr-bottom">&copy; 2026 Caring Companions In-Home Senior Care. All rights reserved.</p>
+</footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var ENDPOINT = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/cc-story?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a';
+  var MAX_SECONDS = 120;
+  var MAX_BYTES = 300 * 1024 * 1024;
+  var RELEASE_VERSION = 'v1-2026-08';
+
+  var COPY = {
+    family: {
+      h1: 'Share your story',
+      lede: 'Families looking for care trust other families far more than they trust any advertisement. If we have been good to you, sixty seconds of your voice would mean more to the next family than anything we could write ourselves.',
+      prompts: [
+        'What was going on that made you start looking for help?',
+        'What were you worried about before you called us?',
+        'What is different now?'
+      ],
+      relLabel: 'Your connection to the person receiving care <span class="hint">optional</span>',
+      relPlaceholder: 'Daughter, son, spouse, or the client themselves',
+      cgLabel: 'Caregiver you want to mention <span class="hint">optional</span>',
+      releaseShort: 'Yes, Caring Companions may use my video and my words in their marketing.'
+    },
+    caregiver: {
+      h1: 'Tell us why you stay',
+      lede: 'The best caregivers we hire come from other caregivers telling the truth about this job. A minute of your voice does more for our team than any job ad we could run.',
+      prompts: [
+        'What were you doing before you came to Caring Companions?',
+        'Tell us about a shift or a client that has stuck with you.',
+        'What would you say to a caregiver who is thinking about applying?'
+      ],
+      relLabel: 'How long you have been with us <span class="hint">optional</span>',
+      relPlaceholder: 'Two years, six months, since we opened',
+      cgLabel: 'Coordinator or teammate you want to mention <span class="hint">optional</span>',
+      releaseShort: 'Yes, Caring Companions may use my video and my words in their marketing and hiring.'
+    }
+  };
+
+  var RELEASE_TEXT =
+    'I give Caring Companions In-Home Senior Care permission to record, keep, edit, and use this video, the words in it, and my name as I chose above, in their marketing of any kind: their website, social media, paid advertising, printed materials, and recruiting. ' +
+    'I understand the video may show that I receive care from Caring Companions, or that I work for them, and that once something is published online I cannot control how far it travels. ' +
+    'I am not being paid for this unless we already agreed otherwise. ' +
+    'I am 18 or older, and if I am speaking for someone who receives care, I have the authority to speak for them. ' +
+    'This is my choice and it does not change my care or my job in any way. ' +
+    'I can withdraw my permission for future use at any time by calling (417) 234-8494 or emailing samantha@mo-care.com.';
+
+  // ---------- element handles ----------
+  var $ = function (id) { return document.getElementById(id); };
+  var who = 'family';
+  var promptIndex = 0;
+  var blob = null, blobExt = 'webm', stream = null, recorder = null, chunks = [];
+  var seconds = 0, tick = null, sending = false;
+
+  // ---------- audience ----------
+  function paintCopy() {
+    var c = COPY[who];
+    $('styH1').textContent = c.h1;
+    $('styLede').textContent = c.lede;
+    $('styPrompts').innerHTML = c.prompts.map(function (p) { return '<li>' + p + '</li>'; }).join('');
+    $('styRelLabel').innerHTML = c.relLabel;
+    $('styRelationship').placeholder = c.relPlaceholder;
+    $('styCgLabel').innerHTML = c.cgLabel;
+    $('styReleaseShort').textContent = c.releaseShort;
+    $('styWhoFamily').classList.toggle('on', who === 'family');
+    $('styWhoCaregiver').classList.toggle('on', who === 'caregiver');
+    paintTeleprompt();
+  }
+  $('styWhoFamily').addEventListener('click', function () { who = 'family'; paintCopy(); });
+  $('styWhoCaregiver').addEventListener('click', function () { who = 'caregiver'; paintCopy(); });
+  $('styReleaseFull').textContent = RELEASE_TEXT;
+
+  var qs = new URLSearchParams(location.search);
+  if ((qs.get('who') || '').toLowerCase().indexOf('care') === 0) who = 'caregiver';
+  paintCopy();
+  if (qs.get('name')) $('styName').value = qs.get('name');
+
+  function paintTeleprompt() {
+    var c = COPY[who];
+    $('styTele').textContent = c.prompts[promptIndex % c.prompts.length];
+  }
+
+  function show(stage) {
+    ['styRecorder', 'styDetails', 'styThanks'].forEach(function (id) { $(id).classList.remove('on'); });
+    $('styIntro').style.display = (stage === 'styThanks') ? 'none' : '';
+    $('styPick').style.display = (stage === 'pick') ? '' : 'none';
+    if (stage !== 'pick') {
+      $(stage).classList.add('on');
+      $(stage).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // ---------- recording ----------
+  function canRecord() {
+    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+  }
+  function pickMime() {
+    var types = ['video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'];
+    for (var i = 0; i < types.length; i++) {
+      if (window.MediaRecorder && MediaRecorder.isTypeSupported(types[i])) return types[i];
+    }
+    return '';
+  }
+
+  $('styPickRecord').addEventListener('click', function () {
+    if (!canRecord()) {
+      alert('This browser will not let us record here, but you can still record with your phone camera and upload it. We will open your videos now.');
+      $('styFile').click();
+      return;
+    }
+    show('styRecorder');
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
+      audio: true
+    }).then(function (s) {
+      stream = s;
+      var v = $('styVideo');
+      v.srcObject = s; v.muted = true; v.classList.add('mirror'); v.removeAttribute('controls');
+      v.play();
+    }).catch(function () {
+      $('styRecHead').textContent = 'We could not reach your camera';
+      $('styRecNote').innerHTML = 'Your browser blocked it, or another app is already using it. You can allow camera access and reload the page, or <button type="button" class="sty-write" id="styFallbackUpload" style="display:inline;width:auto;">upload a video from your phone instead &rarr;</button>';
+      var fb = $('styFallbackUpload');
+      if (fb) fb.addEventListener('click', function () { $('styFile').click(); });
+    });
+  });
+
+  $('styNextPrompt').addEventListener('click', function () { promptIndex++; paintTeleprompt(); });
+
+  $('styStart').addEventListener('click', function () {
+    if (!stream) return;
+    var n = 3;
+    var box = $('styCount');
+    box.style.display = 'flex'; box.textContent = n;
+    var cd = setInterval(function () {
+      n--;
+      if (n > 0) { box.textContent = n; return; }
+      clearInterval(cd);
+      box.style.display = 'none';
+      beginRecording();
+    }, 900);
+  });
+
+  function beginRecording() {
+    chunks = []; seconds = 0;
+    var mime = pickMime();
+    blobExt = mime.indexOf('mp4') > -1 ? 'mp4' : 'webm';
+    try {
+      recorder = mime
+        ? new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 2000000, audioBitsPerSecond: 128000 })
+        : new MediaRecorder(stream);
+    } catch (e) { recorder = new MediaRecorder(stream); }
+
+    recorder.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+    recorder.onstop = function () {
+      blob = new Blob(chunks, { type: chunks.length && chunks[0].type ? chunks[0].type : 'video/' + blobExt });
+      var v = $('styVideo');
+      if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+      v.srcObject = null;
+      v.src = URL.createObjectURL(blob);
+      v.muted = false; v.controls = true; v.classList.remove('mirror');
+      $('styTele').style.display = 'none';
+      $('styStopCtrls').style.display = 'none';
+      $('styDoneCtrls').style.display = 'flex';
+      $('styRecHead').textContent = 'Watch it back';
+      $('styRecNote').textContent = 'If you like it, send it. If not, start over. Nobody sees the ones you throw away.';
+    };
+    recorder.start();
+
+    $('styRecCtrls').style.display = 'none';
+    $('styStopCtrls').style.display = 'flex';
+    $('styTimer').style.display = '';
+    tick = setInterval(function () {
+      seconds++;
+      var m = Math.floor(seconds / 60), s = seconds % 60;
+      $('styTimerText').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      if (seconds >= MAX_SECONDS) stopRecording();
+    }, 1000);
+  }
+
+  function stopRecording() {
+    if (tick) { clearInterval(tick); tick = null; }
+    $('styTimer').style.display = 'none';
+    if (recorder && recorder.state !== 'inactive') recorder.stop();
+  }
+  $('styStop').addEventListener('click', stopRecording);
+
+  $('styRetake').addEventListener('click', function () {
+    blob = null; chunks = [];
+    var v = $('styVideo');
+    v.pause(); v.removeAttribute('src'); v.load();
+    v.controls = false; v.muted = true; v.classList.add('mirror');
+    $('styTele').style.display = ''; paintTeleprompt();
+    $('styDoneCtrls').style.display = 'none';
+    $('styRecCtrls').style.display = 'flex';
+    $('styRecHead').textContent = 'Take your time';
+    $('styRecNote').textContent = 'When you press record you will get a three count, then just talk. It stops on its own after two minutes.';
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } }, audio: true
+    }).then(function (s) { stream = s; v.srcObject = s; v.play(); });
+  });
+
+  $('styUseIt').addEventListener('click', function () { goDetails(true); });
+
+  // ---------- upload an existing video ----------
+  $('styPickUpload').addEventListener('click', function () { $('styFile').click(); });
+  $('styFile').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    if (f.size > MAX_BYTES) {
+      alert('That video is larger than we can take (300 MB). A shorter clip, about a minute, will go through fine.');
+      return;
+    }
+    blob = f;
+    var name = f.name || '';
+    blobExt = (name.indexOf('.') > -1 ? name.split('.').pop() : 'mp4').toLowerCase().replace(/[^a-z0-9]/g, '') || 'mp4';
+    goDetails(true);
+  });
+
+  // ---------- write it instead ----------
+  var wroteInstead = false;
+  $('styPickWrite').addEventListener('click', function () {
+    wroteInstead = true; blob = null;
+    goDetails(false);
+  });
+
+  function goDetails(hasVideo) {
+    wroteInstead = !hasVideo;
+    $('styDetailsNote').textContent = hasVideo
+      ? 'We need to know who you are and whether we have your permission to use this.'
+      : 'Write as much or as little as you like, then tell us how to name you.';
+    $('styMsgLabel').innerHTML = hasVideo
+      ? 'Anything you want us to know <span class="hint">optional</span>'
+      : 'Your story';
+    $('styMessage').placeholder = hasVideo
+      ? 'A note just for our team, or anything you forgot to say on camera.'
+      : COPY[who].prompts.join('  ');
+    show('styDetails');
+  }
+
+  $('styBack').addEventListener('click', function () {
+    show('pick');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ---------- send ----------
+  function fail(msg) {
+    sending = false;
+    $('styErr').textContent = msg;
+    $('styErr').classList.add('on');
+    $('styProgress').classList.remove('on');
+    $('stySend').disabled = false;
+    $('stySend').textContent = 'Send my story';
+  }
+
+  function basePayload() {
+    return {
+      who: who === 'caregiver' ? 'caregiver' : 'client family',
+      name: $('styName').value.trim(),
+      contact: $('styContact').value.trim(),
+      relationship: $('styRelationship').value.trim(),
+      caregiver: $('styCaregiver').value.trim(),
+      message: $('styMessage').value.trim(),
+      display_pref: $('styDisplay').value,
+      prompt: COPY[who].prompts.join(' | '),
+      release_signed: true,
+      release_version: RELEASE_VERSION
+    };
+  }
+
+  function finish() {
+    if (window.CCTrack) { try { CCTrack('story_submitted'); } catch (e) {} }
+    show('styThanks');
+    $('styThanksNote').textContent = wroteInstead
+      ? 'It went straight to Samantha, our owner, and she reads every one of these herself. If we use it anywhere, we will let you know first.'
+      : 'It went straight to Samantha, our owner, and she watches every one of these herself. If we use it anywhere, we will let you know first.';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  $('stySend').addEventListener('click', function () {
+    if (sending) return;
+    $('styErr').classList.remove('on');
+    var name = $('styName').value.trim();
+    if (!name) { fail('Please add your name so we know who to thank.'); $('styName').focus(); return; }
+    if (!$('styRelease').checked) { fail('We need your permission before we can keep this. Please check the box.'); return; }
+    if (wroteInstead && !$('styMessage').value.trim()) { fail('Please write a little something first.'); $('styMessage').focus(); return; }
+
+    sending = true;
+    $('stySend').disabled = true;
+    $('stySend').textContent = 'Sending...';
+
+    var body = basePayload();
+
+    if (wroteInstead || !blob) {
+      body.step = 'written';
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { if (!d || !d.ok) throw new Error('no'); finish(); })
+        .catch(function () { fail('That did not go through. Please try again, or call us at (417) 234-8494 and we will take it over the phone.'); });
+      return;
+    }
+
+    body.step = 'start';
+    body.size = blob.size;
+    body.type = cleanType();
+    body.ext = blobExt;
+
+    $('styProgress').classList.add('on');
+    $('styBarFill').style.width = '2%';
+    $('styPct').textContent = 'Getting ready...';
+
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok || !d.upload_url) throw new Error(d && d.error ? d.error : 'start failed');
+        return putVideo(d.upload_url).then(function () { return d.id; });
+      })
+      .then(function (id) {
+        $('styPct').textContent = 'Almost done...';
+        var vid = $('styVideo');
+        return fetch(ENDPOINT, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            step: 'complete', id: id, size: blob.size,
+            seconds: seconds || (vid && isFinite(vid.duration) ? vid.duration : 0),
+            message: $('styMessage').value.trim()
+          })
+        });
+      })
+      .then(function () { finish(); })
+      .catch(function (e) {
+        fail('Your video did not finish sending. It is usually the connection. Try again on wifi, or call us at (417) 234-8494 and we will sort it out.');
+      });
+  });
+
+  // Storage checks the content type against a short allow-list, and a browser
+  // type like "video/mp4;codecs=avc1" would not match. Send the plain type.
+  function cleanType() {
+    var t = (blob && blob.type ? blob.type : '').split(';')[0].trim();
+    return t || ('video/' + blobExt);
+  }
+
+  function putVideo(url) {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('PUT', url, true);
+      xhr.setRequestHeader('content-type', cleanType());
+      xhr.upload.onprogress = function (e) {
+        if (!e.lengthComputable) return;
+        var pct = Math.round((e.loaded / e.total) * 100);
+        $('styBarFill').style.width = Math.max(2, pct) + '%';
+        $('styPct').textContent = pct < 100
+          ? 'Sending your video, ' + pct + '%. Please keep this page open.'
+          : 'Almost done...';
+      };
+      xhr.onload = function () { (xhr.status >= 200 && xhr.status < 300) ? resolve() : reject(new Error('upload ' + xhr.status)); };
+      xhr.onerror = function () { reject(new Error('network')); };
+      xhr.send(blob);
+    });
+  }
+
+  // Don't let someone wander off mid-upload without a warning.
+  window.addEventListener('beforeunload', function (e) {
+    if (sending) { e.preventDefault(); e.returnValue = ''; }
+  });
+})();
+</script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+<script src="/assets/accessibility.js" defer></script>
+</body>
+</html>

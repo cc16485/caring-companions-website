@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Story Game | Caring Companions</title>
+<!-- A private link for our caregivers, not a public page. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0D365F; --cta:#1F7A8C; --cta-h:#155A68; --honey:#F0A63A; --deep-honey:#C17A12;
+         --cream:#faf9f6; --panel:#f2f0e9; --ink:#16283a; --muted:#55677a; --border:#e4e1d8; --pale:#EAF4F6; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Inter',Helvetica,Arial,sans-serif; background:var(--cream); color:var(--ink);
+        font-size:16px; line-height:1.6; padding:20px 16px 70px; }
+  .wrap{ max-width:560px; margin:0 auto; }
+  .logo{ width:150px; max-width:48%; display:block; margin:0 auto 18px; }
+  .serif{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; }
+  .card{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:22px 20px;
+         margin:0 0 14px; box-shadow:0 2px 14px rgba(13,54,95,.05); }
+  h1{ font-size:26px; color:var(--navy); margin:0 0 6px; }
+  h2{ font-size:19px; color:var(--navy); margin:0 0 8px; }
+  .sub{ color:var(--muted); font-size:14.5px; }
+
+  .score{ background:var(--navy); color:#fff; border-radius:18px; padding:18px 20px; margin:0 0 14px;
+          display:flex; align-items:center; gap:16px; }
+  .score .pts{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:38px; line-height:1; color:var(--honey); }
+  .score .lbl{ font-size:12px; text-transform:uppercase; letter-spacing:.06em; opacity:.75; }
+  .score .right{ margin-left:auto; text-align:right; font-size:13.5px; opacity:.9; line-height:1.5; }
+
+  .qcard{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; border-radius:18px;
+          padding:26px 22px; margin:0 0 14px; text-align:center; }
+  .qcard .kicker{ font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--honey); font-weight:700; margin-bottom:10px; }
+  .qcard .q{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:25px; line-height:1.35; }
+  .qswap{ background:none; border:none; color:#fff; opacity:.8; font-family:inherit; font-size:13.5px;
+          text-decoration:underline; cursor:pointer; margin-top:14px; }
+
+  label{ display:block; font-size:13.5px; font-weight:700; color:var(--navy); margin:0 0 6px; }
+  select,input,textarea{ width:100%; padding:13px 12px; font-size:16px; font-family:inherit; color:var(--ink);
+         background:var(--cream); border:1px solid var(--border); border-radius:11px; }
+  select:focus,input:focus{ outline:2px solid var(--cta); border-color:var(--cta); background:#fff; }
+
+  .btn{ font-family:inherit; font-size:16.5px; font-weight:700; padding:15px 22px; border-radius:12px;
+        border:none; cursor:pointer; width:100%; margin-top:12px; }
+  .btn-go{ background:var(--cta); color:#fff; }
+  .btn-go:hover{ background:var(--cta-h); }
+  .btn-go:disabled{ opacity:.55; cursor:wait; }
+  .btn-rec{ background:#e5484d; color:#fff; }
+  .btn-ghost{ background:#fff; color:var(--navy); border:1px solid var(--border); }
+  .row{ display:flex; gap:10px; }
+  .row .btn{ margin-top:0; }
+
+  .shell{ position:relative; background:var(--navy); border-radius:14px; overflow:hidden;
+          aspect-ratio:3/4; max-height:58vh; margin:0 auto; display:flex; align-items:center; justify-content:center; }
+  .shell video{ width:100%; height:100%; object-fit:cover; display:block; }
+  .shell video.mirror{ transform:scaleX(-1); }
+  .tele{ position:absolute; left:0; right:0; bottom:0; padding:44px 16px 14px; color:#fff; text-align:center;
+         font-family:'Source Serif 4',Georgia,serif; font-size:17px; line-height:1.45;
+         background:linear-gradient(to top,rgba(13,54,95,.95),rgba(13,54,95,0)); }
+  .timer{ position:absolute; top:10px; right:10px; background:rgba(13,54,95,.85); color:#fff; font-size:13px;
+          font-weight:700; padding:6px 12px; border-radius:999px; }
+  .timer .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; background:#e5484d;
+               margin-right:6px; animation:blink 1.1s infinite; }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+  .count{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+          background:rgba(13,54,95,.72); color:#fff; font-family:'Source Serif 4',Georgia,serif; font-size:84px; }
+
+  .board{ list-style:none; }
+  .board li{ display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--border); font-size:15px; }
+  .board li:last-child{ border-bottom:none; }
+  .board .medal{ width:26px; text-align:center; }
+  .board .p{ margin-left:auto; font-weight:700; color:var(--deep-honey); }
+  .board li.me{ font-weight:700; color:var(--navy); }
+
+  .bar{ height:10px; background:#e4e1d8; border-radius:999px; overflow:hidden; margin-top:14px; }
+  .bar i{ display:block; height:100%; width:0; background:var(--cta); transition:width .25s; }
+  .hide{ display:none !important; }
+  .err{ background:#fdf0f0; color:#a33; border-radius:10px; padding:12px 14px; font-size:14.5px; margin-top:12px; }
+  .tip{ background:var(--panel); border-radius:12px; padding:14px 16px; font-size:14px; line-height:1.6; color:var(--muted); margin-top:12px; }
+  .win{ text-align:center; }
+  .win .big{ font-size:64px; line-height:1; }
+  .win .earned{ display:inline-block; background:var(--honey); color:#3d2a06; font-weight:700; font-size:15px;
+                padding:8px 18px; border-radius:999px; margin:10px 0 4px; }
+  .rules{ font-size:13.5px; color:var(--muted); line-height:1.7; }
+  .rules b{ color:var(--navy); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="/assets/cc-logo.webp" alt="Caring Companions">
+
+  <!-- loading / bad link -->
+  <div class="card" id="boot">
+    <h1 class="serif">The Story Game</h1>
+    <p class="sub" id="bootMsg">Getting your questions...</p>
+  </div>
+
+  <!-- score strip -->
+  <div class="score hide" id="score">
+    <div>
+      <div class="pts" id="ptsNum">0</div>
+      <div class="lbl">points this month</div>
+    </div>
+    <div class="right" id="scoreRight"></div>
+  </div>
+
+  <!-- the question -->
+  <div class="qcard hide" id="qcard">
+    <div class="kicker" id="qKicker">This week's question</div>
+    <div class="q" id="qText"></div>
+    <button class="qswap" id="qSwap">Pick a different question</button>
+  </div>
+
+  <!-- pick a client + start -->
+  <div class="card hide" id="setup">
+    <h2 class="serif" id="hello">Ready?</h2>
+    <p class="sub" style="margin-bottom:14px;">Ask them the question, then hit record while they answer. Short and real beats long and perfect.</p>
+    <label for="clientPick">Who are you with?</label>
+    <select id="clientPick"><option value="">Choose a client...</option></select>
+    <button class="btn btn-go" id="goRecord">Record their answer</button>
+    <button class="btn btn-ghost" id="goUpload">Upload a video I already took</button>
+    <input type="file" id="file" accept="video/*" class="hide">
+    <div class="tip">
+      <b style="color:var(--navy);">Before you record:</b> ask if it is okay, hold the phone upright, sit where the light is on their face. If they say no, that is a complete answer and it costs you nothing.
+    </div>
+    <div class="err hide" id="setupErr"></div>
+  </div>
+
+  <!-- recorder -->
+  <div class="card hide" id="rec">
+    <h2 class="serif" id="recHead">Take your time</h2>
+    <p class="sub" style="margin-bottom:14px;" id="recNote">Three count, then just let them talk. It stops on its own after two minutes.</p>
+    <div class="shell">
+      <video id="vid" playsinline muted class="mirror"></video>
+      <div class="tele" id="tele"></div>
+      <div class="timer hide" id="timer"><span class="dot"></span><span id="timerT">0:00</span></div>
+      <div class="count hide" id="count">3</div>
+    </div>
+    <div id="ctrlsIdle"><button class="btn btn-rec" id="startBtn">Start recording</button></div>
+    <div id="ctrlsRec" class="hide"><button class="btn btn-rec" id="stopBtn">Stop</button></div>
+    <div id="ctrlsDone" class="hide">
+      <button class="btn btn-go" id="sendBtn">Send it in</button>
+      <div class="row" style="margin-top:10px;">
+        <button class="btn btn-ghost" id="retakeBtn">Start over</button>
+        <button class="btn btn-ghost" id="cancelBtn">Never mind</button>
+      </div>
+    </div>
+    <div class="bar hide" id="bar"><i id="barFill"></i></div>
+    <p class="sub hide" id="barTxt" style="text-align:center;margin-top:8px;"></p>
+    <div class="err hide" id="recErr"></div>
+  </div>
+
+  <!-- win -->
+  <div class="card win hide" id="win">
+    <div class="big">🎉</div>
+    <h2 class="serif" style="font-size:24px;">Sent!</h2>
+    <p class="sub" id="winSub"></p>
+    <div class="earned" id="winPts"></div>
+    <p class="sub" style="margin-top:10px;">Their family gets an email that it is waiting. Every heart they tap is 5 more points for you.</p>
+    <button class="btn btn-go" id="againBtn">Record another</button>
+  </div>
+
+  <!-- leaderboard -->
+  <div class="card hide" id="boardCard">
+    <h2 class="serif">This month</h2>
+    <ul class="board" id="board"></ul>
+    <div class="tip rules">
+      <b>How points work:</b> 1 for recording a story, <b>5</b> every time a family member hearts it, <b>10</b> when the family is proud enough to let us share it. Most points at the end of the month wins the prize.
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var API = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/cc-memories?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a';
+  var MAX_SECONDS = 120, MAX_BYTES = 300 * 1024 * 1024;
+  var $ = function (id) { return document.getElementById(id); };
+  var K = new URLSearchParams(location.search).get('k') || '';
+
+  var state = { prompts: [], prompt: '', clients: [], me: null, pi: 0 };
+  var blob = null, ext = 'webm', stream = null, recorder = null, chunks = [], secs = 0, tick = null, busy = false;
+
+  // Anything the network throws reads like gibberish to a caregiver standing in
+  // someone's living room, so it never reaches the screen raw.
+  var OFFLINE = 'We could not reach us just now. Check your signal and try again, or call the office at (417) 234-8494.';
+  function post(body) {
+    body.k = K;
+    return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .catch(function () { throw new Error(OFFLINE); })
+      .then(function (r) { return r.json().catch(function () { throw new Error(OFFLINE); }); })
+      .then(function (d) { if (!d || d.error) throw new Error((d && d.error) || OFFLINE); return d; });
+  }
+  function show(id) { $(id).classList.remove('hide'); }
+  function hide(id) { $(id).classList.add('hide'); }
+  function fail(el, msg) { $(el).textContent = msg; show(el); }
+
+  // ---------- boot ----------
+  if (!K) {
+    $('bootMsg').textContent = 'This page needs the private link the office texted you. Open that link again, or ask us to send it.';
+  } else {
+    post({ action: 'player:load' }).then(function (d) {
+      state.prompts = d.prompts || [];
+      state.clients = d.clients || [];
+      state.me = d.me;
+      state.prompt = (d.featured && d.featured.text) || (state.prompts[0] && state.prompts[0].text) || '';
+      hide('boot');
+      $('hello').textContent = 'Hi ' + String(d.player.name || '').split(' ')[0] + ', ready?';
+      $('qText').textContent = state.prompt;
+      var sel = $('clientPick');
+      state.clients.forEach(function (c) {
+        var o = document.createElement('option'); o.value = c.id; o.textContent = c.name; sel.appendChild(o);
+      });
+      if (!state.clients.length) {
+        sel.innerHTML = '<option>No clients signed up yet</option>';
+        $('goRecord').disabled = true;
+      }
+      paintScore(d.me);
+      paintBoard(d.board || [], d.player.id);
+      show('score'); show('qcard'); show('setup'); show('boardCard');
+    }).catch(function (e) {
+      $('bootMsg').textContent = e.message || 'Something went wrong. Try again in a minute, or call the office.';
+    });
+  }
+
+  function paintScore(me) {
+    if (!me) return;
+    $('ptsNum').textContent = me.month_points;
+    $('scoreRight').innerHTML = (me.rank ? ('#' + me.rank + ' of ' + me.of + '<br>') : '')
+      + me.videos + ' stories &middot; ' + me.hearts + ' hearts';
+  }
+  function paintBoard(board, myId) {
+    var medals = ['🥇', '🥈', '🥉'];
+    $('board').innerHTML = board.length
+      ? board.map(function (r, i) {
+          return '<li class="' + (r.id === myId ? 'me' : '') + '"><span class="medal">' + (medals[i] || (i + 1)) + '</span>'
+            + '<span>' + esc(r.name) + '</span><span class="p">' + r.pts + '</span></li>';
+        }).join('')
+      : '<li>Nobody on the board yet. Be first.</li>';
+  }
+  function esc(t) { var d = document.createElement('div'); d.textContent = t == null ? '' : t; return d.innerHTML; }
+
+  // ---------- swap the question ----------
+  $('qSwap').addEventListener('click', function () {
+    if (!state.prompts.length) return;
+    state.pi = (state.pi + 1) % state.prompts.length;
+    state.prompt = state.prompts[state.pi].text;
+    $('qText').textContent = state.prompt;
+    $('qKicker').textContent = 'Another one to try';
+    $('tele').textContent = state.prompt;
+  });
+
+  // ---------- start recording ----------
+  function requireClient() {
+    hide('setupErr');
+    if (!$('clientPick').value) { fail('setupErr', 'Choose who you are with first.'); return false; }
+    return true;
+  }
+
+  $('goRecord').addEventListener('click', function () {
+    if (!requireClient()) return;
+    if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder)) { $('file').click(); return; }
+    hide('setup'); hide('qcard'); show('rec');
+    $('tele').textContent = state.prompt;
+    openCamera();
+  });
+  $('goUpload').addEventListener('click', function () { if (requireClient()) $('file').click(); });
+  $('file').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    if (f.size > MAX_BYTES) { fail('setupErr', 'That video is too big to send. A shorter one will go right through.'); return; }
+    blob = f;
+    var n = f.name || '';
+    ext = (n.indexOf('.') > -1 ? n.split('.').pop() : 'mp4').toLowerCase().replace(/[^a-z0-9]/g, '') || 'mp4';
+    hide('setup'); hide('qcard'); show('rec');
+    $('recHead').textContent = 'Ready to send';
+    $('recNote').textContent = 'Have a look, then send it in.';
+    var v = $('vid');
+    v.srcObject = null; v.src = URL.createObjectURL(blob); v.muted = false; v.controls = true; v.classList.remove('mirror');
+    hide('tele'); hide('ctrlsIdle'); show('ctrlsDone');
+  });
+
+  function openCamera() {
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }, audio: true
+    }).catch(function () {
+      return navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    }).then(function (s) {
+      stream = s;
+      var v = $('vid');
+      v.srcObject = s; v.muted = true; v.controls = false; v.classList.remove('mirror'); v.play();
+    }).catch(function () {
+      $('recHead').textContent = 'We could not reach the camera';
+      $('recNote').textContent = 'Allow camera access and reload, or go back and upload a video from your phone.';
+      hide('ctrlsIdle');
+      show('ctrlsDone'); $('sendBtn').classList.add('hide');
+    });
+  }
+
+  $('startBtn').addEventListener('click', function () {
+    if (!stream) return;
+    var n = 3; show('count'); $('count').textContent = n;
+    var cd = setInterval(function () {
+      n--; if (n > 0) { $('count').textContent = n; return; }
+      clearInterval(cd); hide('count'); begin();
+    }, 900);
+  });
+
+  function pickMime() {
+    var t = ['video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'];
+    for (var i = 0; i < t.length; i++) if (MediaRecorder.isTypeSupported(t[i])) return t[i];
+    return '';
+  }
+  function begin() {
+    chunks = []; secs = 0;
+    var mime = pickMime();
+    ext = mime.indexOf('mp4') > -1 ? 'mp4' : 'webm';
+    try {
+      recorder = mime ? new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 2000000, audioBitsPerSecond: 128000 })
+                      : new MediaRecorder(stream);
+    } catch (e) { recorder = new MediaRecorder(stream); }
+    recorder.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+    recorder.onstop = function () {
+      blob = new Blob(chunks, { type: (chunks[0] && chunks[0].type) || ('video/' + ext) });
+      if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+      var v = $('vid');
+      v.srcObject = null; v.src = URL.createObjectURL(blob); v.muted = false; v.controls = true;
+      hide('tele'); hide('ctrlsRec'); show('ctrlsDone');
+      $('recHead').textContent = 'Watch it back';
+      $('recNote').textContent = 'Happy with it? Send it in. If not, start over, no harm done.';
+    };
+    recorder.start();
+    hide('ctrlsIdle'); show('ctrlsRec'); show('timer');
+    tick = setInterval(function () {
+      secs++;
+      var m = Math.floor(secs / 60), s = secs % 60;
+      $('timerT').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      if (secs >= MAX_SECONDS) stopRec();
+    }, 1000);
+  }
+  function stopRec() {
+    if (tick) { clearInterval(tick); tick = null; }
+    hide('timer');
+    if (recorder && recorder.state !== 'inactive') recorder.stop();
+  }
+  $('stopBtn').addEventListener('click', stopRec);
+
+  $('retakeBtn').addEventListener('click', function () {
+    blob = null; chunks = [];
+    var v = $('vid'); v.pause(); v.removeAttribute('src'); v.load(); v.controls = false; v.muted = true;
+    show('tele'); $('tele').textContent = state.prompt;
+    hide('ctrlsDone'); show('ctrlsIdle');
+    $('recHead').textContent = 'Take your time';
+    $('recNote').textContent = 'Three count, then just let them talk. It stops on its own after two minutes.';
+    openCamera();
+  });
+  $('cancelBtn').addEventListener('click', function () {
+    blob = null; chunks = [];
+    if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+    var v = $('vid'); v.pause(); v.removeAttribute('src'); v.load();
+    hide('rec'); hide('ctrlsDone'); show('ctrlsIdle'); show('setup'); show('qcard');
+  });
+
+  // ---------- send ----------
+  function cleanType() {
+    var t = (blob && blob.type ? blob.type : '').split(';')[0].trim();
+    return t || ('video/' + ext);
+  }
+  $('sendBtn').addEventListener('click', function () {
+    if (busy || !blob) return;
+    busy = true; hide('recErr');
+    $('sendBtn').disabled = true; $('sendBtn').textContent = 'Sending...';
+    show('bar'); show('barTxt'); $('barTxt').textContent = 'Sending, keep this page open.';
+
+    post({
+      action: 'player:start', client_id: $('clientPick').value, prompt: state.prompt,
+      size: blob.size, type: cleanType(), ext: ext
+    }).then(function (d) {
+      return put(d.upload_url).then(function () { return d.id; });
+    }).then(function (id) {
+      return post({ action: 'player:complete', id: id, size: blob.size, seconds: secs || 0 });
+    }).then(function (d) {
+      busy = false;
+      hide('rec'); hide('bar'); hide('barTxt'); show('win');
+      $('winSub').textContent = 'That one is in ' + ($('clientPick').selectedOptions[0].textContent) + "'s library.";
+      $('winPts').textContent = '+1 point, and counting';
+      if (state.me) { state.me.month_points = d.month_points; state.me.videos++; paintScore(state.me); }
+      $('sendBtn').disabled = false; $('sendBtn').textContent = 'Send it in';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }).catch(function (e) {
+      busy = false;
+      $('sendBtn').disabled = false; $('sendBtn').textContent = 'Send it in';
+      hide('bar'); hide('barTxt');
+      fail('recErr', (e && e.message) ? e.message : 'It did not finish sending. Usually that is the signal. Try again on wifi.');
+    });
+  });
+
+  function put(url) {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('PUT', url, true);
+      xhr.setRequestHeader('content-type', cleanType());
+      xhr.upload.onprogress = function (e) {
+        if (!e.lengthComputable) return;
+        var pct = Math.round((e.loaded / e.total) * 100);
+        $('barFill').style.width = Math.max(3, pct) + '%';
+        $('barTxt').textContent = pct < 100 ? 'Sending, ' + pct + '%' : 'Almost there...';
+      };
+      xhr.onload = function () { (xhr.status >= 200 && xhr.status < 300) ? resolve() : reject(new Error('upload ' + xhr.status)); };
+      xhr.onerror = function () { reject(new Error('network')); };
+      xhr.send(blob);
+    });
+  }
+
+  $('againBtn').addEventListener('click', function () {
+    blob = null; chunks = []; secs = 0;
+    $('barFill').style.width = '0';
+    hide('win'); hide('ctrlsDone'); show('ctrlsIdle'); show('setup'); show('qcard');
+    $('recHead').textContent = 'Take your time';
+    $('sendBtn').classList.remove('hide');
+    post({ action: 'player:load' }).then(function (d) { state.me = d.me; paintScore(d.me); paintBoard(d.board || [], d.player.id); }).catch(function () {});
+  });
+
+  window.addEventListener('beforeunload', function (e) { if (busy) { e.preventDefault(); e.returnValue = ''; } });
+})();
+</script>
+</body>
+</html>

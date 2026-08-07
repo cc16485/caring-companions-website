@@ -78,6 +78,11 @@
   <div class="big" id="thanksEmoji">&hearts;</div>
   <h1 id="thanksHead">Thank you!</h1>
   <p class="sub" id="thanksSub">Your feedback went straight to Samantha, our owner. It truly means a lot to our whole team.</p>
+  <div id="storyAsk" style="display:none;background:var(--pale);border-radius:12px;padding:16px 18px;margin:6px 0 4px;">
+    <div style="font-weight:bold;color:var(--brand-blue);font-family:Arial,Helvetica,sans-serif;font-size:15px;margin-bottom:6px;">Would you say that on camera?</div>
+    <div style="font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:12px;">About a minute, recorded right on your phone. It is how good caregivers find us.</div>
+    <a href="/share-your-story?who=caregiver" style="display:inline-block;background:#1F7A8C;color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:15px;padding:11px 22px;border-radius:9px;text-decoration:none;">Record my story &rarr;</a>
+  </div>
   <a class="home" href="/">Visit our website &rarr;</a>
 </div>
 
@@ -137,6 +142,7 @@
             ? 'Samantha, our owner, will read this herself.' + (document.getElementById('fb-contact').value.trim() ? ' Since you left a way to reach you, expect a personal follow-up soon.' : ' If you would like a call back, you can reach us any time at (417) 234-8494.')
             : 'Your feedback went straight to Samantha, our owner. It truly means a lot to our whole team.';
           document.getElementById('thanks').style.display = 'block';
+          if(rating >= 4){ document.getElementById('storyAsk').style.display = 'block'; }
         } else { throw new Error('send failed'); }
       })
       .catch(function(){

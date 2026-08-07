@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory Library | Caring Companions</title>
+<!-- A private family library. Never indexed, never linked publicly. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0D365F; --cta:#1F7A8C; --cta-h:#155A68; --honey:#F0A63A; --deep-honey:#C17A12;
+         --cream:#faf9f6; --panel:#f2f0e9; --ink:#16283a; --muted:#55677a; --border:#e4e1d8; --pale:#EAF4F6; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Inter',Helvetica,Arial,sans-serif; background:var(--cream); color:var(--ink);
+        font-size:16px; line-height:1.6; padding:22px 16px 80px; }
+  .wrap{ max-width:760px; margin:0 auto; }
+  .logo{ width:160px; max-width:50%; display:block; margin:0 auto 20px; }
+  .serif{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; }
+  .card{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 22px;
+         margin:0 0 16px; box-shadow:0 2px 14px rgba(13,54,95,.05); }
+  h1{ font-size:29px; color:var(--navy); margin:0 0 8px; text-wrap:balance; }
+  h2{ font-size:20px; color:var(--navy); margin:0 0 6px; }
+  .sub{ color:var(--muted); font-size:15px; }
+  .center{ text-align:center; }
+
+  label{ display:block; font-size:13.5px; font-weight:700; color:var(--navy); margin:14px 0 6px; }
+  input{ width:100%; padding:14px 12px; font-size:22px; letter-spacing:.28em; text-align:center; font-family:inherit;
+         color:var(--ink); background:var(--cream); border:1px solid var(--border); border-radius:11px; }
+  input:focus{ outline:2px solid var(--cta); border-color:var(--cta); background:#fff; }
+  .btn{ font-family:inherit; font-size:16.5px; font-weight:700; padding:14px 22px; border-radius:12px;
+        border:none; cursor:pointer; width:100%; margin-top:14px; background:var(--cta); color:#fff; }
+  .btn:hover{ background:var(--cta-h); }
+  .btn:disabled{ opacity:.55; cursor:wait; }
+  .err{ background:#fdf0f0; color:#a33; border-radius:10px; padding:12px 14px; font-size:14.5px; margin-top:12px; }
+
+  .hdr{ text-align:center; margin:0 0 20px; }
+  .hdr .kicker{ font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--deep-honey); }
+  .hdr h1{ margin-top:8px; }
+  .role{ display:inline-block; font-size:12.5px; font-weight:700; background:var(--pale); color:#0f5566;
+         border-radius:999px; padding:6px 14px; margin-top:10px; }
+
+  .vid-card{ background:#fff; border:1px solid var(--border); border-radius:18px; overflow:hidden;
+             margin:0 0 18px; box-shadow:0 2px 14px rgba(13,54,95,.05); }
+  .vid-card video{ width:100%; display:block; background:#0D365F; max-height:70vh; }
+  .vid-body{ padding:20px 22px 22px; }
+  .vid-q{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:21px; color:var(--navy);
+          line-height:1.35; margin:0 0 6px; }
+  .vid-meta{ font-size:13.5px; color:var(--muted); }
+  .acts{ display:flex; align-items:center; gap:10px; margin-top:16px; flex-wrap:wrap; }
+  .heart{ font-family:inherit; font-size:15px; font-weight:700; background:#fff; color:var(--navy);
+          border:1px solid var(--border); border-radius:999px; padding:10px 18px; cursor:pointer; }
+  .heart:hover{ border-color:#e5484d; color:#e5484d; }
+  .heart.on{ background:#fdf0f0; border-color:#e5484d; color:#e5484d; }
+  .save{ font-size:14px; font-weight:600; color:var(--cta); text-decoration:none; margin-left:auto; }
+
+  .share{ margin-top:16px; background:var(--pale); border-radius:14px; padding:16px 18px; }
+  .share .q{ font-size:14.5px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .share .why{ font-size:13.5px; color:var(--muted); line-height:1.6; }
+  .share .opts{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .share button{ font-family:inherit; font-size:14.5px; font-weight:700; border-radius:10px; padding:11px 18px;
+                 border:1px solid var(--border); background:#fff; color:var(--navy); cursor:pointer; }
+  .share button.yes.on{ background:#14606F; border-color:#14606F; color:#fff; }
+  .share button.no.on{ background:#55677a; border-color:#55677a; color:#fff; }
+  .share .state{ font-size:13.5px; color:var(--muted); margin-top:10px; }
+  .locked{ margin-top:14px; font-size:13.5px; color:var(--muted); background:var(--panel);
+           border-radius:12px; padding:13px 16px; line-height:1.6; }
+
+  .empty{ text-align:center; padding:26px 10px; color:var(--muted); }
+  .empty .big{ font-size:52px; }
+  .foot{ font-size:13.5px; color:var(--muted); line-height:1.7; text-align:center; margin-top:26px; }
+  .foot a{ color:var(--cta); font-weight:600; }
+  .hide{ display:none !important; }
+  @media (max-width:600px){ h1{ font-size:25px; } .vid-body{ padding:18px; } .vid-q{ font-size:19px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="/assets/cc-logo.webp" alt="Caring Companions">
+
+  <!-- gate -->
+  <div class="card center" id="gate">
+    <h1 class="serif" id="gateHead">Memory Library</h1>
+    <p class="sub" id="gateSub">Enter the 6-digit code the office gave you.</p>
+    <div id="gateForm">
+      <label for="code">Your code</label>
+      <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000">
+      <button class="btn" id="gateBtn">Open the library</button>
+    </div>
+    <div class="err hide" id="gateErr"></div>
+  </div>
+
+  <!-- library -->
+  <div class="hide" id="lib">
+    <div class="hdr">
+      <div class="kicker">Memory Library</div>
+      <h1 class="serif" id="libTitle"></h1>
+      <p class="sub" id="libSub"></p>
+      <div class="role" id="libRole"></div>
+    </div>
+    <div id="list"></div>
+    <p class="foot">
+      These videos are private to your family. We keep them safe and we never share one publicly unless
+      your family says yes right here.<br>
+      Questions, or want a video removed? Call us at <a href="tel:14172348494">(417) 234-8494</a>.
+    </p>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var API = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/cc-memories?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a';
+  var $ = function (id) { return document.getElementById(id); };
+  var C = new URLSearchParams(location.search).get('c') || '';
+  var CODE_KEY = 'cc-mem-code-' + C;
+  var VK_KEY = 'cc-mem-vk';
+  var role = 'viewer', code = '';
+
+  // A per-device id so a heart counts once per person, not once per tap.
+  var vk = '';
+  try {
+    vk = localStorage.getItem(VK_KEY) || '';
+    if (!vk) { vk = 'v' + Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem(VK_KEY, vk); }
+  } catch (e) { vk = 'v' + Math.random().toString(36).slice(2); }
+
+  var OFFLINE = 'We could not reach the library just now. Check your connection and try again, or call us at (417) 234-8494.';
+  function post(body) {
+    body.c = C; body.code = code; body.vk = vk;
+    return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .catch(function () { throw new Error(OFFLINE); })
+      .then(function (r) { return r.json().catch(function () { throw new Error(OFFLINE); }); })
+      .then(function (d) { if (!d || d.error) throw new Error((d && d.error) || OFFLINE); return d; });
+  }
+  function esc(t) { var d = document.createElement('div'); d.textContent = t == null ? '' : t; return d.innerHTML; }
+  function when(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  if (!C) {
+    $('gateSub').textContent = 'This page needs the private link we sent your family. Open that link again, or call the office and we will resend it.';
+    $('gateForm').classList.add('hide');
+  } else {
+    var saved = '';
+    try { saved = localStorage.getItem(CODE_KEY) || ''; } catch (e) {}
+    if (saved) { code = saved; open(true); }
+  }
+
+  $('gateBtn').addEventListener('click', function () {
+    code = ($('code').value || '').replace(/\D/g, '');
+    if (code.length < 4) { $('gateErr').textContent = 'That code looks too short.'; $('gateErr').classList.remove('hide'); return; }
+    open(false);
+  });
+  $('code').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('gateBtn').click(); });
+
+  function open(silent) {
+    $('gateErr').classList.add('hide');
+    $('gateBtn').disabled = true; $('gateBtn').textContent = 'Opening...';
+    post({ action: 'family:load' }).then(function (d) {
+      try { localStorage.setItem(CODE_KEY, code); } catch (e) {}
+      role = d.role;
+      $('gate').classList.add('hide');
+      $('lib').classList.remove('hide');
+      $('libTitle').textContent = d.client.first + "'s stories";
+      $('libSub').textContent = d.videos.length
+        ? d.videos.length + (d.videos.length === 1 ? ' memory saved so far' : ' memories saved so far')
+        : 'Nothing here yet, but there will be soon.';
+      $('libRole').textContent = role === 'owner'
+        ? 'You decide what may be shared'
+        : 'You can watch and leave hearts';
+      paint(d.videos);
+    }).catch(function (e) {
+      $('gateBtn').disabled = false; $('gateBtn').textContent = 'Open the library';
+      if (silent) { try { localStorage.removeItem(CODE_KEY); } catch (x) {} return; }
+      $('gateErr').textContent = e.message || 'That did not work. Try again.';
+      $('gateErr').classList.remove('hide');
+    });
+  }
+
+  function paint(videos) {
+    if (!videos.length) {
+      $('list').innerHTML = '<div class="card empty"><div class="big">🎬</div>'
+        + '<p class="sub" style="margin-top:8px;">Their caregiver will record the first one soon. '
+        + 'We will email you the moment it lands.</p></div>';
+      return;
+    }
+    $('list').innerHTML = videos.map(function (v) {
+      var mins = v.seconds ? (v.seconds >= 60 ? Math.floor(v.seconds / 60) + ' min ' + (v.seconds % 60) + ' sec' : v.seconds + ' sec') : '';
+      return '<div class="vid-card" id="c-' + v.id + '">'
+        + '<video src="' + esc(v.watch) + '" controls preload="metadata" playsinline></video>'
+        + '<div class="vid-body">'
+        + '<p class="vid-q">' + esc(v.prompt) + '</p>'
+        + '<p class="vid-meta">' + esc(when(v.at)) + (v.player_name ? ' &middot; recorded by ' + esc(v.player_name) : '')
+        + (mins ? ' &middot; ' + mins : '') + '</p>'
+        + '<div class="acts">'
+        + '<button class="heart' + (v.hearted ? ' on' : '') + '" data-id="' + v.id + '">'
+        + (v.hearted ? '♥' : '♡') + ' <span>' + v.hearts + '</span></button>'
+        + '<a class="save" href="' + esc(v.watch) + '" download>Save a copy</a>'
+        + '</div>'
+        + shareBlock(v)
+        + '</div></div>';
+    }).join('');
+
+    Array.prototype.forEach.call(document.querySelectorAll('.heart'), function (b) {
+      b.addEventListener('click', function () {
+        var id = b.getAttribute('data-id');
+        if (b.classList.contains('on')) return;
+        b.classList.add('on'); b.innerHTML = '♥ <span>' + (parseInt(b.textContent.replace(/\D/g, ''), 10) + 1) + '</span>';
+        post({ action: 'family:heart', id: id }).then(function (d) {
+          b.innerHTML = '♥ <span>' + d.hearts + '</span>';
+        }).catch(function () {});
+      });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-share]'), function (b) {
+      b.addEventListener('click', function () {
+        var id = b.getAttribute('data-share-id'), d = b.getAttribute('data-share');
+        var box = document.getElementById('s-' + id);
+        Array.prototype.forEach.call(box.querySelectorAll('button'), function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        box.querySelector('.state').textContent = 'Saving...';
+        post({ action: 'family:share', id: id, decision: d }).then(function () {
+          box.querySelector('.state').textContent = d === 'yes'
+            ? 'Thank you. We will always credit them the way you asked us to.'
+            : 'Kept private. Only your family can see it.';
+        }).catch(function (e) {
+          box.querySelector('.state').textContent = e.message || 'That did not save. Try again.';
+        });
+      });
+    });
+  }
+
+  function shareBlock(v) {
+    if (role !== 'owner') {
+      if (v.share === 'yes') return '<div class="locked">Your family has said this one may be shared publicly.</div>';
+      return '<div class="locked">This is private to your family. Only the decision maker on file can change that.</div>';
+    }
+    var state = v.share === 'yes' ? 'Shared publicly with your blessing.'
+      : v.share === 'no' ? 'Kept private. Only your family can see it.'
+      : 'No answer yet, so it stays private.';
+    return '<div class="share" id="s-' + v.id + '">'
+      + '<div class="q">May we share this one publicly?</div>'
+      + '<div class="why">We would use it on our website or social media to show families what care can look like. '
+      + 'Saying no changes nothing, and you can change your mind any time.</div>'
+      + '<div class="opts">'
+      + '<button class="yes' + (v.share === 'yes' ? ' on' : '') + '" data-share="yes" data-share-id="' + v.id + '">Yes, you may share it</button>'
+      + '<button class="no' + (v.share === 'no' ? ' on' : '') + '" data-share="no" data-share-id="' + v.id + '">No, keep it private</button>'
+      + '</div><div class="state">' + state + '</div></div>';
+  }
+})();
+</script>
+</body>
+</html>
