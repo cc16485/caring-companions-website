@@ -115,9 +115,16 @@
 <div id="contact-form">
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600;margin:0 0 20px;color:#0D365F">Send us a message</h2>
 <div class="ct-form-grid">
-<input id="f-name" class="ct-input" placeholder="Your name">
-<input id="f-phone" class="ct-input" placeholder="Phone">
-<input id="f-email" class="ct-input ct-email" type="email" placeholder="Email">
+<input id="f-name" class="ct-input" placeholder="Your name" autocomplete="name" required>
+<input id="f-phone" class="ct-input" placeholder="Phone" autocomplete="tel" inputmode="tel">
+<input id="f-email" class="ct-input ct-email" type="email" placeholder="Email" autocomplete="email">
+</div>
+<p style="font-size:12.5px;color:#8a978f;margin:-6px 0 14px">A phone number or an email, whichever you prefer. We need one of them to answer you.</p>
+<!-- Honeypot. Hidden from people, irresistible to bots, and anything that
+     fills it in never becomes a lead. -->
+<div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden" aria-hidden="true">
+<label for="f-website">Website</label>
+<input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
 </div>
 <p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">I'm looking into care for</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px" id="who-chips"></div>
@@ -237,11 +244,22 @@
     var email = document.getElementById('f-email').value.trim();
     var message = document.getElementById('f-message').value.trim();
     errEl.hidden = true;
-    if (!name && !phone && !email) {
-      errEl.textContent = 'Please include your name and a phone number or email so we can reach you.';
+    // A name on its own used to be enough to send this, which meant somebody
+    // could reach out and leave us no way on earth to reach back.
+    if (!name) {
+      errEl.textContent = 'Please add your name so we know who we are talking to.';
       errEl.hidden = false;
+      document.getElementById('f-name').focus();
       return;
     }
+    if (!phone && !email) {
+      errEl.textContent = 'Please add a phone number or an email. Without one of them we have no way to answer you.';
+      errEl.hidden = false;
+      document.getElementById('f-phone').focus();
+      return;
+    }
+    // Bots fill in every field they can see, including the one nobody can.
+    if (document.getElementById('f-website').value) { return; }
     var heard = document.getElementById('f-heard').value.trim();
     var parts = [message];
     if (method) parts.push('Preferred contact method: ' + method);
