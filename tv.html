@@ -206,14 +206,16 @@
         <div class="lab">hours of care a week, roughly</div>
       </div>
       <div class="res-cost">
-        <div class="c" id="rCost">$2,600 a month</div>
-        <div class="n">At our published rate of $30 to $34 an hour. A coordinator confirms the real number with you, and it is often less than families expect.</div>
+        <div class="c" id="rCost">$2,050 to $2,400 a month</div>
+        <div class="n">A range, based on our published $30 to $34 an hour. <b>Our office will call you with the exact number</b> for her situation, and it is often less than families expect once we look at it properly.</div>
       </div>
 
       <div class="win hide" id="rWin">
-        <span class="tag">Included at this level</span>
-        <h3>HomeTogether TV comes with it</h3>
-        <p>At 20 hours a week or more, private-pay families get HomeTogether TV at no charge. Her television becomes a video call, she does not press a thing, and up to ten of you can be on it at once. It is $99 a month on its own.</p>
+        <span class="tag">Yours at no charge</span>
+        <h3>At this many hours, the TV is free</h3>
+        <p>HomeTogether TV normally costs $99 a month. For our private-pay families at 20 or more hours a week, it is <b>included with the care, at no charge, for as long as care continues</b>. Not a trial, not a discount, and nothing added to your bill.</p>
+        <p style="margin-top:10px;">It turns her own television into a video call. You ring from your phone, her TV comes on with your face on it, and she does not press a button or find a password. Up to ten of you at once. It also carries her medication reminders, her activity channels, and camera-free safety sensing.</p>
+        <p style="margin-top:10px;">We ship it free after the first month of care and it takes about ten minutes to plug in.</p>
       </div>
 
       <div class="near hide" id="rNear">
@@ -251,7 +253,7 @@
       </div>
       <button class="go" id="send">Send me this, and let's talk</button>
       <div class="err" id="err"></div>
-      <p class="fine">No obligation and no pressure. A real care coordinator here in Springfield calls you, usually the same day.</p>
+      <p class="fine"><b>Our office will contact you</b> with the exact cost and answer anything you want to ask. No obligation and no pressure, and we will tell you honestly if we are not the right fit.</p>
       <button class="back" data-back>Back</button>
     </div>
 
@@ -351,8 +353,11 @@
   function result() {
     hours = estimate();
     $('rHours').textContent = hours;
-    var monthly = hours * RATE * WEEKS;
-    $('rCost').textContent = money(monthly) + ' a month';
+    // A range, not a number. A single figure invites somebody to hold us to it
+    // before anyone has actually looked at her situation.
+    var lo = Math.floor((hours * 30 * WEEKS) / 50) * 50;
+    var hi = Math.ceil((hours * 34 * WEEKS) / 50) * 50;
+    $('rCost').textContent = money(lo) + ' to ' + money(hi) + ' a month';
     $('rTitle').textContent = hours >= 24 ? 'She would likely need daily help'
       : hours >= 20 ? 'She would likely need' : 'She would likely need';
 
@@ -387,7 +392,8 @@
     var needs = (A.needs || []).map(function (n) { return n.v; }).join(', ') || 'not said';
     var msg = [
       'FROM THE FACEBOOK FUNNEL (mo-care.com/tv)',
-      'Estimated need: ' + hours + ' hours a week (~' + money(hours * RATE * WEEKS) + '/mo at $' + RATE + ')',
+      'Estimated need: ' + hours + ' hours a week (' + money(Math.floor((hours*30*WEEKS)/50)*50) + ' to '
+        + money(Math.ceil((hours*34*WEEKS)/50)*50) + '/mo at the published rate)',
       hours >= 20 ? 'QUALIFIES for HomeTogether TV included.'
         : 'Under 20 hrs by ' + (20 - hours) + '. Offer them: more hours, the TV at $99/mo, or virtual visits from $75/wk.',
       '',
