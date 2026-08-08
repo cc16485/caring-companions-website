@@ -28,6 +28,17 @@
 .hy-hero .cta{ display:inline-block; background:#F0A63A; color:#3d2a06; font-weight:700; font-size:17px; padding:16px 32px; border-radius:12px; text-decoration:none; margin-top:12px; }
 .hy-hero .cta:hover{ background:#e09a2e; }
 
+.hy-hero .in{ max-width:1120px; display:grid; grid-template-columns:1.02fr .98fr; gap:48px; align-items:center; text-align:left; }
+.hy-hero .in .kick, .hy-hero .in h1, .hy-hero .in p{ text-align:left; margin-left:0; margin-right:0; }
+.hy-hero .in.nofig{ grid-template-columns:1fr; max-width:900px; text-align:center; }
+.hy-hero .in.nofig .kick, .hy-hero .in.nofig h1, .hy-hero .in.nofig p{ text-align:center; margin-left:auto; margin-right:auto; }
+.hy-hero figure{ margin:0; }
+.hy-hero figure img{ width:100%; height:auto; display:block; border-radius:18px; box-shadow:0 22px 54px rgba(0,0,0,.30); }
+@media (max-width:940px){
+  .hy-hero .in{ grid-template-columns:1fr; gap:30px; text-align:center; }
+  .hy-hero .in .kick, .hy-hero .in h1, .hy-hero .in p{ text-align:center; margin-left:auto; margin-right:auto; }
+  .hy-hero figure{ order:-1; }
+}
 .hy-wrap{ max-width:1000px; margin:0 auto; padding:0 24px; }
 .hy-sec{ padding:56px 0 0; }
 .hy-sec h2{ font-family:var(--serif); font-size:30px; color:var(--brand-blue); margin:0 0 12px; text-wrap:balance; }
@@ -245,12 +256,20 @@
 <main>
 <section class="hy-hero">
   <div class="in">
+   <div>
     <p class="kick">For families hiring a caregiver directly</p>
     <h1>We would rather you do this well than do it with us.</h1>
     <p>Plenty of families hire a caregiver on their own. It is often cheaper, and when it works it works beautifully. It also goes wrong in ways nobody warns you about, usually around insurance, taxes, and what happens the first time your caregiver is sick.</p>
     <p>So we put everything we know into one place and we are giving it away. No cost, no catch, and no obligation to ever hire us.</p>
     <p class="sub">We are not being cute about that. If the right answer for your family is hiring somebody yourself, we want you to hire well.</p>
     <a class="cta" href="#start">Where to start &rarr;</a>
+   </div>
+   <figure id="hyShot" hidden>
+     <img src="/assets/photos/hiring-your-own.jpg" alt="A daughter and the caregiver she hired going through the paperwork at the kitchen table, while her mother sits nearby"
+          width="1656" height="932" loading="eager" decoding="async"
+          onload="document.getElementById('hyShot').hidden=false"
+          onerror="var f=document.getElementById('hyShot');f.parentNode.classList.add('nofig');f.remove();">
+   </figure>
   </div>
 </section>
 
