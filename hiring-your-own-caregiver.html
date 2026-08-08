@@ -89,6 +89,26 @@
   padding:16px 32px; border-radius:12px; text-decoration:none; margin:0 8px 10px; }
 .hy-close .alt{ display:inline-block; color:#fff; font-weight:700; font-size:16px; padding:16px 20px; text-decoration:underline; }
 
+
+.hy-paths{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:8px 0 0; }
+.hy-path{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 24px; display:flex; flex-direction:column; }
+.hy-path.on{ border:2px solid var(--cta); box-shadow:0 14px 38px rgba(31,122,140,.13); }
+.hy-path .tag{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--cta); margin-bottom:8px; }
+.hy-path h3{ font-family:var(--serif); font-size:20px; color:var(--brand-blue); margin:0 0 10px; }
+.hy-path p{ font-size:14.5px; line-height:1.68; color:var(--muted); margin:0 0 12px; }
+.hy-path .who{ font-size:13.5px; line-height:1.6; color:#2c3d4d; background:#f6f5f0; border-radius:10px; padding:11px 13px; margin:0 0 14px; }
+.hy-path a.go{ margin-top:auto; font-weight:700; color:var(--cta); text-decoration:none; font-size:15px; }
+.hy-cds{ background:#EAF4F6; border-radius:18px; padding:30px 32px; margin-top:20px; }
+.hy-cds h3{ font-family:var(--serif); font-size:23px; color:var(--brand-blue); margin:0 0 12px; text-wrap:balance; }
+.hy-cds p{ font-size:15.5px; line-height:1.72; color:#2c3d4d; margin:0 0 12px; }
+.hy-cds ul{ list-style:none; margin:6px 0 14px; padding:0; }
+.hy-cds li{ position:relative; padding:7px 0 7px 26px; font-size:15px; line-height:1.6; color:#2c3d4d; }
+.hy-cds li::before{ content:"\2713"; position:absolute; left:0; color:#14606F; font-weight:700; }
+.hy-cds .go{ display:inline-block; background:var(--cta); color:#fff; font-weight:700; font-size:16px;
+  padding:14px 26px; border-radius:11px; text-decoration:none; }
+.hy-cds .go:hover{ background:#155A68; }
+@media (max-width:860px){ .hy-paths{ grid-template-columns:1fr; } }
+@media (max-width:639px){ .hy-cds{ padding:24px 20px; } .hy-cds h3{ font-size:20px; } }
 @media (max-width:900px){ .hy-3{ grid-template-columns:1fr; } }
 @media (max-width:639px){
   .hy-hero{ padding:44px 20px 40px; } .hy-hero h1{ font-size:30px; } .hy-hero p{ font-size:16px; }
@@ -229,10 +249,56 @@
     <h2>Why an agency would tell you this</h2>
     <p class="lede">Fair question. Three honest reasons.</p>
     <p class="lede">The first is that a family who hires badly usually ends up in a crisis, and crises are what put people in nursing homes. We would rather help you avoid that than pick up the pieces.</p>
-    <p class="lede">The second is that a lot of families who hire privately eventually need something we do have: a backup when their caregiver goes on vacation, a nurse to look at a wound, somebody overnight after a hospital stay. We would like to be the people you already trust when that day comes.</p>
+    <p class="lede">The second is that a lot of families who hire privately eventually need something we do have: a backup when their caregiver goes on vacation, a nurse assessment when care needs change, somebody overnight after a hospital stay. We would like to be the people you already trust when that day comes.</p>
     <p class="lede">The third is simpler. We live here. The families in this town talk to each other, and we would rather be known as the agency that told people the truth.</p>
     <div class="hy-pull">
-      <p>If you take nothing else from this page: the person you hire is almost certainly your employee, not a contractor, and your homeowner's insurance probably will not cover them if they get hurt in the house.</p>
+      <p>If you take nothing else from this page: if you hire a caregiver directly and control how and when they work, they will usually be considered your household employee rather than an independent contractor. And do not assume your homeowner's insurance covers them if they are hurt in your home.</p>
+    </div>
+  </section>
+
+
+  <section class="hy-sec">
+    <h2>There are three ways to do this, not one</h2>
+    <p class="lede">Most families arrive thinking the choice is agency or nothing, or private or nothing. It is worth ten seconds to see all three side by side, because the middle one is the one almost nobody knows about and it is the one that can pay for the care.</p>
+    <div class="hy-paths">
+      <div class="hy-path on">
+        <div class="tag">This page</div>
+        <h3>Hire privately</h3>
+        <p>You employ the caregiver directly. Usually the lowest hourly cost and the most control over who walks in the door.</p>
+        <div class="who">You handle payroll, taxes, insurance, supervision, and finding cover when they cannot come.</div>
+        <a class="go" href="#start">What that involves &darr;</a>
+      </div>
+      <div class="hy-path">
+        <div class="tag">Medicaid may pay</div>
+        <h3>Consumer Directed Services</h3>
+        <p>A Missouri Medicaid program where the person receiving care chooses and manages their own attendant, and Medicaid pays for the authorized hours.</p>
+        <div class="who">You still pick the person. A CDS provider handles payroll and the program paperwork.</div>
+        <a class="go" href="#cds">See if you might qualify &darr;</a>
+      </div>
+      <div class="hy-path">
+        <div class="tag">We do it</div>
+        <h3>Hire through us</h3>
+        <p>We employ, screen, train, insure, schedule and supervise the caregivers, and we send somebody else when yours is sick.</p>
+        <div class="who">Higher hourly rate, and none of the employer load is yours.</div>
+        <a class="go" href="/our-services">Our services and rates &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="hy-sec" id="cds">
+    <div class="hy-cds">
+      <h3>Before you pay privately, check whether Missouri Medicaid could pay for this.</h3>
+      <p>This is the part families almost never hear about, and it is worth a phone call before you spend a dollar of your own money.</p>
+      <p>Missouri has a program called <b>Consumer Directed Services</b>. If the person needing help has Missouri Medicaid and a physical disability, and is able to direct their own care or has someone who can do it with them, they may qualify to <b>choose and manage their own attendant</b> while Medicaid pays for the authorized hours.</p>
+      <ul>
+        <li>You choose the person, not an agency</li>
+        <li>It can be a family member, though not a spouse or legal guardian</li>
+        <li>A CDS provider runs payroll and handles the program requirements</li>
+        <li>The care is paid for by Medicaid rather than out of your pocket</li>
+      </ul>
+      <p><b>Caring Companions Community Directed Services</b> is a CDS provider. We can tell you in one conversation whether it is worth pursuing, and walk you through it if it is.</p>
+      <a class="go" href="https://caringcds.com" target="_blank" rel="noopener">See if CDS could work &rarr;</a>
+      <p style="margin:14px 0 0; font-size:14px; color:var(--muted);">Or call our CDS office directly at <a href="tel:14172182888" style="color:var(--cta);font-weight:600;">(417) 218-2888</a>. If it turns out not to fit, we will say so and you will have lost a phone call.</p>
     </div>
   </section>
 
@@ -243,14 +309,22 @@
 
       <div class="hy-risk"><div class="n">1</div><div>
         <h3>You become an employer, not a customer</h3>
-        <p>When you set someone's hours, tell them what to do, and provide the place they do it, the IRS almost always treats that person as your <b>household employee</b>, not an independent contractor. Handing them a 1099 at the end of the year is the single most common mistake families make, and it is the one that costs the most to unwind.</p>
-        <p>That means a W-2, and it means Social Security and Medicare taxes once you pay above a threshold the IRS sets annually. Federal unemployment tax kicks in at a lower amount. A payroll service built for household employers handles all of it for less than most people expect, and a CPA can tell you the current year's numbers in one phone call.</p>
+        <p>The IRS looks at control. If you decide not only what work gets done but how and when it gets done, a caregiver you hire directly will usually be treated as your <b>household employee</b> rather than an independent contractor. Handing someone a 1099 at the end of the year is the most common mistake families make here, and the most expensive one to unwind.</p>
+        <p>Being a household employer can mean:</p>
+        <ul style="margin:4px 0 10px 20px; font-size:15px; line-height:1.75; color:var(--muted);">
+          <li>Getting an <b>EIN</b> from the IRS, which is free and takes minutes online</li>
+          <li>Completing <b>Form I-9</b> to verify they can work in the United States</li>
+          <li>Having them complete a <b>W-4</b>, and issuing them a <b>W-2</b> at year end</li>
+          <li>Withholding and paying <b>Social Security and Medicare</b> once wages pass the annual threshold the IRS sets</li>
+          <li>Working out whether <b>federal and Missouri unemployment taxes</b> apply to you</li>
+        </ul>
+        <p>You do not have to work this out alone, and most families should not try. A payroll service built for household employers handles nearly all of it for less than people expect, and a CPA can give you this year's numbers in one phone call. <a href="https://www.irs.gov/publications/p926" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">IRS Publication 926</a> is the plain source if you want to read it yourself.</p>
       </div></div>
 
       <div class="hy-risk"><div class="n">2</div><div>
-        <h3>Workers' compensation, which is the one that can really hurt</h3>
-        <p>A caregiver lifts your mother, hurts their back, and cannot work for four months. Without workers' compensation, that becomes a claim against you personally, and <b>most homeowner's policies exclude household employees</b> or cap it so low it does not matter.</p>
-        <p>Call your insurance agent before the first shift, not after. Ask them directly whether a paid caregiver working in the home is covered, and get the answer in writing. Some carriers will add it. Some will not, and you need to know which yours is.</p>
+        <h3>Insurance, which is the one that can really hurt</h3>
+        <p>A caregiver lifts your mother, hurts their back, and cannot work for four months. <b>Do not assume your homeowner's insurance protects you.</b> Coverage for household employees varies a great deal between policies, and whether Missouri workers' compensation requirements apply can depend on your particular situation.</p>
+        <p>So before the first shift, not after, call your insurance agent. Tell them plainly that you are directly employing an in-home caregiver, ask exactly what coverage you have and what you need, and <b>get the answer in writing</b>. Some carriers will add coverage. Some will not, and you need to know which yours is while you still have choices.</p>
       </div></div>
 
       <div class="hy-risk"><div class="n">3</div><div>
@@ -262,7 +336,7 @@
       <div class="hy-risk"><div class="n">4</div><div>
         <h3>The background check you can actually run</h3>
         <p>Missouri has the <b>Family Care Safety Registry</b>, and it is open to the public. Anyone can search it for a worker who has consented, and it covers the child and elder abuse registries, the employee disqualification list, and criminal history. It is run by the state health department at <a href="https://health.mo.gov/safety/fcsr/" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">health.mo.gov/safety/fcsr</a>.</p>
-        <p>Run it. Then run a separate criminal background check through a screening company, check the sex offender registry, and verify their driver's licence and auto insurance if they will ever drive your parent anywhere. And call every reference, including the ones they did not offer.</p>
+        <p>Run it. Then run a separate criminal background check through a screening company, check the sex offender registry, and verify their driver's license and auto insurance if they will ever drive your parent anywhere. And call every reference, including the ones they did not offer.</p>
       </div></div>
 
       <div class="hy-risk"><div class="n">5</div><div>
@@ -273,8 +347,8 @@
 
       <div class="hy-risk"><div class="n">6</div><div>
         <h3>Money, medications, and no second set of eyes</h3>
-        <p>Nothing here assumes bad intent. Most caregivers are wonderful and the great majority of families never have a problem. But an agency has supervisors dropping in, notes being read by somebody else, and a licence at risk. A private hire has none of that, so you have to build a little of it yourself.</p>
-        <p>Keep the chequebook and the card somewhere the caregiver does not access. Count medications on a schedule. Write down what you expect, in writing, so there is never a difference of memory about what was agreed.</p>
+        <p>Nothing here assumes bad intent. Most caregivers are wonderful and the great majority of families never have a problem. But an agency has supervisors dropping in, notes being read by somebody else, and a license at risk. A private hire has none of that, so you have to build a little of it yourself.</p>
+        <p>Keep the checkbook and the card somewhere the caregiver does not access. Count medications on a schedule. Write down what you expect, in writing, so there is never a difference of memory about what was agreed.</p>
       </div></div>
 
     </div>
@@ -295,45 +369,19 @@
 
 <div class="hy-wrap">
   <section class="hy-sec">
-    <h2>Everything it does for you</h2>
-    <p class="lede">Posting the job and gathering applicants costs nothing. Membership is <b>$25 a month</b> and adds the directory, applicant contact details, and messaging. That is what pays for building and running the platform, and it is the only money we take: we do not take a cut of what you pay your caregiver, and they keep every dollar of their rate. For comparison, the big national sites charge around $39 a month just to send somebody a message.</p>
-    <p class="lede" style="margin-top:-14px;"><b>The first 100 families get three months free.</b> It is automatic when you sign up and there is no card needed.</p>
+    <h2>What it does, in one pass</h2>
+    <p class="lede">Post a job and gather applicants for free. Membership is $25 a month, which is what pays for building and running the platform. It is the only money involved: we take no cut of what you pay your caregiver, and they keep every dollar of their rate. The first 100 families get three months free.</p>
     <div class="hy-3">
-      <div class="hy-c"><h3>One link, shared anywhere</h3><p>Tell it who the care is for and what you need, and you get a single link to put in a text, an email, a church bulletin, or a neighbourhood Facebook group. Everywhere you were already going to look.</p><p class="price">Free</p></div>
-      <div class="hy-c"><h3>Every applicant in one place</h3><p>Instead of replies buried across three apps, everyone interested lands in one organized list. You stop losing track of who is who, and you stop forgetting to reply to somebody good.</p><p class="price">Free</p></div>
-      <div class="hy-c"><h3>Watch a video interview first</h3><p>See and hear somebody before you ever arrange to meet them. This is the single biggest time-saver in the whole thing, and it is much easier than a first phone call for most families.</p><p class="price">Free</p></div>
-      <div class="hy-c"><h3>The paperwork sends itself</h3><p>Pick your person and send a warm offer letter. Once they accept, the work agreement, background-check consent, and pay details go out automatically, filled in and ready to sign. No writing an employment agreement from scratch at eleven at night.</p><p class="price">Free</p></div>
-      <div class="hy-c"><h3>Messaging and contact details</h3><p>Reach the applicants you like directly, and keep the conversation with the record of the job rather than in your text messages.</p><p class="price">With membership</p></div>
-      <div class="hy-c"><h3>A directory to invite from</h3><p>Beyond the people who answer your post, browse background-checked caregivers near you and invite the ones you like to apply. Tap any profile to read it in full.</p><p class="price">With membership</p></div>
-      <div class="hy-c"><h3>One hub for the records</h3><p>Documents, schedules, and pay records in one place instead of a drawer. If you are ever asked to show what was agreed and what was paid, it is already there.</p><p class="price">With membership</p></div>
-      <div class="hy-c"><h3>A guided support center</h3><p>Written help for the whole journey: finding the right person, becoming a prepared employer, running pay and payroll and records, managing routines and care plans, and what to do when something goes wrong.</p><p class="price">Free</p></div>
-      <div class="hy-c"><h3>Somebody to call</h3><p>The hiring itself is yours to run, and the tool is built so you can. But if something feels off, or you get stuck on the paperwork, or an interview leaves you uneasy, call our office and a real person will talk it through with you.</p><p class="price">Free</p></div>
+      <div class="hy-c"><h3>Post and share</h3><p>One link to put in a text, an email, a church bulletin, or a neighborhood Facebook group. Everywhere you were already going to look.</p></div>
+      <div class="hy-c"><h3>Applicants in one place</h3><p>Everyone interested lands in one organized list instead of scattered across three apps, so you stop losing track of who is who.</p></div>
+      <div class="hy-c"><h3>Interview on video first</h3><p>See and hear somebody before you arrange to meet them. This saves more time than anything else in the process.</p></div>
+      <div class="hy-c"><h3>Screening</h3><p>Directory caregivers are checked: identity, national criminal database, sex offender registry, and county records where they have lived.</p></div>
+      <div class="hy-c"><h3>Paperwork that sends itself</h3><p>Send a warm offer letter. On acceptance the work agreement, background-check consent, and pay details go out filled in and ready to sign.</p></div>
+      <div class="hy-c"><h3>Then keep it organized</h3><p>Documents, schedules, and pay records in one hub, so if you are ever asked what was agreed and what was paid, it is already there.</p></div>
     </div>
-  </section>
-
-  <section class="hy-sec">
-    <h2>What the background check covers, and what it cannot</h2>
-    <p class="lede">Caregivers in the directory are checked before they get there, and re-checked every year they stay active.</p>
-    <div class="hy-split">
-      <div class="a">
-        <h3>What gets checked</h3>
-        <ul>
-          <li>Identity verified</li>
-          <li>National criminal database</li>
-          <li>Sex offender registry search</li>
-          <li>County records everywhere they have lived</li>
-          <li>Renewed every year they are active</li>
-          <li>Reviews from families they have actually worked for</li>
-        </ul>
-      </div>
-      <div class="b">
-        <h3>The honest part</h3>
-        <p style="font-size:15px;line-height:1.72;color:var(--muted);margin:0 0 12px;">No background check guarantees safety. Not ours, and not on any website that tells you otherwise. A check finds what has been recorded, and plenty never is.</p>
-        <p style="font-size:15px;line-height:1.72;color:var(--muted);margin:0 0 12px;">Which is why the interview still matters more than the paperwork, why every reference is worth calling, and why we would rather you also run the <a href="https://health.mo.gov/safety/fcsr/" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">Missouri Family Care Safety Registry</a> yourself. It is free and open to anybody.</p>
-        <p style="font-size:15px;line-height:1.72;color:var(--muted);margin:0;">Your paperwork and records stay private to your family.</p>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:20px;">The hiring tool works anywhere in the country. The caregiver directory is live across the Springfield area and is being added region by region, so if you are further out you can still post a job and use everything else.</p>
+    <p class="lede" style="margin-top:22px;">The hiring tool works anywhere in the country. The caregiver directory is live across the Springfield area and expanding, so if you are further out you can still post a job and use the rest of it.
+    <a href="https://tryhometogether.com/hire" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">See everything HomeTogether Hire does &rarr;</a></p>
+    <p class="lede" style="margin-top:8px; font-size:15px;"><b>One honest note about screening:</b> no background check guarantees safety, on any website including ours. A check finds what has been recorded, and plenty never is. Ask what has actually been completed on the person you are considering, call every reference, and run the free <a href="https://health.mo.gov/safety/fcsr/" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">Missouri Family Care Safety Registry</a> yourself. It is open to anybody.</p>
   </section>
 
   <section class="hy-sec">
@@ -355,26 +403,27 @@
     <p class="lede">Not always. But sometimes clearly, and you deserve to hear where the line is rather than work it out the hard way.</p>
     <div class="hy-split">
       <div class="a">
-        <h3>Hiring privately tends to work when</h3>
+        <h3>Private hiring tends to stay simple when</h3>
         <ul>
           <li>The hours are steady and predictable</li>
           <li>One person can cover what is needed</li>
           <li>Somebody in the family has time to manage it</li>
-          <li>You already have somebody in mind, often through church or a neighbour</li>
+          <li>You already have somebody in mind, often through church or a neighbor</li>
           <li>The care is mostly company, meals, and light help</li>
           <li>You are comfortable being an employer</li>
         </ul>
       </div>
       <div class="b">
-        <h3>An agency usually wins when</h3>
+        <h3>Private hiring gets harder to manage when</h3>
         <ul>
-          <li>You need coverage that cannot fail, including nights and weekends</li>
-          <li>More than one caregiver is required</li>
-          <li>There is real personal care, transfers, or a fall risk</li>
-          <li>Dementia is advanced enough that behaviour is unpredictable</li>
-          <li>Nobody in the family has the bandwidth to manage a person</li>
-          <li>You want the insurance, the supervision, and the payroll to be somebody else's problem</li>
+          <li>Hands-on personal care is a large part of the day</li>
+          <li>Transfers need real training or equipment</li>
+          <li>Fall risk is high</li>
+          <li>Dementia behavior has become unpredictable</li>
+          <li>A shift genuinely cannot go unfilled</li>
+          <li>More than one caregiver is needed to cover the week</li>
         </ul>
+        <p style="font-size:14px;line-height:1.65;color:var(--muted);margin:14px 0 0;">None of that means a private caregiver cannot do the work. Plenty are excellent at all of it. It means the supervision, the training, the backup, and the risk all land on you, and that load grows faster than most families expect.</p>
       </div>
     </div>
   </section>
@@ -384,7 +433,7 @@
     <div class="hy-faq">
       <details><summary>Is this actually free, or is it a way to get me on the phone?</summary><div class="a">It is free. We will not put you on a list, and if you tell us you are hiring privately we will help you hire privately. The reason we do it is on this page: families who hire well stay home longer, and we would rather be the agency that helped than the one that sulked.</div></details>
       <details><summary>What should I pay a caregiver in Springfield?</summary><div class="a">It moves, and it depends on the hours and the level of care, so call and ask rather than trusting a number on a page. What we will say generally: paying under the local going rate is the most reliable way to lose a good caregiver in the first few months, and replacing somebody costs more than paying them properly did.</div></details>
-      <details><summary>Can I just pay cash?</summary><div class="a">People do, and we are not going to lecture you. But understand what you give up: no workers' compensation, no unemployment protection for them, and personal liability if the arrangement is ever examined. It also means your caregiver builds no Social Security credit from years of real work, which matters to them more than most families realise.</div></details>
+      <details><summary>Can I just pay them cash, under the table?</summary><div class="a">Those are two different questions. You can absolutely pay by cash, check, or direct deposit, whatever the two of you agree, and cash by itself is not a problem. What you should not do is treat the wages as off the books because you happened to pay in cash. If that person is your household employee, the same tax, wage, and recordkeeping rules apply no matter how the money changes hands.<br><br>The reason it matters to them, and families rarely think about this: wages that are never reported build no Social Security credit. Somebody can work for a family for eight years and have nothing to show for it when they retire.</div></details>
       <details><summary>Do you have caregivers you would recommend?</summary><div class="a">We cannot hand you our own staff, which we hope makes sense. What we can do is tell you honestly whether somebody you are considering raises any flags we would act on, and walk you through the reference calls.</div></details>
       <details><summary>What if it does not work out?</summary><div class="a">Call us. Genuinely. Whether that means covering a gap for two weeks while you find somebody else, or picking the whole thing up, we will pick up the phone. We would rather that than have you white-knuckle it because you feel awkward about asking.</div></details>
       <details><summary>We are outside Springfield. Can you still help?</summary><div class="a">Everything on this page works anywhere. HomeTogether Hire is nationwide, the templates apply wherever you are, and the Missouri registry covers the whole state. Our own caregivers only reach the Springfield area, so beyond that we are advice rather than staff.</div></details>
@@ -393,9 +442,9 @@
 </div>
 
 <section class="hy-close">
-  <h2>Call us even if you are not going to hire us.</h2>
-  <p>Tell us what you are trying to arrange and we will tell you honestly whether hiring privately is the right call, and what to watch out for if it is. There is no cost and nothing to sign.</p>
-  <a class="cta" href="/contact">Ask us anything</a>
+  <h2>Still not sure which of the three is right?</h2>
+  <p>Tell us about your situation and we will tell you what we would do if it were our family. Whether that is hiring privately, looking at Medicaid CDS, or using an agency, and it will not always be us. There is no cost and nothing to sign.</p>
+  <a class="cta" href="/contact">Tell us about your situation</a>
   <a class="alt" href="tel:14172348494">Or call (417) 234-8494</a>
 </section>
 </main>
