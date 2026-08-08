@@ -113,6 +113,47 @@
 .vc-close .cta{ display:inline-block; background:#F0A63A; color:#3d2a06; font-weight:700; font-size:17px; padding:16px 32px; border-radius:12px; text-decoration:none; margin:0 8px 10px; }
 .vc-close .alt{ display:inline-block; color:#fff; font-weight:700; font-size:16px; padding:16px 20px; text-decoration:underline; }
 
+
+/* ---- visit plan builder. Rates mirror tryhometogether.com/virtual-caregiving
+   exactly, so the two sites can never quote a family different numbers. ---- */
+.vp{ max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1.15fr .85fr; gap:26px; align-items:start; }
+.vp-cat{ font-size:12px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#C17A12; margin:22px 0 10px; }
+.vp-cat:first-child{ margin-top:0; }
+.vp-task{ display:flex; align-items:center; gap:13px; background:#fff; border:1px solid var(--border); border-radius:12px;
+  padding:14px 16px; margin-bottom:9px; cursor:pointer; transition:border-color .15s ease, background .15s ease; }
+.vp-task:hover{ border-color:var(--cta); }
+.vp-task input{ width:19px; height:19px; accent-color:var(--cta); flex:0 0 auto; cursor:pointer; margin:0; }
+.vp-task .lbl{ flex:1; font-size:15.5px; color:#2c3d4d; }
+.vp-task .min{ font-size:12.5px; color:var(--muted); flex:0 0 auto; }
+.vp-task.on{ border-color:var(--cta); background:var(--soft-teal); }
+.vp-task.on .lbl{ font-weight:600; color:var(--brand-blue); }
+.vp-sum{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 26px 24px;
+  box-shadow:0 14px 38px rgba(13,54,95,.10); position:sticky; top:96px; }
+.vp-sum .h{ font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.vp-len{ display:inline-block; background:var(--soft-teal); color:var(--cta); font-weight:700; font-size:14.5px;
+  border-radius:999px; padding:6px 15px; }
+.vp-lennote{ font-size:13.5px; color:var(--muted); margin:8px 0 20px; line-height:1.55; }
+.vp-freq{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:20px; }
+.vp-freq button{ font-family:inherit; font-size:15px; font-weight:700; color:#2c3d4d; background:#fff;
+  border:1.5px solid var(--border); border-radius:11px; padding:12px 0; cursor:pointer; }
+.vp-freq button:hover{ border-color:var(--cta); }
+.vp-freq button.on{ border-color:var(--cta); background:var(--soft-teal); color:var(--cta); }
+.vp-price{ font-family:var(--serif); font-size:42px; color:var(--brand-blue); line-height:1; }
+.vp-price span{ font-family:'Inter',sans-serif; font-size:17px; color:var(--muted); font-weight:500; }
+.vp-per{ font-size:14px; color:var(--muted); margin-top:6px; }
+.vp-save{ display:none; background:#e8f6ef; color:#0f7a4d; font-size:12.5px; font-weight:700; border-radius:999px;
+  padding:4px 11px; margin-top:9px; }
+.vp-cta{ display:block; text-align:center; background:var(--cta); color:#fff; font-weight:700; font-size:16.5px;
+  padding:15px; border-radius:12px; text-decoration:none; margin-top:20px; }
+.vp-cta:hover{ background:#155A68; }
+.vp-fine{ font-size:12.5px; color:var(--muted); line-height:1.6; margin-top:13px; }
+.vp-deal{ max-width:900px; margin:26px auto 0; background:var(--soft-teal); border-radius:16px; padding:22px 26px;
+  text-align:center; font-size:15.5px; line-height:1.72; color:#1c2b38; }
+.vp-deal b{ color:var(--brand-blue); }
+.vp-over{ display:none; background:#fdf3e2; border:1px solid #e0c48a; border-radius:12px; padding:14px 16px;
+  font-size:14px; line-height:1.6; color:#8a5a09; margin-top:16px; }
+@media (max-width:860px){ .vp{ grid-template-columns:1fr; } .vp-sum{ position:static; } }
+
 @media (max-width:900px){ .vc-hero .in{ grid-template-columns:1fr; gap:32px; } .vc-3{ grid-template-columns:1fr; } }
 @media (max-width:639px){
   .vc-hero{ padding:42px 20px 38px; } .vc-hero h1{ font-size:28px; line-height:1.22; } .vc-hero p{ font-size:16px; }
@@ -337,6 +378,134 @@
   </section>
 </div>
 
+<section class="vc-price" id="plan">
+  <div class="in">
+    <h2>Build the visit, see the price</h2>
+    <p class="lede">Tick what you want her caregiver to do. We work out how long that takes, and what a week of it costs. Visits run Monday through Friday so the same caregiver comes at the same time every day, which is how somebody actually becomes a familiar face rather than a stranger checking a box.</p>
+    <div class="vp">
+      <div>
+          <p class="vp-cat">Health tracking</p>
+          <label class="vp-task"><input type="checkbox" data-min="3"><span class="lbl">Blood pressure check</span><span class="min">~3 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="3"><span class="lbl">Blood sugar or glucose</span><span class="min">~3 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="2"><span class="lbl">Pulse and oxygen</span><span class="min">~2 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="2"><span class="lbl">Weight</span><span class="min">~2 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="2"><span class="lbl">Temperature</span><span class="min">~2 min</span></label>
+          <p class="vp-cat">Medication</p>
+          <label class="vp-task"><input type="checkbox" data-min="4"><span class="lbl">Medication reminder, and watch her take it</span><span class="min">~4 min</span></label>
+          <p class="vp-cat">Reminders and coordination</p>
+          <label class="vp-task"><input type="checkbox" data-min="2"><span class="lbl">Appointment and calendar reminders</span><span class="min">~2 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="1"><span class="lbl">Meal or hydration reminder</span><span class="min">~1 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="3"><span class="lbl">Help joining a telehealth doctor visit</span><span class="min">~3 min</span></label>
+          <p class="vp-cat">Company and engagement</p>
+          <label class="vp-task"><input type="checkbox" data-min="8"><span class="lbl">Friendly conversation and companionship</span><span class="min">~8 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="6"><span class="lbl">An activity: music, games, exercise</span><span class="min">~6 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="4"><span class="lbl">Reading or spiritual content</span><span class="min">~4 min</span></label>
+          <label class="vp-task"><input type="checkbox" data-min="4"><span class="lbl">Help with the TV or the phone</span><span class="min">~4 min</span></label>
+      </div>
+      <div class="vp-sum">
+        <p class="h">Her visit</p>
+        <span class="vp-len" id="vpLen">15 minutes</span>
+        <p class="vp-lennote" id="vpNote">A quick, focused check-in.</p>
+        <p class="h">Visits per day, Monday to Friday</p>
+        <div class="vp-freq">
+          <button type="button" class="on" data-freq="1">1&times;</button>
+          <button type="button" data-freq="2">2&times;</button>
+          <button type="button" data-freq="3">3&times;</button>
+        </div>
+        <p class="h">Your weekly price</p>
+        <div class="vp-price" id="vpPrice">$75<span>/week</span></div>
+        <p class="vp-per" id="vpPer">$15 per visit</p>
+        <span class="vp-save" id="vpSave"></span>
+        <div class="vp-over" id="vpOver"><b>That is a lot for one visit.</b> We can still do it, but at this point it may be worth pricing in-home hours alongside it. Say so when you call and we will lay both out.</div>
+        <a class="vp-cta" href="/book" id="vpCta">Talk to a coordinator &rarr;</a>
+        <p class="vp-fine">Every visit also includes a warm hello, a wellness check, and eyes on how she is doing, whatever else you pick. Delivered on her television through HomeTogether TV, which is <a href="/hometogether-included" style="color:var(--cta);font-weight:600;">included free at 20 or more hours a week</a> of in-home care, or $99 a month on its own.</p>
+      </div>
+    </div>
+    <div class="vp-deal">
+      <b>Why this is worth doing:</b> our in-home care starts at $30 an hour with a four-hour minimum, so a single visit runs about <b>$120</b>. A virtual check-in works out to as little as <b>$12</b>. For the families who need eyes on their mother rather than hands on her, that is the whole argument.
+    </div>
+  </div>
+</section>
+
+<div class="vc-wrap">
+  <section class="vc-sec">
+    <h2>The gap nobody is paying for</h2>
+    <p class="lede">Most families do not need somebody in the house all day. They need somebody there at 8am when the pills matter, and again at 6pm when the day gets long. But in-home care comes in four-hour blocks, so a family that only needs twenty minutes twice a day ends up paying for eight hours or going without. Almost everyone goes without, and then worries all day. This is built for exactly that gap.</p>
+    <div class="vc-3">
+      <div class="vc-c">
+        <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Between the visits you already have</h3>
+        <p>Your caregiver comes Monday, Wednesday, and Friday mornings. Tuesday and Thursday, and every evening, nobody sees her. A check-in covers those days without adding another four-hour visit to the bill.</p>
+      </div>
+      <div class="vc-c">
+        <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 3 12 2.5-8 1.5 4h5"/></svg></div>
+        <h3>Before anyone needs hands-on help</h3>
+        <p>She is managing, mostly. She forgets the afternoon dose sometimes and she is not eating much since your father died. That is not a case for personal care yet. It is a case for somebody looking in.</p>
+      </div>
+      <div class="vc-c">
+        <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 7-3.7A4.5 4.5 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+        <h3>When you live four hours away</h3>
+        <p>You call and she says she is fine. She always says she is fine. Somebody local, who knows what her normal looks like, sees her face every weekday and tells you when it changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vc-sec">
+    <h2>What actually happens in a visit</h2>
+    <p class="lede">It is not a wellness call from a call center. It is one of our caregivers, the same face most days, with a list of the things you told us to watch.</p>
+    <ol class="vc-steps">
+      <li><span class="n">1</span>
+        <h3>Her television comes on by itself</h3>
+        <p>At the time you picked. She does not answer, dial, unlock, or find anything. If she is in the other room, it waits and we try again.</p></li>
+      <li><span class="n">2</span>
+        <h3>Medications, in front of them</h3>
+        <p>Not "did you take your pills," which everyone says yes to. We ask her to hold up the box and take it while we watch, at the time it is supposed to happen.</p></li>
+      <li><span class="n">3</span>
+        <h3>Eyes on the day</h3>
+        <p>Has she eaten. Is she dressed. Is the house the way it usually looks. Is she steady on her feet crossing the room. Small things that mean nothing alone and mean a great deal when they change.</p></li>
+      <li><span class="n">4</span>
+        <h3>Readings, if there are any</h3>
+        <p>Blood pressure, blood sugar, weight. We prompt her to take them and watch her do it, and the numbers land where your family can see them.</p></li>
+      <li><span class="n">5</span>
+        <h3>And then a visit</h3>
+        <p>The part that is not on any checklist. What she watched last night, how the grandchildren are, whether the neighbor's dog is still barking. For a lot of our families this turns out to be the part that matters most.</p></li>
+      <li><span class="n">6</span>
+        <h3>You hear about it</h3>
+        <p>Notes go to the family. If something looked wrong, you get a call, not a note, and we tell you what we would do next.</p></li>
+    </ol>
+  </section>
+
+  <section class="vc-sec">
+    <h2>Honest about what this is not</h2>
+    <p class="lede">A caregiver on a screen cannot steady somebody on the stairs. We would rather turn this down than sell it to a family who needs hands in the room, so here is the line.</p>
+    <div class="vc-split">
+      <div class="a">
+        <h3>Virtual visits work well for</h3>
+        <ul>
+          <li>Medication timing and adherence</li>
+          <li>Meals, appetite, and hydration</li>
+          <li>Loneliness and the long evenings</li>
+          <li>Noticing a change early, before it becomes a fall or a hospital stay</li>
+          <li>Filling the days and evenings between in-home visits</li>
+          <li>Family who live too far to drop in</li>
+        </ul>
+      </div>
+      <div class="b">
+        <h3>You need in-home care instead for</h3>
+        <ul>
+          <li>Bathing, dressing, and toileting</li>
+          <li>Transfers, or anyone at real risk of falling alone</li>
+          <li>Anybody who cannot be left alone safely</li>
+          <li>Cooking, housekeeping, laundry, errands</li>
+          <li>Driving to appointments</li>
+          <li>Advanced or bed-bound care</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:20px;">Most of our families end up with both: in-home hours for the parts that need hands, and virtual check-ins to cover the days in between. <a href="/our-services" style="color:var(--cta);font-weight:600;">See our in-home services</a> or <a href="/cost-calculator" style="color:var(--cta);font-weight:600;">work out what a combination would cost</a>.</p>
+  </section>
+</div>
+
 <section class="vc-price">
   <div class="in">
     <h2>What it costs</h2>
@@ -458,5 +627,56 @@
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
 <script src="/assets/accessibility.js" defer></script>
+
+<script>
+/* Visit plan builder.
+   RATES ARE MIRRORED FROM tryhometogether.com/virtual-caregiving. If a price
+   changes there it has to change here too, or the two sites quote a family
+   different numbers for the same visit. */
+(function () {
+  'use strict';
+  var RATES = { 15: { 1: 15, 2: 13, 3: 12 }, 30: { 1: 25, 2: 22, 3: 20 } };
+  var BASE = 3;                       // the hello, the wellness check, eyes on safety
+  var freq = 1;
+  var tasks = document.querySelectorAll('.vp-task input');
+  var btns  = document.querySelectorAll('.vp-freq button');
+  if (!tasks.length) return;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function calc() {
+    var mins = BASE;
+    Array.prototype.forEach.call(tasks, function (t) {
+      t.parentNode.classList.toggle('on', t.checked);
+      if (t.checked) mins += parseInt(t.getAttribute('data-min'), 10);
+    });
+    var len  = mins > 15 ? 30 : 15;
+    var per  = RATES[len][freq];
+    var full = RATES[len][1];
+
+    $('vpLen').textContent   = len + ' minutes';
+    $('vpNote').textContent  = len === 15 ? 'A quick, focused check-in.'
+                                          : 'Long enough to talk, do an activity, and really look at how she is doing.';
+    $('vpPrice').innerHTML   = '$' + (per * freq * 5) + '<span>/week</span>';
+    $('vpPer').textContent   = '$' + per + ' per visit' + (freq > 1 ? ', ' + freq + ' a day' : '');
+
+    var save = $('vpSave');
+    if (per < full) { save.textContent = 'Saving ' + Math.round((1 - per / full) * 100) + '% at ' + freq + ' a day'; save.style.display = 'inline-block'; }
+    else save.style.display = 'none';
+
+    // past half an hour of tasks this stops being a check-in, so say so
+    $('vpOver').style.display = mins > 30 ? 'block' : 'none';
+  }
+
+  Array.prototype.forEach.call(tasks, function (t) { t.addEventListener('change', calc); });
+  Array.prototype.forEach.call(btns, function (b) {
+    b.addEventListener('click', function () {
+      freq = parseInt(b.getAttribute('data-freq'), 10);
+      Array.prototype.forEach.call(btns, function (x) { x.classList.toggle('on', x === b); });
+      calc();
+    });
+  });
+  calc();
+})();
+</script>
 </body>
 </html>
