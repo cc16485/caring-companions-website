@@ -340,6 +340,23 @@ function renderRoleQuestions(label){
 
 if (POSITION && !JOB) loadRoleQuestions();
 
+/* Resume straight to the interview time-picker for someone who already applied
+   but did not pick a time. The nudge messages link here with their application
+   id (?book=<id>). No name in the URL — personal data never belongs in a query
+   string — so the greeting is neutral. Without this, the nudge link dropped
+   them back at step 1 of a form they had already filled in. */
+const RESUME = P.get('book');
+if (RESUME) {
+  ROW = RESUME;
+  const nameSpan = g('bookName');
+  if (nameSpan && nameSpan.parentElement) {
+    nameSpan.parentElement.textContent = 'Welcome back. Let’s pick your interview time.';
+  }
+  g('formView').style.display = 'none';
+  g('bookView').style.display = 'block';
+  loadSlots();
+}
+
 if (JOB) {
   sb.from('job_postings').select('title,pay_min,pay_max,position').eq('slug', JOB).maybeSingle()
     .then(({ data }) => {
