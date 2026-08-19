@@ -185,6 +185,14 @@
    loads after site.css, so the base .hp-btn-hero rules would otherwise win. */
 .hp-btn-hero.hp-btn-hero-call { display: inline-flex; align-items: center; gap: 10px; }
 .hp-btn-hero.hp-btn-hero-call svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+.hp-team { padding-top: 0; }
+.hp-team-lede { font-size: 16px; line-height: 1.7; color: var(--body-text); margin: 0 0 24px; max-width: 640px; }
+.hp-team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.hp-team-card { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 14px; padding: 26px 26px; }
+.hp-team-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
+.hp-team-card p { font-size: 15.5px; line-height: 1.7; color: var(--body-text); margin: 0; }
+.hp-team-more { margin: 20px 0 0; font-size: 15.5px; font-weight: 600; }
+@media (max-width: 719px) { .hp-team-grid { grid-template-columns: 1fr; } }
 </style>
 <link rel="canonical" href="https://mo-care.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -518,6 +526,22 @@
 <p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0">Real, verified Google reviews from the people we care for, and the caregivers on our team.</p>
 </div>
 <iframe id="cc-reviews" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" style="width:100%;border:none;min-height:760px" title="Verified Google reviews for Caring Companions"></iframe>
+</section>
+
+<section class="hp-section hp-team">
+<h2>Who&rsquo;s behind the care</h2>
+<p class="hp-team-lede">When we say &ldquo;talk to our care team,&rdquo; we mean two specific people, and you will know both of their names.</p>
+<div class="hp-team-grid">
+<div class="hp-team-card">
+<h3>Your Care Coordinator</h3>
+<p>The person you talk to. They run your free in-home consultation, write the care plan, and stay your point of contact when needs change.</p>
+</div>
+<div class="hp-team-card">
+<h3>Your Staffing Coordinator</h3>
+<p>The person behind the schedule. They match the caregiver, hold the calendar, and arrange coverage when your regular caregiver is away.</p>
+</div>
+</div>
+<p class="hp-team-more"><a href="/care-journey">See how the whole process works, step by step &rarr;</a></p>
 </section>
 
 <section class="hp-cta-section">
