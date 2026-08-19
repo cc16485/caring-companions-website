@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Getting Started with Home Care | Caring Companions</title>
-<meta name="description" content="New to home care? Here's what it is, when it helps, and how it works, from clarifying your needs to a free consultation, a custom care plan, and caregiver matching.">
-<link rel="canonical" href="https://mo-care.com/getting-started">
+<title>Your Care Journey | What Happens After You Call | Caring Companions</title>
+<meta name="description" content="Exactly what happens from your first phone call to your first day of care: a free in-home consultation within 24 hours, a care plan built around your budget, a matched caregiver trained on the plan, and care starting in as little as 24-48 hours.">
+<link rel="canonical" href="https://mo-care.com/care-journey">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -37,6 +37,45 @@
 .gs-cta { max-width:880px; margin: 0 auto; padding: 24px 24px 80px; text-align: center; }
 @media (max-width: 899px) { .gs-steps { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 639px) { .gs-hero { padding: 36px 20px 8px; } .gs-h1 { font-size: 28px; } .gs-steps { grid-template-columns: 1fr; } }
+</style>
+
+<style>
+.cj-hero { max-width: 980px; margin: 0 auto; padding: 56px 24px 30px; text-align: center; }
+.cj-h1 { font-family: var(--serif); font-size: 40px; font-weight: 600; color: var(--brand-blue); margin: 0 0 16px; line-height: 1.16; }
+.cj-lede { font-size: 17px; line-height: 1.7; color: var(--body-text); margin: 0 auto; max-width: 640px; }
+.cj-wrap { max-width: 980px; margin: 0 auto; padding: 0 24px 8px; }
+.cj-steps { display: grid; gap: 18px; margin: 8px 0 12px; }
+.cj-step { display: grid; grid-template-columns: 62px 1fr; gap: 20px; align-items: start;
+  background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 26px; }
+.cj-num { font-family: var(--serif); font-size: 34px; font-weight: 600; color: var(--accent); line-height: 1; }
+.cj-step h2 { font-family: var(--serif); font-size: 23px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
+.cj-step p { font-size: 16px; line-height: 1.7; color: var(--body-text); margin: 0 0 10px; }
+.cj-step p:last-child { margin-bottom: 0; }
+.cj-when { display: inline-block; font-size: 13.5px; font-weight: 700; color: var(--brand-blue);
+  background: var(--soft-teal); border-radius: 999px; padding: 5px 13px; margin-bottom: 10px; }
+.cj-list { margin: 0; padding-left: 20px; }
+.cj-list li { font-size: 15.5px; line-height: 1.65; color: var(--body-text); margin-bottom: 7px; }
+.cj-panel { background: var(--soft-panel); border-radius: 18px; padding: 34px 30px; margin: 34px 0; }
+.cj-panel h2 { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--brand-blue); margin: 0 0 12px; }
+.cj-panel p { font-size: 16px; line-height: 1.7; color: var(--body-text); margin: 0 0 12px; }
+.cj-cta { text-align: center; padding: 10px 24px 60px; }
+.cj-cta h2 { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--brand-blue); margin: 0 0 12px; }
+.cj-cta p { font-size: 16px; line-height: 1.7; color: var(--body-text); margin: 0 auto 22px; max-width: 560px; }
+.cj-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.cj-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--cta); color: #fff;
+  border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; text-decoration: none; }
+.cj-btn:hover { background: var(--cta-hover); color: #fff; text-decoration: none; }
+.cj-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.cj-btn-out { display: inline-block; border: 1.5px solid var(--cta); color: var(--cta); background: transparent;
+  border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; text-decoration: none; }
+.cj-btn-out:hover { background: rgba(31,122,140,.08); color: var(--cta); text-decoration: none; }
+@media (max-width: 719px) {
+  .cj-h1 { font-size: 30px; }
+  .cj-hero { padding: 36px 20px 22px; }
+  .cj-wrap { padding: 0 20px 8px; }
+  .cj-step { grid-template-columns: 1fr; gap: 8px; padding: 22px 20px; }
+  .cj-panel { padding: 26px 20px; }
+}
 </style>
 </head>
 <body>
@@ -162,63 +201,96 @@
 </nav>
 </div>
 </header>
+<nav class="cc-breadcrumb" aria-label="Breadcrumb">
+<p><a href="/getting-started">Getting Started</a> &rsaquo; Your Care Journey</p>
+</nav>
 
-<section class="gs-hero">
-<p class="kicker">Getting Started</p>
-<h1 class="gs-h1">New to home care? Start here.</h1>
-<p style="font-size:15.5px;line-height:1.7;color:#45566a;margin:0 auto;max-width:580px">Whether you're just beginning this journey or already know what you need, we're here to help, and it starts with a simple, no-pressure conversation.</p>
-</section>
-
-<section class="gs-body">
-<h2>What is home care?</h2>
-<p>Home care means a trusted caregiver comes to the home to help a senior or disabled adult with daily tasks, so they can keep living safely and comfortably in the place they love. The level of care depends on the person's needs, it can range from a few hours a day or a few days a week, all the way to 24-hour or live-in care.</p>
+<section class="cj-hero">
+<p class="kicker">Your Care Journey</p>
+<h1 class="cj-h1">What actually happens after you call.</h1>
+<p class="cj-lede">Choosing home care is one of the harder decisions a family makes, and not knowing what comes next makes it harder. Here is every step, in order, with the timing we hold ourselves to.</p>
 </section>
 
-<section class="gs-services">
-<span>Companionship</span><span>Medication reminders</span><span>Grocery shopping</span><span>Meal preparation</span><span>Transportation &amp; errands</span><span>Personal care &amp; hygiene</span><span>Staying active</span><span>Light housekeeping</span><span>Social connection</span><span>Hobbies &amp; passions</span>
-</section>
+<div class="cj-wrap">
+<div class="cj-steps">
 
-<section class="gs-body">
-<h2>When is home care helpful?</h2>
-<p>Home care can make a real difference in the well-being and quality of life of a senior or disabled adult, and their family. Some of the most common situations:</p>
-</section>
-<section class="gs-when">
-<div class="li"><span class="mk">✓</span> A loved one needs some help to live safely on their own</div>
-<div class="li"><span class="mk">✓</span> Mild cognitive impairment (MCI) or more serious dementia</div>
-<div class="li"><span class="mk">✓</span> For companionship and healthier social connection</div>
-<div class="li"><span class="mk">✓</span> Following a serious medical incident or hospitalization</div>
-<div class="li"><span class="mk">✓</span> A chronic or age-related health condition or illness</div>
-<div class="li"><span class="mk">✓</span> A family caregiver needs support or time to rest and recharge</div>
-</section>
+<div class="cj-step">
+<div class="cj-num">1</div>
+<div>
+<span class="cj-when">Whenever you're ready</span>
+<h2>You tell us what's going on</h2>
+<p>Call us, book online, or work through the care assessment first if you'd rather gather your thoughts before speaking to anyone. There is no script and no obligation, and you do not need to know what kind of care you want yet. Most families do not.</p>
+</div>
+</div>
 
-<section class="gs-body">
-<h2>How does home care work?</h2>
-<p>You share your care needs, then we share our experience and expertise, guiding you and your family along every step of the journey.</p>
-</section>
-<section class="gs-steps">
-<div class="gs-step"><div class="n">1</div><h4>Clarify your needs</h4><p>Share a few details about your current care situation.</p></div>
-<div class="gs-step"><div class="n">2</div><h4>Free consultation</h4><p>We reach out within 24 hours to schedule a free in-home consultation.</p></div>
-<div class="gs-step"><div class="n">3</div><h4>Customized care plan</h4><p>We build a personalized plan designed for your needs and budget.</p></div>
-<div class="gs-step"><div class="n">4</div><h4>Expert matching</h4><p>We match a caregiver to your loved one by personality, skills, and schedule.</p></div>
-</section>
+<div class="cj-step">
+<div class="cj-num">2</div>
+<div>
+<span class="cj-when">Within 24 hours</span>
+<h2>We reach out to schedule a free in-home consultation</h2>
+<p>A care coordinator contacts you within 24 hours to arrange a visit at a time that suits your family. The consultation happens in the home, because the home is half the picture: the stairs, the bathroom, the lighting, how far the bedroom is from the kitchen.</p>
+<p>It is free, and it carries no obligation to book care.</p>
+</div>
+</div>
 
-<section class="gs-cta">
-<p style="text-align:center;margin:26px 0 0;font-size:16px"><a href="/care-journey" style="font-weight:600">See the full journey, step by step, with timings &rarr;</a></p>
-<p style="font-size:14px;color:#66736B;margin:0 0 18px">Curious whether we serve your area? We cover Greene, Christian, Douglas, Phelps, Taney, and Webster counties.</p>
-<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
-<a href="book" class="btn-primary">Book a Free Consultation</a>
-<a href="assessment" class="btn-outline">Start the Care Assessment</a>
-<a href="cara" class="btn-outline">Ask Cara</a>
+<div class="cj-step">
+<div class="cj-num">3</div>
+<div>
+<span class="cj-when">At the consultation</span>
+<h2>We build a care plan around the needs and the budget</h2>
+<p>We write a plan for your situation, not a package off a shelf, covering what help is needed, when it is actually needed, and what it will cost. Our rates are <a href="/pricing">posted publicly</a>, so nothing about the number should surprise you.</p>
+<p>If another way of paying fits better, we will say so, whether that is <a href="/guides/missouri-medicaid-hcbs">Medicaid</a>, <a href="/guides/va-benefits-for-home-care">VA benefits</a>, or <a href="/long-term-care-insurance">long-term care insurance</a>.</p>
+</div>
+</div>
+
+<div class="cj-step">
+<div class="cj-num">4</div>
+<div>
+<span class="cj-when">Before the first visit</span>
+<h2>We match a caregiver, and train them on the plan</h2>
+<p>We match on personality, experience, and care needs, not just who happens to be free. Every caregiver is <strong>trained on your loved one's care plan before they walk through the door</strong>, so they arrive already knowing the preferences and routines that matter.</p>
+<ul class="cj-list">
+<li>Matched by personality, experience, and care needs</li>
+<li>Trained on the care plan before the first visit</li>
+<li>Preferences and routines honored from day one</li>
+<li>Employees of ours, not contractors, and covered by our insurance</li>
+</ul>
+</div>
+</div>
+
+<div class="cj-step">
+<div class="cj-num">5</div>
+<div>
+<span class="cj-when">Often 24&ndash;48 hours after the plan</span>
+<h2>Care begins</h2>
+<p>Once the service plan is in place, care usually starts within 24 to 48 hours, depending on caregiver availability in your area. If your situation is urgent, say so on the first call and we will tell you honestly what we can do.</p>
+</div>
+</div>
+
+</div>
+
+<div class="cj-panel">
+<h2>And if the fit isn't right?</h2>
+<p>Then we change it. Matching is a judgment, and judgments are sometimes wrong, so we keep checking the fit rather than assuming it held. Tell us it isn't working and we will match someone else.</p>
+<p>The same goes for the plan itself. Needs shift, and a plan written in March may be wrong by August. Yours is meant to be rewritten when that happens, not defended.</p>
+</div>
+
+<div class="cj-panel" style="background:var(--soft-teal)">
+<h2>Where we do this</h2>
+<p>We serve Greene, Christian, Douglas, Phelps, Taney, and Webster counties. If you are just outside them, call anyway and we will tell you plainly whether we can help or point you to someone who can. <a href="/service-area">See the full service area</a>.</p>
+</div>
+
+</div>
+
+<section class="cj-cta">
+<h2>Whenever you're ready, we're here.</h2>
+<p>No pressure and no sales script. A real person in Springfield, day or night.</p>
+<div class="cj-btns">
+<a href="tel:14172348494" class="cj-btn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Call (417) 234-8494</a>
+<a href="/book" class="cj-btn-out">Book a free consultation</a>
 </div>
 </section>
 
-<section class="cc-reviews-sec">
-<div class="cc-reviews-head">
-<h2>What families &amp; caregivers say</h2>
-<p>Real, verified Google reviews from the families we care for, and the caregivers on our team.</p>
-</div>
-<iframe class="cc-reviews-frame" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" title="Verified Google reviews for Caring Companions"></iframe>
-</section>
 <footer class="cc-siteftr">
 <div class="cc-siteftr-grid">
 <div class="brand">
