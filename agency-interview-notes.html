@@ -147,7 +147,7 @@
 </header>
 
 <section class="an-hero">
-<p class="no-print" style="font-size:13px;font-weight:600;color:#C17A12;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace" style="text-decoration:none;color:#C17A12">Family Workspace</a> › Agency Interview Notes</p>
+<p class="no-print" style="font-size:13px;font-weight:600;color:#9C6410;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace" style="text-decoration:none;color:#9C6410">Family Workspace</a> › Agency Interview Notes</p>
 <h1 class="an-h1">Agency Interview Notes</h1>
 <p class="no-print" style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px">Calling around to compare agencies? A worksheet for each conversation, so your impressions don't blur together by the third call.</p>
 <button id="add-agency" class="btn-primary no-print" style="padding:12px 22px;font-size:14px;white-space:nowrap">+ Add an Agency</button>
@@ -155,7 +155,7 @@
 
 <section style="max-width:1000px;margin:0 auto;padding:20px 24px 60px">
 <div id="agency-cards"></div>
-<p id="empty-note" style="text-align:center;font-size:14px;color:#8a978f;padding:20px 0">No agencies added yet, click "Add an Agency" above for each call you make.</p>
+<p id="empty-note" style="text-align:center;font-size:14px;color:#66736B;padding:20px 0">No agencies added yet, click "Add an Agency" above for each call you make.</p>
 </section>
 
 <section class="no-print" style="max-width:940px;margin:0 auto;padding:0 24px 80px;text-align:center">
@@ -259,7 +259,7 @@ function render() {
     var remove = document.createElement('button');
     remove.className = 'no-print';
     remove.textContent = 'Remove';
-    remove.style.cssText = 'background:none;border:none;color:#8a978f;font-size:13px;cursor:pointer;white-space:nowrap';
+    remove.style.cssText = 'background:none;border:none;color:#66736B;font-size:13px;cursor:pointer;white-space:nowrap';
     remove.addEventListener('click', function () { agencies.splice(i, 1); save(agencies); render(); });
     head.appendChild(remove);
     card.appendChild(head);
@@ -271,7 +271,7 @@ function render() {
     card.appendChild(grid);
 
     var askLabel = document.createElement('p');
-    askLabel.style.cssText = 'font-size:12px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px';
+    askLabel.style.cssText = 'font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px';
     askLabel.textContent = 'Ask them';
     card.appendChild(askLabel);
     var qWrap = document.createElement('div');
@@ -290,7 +290,7 @@ function render() {
     card.appendChild(notes);
 
     var impLabel = document.createElement('p');
-    impLabel.style.cssText = 'font-size:12px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px';
+    impLabel.style.cssText = 'font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px';
     impLabel.textContent = 'Overall impression';
     card.appendChild(impLabel);
     var impRow = document.createElement('div');
