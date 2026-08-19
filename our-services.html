@@ -32,6 +32,38 @@
 @media (max-width: 899px) { .os-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 639px) { .os-hero { padding: 36px 20px 8px; } .os-h1 { font-size: 28px; } .os-grid { grid-template-columns: 1fr; } }
 </style>
+<style>
+.opts-sec { max-width: var(--shell); margin: 0 auto; padding: 8px 24px 20px; }
+.opts-h2 { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--brand-blue); margin: 0 0 10px; }
+.opts-lede { font-size: 16px; line-height: 1.7; color: var(--body-text); margin: 0 0 24px; max-width: 720px; }
+.opts-scroll { overflow-x: auto; }
+.opts-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.opts-table th { text-align: left; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  color: #fff; background: var(--navy-panel); padding: 14px 18px; }
+.opts-table td { padding: 18px; border-top: 1px solid var(--border); font-size: 15.5px; line-height: 1.65; color: var(--body-text); vertical-align: top; }
+.opts-table tbody tr:nth-child(even) td { background: #fbfaf7; }
+.opts-table td strong { color: var(--brand-blue); font-weight: 600; }
+.opt-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt-links a { display: inline-block; font-size: 14px; font-weight: 600; color: var(--cta);
+  border: 1px solid #d6e3e6; background: var(--soft-teal); border-radius: 999px; padding: 6px 13px; text-decoration: none; }
+.opt-links a:hover { background: #dceef1; text-decoration: none; }
+.opts-foot { font-size: 15.5px; line-height: 1.7; color: var(--body-text); margin: 18px 0 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+/* Below 860 the table becomes stacked cards: three columns of prose do not fit a phone. */
+@media (max-width: 860px) {
+  .opts-table, .opts-table tbody, .opts-table tr, .opts-table td { display: block; width: 100%; }
+  .opts-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  .opts-table { border: none; background: none; }
+  .opts-table tr { background: #fff; border: 1px solid var(--border); border-radius: 14px; margin-bottom: 14px; padding: 4px 0; }
+  .opts-table tbody tr:nth-child(even) td { background: transparent; }
+  .opts-table td { border-top: none; padding: 10px 18px; }
+  .opts-table td + td { padding-top: 0; }
+  .opts-table td::before { content: attr(data-label); display: block; font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em; color: var(--muted-label); margin-bottom: 5px; }
+  .opts-sec { padding: 8px 20px 20px; }
+  .opts-h2 { font-size: 23px; }
+}
+</style>
 </head>
 <body>
 <div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
@@ -184,6 +216,55 @@
 <a href="/services/errands-transportation">Errands &amp; Transportation</a>
 <a href="/services/mobility-assistance">Mobility Assistance</a>
 <a href="/medicare-guide">Medicare GUIDE Respite</a>
+</section>
+
+<section class="opts-sec">
+<h2 class="opts-h2">Understanding your care options</h2>
+<p class="opts-lede">Most families arrive knowing the situation but not the vocabulary. Find the row that sounds like yours; the last column is where families in that spot usually begin, not where they have to stay.</p>
+<div class="opts-scroll">
+<table class="opts-table">
+<caption class="sr-only">Common situations, what they usually look like, and the care families typically start with</caption>
+<thead><tr><th scope="col">What&rsquo;s happening</th><th scope="col">What that usually looks like</th><th scope="col">Where families usually start</th></tr></thead>
+<tbody>
+<tr>
+<td data-label="What's happening"><strong>&ldquo;They&rsquo;re managing, but I worry in between&rdquo;</strong></td>
+<td data-label="What that usually looks like">Mostly independent. The worry is a fall nobody hears about, meals skipped, or too many days alone.</td>
+<td data-label="Where families usually start"><span class="opt-links"><a href="/hometogether">HomeTogether&trade;</a> <a href="/services/companion-care">Wellness Care</a></span></td>
+</tr>
+<tr>
+<td data-label="What's happening"><strong>&ldquo;The everyday things are slipping&rdquo;</strong></td>
+<td data-label="What that usually looks like">Laundry piling up, the fridge is bare, housework has quietly become too much.</td>
+<td data-label="Where families usually start"><span class="opt-links"><a href="/services/companion-care">Wellness Care</a></span></td>
+</tr>
+<tr>
+<td data-label="What's happening"><strong>&ldquo;They need hands-on help now&rdquo;</strong></td>
+<td data-label="What that usually looks like">Bathing, dressing, and getting safely to the bathroom are no longer manageable alone.</td>
+<td data-label="Where families usually start"><span class="opt-links"><a href="/services/personal-care">Personal Care</a></span></td>
+</tr>
+<tr>
+<td data-label="What's happening"><strong>&ldquo;They&rsquo;re coming home from hospital or rehab&rdquo;</strong></td>
+<td data-label="What that usually looks like">The first days home carry the highest risk of a fall or a return trip. Needs usually taper as they recover.</td>
+<td data-label="Where families usually start"><span class="opt-links"><a href="/guides/hospital-discharge">Hospital Recovery</a> <a href="/services/personal-care">Personal Care</a></span></td>
+</tr>
+<tr>
+<td data-label="What's happening"><strong>&ldquo;Memory is changing&rdquo;</strong></td>
+<td data-label="What that usually looks like">Repeated questions, confusion that worsens in the evening, or the first worries about wandering.</td>
+<td data-label="Where families usually start"><span class="opt-links"><a href="/care-paths/dementia">Dementia &amp; Memory Care</a></span></td>
+</tr>
+<tr>
+<td data-label="What's happening"><strong>&ldquo;I&rsquo;m the caregiver, and I&rsquo;m worn out&rdquo;</strong></td>
+<td data-label="What that usually looks like">You are doing it all, and you cannot keep this pace and stay well yourself.</td>
+<td data-label="Where families usually start"><span class="opt-links"><a href="/services/respite-care">Respite Care</a></span></td>
+</tr>
+<tr>
+<td data-label="What's happening"><strong>&ldquo;They can&rsquo;t safely be alone&rdquo;</strong></td>
+<td data-label="What that usually looks like">Nights are the risk, or someone needs to be there around the clock.</td>
+<td data-label="Where families usually start"><span class="opt-links"><a href="/services/overnight-care">Overnight Care</a> <a href="/services/live-in-care">Live-In Care</a> <a href="/services/24-hour-care">24-Hour Care</a></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="opts-foot">You are not locked in. Every level moves to the next without changing agencies or starting over. <a href="/care-journey">See how the process works &rarr;</a></p>
 </section>
 
 <section style="max-width:940px;margin:0 auto;padding:36px 24px 80px;text-align:center">
