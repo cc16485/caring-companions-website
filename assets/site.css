@@ -21,6 +21,7 @@
   --soft-teal: #EAF4F6;
   --mint: #8FD1C7;
   --gold-on-dark: #e8c988;
+  --shell: 1400px;          /* one page width. Header, content and footer all read from this. */
   --serif: 'Source Serif 4', Georgia, serif;
   --sans: 'Inter', Helvetica, Arial, sans-serif;
 }
@@ -46,7 +47,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   border-bottom: 1px solid var(--border);
 }
 .cc-header-inner {
-  max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+  max-width: var(--shell); margin: 0 auto; padding: 14px 24px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .cc-header-inner.w820 { max-width: 1000px; }
@@ -153,13 +154,13 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 
 /* ---------- Shared footer ---------- */
 .cc-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 40px 20px; }
-.cc-footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.cc-footer-inner { max-width: var(--shell); margin: 0 auto; text-align: center; }
 .cc-footer-inner img { height: 32px; display: block; margin: 0 auto 10px; }
 .cc-footer-inner p { font-size: 13px; color: var(--muted-label); margin: 0; }
 
 /* ---------- Rich site footer (shared across all pages) ---------- */
 .cc-siteftr { border-top: 1px solid var(--border); background: #f6f5f0; padding: 46px 24px 28px; }
-.cc-siteftr-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; }
+.cc-siteftr-grid { max-width: var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; }
 .cc-siteftr h4 { font-size: 12px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
 .cc-siteftr a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 3px 0; }
 .cc-siteftr a:hover { color: var(--accent); text-decoration: none; }
@@ -168,12 +169,12 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cc-siteftr .brand .meta { font-size: 12.5px; color: var(--muted-label); line-height: 1.6; margin: 0 0 12px; }
 .cc-siteftr .brand a.book { display: inline-block; background: var(--cta); color: var(--bg); border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; }
 .cc-siteftr .brand a.book:hover { background: var(--cta-hover); color: var(--bg); }
-.cc-siteftr-bottom { max-width: 1240px; margin: 26px auto 0; border-top: 1px solid var(--border); padding-top: 16px; font-size: 12px; color: #a3ada6; }
+.cc-siteftr-bottom { max-width: var(--shell); margin: 26px auto 0; border-top: 1px solid var(--border); padding-top: 16px; font-size: 12px; color: #a3ada6; }
 @media (max-width: 899px) { .cc-siteftr-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .cc-siteftr-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Breadcrumb ---------- */
-.cc-breadcrumb { max-width: 1200px; margin: 0 auto; padding: 16px 24px 0; }
+.cc-breadcrumb { max-width: var(--shell); margin: 0 auto; padding: 16px 24px 0; }
 .cc-breadcrumb p { font-size: 13px; color: var(--muted-label); margin: 0; }
 .cc-breadcrumb a { text-decoration: none; }
 .cc-breadcrumb .current { color: var(--muted); }
@@ -185,13 +186,13 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 }
 
 /* ---------- Guide / article pages (breakpoint 900px) ---------- */
-.guide-hero { max-width: 1200px; margin: 0 auto; padding: 40px 24px 20px; }
+.guide-hero { max-width: var(--shell); margin: 0 auto; padding: 40px 24px 20px; }
 .guide-h1 {
   font-family: var(--serif); font-size: 36px; font-weight: 600;
   margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; max-width: 880px;
 }
 .guide-body {
-  max-width: 1200px; margin: 0 auto; padding: 0 24px 90px;
+  max-width: var(--shell); margin: 0 auto; padding: 0 24px 90px;
   display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start;
 }
 .guide-aside { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
@@ -283,7 +284,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cty-situations { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .cty-tools { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
 .cty-crisis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
-.cty-body { max-width: 1240px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+.cty-body { max-width: var(--shell); margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
 /* let wide content (e.g. the comparison table) scroll inside its own
    overflow container instead of stretching the grid column */
 .cty-body > *, .guide-body > * { min-width: 0; }
@@ -382,7 +383,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
    14px in --muted (3.4:1); on navy it clears AA and never scrolls out of reach. */
 .cc-utility { background: var(--brand-blue); }
 .cc-utility-inner {
-  max-width: 1240px; margin: 0 auto; padding: 9px 24px;
+  max-width: var(--shell); margin: 0 auto; padding: 9px 24px;
   display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
 }
 .cc-utility-tel {
@@ -412,7 +413,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 /* ---------- Proof bar ----------
    Overlaps the hero so the evidence reads before the fold, rather than as a
    13px grey checkmark row that nobody sees. */
-.hp-proof-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+.hp-proof-wrap { max-width: var(--shell); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 .hp-proof {
   margin-top: 34px; background: #ffffff; border: 1px solid var(--border);
   border-radius: 18px; box-shadow: 0 14px 34px rgba(22,40,58,.09);
@@ -437,3 +438,8 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 /* The utility bar now carries the phone at full prominence, so the header
    copy is redundant on desktop. Kept on mobile, where the bar drops its note. */
 @media (min-width: 1040px) { .cc-nav-phone { display: none; } }
+
+/* Google rating sits in the proof bar's first slot: strongest evidence first. */
+.hp-proof-item strong.hp-proof-rating { display: inline-flex; align-items: baseline; gap: 4px; justify-content: center; }
+.hp-proof-item .hp-proof-star { color: var(--accent); font-size: 22px; line-height: 1; }
+@media (max-width: 719px) { .hp-proof-rating { justify-content: flex-start; } }
