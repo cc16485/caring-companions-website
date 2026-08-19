@@ -27,7 +27,7 @@
 .md-progress i { display: block; height: 100%; background: linear-gradient(90deg, #1F7A8C, #F0A63A); border-radius: 99px; transition: width .4s ease; }
 .md-count { font-size: 11.5px; font-weight: 700; color: var(--muted-label); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 18px; }
 .md-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 30px 28px; box-shadow: 0 10px 34px rgba(13,54,95,0.07); }
-.md-kicker { font-size: 11.5px; font-weight: 700; color: #C17A12; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+.md-kicker { font-size: 11.5px; font-weight: 700; color: #9C6410; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
 .md-title { font-family: var(--serif); font-size: 25px; font-weight: 600; color: var(--brand-blue); margin: 0 0 10px; line-height: 1.3; text-wrap: balance; }
 .md-lead { font-size: 15px; line-height: 1.7; color: var(--body-text); margin: 0 0 18px; }
 .md-point { display: flex; gap: 12px; align-items: flex-start; background: #f8f6f0; border: 1.5px solid transparent; border-radius: 11px; padding: 13px 15px; margin-bottom: 9px; cursor: pointer; transition: all .15s ease; }
@@ -68,7 +68,7 @@ textarea.md-reflect { width: 100%; min-height: 90px; resize: vertical; border: 1
 .md-brain .sick { background: #fdf3e2; border: 1.5px solid #ecd3a8; }
 .md-brain .t { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
 .md-brain .d { font-size: 12.5px; line-height: 1.55; color: #55677a; margin: 0; }
-.md-brain .arrow { font-size: 22px; color: #C17A12; }
+.md-brain .arrow { font-size: 22px; color: #9C6410; }
 @media (min-width: 880px) { .md-shell { max-width: 1000px; } .md-card { padding: 40px 48px; } .md-title { font-size: 29px; } }
 @media (max-width: 560px) { .md-card { padding: 22px 18px; } .md-title { font-size: 21px; } .md-brain { grid-template-columns: 1fr; } .md-brain .arrow { transform: rotate(90deg); text-align: center; } }
 </style>
@@ -270,7 +270,7 @@ start: function(s){
     '<p class="md-kicker">Family Care Academy &middot; Dementia course &middot; Module 1</p>'
     + '<h1 class="md-title">'+s.title+'</h1>'
     + '<p class="md-lead">'+s.blurb+'</p>'
-    + '<p style="font-size:12.5px;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.05em;margin:18px 0 8px">In this module</p>'
+    + '<p style="font-size:12.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:.05em;margin:18px 0 8px">In this module</p>'
     + '<ul class="md-objectives" style="margin:0;padding-left:20px">' + s.objectives.map(function(o){ return '<li>'+esc(o)+'</li>'; }).join('') + '</ul>'
     + '<div class="md-callout" style="margin-top:18px"><p><b>Narration:</b> this lesson is read aloud by Samantha, the owner of Caring Companions. Use the button up top to turn it off any time.</p></div>'
     + nextBtn('Begin Module 1'));
@@ -294,7 +294,7 @@ brain: function(s){
     + '<div class="md-brain">'
     + '<div class="b healthy"><p class="t" style="color:#1F7A8C">Healthy brain</p><p class="d">Strong pathways. Messages travel quickly: names, steps of a task, the way home.</p></div>'
     + '<div class="arrow">&rarr;</div>'
-    + '<div class="b sick"><p class="t" style="color:#C17A12">Alzheimer’s brain</p><p class="d">Pathways damaged and fading. Messages stall. Cells stop talking, then are lost, and the brain slowly shrinks.</p></div>'
+    + '<div class="b sick"><p class="t" style="color:#9C6410">Alzheimer’s brain</p><p class="d">Pathways damaged and fading. Messages stall. Cells stop talking, then are lost, and the brain slowly shrinks.</p></div>'
     + '</div>' + callout(s) + nextBtn());
   wireNext();
 },
@@ -302,7 +302,7 @@ sort: function(s){
   var remaining = s.items.slice(), selected = null, correctCount = 0;
   function draw(){
     stage.innerHTML = card(header(s)
-      + '<p class="md-lead" style="font-size:13.5px;color:#8a978f">'+s.prompt+'</p>'
+      + '<p class="md-lead" style="font-size:13.5px;color:#66736B">'+s.prompt+'</p>'
       + '<div id="chips">' + remaining.map(function(it){ return '<button type="button" class="md-chip'+(selected===it.id?' sel':'')+'" data-id="'+it.id+'">'+esc(it.text)+'</button>'; }).join('') + '</div>'
       + s.buckets.map(function(b){ return '<div class="md-bucket'+(selected?' armed':'')+'" data-b="'+b.id+'"><h4 style="color:'+(b.id==='normal'?'#1F7A8C':'#C17A12')+'">'+esc(b.label)+'</h4>'
         + s.items.filter(function(it){ return it.placed===b.id; }).map(function(it){ return '<span class="got">'+esc(it.text)+'</span>'; }).join('') + '</div>'; }).join('')
@@ -357,7 +357,7 @@ match: function(s){
   var chips = s.chipOrder.slice(), selected = null, placed = {};
   function draw(){
     stage.innerHTML = card(header(s)
-      + '<p class="md-lead" style="font-size:13.5px;color:#8a978f">'+s.prompt+'</p>'
+      + '<p class="md-lead" style="font-size:13.5px;color:#66736B">'+s.prompt+'</p>'
       + '<div>' + chips.map(function(id){ var v = s.values.find(function(x){ return x.id===id; }); return '<button type="button" class="md-chip'+(selected===id?' sel':'')+'" data-id="'+id+'">'+esc(v.def)+'</button>'; }).join('') + '</div>'
       + s.values.map(function(v){ return '<div class="md-bucket'+(selected?' armed':'')+'" data-b="'+v.id+'"><h4 style="color:#0D365F">'+esc(v.name)+'</h4>' + (placed[v.id]?'<span class="got">'+esc(v.def)+'</span>':'') + '</div>'; }).join('')
       + nextBtn('Continue', Object.keys(placed).length < s.values.length));

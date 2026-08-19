@@ -12,15 +12,16 @@
   --ink-2: #122236;
   --body-text: #2c3d4d;
   --muted: #55677a;
-  --muted-label: #8a978f;
-  --accent: #C17A12;
-  --accent-hover: #9C6410;
+  --muted-label: #66736B;   /* 4.72:1 on --bg (was #66736B, 2.89:1 — failed AA) */
+  --accent: #9C6410;        /* 4.7:1 on --bg, 4.95:1 on white (was #C17A12, 3.29:1 — failed AA) */
+  --accent-hover: #7E5008;  /* darker so hover still reads as a state change */
   --bg: #faf9f6;
   --border: #e4e1d8;
   --soft-panel: #f2f0e9;
   --soft-teal: #EAF4F6;
   --mint: #8FD1C7;
   --gold-on-dark: #e8c988;
+  --shell: 1400px;          /* one page width. Header, content and footer all read from this. */
   --serif: 'Source Serif 4', Georgia, serif;
   --sans: 'Inter', Helvetica, Arial, sans-serif;
 }
@@ -46,7 +47,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   border-bottom: 1px solid var(--border);
 }
 .cc-header-inner {
-  max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+  max-width: var(--shell); margin: 0 auto; padding: 14px 24px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .cc-header-inner.w820 { max-width: 1000px; }
@@ -114,9 +115,9 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 @media (min-width: 861px) {
   .cc-mega::before { left: auto; right: 0; width: 100vw; top: -34px; height: 34px; }
 }
-.cc-dropdown a { display: block; padding: 9px 12px; font-size: 13.5px; font-weight: 500; color: var(--ink-2); text-decoration: none; border-radius: 8px; white-space: nowrap; line-height: 1.3; }
+.cc-dropdown a { display: block; padding: 13px 14px; font-size: 15.5px; font-weight: 500; color: var(--ink-2); text-decoration: none; border-radius: 8px; white-space: nowrap; line-height: 1.3; }
 .cc-dropdown a:hover { background: var(--soft-teal); color: var(--brand-blue); }
-.cc-dd-sub { display: block; font-size: 11.5px; font-weight: 400; color: var(--muted); margin-top: 2px; }
+.cc-dd-sub { display: block; font-size: 13px; font-weight: 400; color: var(--muted); margin-top: 2px; }
 .cc-dd-sep { height: 1px; background: var(--border); margin: 6px 6px; }
 
 @media (max-width: 860px) {
@@ -145,7 +146,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
     pointer-events: auto; min-width: 0; border: none; box-shadow: none;
     border-radius: 0; padding: 0; background: #f6f5f0;
   }
-  .cc-dropdown a { padding: 11px 24px 11px 42px; font-size: 14px; border-top: 1px solid #efece3; border-radius: 0; }
+  .cc-dropdown a { padding: 14px 24px 14px 42px; font-size: 15.5px; border-top: 1px solid #efece3; border-radius: 0; }
   .cc-dropdown a:hover { background: #eee9dc; }
   .cc-dd-sub { margin-top: 1px; }
   .cc-dd-sep { display: none; }
@@ -153,13 +154,13 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 
 /* ---------- Shared footer ---------- */
 .cc-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 40px 20px; }
-.cc-footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.cc-footer-inner { max-width: var(--shell); margin: 0 auto; text-align: center; }
 .cc-footer-inner img { height: 32px; display: block; margin: 0 auto 10px; }
 .cc-footer-inner p { font-size: 13px; color: var(--muted-label); margin: 0; }
 
 /* ---------- Rich site footer (shared across all pages) ---------- */
 .cc-siteftr { border-top: 1px solid var(--border); background: #f6f5f0; padding: 46px 24px 28px; }
-.cc-siteftr-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; }
+.cc-siteftr-grid { max-width: var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; }
 .cc-siteftr h4 { font-size: 12px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
 .cc-siteftr a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 3px 0; }
 .cc-siteftr a:hover { color: var(--accent); text-decoration: none; }
@@ -168,12 +169,12 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cc-siteftr .brand .meta { font-size: 12.5px; color: var(--muted-label); line-height: 1.6; margin: 0 0 12px; }
 .cc-siteftr .brand a.book { display: inline-block; background: var(--cta); color: var(--bg); border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; }
 .cc-siteftr .brand a.book:hover { background: var(--cta-hover); color: var(--bg); }
-.cc-siteftr-bottom { max-width: 1240px; margin: 26px auto 0; border-top: 1px solid var(--border); padding-top: 16px; font-size: 12px; color: #a3ada6; }
+.cc-siteftr-bottom { max-width: var(--shell); margin: 26px auto 0; border-top: 1px solid var(--border); padding-top: 16px; font-size: 12px; color: #a3ada6; }
 @media (max-width: 899px) { .cc-siteftr-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .cc-siteftr-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Breadcrumb ---------- */
-.cc-breadcrumb { max-width: 1200px; margin: 0 auto; padding: 16px 24px 0; }
+.cc-breadcrumb { max-width: var(--shell); margin: 0 auto; padding: 16px 24px 0; }
 .cc-breadcrumb p { font-size: 13px; color: var(--muted-label); margin: 0; }
 .cc-breadcrumb a { text-decoration: none; }
 .cc-breadcrumb .current { color: var(--muted); }
@@ -185,13 +186,13 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 }
 
 /* ---------- Guide / article pages (breakpoint 900px) ---------- */
-.guide-hero { max-width: 1200px; margin: 0 auto; padding: 40px 24px 20px; }
+.guide-hero { max-width: var(--shell); margin: 0 auto; padding: 40px 24px 20px; }
 .guide-h1 {
   font-family: var(--serif); font-size: 36px; font-weight: 600;
   margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; max-width: 880px;
 }
 .guide-body {
-  max-width: 1200px; margin: 0 auto; padding: 0 24px 90px;
+  max-width: var(--shell); margin: 0 auto; padding: 0 24px 90px;
   display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start;
 }
 .guide-aside { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
@@ -283,7 +284,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cty-situations { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .cty-tools { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
 .cty-crisis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
-.cty-body { max-width: 1240px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+.cty-body { max-width: var(--shell); margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
 /* let wide content (e.g. the comparison table) scroll inside its own
    overflow container instead of stretching the grid column */
 .cty-body > *, .guide-body > * { min-width: 0; }
@@ -376,3 +377,69 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   .cc-feat-tel { padding: 11px 24px !important; font-size: 17px !important; border-top: 1px solid #efece3; }
   .cc-feat-note { padding: 0 24px 12px; }
 }
+
+/* ---------- Utility bar: the phone at full contrast, above everything ----------
+   Seniors reach for the phone before any form. It used to sit in the header at
+   14px in --muted (3.4:1); on navy it clears AA and never scrolls out of reach. */
+.cc-utility { background: var(--brand-blue); }
+.cc-utility-inner {
+  max-width: var(--shell); margin: 0 auto; padding: 9px 24px;
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+}
+.cc-utility-tel {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none;
+  letter-spacing: .01em;
+}
+.cc-utility-tel svg { width: 17px; height: 17px; fill: var(--gold-on-dark); flex-shrink: 0; }
+.cc-utility-tel:hover, .cc-utility-tel:focus-visible { color: #ffffff; text-decoration: underline; }
+.cc-utility-note { font-size: 13.5px; color: #d6e0ea; }
+.cc-utility-book {
+  margin-left: auto; font-size: 13.5px; font-weight: 600;
+  color: var(--gold-on-dark); text-decoration: none; white-space: nowrap;
+}
+.cc-utility-book:hover { color: #ffffff; text-decoration: underline; }
+.cc-utility a:focus-visible { outline: 2px solid var(--gold-on-dark); outline-offset: 3px; border-radius: 3px; }
+@media (max-width: 719px) {
+  .cc-utility-inner { padding: 9px 20px; gap: 10px; justify-content: center; }
+  .cc-utility-note { display: none; }
+  .cc-utility-book { margin-left: 0; }
+}
+
+/* ---------- Hero primary CTA with a phone mark ---------- */
+.hp-btn-hero-call { display: inline-flex; align-items: center; gap: 10px; }
+.hp-btn-hero-call svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+/* ---------- Proof bar ----------
+   Overlaps the hero so the evidence reads before the fold, rather than as a
+   13px grey checkmark row that nobody sees. */
+.hp-proof-wrap { max-width: var(--shell); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+.hp-proof {
+  margin-top: 34px; background: #ffffff; border: 1px solid var(--border);
+  border-radius: 18px; box-shadow: 0 14px 34px rgba(22,40,58,.09);
+  padding: 30px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 24px;
+}
+.hp-proof-item { text-align: center; padding: 0 8px; }
+.hp-proof-item strong {
+  display: block; font-family: var(--serif); font-size: 28px; font-weight: 600;
+  color: var(--brand-blue); line-height: 1.15; margin-bottom: 6px;
+}
+.hp-proof-item span { display: block; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+@media (max-width: 1039px) {
+  .hp-proof { grid-template-columns: repeat(2, 1fr); padding: 26px 20px; }
+}
+@media (max-width: 719px) {
+  .hp-proof-wrap { padding: 0 20px; }
+  .hp-proof { grid-template-columns: 1fr; gap: 20px; margin-top: 26px; }
+  .hp-proof-item { text-align: left; padding: 0; }
+  .hp-proof-item strong { font-size: 24px; }
+}
+
+/* The utility bar now carries the phone at full prominence, so the header
+   copy is redundant on desktop. Kept on mobile, where the bar drops its note. */
+@media (min-width: 1040px) { .cc-nav-phone { display: none; } }
+
+/* Google rating sits in the proof bar's first slot: strongest evidence first. */
+.hp-proof-item strong.hp-proof-rating { display: inline-flex; align-items: baseline; gap: 4px; justify-content: center; }
+.hp-proof-item .hp-proof-star { color: var(--accent); font-size: 22px; line-height: 1; }
+@media (max-width: 719px) { .hp-proof-rating { justify-content: flex-start; } }
