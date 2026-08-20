@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set Up Your AxisCare App | Caring Companions</title>
+<meta name="description" content="New Caring Companions caregivers: how to download AxisCare Mobile, enter our server number, activate your account, log in, and allow location access.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://mo-care.com/axiscare-setup">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Set Up Your AxisCare App">
+<meta property="og:description" content="A three-minute walkthrough for new Caring Companions caregivers: download the app, enter server number 16485, activate, log in, and allow location access.">
+<meta property="og:url" content="https://mo-care.com/axiscare-setup">
+<meta property="og:image" content="https://mo-care.com/assets/video/axiscare-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+.ax-top{ background:var(--brand-blue); color:#fff; padding:14px 24px; }
+.ax-top .in{ max-width:1000px; margin:0 auto; display:flex; align-items:center; gap:16px; }
+.ax-top img{ height:38px; width:auto; display:block; background:#fff; border-radius:8px; padding:5px 8px; }
+.ax-top span{ font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--mint); }
+
+.ax-hero{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; padding:52px 24px 46px; }
+.ax-hero .in{ max-width:1000px; margin:0 auto; text-align:center; }
+.ax-hero .kick{ font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-on-dark); margin:0 0 14px; }
+.ax-hero h1{ font-family:var(--serif); font-size:40px; font-weight:600; line-height:1.15; letter-spacing:-.02em; margin:0 0 16px; text-wrap:balance; }
+.ax-hero p{ font-size:17.5px; line-height:1.7; color:#dbe7ec; margin:0 auto; max-width:56ch; }
+
+.ax-wrap{ max-width:1000px; margin:0 auto; padding:0 24px 64px; }
+
+.ax-player{ margin:-30px auto 0; max-width:430px; }
+.ax-player video{ width:100%; height:auto; display:block; border-radius:20px; background:#0D2B46;
+  box-shadow:0 24px 60px rgba(13,54,95,.28); }
+.ax-player .note{ font-size:14px; color:var(--muted); text-align:center; margin:14px 0 0; }
+
+.ax-facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:44px 0 0; }
+.ax-fact{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:22px 24px; text-align:center; }
+.ax-fact .lbl{ font-size:12px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted-label); margin:0 0 8px; }
+.ax-fact .val{ font-family:var(--serif); font-size:32px; font-weight:600; color:var(--brand-blue); letter-spacing:.02em; margin:0; line-height:1.2; }
+.ax-fact .val a{ color:var(--cta); text-decoration:none; }
+.ax-fact .val.small{ font-size:19px; word-break:break-word; }
+.ax-fact .sub{ font-size:13.5px; color:var(--muted); margin:8px 0 0; }
+@media (max-width:820px){ .ax-facts{ grid-template-columns:1fr; } }
+
+.ax-sec{ padding:48px 0 0; }
+.ax-sec h2{ font-family:var(--serif); font-size:28px; color:var(--brand-blue); margin:0 0 10px; }
+.ax-sec .lede{ font-size:16.5px; line-height:1.75; color:var(--muted); max-width:68ch; margin:0 0 24px; }
+
+.ax-steps{ display:grid; gap:12px; counter-reset:ax; }
+.ax-step{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px 24px;
+  display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; }
+.ax-step .n{ width:36px; height:36px; border-radius:11px; background:var(--soft-teal); color:var(--cta);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; }
+.ax-step h3{ font-family:var(--serif); font-size:18.5px; color:var(--brand-blue); margin:3px 0 6px; }
+.ax-step p{ font-size:15px; line-height:1.7; color:var(--muted); margin:0; }
+.ax-step b{ color:var(--brand-blue); }
+
+.ax-alert{ background:#fbf1ec; border-left:4px solid #B3401F; border-radius:0 14px 14px 0; padding:24px 28px; margin:26px 0 0; }
+.ax-alert h3{ font-family:var(--serif); font-size:20px; color:#8f3319; margin:0 0 10px; }
+.ax-alert p{ font-size:15.5px; line-height:1.75; color:var(--body-text); margin:0 0 10px; }
+.ax-alert p:last-child{ margin:0; }
+.ax-alert a{ color:#8f3319; font-weight:600; }
+
+.ax-help{ background:var(--soft-panel); border-radius:18px; padding:30px 32px; margin:44px 0 0; text-align:center; }
+.ax-help h2{ font-family:var(--serif); font-size:24px; color:var(--brand-blue); margin:0 0 8px; }
+.ax-help p{ font-size:16px; line-height:1.7; color:var(--muted); margin:0 0 16px; }
+.ax-help a.cta{ display:inline-block; background:var(--cta); color:#fff; font-weight:700; font-size:17px;
+  padding:14px 30px; border-radius:12px; text-decoration:none; }
+.ax-help a.cta:hover{ background:var(--cta-hover); }
+
+details.ax-tr{ margin:34px 0 0; border:1px solid var(--border); border-radius:14px; background:#fff; padding:0 24px; }
+details.ax-tr summary{ cursor:pointer; padding:18px 0; font-weight:600; color:var(--brand-blue); font-size:16px; }
+details.ax-tr[open] summary{ border-bottom:1px solid var(--border); }
+details.ax-tr .body{ padding:18px 0 24px; }
+details.ax-tr h4{ font-size:13px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted-label); margin:20px 0 6px; }
+details.ax-tr h4:first-child{ margin-top:0; }
+details.ax-tr p{ font-size:15px; line-height:1.75; color:var(--body-text); margin:0; }
+
+.ax-ftr{ background:var(--brand-blue); color:#c9d6e2; padding:28px 24px; text-align:center; font-size:14px; }
+.ax-ftr a{ color:#fff; }
+</style>
+</head>
+<body>
+
+<div class="ax-top">
+  <div class="in">
+    <a href="/"><img src="/assets/cc-logo.webp" alt="Caring Companions"></a>
+    <span>New caregiver setup</span>
+  </div>
+</div>
+
+<section class="ax-hero">
+  <div class="in">
+    <p class="kick">Before your first shift</p>
+    <h1>Set up your AxisCare app</h1>
+    <p>AxisCare is how you see your schedule and clock in and out of every visit. This walkthrough takes about three minutes. Do it before your first shift, not on the way to it.</p>
+  </div>
+</section>
+
+<div class="ax-wrap">
+
+  <div class="ax-player">
+    <video controls preload="none" playsinline poster="/assets/video/axiscare-poster.jpg">
+      <source src="/assets/video/axiscare-first-login.mp4" type="video/mp4">
+      Your browser cannot play this video. The written steps are below.
+    </video>
+    <p class="note">3 minutes &middot; captioned on screen, so you can watch it with the sound off</p>
+  </div>
+
+  <div class="ax-facts">
+    <div class="ax-fact">
+      <p class="lbl">Our server number</p>
+      <p class="val">16485</p>
+      <p class="sub">The app asks for this first</p>
+    </div>
+    <div class="ax-fact">
+      <p class="lbl">Stuck? Call the office</p>
+      <p class="val"><a href="tel:+14172348494">417-234-8494</a></p>
+      <p class="sub">We can look up your account</p>
+    </div>
+    <div class="ax-fact">
+      <p class="lbl">Forgot to clock out?</p>
+      <p class="val small"><a href="https://sc.mo-care.com/evv-correction-form">EVV Correction Form</a></p>
+      <p class="sub">Due Sunday midnight of that pay period</p>
+    </div>
+  </div>
+
+  <section class="ax-sec">
+    <h2>The steps, in writing</h2>
+    <p class="lede">Same order as the video, in case you would rather read them or need to check one thing later.</p>
+    <div class="ax-steps">
+      <div class="ax-step"><div class="n">1</div><div>
+        <h3>Download the app</h3>
+        <p>Open the App Store on an iPhone or the Google Play Store on an Android phone and search for <b>AxisCare Mobile</b>, one word. Tap Get. Look for the blue and yellow icon.</p>
+      </div></div>
+      <div class="ax-step"><div class="n">2</div><div>
+        <h3>Enter our server number</h3>
+        <p>Open the app. The first thing it asks for is your agency's server number. Ours is <b>16485</b>. Type it in and tap Next.</p>
+      </div></div>
+      <div class="ax-step"><div class="n">3</div><div>
+        <h3>Activate your account</h3>
+        <p>Choose <b>Activate Account</b> and enter the email address you gave us. It has to be the same email we have on file, or the code will not reach you. Then tap Send activation code.</p>
+      </div></div>
+      <div class="ax-step"><div class="n">4</div><div>
+        <h3>Check your email</h3>
+        <p>Open the message from AxisCare, then type that code into the app. You may also be asked to confirm your date of birth or ZIP code.</p>
+      </div></div>
+      <div class="ax-step"><div class="n">5</div><div>
+        <h3>Create your password</h3>
+        <p>Type it once, then again to confirm. Pick something you will remember, because you will use it every shift.</p>
+      </div></div>
+      <div class="ax-step"><div class="n">6</div><div>
+        <h3>Log in</h3>
+        <p>Enter your username and the password you just created. Your Caring Companions schedule and upcoming visits appear.</p>
+      </div></div>
+      <div class="ax-step"><div class="n">7</div><div>
+        <h3>Allow location access</h3>
+        <p>When your phone asks, tap <b>Allow While Using App</b>. AxisCare uses your location to confirm you are at the client's home when you clock in and out. If you do not allow it, your clock-ins may not go through.</p>
+      </div></div>
+    </div>
+
+    <div class="ax-alert">
+      <h3>Clock in and out every single visit</h3>
+      <p>The state requires that visits are clocked in and out correctly at least <b>90% of the time</b>. This is not a Caring Companions rule, it is how the visit gets billed and proven.</p>
+      <p>If you do forget to clock out, fill out the <a href="https://sc.mo-care.com/evv-correction-form">EVV Correction Form</a> with your name, the visit, the corrected times, the reason, and your signature, and submit it by <b>Sunday midnight of that pay period</b>. Missing clock-ins, or skipping this form when you forget, can lead to discipline, up to termination.</p>
+    </div>
+
+    <details class="ax-tr">
+      <summary>Read the narration</summary>
+      <div class="body">
+        <h4>Opening</h4>
+        <p>Hi, this is Samantha with Caring Companions. In this short video I'll show you how to download and log into the AxisCare app.</p>
+        <h4>Download the app</h4>
+        <p>Start by opening the App Store on an iPhone, or the Google Play Store on an Android phone. Search for AxisCare Mobile, that's AxisCare, one word, and tap Get to download it. Look for the blue and yellow icon.</p>
+        <h4>Enter our server number</h4>
+        <p>Now open the app. The first thing AxisCare asks for is your agency's server number. For Caring Companions, that number is one, six, four, eight, five. Type it in, then tap Next.</p>
+        <h4>Activate your account</h4>
+        <p>If this is your first time using AxisCare, choose Activate Account. Enter the email address you gave to Caring Companions. It has to be the same email we have on file for you, or the code won't come through. Then tap Send activation code.</p>
+        <h4>Check your email</h4>
+        <p>Open your email and look for the message from AxisCare. It contains your activation code. Go back to the app and type that code in. AxisCare may also ask you to confirm something like your date of birth or your ZIP code.</p>
+        <h4>Create your password</h4>
+        <p>Next, create your password. Type it once, then type it again to confirm. Pick something you'll remember, because you'll use this password every shift from now on.</p>
+        <h4>Log in</h4>
+        <p>Now you're ready to log in. Enter your AxisCare username and the password you just created. Once you're in, you'll see your Caring Companions schedule and your upcoming visits.</p>
+        <h4>Allow location access</h4>
+        <p>This next part is very important. When your phone asks whether AxisCare can use your location, tap Allow While Using App. AxisCare uses your phone's location to confirm you're at the client's home when you clock in and clock out. If you don't allow it, your clock-ins may not go through.</p>
+        <h4>EVV and the correction form</h4>
+        <p>One more thing, and please listen closely. The state requires that you clock in and out correctly at least ninety percent of the time. If you do forget to clock out, you must fill out our EVV Correction Form at sc.mo-care.com slash evv-correction-form. Enter your name, the visit, the corrected times, the reason, and your signature, and submit it by Sunday midnight of that pay period. Missing clock-ins, or skipping this form when you forget, can lead to discipline, up to termination.</p>
+        <h4>Closing</h4>
+        <p>That's it. Your AxisCare account is ready. If you get stuck activating or logging in, call the office at 417-234-8494. In the next video, we'll show you how to view your schedule and clock in and out correctly.</p>
+      </div>
+    </details>
+  </section>
+
+  <div class="ax-help">
+    <h2>Still stuck?</h2>
+    <p>If the activation code never arrives, or the app will not take your login, call us. Most of the time it is an email address that does not match what we have on file, and we can fix that in a minute.</p>
+    <a class="cta" href="tel:+14172348494">Call the office &middot; 417-234-8494</a>
+  </div>
+
+</div>
+
+<footer class="ax-ftr">
+  <p>Caring Companions In-Home Senior Care &middot; <a href="tel:+14172348494">417-234-8494</a></p>
+</footer>
+
+</body>
+</html>
