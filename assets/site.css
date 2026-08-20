@@ -47,12 +47,12 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   border-bottom: 1px solid var(--border);
 }
 .cc-header-inner {
-  max-width: var(--shell); margin: 0 auto; padding: 14px 24px;
+  max-width: var(--shell); margin: 0 auto; padding: 16px 24px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .cc-header-inner.w820 { max-width: 1000px; }
 .cc-header-inner .cc-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-.cc-header-inner .cc-logo img { height: 34px; display: block; }
+.cc-header-inner .cc-logo img { height: 42px; display: block; }
 .cc-header-phone { font-size: 14px; color: var(--muted); white-space: nowrap; text-decoration: none; }
 .cc-header-phone:hover { text-decoration: none; color: var(--muted); }
 
@@ -67,11 +67,11 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .bi { color: transparent; text-shadow: 0 0 0 var(--cta); }
 
 /* ---- Primary navigation ---- */
-.cc-nav { display: flex; align-items: center; gap: 22px; }
-.cc-nav > a, .cc-nav-top { font-size: 14px; font-weight: 500; color: var(--ink-2); white-space: nowrap; text-decoration: none; }
+.cc-nav { display: flex; align-items: center; gap: 24px; }
+.cc-nav > a, .cc-nav-top { font-size: 15.5px; font-weight: 500; color: var(--ink-2); white-space: nowrap; text-decoration: none; }
 .cc-nav > a:hover, .cc-nav-top:hover { color: var(--accent); text-decoration: none; }
 .cc-nav .cc-nav-phone { color: var(--muted); font-weight: 600; }
-.cc-nav .cc-nav-cta { background: var(--cta); color: var(--bg); padding: 9px 16px; border-radius: 8px; font-weight: 600; }
+.cc-nav .cc-nav-cta { background: var(--cta); color: var(--bg); padding: 11px 20px; border-radius: 8px; font-weight: 600; }
 .cc-nav .cc-nav-cta:hover { background: var(--cta-hover); color: var(--bg); }
 .cc-navtog { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .cc-burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 34px; height: 34px; cursor: pointer; }
