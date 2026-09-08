@@ -242,19 +242,35 @@
  <div id="bookView" style="display:none;">
    <div style="text-align:center;padding:6px 0 4px;">
      <div class="check" style="width:52px;height:52px;font-size:27px;line-height:52px;">&#10003;</div>
-     <h1 style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
-     <p style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are here at our office and take about <span id="bookMins">45</span> minutes. Choose whatever suits you and we will confirm it straight away.</p>
+     <h1 id="bookHead" style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
+     <p id="bookLede" style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are here at our office and take about <span id="bookMins">45</span> minutes. Choose whatever suits you and we will confirm it straight away.</p>
+   </div>
+   <!-- Somebody who already has a time lands here from the same ?book= link
+        their messages carry. Moving or cancelling has to be as easy as booking
+        was, or "just call us" quietly becomes a no-show. -->
+   <div class="ap-card" id="manageCard" style="display:none;">
+     <div style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Your interview</div>
+     <div id="manageWhen" style="font-size:17px;color:var(--ink-2);line-height:1.5;"></div>
+     <div class="chips" style="margin-top:14px;">
+       <button type="button" onclick="startReschedule()">Pick a different time</button>
+       <button type="button" style="color:#b00020;" onclick="cancelInterview(this)">Cancel my interview</button>
+     </div>
+     <p class="sub" style="margin:12px 0 0;">Keeping it? Then there is nothing to do — we will see you then. Questions, ring (417)&nbsp;234-8494.</p>
+     <div id="manageErr" style="display:none;color:#b00020;font-size:14px;margin-top:10px;"></div>
    </div>
    <div class="ap-card" id="slotsCard">
      <div id="slotsBody"><p class="sub" style="margin:0;">Finding times…</p></div>
    </div>
+   <button class="back" id="keepBtn" style="display:none;" onclick="keepBooking()">Actually, keep the time I have</button>
    <button class="back" id="skipBtn" onclick="skipBooking()">I would rather you called me to arrange it</button>
  </div>
 
  <div class="done" id="doneView">
    <div class="check">&#10003;</div>
-   <h1 style="font-family:var(--serif);font-size:29px;font-weight:600;color:var(--brand-blue);margin:0 0 10px;">Thank you, <span id="doneName">that is in</span>.</h1>
+   <h1 id="doneHead" style="font-family:var(--serif);font-size:29px;font-weight:600;color:var(--brand-blue);margin:0 0 10px;">Thank you, <span id="doneName">that is in</span>.</h1>
    <p style="font-size:15.5px;line-height:1.7;color:var(--body-text);margin:0 auto 16px;max-width:460px;" id="doneLede"></p>
+   <button class="back" id="changeBtn" style="display:none;" onclick="manageAgain()">I need to move or cancel this</button>
+   <button class="back" id="rebookBtn" style="display:none;" onclick="rebook()">Pick a new time instead</button>
    <div id="whereCard" style="display:none;background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;margin:0 auto;max-width:420px;text-align:left;">
      <div style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Where to come</div>
      <div style="font-size:15.5px;font-weight:600;color:var(--ink-2);line-height:1.5;" id="whereName"></div>
@@ -340,21 +356,103 @@ function renderRoleQuestions(label){
 
 if (POSITION && !JOB) loadRoleQuestions();
 
-/* Resume straight to the interview time-picker for someone who already applied
-   but did not pick a time. The nudge messages link here with their application
-   id (?book=<id>). No name in the URL — personal data never belongs in a query
-   string — so the greeting is neutral. Without this, the nudge link dropped
-   them back at step 1 of a form they had already filled in. */
+/* Resume straight to the interview step for someone who already applied. The
+   nudge and confirmation messages link here with their application id
+   (?book=<id>). No name in the URL — personal data never belongs in a query
+   string — so the greeting is neutral. Without this, the link dropped them
+   back at step 1 of a form they had already filled in.
+
+   Somebody who already HAS a time gets their booking with the choice to move
+   or cancel it, not a fresh list of slots that would quietly double-book. */
 const RESUME = P.get('book');
+let HAVE_BOOKING = false;   // an active booking exists; new times mean moving it
 if (RESUME) {
   ROW = RESUME;
-  const nameSpan = g('bookName');
-  if (nameSpan && nameSpan.parentElement) {
-    nameSpan.parentElement.textContent = 'Welcome back. Let’s pick your interview time.';
-  }
+  g('bookHead').textContent = 'Welcome back. Let’s pick your interview time.';
   g('formView').style.display = 'none';
   g('bookView').style.display = 'block';
+  resumeBooking();
+}
+
+async function resumeBooking(){
+  try {
+    const { data } = await sb.rpc('interview_mine', { p_applicant: ROW });
+    if (data && data.status === 'booked' && data.starts_at){
+      HAVE_BOOKING = true;
+      showManage(data.starts_at);
+      return;
+    }
+  } catch (e) { /* the function may not be installed yet; booking still works */ }
   loadSlots();
+}
+
+function showManage(iso){
+  const d = new Date(iso);
+  g('bookHead').textContent = 'Welcome back.';
+  g('bookLede').textContent = 'Your interview is booked. Move it or cancel it here whenever you need to.';
+  g('manageWhen').innerHTML = 'You are booked for <b>' + dayLabel(d) + ' at ' + timeLabel(d) + '</b>.';
+  g('manageErr').style.display = 'none';
+  g('manageCard').style.display = 'block';
+  g('slotsCard').style.display = 'none';
+  g('skipBtn').style.display = 'none';
+  g('keepBtn').style.display = 'none';
+}
+
+function startReschedule(){
+  g('bookHead').textContent = 'Pick your new time.';
+  g('bookLede').textContent = 'Your current time is only given up once the new one is confirmed.';
+  g('manageCard').style.display = 'none';
+  g('slotsCard').style.display = 'block';
+  g('keepBtn').style.display = 'block';
+  loadSlots();
+}
+
+function keepBooking(){
+  g('slotsCard').style.display = 'none';
+  g('keepBtn').style.display = 'none';
+  resumeBooking();
+}
+
+async function cancelInterview(btn){
+  if (!confirm('Cancel your interview?\n\nThe time goes back to being available, and you can pick a new one here any time.')) return;
+  btn.disabled = true; btn.textContent = 'Cancelling…';
+  try {
+    const { data, error } = await sb.rpc('interview_cancel', { p_applicant: ROW, p_by: 'applicant' });
+    if (error) throw error;
+    if (!data || !data.cancelled) throw new Error('nothing was booked');
+    HAVE_BOOKING = false;
+    g('doneHead').textContent = 'Your interview is cancelled.';
+    g('doneLede').textContent = 'No trouble at all — thanks for letting us know instead of leaving us waiting. '
+      + 'If caregiving is still on your mind, a new time is one tap away.';
+    g('rebookBtn').style.display = 'inline-block';
+    g('bookView').style.display = 'none';
+    g('doneView').style.display = 'block';
+    window.scrollTo(0, 0);
+  } catch (e) {
+    btn.disabled = false; btn.textContent = 'Cancel my interview';
+    g('manageErr').textContent = 'That did not go through. Ring us on (417) 234-8494 and we will cancel it for you.';
+    g('manageErr').style.display = 'block';
+    console.error(e);
+  }
+}
+
+function rebook(){
+  g('doneView').style.display = 'none';
+  g('bookView').style.display = 'block';
+  g('bookHead').textContent = 'Pick your new time.';
+  g('bookLede').textContent = 'Choose whatever suits you and we will confirm it straight away.';
+  g('manageCard').style.display = 'none';
+  g('slotsCard').style.display = 'block';
+  window.scrollTo(0, 0);
+  loadSlots();
+}
+
+/* From the booked screen back to move-or-cancel, without a page reload. */
+function manageAgain(){
+  g('doneView').style.display = 'none';
+  g('bookView').style.display = 'block';
+  window.scrollTo(0, 0);
+  resumeBooking();
 }
 
 if (JOB) {
@@ -632,10 +730,17 @@ async function bookSlot(btn, iso){
   all.forEach(b => b.disabled = true);
   btn.textContent = 'Booking…';
   try {
-    const { error } = await sb.rpc('interview_book', { p_applicant: ROW, p_starts: iso });
+    /* With a booking already in place, taking a new time MOVES it: one
+       transaction, so the old time is only released once the new one is
+       theirs. Without one, it is a plain booking. */
+    const moved = HAVE_BOOKING;
+    const { error } = moved
+      ? await sb.rpc('interview_reschedule', { p_applicant: ROW, p_starts: iso, p_by: 'applicant' })
+      : await sb.rpc('interview_book', { p_applicant: ROW, p_starts: iso });
     if (error) throw error;
+    HAVE_BOOKING = true;
     const d = new Date(iso);
-    showBooked(dayLabel(d) + ' at ' + timeLabel(d));
+    showBooked(dayLabel(d) + ' at ' + timeLabel(d), moved);
   } catch (e) {
     /* Somebody else may have taken it a second earlier. Reload rather than
        leaving a time on screen that no longer exists. */
@@ -648,16 +753,29 @@ async function bookSlot(btn, iso){
   }
 }
 
-function showBooked(when){
-  g('doneLede').innerHTML = 'Your interview is booked for <b>' + when + '</b>. '
+const DONE_HEAD_HTML = g('doneHead').innerHTML;   // "Thank you, <name>."
+function showBooked(when, moved){
+  /* The heading may still say "cancelled" from an earlier trip through this
+     page, so it is always set, never assumed. */
+  if (moved) g('doneHead').textContent = 'All moved.';
+  else {
+    g('doneHead').innerHTML = DONE_HEAD_HTML;
+    const bn = g('bookName');            // gone once the resume greeting replaced it
+    if (bn) g('doneName').textContent = bn.textContent;
+  }
+  g('doneLede').innerHTML = 'Your interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
     + 'We have sent you a confirmation, and we will remind you the day before and an hour before.';
   fillWhere();
+  g('rebookBtn').style.display = 'none';
+  g('changeBtn').style.display = 'inline-block';
   g('bookView').style.display = 'none';
   g('doneView').style.display = 'block';
   window.scrollTo(0, 0);
 }
 
 function skipBooking(){
+  g('changeBtn').style.display = 'none';
+  g('rebookBtn').style.display = 'none';
   g('doneLede').textContent = 'Someone from our office will call you within one business day to arrange your interview. '
     + 'If you told us you have lived outside Missouri, we will get your fingerprint check moving straight away so it does not hold up your start.';
   g('bookView').style.display = 'none';
