@@ -251,11 +251,12 @@
    <div class="ap-card" id="manageCard" style="display:none;">
      <div style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Your interview</div>
      <div id="manageWhen" style="font-size:17px;color:var(--ink-2);line-height:1.5;"></div>
-     <div class="chips" style="margin-top:14px;">
+     <div class="chips" id="manageBtns" style="margin-top:14px;">
        <button type="button" onclick="startReschedule()">Pick a different time</button>
        <button type="button" style="color:#b00020;" onclick="cancelInterview(this)">Cancel my interview</button>
      </div>
-     <p class="sub" style="margin:12px 0 0;">Keeping it? Then there is nothing to do — we will see you then. Questions, ring (417)&nbsp;234-8494.</p>
+     <p class="sub" id="manageLocked" style="display:none;margin:12px 0 0;"></p>
+     <p class="sub" id="manageKeep" style="margin:12px 0 0;">Keeping it? Then there is nothing to do — we will see you then. Questions, ring (417)&nbsp;234-8494.</p>
      <div id="manageErr" style="display:none;color:#b00020;font-size:14px;margin-top:10px;"></div>
    </div>
    <div class="ap-card" id="slotsCard">
@@ -379,18 +380,36 @@ async function resumeBooking(){
     const { data } = await sb.rpc('interview_mine', { p_applicant: ROW });
     if (data && data.status === 'booked' && data.starts_at){
       HAVE_BOOKING = true;
-      showManage(data.starts_at);
+      showManage(data);
       return;
     }
   } catch (e) { /* the function may not be installed yet; booking still works */ }
   loadSlots();
 }
 
-function showManage(iso){
-  const d = new Date(iso);
+/* Self-serve has two limits, decided by the database, explained here: two
+   changes, then it is a phone call; and nothing within two hours of the
+   start, because that close the coordinator has already shaped their day
+   around it. The office can always change anything. */
+const PHONE_ONLY = {
+  limit: 'This interview has been moved a couple of times already, so any more '
+    + 'changes are by phone — ring us on (417) 234-8494 and we will sort it out together.',
+  too_close: 'Your interview is less than two hours away, so it is too late to '
+    + 'change it online. Ring us on (417) 234-8494 and we will sort something out.',
+};
+
+function showManage(mine){
+  const d = new Date(mine.starts_at);
+  const locked = mine.can_change === false;   // absent means the old database: no limits
   g('bookHead').textContent = 'Welcome back.';
-  g('bookLede').textContent = 'Your interview is booked. Move it or cancel it here whenever you need to.';
+  g('bookLede').textContent = locked
+    ? 'Your interview is booked. Here it is.'
+    : 'Your interview is booked. Move it or cancel it here whenever you need to.';
   g('manageWhen').innerHTML = 'You are booked for <b>' + dayLabel(d) + ' at ' + timeLabel(d) + '</b>.';
+  g('manageBtns').style.display = locked ? 'none' : 'flex';
+  g('manageLocked').style.display = locked ? 'block' : 'none';
+  g('manageKeep').style.display = locked ? 'none' : 'block';
+  if (locked) g('manageLocked').textContent = PHONE_ONLY[mine.blocked] || PHONE_ONLY.too_close;
   g('manageErr').style.display = 'none';
   g('manageCard').style.display = 'block';
   g('slotsCard').style.display = 'none';
@@ -419,6 +438,12 @@ async function cancelInterview(btn){
   try {
     const { data, error } = await sb.rpc('interview_cancel', { p_applicant: ROW, p_by: 'applicant' });
     if (error) throw error;
+    if (data && data.cancelled === false && PHONE_ONLY[data.reason]){
+      btn.disabled = false; btn.textContent = 'Cancel my interview';
+      g('manageErr').textContent = PHONE_ONLY[data.reason];
+      g('manageErr').style.display = 'block';
+      return;
+    }
     if (!data || !data.cancelled) throw new Error('nothing was booked');
     HAVE_BOOKING = false;
     g('doneHead').textContent = 'Your interview is cancelled.';
@@ -742,8 +767,18 @@ async function bookSlot(btn, iso){
     const d = new Date(iso);
     showBooked(dayLabel(d) + ' at ' + timeLabel(d), moved);
   } catch (e) {
-    /* Somebody else may have taken it a second earlier. Reload rather than
-       leaving a time on screen that no longer exists. */
+    /* The database is the referee here: it may refuse because the limit or the
+       two-hour cutoff was reached with this tab already open. */
+    const m = String(e && e.message || '');
+    if (/CHANGE_LIMIT/.test(m) || /TOO_CLOSE/.test(m)){
+      g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">'
+        + (/CHANGE_LIMIT/.test(m) ? PHONE_ONLY.limit : PHONE_ONLY.too_close) + '</p>';
+      g('keepBtn').style.display = 'none';
+      console.error(e);
+      return;
+    }
+    /* Otherwise somebody else likely took it a second earlier. Reload rather
+       than leaving a time on screen that no longer exists. */
     all.forEach(b => b.disabled = false);
     btn.textContent = timeLabel(new Date(iso));
     g('slotsBody').insertAdjacentHTML('afterbegin',
