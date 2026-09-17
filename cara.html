@@ -80,7 +80,6 @@
 <span class="cc-colh">In-Home Care</span>
 <a href="/services/companion-care">Wellness Care<span class="cc-dd-sub">Company, meals, light housekeeping</span></a>
 <a href="/services/personal-care">Personal Care<span class="cc-dd-sub">Bathing, dressing, mobility</span></a>
-<a href="/services/live-in-care">Live-In Care<span class="cc-dd-sub">One caregiver, in the home</span></a>
 <a href="/services/overnight-care">Overnight Care</a>
 </span>
 <span class="cc-col">
@@ -381,15 +380,15 @@ function scoreConsultation(answers, subject) {
   if (answers.memory === 'significant') {
     levelName = 'Advanced Care'; levelRate = 'Starting at $34/hour';
     levelExplain = 'Higher-acuity support for advanced dementia and memory-related safety concerns like wandering, caregivers experienced in dementia care, with closer supervision.';
-    exploreAlternatives = ['Overnight Care (if nighttime wandering is a concern)', 'Live-In Care (for consistent daily coverage)'];
+    exploreAlternatives = ['Overnight Care (if nighttime wandering is a concern)'];
   } else if (answers.hospital === 'yes') {
     levelName = 'Personal Care'; levelRate = 'Starting at $32/hour';
     levelExplain = 'Hands-on, ADL-level support suited to a safe recovery at home right after a hospital stay, reducing the risk of returning to the hospital.';
     exploreAlternatives = ['Advanced Care (if recovery needs are more complex)', 'HomeTogether™ (for ongoing check-ins after recovery)'];
   } else if (points >= 14) {
-    levelName = 'Advanced Care'; levelRate = 'Starting at $34/hour, or 24-Hour ($28–$32/hr) and Live-In ($450/day) plans for round-the-clock coverage';
+    levelName = 'Advanced Care'; levelRate = 'Starting at $34/hour, or 24-Hour ($28–$32/hr) plans for round-the-clock coverage';
     levelExplain = 'The combination of needs here suggests higher-acuity, closely supervised support, likely spanning more of the day.';
-    exploreAlternatives = ['Overnight Care', 'Live-In Care'];
+    exploreAlternatives = ['Overnight Care'];
   } else if (points >= 7) {
     levelName = 'Personal Care'; levelRate = 'Starting at $32/hour';
     levelExplain = 'Hands-on assistance with bathing, dressing, toileting, transfers, walking, and other activities of daily living.';

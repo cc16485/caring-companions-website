@@ -63,7 +63,6 @@
 <span class="cc-colh">In-Home Care</span>
 <a href="/services/companion-care">Wellness Care<span class="cc-dd-sub">Company, meals, light housekeeping</span></a>
 <a href="/services/personal-care">Personal Care<span class="cc-dd-sub">Bathing, dressing, mobility</span></a>
-<a href="/services/live-in-care">Live-In Care<span class="cc-dd-sub">One caregiver, in the home</span></a>
 <a href="/services/overnight-care">Overnight Care</a>
 </span>
 <span class="cc-col">
@@ -387,10 +386,10 @@ function scoreAssessment(answers) {
     costEstimate = '$30–$34/hour, typically 4+ hours per visit';
     levelUrl = '/services/personal-care.html'; levelLinkLabel = 'Learn about hands-on recovery support';
   } else if (points >= 17) {
-    levelName = '24-Hour or Live-In Care';
+    levelName = '24-Hour Care';
     levelExplain = 'The combination of needs here suggests round-the-clock supervision would meaningfully improve safety.';
-    costEstimate = '$28–$32/hour (24-Hour) or about $450/day (Live-In)';
-    levelUrl = '/services/24-hour-care.html'; levelLinkLabel = 'Learn about 24-Hour & Live-In care';
+    costEstimate = '$28–$32/hour';
+    levelUrl = '/services/24-hour-care.html'; levelLinkLabel = 'Learn about 24-Hour care';
   } else if (points >= 9) {
     levelName = 'Personal Care';
     levelExplain = 'Hands-on help with bathing, dressing, and daily self-care, typically in 4+ hour visits.';

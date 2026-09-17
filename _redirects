@@ -2,7 +2,9 @@
 /24-hour-care-services /services/24-hour-care.html 301
 /companionship-care /services/companion-care.html 301
 /personal-care /services/personal-care.html 301
-/live-in-care-services /services/live-in-care.html 301
+/live-in-care-services /services/24-hour-care.html 301
+/services/live-in-care /services/24-hour-care.html 301
+/care-paths/live-in-care /services/24-hour-care.html 301
 /overnight-care /services/overnight-care.html 301
 /respite-care /services/respite-care.html 301
 /contact-us /contact.html 301

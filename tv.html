@@ -663,7 +663,7 @@
     <details class="rv"><summary>Is it really free, or is it built into the price?</summary><div class="a">Really free. Our rates are the same whether you take the device or not: around $30 an hour for help around the house, $32 for personal care, $34 for advanced care. Nothing is added to your bill for it, and there is no contract for the device itself.</div></details>
     <details class="rv"><summary>What if we do not need 20 hours a week?</summary><div class="a">Then you have three choices and none of them is a dead end. Add a day and reach 20. Keep your hours and buy the device on its own at $99 a month. Or add virtual caregiver visits from $75 a week, where a caregiver appears on her television once, twice or three times a day, Monday through Friday. The assessment above will tell you which one fits.</div></details>
     <details class="rv"><summary>Is there a camera watching her?</summary><div class="a">There is a camera, because that is how she sees your face. It sits behind a shutter that physically closes when a call ends. The safety sensing uses radar rather than video, so nothing is watching her between calls. Your family also chooses whether calls answer automatically or whether she presses the button on her remote.</div></details>
-    <details class="rv"><summary>What does the care itself cost?</summary><div class="a">Around $30 an hour for help around the house, $32 for personal care, and $34 for advanced or bed-bound care. Our shortest visit is 4 hours. Live-in care is charged by the day at $450 rather than by the hour. The assessment gives you a range in about a minute and a coordinator confirms the real number with you.</div></details>
+    <details class="rv"><summary>What does the care itself cost?</summary><div class="a">Around $30 an hour for help around the house, $32 for personal care, and $34 for advanced or bed-bound care. Our shortest visit is 4 hours. The assessment gives you a range in about a minute and a coordinator confirms the real number with you.</div></details>
     <details class="rv"><summary>Does she need to be good with technology?</summary><div class="a">No, and that is rather the point. There is no tablet, no app on her end and no password. It is the television she has used for forty years. Most of the setup is done before it reaches her, and it plugs in with one cable.</div></details>
     <details class="rv"><summary>Do you take Medicaid?</summary><div class="a">Yes, we serve Medicaid HCBS clients. The free device offer is for private-pay families only, which includes long-term care insurance and privately paid VA benefits.</div></details>
     <details class="rv"><summary>What if she says she does not want anyone in the house?</summary><div class="a">Almost everybody says that at first. It is not stubbornness, it is dignity. We start small, often with something practical like a ride or the laundry rather than personal care, and we let her get to know one person. The device helps here too, because it gives her something rather than only taking her independence.</div></details>
@@ -945,15 +945,9 @@
     var free = ORDER.filter(function (o) { return w.indexOf(o) === -1 && o !== 'nights'; });
     var note;
     if (allDay) {
-      note = windows().indexOf('nights') > -1
-        ? 'These two get muddled constantly, so worth being clear: live-in is one caregiver who lives in the home and '
-          + 'sleeps at night. 24-hour is a rota of caregivers who stay awake. Because you have told us the nights are '
-          + 'hard, 24-hour is the honest answer, and it is the more expensive of the two. If the nights turn out to be '
-          + 'quieter than they feel right now, live-in may be enough, and that is worth half an hour of conversation.'
-        : 'These two get muddled constantly, so worth being clear: 24-hour care is a rota of caregivers who stay awake '
-          + 'all night. Live-in is one caregiver who lives in the home and sleeps at night, charged by the day, and it '
-          + 'costs a great deal less. From what you have told us, live-in is likely enough. If the nights get harder, '
-          + 'we move you across.';
+      note = 'Round-the-clock help at home means 24-hour care: a rota of caregivers in shifts, so somebody is '
+        + 'awake and alert through the night as well as the day. Our office will work out the shape of it and the '
+        + 'real weekly figure with you, and that is worth half an hour of conversation.';
     } else if (w.indexOf('nights') > -1) {
       note = 'Nights are the one thing a screen cannot cover. If ' + V0().S + ' ' + V0().IS + ' up and wandering, '
         + 'that needs somebody in the home overnight and we should talk about it properly. '
@@ -977,29 +971,20 @@
   function paint() {
     var hours = hoursNow();
 
-    // Past about eight hours a day, every day, hourly pricing stops being the
-    // right answer. Live-in and 24-hour care are priced differently and work
-    // out lower per hour, so quoting an hourly total here would frighten off a
-    // family we could actually help.
-    // Live-in is not a number of visits, so stop pretending it is: no visit
-    // length, no days dial, no "168 hours a week".
-    var liveIn = hours >= 56;
-    document.querySelector('.days .dq').style.display = liveIn ? 'none' : '';
-    document.querySelector('.days .dsub').style.display = liveIn ? 'none' : '';
-    $('dBtns').style.display = liveIn ? 'none' : '';
-    if (liveIn) {
-      // Live-in and 24-hour are not two words for the same thing. Live-in is one
-      // caregiver who lives in the home and sleeps at night, charged by the day.
-      // 24-hour is a rota of caregivers who stay awake, charged by the hour, and
-      // costs a great deal more. Which one a family needs turns entirely on
-      // whether the nights are hard, so that is what decides it here.
-      var awake = windows().indexOf('nights') > -1;
+    // Past about eight hours a day, every day, hourly visit pricing stops
+    // being the right answer: that is 24-hour care, and it is not a number of
+    // visits, so stop pretending it is: no visit length, no days dial, no
+    // "168 hours a week".
+    var roundClock = hours >= 56;
+    document.querySelector('.days .dq').style.display = roundClock ? 'none' : '';
+    document.querySelector('.days .dsub').style.display = roundClock ? 'none' : '';
+    $('dBtns').style.display = roundClock ? 'none' : '';
+    if (roundClock) {
       $('rLen').textContent = '24/7';
       $('rLen').style.fontSize = '46px';
       document.querySelector('.res-num .lab').textContent = 'somebody there around the clock';
-      $('rLevel').textContent = awake ? '24-hour care, caregivers awake in shifts'
-                                      : 'Live-in care, one caregiver living in the home';
-      $('rHours').textContent = awake ? '24-hour care' : 'Live-in care';
+      $('rLevel').textContent = '24-hour care, caregivers awake in shifts';
+      $('rHours').textContent = '24-hour care';
     } else {
       $('rLen').textContent = plan.len;
       $('rLen').style.fontSize = '';
@@ -1008,17 +993,11 @@
       $('rHours').textContent = hours + ' hours a week';
     }
 
-    if (liveIn) {
-      var awake2 = windows().indexOf('nights') > -1;
-      $('rCost').textContent = awake2 ? '$28 to $32 an hour' : '$450 a day';
-      $('rCostNote').innerHTML = awake2
-        ? 'Because the nights are hard, this needs <b>24-hour care</b>: two or three caregivers in shifts so '
-          + 'somebody is awake all night rather than asleep down the hall. It is charged by the hour. '
-          + '<b>Our office will work out the real weekly figure</b> for {P} situation.'
-        : 'Because the nights are alright, this can be <b>live-in care</b>: one caregiver lives in the home, works '
-          + 'through the day and sleeps at night. It is charged by the day, not the hour, so it costs a great deal '
-          + 'less than round-the-clock shifts. It needs a bed for them and a proper night of sleep. '
-          + '<b>Our office will go through it properly</b> with you.';
+    if (roundClock) {
+      $('rCost').textContent = '$28 to $32 an hour';
+      $('rCostNote').innerHTML = 'Round-the-clock help means <b>24-hour care</b>: two or three caregivers in shifts so '
+        + 'somebody is awake all night rather than asleep down the hall. It is charged by the hour. '
+        + '<b>Our office will work out the real weekly figure</b> for {P} situation.';
     } else {
       var mid = hours * plan.level.rate * WEEKS;
       $('rCost').textContent = money(Math.floor((mid * 0.95) / 50) * 50) + ' to '
@@ -1089,8 +1068,8 @@
     var msg = [
       'FROM THE FACEBOOK FUNNEL (mo-care.com/tv)',
       'They built: ' + plan.len + '-hour visits x ' + plan.days + ' days = ' + hours + ' hrs/week',
-      'Care level: ' + plan.level.name + (hours >= 56 ? (windows().indexOf('nights') > -1 ? ' — QUOTE 24-HOUR (nights are hard, needs awake staff)' : ' — QUOTE LIVE-IN at the day rate, nights are alright') : ''),
-      'Hardest times of day: ' + (windows().join(', ') || 'not said') + (windows().length >= 4 ? ' — ALL DAY, quote live-in' : ' — sell virtual check-ins for the rest'),
+      'Care level: ' + plan.level.name + (hours >= 56 ? ' — QUOTE 24-HOUR (round-the-clock coverage)' : ''),
+      'Hardest times of day: ' + (windows().join(', ') || 'not said') + (windows().length >= 4 ? ' — ALL DAY, quote 24-hour' : ' — sell virtual check-ins for the rest'),
       hours >= 20 ? 'QUALIFIES for HomeTogether TV included.'
         : 'Under 20 hrs by ' + (20 - hours) + '. Offer them: more hours, the TV at $99/mo, or virtual visits from $75/wk.',
       '',
