@@ -656,7 +656,7 @@ done: function(){
     var em=el('dj-email').value.trim();
     if(!em||em.indexOf('@')<0) return;
     var btn=el('dj-notify'); btn.disabled=true;
-    if(window.CCForms) CCForms.submitLead({ name:'(Dementia Journey, finished Module 2)', email:em, message:'Completed The Dementia Journey Module 2 (Understanding the Changes in the Brain) and wants Module 3 at launch.' })
+    if(window.CCForms) CCForms.submitLead({ kind:'course_signup', course:'dementia-journey', module:'2', name:'(Dementia Journey, finished Module 2)', email:em, message:'Completed The Dementia Journey Module 2 (Understanding the Changes in the Brain) and wants Module 3 at launch.' })
       .then(function(){ el('dj-sent').hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });

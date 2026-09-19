@@ -415,7 +415,7 @@ done: function(s){
     var em = document.getElementById('done-email').value.trim();
     if (!em || em.indexOf('@') < 0) return;
     btn.disabled = true;
-    if (window.CCForms) CCForms.submitLead({ name:'(Family Academy, finished Module 1)', email: em, message:'Completed dementia Module 1 on family-academy/dementia-module-1.html and wants Module 2 at launch.' })
+    if (window.CCForms) CCForms.submitLead({ kind:'course_signup', course:'family-academy', module:'1', name:'(Family Academy, finished Module 1)', email: em, message:'Completed dementia Module 1 on family-academy/dementia-module-1.html and wants Module 2 at launch.' })
       .then(function(){ document.getElementById('done-sent').hidden = false; })
       .catch(function(){ btn.disabled = false; });
   });

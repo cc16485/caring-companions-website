@@ -337,6 +337,7 @@
     if (!email || email.indexOf('@') < 0) { err.hidden = false; return; }
     btn.disabled = true; btn.textContent = 'Adding you\u2026';
     CCForms.submitLead({
+      kind: 'course_signup', course: 'family-academy-waitlist',
       name: '(Family Academy waitlist)',
       email: email,
       message: 'Wants to be notified when the Hands-On Care Skills family course launches (family-academy.html).',
