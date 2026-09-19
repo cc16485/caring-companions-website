@@ -578,25 +578,33 @@ done: function(){
     '<div class="dj-scene"><p class="who">Ellen&rsquo;s story, the next morning</p><p>Ellen brings two cups of coffee out to the porch. Ruth pats her hand and calls her &ldquo;honey&rdquo;, because the name is hard to find today.<br><br>They sit. It isn&rsquo;t the relationship Ellen grew up with. But it is real. And this morning, it is enough.</p></div>'
     +'<p class="dj-kicker" style="text-align:center">Module 1 complete</p>'
     +'<h1 class="dj-title" style="text-align:center">You showed up. That counts.</h1>'
-    +'<p class="dj-lead" style="text-align:center">Module 2, <em>Understanding the Changes in the Brain</em>, is on its way: why the behaviors you see are not aimed at you, and what might really be going on underneath.</p>'
-    +'<div style="background:#f6f4ee;border-radius:14px;padding:18px;margin:6px 0 16px">'
-    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 10px">Want Module 2 the day it opens?</p>'
-    +'<div style="display:flex;flex-wrap:wrap;gap:10px">'
-    +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:170px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
-    +'<button type="button" id="dj-notify" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Tell me</button></div>'
-    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:#1F7A8C;margin:8px 0 0" hidden>You&rsquo;re on the list. Be gentle with yourself this week.</p></div>'
+    +'<p class="dj-lead" style="text-align:center">Module 2, <em>Understanding the Changes in the Brain</em>, is ready when you are: why the behaviors you see are not aimed at you, and what might really be going on underneath.</p>'
+    +'<a href="/dementia-journey/module-2" class="dj-next" style="display:block;text-decoration:none;text-align:center;margin:6px 0 14px">Continue to Module 2: Understanding the Changes in the Brain &rarr;</a>'
+    +'<div style="background:#f6f4ee;border-radius:14px;padding:18px;margin:0 0 16px">'
+    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with a real person?</p>'
+    +'<p style="font-size:13px;color:#4d5c6b;margin:0 0 10px">Totally optional. If caring for your person is getting heavy, leave whatever you&rsquo;re comfortable sharing and a care coordinator will reach out &mdash; a conversation, not a sales pitch.</p>'
+    +'<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">'
+    +'<input id="dj-name" placeholder="Your name (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
+    +'<input id="dj-phone" type="tel" autocomplete="tel" placeholder="Phone (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
+    +'</div>'
+    +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px">'
+    +'<textarea id="dj-msg" rows="2" placeholder="Anything you want us to know? (optional)" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px"></textarea>'
+    +'<button type="button" id="dj-reach" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Reach out to me</button>'
+    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:#1F7A8C;margin:8px 0 0" hidden></p></div>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">'
     +'<a href="/dementia-journey/resources/emotional-check-in" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My check-in</a>'
     +'<button class="dj-next soft" style="width:auto" id="donePlan">My care plan</button>'
     +'<a href="/dementia-journey/" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">Course home</a>'
     +'</div>');
   el('donePlan').addEventListener('click',function(){ loadPlan(); djOpen('planModal'); });
-  el('dj-notify').addEventListener('click',function(){
-    var em=el('dj-email').value.trim();
-    if(!em||em.indexOf('@')<0) return;
-    var btn=el('dj-notify'); btn.disabled=true;
-    if(window.CCForms) CCForms.submitLead({ kind:'course_signup', course:'dementia-journey', module:'1', name:'(Dementia Journey, finished Module 1)', email:em, message:'Completed The Dementia Journey Module 1 (You Are Not Failing) and wants Module 2 at launch.' })
-      .then(function(){ el('dj-sent').hidden=false; })
+  el('dj-reach').addEventListener('click',function(){
+    var em=el('dj-email').value.trim(), ph=el('dj-phone').value.trim();
+    var s=el('dj-sent');
+    if(!em&&!ph){ s.textContent='Leave an email or a phone number so we can reach you.'; s.hidden=false; return; }
+    var nm=el('dj-name').value.trim(), ms=el('dj-msg').value.trim();
+    var btn=el('dj-reach'); btn.disabled=true;
+    if(window.CCForms) CCForms.submitLead({ name: nm||'(Dementia Journey viewer)', phone: ph, email: em, message:(ms?ms+' \u2014 ':'')+'Asked us to reach out, from The Dementia Journey Module 1.' })
+      .then(function(){ s.textContent='Got it. A real person will reach out. Be gentle with yourself this week.'; s.hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });
   if (window.CCTrack) CCTrack('dj_module1_complete');
