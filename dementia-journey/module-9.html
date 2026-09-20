@@ -699,8 +699,43 @@ done: function(){
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px">'
     +'<a href="/dementia-journey/resources/safety-emergency-plan" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My safety plan</a>'
     +'<button class="dj-next soft" style="width:auto" id="donePlan">My care plan</button>'
-    +'</div>') + '</div>';
+    +'</div>'
+    +'<div style="background:#f6f4ee;border-radius:14px;padding:18px;margin:22px auto 0;max-width:520px;text-align:left">'
+    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with a real person?</p>'
+    +'<p style="font-size:13px;color:#4d5c6b;margin:0 0 10px">You walked all nine roads. If you want a human beside you for the next stretch, leave whatever you&rsquo;re comfortable sharing and a care coordinator will reach out. A conversation, not a sales pitch.</p>'
+    +'<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">'
+    +'<input id="dj-name" placeholder="Your name (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
+    +'<input id="dj-phone" type="tel" autocomplete="tel" placeholder="Phone (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
+    +'</div>'
+    +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px">'
+    +'<textarea id="dj-msg" rows="2" placeholder="Anything you want us to know? (optional)" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px"></textarea>'
+    +'<label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#4d5c6b;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="dj-incl" style="margin-top:2px"> <span>Also include the answers I&rsquo;ve written in this course. Nothing is included unless you check this.</span></label>'
+    +'<button type="button" id="dj-reach" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Reach out to me</button>'
+    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:#1F7A8C;margin:8px 0 0" hidden></p></div>'
+    ) + '</div>';
   el('donePlan').addEventListener('click',function(){ loadPlan(); djOpen('planModal'); });
+  el('dj-reach').addEventListener('click',function(){
+    var em=el('dj-email').value.trim(), ph=el('dj-phone').value.trim();
+    var s2=el('dj-sent');
+    if(!em&&!ph){ s2.textContent='Leave an email or a phone number so we can reach you.'; s2.hidden=false; return; }
+    var nm=el('dj-name').value.trim(), ms=el('dj-msg').value.trim();
+    var ans='';
+    if(el('dj-incl')&&el('dj-incl').checked){ try{
+      var parts=[];
+      for(var i=0;i<localStorage.length;i++){ var k=localStorage.key(i);
+        if(!k||k.indexOf('dj_')!==0||k==='dj_scale'||k==='dj_saved') continue;
+        var v=localStorage.getItem(k)||''; if(!v) continue;
+        try{ var j=JSON.parse(v); v=Array.isArray(j)?j.join(', '):(typeof j==='object'&&j?Object.keys(j).map(function(q){return q+': '+j[q];}).join(' | '):String(j)); }catch(e2){}
+        v=String(v).trim(); if(!v) continue;
+        parts.push(k.replace('dj_','').replace(/^m(\d+)_/,'Module $1 ').replace(/_/g,' ')+': '+v.slice(0,300));
+      }
+      ans=parts.join('\n').slice(0,1200);
+    }catch(e3){} }
+    var btn=el('dj-reach'); btn.disabled=true;
+    if(window.CCForms) CCForms.submitLead({ name: nm||'(Dementia Journey graduate)', phone: ph, email: em, message:(ms?ms+' \u2014 ':'')+'Asked us to reach out after finishing the whole Dementia Journey course.'+(ans?'\n\nCourse answers (shared by their choice):\n'+ans:'') })
+      .then(function(){ s2.textContent='Got it. A real person will reach out. Be gentle with yourself this week.'; s2.hidden=false; })
+      .catch(function(){ btn.disabled=false; });
+  });
   if (window.CCTrack) CCTrack('dj_module9_complete');
 }
 };
