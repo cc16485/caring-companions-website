@@ -25,9 +25,13 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 .pair .b { background: #fffdf8; padding: 14px 18px; }
 .pair .b b { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: #a87f2c; display: block; margin-bottom: 4px; }
 .pair .b p { font-family:'Source Serif 4',Georgia,serif; font-size: 15.5px; line-height: 1.6; color: #143A5E; }
+.addn b { display:block; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#a87f2c; margin:12px 0 4px; }
+.ans { display:block; width:100%; padding:8px 12px; font-size:13.5px; line-height:1.55; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #e2dac4; border-radius:8px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#c79a3b; }
 .printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 28px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
 @media print { .printbtn { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .addn:not(.has-val) { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:3px 2px; } }
 </style>
 </head>
 <body>
@@ -39,18 +43,59 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 <div class="note"><b>The boundary that never bends:</b> joining their reality never means agreeing to danger. Driving, money, medications, and safety keep firm limits, wrapped in warm words. And if you are ever afraid for your own safety, step away and get help.</div>
 <button class="printbtn" onclick="window.print()">Print this page</button>
 
-<div class="pair"><div class="a"><b>Instead of</b>"You already asked me that."</div><div class="b"><b>Try</b><p>Answer warmly, like it's the first time. "It's at three o'clock. Let's have coffee while we wait."</p></div></div>
-<div class="pair"><div class="a"><b>Instead of</b>"Don't you remember?"</div><div class="b"><b>Try</b><p>Retire this one entirely. Share the memory instead: "I was just thinking about the time we..."</p></div></div>
-<div class="pair"><div class="a"><b>Instead of</b>"Dad, you're retired. You haven't worked in twenty years."</div><div class="b"><b>Try</b><p>"You were always the one they could count on. What kind of work is on your mind today?"</p></div></div>
-<div class="pair"><div class="a"><b>Instead of</b>"Nobody stole your purse. You lost it again."</div><div class="b"><b>Try</b><p>"That's upsetting, your purse matters. Let's look together. It may have been put somewhere safe."</p></div></div>
-<div class="pair"><div class="a"><b>Instead of</b>"This IS your house. You've lived here forty years."</div><div class="b"><b>Try</b><p>"Tell me about home. What do you miss most about it?" Then, when the feeling settles: tea, a photo, a familiar chair.</p></div></div>
-<div class="pair"><div class="a"><b>Instead of</b>"Mom, Grandpa died fifteen years ago."</div><div class="b"><b>Try</b><p>"You miss him. Tell me about him." Join the love, not the timeline; forcing fresh grief helps no one.</p></div></div>
-<div class="pair"><div class="a"><b>Instead of</b>"You can't drive anymore. We've been over this."</div><div class="b"><b>Try</b><p>"You love being behind the wheel. Today I'm your driver, keep me company." The feeling is honored; the keys stay put.</p></div></div>
-<div class="pair"><div class="a"><b>Instead of</b>"No, that's wrong."</div><div class="b"><b>Try</b><p>"Hm, let's figure it out together." You lose nothing by sharing the puzzle instead of grading the answer.</p></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"You already asked me that."</div><div class="b"><b>Try</b><p>Answer warmly, like it's the first time. "It's at three o'clock. Let's have coffee while we wait."</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="1" data-q="Our words for: You already asked me that"></textarea></div></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"Don't you remember?"</div><div class="b"><b>Try</b><p>Retire this one entirely. Share the memory instead: "I was just thinking about the time we..."</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="2" data-q="Our words for: Don't you remember"></textarea></div></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"Dad, you're retired. You haven't worked in twenty years."</div><div class="b"><b>Try</b><p>"You were always the one they could count on. What kind of work is on your mind today?"</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="3" data-q="Our words for: You're retired, you haven't worked in years"></textarea></div></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"Nobody stole your purse. You lost it again."</div><div class="b"><b>Try</b><p>"That's upsetting, your purse matters. Let's look together. It may have been put somewhere safe."</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="4" data-q="Our words for: Nobody stole your purse"></textarea></div></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"This IS your house. You've lived here forty years."</div><div class="b"><b>Try</b><p>"Tell me about home. What do you miss most about it?" Then, when the feeling settles: tea, a photo, a familiar chair.</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="5" data-q="Our words for: This is your house"></textarea></div></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"Mom, Grandpa died fifteen years ago."</div><div class="b"><b>Try</b><p>"You miss him. Tell me about him." Join the love, not the timeline; forcing fresh grief helps no one.</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="6" data-q="Our words for: Grandpa died years ago"></textarea></div></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"You can't drive anymore. We've been over this."</div><div class="b"><b>Try</b><p>"You love being behind the wheel. Today I'm your driver, keep me company." The feeling is honored; the keys stay put.</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="7" data-q="Our words for: You can't drive anymore"></textarea></div></div></div>
+<div class="pair"><div class="a"><b>Instead of</b>"No, that's wrong."</div><div class="b"><b>Try</b><p>"Hm, let's figure it out together." You lose nothing by sharing the puzzle instead of grading the answer.</p><div class="addn"><b>In our own words</b><textarea class="ans" rows="2" data-djr="8" data-q="Our words for: No, that's wrong"></textarea></div></div></div>
 
 <p class="intro" style="margin:6px 0 20px"><b>The pocket phrases:</b> "You seem worried." · "I am here with you." · "You are safe." · "We can take our time." · "Would you help me with something?" · "Let's have a cup of coffee while we wait."</p>
 
+<div class="addn"><b>Our own pocket phrases</b><textarea class="ans" rows="2" data-djr="9" data-q="Our own pocket phrases"></textarea></div>
+
+<div id="ccrs-mount"></div>
+
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice. For emergencies call 911. For emotional crisis call or text 988.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
+<script>
+(function(){
+  var P='djr_what-to-say-instead_';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; } }
+  function flag(el){
+    var w = el.closest ? el.closest('.addn') : null;
+    var t = w || el;
+    if((el.value||'').trim()) t.classList.add('has-val'); else t.classList.remove('has-val');
+  }
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    var v=raw(k);
+    if(v) el.value=v;
+    flag(el); grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); flag(el); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'What to Say Instead (Dementia Journey resource)',
+    getSummary:function(){
+      var out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        var v=(el.value||'').trim();
+        if(v) out.push(q+': '+v);
+      });
+      return out.join('\n').slice(0,1500);
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -24,10 +24,15 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 .f { margin-bottom: 14px; }
 .f label { display:block; font-size: 12.5px; font-weight: 700; color: #0D365F; margin-bottom: 6px; }
 .lines { border-bottom: 1.5px solid #d8d2c2; height: 26px; }
+.ans { display:block; width:100%; padding:9px 12px; font-size:14px; line-height:1.55; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #dfe6e2; border-radius:9px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#1F7A8C; }
 .check { font-size: 13px; color: #2c3d4d; }
+.check label { font-weight:400; display:inline; font-size:13px; color:#2c3d4d; cursor:pointer; }
+.check input { accent-color:#1F7A8C; margin-right:5px; vertical-align:-2px; }
 .printbtn { display:inline-block; background:#1F7A8C; color:#fff; border:none; border-radius:10px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 28px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
 @media print { .printbtn { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:4px 2px; } }
 </style>
 </head>
 <body>
@@ -41,37 +46,77 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 
 <div class="entry">
 <h2>Entry 1</h2>
-<div class="f"><label>What happened just before? (time of day, place, who was there, what was going on)</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What did they do or say?</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What might they have needed? (pain, fear, hunger, bathroom, temperature, tiredness, too much noise, control)</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What helped?</label><div class="lines"></div></div>
-<div class="f"><label>What made it worse?</label><div class="lines"></div></div>
-<div class="f"><p class="check">&#9634; This was sudden or new for them &nbsp;&nbsp;&nbsp; &#9634; I should contact their healthcare provider</p></div>
+<div class="f"><label>What happened just before? (time of day, place, who was there, what was going on)</label><textarea class="ans" rows="3" data-djr="1" data-q="Entry 1, what happened just before"></textarea></div>
+<div class="f"><label>What did they do or say?</label><textarea class="ans" rows="3" data-djr="2" data-q="Entry 1, what they did or said"></textarea></div>
+<div class="f"><label>What might they have needed? (pain, fear, hunger, bathroom, temperature, tiredness, too much noise, control)</label><textarea class="ans" rows="3" data-djr="3" data-q="Entry 1, what they might have needed"></textarea></div>
+<div class="f"><label>What helped?</label><textarea class="ans" rows="2" data-djr="4" data-q="Entry 1, what helped"></textarea></div>
+<div class="f"><label>What made it worse?</label><textarea class="ans" rows="2" data-djr="5" data-q="Entry 1, what made it worse"></textarea></div>
+<div class="f"><p class="check"><label><input type="checkbox" data-djr="6" data-q="Entry 1: this was sudden or new for them"> This was sudden or new for them</label> &nbsp;&nbsp;&nbsp; <label><input type="checkbox" data-djr="7" data-q="Entry 1: I should contact their healthcare provider"> I should contact their healthcare provider</label></p></div>
 </div>
 
 <div class="entry">
 <h2>Entry 2</h2>
-<div class="f"><label>What happened just before?</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What did they do or say?</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What might they have needed?</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What helped?</label><div class="lines"></div></div>
-<div class="f"><label>What made it worse?</label><div class="lines"></div></div>
-<div class="f"><p class="check">&#9634; This was sudden or new for them &nbsp;&nbsp;&nbsp; &#9634; I should contact their healthcare provider</p></div>
+<div class="f"><label>What happened just before?</label><textarea class="ans" rows="3" data-djr="8" data-q="Entry 2, what happened just before"></textarea></div>
+<div class="f"><label>What did they do or say?</label><textarea class="ans" rows="3" data-djr="9" data-q="Entry 2, what they did or said"></textarea></div>
+<div class="f"><label>What might they have needed?</label><textarea class="ans" rows="3" data-djr="10" data-q="Entry 2, what they might have needed"></textarea></div>
+<div class="f"><label>What helped?</label><textarea class="ans" rows="2" data-djr="11" data-q="Entry 2, what helped"></textarea></div>
+<div class="f"><label>What made it worse?</label><textarea class="ans" rows="2" data-djr="12" data-q="Entry 2, what made it worse"></textarea></div>
+<div class="f"><p class="check"><label><input type="checkbox" data-djr="13" data-q="Entry 2: this was sudden or new for them"> This was sudden or new for them</label> &nbsp;&nbsp;&nbsp; <label><input type="checkbox" data-djr="14" data-q="Entry 2: I should contact their healthcare provider"> I should contact their healthcare provider</label></p></div>
 </div>
 
 <div class="entry">
 <h2>Entry 3</h2>
-<div class="f"><label>What happened just before?</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What did they do or say?</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What might they have needed?</label><div class="lines"></div><div class="lines"></div></div>
-<div class="f"><label>What helped?</label><div class="lines"></div></div>
-<div class="f"><label>What made it worse?</label><div class="lines"></div></div>
-<div class="f"><p class="check">&#9634; This was sudden or new for them &nbsp;&nbsp;&nbsp; &#9634; I should contact their healthcare provider</p></div>
+<div class="f"><label>What happened just before?</label><textarea class="ans" rows="3" data-djr="15" data-q="Entry 3, what happened just before"></textarea></div>
+<div class="f"><label>What did they do or say?</label><textarea class="ans" rows="3" data-djr="16" data-q="Entry 3, what they did or said"></textarea></div>
+<div class="f"><label>What might they have needed?</label><textarea class="ans" rows="3" data-djr="17" data-q="Entry 3, what they might have needed"></textarea></div>
+<div class="f"><label>What helped?</label><textarea class="ans" rows="2" data-djr="18" data-q="Entry 3, what helped"></textarea></div>
+<div class="f"><label>What made it worse?</label><textarea class="ans" rows="2" data-djr="19" data-q="Entry 3, what made it worse"></textarea></div>
+<div class="f"><p class="check"><label><input type="checkbox" data-djr="20" data-q="Entry 3: this was sudden or new for them"> This was sudden or new for them</label> &nbsp;&nbsp;&nbsp; <label><input type="checkbox" data-djr="21" data-q="Entry 3: I should contact their healthcare provider"> I should contact their healthcare provider</label></p></div>
 </div>
 
 <p class="intro" style="margin-bottom:20px"><b>After a few entries, look across them:</b> Same time of day? Same room? Same trigger? Bring this sheet to the next doctor's visit; patterns like these are gold to a good clinician.</p>
 
+<div id="ccrs-mount"></div>
+
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice. For emergencies call 911. For emotional crisis call or text 988.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
+<script>
+(function(){
+  var P='djr_behavior-observation_';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; } }
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    if(el.type==='checkbox'){
+      el.checked = raw(k)==='1';
+      el.addEventListener('change',function(){ save(k, el.checked?'1':''); });
+      return;
+    }
+    var v=raw(k);
+    if(v) el.value=v;
+    grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'What Might This Behavior Be Communicating? (Dementia Journey resource)',
+    getSummary:function(){
+      var out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        if(el.type==='checkbox'){ if(el.checked) out.push(q); return; }
+        var v=(el.value||'').trim();
+        if(v) out.push(q+': '+v);
+      });
+      return out.join('\n').slice(0,1500);
+    }
+  });
+})();
+</script>
 </body>
 </html>

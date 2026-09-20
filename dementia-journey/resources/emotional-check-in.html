@@ -22,9 +22,12 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 30px; font-weight: 6
 .q { margin-bottom: 26px; page-break-inside: avoid; }
 .q h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 17.5px; font-weight: 600; color: #0D365F; margin-bottom: 10px; }
 .lines { border-bottom: 1.5px solid #d8d2c2; height: 34px; margin-bottom: 6px; }
+.ans { display:block; width:100%; padding:10px 13px; font-size:14px; line-height:1.6; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #dfe6e2; border-radius:9px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#1F7A8C; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
 .printbtn { display:inline-block; background:#1F7A8C; color:#fff; border:none; border-radius:10px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 28px; }
 @media print { .printbtn { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:4px 2px; } }
 </style>
 </head>
 <body>
@@ -36,15 +39,49 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 30px; font-weight: 6
 <div class="note">If you notice more anger, more hopelessness, no sleep, or you don't feel safe, that is a signal to tell someone now: your doctor, a trusted person, or the 988 crisis line (call or text, free, 24/7). Needing help is not a failure.</div>
 <button class="printbtn" onclick="window.print()">Print this page</button>
 
-<div class="q"><h2>1. How am I sleeping?</h2><div class="lines"></div><div class="lines"></div></div>
-<div class="q"><h2>2. Am I eating regularly?</h2><div class="lines"></div><div class="lines"></div></div>
-<div class="q"><h2>3. When did I last leave the house for myself?</h2><div class="lines"></div><div class="lines"></div></div>
-<div class="q"><h2>4. Do I feel safe?</h2><div class="lines"></div><div class="lines"></div></div>
-<div class="q"><h2>5. Am I becoming more angry or hopeless?</h2><div class="lines"></div><div class="lines"></div></div>
-<div class="q"><h2>6. Who knows how difficult this has become?</h2><div class="lines"></div><div class="lines"></div></div>
-<div class="q"><h2>7. What is one kind thing I can do for myself this week?</h2><div class="lines"></div><div class="lines"></div></div>
+<div class="q"><h2>1. How am I sleeping?</h2><textarea class="ans" rows="3" data-djr="1" data-q="How am I sleeping?"></textarea></div>
+<div class="q"><h2>2. Am I eating regularly?</h2><textarea class="ans" rows="3" data-djr="2" data-q="Am I eating regularly?"></textarea></div>
+<div class="q"><h2>3. When did I last leave the house for myself?</h2><textarea class="ans" rows="3" data-djr="3" data-q="When did I last leave the house for myself?"></textarea></div>
+<div class="q"><h2>4. Do I feel safe?</h2><textarea class="ans" rows="3" data-djr="4" data-q="Do I feel safe?"></textarea></div>
+<div class="q"><h2>5. Am I becoming more angry or hopeless?</h2><textarea class="ans" rows="3" data-djr="5" data-q="Am I becoming more angry or hopeless?"></textarea></div>
+<div class="q"><h2>6. Who knows how difficult this has become?</h2><textarea class="ans" rows="3" data-djr="6" data-q="Who knows how difficult this has become?"></textarea></div>
+<div class="q"><h2>7. What is one kind thing I can do for myself this week?</h2><textarea class="ans" rows="3" data-djr="7" data-q="What is one kind thing I can do for myself this week?"></textarea></div>
+
+<div id="ccrs-mount"></div>
 
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice. For emergencies call 911. For emotional crisis call or text 988.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
+<script>
+(function(){
+  var P='djr_emotional-check-in_';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; } }
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    var v=raw(k);
+    if(v) el.value=v;
+    grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'Family Caregiver Emotional Check-In (Dementia Journey resource)',
+    getSummary:function(){
+      var out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        var v=(el.value||'').trim();
+        if(v) out.push(q+' '+v);
+      });
+      return out.join('\n').slice(0,1500);
+    }
+  });
+})();
+</script>
 </body>
 </html>

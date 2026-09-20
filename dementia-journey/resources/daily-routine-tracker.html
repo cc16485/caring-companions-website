@@ -21,12 +21,15 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 .note { font-size: 13px; line-height: 1.65; color: #5c4a22; background:#fbf5e4; border-left:4px solid #c79a3b; border-radius:0 12px 12px 0; padding: 13px 16px; margin: 14px 0 22px; }
 .task { border: 1.5px solid #e8e0cd; border-radius: 14px; padding: 15px 18px; margin-bottom: 12px; page-break-inside: avoid; background:#fffdf8; }
 .task h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 16px; font-weight: 600; color: #143A5E; margin-bottom: 8px; }
-.task .row { display:grid; grid-template-columns: 92px 1fr; gap: 8px; align-items:end; margin-bottom: 7px; }
-.task .row label { font-size: 11px; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .05em; padding-bottom:4px; }
+.task .row { display:grid; grid-template-columns: 92px 1fr; gap: 8px; align-items:center; margin-bottom: 7px; }
+.task .row label { font-size: 11px; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .05em; }
 .task .row .line { border-bottom: 1.5px solid #d8d2c2; height: 22px; }
+.ans { display:block; width:100%; padding:7px 11px; font-size:14px; line-height:1.5; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #e2dac4; border-radius:8px; }
+.ans:focus { outline:none; border-color:#c79a3b; }
 .printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 24px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
 @media print { .printbtn { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:2px 2px; } }
 </style>
 </head>
 <body>
@@ -39,52 +42,83 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 <button class="printbtn" onclick="window.print()">Print this page</button>
 
 <div class="task"><h2>Waking &amp; morning</h2>
-<div class="row"><label>Best time</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Best time</label><input class="ans" data-djr="1" data-q="Waking and morning, best time"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="2" data-q="Waking and morning, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="3" data-q="Waking and morning, what hurts"></div>
 </div>
 <div class="task"><h2>Dressing</h2>
-<div class="row"><label>Best time</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Best time</label><input class="ans" data-djr="4" data-q="Dressing, best time"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="5" data-q="Dressing, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="6" data-q="Dressing, what hurts"></div>
 </div>
 <div class="task"><h2>Bathing / washing</h2>
-<div class="row"><label>Best time</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Best time</label><input class="ans" data-djr="7" data-q="Bathing, best time"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="8" data-q="Bathing, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="9" data-q="Bathing, what hurts"></div>
 </div>
 <div class="task"><h2>Breakfast &amp; lunch</h2>
-<div class="row"><label>Best time</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Best time</label><input class="ans" data-djr="10" data-q="Breakfast and lunch, best time"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="11" data-q="Breakfast and lunch, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="12" data-q="Breakfast and lunch, what hurts"></div>
 </div>
 <div class="task"><h2>Afternoon (activity, rest, visitors)</h2>
-<div class="row"><label>Best time</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Best time</label><input class="ans" data-djr="13" data-q="Afternoon, best time"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="14" data-q="Afternoon, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="15" data-q="Afternoon, what hurts"></div>
 </div>
 <div class="task"><h2>Dinner</h2>
-<div class="row"><label>Best time</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Best time</label><input class="ans" data-djr="16" data-q="Dinner, best time"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="17" data-q="Dinner, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="18" data-q="Dinner, what hurts"></div>
 </div>
 <div class="task"><h2>Evening &amp; bedtime</h2>
-<div class="row"><label>Best time</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Best time</label><input class="ans" data-djr="19" data-q="Evening and bedtime, best time"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="20" data-q="Evening and bedtime, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="21" data-q="Evening and bedtime, what hurts"></div>
 </div>
 <div class="task"><h2>Bathroom routine</h2>
-<div class="row"><label>Rhythm</label><div class="line"></div></div>
-<div class="row"><label>What helps</label><div class="line"></div></div>
-<div class="row"><label>What hurts</label><div class="line"></div></div>
+<div class="row"><label>Rhythm</label><input class="ans" data-djr="22" data-q="Bathroom routine, rhythm"></div>
+<div class="row"><label>What helps</label><input class="ans" data-djr="23" data-q="Bathroom routine, what helps"></div>
+<div class="row"><label>What hurts</label><input class="ans" data-djr="24" data-q="Bathroom routine, what hurts"></div>
 </div>
 <div class="task"><h2>Medications (system &amp; timing, per the prescriber)</h2>
-<div class="row"><label>System</label><div class="line"></div></div>
-<div class="row"><label>Filled by</label><div class="line"></div></div>
-<div class="row"><label>Questions for pharmacist</label><div class="line"></div></div>
+<div class="row"><label>System</label><input class="ans" data-djr="25" data-q="Medications, system"></div>
+<div class="row"><label>Filled by</label><input class="ans" data-djr="26" data-q="Medications, filled by"></div>
+<div class="row"><label>Questions for pharmacist</label><input class="ans" data-djr="27" data-q="Questions for pharmacist"></div>
 </div>
+
+<div id="ccrs-mount"></div>
 
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice. Hand-under-Hand™ and Positive Approach to Care® are marks of Positive Approach, LLC (Teepa Snow), used under license.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
+<script>
+(function(){
+  var P='djr_daily-routine-tracker_';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    var v=raw(k);
+    if(v) el.value=v;
+    el.addEventListener('input',function(){ save(k, el.value); });
+  });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'Daily Routine & Trigger Tracker (Dementia Journey resource)',
+    getSummary:function(){
+      var out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        var v=(el.value||'').trim();
+        if(v) out.push(q+': '+v);
+      });
+      return out.join('\n').slice(0,1500);
+    }
+  });
+})();
+</script>
 </body>
 </html>

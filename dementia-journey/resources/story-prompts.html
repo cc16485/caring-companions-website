@@ -24,7 +24,10 @@ ol { padding-left: 24px; }
 ol li { font-size: 13.5px; line-height: 1.85; color: #2c3d4d; page-break-inside: avoid; }
 .printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 10px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 20px; }
+.ans { display:block; width:100%; padding:7px 11px; margin:5px 0 7px; font-size:13.5px; line-height:1.55; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #e2dac4; border-radius:8px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#c79a3b; }
 @media print { .printbtn { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .ans:not(.has-val) { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:3px 2px; } }
 </style>
 </head>
 <body>
@@ -196,7 +199,52 @@ ol li { font-size: 13.5px; line-height: 1.85; color: #2c3d4d; page-break-inside:
 <li>You've seen a lot of years. What matters, in the end?</li>
 </ol>
 
+<div id="ccrs-mount"></div>
+
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
+<script>
+(function(){
+  var P='djr_story-prompts_';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; }
+  function flag(el){ if((el.value||'').trim()) el.classList.add('has-val'); else el.classList.remove('has-val'); }
+  var items=document.querySelectorAll('.page ol li');
+  Array.prototype.forEach.call(items,function(li,i){
+    var q=(li.textContent||'').trim();
+    var t=document.createElement('textarea');
+    t.className='ans'; t.rows=2;
+    t.setAttribute('data-djr', String(i+1));
+    t.setAttribute('data-q', q);
+    t.setAttribute('aria-label', 'Notes for: '+q);
+    li.appendChild(t);
+  });
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    var v=raw(k);
+    if(v) el.value=v;
+    flag(el); grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); flag(el); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'100 Story Prompts (Dementia Journey resource)',
+    getSummary:function(){
+      var out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        var v=(el.value||'').trim();
+        if(v) out.push(q+' '+v);
+      });
+      return out.join('\n').slice(0,1500);
+    }
+  });
+})();
+</script>
 </body>
 </html>

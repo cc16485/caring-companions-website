@@ -22,15 +22,20 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 .sec h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 17px; font-weight: 600; color: #143A5E; margin-bottom: 10px; }
 .sec p, .sec li { font-size: 13.5px; line-height: 1.75; color: #2c3d4d; }
 .chk { font-size: 13.5px; line-height: 2.1; color: #2c3d4d; }
+.chk label { cursor:pointer; }
+.chk input { accent-color:#c79a3b; margin-right:5px; vertical-align:-2px; }
 .crisis { background:#fbf5e4; border-left:4px solid #c79a3b; border-radius:0 12px 12px 0; border-top:none; border-right:none; border-bottom:none; }
 .crisis p { color:#5c4a22; }
 .f { margin-bottom: 10px; }
 .f b { display:block; font-size: 11px; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
 .f p { font-family:'Source Serif 4',Georgia,serif; font-size:14.5px; }
 .f .line { border-bottom: 1.5px solid #d8d2c2; height: 24px; }
+.ans { display:block; width:100%; padding:9px 12px; font-size:14px; line-height:1.55; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #e2dac4; border-radius:9px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#c79a3b; }
 .printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 22px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
 @media print { .printbtn, .intro { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:4px 2px; } }
 </style>
 </head>
 <body>
@@ -44,10 +49,10 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 <div class="sec">
 <h2>Monthly self-check · mark any that are true lately</h2>
 <p class="chk">
-&#9634; Exhausted even after sleep &nbsp;&nbsp; &#9634; Snapping over small things &nbsp;&nbsp; &#9634; Sick more often<br>
-&#9634; Skipping my own appointments &nbsp;&nbsp; &#9634; Dreading the morning &nbsp;&nbsp; &#9634; Withdrawn from friends<br>
-&#9634; Crying more days than not &nbsp;&nbsp; &#9634; Feeling trapped &nbsp;&nbsp; &#9634; Numb toward them<br>
-&#9634; Hopeless about all of it &nbsp;&nbsp; &#9634; Thoughts of escape or self-harm
+<label><input type="checkbox" data-djr="1" data-q="Exhausted even after sleep"> Exhausted even after sleep</label> &nbsp;&nbsp; <label><input type="checkbox" data-djr="2" data-q="Snapping over small things"> Snapping over small things</label> &nbsp;&nbsp; <label><input type="checkbox" data-djr="3" data-q="Sick more often"> Sick more often</label><br>
+<label><input type="checkbox" data-djr="4" data-q="Skipping my own appointments"> Skipping my own appointments</label> &nbsp;&nbsp; <label><input type="checkbox" data-djr="5" data-q="Dreading the morning"> Dreading the morning</label> &nbsp;&nbsp; <label><input type="checkbox" data-djr="6" data-q="Withdrawn from friends"> Withdrawn from friends</label><br>
+<label><input type="checkbox" data-djr="7" data-q="Crying more days than not"> Crying more days than not</label> &nbsp;&nbsp; <label><input type="checkbox" data-djr="8" data-q="Feeling trapped"> Feeling trapped</label> &nbsp;&nbsp; <label><input type="checkbox" data-djr="9" data-q="Numb toward them"> Numb toward them</label><br>
+<label><input type="checkbox" data-djr="10" data-q="Hopeless about all of it"> Hopeless about all of it</label> &nbsp;&nbsp; <label><input type="checkbox" data-djr="11" data-q="Thoughts of escape or self-harm"> Thoughts of escape or self-harm</label>
 </p>
 <p style="margin-top:8px"><b>Three or more?</b> The load needs to change: make one specific ask this week. <b>Either of the last two?</b> That's today's business, see the box below, and tell one human being how hard it has gotten.</p>
 </div>
@@ -59,20 +64,60 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 
 <div class="sec">
 <h2>My Circle of Support</h2>
-<div id="circle"></div>
+<div id="circle">
+<div class="f"><b>Time with them (sitting, visits, overnights)</b><textarea class="ans" rows="2" data-djr="12" data-q="Time with them" data-fb="time"></textarea></div>
+<div class="f"><b>Rides (appointments, errands)</b><textarea class="ans" rows="2" data-djr="13" data-q="Rides" data-fb="rides"></textarea></div>
+<div class="f"><b>Money &amp; paperwork</b><textarea class="ans" rows="2" data-djr="14" data-q="Money and paperwork" data-fb="money"></textarea></div>
+<div class="f"><b>Checks in on ME</b><textarea class="ans" rows="2" data-djr="15" data-q="Checks in on me" data-fb="checkins"></textarea></div>
+<div class="f"><b>Emergency contacts (besides 911)</b><textarea class="ans" rows="2" data-djr="16" data-q="Emergency contacts" data-fb="emergency"></textarea></div>
+<div class="f"><b>Professional resources I will contact</b><textarea class="ans" rows="2" data-djr="17" data-q="Professional resources I will contact" data-fb="professional"></textarea></div>
+<div class="f"><b>This week&rsquo;s ONE ask (name + task + time)</b><textarea class="ans" rows="2" data-djr="18" data-q="This week's one ask" data-fb="ask"></textarea></div>
 </div>
+</div>
+
+<div id="ccrs-mount"></div>
 
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
 <script>
 (function(){
+  var P='djr_burnout-support-plan_';
   var C={}; try { C=JSON.parse(localStorage.getItem('dj_circle')||'{}'); } catch(e){}
-  var F=[['time','Time with them (sitting, visits, overnights)'],['rides','Rides (appointments, errands)'],['money','Money & paperwork'],['checkins','Checks in on ME'],['emergency','Emergency contacts (besides 911)'],['professional','Professional resources I will contact'],['ask','This week’s ONE ask (name + task + time)']];
-  function esc(t){ return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>'); }
-  document.getElementById('circle').innerHTML = F.map(function(f){
-    var v=C[f[0]];
-    return '<div class="f"><b>'+f[1]+'</b>'+(v&&v.trim()?'<p>'+esc(v)+'</p>':'<div class="line"></div><div class="line"></div>')+'</div>';
-  }).join('');
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; } }
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    if(el.type==='checkbox'){
+      el.checked = raw(k)==='1';
+      el.addEventListener('change',function(){ save(k, el.checked?'1':''); });
+      return;
+    }
+    var v=raw(k);
+    if(v===null){ var fb=el.getAttribute('data-fb'); v=(fb&&C[fb])?String(C[fb]):''; }
+    if(v) el.value=v;
+    grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'Burnout Self-Check & Support Plan (Dementia Journey resource)',
+    getSummary:function(){
+      var marked=[], out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        if(el.type==='checkbox'){ if(el.checked) marked.push(q); return; }
+        var v=(el.value||'').trim();
+        if(v) out.push(q+': '+v);
+      });
+      if(marked.length) out.unshift('Self-check, marked true lately: '+marked.join('; '));
+      return out.join('\n').slice(0,1500);
+    }
+  });
 })();
 </script>
 </body>

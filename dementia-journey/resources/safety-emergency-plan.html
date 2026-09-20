@@ -25,13 +25,18 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 27px; font-weight: 6
 .f b { display:block; font-size: 11px; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
 .f p { font-family:'Source Serif 4',Georgia,serif; font-size:14.5px; }
 .f .line { border-bottom: 1.5px solid #d8d2c2; height: 24px; }
+.ans { display:block; width:100%; padding:9px 12px; font-size:14px; line-height:1.55; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #e2dac4; border-radius:9px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#c79a3b; }
 .photo { border: 2px dashed #d8cba8; border-radius: 12px; height: 150px; display:flex; align-items:center; justify-content:center; color:#a99f89; font-size:12.5px; margin-bottom:10px; }
 .crisis { background:#fbf5e4; border-left:4px solid #c79a3b; border-radius:0 12px 12px 0; border-top:none; border-right:none; border-bottom:none; }
 .crisis p { color:#5c4a22; }
 .chk { font-size: 13.5px; line-height: 2.0; color: #2c3d4d; }
+.chk label { cursor:pointer; }
+.chk input { accent-color:#c79a3b; margin-right:5px; vertical-align:-2px; }
 .printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 22px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
 @media print { .printbtn, .intro { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:4px 2px; } }
 </style>
 </head>
 <body>
@@ -49,49 +54,90 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 27px; font-weight: 6
 
 <div class="sec">
 <h2>Emergency information</h2>
-<div id="emerg"></div>
+<div id="emerg">
+<div class="f"><b>Their name</b><input class="ans" data-djr="1" data-q="Their name" data-fb="w:name"></div>
+<div class="f"><b>Address · date of birth</b><input class="ans" data-djr="2" data-q="Address and date of birth"></div>
+<div class="f"><b>Medical contacts (doctor, pharmacy, specialists)</b><textarea class="ans" rows="2" data-djr="3" data-q="Medical contacts" data-fb="p:medical"></textarea></div>
+<div class="f"><b>Emergency information (allergies, meds location, key-holder, directive location)</b><textarea class="ans" rows="2" data-djr="4" data-q="Emergency information" data-fb="p:emergency"></textarea></div>
+<div class="f"><b>People to call</b><textarea class="ans" rows="2" data-djr="5" data-q="People to call" data-fb="p:people"></textarea></div>
+<div class="f"><b>What comforts them</b><textarea class="ans" rows="2" data-djr="6" data-q="What comforts them" data-fb="p:comforts"></textarea></div>
+<div class="f"><b>Known triggers · please avoid</b><textarea class="ans" rows="2" data-djr="7" data-q="Known triggers to avoid" data-fb="p:triggers"></textarea></div>
+</div>
 </div>
 
 <div class="sec">
 <h2>Wandering ready-sheet</h2>
 <div class="photo">Tape or print a CURRENT photo here (update it twice a year)</div>
-<div class="f"><b>Description (height, build, hair, glasses, usual clothing)</b><div class="line"></div><div class="line"></div></div>
-<div class="f"><b>Likely destinations (old workplace, church, childhood home, "the fence line")</b><div class="line"></div><div class="line"></div></div>
-<div class="f"><b>Patterns (time of day, what sets it off)</b><div class="line"></div></div>
-<div class="f"><b>Neighbors &amp; nearby helpers who know (name + phone)</b><div class="line"></div><div class="line"></div></div>
-<div class="f"><b>ID they wear (bracelet? pendant?)</b><div class="line"></div></div>
+<div class="f"><b>Description (height, build, hair, glasses, usual clothing)</b><textarea class="ans" rows="2" data-djr="8" data-q="Description"></textarea></div>
+<div class="f"><b>Likely destinations (old workplace, church, childhood home, "the fence line")</b><textarea class="ans" rows="2" data-djr="9" data-q="Likely destinations"></textarea></div>
+<div class="f"><b>Patterns (time of day, what sets it off)</b><input class="ans" data-djr="10" data-q="Wandering patterns"></div>
+<div class="f"><b>Neighbors &amp; nearby helpers who know (name + phone)</b><textarea class="ans" rows="2" data-djr="11" data-q="Neighbors and nearby helpers"></textarea></div>
+<div class="f"><b>ID they wear (bracelet? pendant?)</b><input class="ans" data-djr="12" data-q="ID they wear"></div>
 </div>
 
 <div class="sec">
 <h2>Hospital go-bag checklist · packed by the coat closet</h2>
 <p class="chk">
-&#9634; "This Is Who I Am" page (Module 6, it makes strangers gentle)<br>
-&#9634; Medication list, diagnoses, allergies (dated) &nbsp; &#9634; Insurance copies + photo ID<br>
-&#9634; Advance directive copy + decision-maker's phone &nbsp; &#9634; Baseline note ("their normal," 3 sentences)<br>
-&#9634; Hearing aids / glasses / dentures cases &nbsp; &#9634; Phone charger<br>
-&#9634; Comfort object + small photo album &nbsp; &#9634; Routines &amp; triggers card (from the care plan)
+<label><input type="checkbox" data-djr="13" data-q='"This Is Who I Am" page'> "This Is Who I Am" page (Module 6, it makes strangers gentle)</label><br>
+<label><input type="checkbox" data-djr="14" data-q="Medication list, diagnoses, allergies"> Medication list, diagnoses, allergies (dated)</label> &nbsp; <label><input type="checkbox" data-djr="15" data-q="Insurance copies and photo ID"> Insurance copies + photo ID</label><br>
+<label><input type="checkbox" data-djr="16" data-q="Advance directive copy and decision-maker's phone"> Advance directive copy + decision-maker's phone</label> &nbsp; <label><input type="checkbox" data-djr="17" data-q="Baseline note"> Baseline note ("their normal," 3 sentences)</label><br>
+<label><input type="checkbox" data-djr="18" data-q="Hearing aids, glasses, dentures cases"> Hearing aids / glasses / dentures cases</label> &nbsp; <label><input type="checkbox" data-djr="19" data-q="Phone charger"> Phone charger</label><br>
+<label><input type="checkbox" data-djr="20" data-q="Comfort object and small photo album"> Comfort object + small photo album</label> &nbsp; <label><input type="checkbox" data-djr="21" data-q="Routines and triggers card"> Routines &amp; triggers card (from the care plan)</label>
 </p>
 </div>
 
+<div id="ccrs-mount"></div>
+
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice. For emergencies call 911.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
 <script>
 (function(){
-  var P={}, W={};
-  try { P=JSON.parse(localStorage.getItem('dj_plan')||'{}'); } catch(e){}
+  var P='djr_safety-emergency-plan_';
+  var PL={}, W={};
+  try { PL=JSON.parse(localStorage.getItem('dj_plan')||'{}'); } catch(e){}
   try { W=JSON.parse(localStorage.getItem('dj_whoiam')||'{}'); } catch(e){}
-  function esc(t){ return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>'); }
-  function f(label, val, blanks){
-    return '<div class="f"><b>'+label+'</b>'+(val&&String(val).trim() ? '<p>'+esc(val)+'</p>' : ('<div class="line"></div>'.repeat(blanks||1)))+'</div>';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; } }
+  function fallback(el){
+    var fb=el.getAttribute('data-fb');
+    if(!fb) return '';
+    var src=fb.charAt(0)==='w' ? W : PL;
+    var v=src[fb.slice(2)];
+    return v ? String(v) : '';
   }
-  document.getElementById('emerg').innerHTML =
-    f('Their name', W.name, 1)
-    + f('Address · date of birth', '', 1)
-    + f('Medical contacts (doctor, pharmacy, specialists)', P.medical, 2)
-    + f('Emergency information (allergies, meds location, key-holder, directive location)', P.emergency, 2)
-    + f('People to call', P.people, 2)
-    + f('What comforts them', P.comforts, 1)
-    + f('Known triggers · please avoid', P.triggers, 1);
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    if(el.type==='checkbox'){
+      el.checked = raw(k)==='1';
+      el.addEventListener('change',function(){ save(k, el.checked?'1':''); });
+      return;
+    }
+    var v=raw(k);
+    if(v===null) v=fallback(el);
+    if(v) el.value=v;
+    grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'Family Dementia Safety & Emergency Plan (Dementia Journey resource)',
+    getSummary:function(){
+      var packed=[], out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        if(el.type==='checkbox'){ if(el.checked) packed.push(q); return; }
+        var v=(el.value||'').trim();
+        if(v) out.push(q+': '+v);
+      });
+      if(packed.length) out.push('Go-bag packed so far: '+packed.join('; '));
+      return out.join('\n').slice(0,1500);
+    }
+  });
 })();
 </script>
 </body>

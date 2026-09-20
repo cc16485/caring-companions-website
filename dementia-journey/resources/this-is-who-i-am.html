@@ -19,14 +19,19 @@ body { font-family:'Inter',Helvetica,Arial,sans-serif; background:#faf8f3; color
 .keep { background:#fffdf6; border:2px solid #e5d9bd; border-radius:20px; padding:36px 34px; position:relative; }
 .keep::before { content:""; position:absolute; inset:9px; border:1px solid #ead9ac; border-radius:14px; pointer-events:none; }
 h1.nm { font-family:'Source Serif 4',Georgia,serif; font-size:32px; font-weight:600; color:#143A5E; text-align:center; margin:0 0 4px; }
+.nm-in { display:block; width:100%; font:inherit; color:inherit; text-align:center; background:#fff; border:1.5px solid #e2dac4; border-radius:9px; padding:4px 10px; }
+.nm-in:focus { outline:none; border-color:#c79a3b; }
 p.sub { text-align:center; font-size:11.5px; font-weight:700; color:#a87f2c; text-transform:uppercase; letter-spacing:.1em; margin:0 0 22px; }
 .sec { margin-bottom:16px; page-break-inside: avoid; }
 .sec b { display:block; font-size:11px; font-weight:700; color:#a87f2c; text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px; }
 .sec p { font-family:'Source Serif 4',Georgia,serif; font-size:15.5px; line-height:1.75; color:#2c3d4d; }
 .sec .line { border-bottom:1.5px solid #d8d2c2; height:30px; }
+.ans { display:block; width:100%; padding:8px 12px; font-family:'Source Serif 4',Georgia,serif; font-size:15.5px; line-height:1.6; color:#2c3d4d; background:#fff; border:1.5px solid #e2dac4; border-radius:9px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#c79a3b; }
 .intro { font-size:13.5px; line-height:1.7; color:#55677a; margin: 0 0 18px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; padding-top: 16px; }
 @media print { .printbtn, .intro { display:none; } body { background:#fff; } .page { padding-top: 6px; } }
+@media print { #ccrs-mount { display:none; } .ans, .nm-in { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:4px 2px; } }
 </style>
 </head>
 <body>
@@ -35,32 +40,61 @@ p.sub { text-align:center; font-size:11.5px; font-weight:700; color:#a87f2c; tex
 <p class="intro">This page fills itself in automatically if you built your person's story in <a href="/dementia-journey/module-6" style="font-weight:600">Module 6 of The Dementia Journey</a> on this device. Otherwise it prints as a beautiful blank to fill in by hand, at the kitchen table, maybe even together. Give copies to family, respite workers, and hospital staff: it makes strangers gentle.</p>
 <button class="printbtn" onclick="window.print()">Print this page</button>
 
-<div class="keep" id="keep"></div>
+<div class="keep" id="keep">
+<h1 class="nm"><input class="nm-in" data-djr="1" data-q="Name" data-fb="name" placeholder="Their name" aria-label="Their name"></h1>
+<p class="sub">This is who I am · please care for me like you know me</p>
+<div class="sec"><b>I come from</b><textarea class="ans" rows="2" data-djr="2" data-q="I come from" data-fb="childhood"></textarea></div>
+<div class="sec"><b>My people</b><textarea class="ans" rows="2" data-djr="3" data-q="My people" data-fb="people+pets"></textarea></div>
+<div class="sec"><b>My life&rsquo;s work</b><textarea class="ans" rows="2" data-djr="4" data-q="My life's work" data-fb="work+military+accomplishments+roles"></textarea></div>
+<div class="sec"><b>What I hold sacred</b><textarea class="ans" rows="2" data-djr="5" data-q="What I hold sacred" data-fb="faith"></textarea></div>
+<div class="sec"><b>What I love</b><textarea class="ans" rows="3" data-djr="6" data-q="What I love" data-fb="music+foods+hobbies+traditions"></textarea></div>
+<div class="sec"><b>I often say</b><textarea class="ans" rows="2" data-djr="7" data-q="I often say" data-fb="sayings"></textarea></div>
+<div class="sec"><b>I find comfort in</b><textarea class="ans" rows="2" data-djr="8" data-q="I find comfort in" data-fb="comforts"></textarea></div>
+<div class="sec"><b>Please avoid</b><textarea class="ans" rows="2" data-djr="9" data-q="Please avoid" data-fb="distress"></textarea></div>
+</div>
+
+<div id="ccrs-mount"></div>
 
 <p class="footer">From <b>The Dementia Journey</b> · a free course for families from Caring Companions · mo-care.com/dementia-journey · (417) 234-8494</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
 <script>
 (function(){
+  var P='djr_this-is-who-i-am_';
   var W={}; try { W=JSON.parse(localStorage.getItem('dj_whoiam')||'{}'); } catch(e){}
-  var any=Object.values(W).some(function(v){ return v && String(v).trim(); });
-  function esc(t){ return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>'); }
-  function sec(label, txt, blanks){
-    if (any) return txt ? '<div class="sec"><b>'+label+'</b><p>'+esc(txt)+'</p></div>' : '';
-    var lines=''; for (var i=0;i<(blanks||2);i++) lines+='<div class="line"></div>';
-    return '<div class="sec"><b>'+label+'</b>'+lines+'</div>';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; } }
+  function fallback(el){
+    var fb=el.getAttribute('data-fb');
+    if(!fb) return '';
+    var parts=fb.split('+').map(function(key){ var v=W[key]; return v ? String(v).trim() : ''; }).filter(Boolean);
+    return parts.join(' · ');
   }
-  var joined = function(arr){ return arr.filter(Boolean).join(' · '); };
-  document.getElementById('keep').innerHTML =
-    '<h1 class="nm">'+(any ? esc(W.name||'This Is Who I Am') : '________________')+'</h1>'
-    +'<p class="sub">This is who I am · please care for me like you know me</p>'
-    + sec('I come from', W.childhood, 2)
-    + sec('My people', any ? joined([W.people,W.pets]) : '', 2)
-    + sec('My life’s work', any ? joined([W.work,W.military,W.accomplishments,W.roles]) : '', 2)
-    + sec('What I hold sacred', W.faith, 1)
-    + sec('What I love', any ? joined([W.music,W.foods,W.hobbies,W.traditions]) : '', 3)
-    + sec('I often say', W.sayings, 1)
-    + sec('I find comfort in', W.comforts, 2)
-    + sec('Please avoid', W.distress, 2);
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    var v=raw(k);
+    if(v===null) v=fallback(el);
+    if(v) el.value=v;
+    grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'This Is Who I Am (Dementia Journey resource)',
+    getSummary:function(){
+      var out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        var v=(el.value||'').trim();
+        if(v) out.push(q+': '+v);
+      });
+      return out.join('\n').slice(0,1500);
+    }
+  });
 })();
 </script>
 </body>

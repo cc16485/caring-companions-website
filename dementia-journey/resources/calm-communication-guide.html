@@ -23,9 +23,13 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 .sec h2 span { font-size: 10.5px; font-family:'Inter',sans-serif; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .06em; display:block; margin-bottom: 3px; }
 .sec p, .sec li { font-size: 13.5px; line-height: 1.7; color: #2c3d4d; }
 .sec ul { padding-left: 18px; }
+.addn b { display:block; font-size: 10.5px; font-weight: 700; color: #a87f2c; text-transform: uppercase; letter-spacing: .06em; margin: 12px 0 4px; }
+.ans { display:block; width:100%; padding:9px 12px; font-size:14px; line-height:1.55; font-family:inherit; color:#16283a; background:#fff; border:1.5px solid #e2dac4; border-radius:9px; resize:none; overflow:hidden; }
+.ans:focus { outline:none; border-color:#c79a3b; }
 .printbtn { display:inline-block; background:#EFCE85; color:#0e2c49; border:none; border-radius:999px; padding:13px 26px; font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; margin: 0 0 24px; }
 .footer { font-size: 12px; color: #9aa69e; line-height: 1.7; border-top: 1px solid #e8e4d8; padding-top: 16px; margin-top: 8px; }
 @media print { .printbtn { display:none; } body { background:#fff; } .page { padding-top: 10px; } }
+@media print { #ccrs-mount { display:none; } .addn:not(.has-val) { display:none; } .ans { border:0; border-bottom:1.5px solid #d8d2c2; border-radius:0; background:transparent; padding:4px 2px; } }
 </style>
 </head>
 <body>
@@ -40,21 +44,25 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 <h2><span>Before words · the Positive Physical Approach™</span>How to arrive</h2>
 <p>From the front, in their line of sight · slow to half speed, pause an arm's length away · greet with an open hand, a small wave · say their name first ("June."), then yours if needed · offer your hand and let them take it · come alongside, not head-on · get to eye level · connect warmly <b>before</b> the ask.</p>
 <p style="font-size:11.5px;color:#9aa69e;margin-top:8px">From Teepa Snow's Positive Approach to Care®, used under license. Our own caregivers train in this.</p>
+<div class="addn"><b>Notes for our family</b><textarea class="ans" rows="2" data-djr="1" data-q="How to arrive, our notes"></textarea></div>
 </div>
 
 <div class="sec">
 <h2><span>Words</span>One thought at a time</h2>
 <p>If a sentence has an "and" in it, make it two sentences with a breath between. Say the noun, skip the pronoun ("put on the blue coat," not "put it on"). Hold up the object as you name it.</p>
+<div class="addn"><b>Notes for our family</b><textarea class="ans" rows="2" data-djr="2" data-q="One thought at a time, our notes"></textarea></div>
 </div>
 
 <div class="sec">
 <h2><span>Pace</span>The ten-second pause</h2>
 <p>After one sentence, wait ten real seconds. Count them. Rephrasing too soon hands them a brand-new sentence to start over on. Silence isn't failure; silence is processing.</p>
+<div class="addn"><b>Notes for our family</b><textarea class="ans" rows="2" data-djr="3" data-q="The ten-second pause, our notes"></textarea></div>
 </div>
 
 <div class="sec">
 <h2><span>Choices</span>Two doors, both good</h2>
 <p>"Blue blouse or the yellow?" · "Tea or coffee?" · "Shower now or after breakfast?" Show both when you can. On hard days, one warm suggestion: "The blue one's your favorite. Here we go."</p>
+<div class="addn"><b>Choices that work for us</b><textarea class="ans" rows="2" data-djr="4" data-q="Choices that work for us"></textarea></div>
 </div>
 
 <div class="sec">
@@ -66,14 +74,55 @@ h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 28px; font-weight: 6
 <li>4. Guide gently: help the motion start, ease off as they take over.</li>
 <li>5. Do only the part they can't. Finishing something feels like being someone.</li>
 </ul>
+<div class="addn"><b>Notes for our family</b><textarea class="ans" rows="2" data-djr="5" data-q="The cueing ladder, our notes"></textarea></div>
 </div>
 
 <div class="sec">
 <h2><span>Always</span>The dignity list · retired habits</h2>
 <p>No talking about them as if they're not there · no public corrections · no baby talk · no quizzing · never "don't you remember?" · no discussing private care in front of visitors.</p>
+<div class="addn"><b>A habit we are retiring</b><textarea class="ans" rows="2" data-djr="6" data-q="A habit we are retiring"></textarea></div>
 </div>
+
+<div id="ccrs-mount"></div>
 
 <p class="footer">From <b>The Dementia Journey: A Free Course for Families Caring for Someone They Love</b> · mo-care.com/dementia-journey · Caring Companions In-Home Senior Care, Springfield, MO · (417) 234-8494<br>This tool is education, not medical advice. Positive Physical Approach™ and Positive Approach to Care® are marks of Positive Approach, LLC (Teepa Snow), used under license.</p>
 </div>
+<script src="/assets/forms.js"></script>
+<script src="/assets/results-share.js"></script>
+<script>
+(function(){
+  var P='djr_calm-communication-guide_';
+  function raw(k){ try { return localStorage.getItem(P+k); } catch(e){ return null; } }
+  function save(k,v){ try { localStorage.setItem(P+k,v); } catch(e){} }
+  function grow(el){ if(el.tagName==='TEXTAREA'){ el.style.height='auto'; el.style.height=(el.scrollHeight+3)+'px'; } }
+  function flag(el){
+    var w = el.closest ? el.closest('.addn') : null;
+    var t = w || el;
+    if((el.value||'').trim()) t.classList.add('has-val'); else t.classList.remove('has-val');
+  }
+  var els=document.querySelectorAll('[data-djr]');
+  Array.prototype.forEach.call(els,function(el){
+    var k=el.getAttribute('data-djr');
+    var v=raw(k);
+    if(v) el.value=v;
+    flag(el); grow(el);
+    el.addEventListener('input',function(){ save(k, el.value); flag(el); grow(el); });
+  });
+  window.addEventListener('load',function(){ Array.prototype.forEach.call(els,grow); });
+  if(window.CCResultsShare) CCResultsShare.mount({
+    mountId:'ccrs-mount',
+    tool:'The Calm Communication Guide (Dementia Journey resource)',
+    getSummary:function(){
+      var out=[];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-djr]'),function(el){
+        var q=el.getAttribute('data-q')||'';
+        var v=(el.value||'').trim();
+        if(v) out.push(q+': '+v);
+      });
+      return out.join('\n').slice(0,1500);
+    }
+  });
+})();
+</script>
 </body>
 </html>
