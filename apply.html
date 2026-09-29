@@ -373,9 +373,10 @@ function renderRoleQuestions(label){
 /* ---- The PRN CNA Team ---------------------------------------------------
    A PRN applicant tells us when they can be called and how much notice they
    need, as choices rather than a sentence, because that is what open-shift
-   matching reads later. Pay belongs to the shift: PRN Team shifts $20, an
-   ongoing schedule $18. They accept that before sending, in the role's own
-   words, and the database keeps the wording, its version and the time. */
+   matching reads later. The PRN Team is $20 an hour; our CNAs who switch to
+   an ongoing client are paid $18, one or the other, never both. They accept
+   the PRN pay before sending, in the role's own words, and the database keeps
+   the wording, its version and the time. */
 let PRN = null;
 const PRNA = { days: [], times: [], interests: [], notice: null };
 const PRN_DAYS = [['mon','Mon'],['tue','Tue'],['wed','Wed'],['thu','Thu'],['fri','Fri'],['sat','Sat'],['sun','Sun']];
@@ -398,7 +399,10 @@ function prnPick(btn, k, v, multi){
 function prnSetup(role){
   PRN = role;
   const rate = role.pay_min ? '$' + Number(role.pay_min).toFixed(2).replace(/\.00$/, '') + '/hr' : '';
-  g('posLine').innerHTML = 'Position: <b>' + esc(role.label) + '</b>' + (rate ? ' &middot; ' + rate : '');
+  g('posLine').innerHTML = 'Position: <b>' + esc(role.label) + '</b>' + (rate ? ' &middot; ' + rate : '')
+    + '<div style="margin-top:7px;font-size:13.5px;color:var(--muted);line-height:1.6;">'
+    + '<b style="color:var(--ink-2);">Start PRN. Stay flexible.</b> Tell us when you are generally available and we will text you opportunities that may fit. '
+    + 'Accept or decline, no pressure. Once you accept and are confirmed, we count on you.</div>';
   g('posLine').style.display = 'block';
   /* Pickups are shift by shift, so full or part time and building up hours are not the questions. */
   g('jobTypeQ').style.display = 'none'; g('buildUpQ').style.display = 'none';
@@ -419,7 +423,10 @@ function prnSetup(role){
   g('availSub').textContent = 'For example, school pickup at 3 every weekday.';
   if (role.pay_ack) {
     g('prnPay').innerHTML = '<label class="prn-pay"><input type="checkbox" id="prnPayOk"><span>'
-      + '<b style="display:block;margin-bottom:3px;">PRN Team pay</b>' + esc(role.pay_ack) + '</span></label>';
+      + '<b style="display:block;margin-bottom:3px;">PRN Team pay</b>' + esc(role.pay_ack) + '</span></label>'
+      /* The $20 is the offer. $18 is only a short note (her wording, 2026-09-29): it is what our CNAs are paid if
+         they switch to taking an ongoing client, never alongside the PRN rate. */
+      + '<p class="sub" style="margin:8px 2px 0;font-size:12.5px;">Note: if you would like to switch to taking an ongoing client, our CNAs are paid $18 an hour.</p>';
   }
 }
 const prnLabel = (list, keys) => keys.map(k => (list.find(x => x[0] === k) || [k, k])[1]);
