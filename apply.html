@@ -60,6 +60,12 @@
   .foot{font-size:12.5px;color:var(--muted);text-align:center;margin-top:20px;line-height:1.65;}
   .done{display:none;text-align:center;padding:34px 12px;}
   .check{width:60px;height:60px;border-radius:50%;background:#dcfce7;color:#15803d;font-size:32px;line-height:60px;margin:0 auto 10px;}
+  /* PRN CNA Team: the position line and the pay acknowledgment. */
+  .ap-posline{display:none;margin:0 0 12px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 15px;font-size:14.5px;color:var(--ink-2);}
+  .ap-posline b{color:var(--brand-blue);}
+  .prn-h{font-size:15px;font-weight:700;color:var(--brand-blue);margin:18px 0 2px;}
+  .prn-pay{display:flex;gap:11px;align-items:flex-start;background:#fbf6ea;border:1px solid #ecd9ae;border-radius:12px;padding:14px 15px;margin:20px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink-2);}
+  .prn-pay input{margin-top:3px;width:19px;height:19px;accent-color:var(--accent);flex:none;}
   @media(max-width:560px){ .row2{grid-template-columns:1fr;} .ap-band h1{font-size:26px;} }
 </style>
 </head>
@@ -86,6 +92,7 @@
 
 <div class="ap-wrap">
  <div id="formView">
+  <div class="ap-posline" id="posLine"></div>
   <div class="ap-steps">
     <span class="ap-stepno" id="stepNo">Step 1 of 3</span>
     <span class="ap-dot on" id="d1"></span><span class="ap-dot" id="d2"></span><span class="ap-dot" id="d3"></span>
@@ -106,11 +113,13 @@
     <div class="sub">So we can look for clients near you.</div>
     <input class="t" id="zip" inputmode="numeric" autocomplete="postal-code" placeholder="65802" maxlength="5" style="max-width:180px">
 
+    <div id="jobTypeQ">
     <label class="f">Are you looking for full time or part time?</label>
     <div class="chips" data-k="job_type" data-single="1">
       <button type="button" onclick="oneOf(this)">Full time</button>
       <button type="button" onclick="oneOf(this)">Part time</button>
       <button type="button" onclick="oneOf(this)">Either is fine</button>
+    </div>
     </div>
 
     <label class="f">How many hours a week are you hoping for?</label>
@@ -125,11 +134,13 @@
          an interview is worth either side's time. Hours in home care are built
          from clients, and a caregiver who needs forty from day one is often
          somebody we cannot say yes to yet. -->
+    <div id="buildUpQ">
     <label class="f">If we could not start you on that many hours straight away, would you start with fewer and build up?</label>
     <div class="sub">Hours here come from the clients we match you with, so most people start smaller and grow. It is worth knowing what works for you.</div>
     <div class="chips" data-k="will_build_up" data-single="1">
       <button type="button" onclick="oneOf(this)">Yes, I would build up</button>
       <button type="button" onclick="oneOf(this)">I need those hours from the start</button>
+    </div>
     </div>
 
     <label class="f">Have you worked with older adults before?</label>
@@ -180,6 +191,7 @@
         <input class="t" id="states" placeholder="Kansas, Arkansas…">
       </div></div>
 
+    <div id="prnQs"></div>
     <div id="roleQs"></div>
 
     <button class="go" id="btn2" onclick="next2()">Continue</button>
@@ -199,8 +211,9 @@
       <option>3 to 5 years</option>
       <option>More than 5 years</option>
     </select>
-    <label class="f" for="avail">When can you work?</label>
-    <div class="sub">Rough is fine. We build schedules around people.</div>
+    <div id="prnAvail"></div>
+    <label class="f" for="avail" id="availLabel">When can you work?</label>
+    <div class="sub" id="availSub">Rough is fine. We build schedules around people.</div>
     <textarea class="t" id="avail" rows="2" placeholder="e.g. weekday mornings, every other weekend, overnights, up to 30 hours"></textarea>
     <!-- Where they have actually worked, asked as fields rather than as a box.
          "Fifteen years, hospice and in-home" is not something anybody can
@@ -217,6 +230,7 @@
     <label class="f" for="ref">How did you hear about us? <span class="opt">(optional)</span></label>
     <input class="t" id="ref" placeholder="Indeed, Google, a friend who works here…">
 
+    <div id="prnPay"></div>
     <button class="go" id="btn3" onclick="finish()">Send my application</button>
     <div class="err" id="err3"></div>
     <button class="back" onclick="goStep(2)">&larr; Back</button>
@@ -317,7 +331,7 @@ async function loadRoleQuestions(){
   if (!POSITION) return;
   try {
     const { data } = await sb.from('job_positions')
-      .select('label,screener,pay_min,pay_max,pay_unit').eq('key', POSITION).maybeSingle();
+      .select('*').eq('key', POSITION).maybeSingle();
     if (!data) return;
     ROLE_QS = Array.isArray(data.screener) ? data.screener : [];
     /* Only when they came for a named role. A bare /apply keeps the general
@@ -335,6 +349,7 @@ async function loadRoleQuestions(){
       g('bandPay').innerHTML = '$' + lo + hi + per;
     }
     renderRoleQuestions(data.label);
+    if (data.track === 'prn') prnSetup(data);
   } catch (e) { /* extras are a bonus; the core screen still works without them */ }
 }
 
@@ -353,6 +368,70 @@ function renderRoleQuestions(label){
              '<button type="button" onclick="yn(this,1)">Yes</button>' +
              '<button type="button" onclick="yn(this,0)">No</button></div></div>';
     }).join('');
+}
+
+/* ---- The PRN CNA Team ---------------------------------------------------
+   A PRN applicant tells us when they can be called and how much notice they
+   need, as choices rather than a sentence, because that is what open-shift
+   matching reads later. Pay belongs to the shift: PRN Team shifts $20, an
+   ongoing schedule $18. They accept that before sending, in the role's own
+   words, and the database keeps the wording, its version and the time. */
+let PRN = null;
+const PRNA = { days: [], times: [], interests: [], notice: null };
+const PRN_DAYS = [['mon','Mon'],['tue','Tue'],['wed','Wed'],['thu','Thu'],['fri','Fri'],['sat','Sat'],['sun','Sun']];
+const PRN_TIMES = [['morning','Morning'],['daytime','Daytime'],['evening','Evening'],['overnight','Overnight']];
+const PRN_NOTICE = [['same_day','Same day'],['few_hours','A few hours'],['24h','24 hours'],['48h','48 hours or more']];
+const PRN_INTERESTS = [['calloffs','Call-offs and same-day shifts'],['evenings','Evenings'],['overnights','Overnights'],['weekends','Weekends'],
+                       ['short','Short shifts'],['long','Long shifts'],['multiday','Temporary multi-day coverage']];
+const esc = t => String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const prnChips = (k, list, multi) => '<div class="chips' + (k === 'interests' ? ' stack' : '') + '">' + list.map(([v, l]) =>
+  '<button type="button" onclick="prnPick(this,\'' + k + '\',\'' + v + '\',' + (multi ? 1 : 0) + ')">' + esc(l) + '</button>').join('') + '</div>';
+function prnPick(btn, k, v, multi){
+  if (multi) {
+    const on = !btn.classList.contains('on'); btn.classList.toggle('on', on);
+    PRNA[k] = on ? PRNA[k].concat([v]) : PRNA[k].filter(x => x !== v);
+  } else {
+    [...btn.parentElement.children].forEach(b => b.classList.toggle('on', b === btn));
+    PRNA[k] = v;
+  }
+}
+function prnSetup(role){
+  PRN = role;
+  const rate = role.pay_min ? '$' + Number(role.pay_min).toFixed(2).replace(/\.00$/, '') + '/hr' : '';
+  g('posLine').innerHTML = 'Position: <b>' + esc(role.label) + '</b>' + (rate ? ' &middot; ' + rate : '');
+  g('posLine').style.display = 'block';
+  /* Pickups are shift by shift, so full or part time and building up hours are not the questions. */
+  g('jobTypeQ').style.display = 'none'; g('buildUpQ').style.display = 'none';
+  g('prnQs').innerHTML =
+    '<div class="q"><div class="qt">Are you currently a CNA?</div>'
+    + '<div class="qs">A certified nursing assistant, with your certification current.</div>'
+    + '<div class="chips" data-k="prn_cna"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>'
+    + '<div class="q"><div class="qt">Do you have at least one year of caregiving or CNA experience?</div>'
+    + '<div class="chips" data-k="prn_one_year"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>';
+  g('prnAvail').innerHTML =
+    '<div class="prn-h">When can we call you for PRN shifts?</div>'
+    + '<div class="sub">Pick everything that usually works. You still say yes or no to each shift.</div>'
+    + '<label class="f">Days</label>' + prnChips('days', PRN_DAYS, true)
+    + '<label class="f">Times of day</label>' + prnChips('times', PRN_TIMES, true)
+    + '<label class="f">How much notice do you need?</label>' + prnChips('notice', PRN_NOTICE, false)
+    + '<label class="f">What are you interested in? <span class="opt">(optional)</span></label>' + prnChips('interests', PRN_INTERESTS, true);
+  g('availLabel').innerHTML = 'Anything else about when you can work? <span class="opt">(optional)</span>';
+  g('availSub').textContent = 'For example, school pickup at 3 every weekday.';
+  if (role.pay_ack) {
+    g('prnPay').innerHTML = '<label class="prn-pay"><input type="checkbox" id="prnPayOk"><span>'
+      + '<b style="display:block;margin-bottom:3px;">PRN Team pay</b>' + esc(role.pay_ack) + '</span></label>';
+  }
+}
+const prnLabel = (list, keys) => keys.map(k => (list.find(x => x[0] === k) || [k, k])[1]);
+function prnSummary(){
+  const n = (PRN_NOTICE.find(x => x[0] === PRNA.notice) || [null, ''])[1];
+  return ['PRN', prnLabel(PRN_DAYS, PRNA.days).join(', '), prnLabel(PRN_TIMES, PRNA.times).join(', '),
+          n ? 'Notice: ' + n.toLowerCase() : '',
+          PRNA.interests.length ? 'Interested in: ' + prnLabel(PRN_INTERESTS, PRNA.interests).join(', ') : ''].filter(Boolean).join(' · ');
+}
+async function prnSave(patch, ack){
+  const { error } = await sb.rpc('apply_prn_save', { p_id: ROW, p_position: POSITION, p_prn: patch, p_pay_ack: !!ack });
+  if (error) throw error;
 }
 
 if (POSITION && !JOB) loadRoleQuestions();
@@ -642,9 +721,15 @@ async function next2(){
   if ([ 'age_ok','work_auth','has_transport' ].some(k => A[k] === undefined)){
     err.textContent = 'Please answer the first three questions.'; err.style.display='block'; return;
   }
+  if (PRN && (A.prn_cna === undefined || A.prn_one_year === undefined)){
+    err.textContent = 'Please answer the two CNA questions.'; err.style.display='block'; return;
+  }
   err.style.display = 'none';
   const b = g('btn2'); b.disabled = true; b.textContent = 'Saving…';
   let stop = KNOCKOUTS.find(x => A[x.k] === x.when);
+  if (!stop && PRN && A.prn_cna === false) stop = { reason: 'not a CNA (PRN CNA Team)',
+    why: 'The PRN CNA Team is for certified nursing assistants, so we are not able to take this application further.',
+    next: 'We also hire caregivers who are not CNAs, and you would be welcome to apply for that instead at mo-care.com/apply. Or call us on (417) 234-8494.' };
   /* A role can have its own dealbreaker: no CNA certificate for a CNA post. */
   if (!stop) {
     const failed = ROLE_QS.findIndex((q, i) => q.knockout && A['rq' + i] === false);
@@ -653,6 +738,8 @@ async function next2(){
       next: 'We do hire for other roles that do not, so please do apply for one of those. Or call us on (417) 234-8494 and we will point you at the right one.' };
   }
   try {
+    /* The PRN answers first: the database only takes them on an unfinished application. */
+    if (PRN) await prnSave({ cna: A.prn_cna, one_year: A.prn_one_year }, false);
     await save({ age_ok: A.age_ok, work_auth: A.work_auth, has_transport: A.has_transport,
       has_license: A.has_license ?? null, has_insurance: A.has_insurance ?? null,
       can_pass_background: A.can_pass_background ?? null,
@@ -681,11 +768,22 @@ async function next2(){
 
 async function finish(){
   const err = g('err3');
-  if (!val('avail')){ err.textContent = 'Please tell us roughly when you can work.'; err.style.display='block'; return; }
+  if (PRN){
+    const need = [];
+    if (!PRNA.days.length) need.push('the days that usually work');
+    if (!PRNA.times.length) need.push('the times of day');
+    if (!PRNA.notice) need.push('how much notice you need');
+    if (need.length){ err.textContent = 'Still needed: ' + need.join(', ') + '.'; err.style.display='block'; return; }
+    if (PRN.pay_ack && !(g('prnPayOk') && g('prnPayOk').checked)){
+      err.textContent = 'Please tick the PRN Team pay box to send your application.'; err.style.display='block'; return;
+    }
+  } else if (!val('avail')){ err.textContent = 'Please tell us roughly when you can work.'; err.style.display='block'; return; }
   err.style.display = 'none';
   const b = g('btn3'); b.disabled = true; b.textContent = 'Sending…';
   try {
-    await save({ experience_years: val('years') || null, availability: val('avail'),
+    if (PRN) await prnSave({ days: PRNA.days, times: PRNA.times, notice: PRNA.notice, interests: PRNA.interests }, true);
+    await save({ experience_years: val('years') || null,
+      availability: PRN ? [prnSummary(), val('avail')].filter(Boolean).join(' · ') : val('avail'),
       experience: val('exp') || null, referral_source: val('ref') || null,
       work_history: workHistory() }, true);
     g('bookName').textContent = val('first');
