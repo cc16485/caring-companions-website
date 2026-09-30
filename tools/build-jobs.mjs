@@ -116,7 +116,9 @@ function jsonLd(p) {
       '@type': 'Place',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: p.street || '1331 N Stewart Ave Ste B',
+        /* The office street only belongs on a Springfield job. A client's town gets
+           no street at all (JSON.stringify drops undefined), never ours or theirs. */
+        streetAddress: p.street || ((p.city || 'Springfield') === 'Springfield' ? '1331 N Stewart Ave Ste B' : undefined),
         addressLocality: p.city || 'Springfield',
         addressRegion: p.region || 'MO',
         postalCode: p.postal_code || '65802',
