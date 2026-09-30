@@ -64,7 +64,9 @@
 <style>
 .jb-wrap{max-width:820px;margin:0 auto;padding:52px 24px 30px;}
 .jb-back{font-size:13.5px;color:var(--muted);text-decoration:none;}
-.jb-h1{font-family:var(--serif);font-size:40px;line-height:1.14;font-weight:600;color:var(--brand-blue);margin:14px 0 14px;letter-spacing:-.015em;}
+.jb-h1{font-family:var(--serif);font-size:40px;line-height:1.14;font-weight:600;color:var(--brand-blue);margin:0;letter-spacing:-.015em;}
+.jb-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:14px 0 14px;}
+.jb-apply-top{display:inline-block;background:var(--accent);color:#fbfaf7;border-radius:9px;padding:13px 26px;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;}
 .jb-chips{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 24px;}
 .jb-chip{background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--ink-2);font-weight:500;}
 .jb-chip.pay{background:#e8f1ec;border-color:#cfe3d6;color:#1c6b45;font-weight:700;}
@@ -75,7 +77,7 @@
 .jb-body li{margin:0 0 7px;}
 .jb-apply{background:var(--soft-panel);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;margin:34px 0 8px;}
 .jb-note{font-size:13px;color:var(--muted);margin:12px 0 0;}
-@media(max-width:639px){.jb-h1{font-size:30px;}.jb-wrap{padding:34px 20px 20px;}}
+@media(max-width:639px){.jb-h1{font-size:30px;}.jb-wrap{padding:34px 20px 20px;}.jb-apply-top{width:100%;text-align:center;}}
 </style>
 </head>
 <body>
@@ -205,7 +207,10 @@
 
 <main class="jb-wrap">
 <a class="jb-back" href="/careers">&larr; All careers</a>
+<div class="jb-top">
 <h1 class="jb-h1">Caregiver, Weekdays</h1>
+<a href="/apply?job=caregiver-weekdays-springfield" class="btn-apply jb-apply-top">Apply now &rarr;</a>
+</div>
 <div class="jb-chips">
 <span class="jb-chip">Full time</span>
 <span class="jb-chip">Springfield, MO</span>
@@ -298,7 +303,8 @@
         : /google\./i.test(r) ? 'google'
         : /facebook\.|fb\./i.test(r) ? 'facebook'
         : /linkedin\./i.test(r) ? 'linkedin'
-        : r && r.indexOf(location.host) === -1 ? 'referral' : '';
+        : r && r.indexOf(location.host) === -1 ? 'referral'
+        : r ? 'website' : '';   // came here from our own pages (careers list, menu)
   }
   if (!src) return;
   document.querySelectorAll('a[href*="/apply"]').forEach(function(a){
