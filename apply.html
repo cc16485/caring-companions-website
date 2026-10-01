@@ -466,6 +466,11 @@ if (RESUME) {
 async function resumeBooking(){
   try {
     const { data } = await sb.rpc('interview_mine', { p_applicant: ROW });
+    if (data && data.status === 'noshow'){
+      g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">' + NOSHOW_MSG + '</p>';
+      g('keepBtn').style.display = 'none';
+      return;
+    }
     if (data && data.status === 'booked' && data.starts_at){
       HAVE_BOOKING = true;
       showManage(data);
@@ -665,6 +670,13 @@ function workHistory(){
   return out.length ? out : null;
 }
 
+/* NO-SHOW (2026-10-01, Samantha): someone who did not show for an interview cannot apply again or book, and is told
+   why. The database decides (NOSHOW_BEFORE); this only explains it. */
+const NOSHOW_MSG = 'Our records show that you did not attend a previously scheduled interview with Caring Companions '
+  + 'and did not contact us beforehand, so we are not able to accept a new application or interview. If there was '
+  + 'a reasonable explanation, please call our office at (417) 234-8494 so we can discuss it.';
+const isNoshow = e => /NOSHOW_BEFORE/.test(String(e && e.message || e || ''));
+
 async function save(patch, done){
   const { data, error } = await sb.rpc('apply_save',
     { p_id: ROW, p_data: patch, p_done: !!done });
@@ -695,7 +707,8 @@ async function next1(){
       experience_kinds: A.experience_kinds || [], sms_consent: !!g('sms').checked });
     goStep(2);
   } catch (e) {
-    err.textContent = 'That did not save. Please call or text us on (417) 234-8494 and we will take your details over the phone.';
+    err.textContent = isNoshow(e) ? NOSHOW_MSG
+      : 'That did not save. Please call or text us on (417) 234-8494 and we will take your details over the phone.';
     err.style.display = 'block'; console.error(e);
   } finally { b.disabled = false; b.textContent = 'Continue'; }
 }
@@ -877,6 +890,11 @@ async function bookSlot(btn, iso){
     /* The database is the referee here: it may refuse because the limit or the
        two-hour cutoff was reached with this tab already open. */
     const m = String(e && e.message || '');
+    if (isNoshow(e)){
+      g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">' + NOSHOW_MSG + '</p>';
+      g('keepBtn').style.display = 'none';
+      return;
+    }
     if (/CHANGE_LIMIT/.test(m) || /TOO_CLOSE/.test(m)){
       g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">'
         + (/CHANGE_LIMIT/.test(m) ? PHONE_ONLY.limit : PHONE_ONLY.too_close) + '</p>';
