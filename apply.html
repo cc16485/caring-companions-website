@@ -257,7 +257,7 @@
    <div style="text-align:center;padding:6px 0 4px;">
      <div class="check" style="width:52px;height:52px;font-size:27px;line-height:52px;">&#10003;</div>
      <h1 id="bookHead" style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
-     <p id="bookLede" style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are here at our office and take about <span id="bookMins">45</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
+     <p id="bookLede" style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are <b>in person, here at our office</b> (we do not do phone interviews) and take about <span id="bookMins">30</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
    </div>
    <!-- Somebody who already has a time lands here from the same ?book= link
         their messages carry. Moving or cancelling has to be as easy as booking
@@ -457,7 +457,7 @@ const RESUME = P.get('book');
 let HAVE_BOOKING = false;   // an active booking exists; new times mean moving it
 if (RESUME) {
   ROW = RESUME;
-  g('bookHead').textContent = 'Welcome back. Let’s pick your interview time.';
+  g('bookHead').textContent = 'Welcome back. Let’s pick your in-person interview time.';
   g('formView').style.display = 'none';
   g('bookView').style.display = 'block';
   resumeBooking();
@@ -496,8 +496,8 @@ function showManage(mine){
   const locked = mine.can_change === false;   // absent means the old database: no limits
   g('bookHead').textContent = 'Welcome back.';
   g('bookLede').textContent = locked
-    ? 'Your interview is booked. Here it is.'
-    : 'Your interview is booked. Move it or cancel it here whenever you need to.';
+    ? 'Your in-person interview is booked. Here it is.'
+    : 'Your in-person interview is booked. Move it or cancel it here whenever you need to.';
   g('manageWhen').innerHTML = 'You are booked for <b>' + dayLabel(d) + ' at ' + timeLabel(d) + '</b>.';
   g('manageBtns').style.display = locked ? 'none' : 'flex';
   g('manageLocked').style.display = locked ? 'block' : 'none';
@@ -925,7 +925,9 @@ function showBooked(when, moved){
   }
   /* WORDING (2026-10-01): say what will really happen. Messages go out 8am–6pm Central (a late-night booking is
      confirmed after 8am), and the hour-before reminder is a text, so only for people who said yes to texts. */
-  g('doneLede').innerHTML = 'Your interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
+  /* IN PERSON (2026-10-01, Samantha): someone missed an interview thinking it was a phone call. */
+  g('doneLede').innerHTML = 'Your <b>in-person</b> interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
+    + 'Please come to our office (the address is below). This is not a phone interview. '
     + 'We will send you a confirmation and a reminder the day before, and if you said yes to texts, a short text about an hour before. '
     + 'Our messages go out between 8am and 6pm.';
   fillWhere();
@@ -939,7 +941,7 @@ function showBooked(when, moved){
 function skipBooking(){
   g('changeBtn').style.display = 'none';
   g('rebookBtn').style.display = 'none';
-  g('doneLede').textContent = 'Someone from our office will call you within one business day to arrange your interview. '
+  g('doneLede').textContent = 'Someone from our office will call you within one business day to set a time for your in-person interview at our office. '
     + 'If you told us you have lived outside Missouri, we will get your fingerprint check moving straight away so it does not hold up your start.';
   g('bookView').style.display = 'none';
   g('doneView').style.display = 'block';
