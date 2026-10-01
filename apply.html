@@ -257,7 +257,7 @@
    <div style="text-align:center;padding:6px 0 4px;">
      <div class="check" style="width:52px;height:52px;font-size:27px;line-height:52px;">&#10003;</div>
      <h1 id="bookHead" style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
-     <p id="bookLede" style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are here at our office and take about <span id="bookMins">45</span> minutes. Choose whatever suits you and we will confirm it straight away.</p>
+     <p id="bookLede" style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are here at our office and take about <span id="bookMins">45</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
    </div>
    <!-- Somebody who already has a time lands here from the same ?book= link
         their messages carry. Moving or cancelling has to be as easy as booking
@@ -923,8 +923,11 @@ function showBooked(when, moved){
     const bn = g('bookName');            // gone once the resume greeting replaced it
     if (bn) g('doneName').textContent = bn.textContent;
   }
+  /* WORDING (2026-10-01): say what will really happen. Messages go out 8am–6pm Central (a late-night booking is
+     confirmed after 8am), and the hour-before reminder is a text, so only for people who said yes to texts. */
   g('doneLede').innerHTML = 'Your interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
-    + 'We have sent you a confirmation, and we will remind you the day before and an hour before.';
+    + 'We will send you a confirmation and a reminder the day before, and if you said yes to texts, a short text about an hour before. '
+    + 'Our messages go out between 8am and 6pm.';
   fillWhere();
   g('rebookBtn').style.display = 'none';
   g('changeBtn').style.display = 'inline-block';
