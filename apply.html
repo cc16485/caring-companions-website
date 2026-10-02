@@ -83,7 +83,7 @@
     <h1 id="bandTitle">Join our caregiving team</h1>
     <div class="ap-pay" id="bandPay">$15&ndash;$17 an hour</div>
     <div class="ap-perks">
-      <span>Paid training</span><span>Weekly pay</span><span>W-2 employee, not a contractor</span>
+      <span>Paid training from home</span><span>Weekly pay</span><span>W-2 employee, not a contractor</span>
       <span>Flexible schedules</span><span>Full time &amp; part time</span>
     </div>
     <p class="ap-counties">Greene &middot; Christian &middot; Polk &middot; Taney &middot; Jasper &middot; Lawrence counties</p>
@@ -929,7 +929,9 @@ function showBooked(when, moved){
   g('doneLede').innerHTML = 'Your <b>in-person</b> interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
     + 'Please come to our office (the address is below). This is not a phone interview. '
     + 'We will send you a confirmation and a reminder the day before, and if you said yes to texts, a short text about an hour before. '
-    + 'Our messages go out between 8am and 6pm.';
+    + 'Our messages go out between 8am and 6pm.'
+    /* 2026-10-02 (Samantha): one visit, then the rest from home. */
+    + '<br><br>After your interview, you can do the rest from home: paperwork online, a 15-minute welcome video call, and 6 hours of paid training on your phone or computer.';
   fillWhere();
   g('rebookBtn').style.display = 'none';
   g('changeBtn').style.display = 'inline-block';
