@@ -16,6 +16,7 @@
 import { readFile, writeFile, mkdir, readdir, unlink } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const SUPA = 'https://zngsgedlsxinbygwmxwn.supabase.co';
 const ANON = process.env.SUPABASE_ANON_KEY;
@@ -59,6 +60,26 @@ const ORG = {
   phone: '(417) 234-8494',
 };
 
+/* HOW HIRING WORKS (2026-10-02, Samantha). One in-person interview, then everything else from home: paperwork online,
+   a 15-minute welcome video call, and 6 hours of PAID training (2h orientation + 4h Alzheimer's and dementia). Only
+   those 6 hours are called paid; on-the-job and annual training are not. Never "remote", never a phone interview.
+   ONE_LINER is the posting's summary sentence: hiring_wording_415.sql adds it to each posting's description, and here
+   it is moved to the top of the structured-data and Indeed descriptions (added if a posting lacks it). On the page
+   itself the "How hiring works" block says the same thing, so the sentence is not repeated in the body. */
+export const ONE_LINER = 'One 20-minute in-person interview at our office, then your paperwork, welcome call and 6 hours of paid training all from home on your phone or computer.';
+const withoutOneLiner = t => String(t ?? '').split(/\n{2,}/).filter(x => x.trim() !== ONE_LINER).join('\n\n');
+const howHiring = p => `<section class="jb-how">
+<h2>How hiring works</h2>
+<p class="jb-how-lede">After your interview, you can do the rest from home.</p>
+<ol>
+<li><b>Apply online.</b> About 2 minutes, no uploads. Pick your interview time at the end.</li>
+<li><b>Meet us in person.</b> A 20-minute interview at our ${(p.city || 'Springfield') === 'Springfield' ? 'Springfield office' : 'office'}. We do not do phone interviews.</li>
+<li><b>Offer and paperwork.</b> Fill out your new-hire paperwork online. We run your background check and call your references, at no cost to you.</li>
+<li><b>A 15-minute welcome video call</b> on your phone or computer. We check your ID, set up the AxisCare app with you, and go over your caregiver profile.</li>
+<li><b>Paid training from home.</b> 2 hours of orientation plus 4 hours of Alzheimer's and dementia training, all paid, on your phone or computer, in pieces if you like.</li>
+</ol>
+</section>`;
+
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -98,12 +119,12 @@ async function chrome() {
 /* Exactly what Google documents for JobPosting. Fields we have no value for
    are left out entirely rather than emitted empty, which Google treats as an
    error rather than as an omission. */
-function jsonLd(p) {
+export function jsonLd(p) {
   const d = {
     '@context': 'https://schema.org/',
     '@type': 'JobPosting',
     title: p.title,
-    description: `<div>${para(p.description)}${
+    description: `<div><p>${esc(ONE_LINER)}</p>${para(withoutOneLiner(p.description))}${
       p.responsibilities ? '<h3>Responsibilities</h3>' + bullets(p.responsibilities) : ''}${
       p.qualifications ? '<h3>Qualifications</h3>' + bullets(p.qualifications) : ''}${
       p.benefits ? '<h3>Benefits</h3>' + bullets(p.benefits) : ''}</div>`,
@@ -148,7 +169,7 @@ const payLabel = p => !p.pay_min ? '' :
   (p.pay_max && Number(p.pay_max) > Number(p.pay_min) ? '–$' + Number(p.pay_max).toFixed(2) : '') +
   (PAY_PER[p.pay_unit || 'HOUR'] || '/hr');
 
-function page(p, c) {
+export function page(p, c) {
   const url = `${SITE}/jobs/${p.slug}`;
   const blurb = (p.summary || String(p.description || '').replace(/<[^>]*>/g, '')).slice(0, 155);
   const chips = [TYPE_LABEL[p.employment_type] || p.employment_type,
@@ -190,6 +211,11 @@ ${jsonLd(p)}
 .jb-body li{margin:0 0 7px;}
 .jb-apply{background:var(--soft-panel);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;margin:34px 0 8px;}
 .jb-note{font-size:13px;color:var(--muted);margin:12px 0 0;}
+.jb-how{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin:30px 0 0;}
+.jb-how h2{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--brand-blue);margin:0 0 4px;}
+.jb-how-lede{font-size:15px;color:var(--body-text);margin:0 0 12px;}
+.jb-how ol{margin:0;padding-left:22px;font-size:15px;line-height:1.65;color:var(--body-text);}
+.jb-how li{margin:0 0 8px;}
 @media(max-width:639px){.jb-h1{font-size:30px;}.jb-wrap{padding:34px 20px 20px;}.jb-apply-top{width:100%;text-align:center;}}
 </style>
 </head>
@@ -207,15 +233,17 @@ ${c.head}
 ${chips.map((t, i) => `<span class="jb-chip${i === 2 ? ' pay' : ''}">${esc(t)}</span>`).join('\n')}
 </div>
 <div class="jb-body">
-${para(p.description)}
+${para(withoutOneLiner(p.description))}
 ${p.responsibilities ? '<h2>What you would be doing</h2>' + bullets(p.responsibilities) : ''}
 ${p.qualifications ? '<h2>What we are looking for</h2>' + bullets(p.qualifications) : ''}
 ${p.benefits ? '<h2>What we offer</h2>' + bullets(p.benefits) : ''}
 </div>
 
+${howHiring(p)}
+
 <div class="jb-apply">
 <p style="font-size:16px;font-weight:600;color:#122236;margin:0 0 8px">Interested?</p>
-<p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 auto 20px;max-width:440px">The application takes about five minutes. No uploads required.</p>
+<p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 auto 20px;max-width:440px">The application takes about 2 minutes. No uploads required. One in-person interview, then the rest from home.</p>
 <a href="${applyUrl(p.slug)}" class="btn-apply" style="display:inline-block;background:var(--accent);color:#fbfaf7;border-radius:9px;padding:14px 28px;font-size:15px;font-weight:600;text-decoration:none">Apply for this role &rarr;</a>
 <p class="jb-note">Questions first? Call us on ${ORG.phone}.</p>
 </div>
@@ -300,14 +328,14 @@ const cdata = s => '<![CDATA[' + String(s ?? '').replace(/\]\]>/g, ']]]]><![CDAT
 /* Indeed wants RFC 822. Anything else is accepted inconsistently, so be exact. */
 const rfc822 = d => new Date(d + 'T12:00:00Z').toUTCString();
 
-function indeedFeed(list) {
+export function indeedFeed(list) {
   const jobs = list.map(p => {
     const salary = p.pay_min
       ? '$' + Number(p.pay_min).toFixed(2) +
         (p.pay_max && Number(p.pay_max) > Number(p.pay_min) ? ' - $' + Number(p.pay_max).toFixed(2) : '') +
         ' ' + (INDEED_PER[p.pay_unit || 'HOUR'] || 'per hour')
       : '';
-    const body = `<div>${para(p.description)}${
+    const body = `<div><p>${esc(ONE_LINER)}</p>${para(withoutOneLiner(p.description))}${
       p.responsibilities ? '<h3>Responsibilities</h3>' + bullets(p.responsibilities) : ''}${
       p.qualifications ? '<h3>Qualifications</h3>' + bullets(p.qualifications) : ''}${
       p.benefits ? '<h3>Benefits</h3>' + bullets(p.benefits) : ''}</div>`;
@@ -393,4 +421,6 @@ async function main() {
   console.log(`${list.length} posting(s) published: ${list.map(p => p.slug).join(', ') || '(none)'}`);
 }
 
-main().catch(e => { console.error(String(e && e.message || e)); process.exit(1); });
+/* Run as a script (the GitHub Action: node tools/build-jobs.mjs .). Imported by the test, nothing runs. */
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href)
+  main().catch(e => { console.error(String(e && e.message || e)); process.exit(1); });
