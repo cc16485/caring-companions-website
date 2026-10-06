@@ -471,6 +471,7 @@ async function resumeBooking(){
       g('keepBtn').style.display = 'none';
       return;
     }
+    if (data && data.status === 'review'){ showReview(); return; }
     if (data && data.status === 'booked' && data.starts_at){
       HAVE_BOOKING = true;
       showManage(data);
@@ -677,6 +678,21 @@ const NOSHOW_MSG = 'Our records show that you did not attend a previously schedu
   + 'a reasonable explanation, please call our office at (417) 234-8494 so we can discuss it.';
 const isNoshow = e => /NOSHOW_BEFORE/.test(String(e && e.message || e || ''));
 
+/* 461 (2026-10-05, Samantha: "reapply with us reviewing first"). Someone who applied or worked with us before, and the
+   office chose not to move forward with, or who is on the do-not-rehire list, cannot book until the office has looked.
+   The database decides (REVIEW_FIRST, or interview_mine says 'review'); this only explains it. Before, they saw
+   "That time was just taken" over and over. */
+const REVIEW_MSG = 'Because you have applied or worked with us before, the office reviews your application before an '
+  + 'interview is booked. We will be in touch soon. Questions? Call (417) 234-8494.';
+const CLOSED_MSG = 'This application is closed, so an interview cannot be booked from it. Questions? Call (417) 234-8494.';
+function showReview(msg){
+  g('bookHead').textContent = 'Thank you for applying.';
+  g('bookLede').style.display = 'none';
+  g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">' + (msg || REVIEW_MSG) + '</p>';
+  g('skipBtn').style.display = 'none';
+  g('keepBtn').style.display = 'none';
+}
+
 async function save(patch, done){
   const { data, error } = await sb.rpc('apply_save',
     { p_id: ROW, p_data: patch, p_done: !!done });
@@ -813,7 +829,7 @@ async function finish(){
     g('formView').style.display = 'none';
     g('bookView').style.display = 'block';
     window.scrollTo(0, 0);
-    loadSlots();
+    resumeBooking();   // 461: shows their booking under another application, or the office review, else the times
   } catch (e) {
     b.disabled = false; b.textContent = 'Send my application';
     err.textContent = 'That did not go through, but we have your details from the first step and will call you. If you would rather not wait, ring us on (417) 234-8494.';
@@ -895,6 +911,8 @@ async function bookSlot(btn, iso){
       g('keepBtn').style.display = 'none';
       return;
     }
+    if (/REVIEW_FIRST/.test(m)){ showReview(); console.error(e); return; }
+    if (/application not open/.test(m)){ showReview(CLOSED_MSG); console.error(e); return; }
     if (/CHANGE_LIMIT/.test(m) || /TOO_CLOSE/.test(m)){
       g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">'
         + (/CHANGE_LIMIT/.test(m) ? PHONE_ONLY.limit : PHONE_ONLY.too_close) + '</p>';
