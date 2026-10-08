@@ -30,7 +30,16 @@ async()=>{
   window.__rpc=base; await loadSlots(); await sleep(30);
   window.__rpc=async(fn,a)=> fn==='interview_book' ? {data:null,error:{message:'that time was just taken'}} : base(fn,a);
   await bookSlot(g('slotsBody').querySelector('button'), new Date(Date.now()+864e5).toISOString()); await sleep(80);
-  ok('a time really taken by someone else: unchanged (the times load again; no review or closed message)', !!g('slotsBody').querySelector('button') && !/reviews your application|is closed/.test(g('bookView').innerText), g('bookView').innerText);
+  ok('a time really taken by someone else: the note stays on screen above the fresh times (it used to vanish in the same instant)', /That time was just taken\. Here are the ones still free\./.test(g('slotsBody').innerText) && !!g('slotsBody').querySelector('button') && !/reviews your application|is closed/.test(g('bookView').innerText), g('bookView').innerText);
+  await sleep(1500);
+  ok('...and is still there a moment later', /That time was just taken/.test(g('slotsBody').innerText));
+  window.__rpc=async(fn,a)=> fn==='interview_book' ? {data:null,error:{message:'that time was just taken'}} : fn==='interview_open_slots' ? {data:[],error:null} : base(fn,a);
+  await loadSlots(); /* the list as it was */ window.__rpc=async(fn,a)=> fn==='interview_open_slots' ? {data:[{starts_at:new Date(Date.now()+864e5).toISOString()}],error:null} : base(fn,a); await loadSlots(); await sleep(30);
+  window.__rpc=async(fn,a)=> fn==='interview_book' ? {data:null,error:{message:'that time was just taken'}} : fn==='interview_open_slots' ? {data:[],error:null} : base(fn,a);
+  await bookSlot(g('slotsBody').querySelector('button'), new Date(Date.now()+864e5).toISOString()); await sleep(120);
+  ok('the last time taken: the note, then that there are no times online and we will call', /That time was just taken/.test(g('slotsBody').innerText) && /We do not have times online just now/.test(g('slotsBody').innerText), g('slotsBody').innerText);
+  window.__rpc=base; await loadSlots(); await sleep(30);
+  ok('an ordinary reload shows no note', !/just taken/.test(g('slotsBody').innerText));
   ok('finishing the form now asks the database first (their booking or the review), not straight to the times', /resumeBooking\(\);\s*\/\/ 461/.test(finish.toString()));
   ok('no em dash in the new words', !/\u2014/.test(REVIEW_MSG+CLOSED_MSG));
   }catch(e){ R.push(['FAIL','crashed',String(e)]); }
