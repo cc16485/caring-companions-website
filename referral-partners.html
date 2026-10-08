@@ -338,23 +338,19 @@ document.getElementById('r-submit').addEventListener('click', function () {
     errEl.hidden = false;
     return;
   }
-  var partner = PARTNER_TYPES.find(function (x) { return x.id === partnerId; });
-  var messageLines = [
-    'PROFESSIONAL REFERRAL, ' + (partner ? partner.label : ''),
-    'Urgency: ' + urgency,
-    org ? 'Organization: ' + org : '',
-    initials ? 'Client/patient initials: ' + initials : '',
-    situation ? 'Situation: ' + situation : '',
-  ];
-  var isEmail = contact.indexOf('@') !== -1;
+  /* 2026-10-08: sent as a professional referral. The person needing care is the lead (initials only); you are kept
+     separately as the referrer, so your own number is never filed as the family's. Nothing is sent to you automatically. */
   btn.disabled = true;
   btn.textContent = 'Submitting…';
   CCForms.submitLead({
-    name: name,
-    phone: isEmail ? '' : contact,
-    email: isEmail ? contact : '',
-    message: messageLines.filter(Boolean).join('\n'),
-    care_for: initials,
+    kind: 'professional_referral',
+    referrer_name: name,
+    referrer_org: org,
+    referrer_type: partnerId,
+    referrer_contact: contact,
+    client_initials: initials,
+    urgency: urgency,
+    situation: situation,
   }).then(function () {
     document.getElementById('thanks-name').textContent = name ? ', ' + name : '';
     document.getElementById('thanks-org').textContent = org ? ' with ' + org : '';
