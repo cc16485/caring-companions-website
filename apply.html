@@ -848,8 +848,11 @@ const timeLabel = d => d.toLocaleTimeString('en-US',
 
 let WHERE = null;
 
-async function loadSlots(){
+/* note: a line to show above the times, drawn with them (2026-10-08: "That time was just taken" used to be added and
+   then wiped the same instant by this redraw, so nobody ever saw it). */
+async function loadSlots(note){
   const box = g('slotsBody');
+  const top = note ? '<p class="sub" role="status" style="color:#b00020;margin:0 0 10px;">' + note + '</p>' : '';
   try {
     const [{ data: slots, error }, { data: where }] = await Promise.all([
       sb.rpc('interview_open_slots'),
@@ -860,7 +863,7 @@ async function loadSlots(){
     if (WHERE && WHERE.minutes) g('bookMins').textContent = WHERE.minutes;
 
     if (!slots || !slots.length){
-      box.innerHTML = '<p class="sub" style="margin:0;">We do not have times online just now. '
+      box.innerHTML = top + '<p class="sub" style="margin:0;">We do not have times online just now. '
         + 'Someone will call you within one business day to set one up, or you can ring us on (417) 234-8494.</p>';
       g('skipBtn').style.display = 'none';
       return;
@@ -873,7 +876,7 @@ async function loadSlots(){
       if (!byDay.has(key)) byDay.set(key, { label: dayLabel(d), times: [] });
       byDay.get(key).times.push({ iso: s.starts_at, label: timeLabel(d) });
     });
-    box.innerHTML = [...byDay.values()].map(day =>
+    box.innerHTML = top + [...byDay.values()].map(day =>
       '<div style="margin:0 0 16px;">'
       + '<div style="font-size:14.5px;font-weight:700;color:var(--brand-blue);margin:0 0 8px;">' + day.label + '</div>'
       + '<div class="chips">' + day.times.map(t =>
@@ -924,9 +927,7 @@ async function bookSlot(btn, iso){
        than leaving a time on screen that no longer exists. */
     all.forEach(b => b.disabled = false);
     btn.textContent = timeLabel(new Date(iso));
-    g('slotsBody').insertAdjacentHTML('afterbegin',
-      '<p class="sub" style="color:#b00020;margin:0 0 10px;">That time was just taken. Here are the ones still free.</p>');
-    loadSlots();
+    loadSlots('That time was just taken. Here are the ones still free.');
     console.error(e);
   }
 }
