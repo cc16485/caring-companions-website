@@ -4,7 +4,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { page, jsonLd, indeedFeed, ONE_LINER } from './build-jobs.mjs';
+import { page, jsonLd, indeedFeed, ONE_LINER, OLD_ONE_LINERS } from './build-jobs.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let pass = 0, fail = 0;
@@ -43,6 +43,13 @@ ck('Springfield job: interview "at our Springfield office"', page(withLine, c).i
 ck('Mount Vernon job: interview "at our office" (no town, no street)', page(without, c).includes('A 20-minute interview at our office.')
   && !page(without, c).slice(page(without, c).indexOf('jb-how')).split('</section>')[0].includes('Stewart'));
 ck('Mount Vernon job: structured data still has no office street', JSON.parse(jsonLd(without)).jobLocation.address.streetAddress === undefined);
+
+/* 2026-10-11: a posting still carrying the old sentence (before the Hub's step 602) shows only the new one */
+const oldLine = { ...base, description: 'Caring Companions is hiring.\n\n' + OLD_ONE_LINERS[0] };
+const ldOld = JSON.parse(jsonLd(oldLine)).description, pgOld = page(oldLine, c), feedOld = indeedFeed([oldLine])
+ck('old sentence in a posting: the structured data opens with the new one-liner, the old one is gone', ldOld.includes(ONE_LINER) && !ldOld.includes('welcome call'), ldOld)
+ck('old sentence in a posting: the page and the Indeed feed never say welcome call', !/welcome (video )?call/i.test(pgOld) && !/welcome (video )?call/i.test(feedOld))
+ck('the How hiring works block says Orientation Video Call', /A 15-minute Orientation Video Call/.test(page(base, c)))
 
 console.log(`build-jobs.test: ${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
