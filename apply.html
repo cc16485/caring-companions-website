@@ -934,7 +934,12 @@ async function bookSlot(btn, iso){
       return;
     }
     if (/REVIEW_FIRST/.test(m)){ showReview(); console.error(e); return; }
-    if (/SCREEN_FIRST/.test(m)){ console.error(e); resumeBooking(); return; }
+    if (/SCREEN_FIRST/.test(m)){
+      console.error(e);
+      /* Moving a booking needs the questions done too; a link that only shows their booking would loop, so ask them to call. */
+      if (HAVE_BOOKING){ g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">' + SCREEN_CALL_MSG + '</p>'; g('keepBtn').style.display = 'none'; return; }
+      resumeBooking(); return;
+    }
     if (/application not open/.test(m)){ showReview(CLOSED_MSG); console.error(e); return; }
     if (/CHANGE_LIMIT/.test(m) || /TOO_CLOSE/.test(m)){
       g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">'
