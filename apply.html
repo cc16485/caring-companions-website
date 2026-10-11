@@ -465,6 +465,35 @@ async function prnSave(patch, ack){
 
 if (POSITION && !JOB) loadRoleQuestions();
 
+/* PREVIEW (2026-10-11, Samantha: "can you put the pre-screener all 2-3 pages so we can see a preview on the recruit
+   tab"). ?preview=1 shows every page at once, exactly as the role asks it, and nothing can be saved or sent from it:
+   every database call except reading the times and the address is refused here. The Recruit tab opens it this way, so
+   an office look never creates a real application. */
+const PREVIEW = P.get('preview') === '1';
+if (PREVIEW) {
+  const _rpc = sb.rpc.bind(sb);
+  sb.rpc = (fn, args) => ['interview_open_slots', 'interview_where'].includes(fn) ? _rpc(fn, args)
+    : Promise.resolve({ data: null, error: { message: 'Preview: nothing is saved' } });
+  document.title = 'Preview · ' + document.title;
+  const note = (html) => { const d = document.createElement('div');
+    d.style.cssText = 'background:#EAF4F6;border:1px solid #bfdde3;color:#14606F;border-radius:12px;padding:12px 15px;margin:14px 0 0;font-size:14px;line-height:1.55;';
+    d.innerHTML = html; return d; };
+  const head = (t) => { const h = document.createElement('div');
+    h.style.cssText = 'font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9C6410;margin:26px 0 -4px;';
+    h.textContent = t; return h; };
+  const fv = g('formView');
+  fv.insertBefore(note('<b>Preview</b> of the application' + (POSITION_HINT ? ' for this role' : '') + ', all three pages at once. '
+    + 'Nothing you click here is saved or sent. Applicants see one page at a time.'), fv.firstChild);
+  document.querySelector('.ap-steps').style.display = 'none';
+  ['step1', 'step2', 'step3'].forEach((id, i) => {
+    const c = g(id); c.style.display = 'block';
+    c.parentNode.insertBefore(head('Page ' + (i + 1) + ' of 3' + ['  ·  saved the moment they continue', '  ·  the screening questions', '  ·  then they send it'][i]), c);
+  });
+  fv.querySelectorAll('.go, .back, .err').forEach((b) => { b.style.display = 'none'; });
+  g('step2').appendChild(note('In the real form, a <b>No</b> to 18 or older, work authorization or transportation (or a role\'s own must-have, like a license) ends the application there with a kind explanation. They cannot book an interview until all three pages are done.'));
+  g('step3').parentNode.insertBefore(note('<b>After page 3:</b> they pick an in-person interview time right away (Monday to Friday, about 20 minutes), and the confirmation and reminders go from there.'), g('step3').nextSibling);
+}
+
 /* Resume straight to the interview step for someone who already applied. The
    nudge and confirmation messages link here with their application id
    (?book=<id>). No name in the URL — personal data never belongs in a query
