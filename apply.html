@@ -268,10 +268,29 @@
      <div id="manageWhen" style="font-size:17px;color:var(--ink-2);line-height:1.5;"></div>
      <div class="chips" id="manageBtns" style="margin-top:14px;">
        <button type="button" onclick="startReschedule()">Pick a different time</button>
-       <button type="button" style="color:#b00020;" onclick="cancelInterview(this)">Cancel my interview</button>
+       <button type="button" style="color:#b00020;" onclick="cancelAsk()">Cancel my interview</button>
+     </div>
+     <!-- 587 (2026-10-11, Samantha: "clarity on if they want to book a different time, or they are canceling and don't
+          want to rebook and give a place for them to say why"). One small step instead of a pop-up: the reason is
+          optional, and a different time is still one tap away. -->
+     <div id="cancelPanel" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px;">
+       <div style="font-size:16px;font-weight:700;color:var(--ink-2);">Need a different time instead?</div>
+       <div class="chips" style="margin-top:8px;"><button type="button" onclick="cancelBack();startReschedule()">Pick a different time</button></div>
+       <div style="font-size:15px;font-weight:700;color:var(--ink-2);margin-top:16px;">Or cancel. Mind telling us why? <span class="opt" style="font-weight:400;color:var(--muted);font-size:13.5px;">(optional)</span></div>
+       <div class="chips stack" id="cancelWhy" style="margin-top:8px;">
+         <button type="button" data-k="found_job" onclick="cancelPick(this)">I found another job</button>
+         <button type="button" data-k="schedule" onclick="cancelPick(this)">My schedule changed</button>
+         <button type="button" data-k="transport" onclick="cancelPick(this)">Transportation</button>
+         <button type="button" data-k="not_interested" onclick="cancelPick(this)">I'm not interested anymore</button>
+         <button type="button" data-k="other" onclick="cancelPick(this)">Something else</button>
+       </div>
+       <label class="f" for="cancelNote" style="margin-top:12px;">Anything you'd like us to know? <span class="opt">(optional)</span></label>
+       <textarea class="t" id="cancelNote" rows="2" maxlength="300"></textarea>
+       <button class="go" id="cancelGo" style="background:#b00020;" onclick="cancelInterview(this)">Cancel my interview</button>
+       <button class="back" onclick="cancelBack()">Keep my interview</button>
      </div>
      <p class="sub" id="manageLocked" style="display:none;margin:12px 0 0;"></p>
-     <p class="sub" id="manageKeep" style="margin:12px 0 0;">Keeping it? Then there is nothing to do — we will see you then. Questions, ring (417)&nbsp;234-8494.</p>
+     <p class="sub" id="manageKeep" style="margin:12px 0 0;">Keeping it? Then there is nothing to do; we will see you then. Questions, ring (417)&nbsp;234-8494.</p>
      <div id="manageErr" style="display:none;color:#b00020;font-size:14px;margin-top:10px;"></div>
    </div>
    <div class="ap-card" id="slotsCard">
@@ -489,7 +508,7 @@ async function resumeBooking(){
    around it. The office can always change anything. */
 const PHONE_ONLY = {
   limit: 'This interview has been moved a couple of times already, so any more '
-    + 'changes are by phone — ring us on (417) 234-8494 and we will sort it out together.',
+    + 'changes are by phone. Ring us on (417) 234-8494 and we will sort it out together.',
   too_close: 'Your interview is less than two hours away, so it is too late to '
     + 'change it online. Ring us on (417) 234-8494 and we will sort something out.',
 };
@@ -507,6 +526,7 @@ function showManage(mine){
   g('manageKeep').style.display = locked ? 'none' : 'block';
   if (locked) g('manageLocked').textContent = PHONE_ONLY[mine.blocked] || PHONE_ONLY.too_close;
   g('manageErr').style.display = 'none';
+  if (g('cancelPanel')) g('cancelPanel').style.display = 'none';
   g('manageCard').style.display = 'block';
   g('slotsCard').style.display = 'none';
   g('skipBtn').style.display = 'none';
@@ -528,11 +548,24 @@ function keepBooking(){
   resumeBooking();
 }
 
+/* 587: why they cancel (optional). */
+let CANCEL_KIND = null;
+function cancelAsk(){ g('manageBtns').style.display = 'none'; g('manageKeep').style.display = 'none'; g('cancelPanel').style.display = 'block'; g('manageErr').style.display = 'none'; }
+function cancelBack(){ g('cancelPanel').style.display = 'none'; g('manageBtns').style.display = 'flex'; g('manageKeep').style.display = 'block'; }
+function cancelPick(btn){
+  const on = !btn.classList.contains('on');
+  [...g('cancelWhy').children].forEach(b => b.classList.toggle('on', on && b === btn));
+  CANCEL_KIND = on ? btn.dataset.k : null;
+}
 async function cancelInterview(btn){
-  if (!confirm('Cancel your interview?\n\nThe time goes back to being available, and you can pick a new one here any time.')) return;
   btn.disabled = true; btn.textContent = 'Cancelling…';
   try {
-    const { data, error } = await sb.rpc('interview_cancel', { p_applicant: ROW, p_by: 'applicant' });
+    const note = (g('cancelNote') && g('cancelNote').value || '').trim() || null;
+    /* The reason goes with the cancel (interview_cancel_with_reason). Before that database step is installed the plain
+       cancel still works, without the reason. */
+    let { data, error } = await sb.rpc('interview_cancel_with_reason', { p_applicant: ROW, p_kind: CANCEL_KIND, p_note: note });
+    if (error && /interview_cancel_with_reason|function|schema cache/i.test(String(error.message || '')))
+      ({ data, error } = await sb.rpc('interview_cancel', { p_applicant: ROW, p_by: 'applicant' }));
     if (error) throw error;
     if (data && data.cancelled === false && PHONE_ONLY[data.reason]){
       btn.disabled = false; btn.textContent = 'Cancel my interview';
@@ -542,10 +575,13 @@ async function cancelInterview(btn){
     }
     if (!data || !data.cancelled) throw new Error('nothing was booked');
     HAVE_BOOKING = false;
-    g('doneHead').textContent = 'Your interview is cancelled.';
-    g('doneLede').textContent = 'No trouble at all — thanks for letting us know instead of leaving us waiting. '
-      + 'If caregiving is still on your mind, a new time is one tap away.';
-    g('rebookBtn').style.display = 'inline-block';
+    const bye = CANCEL_KIND === 'found_job' || CANCEL_KIND === 'not_interested';
+    g('doneHead').textContent = bye ? 'Thanks for letting us know.' : 'Your interview is cancelled.';
+    g('doneLede').textContent = bye
+      ? 'If things change, you are always welcome to apply again. We wish you all the best!'
+      : 'No trouble at all, and thanks for letting us know instead of leaving us waiting. If caregiving is still on your mind, a new time is one tap away.';
+    g('rebookBtn').style.display = bye ? 'none' : 'inline-block';
+    g('cancelPanel').style.display = 'none';
     g('bookView').style.display = 'none';
     g('doneView').style.display = 'block';
     window.scrollTo(0, 0);
