@@ -93,6 +93,7 @@
 <div class="ap-wrap">
  <div id="formView">
   <div class="ap-posline" id="posLine"></div>
+  <div class="ap-posline" id="resumeNote" role="status"><b>Welcome back.</b> Just a few questions left, then you can pick your interview time.</div>
   <div class="ap-steps">
     <span class="ap-stepno" id="stepNo">Step 1 of 3</span>
     <span class="ap-dot on" id="d1"></span><span class="ap-dot" id="d2"></span><span class="ap-dot" id="d3"></span>
@@ -472,6 +473,7 @@ async function resumeBooking(){
       return;
     }
     if (data && data.status === 'review'){ showReview(); return; }
+    if (data && data.status === 'screen_first'){ await showFinish(data); return; }
     if (data && data.status === 'booked' && data.starts_at){
       HAVE_BOOKING = true;
       showManage(data);
@@ -685,6 +687,23 @@ const isNoshow = e => /NOSHOW_BEFORE/.test(String(e && e.message || e || ''));
 const REVIEW_MSG = 'Because you have applied or worked with us before, the office reviews your application before an '
   + 'interview is booked. We will be in touch soon. Questions? Call (417) 234-8494.';
 const CLOSED_MSG = 'This application is closed, so an interview cannot be booked from it. Questions? Call (417) 234-8494.';
+/* 586 (2026-10-11, Samantha: "Applicants must complete the required screening questions before the server allows
+   interview booking, even if someone opens a booking link directly"). The database decides (SCREEN_FIRST, or
+   interview_mine says 'screen_first'); this page only takes them back to the questions they have not answered. */
+const SCREEN_CALL_MSG = 'Before we can book your interview, we need a few quick answers from you. '
+  + 'Please call or text us at (417) 234-8494 and we will go through them together.';
+const SCREEN_NO_MSG = 'Based on your answers, we are not able to book an interview from this application. '
+  + 'If something has changed, or you think we have it wrong, please call us at (417) 234-8494.';
+async function showFinish(mine){
+  if (mine.gap === 'ineligible'){ showReview(SCREEN_NO_MSG); return; }
+  if (!mine.can_finish){ showReview(SCREEN_CALL_MSG); return; }
+  /* Their own role's questions (a PRN CNA Team application asks the two CNA questions). */
+  if (mine.position && mine.position !== POSITION){ POSITION = mine.position; await loadRoleQuestions(); }
+  g('bookView').style.display = 'none';
+  g('formView').style.display = 'block';
+  g('resumeNote').style.display = 'block';
+  goStep(mine.gap === 'unfinished' ? 3 : 2);
+}
 function showReview(msg){
   g('bookHead').textContent = 'Thank you for applying.';
   g('bookLede').style.display = 'none';
@@ -824,8 +843,8 @@ async function finish(){
       availability: PRN ? [prnSummary(), val('avail')].filter(Boolean).join(' · ') : val('avail'),
       experience: val('exp') || null, referral_source: val('ref') || null,
       work_history: workHistory() }, true);
-    g('bookName').textContent = val('first');
-    g('doneName').textContent = val('first');
+    if (val('first')) { g('bookName').textContent = val('first'); g('doneName').textContent = val('first'); }   // blank when they came back by link
+    g('resumeNote').style.display = 'none';
     g('formView').style.display = 'none';
     g('bookView').style.display = 'block';
     window.scrollTo(0, 0);
@@ -915,6 +934,12 @@ async function bookSlot(btn, iso){
       return;
     }
     if (/REVIEW_FIRST/.test(m)){ showReview(); console.error(e); return; }
+    if (/SCREEN_FIRST/.test(m)){
+      console.error(e);
+      /* Moving a booking needs the questions done too; a link that only shows their booking would loop, so ask them to call. */
+      if (HAVE_BOOKING){ g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">' + SCREEN_CALL_MSG + '</p>'; g('keepBtn').style.display = 'none'; return; }
+      resumeBooking(); return;
+    }
     if (/application not open/.test(m)){ showReview(CLOSED_MSG); console.error(e); return; }
     if (/CHANGE_LIMIT/.test(m) || /TOO_CLOSE/.test(m)){
       g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">'
