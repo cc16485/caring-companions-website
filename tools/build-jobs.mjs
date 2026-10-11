@@ -164,7 +164,7 @@ export function jsonLd(p) {
   return JSON.stringify(d, null, 2);
 }
 
-/* Live-in work is paid by the day, so the unit comes off the posting. Saying
+/* Some work is paid by the day, so the unit comes off the posting. Saying
    "/hr" next to a day rate is the kind of wrong that ends up in a complaint. */
 const PAY_PER = { HOUR: '/hr', DAY: '/day', WEEK: '/wk', YEAR: '/yr' };
 const payLabel = p => !p.pay_min ? '' :
