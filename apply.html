@@ -216,15 +216,9 @@
     <label class="f" for="avail" id="availLabel">When can you work?</label>
     <div class="sub" id="availSub">Rough is fine. We build schedules around people.</div>
     <textarea class="t" id="avail" rows="2" placeholder="e.g. weekday mornings, every other weekend, overnights, up to 30 hours"></textarea>
-    <!-- Where they have actually worked, asked as fields rather than as a box.
-         "Fifteen years, hospice and in-home" is not something anybody can
-         check. Three lines with a supervisor's number are, and they are the
-         same three lines the reference requests are built from later, so
-         nobody retypes a phone number at offer time. -->
-    <label class="f">Where have you worked?</label>
-    <div class="sub">The last three jobs is plenty, caregiving or not. If you have only cared for family, say that here too.</div>
-    <div id="wh"></div>
-    <button type="button" class="back" id="whAdd" style="margin:2px 0 14px;" onclick="whAddRow()">+ Add another job</button>
+    <!-- 2026-10-11 (Samantha: "i dont think we need to put employers on the pre-screens ... none of the pre-screen"):
+         no work history here. Employers are collected after the offer, on the signed Step 1 application, and the office
+         can still add them on the applicant's page at the interview. -->
 
     <label class="f" for="exp">Anything you would like us to know? <span class="opt">(optional)</span></label>
     <textarea class="t" id="exp" rows="3" placeholder="What kind of care you have done, anything you are certified in (CNA, CMT, LPN)…"></textarea>
@@ -718,7 +712,7 @@ function whAddRow(){
   g('wh').appendChild(d);
   if (WH_ROWS >= 3) g('whAdd').style.display = 'none';
 }
-whAddRow();
+/* whAddRow() is no longer called: the work history section is off the form (2026-10-11). */
 
 function workHistory(){
   const out = [];
@@ -907,7 +901,7 @@ async function finish(){
     await save({ experience_years: val('years') || null,
       availability: PRN ? [prnSummary(), val('avail')].filter(Boolean).join(' · ') : val('avail'),
       experience: val('exp') || null, referral_source: val('ref') || null,
-      work_history: workHistory() }, true);
+      work_history: null }, true);   // not asked on the pre-screen any more (2026-10-11)
     if (val('first')) { g('bookName').textContent = val('first'); g('doneName').textContent = val('first'); }   // blank when they came back by link
     g('resumeNote').style.display = 'none';
     g('formView').style.display = 'none';
