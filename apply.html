@@ -915,7 +915,9 @@ async function loadSlots(note){
     ]);
     if (error) throw error;
     WHERE = where || null;
-    if (WHERE && WHERE.minutes) g('bookMins').textContent = WHERE.minutes;
+    /* 2026-10-11 fix: moving a time (and rebooking after a cancel) replaces the intro text, which removes the bookMins
+       label; updating it then threw, and the times never showed ("We could not load times just now"). */
+    const bm = g('bookMins'); if (bm && WHERE && WHERE.minutes) bm.textContent = WHERE.minutes;
 
     if (!slots || !slots.length){
       box.innerHTML = top + '<p class="sub" style="margin:0;">We do not have times online just now. '
