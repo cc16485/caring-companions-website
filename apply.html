@@ -468,7 +468,11 @@ if (POSITION && !JOB) loadRoleQuestions();
    tab"). ?preview=1 shows every page at once, exactly as the role asks it, and nothing can be saved or sent from it:
    every database call except reading the times and the address is refused here. The Recruit tab opens it this way, so
    an office look never creates a real application. */
-const PREVIEW = P.get('preview') === '1';
+/* 2026-10-11 (Samantha: the Applicant journey should show the whole experience): ?preview=book shows the pick-a-time
+   page with the real open times, ?preview=manage shows "Your interview" with move and cancel (and the cancel reasons).
+   Same rule: nothing can be saved or sent. */
+const PREVIEW_MODE = P.get('preview') || '';
+const PREVIEW = ['1', 'book', 'manage'].includes(PREVIEW_MODE);
 if (PREVIEW) {
   const _rpc = sb.rpc.bind(sb);
   sb.rpc = (fn, args) => ['interview_open_slots', 'interview_where'].includes(fn) ? _rpc(fn, args)
@@ -481,6 +485,24 @@ if (PREVIEW) {
     h.style.cssText = 'font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9C6410;margin:26px 0 -4px;';
     h.textContent = t; return h; };
   const fv = g('formView');
+  if (PREVIEW_MODE !== '1') {
+    /* Run once the whole page script has loaded (the date labels and loadSlots are defined further down). */
+    setTimeout(() => {
+      fv.style.display = 'none';
+      g('bookView').style.display = 'block';
+      if (PREVIEW_MODE === 'book') {
+        g('bookName').textContent = 'Jordan';
+        g('bookView').insertBefore(note('<b>Preview</b> of the page they land on to pick an interview time, with the real open times. '
+          + 'Picking one here books nothing.'), g('bookView').firstChild);
+        loadSlots();
+      } else {
+        const d = new Date(); d.setDate(d.getDate() + 1); while ([0, 6].includes(d.getDay())) d.setDate(d.getDate() + 1); d.setHours(10, 0, 0, 0);
+        showManage({ starts_at: d.toISOString(), can_change: true });
+        g('bookView').insertBefore(note('<b>Preview</b> of what they see when they open their link after booking: move it or cancel it. '
+          + 'Tap <b>Cancel my interview</b> to see the reasons step. Nothing here changes a real interview.'), g('bookView').firstChild);
+      }
+    }, 0);
+  } else {
   fv.insertBefore(note('<b>Preview</b> of the application' + (POSITION_HINT ? ' for this role' : '') + ', all three pages at once. '
     + 'Nothing you click here is saved or sent. Applicants see one page at a time.'), fv.firstChild);
   document.querySelector('.ap-steps').style.display = 'none';
@@ -491,6 +513,7 @@ if (PREVIEW) {
   fv.querySelectorAll('.go, .back, .err').forEach((b) => { b.style.display = 'none'; });
   g('step2').appendChild(note('In the real form, a <b>No</b> to 18 or older, work authorization or transportation (or a role\'s own must-have, like a license) ends the application there with a kind explanation. They cannot book an interview until all three pages are done.'));
   g('step3').parentNode.insertBefore(note('<b>After page 3:</b> they pick an in-person interview time right away (Monday to Friday, about 20 minutes), and the confirmation and reminders go from there.'), g('step3').nextSibling);
+  }
 }
 
 /* Resume straight to the interview step for someone who already applied. The
@@ -586,6 +609,7 @@ function cancelPick(btn){
   CANCEL_KIND = on ? btn.dataset.k : null;
 }
 async function cancelInterview(btn){
+  if (PREVIEW){ g('manageErr').textContent = 'Preview: on the real page this cancels the interview, frees the time for someone else, and sends them the cancellation message (a goodbye if they found a job or are not interested).'; g('manageErr').style.cssText = 'display:block;color:#14606F;font-size:14px;margin-top:10px;'; return; }
   btn.disabled = true; btn.textContent = 'Cancelling…';
   try {
     const note = (g('cancelNote') && g('cancelNote').value || '').trim() || null;
@@ -975,6 +999,7 @@ async function loadSlots(note){
 }
 
 async function bookSlot(btn, iso){
+  if (PREVIEW){ alert('Preview: on the real page this books the time, and the confirmation email and text go out.'); return; }
   const all = [...document.querySelectorAll('#slotsBody button')];
   all.forEach(b => b.disabled = true);
   btn.textContent = 'Booking…';
