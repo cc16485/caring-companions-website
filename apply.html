@@ -81,7 +81,9 @@
 <div class="ap-band">
   <div class="ap-band-in">
     <h1 id="bandTitle">Join our caregiving team</h1>
-    <div class="ap-pay" id="bandPay">$15&ndash;$17 an hour</div>
+    <!-- 2026-10-11 (Samantha: the header said "caregiver 15-17" whatever the role): no built-in number. The pay shows only
+         once the role or posting has said what it is. -->
+    <div class="ap-pay" id="bandPay" style="display:none;"></div>
     <div class="ap-perks">
       <span>Paid training from home</span><span>Weekly pay</span><span>W-2 employee, not a contractor</span>
       <span>Flexible schedules</span><span>Full time &amp; part time</span>
@@ -365,7 +367,7 @@ async function loadRoleQuestions(){
       const lo = Number(data.pay_min).toFixed(2).replace(/\.00$/, '');
       const hi = data.pay_max && Number(data.pay_max) > Number(data.pay_min)
         ? '–$' + Number(data.pay_max).toFixed(2).replace(/\.00$/, '') : '';
-      g('bandPay').innerHTML = '$' + lo + hi + per;
+      g('bandPay').innerHTML = '$' + lo + hi + per; g('bandPay').style.display = 'inline-block';
     }
     renderRoleQuestions(data.label);
     if (data.track === 'prn') prnSetup(data);
@@ -650,7 +652,7 @@ if (JOB) {
         const lo = Number(data.pay_min).toFixed(2).replace(/\.00$/, '');
         const hi = data.pay_max && Number(data.pay_max) > Number(data.pay_min)
           ? '–$' + Number(data.pay_max).toFixed(2).replace(/\.00$/, '') : '';
-        g('bandPay').innerHTML = '$' + lo + hi + ' an hour';
+        g('bandPay').innerHTML = '$' + lo + hi + ' an hour'; g('bandPay').style.display = 'inline-block';
       }
     }).catch(() => {});
 }
