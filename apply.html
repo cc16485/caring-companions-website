@@ -349,6 +349,9 @@ async function loadRoleQuestions(){
     const { data } = await sb.from('job_positions')
       .select('*').eq('key', POSITION).maybeSingle();
     if (!data) return;
+    /* 2026-10-11 (Samantha: "remove all live-in"): a role we no longer hire for (switched off on Recruit) is never shown.
+       An old link for it opens the regular caregiver application instead. */
+    if (data.active === false) { if (POSITION !== 'caregiver') { POSITION = 'caregiver'; return loadRoleQuestions(); } return; }
     ROLE_QS = Array.isArray(data.screener) ? data.screener : [];
     /* Only when they came for a named role. A bare /apply keeps the general
        headline, because they have not told us which job they want yet. */
