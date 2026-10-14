@@ -230,7 +230,7 @@ const QUESTIONS = [{ key: 'sleep', text: 'Should the caregiver stay awake all ni
 
 function computeResult(state) {
   const answers = state.answers;
-    let careLevel = 'Overnight Care', rate = '$28\u2013$32/hour', explain = 'A caregiver stays with your loved one on a scheduled 24\u201372 hour shift \u2014 present through the night, without the full rotation of 24-Hour Care.';
+    let careLevel = 'Overnight Care', rate = '$28\u2013$32/hour', explain = 'A caregiver stays with your loved one on a scheduled 24\u201372 hour shift, present through the night, without the full rotation of 24-Hour Care.';
     if (answers.sleep === 'Must stay awake and alert') { careLevel = '24-Hour Care'; rate = '$28\u2013$32/hour'; explain = 'Since someone needs to be awake and alert overnight, a rotating shift team keeps a caregiver fully alert around the clock.'; }
   return { careLevel, rate, explain };
 }

@@ -226,12 +226,12 @@
 </div>
 <script src="../assets/funnel.js"></script>
 <script>
-const QUESTIONS = [{ key: 'meds', text: 'How closely does medication timing need to be managed?', options: ['They manage it fine themselves', 'Needs reminders', 'Needs full management \u2014 timing is critical'] }];
+const QUESTIONS = [{ key: 'meds', text: 'How closely does medication timing need to be managed?', options: ['They manage it fine themselves', 'Needs reminders', 'Needs full management (timing is critical)'] }];
 
 function computeResult(state) {
   const answers = state.answers;
     let careLevel = 'Wellness Care', rate = 'Starting at $30/hour', explain = 'Companionship and light oversight can help for now, with room to add hands-on support as symptoms progress.';
-    if (state.balance === 'Falls or near-falls have happened' || answers.meds === 'Needs full management \u2014 timing is critical') {
+    if (state.balance === 'Falls or near-falls have happened' || answers.meds === 'Needs full management (timing is critical)') {
       careLevel = 'Personal Care'; rate = 'Starting at $32/hour'; explain = 'Hands-on help with mobility, transfers, and precise medication timing matters most once falls or complex medication needs are in the picture.';
     } else if (state.balance === 'Some unsteadiness, no falls yet') {
       careLevel = 'Personal Care'; rate = 'Starting at $32/hour'; explain = 'Some unsteadiness is a good signal to add hands-on mobility support before a fall happens, not after.';

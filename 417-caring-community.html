@@ -394,7 +394,7 @@
       + '</div></div></div>';
   }
 
-  // Monthly issue signup — becomes a lead in the hub tagged as a 417 subscriber.
+  // Monthly issue signup, becomes a lead in the hub tagged as a 417 subscriber.
   $('subBtn').addEventListener('click', function () {
     var email = ($('subEmail').value || '').trim();
     if (!email || email.indexOf('@') < 0) { $('subNote').textContent = 'Please add a working email address.'; return; }

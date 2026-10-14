@@ -1,4 +1,4 @@
-/* Caring Companions — shared page behaviors */
+/* Caring Companions: shared page behaviors */
 (function () {
   'use strict';
 

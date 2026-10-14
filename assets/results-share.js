@@ -1,4 +1,4 @@
-/* Caring Companions — "keep it private, or send your results" module.
+/* Caring Companions: "keep it private, or send your results" module.
    Drop-in card for the free tools. If the visitor chooses to send, their
    results + contact become a lead in the CC Hub (via window.CCForms from
    forms.js); if they don't, nothing leaves the browser. Privacy-first.

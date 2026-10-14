@@ -230,7 +230,7 @@ const QUESTIONS = [{ key: 'therapy', text: 'Are they currently in physical, occu
 
 function computeResult(state) {
   const answers = state.answers;
-    let careLevel = 'Transition Care', rate = 'Starting at $32/hour', explain = 'Focused, short-term support built for the weeks right after a stroke \u2014 mobility help, medication oversight, and coordination with therapy.';
+    let careLevel = 'Transition Care', rate = 'Starting at $32/hour', explain = 'Focused, short-term support built for the weeks right after a stroke: mobility help, medication oversight, and coordination with therapy.';
     if (state.timeline === 'More than 3 months ago') { careLevel = 'Personal Care'; rate = 'Starting at $32/hour'; explain = 'Further out from the initial event, ongoing hands-on support for daily self-care tends to matter more than short-term transition support.'; }
   return { careLevel, rate, explain };
 }

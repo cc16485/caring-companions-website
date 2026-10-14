@@ -1,4 +1,4 @@
-/* Caring Companions — shared site styles
+/* Caring Companions: shared site styles
    Design tokens from the design handoff (July 2026). */
 
 :root {
@@ -12,8 +12,8 @@
   --ink-2: #122236;
   --body-text: #2c3d4d;
   --muted: #55677a;
-  --muted-label: #66736B;   /* 4.72:1 on --bg (was #66736B, 2.89:1 — failed AA) */
-  --accent: #9C6410;        /* 4.7:1 on --bg, 4.95:1 on white (was #C17A12, 3.29:1 — failed AA) */
+  --muted-label: #66736B;   /* 4.72:1 on --bg (was #66736B, 2.89:1, failed AA) */
+  --accent: #9C6410;        /* 4.7:1 on --bg, 4.95:1 on white (was #C17A12, 3.29:1, failed AA) */
   --accent-hover: #7E5008;  /* darker so hover still reads as a state change */
   --bg: #faf9f6;
   --border: #e4e1d8;
@@ -98,7 +98,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 }
 
 /* Switching between menus should be instant. The generous close delay above is
-   for LEAVING the navigation, not for moving along it — while the cursor is
+   for LEAVING the navigation, not for moving along it, while the cursor is
    still somewhere in the nav, any panel it has left gets out of the way at
    once instead of hanging around for half a second. */
 .cc-nav:hover .cc-nav-group:not(:hover):not(:focus-within) .cc-dropdown {

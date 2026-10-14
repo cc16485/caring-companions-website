@@ -1,4 +1,4 @@
-/* Caring Companions / HomeTogether — Accessibility widget.
+/* Caring Companions / HomeTogether: Accessibility widget.
    Larger text (page zoom, remembered across pages) + "read this page aloud."
    Read-aloud uses Samantha's ElevenLabs voice via the elevenlabs-tts function
    (cached server-side); if that's unavailable it silently falls back to the
@@ -87,7 +87,7 @@
         var p = a.play();
         if (p && p.catch) p.catch(function () { stopRead(); });
       })
-      .catch(function () { stopRead(); }); // her voice or silence — never the browser voice
+      .catch(function () { stopRead(); }); // her voice or silence, never the browser voice
   }
   function speakNext() {
     if (!reading) return;

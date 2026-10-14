@@ -1,4 +1,4 @@
-// Caring Companions Core — candidate guard
+// Caring Companions Core: candidate guard
 // -----------------------------------------------------------------------------
 // Extraction proposes. This decides what a proposal is ALLOWED to claim, based
 // on the standing of the document it came from.

@@ -1,4 +1,4 @@
-/* Caring Companions — county resource center behaviors:
+/* Caring Companions: county resource center behaviors:
    persona reordering, provider-type comparison filter, and the
    searchable/filterable local directory. Accordion behavior for
    care options / FAQ / question lists comes from site.js. */
