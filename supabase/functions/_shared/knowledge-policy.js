@@ -1,4 +1,4 @@
-// Caring Companions Core — knowledge policy
+// Caring Companions Core: knowledge policy
 // -----------------------------------------------------------------------------
 // Decides whether Cara is allowed to say something, and what from.
 // Plain .js with no runtime imports beyond concepts.js so that the Deno edge

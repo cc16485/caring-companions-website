@@ -1,4 +1,4 @@
-/* Caring Companions — shared runtime for care-path (funnel) pages.
+/* Caring Companions: shared runtime for care-path (funnel) pages.
    Pages provide: #stage-hook with .fun-option[data-hook-label] buttons,
    #stage-question (progress + #q-text + #q-options + #q-back),
    #stage-result with #res-<field> slots, plus a config via CCFunnel.init. */

@@ -1,15 +1,15 @@
-/* Caring Companions — first-party, anonymous analytics.
+/* Caring Companions: first-party, anonymous analytics.
    Tracks the Funnel Blueprint KPIs (page views, tool completions, lead
    submissions, call clicks) into the shared Supabase `website_events` table.
    No cookies, no personal information: a random per-tab session id, the page
-   path, referrer, and event name only. Insert-only — the public key cannot
+   path, referrer, and event name only. Insert-only, the public key cannot
    read anything back. */
 (function () {
   'use strict';
 
   var isLocal = /^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname);
 
-  // ---- Google Analytics 4 (gtag) — loads only on the live site ----
+  // ---- Google Analytics 4 (gtag), loads only on the live site ----
   // Property: Caring Companions Website. One place to change the ID.
   if (!isLocal) {
     var GA_ID = 'G-C42SDJGV29';
@@ -86,7 +86,7 @@
   // Page view
   track('page_view');
 
-  // Call clicks — the blueprint's most direct conversion signal
+  // Call clicks, the blueprint's most direct conversion signal
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
     if (a) track('call_click');

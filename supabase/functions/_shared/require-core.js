@@ -1,4 +1,4 @@
-// Caring Companions Core — server-side access gate
+// Caring Companions Core: server-side access gate
 // -----------------------------------------------------------------------------
 // Core is hosted on a public URL, like the other hubs. The login screen in the
 // browser is a convenience, not a boundary: anyone can open the page, read the
@@ -81,7 +81,7 @@ export const actorOf = (user) => user?.email ?? user?.id ?? 'unknown'
  * For functions that serve BOTH Cara (server to server) and a signed-in person.
  *
  * knowledge-api had no check of any kind. Deployed without --no-verify-jwt it
- * accepts any valid JWT, and the anon key IS a valid JWT — the same anon key
+ * accepts any valid JWT, and the anon key IS a valid JWT, the same anon key
  * printed in the public website and in Core's own page. So anyone could call
  * `get` and read internal-only records, and `search` let the caller choose
  * audience: 'internal' for itself. Verified as exploitable against the live

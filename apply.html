@@ -102,7 +102,7 @@
     <span class="ap-quick" id="quickNote">About 2 minutes</span>
   </div>
 
-  <!-- STEP 1 — only what we need to be able to ring them back -->
+  <!-- STEP 1: only what we need to be able to ring them back -->
   <div class="ap-card" id="step1">
     <div class="row2">
       <div><label class="f" for="first">First name</label><input class="t" id="first" autocomplete="given-name"></div>
@@ -162,7 +162,7 @@
     <div class="err" id="err1"></div>
   </div>
 
-  <!-- STEP 2 — the things the job actually turns on -->
+  <!-- STEP 2: the things the job actually turns on -->
   <div class="ap-card" id="step2" style="display:none;">
     <div class="sub" style="margin:0 0 4px;">Answer honestly. A no is not automatically a problem, and knowing now saves us both a phone call.</div>
 
@@ -202,7 +202,7 @@
     <button class="back" onclick="goStep(1)">&larr; Back</button>
   </div>
 
-  <!-- STEP 3 — the useful color, all optional bar availability -->
+  <!-- STEP 3: the useful color, all optional bar availability -->
   <div class="ap-card" id="step3" style="display:none;">
     <label class="f" for="years">How long have you been caregiving?</label>
     <select class="t" id="years">
@@ -518,8 +518,8 @@ if (PREVIEW) {
 
 /* Resume straight to the interview step for someone who already applied. The
    nudge and confirmation messages link here with their application id
-   (?book=<id>). No name in the URL — personal data never belongs in a query
-   string — so the greeting is neutral. Without this, the link dropped them
+   (?book=<id>). No name in the URL, personal data never belongs in a query
+   string, so the greeting is neutral. Without this, the link dropped them
    back at step 1 of a form they had already filled in.
 
    Somebody who already HAS a time gets their booking with the choice to move

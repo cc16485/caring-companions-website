@@ -1,7 +1,7 @@
-/* Caring Companions — form submissions.
+/* Caring Companions: form submissions.
    Posts to the shared hub's lead-intake Edge Function, so every website
    submission becomes a lead in the CC Hub pipeline (source "Website",
-   follow-up due same day). Creates leads only — cannot read anything. */
+   follow-up due same day). Creates leads only, cannot read anything. */
 (function () {
   'use strict';
 
@@ -9,7 +9,7 @@
     'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/lead-intake?token=cclead_b36832b06f2bb8d58b7d6302';
 
   window.CCForms = {
-    // fields: { name, phone, email, message, care_for } — all optional,
+    // fields: { name, phone, email, message, care_for }, all optional,
     // but at least one of name/phone/email must be present.
     submitLead: function (fields) {
       return fetch(LEAD_ENDPOINT, {

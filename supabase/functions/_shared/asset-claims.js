@@ -1,4 +1,4 @@
-// Caring Companions Core — asset claim scanning
+// Caring Companions Core: asset claim scanning
 // -----------------------------------------------------------------------------
 // A company document is not empty of knowledge. An onboarding packet states a
 // pay rate, a pay cycle, how timesheets work, what training is required. Those

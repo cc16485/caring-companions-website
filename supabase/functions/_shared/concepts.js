@@ -1,4 +1,4 @@
-// Caring Companions Core — concept layer
+// Caring Companions Core: concept layer
 // -----------------------------------------------------------------------------
 // Families do not use our vocabulary. They say "can my daughter get paid",
 // not "family attendant eligibility under Consumer Directed Services".

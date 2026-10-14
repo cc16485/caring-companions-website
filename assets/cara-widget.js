@@ -1,4 +1,4 @@
-/* Caring Companions — floating "Ask Cara" widget (site-wide)
+/* Caring Companions: floating "Ask Cara" widget (site-wide)
    Chat backend: the cara-chat Supabase Edge Function (deployed on the shared
    hub project). If it's ever unreachable, Cara falls back to a warm hand-off
    to phone/consultation. Override with window.CC_CARA_ENDPOINT if needed. */

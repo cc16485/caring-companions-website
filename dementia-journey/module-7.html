@@ -702,7 +702,7 @@ done: function(){
       ans=parts.join('\n').slice(0,1200);
     }catch(e3){} }
     var btn=el('dj-reach'); btn.disabled=true;
-    if(window.CCForms) CCForms.submitLead({ name: nm||'(Dementia Journey viewer)', phone: ph, email: em, message:(ms?ms+' \u2014 ':'')+'Asked us to reach out, from The Dementia Journey Module 7.'+(ans?'\n\nCourse answers (shared by their choice):\n'+ans:'') })
+    if(window.CCForms) CCForms.submitLead({ name: nm||'(Dementia Journey viewer)', phone: ph, email: em, message:(ms?ms+'. ':'')+'Asked us to reach out, from The Dementia Journey Module 7.'+(ans?'\n\nCourse answers (shared by their choice):\n'+ans:'') })
       .then(function(){ s.textContent='Got it. A real person will reach out. Be gentle with yourself this week.'; s.hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });

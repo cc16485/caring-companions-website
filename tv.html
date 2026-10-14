@@ -1068,8 +1068,8 @@
     var msg = [
       'FROM THE FACEBOOK FUNNEL (mo-care.com/tv)',
       'They built: ' + plan.len + '-hour visits x ' + plan.days + ' days = ' + hours + ' hrs/week',
-      'Care level: ' + plan.level.name + (hours >= 56 ? ' — QUOTE 24-HOUR (round-the-clock coverage)' : ''),
-      'Hardest times of day: ' + (windows().join(', ') || 'not said') + (windows().length >= 4 ? ' — ALL DAY, quote 24-hour' : ' — sell virtual check-ins for the rest'),
+      'Care level: ' + plan.level.name + (hours >= 56 ? '. QUOTE 24-HOUR (round-the-clock coverage)' : ''),
+      'Hardest times of day: ' + (windows().join(', ') || 'not said') + (windows().length >= 4 ? '. ALL DAY, quote 24-hour' : '. Sell virtual check-ins for the rest'),
       hours >= 20 ? 'QUALIFIES for HomeTogether TV included.'
         : 'Under 20 hrs by ' + (20 - hours) + '. Offer them: more hours, the TV at $99/mo, or virtual visits from $75/wk.',
       '',
