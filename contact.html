@@ -292,15 +292,15 @@
   chipRow('method-chips', ['Call', 'Text', 'Email'], 'selected-accent', function (v) { method = v; });
 
   // Town pages outside our core counties link here with ?waitlist=Town or
-  // ?area=Town, so the lead arrives saying which list it belongs on.
+  // ?area=Town, so the lead arrives saying which town it is for.
   var qs = new URLSearchParams(location.search);
   var town = (qs.get('waitlist') || qs.get('area') || '').replace(/[^A-Za-z .'-]/g, '').slice(0, 40);
   if (qs.has('waitlist') || qs.has('area')) {
     var waitlist = qs.has('waitlist');
     document.querySelector('#contact-form h2').textContent = (waitlist
-      ? 'Join our waitlist' : 'Check caregiver availability') + (town ? (waitlist ? ' for ' : ' in ') + town : '');
+      ? 'Leave your name' : 'Check caregiver availability') + (town ? (waitlist ? ' for care in ' : ' in ') + town : '');
     document.getElementById('f-message').value = waitlist
-      ? 'Please add me to the waitlist for care in ' + (town || 'my town: ') + (town ? '.' : '')
+      ? 'Please keep my name on file for care in ' + (town || 'my town: ') + (town ? '. I understand you don\'t provide care there right now.' : '')
       : 'Please check whether you have a caregiver available near ' + (town || 'my town: ') + (town ? '.' : '');
   }
 
