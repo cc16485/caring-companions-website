@@ -61,15 +61,19 @@ const ORG = {
 };
 
 /* HOW HIRING WORKS (2026-10-02, Samantha). One in-person interview, then everything else from home: paperwork online,
-   a 15-minute Orientation Video Call, and 6 hours of PAID training (2h orientation + 4h Alzheimer's and dementia). Only
-   those 6 hours are called paid; on-the-job and annual training are not. Never "remote", never a phone interview.
+   a 15-minute Orientation Video Call, and the 2-hour PAID Agency Orientation. 2026-10-15 (Samantha): orientation is the
+   only required training now; dementia, on-the-job and annual in-service courses are optional, offered when a client
+   needs them, so no page calls them required or counts their hours. Never "remote", never a phone interview.
    ONE_LINER is the posting's summary sentence: hiring_wording_415.sql adds it to each posting's description, and here
    it is moved to the top of the structured-data and Indeed descriptions (added if a posting lacks it). On the page
    itself the "How hiring works" block says the same thing, so the sentence is not repeated in the body. */
-export const ONE_LINER = 'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and 6 hours of paid training all from home on your phone or computer.';
-/* 2026-10-11 (Samantha chose the name Orientation Video Call): the sentence as it read before, still in a posting until the
-   Hub's step 602 changes it, is recognized too, so a page never shows both. */
-export const OLD_ONE_LINERS = ['One 20-minute in-person interview at our office, then your paperwork, welcome call and 6 hours of paid training all from home on your phone or computer.'];
+export const ONE_LINER = 'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and 2-hour paid orientation, all from home on your phone or computer.';
+/* Sentences as they read before, still in a posting until the live rows are reworded, are recognized too, so a page never
+   shows both: 2026-10-11 (Samantha chose the name Orientation Video Call) and 2026-10-15 (orientation only, no 6 hours). */
+export const OLD_ONE_LINERS = [
+  'One 20-minute in-person interview at our office, then your paperwork, welcome call and 6 hours of paid training all from home on your phone or computer.',
+  'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and 6 hours of paid training all from home on your phone or computer.',
+];
 const withoutOneLiner = t => String(t ?? '').split(/\n{2,}/).filter(x => x.trim() !== ONE_LINER && !OLD_ONE_LINERS.includes(x.trim())).join('\n\n');
 const howHiring = p => `<section class="jb-how">
 <h2>How hiring works</h2>
@@ -79,7 +83,7 @@ const howHiring = p => `<section class="jb-how">
 <li><b>Meet us in person.</b> A 20-minute interview at our ${(p.city || 'Springfield') === 'Springfield' ? 'Springfield office' : 'office'}. We do not do phone interviews.</li>
 <li><b>Offer and paperwork.</b> Fill out your new-hire paperwork online. We run your background check and call your references, at no cost to you.</li>
 <li><b>A 15-minute Orientation Video Call</b> on your phone or computer. We check your ID, set up the AxisCare app with you, and go over your caregiver profile.</li>
-<li><b>Paid training from home.</b> 2 hours of orientation plus 4 hours of Alzheimer's and dementia training, all paid, on your phone or computer, in pieces if you like.</li>
+<li><b>Paid orientation from home.</b> 2 hours of orientation, paid, on your phone or computer, in pieces if you like.</li>
 </ol>
 </section>`;
 

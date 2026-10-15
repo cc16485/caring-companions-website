@@ -1,6 +1,7 @@
 /* Offline check of the job page generator (no network, nothing published): node tools/build-jobs.test.mjs
    Hiring wording 415 (2026-10-02): one in-person interview, then the rest from home; the application is about
-   2 minutes; only the 6 hours of orientation + dementia training are called paid; never "remote", no em dashes. */
+   2 minutes; never "remote", no em dashes. 2026-10-15: the 2-hour orientation is the only required training, so no
+   page names 6 hours, dementia training, on-the-job or annual in-service as part of hiring. */
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,8 +17,8 @@ const c = { head: src.slice(src.indexOf('<body>') + 6, src.indexOf('</header>') 
 
 const base = { slug: 'caregiver-springfield', title: 'Caregiver', status: 'published', date_posted: '2026-10-02', employment_type: 'PART_TIME',
   pay_min: 16, pay_max: 17, summary: 'Help older adults stay safe at home.', responsibilities: 'Follow the care plan', qualifications: 'Be at least 18',
-  benefits: 'Paid weekly\nPaid orientation and dementia training' };
-const withLine = { ...base, description: 'Caring Companions is hiring.\n\nYou complete 6 hours of paid orientation and dementia training from home before you start.\n\n' + ONE_LINER };
+  benefits: 'Paid weekly\nPaid orientation (2 hours)' };
+const withLine = { ...base, description: 'Caring Companions is hiring.\n\nYou complete 2 hours of paid orientation from home before you start.\n\n' + ONE_LINER };
 const without = { ...base, slug: 'respite-caregiver-mount-vernon', city: 'Mount Vernon', postal_code: '65712', description: 'A sweet family in Mount Vernon.' };
 
 for (const [name, p] of [['posting with the one-liner (after 415 SQL)', withLine], ['posting without it, not Springfield', without]]) {
@@ -29,7 +30,8 @@ for (const [name, p] of [['posting with the one-liner (after 415 SQL)', withLine
   ck(name + ': the page body does not repeat the one-liner (the How hiring works block says it)', count(body, ONE_LINER) === 0);
   ck(name + ': How hiring works block is on the page', body.includes('<h2>How hiring works</h2>') && body.includes('After your interview, you can do the rest from home.'));
   ck(name + ': five steps', count(body.slice(body.indexOf('jb-how'), body.indexOf('</ol>')), '<li>') === 5);
-  ck(name + ': 6 hours paid training named (2 orientation + 4 Alzheimer\'s and dementia)', body.includes("2 hours of orientation plus 4 hours of Alzheimer's and dementia training, all paid"));
+  ck(name + ': paid orientation from home, 2 hours', body.includes('<b>Paid orientation from home.</b> 2 hours of orientation, paid, on your phone or computer, in pieces if you like.'));
+  ck(name + ': no required dementia, on-the-job or in-service training, no 6 hours', !/6 hours|4 hours of|dementia training|on-the-job|in-service|5 hours a year/i.test(html + jsonLd(p) + indeedFeed([p])));
   ck(name + ': footer says about 2 minutes and one in-person interview', body.includes('The application takes about 2 minutes. No uploads required. One in-person interview, then the rest from home.'));
   ck(name + ': no "five minutes" anywhere', !/five minutes|5 minutes/i.test(html));
   ck(name + ': never says remote', !/\bremote(ly)?\b/i.test(body));
@@ -49,6 +51,9 @@ const oldLine = { ...base, description: 'Caring Companions is hiring.\n\n' + OLD
 const ldOld = JSON.parse(jsonLd(oldLine)).description, pgOld = page(oldLine, c), feedOld = indeedFeed([oldLine])
 ck('old sentence in a posting: the structured data opens with the new one-liner, the old one is gone', ldOld.includes(ONE_LINER) && !ldOld.includes('welcome call'), ldOld)
 ck('old sentence in a posting: the page and the Indeed feed never say welcome call', !/welcome (video )?call/i.test(pgOld) && !/welcome (video )?call/i.test(feedOld))
+/* 2026-10-15: a posting still carrying the 6-hour sentence shows only the 2-hour one */
+const sixHour = { ...base, description: 'Caring Companions is hiring.\n\n' + OLD_ONE_LINERS[1] };
+ck('6-hour sentence in a posting: replaced by the new one-liner everywhere', [jsonLd(sixHour), page(sixHour, c), indeedFeed([sixHour])].every(t => !t.includes('6 hours of paid training')) && JSON.parse(jsonLd(sixHour)).description.includes(ONE_LINER))
 ck('the How hiring works block says Orientation Video Call', /A 15-minute Orientation Video Call/.test(page(base, c)))
 
 console.log(`build-jobs.test: ${pass} passed, ${fail} failed`);
