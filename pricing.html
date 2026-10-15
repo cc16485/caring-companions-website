@@ -25,7 +25,7 @@
 .pr-card { background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; }
 .pr-card .name { font-size: 15px; font-weight: 700; color: var(--ink-2); margin: 0 0 4px; }
 .pr-card .sub { font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0 0 16px; min-height: 40px; }
-.pr-card .price { font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--brand-blue); margin: 0 0 16px; }
+.pr-card .price { font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--brand-blue); margin: 0 0 12px; }
 .pr-card .li { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.55; color: var(--body-text); padding: 5px 0; }
 .pr-card .li .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
 .pr-guarantee { max-width:1000px; margin: 0 auto; padding: 16px 24px; }
@@ -39,7 +39,8 @@
 .pr-ltci p { font-size: 14.5px; line-height: 1.75; color: var(--body-text); margin: 0 0 14px; }
 .pr-cta { max-width:1000px; margin: 0 auto; padding: 20px 24px 80px; text-align: center; }
 .pr-more { display:inline-block; font-size:13.5px; font-weight:700; color:var(--cta); text-decoration:none; }
-.pr-terms { max-width:820px; margin:0 auto; padding:0 24px 8px; text-align:center; font-size:13.5px; line-height:1.6; color:var(--muted); }
+.pr-terms { max-width:820px; margin:0 auto; padding:4px 24px 8px; text-align:center; font-size:14.5px; line-height:1.65; color:#45566a; }
+.pr-terms strong { color:var(--ink-2); }
 .pr-levels { max-width:1200px; margin:0 auto; padding:28px 24px 12px; }
 .pr-levels-h { font-family:var(--serif); font-size:24px; font-weight:600; color:var(--brand-blue); text-align:center; margin:0 0 18px; }
 .pr-levels-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
@@ -52,8 +53,17 @@
 .pr-level .li .mk { color:var(--accent); font-weight:700; flex-shrink:0; }
 .pr-level .lv-note { font-size:13px; color:var(--muted); margin:10px 0 0; }
 .pr-level .pr-more { margin-top:14px; }
-.lv-help { text-align:center; font-size:14px; color:var(--muted); margin:18px 0 0; }
-.lv-help a { color:var(--cta); font-weight:600; }
+.lv-fine { text-align:center; font-size:13px; color:var(--muted); margin:16px 0 0; }
+.lv-help { max-width:680px; margin:26px auto 8px; text-align:center; }
+.lv-alt { font-size:14px !important; margin:14px 0 0 !important; }
+.lv-alt a { color:var(--cta); font-weight:600; }
+.lv-help p { font-size:15.5px; line-height:1.7; color:#2c3d4d; margin:0 0 16px; }
+.pr-intro { font-size:15.5px; line-height:1.7; color:#45566a; margin:0 auto 12px; max-width:720px; }
+.pr-card .tag { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink-2); margin:0 0 8px; }
+.pr-card .sub { min-height:0; }
+.pr-team { max-width:820px; margin:0 auto; padding:30px 24px 6px; text-align:center; }
+.pr-team-h { font-family:var(--serif); font-size:24px; font-weight:600; color:var(--brand-blue); margin:0 0 12px; }
+.pr-team p { font-size:15px; line-height:1.72; color:#2c3d4d; margin:0 0 12px; }
 @media (max-width: 899px) { .pr-levels-grid { grid-template-columns:1fr; } }
 @media (max-width: 899px) { .pr-cards { grid-template-columns: 1fr; } .pr-pay-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 639px) { .pr-hero { padding: 36px 20px 8px; } .pr-h1 { font-size: 28px; } }
@@ -183,77 +193,98 @@
 
 <section class="pr-hero">
 <p class="kicker">Transparent Pricing</p>
-<h1 class="pr-h1">Our rates, posted right here.</h1>
-<p style="font-size:15.5px;line-height:1.7;color:#45566a;margin:0 auto;max-width:720px">Why do we post our cost of care when many providers don't? Because families have a lot to weigh, and cost is one of it. We believe you shouldn't have to call five agencies just to get a straight answer.</p>
+<h1 class="pr-h1">Trusted care. Clear pricing. No surprises.</h1>
+<p class="pr-intro">Finding the right care for someone you love is a big decision. Understanding the cost shouldn't make it harder.</p>
+<p class="pr-intro">At Caring Companions, we believe families deserve honest, upfront pricing without the pressure of a sales call. That's why we share our rates right here, so you can explore your options, plan with confidence, and focus on what matters most: finding the right care for your loved one.</p>
 </section>
 
 <section class="pr-cards">
 <div class="pr-card">
 <p class="name">Wellness Care</p>
-<p class="sub">Company, meals, and help around the house. No hands-on care.</p>
 <p class="price">$30<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
+<p class="tag">A helping hand and a friendly face.</p>
+<p class="sub">Perfect for someone who is mostly independent but could use companionship, help around the house, or a little extra support throughout the day.</p>
 <a class="pr-more" href="#wellness">What's included &darr;</a>
 </div>
 <div class="pr-card">
 <p class="name">Personal Care</p>
-<p class="sub">Everything in Wellness Care, plus hands-on help with daily self-care.</p>
 <p class="price">$32<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
+<p class="tag">A little more help, with the same personal touch.</p>
+<p class="sub">For someone who needs hands-on assistance with everyday activities like bathing, dressing, walking, or getting safely from one place to another.</p>
 <a class="pr-more" href="#personal">What's included &darr;</a>
 </div>
 <div class="pr-card">
 <p class="name">Advanced Care</p>
-<p class="sub">Closer, more specialized support for complex needs.</p>
 <p class="price">$34<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
+<p class="tag">Extra support for more complex care needs.</p>
+<p class="sub">For individuals living with advanced dementia, significant mobility challenges, or other conditions requiring closer attention and more experienced caregivers.</p>
 <a class="pr-more" href="#advanced">What's included &darr;</a>
 </div>
 </section>
-<p class="pr-terms">Every level: 4-hour minimum per visit, billed hourly on the schedule you build, and a caregiver who follows a written service plan for your loved one.</p>
+<p class="pr-terms"><strong>Care that fits your life, not the other way around.</strong> Choose a schedule that works for your family, with a minimum of just 4 hours per visit and 8 hours per week. Every client receives a personalized care plan, and our team works to match your loved one with the right caregiver.</p>
+
+<section class="pr-team">
+<h2 class="pr-team-h">More than a caregiver. A team you can count on.</h2>
+<p>When you choose Caring Companions, you're getting more than help around the house. You're getting a locally owned team that takes the time to know your loved one, understands your family's concerns, and works to make life a little easier.</p>
+<p>We're not a franchise, and when you call our office, you're reaching people right here in your community. We believe great care starts with genuine relationships, clear communication, and treating every family like our own.</p>
+</section>
 
 <section class="pr-levels">
 <h2 class="pr-levels-h">What each level includes</h2>
 <div class="pr-levels-grid">
 <div class="pr-level" id="wellness">
 <p class="lv-name">Wellness Care <span>$30/hour</span></p>
-<p class="lv-for">For someone largely independent who shouldn't be alone all day.</p>
-<div class="li"><span class="mk">&#10003;</span> Companionship and conversation</div>
-<div class="li"><span class="mk">&#10003;</span> Meal preparation</div>
-<div class="li"><span class="mk">&#10003;</span> Light housekeeping</div>
-<div class="li"><span class="mk">&#10003;</span> Errands and transportation to appointments</div>
-<div class="li"><span class="mk">&#10003;</span> Reminders and wellness check-ins</div>
-<p class="lv-note">No hands-on personal care.</p>
+<p class="lv-for">Helping your loved one stay independent, connected, and comfortable at home.</p>
+<div class="li"><span class="mk">&#10003;</span> Friendly companionship and meaningful conversation</div>
+<div class="li"><span class="mk">&#10003;</span> Meal planning and preparation</div>
+<div class="li"><span class="mk">&#10003;</span> Light housekeeping and laundry</div>
+<div class="li"><span class="mk">&#10003;</span> Grocery shopping, errands, and transportation</div>
+<div class="li"><span class="mk">&#10003;</span> Medication reminders and daily routine support</div>
+<div class="li"><span class="mk">&#10003;</span> Encouragement to stay active and engaged</div>
+<p class="lv-note">Designed for individuals who do not require hands-on personal care.</p>
 <a class="pr-more" href="/services/companion-care">More about Wellness Care &rarr;</a>
 </div>
 <div class="pr-level" id="personal">
 <p class="lv-name">Personal Care <span>$32/hour</span></p>
-<p class="lv-for">For someone who needs hands-on help with daily self-care.</p>
+<p class="lv-for">Gentle, respectful assistance with everyday activities, while encouraging independence and preserving dignity.</p>
 <p class="lv-plus">Everything in Wellness Care, plus:</p>
-<div class="li"><span class="mk">&#10003;</span> Bathing and dressing</div>
-<div class="li"><span class="mk">&#10003;</span> Toileting</div>
-<div class="li"><span class="mk">&#10003;</span> Transfers, like bed to chair</div>
-<div class="li"><span class="mk">&#10003;</span> Help walking and moving safely</div>
-<div class="li"><span class="mk">&#10003;</span> Help with eating</div>
+<div class="li"><span class="mk">&#10003;</span> Bathing, showering, and personal hygiene</div>
+<div class="li"><span class="mk">&#10003;</span> Dressing, grooming, and toileting</div>
+<div class="li"><span class="mk">&#10003;</span> Assistance with walking and mobility</div>
+<div class="li"><span class="mk">&#10003;</span> Help with safe transfers and positioning</div>
+<div class="li"><span class="mk">&#10003;</span> Assistance with meals and eating</div>
+<div class="li"><span class="mk">&#10003;</span> Support with incontinence care</div>
 <a class="pr-more" href="/services/personal-care">More about Personal Care &rarr;</a>
 </div>
 <div class="pr-level" id="advanced">
 <p class="lv-name">Advanced Care <span>$34/hour</span></p>
-<p class="lv-for">For higher needs that call for closer supervision.</p>
+<p class="lv-for">Thoughtful, attentive care for loved ones who need a higher level of daily support.</p>
 <p class="lv-plus">Everything in Personal Care, plus support for:</p>
-<div class="li"><span class="mk">&#10003;</span> Advanced dementia, including wandering and other memory-related safety concerns</div>
-<div class="li"><span class="mk">&#10003;</span> Complex mobility needs</div>
-<div class="li"><span class="mk">&#10003;</span> Parkinson&rsquo;s</div>
-<div class="li"><span class="mk">&#10003;</span> Stroke recovery</div>
-<div class="li"><span class="mk">&#10003;</span> Caregivers experienced in dementia care</div>
+<div class="li"><span class="mk">&#10003;</span> Advanced Alzheimer&rsquo;s disease and other dementias</div>
+<div class="li"><span class="mk">&#10003;</span> Increased supervision due to confusion or wandering</div>
+<div class="li"><span class="mk">&#10003;</span> Significant mobility limitations</div>
+<div class="li"><span class="mk">&#10003;</span> Parkinson&rsquo;s disease and stroke-related challenges</div>
+<div class="li"><span class="mk">&#10003;</span> More involved personal care and daily routines</div>
+<div class="li"><span class="mk">&#10003;</span> Families navigating changing care needs</div>
+<p class="lv-note">Caregivers are thoughtfully matched to your loved one's needs. Advanced Care is still non-medical care, not skilled nursing.</p>
 <a class="pr-more" href="/care-paths/dementia">More about dementia care &rarr;</a>
 </div>
 </div>
-<p class="lv-help">Not sure which level fits? Your free in-home assessment settles it, or <a href="/assessment">fill out the 8-minute Care Questionnaire</a>.</p>
+<p class="lv-fine">Services are based on an individual assessment, caregiver qualifications, and a personalized care plan.</p>
+<div class="lv-help">
+<p>Not sure what kind of care your loved one needs? That's okay. You don't have to figure it out alone. We'll listen, answer your questions, and help you find the right level of support, starting with a free, no-obligation care assessment.</p>
+<a href="/book" class="btn-primary">Plan Your Free Care Assessment</a>
+<p class="lv-alt">Or <a href="/assessment">fill out the 8-minute Care Questionnaire</a>.</p>
+</div>
 </section>
 
 <section class="pr-guarantee">
 <div class="pr-guarantee-card">
-<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Best Price Guarantee</p>
-<p style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;color:#fbfaf7;margin:0 0 12px">We'll beat any genuine competitor's price.</p>
-<p style="font-size:13px;line-height:1.7;color:#c3cdd6;margin:0;max-width:760px;margin-left:auto;margin-right:auto">Valid for new customers during the first 6 months of service, then our regular rates apply. Requires written pricing from a professional home care agency for comparable services that account for the same client and caregiver needs and preferences.</p>
+<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Our Best Price Guarantee</p>
+<p style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;color:#fbfaf7;margin:0 0 12px">Quality care at a price you can feel good about.</p>
+<p style="font-size:15px;line-height:1.7;color:#e3e8ed;margin:0 auto 10px;max-width:680px">Found a lower rate from another professional home care agency? Let us know. We'll beat their comparable written rate for your first six months of service.</p>
+<p style="font-size:15px;line-height:1.7;color:#e3e8ed;margin:0 auto 16px;max-width:680px">Because we believe families shouldn't have to choose between quality care and affordability.</p>
+<p style="font-size:12.5px;line-height:1.7;color:#c3cdd6;margin:0 auto;max-width:760px">Available to new private-pay clients. Requires written pricing from a professional home care agency for comparable services and care needs. After six months, our standard rates apply. Additional eligibility terms may apply.</p>
 </div>
 </section>
 
