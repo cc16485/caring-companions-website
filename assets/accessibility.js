@@ -197,3 +197,67 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
   else build();
 })();
+
+/* Header menus (Services, Ways to Pay, Resources, About Us) open on click
+   instead of hover, so moving the mouse across the menu bar no longer drops
+   a panel over the page. Enter or Space opens, Esc or a click elsewhere
+   closes. Phones are untouched: below 861px the menus are already listed
+   in full under the burger, and the top links go to their pages. */
+(function () {
+  'use strict';
+  if (window.__ccMenus) return;
+  window.__ccMenus = true;
+  var desk = window.matchMedia('(min-width: 861px)');
+
+  function init() {
+    var groups = [].slice.call(document.querySelectorAll('.cc-nav .cc-nav-group'));
+    if (!groups.length) return;
+    document.documentElement.classList.add('cc-menus-click');
+
+    function close(g, focus) {
+      g.classList.remove('cc-open');
+      var top = g.querySelector('.cc-nav-top');
+      if (top) { top.setAttribute('aria-expanded', 'false'); if (focus) top.focus(); }
+    }
+    function closeAll(except) {
+      groups.forEach(function (g) { if (g !== except && g.classList.contains('cc-open')) close(g); });
+    }
+
+    groups.forEach(function (g, i) {
+      var top = g.querySelector('.cc-nav-top');
+      var panel = g.querySelector('.cc-dropdown');
+      if (!top || !panel) return;
+      if (!panel.id) panel.id = 'cc-menu-' + i;
+      top.setAttribute('aria-haspopup', 'true');
+      top.setAttribute('aria-expanded', 'false');
+      top.setAttribute('aria-controls', panel.id);
+      top.addEventListener('click', function (e) {
+        if (!desk.matches) return;
+        e.preventDefault();
+        var open = !g.classList.contains('cc-open');
+        closeAll(g);
+        g.classList.toggle('cc-open', open);
+        top.setAttribute('aria-expanded', String(open));
+      });
+      top.addEventListener('keydown', function (e) {
+        if ((e.key === ' ' || e.key === 'Spacebar') && desk.matches) { e.preventDefault(); top.click(); }
+      });
+      g.addEventListener('focusout', function (e) {
+        if (desk.matches && g.classList.contains('cc-open') && e.relatedTarget && !g.contains(e.relatedTarget)) close(g);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!(e.target.closest && e.target.closest('.cc-nav-group'))) closeAll();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      groups.forEach(function (g) { if (g.classList.contains('cc-open')) close(g, true); });
+    });
+    var onChange = function () { closeAll(); };
+    if (desk.addEventListener) desk.addEventListener('change', onChange); else if (desk.addListener) desk.addListener(onChange);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
