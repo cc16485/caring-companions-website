@@ -239,7 +239,7 @@ input[type=range] { accent-color: var(--accent); }
 <p style="font-size:19px;font-weight:700;color:#122236;margin:0">$6,500 – $9,000/mo</p>
 </div>
 </div>
-<p style="font-size:12px;color:#66736B;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published $30–$34/hr hourly rates ($28–$32/hr for 24-hour care). HomeTogether TV is $99/month flat with optional add-ons (internet $35, sensors from $15, health readings $10) and weekly-billed virtual visits. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
+<p style="font-size:12px;color:#66736B;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr, for visits and 24-hour care alike. HomeTogether TV is $99/month flat with optional add-ons (internet $35, sensors from $15, health readings $10) and weekly-billed virtual visits. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
 </section>
 
 
@@ -336,9 +336,9 @@ input[type=range] { accent-color: var(--accent); }
     el('hours-label').textContent = String(hours);
     var label, note;
     if (hours >= 100) {
-      lowMo = hours * 28 * weeksPerMonth; highMo = hours * 32 * weeksPerMonth;
+      lowMo = hours * 30 * weeksPerMonth; highMo = hours * 34 * weeksPerMonth;
       label = '~' + money(lowMo) + ' – ' + money(highMo) + '/mo (24-Hour)';
-      note = 'At this many hours, 24-Hour Care ($28–$32/hr) usually fits better than hourly visits';
+      note = 'At this many hours, 24-Hour Care ($30–$34/hr) usually fits better than hourly visits';
     } else {
       lowMo = hours * 30 * weeksPerMonth; highMo = hours * 34 * weeksPerMonth;
       label = money(lowMo) + ' – ' + money(highMo) + '/mo';
