@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Transparent Pricing | Caring Companions</title>
-<meta name="description" content="We publish our home care rates: Hourly $28–$34/hr and 24-Hour $28–$32/hr. Plus a Best Price Guarantee and help using long-term care insurance.">
+<meta name="description" content="We publish our home care rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr. Plus a Best Price Guarantee and help using long-term care insurance.">
 <link rel="canonical" href="https://mo-care.com/pricing">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Transparent Pricing | Caring Companions">
-<meta property="og:description" content="We publish our rates: Hourly $28–$34/hr and 24-Hour $28–$32/hr, plus a Best Price Guarantee.">
+<meta property="og:description" content="We publish our rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr, plus a Best Price Guarantee.">
 <meta property="og:url" content="https://mo-care.com/pricing">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,6 +38,23 @@
 .pr-ltci h2 { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--brand-blue); margin: 28px 0 12px; }
 .pr-ltci p { font-size: 14.5px; line-height: 1.75; color: var(--body-text); margin: 0 0 14px; }
 .pr-cta { max-width:1000px; margin: 0 auto; padding: 20px 24px 80px; text-align: center; }
+.pr-more { display:inline-block; font-size:13.5px; font-weight:700; color:var(--cta); text-decoration:none; }
+.pr-terms { max-width:820px; margin:0 auto; padding:0 24px 8px; text-align:center; font-size:13.5px; line-height:1.6; color:var(--muted); }
+.pr-levels { max-width:1200px; margin:0 auto; padding:28px 24px 12px; }
+.pr-levels-h { font-family:var(--serif); font-size:24px; font-weight:600; color:var(--brand-blue); text-align:center; margin:0 0 18px; }
+.pr-levels-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.pr-level { background:#f7f5ef; border-radius:16px; padding:24px; scroll-margin-top:100px; }
+.pr-level .lv-name { font-size:17px; font-weight:700; color:var(--ink-2); margin:0 0 6px; }
+.pr-level .lv-name span { font-weight:500; color:var(--muted-label); font-size:14px; margin-left:6px; }
+.pr-level .lv-for { font-size:13.5px; line-height:1.55; color:var(--muted); margin:0 0 12px; }
+.pr-level .lv-plus { font-size:13px; font-weight:700; color:var(--ink-2); margin:0 0 4px; }
+.pr-level .li { display:flex; gap:10px; align-items:flex-start; font-size:13.5px; line-height:1.55; color:var(--body-text); padding:4px 0; }
+.pr-level .li .mk { color:var(--accent); font-weight:700; flex-shrink:0; }
+.pr-level .lv-note { font-size:13px; color:var(--muted); margin:10px 0 0; }
+.pr-level .pr-more { margin-top:14px; }
+.lv-help { text-align:center; font-size:14px; color:var(--muted); margin:18px 0 0; }
+.lv-help a { color:var(--cta); font-weight:600; }
+@media (max-width: 899px) { .pr-levels-grid { grid-template-columns:1fr; } }
 @media (max-width: 899px) { .pr-cards { grid-template-columns: 1fr; } .pr-pay-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 639px) { .pr-hero { padding: 36px 20px 8px; } .pr-h1 { font-size: 28px; } }
 </style>
@@ -172,22 +189,64 @@
 
 <section class="pr-cards">
 <div class="pr-card">
-<p class="name">Hourly Care <span style="font-weight:500;color:var(--muted-label)">(Live-Out)</span></p>
-<p class="sub">Hourly plans ranging from homemaker to companion and personal care.</p>
-<p class="price">$30&ndash;$34<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
-<div class="li"><span class="mk">&#10003;</span> 4 hours minimum per visit</div>
-<div class="li"><span class="mk">&#10003;</span> Billed hourly on the schedule you build</div>
-<div class="li"><span class="mk">&#10003;</span> Caregivers follow a detailed service plan of the client's needs</div>
-<div class="li"><span class="mk">&#10003;</span> Multiple caregivers may cover longer split shifts</div>
+<p class="name">Wellness Care</p>
+<p class="sub">Company, meals, and help around the house. No hands-on care.</p>
+<p class="price">$30<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
+<a class="pr-more" href="#wellness">What's included &darr;</a>
 </div>
 <div class="pr-card">
-<p class="name">24-Hour Care</p>
-<p class="sub">Round-the-clock in-home support through rotating caregiver shifts.</p>
-<p class="price">$28&ndash;$32<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
-<div class="li"><span class="mk">&#10003;</span> Typically two 12-hour shifts, or three 8-hour shifts, per day</div>
-<div class="li"><span class="mk">&#10003;</span> Someone awake and present at all times</div>
-<div class="li"><span class="mk">&#10003;</span> A consistent team who gets to know your loved one</div>
+<p class="name">Personal Care</p>
+<p class="sub">Everything in Wellness Care, plus hands-on help with daily self-care.</p>
+<p class="price">$32<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
+<a class="pr-more" href="#personal">What's included &darr;</a>
 </div>
+<div class="pr-card">
+<p class="name">Advanced Care</p>
+<p class="sub">Closer, more specialized support for complex needs.</p>
+<p class="price">$34<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
+<a class="pr-more" href="#advanced">What's included &darr;</a>
+</div>
+</section>
+<p class="pr-terms">Every level: 4-hour minimum per visit, billed hourly on the schedule you build, and a caregiver who follows a written service plan for your loved one.</p>
+
+<section class="pr-levels">
+<h2 class="pr-levels-h">What each level includes</h2>
+<div class="pr-levels-grid">
+<div class="pr-level" id="wellness">
+<p class="lv-name">Wellness Care <span>$30/hour</span></p>
+<p class="lv-for">For someone largely independent who shouldn't be alone all day.</p>
+<div class="li"><span class="mk">&#10003;</span> Companionship and conversation</div>
+<div class="li"><span class="mk">&#10003;</span> Meal preparation</div>
+<div class="li"><span class="mk">&#10003;</span> Light housekeeping</div>
+<div class="li"><span class="mk">&#10003;</span> Errands and transportation to appointments</div>
+<div class="li"><span class="mk">&#10003;</span> Reminders and wellness check-ins</div>
+<p class="lv-note">No hands-on personal care.</p>
+<a class="pr-more" href="/services/companion-care">More about Wellness Care &rarr;</a>
+</div>
+<div class="pr-level" id="personal">
+<p class="lv-name">Personal Care <span>$32/hour</span></p>
+<p class="lv-for">For someone who needs hands-on help with daily self-care.</p>
+<p class="lv-plus">Everything in Wellness Care, plus:</p>
+<div class="li"><span class="mk">&#10003;</span> Bathing and dressing</div>
+<div class="li"><span class="mk">&#10003;</span> Toileting</div>
+<div class="li"><span class="mk">&#10003;</span> Transfers, like bed to chair</div>
+<div class="li"><span class="mk">&#10003;</span> Help walking and moving safely</div>
+<div class="li"><span class="mk">&#10003;</span> Help with eating</div>
+<a class="pr-more" href="/services/personal-care">More about Personal Care &rarr;</a>
+</div>
+<div class="pr-level" id="advanced">
+<p class="lv-name">Advanced Care <span>$34/hour</span></p>
+<p class="lv-for">For higher needs that call for closer supervision.</p>
+<p class="lv-plus">Everything in Personal Care, plus support for:</p>
+<div class="li"><span class="mk">&#10003;</span> Advanced dementia, including wandering and other memory-related safety concerns</div>
+<div class="li"><span class="mk">&#10003;</span> Complex mobility needs</div>
+<div class="li"><span class="mk">&#10003;</span> Parkinson&rsquo;s</div>
+<div class="li"><span class="mk">&#10003;</span> Stroke recovery</div>
+<div class="li"><span class="mk">&#10003;</span> Caregivers experienced in dementia care</div>
+<a class="pr-more" href="/care-paths/dementia">More about dementia care &rarr;</a>
+</div>
+</div>
+<p class="lv-help">Not sure which level fits? Your free in-home assessment settles it, or <a href="/assessment">take the 2-minute care assessment</a>.</p>
 </section>
 
 <section class="pr-guarantee">
