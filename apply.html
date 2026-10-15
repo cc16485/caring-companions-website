@@ -147,9 +147,8 @@
     </div>
 
     <label class="f">Have you worked with older adults before?</label>
-    <div class="sub">Pick everything that applies. No experience is genuinely fine.</div>
+    <div class="sub">Pick everything that applies.</div>
     <div class="chips stack" data-k="experience_kinds">
-      <button type="button" onclick="manyOf(this)">I have never done this before, and I want to start</button>
       <button type="button" onclick="manyOf(this)">I have cared for family or friends</button>
       <button type="button" onclick="manyOf(this)">I have worked for a home care agency</button>
       <button type="button" onclick="manyOf(this)">I have worked in a facility or hospital</button>
@@ -174,6 +173,16 @@
 
     <div class="q"><div class="qt">Do you have reliable transportation to get to shifts?</div>
       <div class="chips" data-k="has_transport"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>
+
+    <!-- 731 (2026-10-14, Samantha: "we also need to require a year of paid experience"; unpaid family caregiving counts
+         when a hospice or home health nurse or a family member can confirm it, "as an office review, not automatic"). -->
+    <div class="q" id="oneYearQ"><div class="qt">Do you have at least one year of paid caregiving experience?</div>
+      <div class="qs">Caring for people at home, in a nursing home, assisted living or a hospital all counts, and so does a CNA, CMT, LPN or RN license. Being paid to care for a family member counts too, for example through CDS or the VA.</div>
+      <div class="chips stack" data-k="one_year">
+        <button type="button" onclick="pick(this,'yes')">Yes, a year or more</button>
+        <button type="button" onclick="pick(this,'family')">I cared for a family member without pay, and someone can confirm it</button>
+        <button type="button" onclick="pick(this,'no')">No, less than a year</button>
+      </div></div>
 
     <div class="q"><div class="qt">Do you have a valid driver's license?</div>
       <div class="qs">Only needed if you would be driving clients. Plenty of shifts do not involve driving.</div>
@@ -207,9 +216,7 @@
     <label class="f" for="years">How long have you been caregiving?</label>
     <select class="t" id="years">
       <option value="">Choose one</option>
-      <option>No paid experience yet</option>
       <option>Family caregiving only</option>
-      <option>Less than a year</option>
       <option>1 to 3 years</option>
       <option>3 to 5 years</option>
       <option>More than 5 years</option>
@@ -427,11 +434,12 @@ function prnSetup(role){
   g('posLine').style.display = 'block';
   /* Pickups are shift by shift, so full or part time and building up hours are not the questions. */
   g('jobTypeQ').style.display = 'none'; g('buildUpQ').style.display = 'none';
+  g('oneYearQ').style.display = 'none';   // 731: the PRN year question below stands in for it
   g('prnQs').innerHTML =
     '<div class="q"><div class="qt">Are you currently a CNA?</div>'
     + '<div class="qs">A certified nursing assistant, with your certification current.</div>'
     + '<div class="chips" data-k="prn_cna"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>'
-    + '<div class="q"><div class="qt">Do you have at least one year of caregiving or CNA experience?</div>'
+    + '<div class="q"><div class="qt">Do you have at least one year of paid caregiving or CNA experience?</div>'
     + '<div class="chips" data-k="prn_one_year"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>';
   g('prnAvail').innerHTML =
     '<div class="prn-h">When can we call you for PRN shifts?</div>'
@@ -511,7 +519,7 @@ if (PREVIEW) {
     c.parentNode.insertBefore(head('Page ' + (i + 1) + ' of 3' + ['  ·  saved the moment they continue', '  ·  the screening questions', '  ·  then they send it'][i]), c);
   });
   fv.querySelectorAll('.go, .back, .err').forEach((b) => { b.style.display = 'none'; });
-  g('step2').appendChild(note('In the real form, a <b>No</b> to 18 or older, work authorization or transportation (or a role\'s own must-have, like a license) ends the application there with a kind explanation. They cannot book an interview until all three pages are done.'));
+  g('step2').appendChild(note('In the real form, a <b>No</b> to 18 or older, work authorization, transportation or a year of paid experience (or a role\'s own must-have, like a license) ends the application there with a kind explanation. Unpaid family caregiving goes to the office to verify before any interview. They cannot book an interview until all three pages are done.'));
   g('step3').parentNode.insertBefore(note('<b>After page 3:</b> they pick an in-person interview time right away (Monday to Friday, about 20 minutes), and the confirmation and reminders go from there.'), g('step3').nextSibling);
   }
 }
@@ -691,6 +699,11 @@ function manyOf(btn){
   const w = btn.parentElement;
   A[w.dataset.k] = [...w.children].filter(b => b.classList.contains('on')).map(b => b.textContent.trim());
 }
+function pick(btn, val){
+  const w = btn.parentElement;
+  [...w.children].forEach(b => b.classList.toggle('on', b === btn));
+  A[w.dataset.k] = val;
+}
 function yn(btn, val){
   const w = btn.parentElement;
   [...w.children].forEach(b => b.classList.toggle('on', b === btn));
@@ -780,6 +793,11 @@ const CLOSED_MSG = 'This application is closed, so an interview cannot be booked
    interview_mine says 'screen_first'); this page only takes them back to the questions they have not answered. */
 const SCREEN_CALL_MSG = 'Before we can book your interview, we need a few quick answers from you. '
   + 'Please call or text us at (417) 234-8494 and we will go through them together.';
+/* 731: unpaid family caregiving is verified by the office before an interview (Samantha: "as an office review, not
+   automatic"). The database holds booking until then; this says why, kindly. */
+const FAMILY_MSG = 'Thank you. Because your experience is caring for a family member, someone from our office will call you '
+  + 'to hear about it and to talk with the person who can confirm it, like a hospice or home health nurse or a family member. '
+  + 'Once that is done, we will book your interview. Questions? Call (417) 234-8494.';
 const SCREEN_NO_MSG = 'Based on your answers, we are not able to book an interview from this application. '
   + 'If something has changed, or you think we have it wrong, please call us at (417) 234-8494.';
 async function showFinish(mine){
@@ -849,6 +867,9 @@ const KNOCKOUTS = [
   { k: 'has_transport', when: false, reason: 'no reliable transportation',
     why: 'Our caregivers travel to clients in their own homes across six counties, so reliable transportation is something the job genuinely depends on.',
     next: 'If that changes, please apply again. And if you think we have this wrong, call us on (417) 234-8494 and we will talk it through.' },
+  { k: 'one_year', when: 'no', reason: 'under one year of paid experience',
+    why: 'Our caregivers need at least one year of paid caregiving experience before they start, so we are not able to take your application further right now.',
+    next: 'Once you have a year of experience, we would love to hear from you again. And if you think we have this wrong, call us on (417) 234-8494 and we will talk it through.' },
 ];
 
 function roleAnswers(){
@@ -869,6 +890,10 @@ async function next2(){
   if (PRN && (A.prn_cna === undefined || A.prn_one_year === undefined)){
     err.textContent = 'Please answer the two CNA questions.'; err.style.display='block'; return;
   }
+  if (PRN) A.one_year = A.prn_one_year ? 'yes' : 'no';
+  if (!A.one_year){
+    err.textContent = 'Please answer the question about a year of paid experience.'; err.style.display='block'; return;
+  }
   err.style.display = 'none';
   const b = g('btn2'); b.disabled = true; b.textContent = 'Saving…';
   let stop = KNOCKOUTS.find(x => A[x.k] === x.when);
@@ -885,7 +910,7 @@ async function next2(){
   try {
     /* The PRN answers first: the database only takes them on an unfinished application. */
     if (PRN) await prnSave({ cna: A.prn_cna, one_year: A.prn_one_year }, false);
-    await save({ age_ok: A.age_ok, work_auth: A.work_auth, has_transport: A.has_transport,
+    await save({ age_ok: A.age_ok, work_auth: A.work_auth, has_transport: A.has_transport, one_year: A.one_year,
       has_license: A.has_license ?? null, has_insurance: A.has_insurance ?? null,
       can_pass_background: A.can_pass_background ?? null,
       lived_outside_mo: A.lived_outside_mo ?? null,
@@ -936,6 +961,7 @@ async function finish(){
     g('formView').style.display = 'none';
     g('bookView').style.display = 'block';
     window.scrollTo(0, 0);
+    if (A.one_year === 'family'){ showReview(FAMILY_MSG); return; }   // 731: the office verifies before any interview
     resumeBooking();   // 461: shows their booking under another application, or the office review, else the times
   } catch (e) {
     b.disabled = false; b.textContent = 'Send my application';
