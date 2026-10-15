@@ -37,7 +37,22 @@
       + '.a11y-read{width:100%;border:none;border-radius:9px;padding:12px;background:#1F7A8C;color:#fff;font-weight:600;font-size:14px;cursor:pointer}'
       + '.a11y-read:hover{background:#155A68}.a11y-read.reading{background:#C17A12}'
       + '.a11y-close{position:absolute;top:9px;right:12px;background:none;border:none;font-size:20px;color:#8a978f;cursor:pointer;line-height:1;padding:2px}'
-      + '.a11y-reading-hl{background:#fff3bf!important;box-shadow:0 0 0 4px #fff3bf;border-radius:4px}';
+      + '.a11y-reading-hl{background:#fff3bf!important;box-shadow:0 0 0 4px #fff3bf;border-radius:4px}'
+      // Phone action bar: Call + Book pinned to the bottom, replacing the floating circles
+      + '.cc-bar{display:none}'
+      + '@media (max-width:719px){'
+      + 'body.cc-has-bar{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}'
+      + '.cc-bar{position:fixed;left:0;right:0;bottom:0;z-index:2147483500;display:flex;gap:8px;align-items:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#0D365F;box-shadow:0 -4px 18px rgba(16,40,58,.22)}'
+      + '.cc-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;border-radius:10px;font:700 15.5px/1.2 Inter,Helvetica,Arial,sans-serif;text-decoration:none;text-align:center}'
+      + '.cc-bar a svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}'
+      + '.cc-bar-call{background:#1F7A8C;color:#fff}.cc-bar-book{background:#fff;color:#0D365F}'
+      + '.cc-bar-a11y{flex:0 0 50px;height:50px;border-radius:10px;border:1.5px solid rgba(255,255,255,.4);background:transparent;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}'
+      + '.cc-bar-a11y svg{width:28px;height:28px;fill:#fff}'
+      + '.cc-bar a:focus-visible,.cc-bar-a11y:focus-visible{outline:3px solid #E7C27D;outline-offset:2px}'
+      + 'body.cc-has-bar .a11y-btn{display:none}'
+      + 'body.cc-has-bar .a11y-panel{left:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px))}'
+      + 'body.cc-has-bar #cara-widget-launcher{display:none!important}'
+      + '}';
   }
 
   var readBtn, panel, reading = false, queue = [], qi = 0, keepTimer = null;
@@ -121,6 +136,23 @@
   function zLabel() { var el = document.getElementById('a11y-zlabel'); if (el) el.textContent = 'Text size: ' + Math.round(ZOOMS[zIndex()] * 100) + '%'; }
   function bump(dir) { var i = Math.max(0, Math.min(ZOOMS.length - 1, zIndex() + dir)), z = ZOOMS[i]; applyZoom(z); try { localStorage.setItem(ZKEY, String(z)); } catch (e) {} zLabel(); }
 
+  // Caring Companions family pages only (they carry the phone utility bar).
+  // Applicant pages and the full-screen Cara and questionnaire pages keep the floating button.
+  var PHONE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>';
+  function buildBar(onA11y) {
+    if (!document.querySelector('.cc-utility-tel')) return;
+    if (/^\/(careers|jobs\/|apply|cara|assessment)/.test(location.pathname)) return;
+    var onBook = /^\/book(\.html)?\/?$/.test(location.pathname);
+    var bar = document.createElement('div');
+    bar.className = 'cc-bar';
+    bar.innerHTML = '<a class="cc-bar-call" href="tel:14172348494">' + PHONE_SVG + 'Call us</a>'
+      + (onBook ? '' : '<a class="cc-bar-book" href="/book">Book a free visit</a>')
+      + '<button type="button" class="cc-bar-a11y" aria-label="Accessibility options: larger text and read aloud">' + ICON + '</button>';
+    document.body.appendChild(bar);
+    document.body.classList.add('cc-has-bar');
+    bar.querySelector('.cc-bar-a11y').addEventListener('click', onA11y);
+  }
+
   function build() {
     var st = document.createElement('style'); st.textContent = css(); document.head.appendChild(st);
 
@@ -151,6 +183,7 @@
 
     function toggle(open) { panel.classList.toggle('open', open); }
     btn.addEventListener('click', function () { toggle(!panel.classList.contains('open')); });
+    buildBar(function () { toggle(!panel.classList.contains('open')); });
     panel.querySelector('.a11y-close').addEventListener('click', function () { toggle(false); });
     document.getElementById('a11y-larger').addEventListener('click', function () { bump(1); });
     document.getElementById('a11y-smaller').addEventListener('click', function () { bump(-1); });
