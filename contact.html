@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://mo-care.com/contact">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeHealthCareService","name":"Caring Companions In-Home Senior Care","url":"https://mo-care.com/","logo":"https://mo-care.com/assets/cc-logo.webp","image":"https://mo-care.com/assets/photos/hero-caregiver.jpg","telephone":"+1-417-234-8494","priceRange":"$30-$34/hour","address":{"@type":"PostalAddress","streetAddress":"1331 N Stewart Ave Ste B","addressLocality":"Springfield","addressRegion":"MO","postalCode":"65802","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":37.22244,"longitude":-93.25992},"openingHours":"Mo-Su 00:00-24:00","areaServed":["Greene County MO","Christian County MO","Douglas County MO","Phelps County MO","Taney County MO","Webster County MO"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeHealthCareService","name":"Caring Companions In-Home Senior Care","url":"https://mo-care.com/","logo":"https://mo-care.com/assets/cc-logo.webp","image":"https://mo-care.com/assets/photos/hero-caregiver.jpg","telephone":"+1-417-234-8494","priceRange":"$30-$34/hour","address":{"@type":"PostalAddress","streetAddress":"1331 N Stewart Ave Ste B","addressLocality":"Springfield","addressRegion":"MO","postalCode":"65802","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":37.22244,"longitude":-93.25992},"openingHours":"Mo-Su 00:00-24:00","areaServed":["Greene County MO","Christian County MO","Webster County MO","Polk County MO","Taney County MO","Lawrence County MO","Dallas County MO","Stone County MO"]}</script>
 </head>
 <body>
 <div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
@@ -290,6 +290,19 @@
   }
   chipRow('who-chips', ['Mom', 'Dad', 'Spouse', 'Myself', 'Someone else'], 'selected', function (v) { who = v; });
   chipRow('method-chips', ['Call', 'Text', 'Email'], 'selected-accent', function (v) { method = v; });
+
+  // Town pages outside our core counties link here with ?waitlist=Town or
+  // ?area=Town, so the lead arrives saying which list it belongs on.
+  var qs = new URLSearchParams(location.search);
+  var town = (qs.get('waitlist') || qs.get('area') || '').replace(/[^A-Za-z .'-]/g, '').slice(0, 40);
+  if (qs.has('waitlist') || qs.has('area')) {
+    var waitlist = qs.has('waitlist');
+    document.querySelector('#contact-form h2').textContent = (waitlist
+      ? 'Join our waitlist' : 'Check caregiver availability') + (town ? (waitlist ? ' for ' : ' in ') + town : '');
+    document.getElementById('f-message').value = waitlist
+      ? 'Please add me to the waitlist for care in ' + (town || 'my town: ') + (town ? '.' : '')
+      : 'Please check whether you have a caregiver available near ' + (town || 'my town: ') + (town ? '.' : '');
+  }
 
   document.getElementById('f-submit').addEventListener('click', function () {
     var btn = document.getElementById('f-submit');

@@ -142,7 +142,9 @@
   function buildBar(onA11y) {
     if (!document.querySelector('.cc-utility-tel')) return;
     if (/^\/(careers|jobs\/|apply|cara|assessment)/.test(location.pathname)) return;
-    var onBook = /^\/book(\.html)?\/?$/.test(location.pathname);
+    // Town pages outside our home counties (.tw-tier) ask for a call or the
+    // waitlist first, so the bar offers Call only, the same as on /book.
+    var onBook = /^\/book(\.html)?\/?$/.test(location.pathname) || !!document.querySelector('.tw-tier');
     var bar = document.createElement('div');
     bar.className = 'cc-bar';
     bar.innerHTML = '<a class="cc-bar-call" href="tel:14172348494">' + PHONE_SVG + 'Call us</a>'
