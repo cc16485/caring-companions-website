@@ -91,7 +91,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .cc-nav-group { position: relative; display: flex; align-items: center; }
 .cc-nav-top { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .cc-caret { width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform .2s ease; opacity: .65; }
-.cc-nav-group:hover .cc-caret, .cc-nav-group:focus-within .cc-caret { transform: rotate(-135deg) translateY(1px); }
+html:not(.cc-menus-click) .cc-nav-group:hover .cc-caret, html:not(.cc-menus-click) .cc-nav-group:focus-within .cc-caret, .cc-nav-group.cc-open .cc-caret { transform: rotate(-135deg) translateY(1px); }
 .cc-dropdown {
   position: absolute; top: 100%; left: 0;
   transform: translateY(8px);
@@ -101,7 +101,10 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity .22s ease .55s, transform .22s ease .55s, visibility 0s linear .77s;
 }
-.cc-nav-group:hover .cc-dropdown, .cc-nav-group:focus-within .cc-dropdown {
+/* Menus open on click (assets/accessibility.js adds .cc-menus-click and
+   toggles .cc-open). Hover opening is only the fallback if that script
+   never runs, so a passing mouse no longer covers the page. */
+html:not(.cc-menus-click) .cc-nav-group:hover .cc-dropdown, html:not(.cc-menus-click) .cc-nav-group:focus-within .cc-dropdown, .cc-nav-group.cc-open .cc-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateY(2px);
   transition: opacity .18s ease 0s, transform .18s ease 0s, visibility 0s;
@@ -111,9 +114,12 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
    for LEAVING the navigation, not for moving along it, while the cursor is
    still somewhere in the nav, any panel it has left gets out of the way at
    once instead of hanging around for half a second. */
-.cc-nav:hover .cc-nav-group:not(:hover):not(:focus-within) .cc-dropdown {
+html:not(.cc-menus-click) .cc-nav:hover .cc-nav-group:not(:hover):not(:focus-within) .cc-dropdown {
   transition: opacity .1s ease 0s, transform .1s ease 0s, visibility 0s linear .1s;
 }
+/* Clicked menus close at once; the long close delay above is for hover only. */
+.cc-menus-click .cc-dropdown { transition: opacity .12s ease 0s, transform .12s ease 0s, visibility 0s linear .12s; }
+.cc-nav-group.cc-open .cc-dropdown { transition: opacity .18s ease 0s, transform .18s ease 0s, visibility 0s; }
 /* invisible hover bridge so the menu stays open while the cursor crosses the gap */
 /* invisible bridge above the panel: the cursor has to cross this gap on its
    way down, and losing the menu mid-journey is maddening */
