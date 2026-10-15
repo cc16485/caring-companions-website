@@ -23,9 +23,9 @@
 .cg-h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
 .cg-body { max-width:880px; margin: 0 auto; padding: 20px 24px; }
 .cg-body h2 { font-family: var(--serif); font-size: 23px; font-weight: 600; color: var(--brand-blue); margin: 34px 0 14px; }
-.cg-body p { font-size: 15.5px; line-height: 1.75; color: var(--body-text); margin: 0 0 16px; }
+.cg-body p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.75; color: var(--body-text); margin: 0 0 16px; }
 .cg-checks { max-width:880px; margin: 0 auto; padding: 0 24px; }
-.cg-check { display: flex; gap: 12px; align-items: flex-start; padding: 9px 0; font-size: 15px; line-height: 1.6; color: var(--body-text); }
+.cg-check { display: flex; gap: 12px; align-items: flex-start; padding: 9px 0; font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: var(--body-text); }
 .cg-check .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
 .cg-panel { max-width:1000px; margin: 0 auto; padding: 24px; }
 .cg-panel-card { background: var(--soft-panel); border-radius: 16px; padding: 32px 30px; }
@@ -158,7 +158,7 @@
 <section class="cg-hero">
 <p class="kicker">Our Caregivers</p>
 <h1 class="cg-h1">Joy at work, and it shows in the care.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:760px">For our caregivers it's more than a job, it's a calling. They come from all walks of life, united by one mission: to help older adults and adults with disabilities live with dignity, comfort, and joy at home.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:760px">For our caregivers it's more than a job, it's a calling. They come from all walks of life, united by one mission: to help older adults and adults with disabilities live with dignity, comfort, and joy at home.</p>
 </section>
 
 <section class="cg-body">
@@ -170,7 +170,7 @@
 </section>
 
 <section class="cg-checks">
-<p style="font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Every caregiver</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Every caregiver</p>
 <div class="cg-check"><span class="mk">&#10003;</span> Is covered by company insurance</div>
 <div class="cg-check"><span class="mk">&#10003;</span> Passes a rigorous background check, including driving records and employment-authorization verification</div>
 <div class="cg-check"><span class="mk">&#10003;</span> Is screened for care skills and completes orientation and 4 hours of Alzheimer's and dementia training before providing care in the home</div>
@@ -184,9 +184,9 @@
 
 <section class="cg-panel">
 <div class="cg-panel-card">
-<p style="font-size:11.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Expert Matching</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Expert Matching</p>
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;color:#0D365F;margin:0 0 14px">The right caregiver, matched with care</h2>
-<p style="font-size:14.5px;line-height:1.75;color:#2c3d4d;margin:0 0 16px">We use proven staffing principles alongside a deep understanding of each caregiver's personality, strengths, and experience. Before care begins, every caregiver is trained on your loved one's personalized Care Plan, so they arrive familiar with preferences and ready to connect in meaningful ways from day one.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.75;color:#2c3d4d;margin:0 0 16px">We use proven staffing principles alongside a deep understanding of each caregiver's personality, strengths, and experience. Before care begins, every caregiver is trained on your loved one's personalized Care Plan, so they arrive familiar with preferences and ready to connect in meaningful ways from day one.</p>
 <div class="cg-check"><span class="mk">&#10003;</span> Matched by personality, experience, and care needs</div>
 <div class="cg-check"><span class="mk">&#10003;</span> Trained on the client's Care Plan before the first visit</div>
 <div class="cg-check"><span class="mk">&#10003;</span> Preferences and routines honored from day one</div>
@@ -197,7 +197,7 @@
 
 <section class="cg-cta">
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;color:#0D365F;margin:0 0 10px">Ready to get the care you need?</h2>
-<p style="font-size:15px;line-height:1.7;color:#55677a;margin:0 auto 22px;max-width:520px">Tell us about your situation and we'll set up a free in-home assessment, so you can get the right support to live and age well at home.</p>
+<p style="font-size:max(15px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto 22px;max-width:520px">Tell us about your situation and we'll set up a free in-home assessment, so you can get the right support to live and age well at home.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
 <a href="book" class="btn-primary">Book a Free In-Home Assessment</a>
 <a href="assessment" class="btn-outline">Start the Care Questionnaire</a>

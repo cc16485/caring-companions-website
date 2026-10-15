@@ -15,12 +15,12 @@
 .hp-header-inner { max-width:var(--shell); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .hp-logo img { height: 55px; display: block; }
 .hp-nav { display: flex; align-items: center; gap: 28px; }
-.hp-nav a { font-size: 14.5px; font-weight: 500; color: var(--ink); transition: color .15s ease; text-decoration: none; }
+.hp-nav a { font-size: max(14.5px, var(--fs-min, 0px)); font-weight: 500; color: var(--ink); transition: color .15s ease; text-decoration: none; }
 .hp-nav a:hover { color: var(--accent); }
 .hp-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 .hp-header-right { display: flex; align-items: center; gap: 14px; }
-.hp-phone { font-size: 14px; color: var(--muted); white-space: nowrap; text-decoration: none; }
-.hp-cta-sm { display: inline-block; background: var(--cta); color: var(--bg); border: none; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; text-decoration: none; transition: background .15s ease; }
+.hp-phone { font-size: max(14px, var(--fs-min, 0px)); color: var(--muted); white-space: nowrap; text-decoration: none; }
+.hp-cta-sm { display: inline-block; background: var(--cta); color: var(--bg); border: none; border-radius: 8px; padding: 10px 18px; font-size: max(14px, var(--fs-min, 0px)); font-weight: 600; cursor: pointer; white-space: nowrap; text-decoration: none; transition: background .15s ease; }
 .hp-cta-sm:hover { background: var(--cta-hover); color: var(--bg); text-decoration: none; }
 #cc-nav-toggle { background: none; border: 1px solid #dfe6e2; border-radius: 8px; width: 38px; height: 38px; display: none; align-items: center; justify-content: center; cursor: pointer; color: var(--ink); font-size: 16px; }
 #cc-mobile-menu { display: none; flex-direction: column; padding: 6px 20px 18px; border-top: 1px solid var(--border); gap: 2px; }
@@ -31,7 +31,7 @@
 .hp-hero h1 { font-family: var(--serif); font-size: 54px; line-height: 1.14; font-weight: 600; margin: 0 0 20px; color: var(--brand-blue); letter-spacing: -0.015em; }
 .hp-hero-sub { font-size: 17px; line-height: 1.6; color: #000000; margin: 0 0 20px; max-width:520px; }
 .hp-hero-img { width: 100%; height: 440px; }
-.hp-hero-trust { display: none; font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--brand-blue); margin: -6px 0 18px; }
+.hp-hero-trust { display: none; font-size: max(15px, var(--fs-read, 0px)); font-weight: 600; line-height: 1.5; color: var(--brand-blue); margin: -6px 0 18px; }
 
 .hp-btn-hero { color: var(--bg); border: none; border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; background-color: var(--cta); text-decoration: none; display: inline-block; }
 .hp-btn-hero:hover { background: #124a56; color: var(--bg); text-decoration: none; }
@@ -48,7 +48,7 @@
 .hp h2 { font-family: var(--serif); font-size: 32px; font-weight: 600; margin: 0 0 12px; color: var(--brand-blue); }
 .hp-section-dark h2 { color: #fbfaf7; margin: 0 0 18px; }
 
-.hp-services-strip a { font-size: 13.5px; font-weight: 600; color: var(--muted); text-decoration: none; }
+.hp-services-strip a { font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--muted); text-decoration: none; }
 .hp-services-strip a:hover { color: var(--accent); }
 
 .hp-doors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
@@ -75,7 +75,7 @@
 
 .hp-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 48px 20px 32px; }
 .hp-footer-grid { max-width:var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
-.hp-footer a { font-size: 13.5px; color: var(--muted); text-decoration: none; }
+.hp-footer a { font-size: max(13.5px, var(--fs-min, 0px)); color: var(--muted); text-decoration: none; }
 .hp-footer a:hover { color: var(--accent); }
 
 /* Tablet (720–1039) */
@@ -99,7 +99,7 @@
   .hp-logo img { height: 44px; }
   .hp-hero { padding: 36px 20px 8px; gap: 28px; }
   .hp-hero h1 { font-size: 34px; }
-  .hp-hero-sub { font-size: 15.5px; }
+  .hp-hero-sub { font-size: max(15.5px, var(--fs-read, 0px)); }
   .hp-hero-img { height: 260px; }
   .hp-section { padding: 48px 20px; }
   .hp-section-dark { padding: 48px 20px; }
@@ -124,30 +124,30 @@
   padding:clamp(58px,8vw,94px) 0; margin:0; }
 .cg-in{ max-width:1200px; margin:0 auto; padding:0 24px; }
 .cg-head{ max-width:760px; margin:0 0 clamp(32px,4vw,44px); }
-.cg-eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#F0A63A; margin:0 0 12px; }
+.cg-eyebrow{ font-size:max(12.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#F0A63A; margin:0 0 12px; }
 .cg-band h2{ font-size:clamp(28px,4.4vw,42px); color:#fff; margin:0 0 12px; letter-spacing:-.015em; }
-.cg-sub{ font-size:16.5px; line-height:1.7; color:#cfe0e6; margin:0; max-width:56ch; }
+.cg-sub{ font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.7; color:#cfe0e6; margin:0; max-width:56ch; }
 .cg-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; align-items:stretch; }
 .cg-cell{ display:flex; align-items:stretch; }
 .cg-card{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px;
   padding:22px 20px; flex:1; }
-.cg-n{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#8FD1C7; margin:0 0 10px; }
+.cg-n{ font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#8FD1C7; margin:0 0 10px; }
 .cg-card h3{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:19px; font-weight:600; color:#fff; margin:0 0 8px; }
-.cg-d{ font-size:13.5px; line-height:1.6; color:#cfe0e6; margin:0; }
+.cg-d{ font-size:max(13.5px, var(--fs-read, 0px)); line-height:1.6; color:#cfe0e6; margin:0; }
 .cg-arrow{ flex:0 0 auto; width:34px; align-self:center; position:relative; }
 .cg-arrow::before{ content:""; position:absolute; left:8px; right:8px; top:50%; height:1.5px; background:rgba(240,166,58,.55); }
 .cg-arrow::after{ content:""; position:absolute; right:8px; top:50%; width:7px; height:7px;
   border-top:1.5px solid #F0A63A; border-right:1.5px solid #F0A63A; transform:translateY(-50%) rotate(45deg); }
 .cg-foot{ margin-top:clamp(26px,3.5vw,38px); background:rgba(0,0,0,.18); border-radius:18px;
   padding:24px 26px; display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
-.cg-pl{ font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#9fb6c2; margin:0 0 6px; }
+.cg-pl{ font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#9fb6c2; margin:0 0 6px; }
 .cg-rates{ display:flex; gap:22px; }
 .cg-rates span{ display:flex; align-items:baseline; gap:3px; flex-wrap:wrap; }
 .cg-rates b{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:27px; font-weight:600; color:#fff; }
-.cg-rates i{ font-style:normal; font-size:13px; color:#9fb6c2; }
-.cg-rates em{ font-style:normal; display:block; width:100%; font-size:12px; color:#9fb6c2; }
+.cg-rates i{ font-style:normal; font-size:max(13px, var(--fs-min, 0px)); color:#9fb6c2; }
+.cg-rates em{ font-style:normal; display:block; width:100%; font-size:max(12px, var(--fs-min, 0px)); color:#9fb6c2; }
 .cg-pay{ display:flex; gap:8px; flex-wrap:wrap; }
-.cg-chip{ font-size:12.5px; font-weight:600; color:#dbe7ec; background:rgba(255,255,255,.09);
+.cg-chip{ font-size:max(12.5px, var(--fs-min, 0px)); font-weight:600; color:#dbe7ec; background:rgba(255,255,255,.09);
   border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:6px 13px; }
 .cg-cta{ margin-left:auto; background:#F0A63A; color:#3a2705; font-weight:700; font-size:15.5px;
   padding:13px 24px; border-radius:12px; text-decoration:none; white-space:nowrap; }
@@ -174,26 +174,26 @@
    friendly "tell us what's happening" does not. */
 .hp-section.cara-band{ background:#f2f0e9; max-width:none; width:100%; padding:clamp(58px,8vw,88px) 24px; margin:0; }
 .cara-band .hp-advisor-grid{ max-width:1200px; margin:0 auto; }
-.cara-kick{ font-size:13px; font-weight:700; color:#9C6410; letter-spacing:.06em; text-transform:uppercase; margin:0 0 16px; }
+.cara-kick{ font-size:max(13px, var(--fs-min, 0px)); font-weight:700; color:#9C6410; letter-spacing:.06em; text-transform:uppercase; margin:0 0 16px; }
 .cara-band h2.cara-h{ color:var(--brand-blue); margin:0 0 18px; }
-.cara-p{ font-size:15.5px; line-height:1.65; color:var(--muted); margin:0 0 28px; max-width:460px; }
+.cara-p{ font-size:max(15.5px, var(--fs-read, 0px)); line-height:1.65; color:var(--muted); margin:0 0 28px; max-width:460px; }
 .cara-chat{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px;
   display:flex; flex-direction:column; gap:14px; box-shadow:0 14px 38px rgba(13,54,95,.10); }
 .cara-them{ align-self:flex-end; max-width:82%; background:var(--brand-blue); color:#f4f8fa;
-  border-radius:14px 14px 3px 14px; padding:13px 17px; font-size:14px; line-height:1.55; }
+  border-radius:14px 14px 3px 14px; padding:13px 17px; font-size:max(14px, var(--fs-read, 0px)); line-height:1.55; }
 .cara-her{ align-self:flex-start; max-width:88%; background:var(--soft-teal); color:#1c2b38;
-  border-radius:14px 14px 14px 3px; padding:13px 17px; font-size:14px; line-height:1.6; }
+  border-radius:14px 14px 14px 3px; padding:13px 17px; font-size:max(14px, var(--fs-read, 0px)); line-height:1.6; }
 
 /* Icon CTA + utility-bar dedupe. Declared here because this page's <style>
    loads after site.css, so the base .hp-btn-hero rules would otherwise win. */
 .hp-btn-hero.hp-btn-hero-call { display: inline-flex; align-items: center; gap: 10px; }
 .hp-btn-hero.hp-btn-hero-call svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
 .hp-team { padding-top: 0; }
-.hp-team-lede { font-size: 16px; line-height: 1.7; color: var(--body-text); margin: 0 0 24px; max-width: 640px; }
+.hp-team-lede { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0 0 24px; max-width: 640px; }
 .hp-team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .hp-team-card { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 14px; padding: 26px 26px; }
 .hp-team-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
-.hp-team-card p { font-size: 15.5px; line-height: 1.7; color: var(--body-text); margin: 0; }
+.hp-team-card p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0; }
 .hp-team-more { margin: 20px 0 0; font-size: 15.5px; font-weight: 600; }
 @media (max-width: 719px) { .hp-team-grid { grid-template-columns: 1fr; } }
 </style>
@@ -338,12 +338,12 @@
 <h1>Not sure what kind of care your loved one needs?</h1>
 <p class="hp-hero-sub">Whether you're worried after a fall, noticing memory changes, or simply planning ahead, we'll help you understand your options, clearly, and without pressure.</p>
 <p class="hp-hero-trust"><span class="hp-proof-star" aria-hidden="true">&#9733;</span> 4.9 on Google &middot; Locally owned since 2017 &middot; Not a franchise</p>
-<p style="font-size:14px;line-height:1.65;color:#000000;margin:0 0 28px;max-width:520px">Caring Companions helps older adults remain safe, independent, and at home through wellness care, personal care, dementia care, overnight care, and 24-hour support.</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.65;color:#000000;margin:0 0 28px;max-width:520px">Caring Companions helps older adults remain safe, independent, and at home through wellness care, personal care, dementia care, overnight care, and 24-hour support.</p>
 <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:14px">
 <a href="tel:14172348494" class="hp-btn-hero hp-btn-hero-call"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Talk to Our Care Team</a>
 <a href="assessment" class="hp-btn-hero-outline">Online questionnaire (8 min)</a>
 </div>
-<p style="font-size:14.5px;line-height:1.6;color:var(--muted);margin:0">Prefer to explore on your own? <a href="cara" style="font-weight:600">Ask Cara, our care guide</a>.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.6;color:var(--muted);margin:0">Prefer to explore on your own? <a href="cara" style="font-weight:600">Ask Cara, our care guide</a>.</p>
 </div>
 <img src="assets/photos/hero-caregiver.webp" width="1100" height="733" fetchpriority="high" decoding="async" alt="A Caring Companions caregiver holding hands and laughing with a senior client at home" class="hp-hero-img" style="object-fit:cover;border-radius:18px;max-width:100%">
 </section>
@@ -359,7 +359,7 @@
 
 <section id="services" style="max-width:var(--shell);margin:0 auto;padding:0 24px 8px">
 <div class="hp-services-strip" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 22px;border-top:1px solid #e4e1d8;border-bottom:1px solid #e4e1d8;padding:18px 0">
-<span style="font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em">Popular Services</span>
+<span style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em">Popular Services</span>
 <a href="services/companion-care">Wellness Care</a>
 <a href="services/personal-care">Personal Care</a>
 <a href="guides/dementia-and-alzheimers">Dementia Care</a>
@@ -373,24 +373,24 @@
 <section id="decision-center" class="hp-section reveal">
 <div style="text-align:center;max-width:780px;margin:0 auto 40px">
 <h2>Where are you today?</h2>
-<p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0">Tell us where you are, and we'll meet you there.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));color:#000000;line-height:1.6;margin:0">Tell us where you are, and we'll meet you there.</p>
 </div>
 <div class="hp-doors">
 <a href="decision-center" class="hp-door">
-<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">I'm worried about Mom or Dad</p>
-<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">Falls · Dementia &amp; wandering · Overnight safety · Caregiver burnout</p>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">I'm worried about Mom or Dad</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.75;color:#45566a;margin:0">Falls · Dementia &amp; wandering · Overnight safety · Caregiver burnout</p>
 </a>
 <a href="decision-center" class="hp-door">
-<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">We need help this week</p>
-<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">24-Hour Care · Personal Care · Wellness Care</p>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">We need help this week</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.75;color:#45566a;margin:0">24-Hour Care · Personal Care · Wellness Care</p>
 </a>
 <a href="assessment" class="hp-door">
-<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">What's the right kind of care?</p>
-<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">Home Care vs. Assisted Living · Overnight vs. 24-Hour · Ways to Pay</p>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">What's the right kind of care?</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.75;color:#45566a;margin:0">Home Care vs. Assisted Living · Overnight vs. 24-Hour · Ways to Pay</p>
 </a>
 <a href="getting-started" class="hp-door">
-<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">Help me understand what's happening</p>
-<p style="font-size:13.5px;line-height:1.75;color:#55677a;margin:0">What home care is &middot; When it's time &middot; How it works &middot; Ways to pay</p>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 11px;line-height:1.35">Help me understand what's happening</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.75;color:#45566a;margin:0">What home care is &middot; When it's time &middot; How it works &middot; Ways to pay</p>
 </a>
 </div>
 <div style="max-width:760px;margin:60px auto 0;text-align:center;border-top:1px solid #e4e1d8;padding-top:44px">
@@ -456,11 +456,11 @@
 <div style="display:flex;align-items:center;gap:9px"><span style="color:#9C6410;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">AI guidance backed by human experts</span></div>
 </div>
 <div style="max-width:780px;margin:0 auto;text-align:center;border-top:1px solid #e2ddce;padding-top:28px">
-<p style="font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Care starts at</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Care starts at</p>
 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px">
-<span style="font-size:14px;color:#2c3d4d"><strong style="color:#122236">Wellness Care</strong>, from $30/hr</span>
-<span style="font-size:14px;color:#2c3d4d"><strong style="color:#122236">Personal Care</strong>, from $32/hr</span>
-<span style="font-size:14px;color:#2c3d4d"><strong style="color:#122236">Advanced Care</strong>, from $34/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));color:#2c3d4d"><strong style="color:#122236">Wellness Care</strong>, from $30/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));color:#2c3d4d"><strong style="color:#122236">Personal Care</strong>, from $32/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));color:#2c3d4d"><strong style="color:#122236">Advanced Care</strong>, from $34/hr</span>
 </div>
 </div>
 </section>
@@ -468,13 +468,13 @@
 <section class="hp-section reveal" id="hometogether-band" style="padding-top:34px">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center" class="ht-band-grid">
   <div>
-    <a href="/family" style="display:inline-block;font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-decoration:none;border-bottom:1.5px solid rgba(193,122,18,.45)">New from our family of care &rarr;</a>
+    <a href="/family" style="display:inline-block;font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-decoration:none;border-bottom:1.5px solid rgba(193,122,18,.45)">New from our family of care &rarr;</a>
     <h2 style="margin:0 0 14px">Video calls and gentle check-ins, right on their TV.</h2>
-    <p style="color:var(--muted,#55677a);font-size:16.5px;line-height:1.65;margin:0 0 16px">Meet <strong style="color:#0D365F">HomeTogether TV</strong>: a small device that turns the television your loved one already watches into easy family video calls, medication reminders, and quiet safety sensing. No smartphone, nothing new to learn, and it works anywhere in the country.</p>
+    <p style="color:var(--muted,#55677a);font-size:max(16.5px, var(--fs-read, 0px));line-height:1.65;margin:0 0 16px">Meet <strong style="color:#0D365F">HomeTogether TV</strong>: a small device that turns the television your loved one already watches into easy family video calls, medication reminders, and quiet safety sensing. No smartphone, nothing new to learn, and it works anywhere in the country.</p>
     <ul style="list-style:none;margin:0 0 20px;padding:0;display:grid;gap:9px">
-      <li style="display:flex;gap:9px;font-size:15px;color:#2c3d4d"><span style="color:#9C6410;font-weight:700">✓</span> Family calls appear right on the TV, up to 10 people</li>
-      <li style="display:flex;gap:9px;font-size:15px;color:#2c3d4d"><span style="color:#9C6410;font-weight:700">✓</span> Radar safety sensing with a physical camera privacy shutter</li>
-      <li style="display:flex;gap:9px;font-size:15px;color:#2c3d4d"><span style="color:#9C6410;font-weight:700">✓</span> <strong style="color:#0D365F">Included free</strong> for our private-pay families at 20+ hours a week</li>
+      <li style="display:flex;gap:9px;font-size:max(15px, var(--fs-read, 0px));color:#2c3d4d"><span style="color:#9C6410;font-weight:700">✓</span> Family calls appear right on the TV, up to 10 people</li>
+      <li style="display:flex;gap:9px;font-size:max(15px, var(--fs-read, 0px));color:#2c3d4d"><span style="color:#9C6410;font-weight:700">✓</span> Radar safety sensing with a physical camera privacy shutter</li>
+      <li style="display:flex;gap:9px;font-size:max(15px, var(--fs-read, 0px));color:#2c3d4d"><span style="color:#9C6410;font-weight:700">✓</span> <strong style="color:#0D365F">Included free</strong> for our private-pay families at 20+ hours a week</li>
     </ul>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
       <a href="/hometogether-included" class="btn btn-primary" style="background:#1F7A8C;color:#fff;border-radius:12px;padding:13px 22px;font-weight:700;text-decoration:none;display:inline-block">Free at 20+ hours a week &rarr;</a>
@@ -491,31 +491,31 @@
 <section id="library" class="hp-section reveal">
 <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:32px">
 <h2 style="margin:0">From the Resource Library</h2>
-<a href="resource-library" style="font-size:14.5px;font-weight:600">Explore the full library →</a>
+<a href="resource-library" style="font-size:max(14.5px, var(--fs-min, 0px));font-weight:600">Explore the full library →</a>
 </div>
 <div class="hp-guides-grid">
 <a href="guides/dementia-and-alzheimers" class="hp-guide-card">
 <img src="assets/photos/walking-together.webp" alt="A caregiver steadying a senior while walking outdoors" style="width:100%;height:170px;object-fit:cover;display:block">
 <div style="padding:18px 20px">
-<p style="font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Dementia &amp; Alzheimer's</p>
-<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Recognizing early signs of dementia</p>
-<p style="font-size:13px;line-height:1.55;color:#55677a;margin:0">What's normal aging, what isn't, and when to see a doctor.</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Dementia &amp; Alzheimer's</p>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Recognizing early signs of dementia</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));line-height:1.55;color:#45566a;margin:0">What's normal aging, what isn't, and when to see a doctor.</p>
 </div>
 </a>
 <a href="guides/hospital-discharge" class="hp-guide-card">
 <img src="assets/photos/car-ride.webp" alt="A smiling senior man being helped out of a car by a caregiver" style="width:100%;height:170px;object-fit:cover;display:block">
 <div style="padding:18px 20px">
-<p style="font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Hospital Discharge</p>
-<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Coming home after a hospital stay</p>
-<p style="font-size:13px;line-height:1.55;color:#55677a;margin:0">A checklist for the first 72 hours, and how to avoid readmission.</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Hospital Discharge</p>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Coming home after a hospital stay</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));line-height:1.55;color:#45566a;margin:0">A checklist for the first 72 hours, and how to avoid readmission.</p>
 </div>
 </a>
 <a href="care-paths/paying-for-care" class="hp-guide-card">
 <img src="assets/photos/helping-dress.webp" alt="Hands helping a senior button his vest" style="width:100%;height:170px;object-fit:cover;display:block">
 <div style="padding:18px 20px">
-<p style="font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Paying for Care</p>
-<p style="font-size:15.5px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Private pay, VA, and Medicare GUIDE</p>
-<p style="font-size:13px;line-height:1.55;color:#55677a;margin:0">A clear guide to who pays for what, and how to start.</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Paying for Care</p>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35">Private pay, VA, and Medicare GUIDE</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));line-height:1.55;color:#45566a;margin:0">A clear guide to who pays for what, and how to start.</p>
 </div>
 </a>
 </div>
@@ -524,7 +524,7 @@
 <section class="hp-section reveal" style="padding-top:0">
 <div style="text-align:center;max-width:780px;margin:0 auto 24px">
 <h2>What families &amp; caregivers say</h2>
-<p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0">Real, verified Google reviews from the people we care for, and the caregivers on our team.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));color:#000000;line-height:1.6;margin:0">Real, verified Google reviews from the people we care for, and the caregivers on our team.</p>
 </div>
 <iframe id="cc-reviews" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" style="width:100%;border:none;min-height:760px" title="Verified Google reviews for Caring Companions"></iframe>
 </section>
@@ -547,7 +547,7 @@
 
 <section class="hp-cta-section">
 <h2>Whenever you're ready, we're here.</h2>
-<p style="font-size:15.5px;color:#000000;line-height:1.6;margin:0 0 28px;max-width:480px;margin-left:auto;margin-right:auto">No pressure, no sales calls. Just answers, for as long as you need them.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));color:#000000;line-height:1.6;margin:0 0 28px;max-width:480px;margin-left:auto;margin-right:auto">No pressure, no sales calls. Just answers, for as long as you need them.</p>
 <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
 <a href="book" class="hp-btn-hero" style="transition:background .15s ease, transform .1s ease">Book a free in-home assessment</a>
 <a href="assessment" class="hp-btn-hero-outline">Online questionnaire (8 min)</a>

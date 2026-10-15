@@ -24,26 +24,26 @@
 .ltc-stats { max-width:1060px; margin: 0 auto; padding: 20px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .ltc-stat { background: var(--navy-panel); border-radius: 14px; padding: 24px 20px; text-align: center; }
 .ltc-stat .big { font-family: var(--serif); font-size: 27px; font-weight: 600; color: #fbfaf7; margin: 0 0 4px; }
-.ltc-stat .lbl { font-size: 12.5px; color: #c3cdd6; margin: 0; line-height: 1.45; }
+.ltc-stat .lbl { font-size: max(12.5px, var(--fs-read, 0px)); color: #c3cdd6; margin: 0; line-height: 1.45; }
 .ltc-body { max-width:880px; margin: 0 auto; padding: 20px 24px; }
 .ltc-body h2 { font-family: var(--serif); font-size: 23px; font-weight: 600; color: var(--brand-blue); margin: 34px 0 12px; }
-.ltc-body > p { font-size: 15.5px; line-height: 1.75; color: #2c3d4d; margin: 0 0 8px; }
-.ltc-li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.6; color: #2c3d4d; padding: 6px 0; }
+.ltc-body > p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.75; color: #2c3d4d; margin: 0 0 8px; }
+.ltc-li { display: flex; gap: 10px; align-items: flex-start; font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: #2c3d4d; padding: 6px 0; }
 .ltc-li .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
 .ltc-defs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 4px; }
 .ltc-def { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
-.ltc-def h3 { font-size: 14.5px; font-weight: 700; color: #122236; margin: 0 0 5px; }
-.ltc-def p { font-size: 13px; line-height: 1.6; color: #55677a; margin: 0; }
+.ltc-def h3 { font-size: max(14.5px, var(--fs-head, 0px)); font-weight: 700; color: #122236; margin: 0 0 5px; }
+.ltc-def p { font-size: max(13px, var(--fs-read, 0px)); line-height: 1.6; color: #45566a; margin: 0; }
 .ltc-adl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0 4px; }
-.ltc-adl div { background: var(--soft-teal); border-radius: 10px; padding: 14px 12px; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--brand-blue); }
+.ltc-adl div { background: var(--soft-teal); border-radius: 10px; padding: 14px 12px; text-align: center; font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--brand-blue); }
 .ltc-adl div span { display: block; font-size: 22px; margin-bottom: 5px; color: transparent; text-shadow: 0 0 0 var(--cta); }
 .ltc-steps { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
 .ltc-step { display: flex; gap: 14px; align-items: flex-start; background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
 .ltc-step .n { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fbfaf7; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.ltc-step p.t { font-size: 14.5px; font-weight: 600; color: #122236; margin: 0 0 2px; }
-.ltc-step p.d { font-size: 13.5px; color: #55677a; margin: 0; line-height: 1.55; }
+.ltc-step p.t { font-size: max(14.5px, var(--fs-read, 0px)); font-weight: 600; color: #122236; margin: 0 0 2px; }
+.ltc-step p.d { font-size: max(13.5px, var(--fs-read, 0px)); color: #45566a; margin: 0; line-height: 1.55; }
 .ltc-carriers { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
-.ltc-carriers span { background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; color: #2c3d4d; }
+.ltc-carriers span { background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; font-size: max(13px, var(--fs-min, 0px)); font-weight: 600; color: #2c3d4d; }
 .ltc-faq { margin: 12px 0 4px; }
 .ltc-faq details { border: 1px solid var(--border); border-radius: 12px; background: #fff; margin-bottom: 10px; overflow: hidden; }
 .ltc-faq summary { cursor: pointer; padding: 16px 18px; font-size: 15px; font-weight: 600; color: #122236; list-style: none; position: relative; padding-right: 44px; }
@@ -51,36 +51,36 @@
 .ltc-faq summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--cta); font-weight: 400; }
 .ltc-faq details[open] summary::after { content: "\2212"; }
 .ltc-faq details[open] summary { color: var(--brand-blue); }
-.ltc-faq .a { padding: 0 18px 16px; font-size: 14px; line-height: 1.7; color: #55677a; }
+.ltc-faq .a { padding: 0 18px 16px; font-size: max(14px, var(--fs-read, 0px)); line-height: 1.7; color: #45566a; }
 .ltc-note { background: #fbf6ec; border: 1px solid #e8dcc4; border-radius: 12px; padding: 18px 20px; margin-top: 24px; }
-.ltc-note .k { font-size: 11.5px; font-weight: 700; color: #8a5a2a; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px; }
-.ltc-note p { font-size: 13.5px; line-height: 1.7; color: #5a4726; margin: 0; }
+.ltc-note .k { font-size: max(11.5px, var(--fs-min, 0px)); font-weight: 700; color: #8a5a2a; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px; }
+.ltc-note p { font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.7; color: #5a4726; margin: 0; }
 .ltc-ways { max-width:1060px; margin: 12px auto 0; padding: 8px 24px; }
 .ltc-ways h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--brand-blue); text-align: center; margin: 0 0 14px; }
 .ltc-ways-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .ltc-ways-grid a { display: block; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 16px; text-decoration: none; transition: border-color .15s ease; }
 .ltc-ways-grid a:hover { border-color: var(--cta); }
-.ltc-ways-grid p.t { font-size: 14px; font-weight: 600; color: #122236; margin: 0 0 3px; }
-.ltc-ways-grid p.d { font-size: 12px; color: #55677a; margin: 0; line-height: 1.5; }
+.ltc-ways-grid p.t { font-size: max(14px, var(--fs-read, 0px)); font-weight: 600; color: #122236; margin: 0 0 3px; }
+.ltc-ways-grid p.d { font-size: max(12px, var(--fs-min, 0px)); color: #45566a; margin: 0; line-height: 1.5; }
 .ltc-cta { max-width:880px; margin: 0 auto; padding: 26px 24px 80px; text-align: center; }
 .ltc-review { max-width:880px; margin: 10px auto 0; padding: 20px 24px 80px; }
 .ltc-review-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 30px 28px; }
-.ltc-review .eyb { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 10px; }
+.ltc-review .eyb { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 10px; }
 .ltc-review h2 { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
-.ltc-review .lede { font-size: 14.5px; line-height: 1.6; color: #55677a; margin: 0 0 20px; }
+.ltc-review .lede { font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.6; color: #45566a; margin: 0 0 20px; }
 .ltc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-.ltc-input { width: 100%; border: 1px solid var(--border); border-radius: 9px; padding: 12px 14px; font-size: 14.5px; font-family: inherit; color: #16283a; background: #fff; box-sizing: border-box; }
+.ltc-input { width: 100%; border: 1px solid var(--border); border-radius: 9px; padding: 12px 14px; font-size: max(14.5px, var(--fs-min, 0px)); font-family: inherit; color: #16283a; background: #fff; box-sizing: border-box; }
 .ltc-input:focus { outline: none; border-color: var(--cta); }
 .ltc-ta { resize: vertical; margin-bottom: 16px; }
-.ltc-or { display: flex; align-items: center; gap: 12px; margin: 20px 0 14px; color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.ltc-or { display: flex; align-items: center; gap: 12px; margin: 20px 0 14px; color: var(--muted); font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 .ltc-or::before, .ltc-or::after { content: ""; flex: 1; height: 1px; background: var(--border); }
-.ltc-email-btn { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px solid var(--cta); color: var(--cta); border-radius: 9px; padding: 13px; font-size: 14.5px; font-weight: 600; text-decoration: none; }
+.ltc-email-btn { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px solid var(--cta); color: var(--cta); border-radius: 9px; padding: 13px; font-size: max(14.5px, var(--fs-min, 0px)); font-weight: 600; text-decoration: none; }
 .ltc-email-btn:hover { background: var(--soft-teal); }
-.ltc-fineprint { font-size: 12px; color: var(--muted-label); line-height: 1.5; margin: 12px 0 0; text-align: center; }
-.ltc-file { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px dashed var(--border); border-radius: 9px; padding: 14px; font-size: 13.5px; font-weight: 600; color: var(--muted); cursor: pointer; margin: 0 0 14px; text-align: center; }
+.ltc-fineprint { font-size: max(12px, var(--fs-min, 0px)); color: var(--muted-label); line-height: 1.5; margin: 12px 0 0; text-align: center; }
+.ltc-file { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px dashed var(--border); border-radius: 9px; padding: 14px; font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--muted); cursor: pointer; margin: 0 0 14px; text-align: center; }
 .ltc-file:hover { border-color: var(--cta); color: var(--cta); }
 .ltc-file.has { border-style: solid; border-color: var(--cta); color: var(--brand-blue); background: var(--soft-teal); }
-.ltc-consent { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; line-height: 1.5; color: var(--muted); margin: 0 0 14px; cursor: pointer; }
+.ltc-consent { display: flex; align-items: flex-start; gap: 9px; font-size: max(12.5px, var(--fs-read, 0px)); line-height: 1.5; color: var(--muted); margin: 0 0 14px; cursor: pointer; }
 .ltc-consent input { margin-top: 2px; flex: 0 0 auto; }
 @media (max-width: 639px) {
   .ltc-grid { grid-template-columns: 1fr; }
@@ -218,7 +218,7 @@
 <section class="ltc-hero">
 <p class="kicker">Long-Term Care Insurance</p>
 <h1 class="ltc-h1">Put your long-term care policy to work, at home.</h1>
-<p style="font-size:15.5px;line-height:1.7;color:#45566a;margin:0 auto;max-width:760px">If you or your loved one paid into a long-term care insurance policy, it may cover most or all of the cost of in-home care. We do the heavy lifting: verifying your benefits, coordinating a call with your carrier, filing the claim, and billing the insurer directly, so you can start receiving care sooner.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto;max-width:760px">If you or your loved one paid into a long-term care insurance policy, it may cover most or all of the cost of in-home care. We do the heavy lifting: verifying your benefits, coordinating a call with your carrier, filing the claim, and billing the insurer directly, so you can start receiving care sooner.</p>
 <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
 <a href="#review" class="btn-primary">Get your free policy review</a>
 <a href="tel:14172348494" class="btn-outline">Call (417) 234-8494</a>
@@ -239,7 +239,7 @@
 <div class="ltc-li"><span class="mk">&#10003;</span> Bill your insurance company directly under an assignment of benefits, or give you paid invoices to submit for reimbursement, whichever you prefer</div>
 <div class="ltc-li"><span class="mk">&#10003;</span> Help you complete the forms needed to file a claim</div>
 <div class="ltc-li"><span class="mk">&#10003;</span> Handle scheduling, payroll taxes, workers' comp, bonding, and liability insurance, so the care meets your policy's requirements</div>
-<p style="font-size:13.5px;color:#55677a;margin-top:12px">We have relationships with many carriers and third-party administrators, which makes the claims process faster and far less stressful for your family.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));color:#45566a;margin-top:12px">We have relationships with many carriers and third-party administrators, which makes the claims process faster and far less stressful for your family.</p>
 
 <h2>Two ways to use your benefits</h2>
 <p>Once your claim is approved, you choose how payment works:</p>
@@ -247,7 +247,7 @@
 <div class="ltc-def"><h3>Direct billing (assignment of benefits)</h3><p>You sign an "assignment of benefits" and we bill your insurance company directly. As long as care stays within what your policy pays, you have nothing out of pocket.</p></div>
 <div class="ltc-def"><h3>Private pay, then reimbursement</h3><p>You pay us at our regular rate, and we give you itemized paid invoices plus the documentation to send to your carrier for reimbursement.</p></div>
 </div>
-<p style="font-size:13.5px;color:#55677a;margin-top:12px">Not sure which is right for you? We'll walk through both during your free policy review and set up whichever your carrier and your family prefer.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));color:#45566a;margin-top:12px">Not sure which is right for you? We'll walk through both during your free policy review and set up whichever your carrier and your family prefer.</p>
 
 <h2>What long-term care insurance usually covers</h2>
 <p>Every policy is different, but most modern long-term care policies help pay for care in the home, which is where families most want to be. That commonly includes:</p>
@@ -304,7 +304,7 @@
 <span>Thrivent</span>
 <span>and many more</span>
 </div>
-<p style="font-size:12.5px;color:#66736B;margin-top:10px">Don't see your carrier? We almost certainly work with them. Give us a call and we'll confirm.</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#4f5b54;margin-top:10px">Don't see your carrier? We almost certainly work with them. Give us a call and we'll confirm.</p>
 
 <h2>Common questions</h2>
 <div class="ltc-faq">
@@ -335,7 +335,7 @@
 <input id="lf-email" class="ltc-input" type="email" placeholder="Email">
 <input id="lf-carrier" class="ltc-input" placeholder="Insurance carrier (if known)">
 </div>
-<label style="display:block;font-size:12px;font-weight:700;color:var(--muted-label);text-transform:uppercase;letter-spacing:.04em;margin:2px 0 6px">If your policy covers care, how would you prefer to pay?</label>
+<label style="display:block;font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:var(--muted-label);text-transform:uppercase;letter-spacing:.04em;margin:2px 0 6px">If your policy covers care, how would you prefer to pay?</label>
 <select id="lf-pay" class="ltc-input">
 <option value="">Choose (optional)</option>
 <option>Bill my insurance directly (assignment of benefits)</option>
@@ -346,17 +346,17 @@
 <label class="ltc-file" id="lf-file-box"><input type="file" id="lf-file" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx" style="display:none" onchange="ltcFilePicked(this)"><span id="lf-file-label"><svg aria-hidden="true" style="width:1.1em;height:1.1em;vertical-align:-0.18em;"><use href="/assets/icons.svg#i-clip"/></svg> Attach your policy (PDF or photo), optional</span></label>
 <label class="ltc-consent"><input type="checkbox" id="lf-consent"> <span>I agree to securely share my policy with Caring Companions for a free benefits review. Your document is encrypted and used only to review your coverage.</span></label>
 <button id="lf-submit" class="btn-primary" style="width:100%;padding:14px;font-size:15px">Request my free review</button>
-<p id="lf-error" hidden style="font-size:13.5px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:14px 0 0"></p>
+<p id="lf-error" hidden style="font-size:max(13.5px, var(--fs-read, 0px));color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:14px 0 0"></p>
 <div class="ltc-or"><span>or send your policy now</span></div>
 <a class="ltc-email-btn" href="mailto:intake@mo-care.com?subject=Long-term%20care%20policy%20review&body=Hi%20Caring%20Companions%2C%0D%0A%0D%0AI%20would%20like%20a%20free%20review%20of%20my%20long-term%20care%20insurance%20policy.%20My%20policy%20or%20benefits%20summary%20is%20attached.%0D%0A%0D%0AName%3A%0D%0APhone%3A%0D%0ABest%20time%20to%20reach%20me%3A%0D%0A%0D%0AThank%20you!"><svg aria-hidden="true" style="width:1.1em;height:1.1em;vertical-align:-0.18em;"><use href="/assets/icons.svg#i-mail"/></svg> Email your policy to us</a>
 <p class="ltc-fineprint">Attach a PDF or a few clear photos of your policy or benefits summary. Uploads are encrypted, used only to review your coverage, and automatically deleted after 90 days.</p>
 </div>
 <div id="ltc-thanks" hidden style="text-align:center;padding:12px 0">
-<p style="font-size:12px;font-weight:700;color:#0e6b5c;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Request received</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#0e6b5c;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Request received</p>
 <h2 style="margin:0 0 10px">Thank you<span id="lf-thanks-name"></span>.</h2>
-<p id="ltc-thanks-lede" style="font-size:14.5px;line-height:1.7;color:#55677a;margin:0 auto 20px;max-width:470px">A long-term care specialist will reach out within one business day. To speed things up, email us your policy and we'll have it reviewed before we call.</p>
+<p id="ltc-thanks-lede" style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto 20px;max-width:470px">A long-term care specialist will reach out within one business day. To speed things up, email us your policy and we'll have it reviewed before we call.</p>
 <a id="ltc-thanks-emailbtn" class="ltc-email-btn" style="max-width:340px;margin:0 auto" href="mailto:intake@mo-care.com?subject=Long-term%20care%20policy%20review&body=Hi%20Caring%20Companions%2C%0D%0A%0D%0AI%20would%20like%20a%20free%20review%20of%20my%20long-term%20care%20insurance%20policy.%20My%20policy%20or%20benefits%20summary%20is%20attached.%0D%0A%0D%0AName%3A%0D%0APhone%3A%0D%0ABest%20time%20to%20reach%20me%3A%0D%0A%0D%0AThank%20you!"><svg aria-hidden="true" style="width:1.1em;height:1.1em;vertical-align:-0.18em;"><use href="/assets/icons.svg#i-mail"/></svg> Email your policy to us</a>
-<p style="font-size:13px;color:var(--muted);margin:16px 0 0">Prefer to talk? Call <a href="tel:14172348494" style="color:var(--cta);font-weight:600;text-decoration:none">(417) 234-8494</a>.</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));color:var(--muted);margin:16px 0 0">Prefer to talk? Call <a href="tel:14172348494" style="color:var(--cta);font-weight:600;text-decoration:none">(417) 234-8494</a>.</p>
 </div>
 </div>
 </section>

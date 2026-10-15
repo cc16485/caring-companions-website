@@ -13,12 +13,12 @@
 .rp-partner-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
 .rp-partner-chip {
   background: #ffffff; color: var(--muted); border: 1px solid var(--border); border-radius: 9px;
-  padding: 12px 14px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: inherit;
+  padding: 12px 14px; font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; cursor: pointer; font-family: inherit;
 }
 .rp-partner-chip.selected { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .rp-form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 14px; }
 .rp-preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.rp-input { padding: 13px 15px; font-size: 14px; border: 1.5px solid #dfe6e2; border-radius: 8px; font-family: inherit; color: var(--ink); }
+.rp-input { padding: 13px 15px; font-size: max(14px, var(--fs-min, 0px)); border: 1.5px solid #dfe6e2; border-radius: 8px; font-family: inherit; color: var(--ink); }
 .rp-hide-mobile { display: inline; }
 @media (max-width: 1039px) { .rp-partner-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 719px) {
@@ -167,18 +167,18 @@
 <section class="rp-hero">
 <p class="kicker">Referral Partner Portal</p>
 <h1 class="rp-h1">Refer a family. Stay in the loop.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:580px">We work alongside hospitals, physicians, case managers, and other professionals as an extension of the care team, not just another agency you hand off to.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:580px">We work alongside hospitals, physicians, case managers, and other professionals as an extension of the care team, not just another agency you hand off to.</p>
 </section>
 
 <section style="max-width:1200px;margin:0 auto;padding:30px 24px 50px">
-<p style="font-size:12.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px;text-align:center">I am a...</p>
+<p style="font-size:max(12.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px;text-align:center">I am a...</p>
 <div class="rp-partner-grid" id="partner-chips"></div>
 </section>
 
 <section style="max-width:940px;margin:0 auto;padding:0 24px 50px">
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px">
-<p style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">For <span id="partner-label"></span></p>
-<p id="partner-blurb" style="font-size:14.5px;line-height:1.7;color:#2c3d4d;margin:0"></p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">For <span id="partner-label"></span></p>
+<p id="partner-blurb" style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:#2c3d4d;margin:0"></p>
 </div>
 </section>
 
@@ -192,36 +192,36 @@
 <input id="r-phone" class="rp-input" placeholder="Your phone or email">
 </div>
 <textarea id="r-situation" class="rp-input" placeholder="Brief situation summary" rows="3" style="width:100%;resize:vertical;margin-bottom:14px"></textarea>
-<p style="font-size:12.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">Urgency</p>
+<p style="font-size:max(12.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 8px">Urgency</p>
 <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap" id="urgency-chips"></div>
 <button id="r-submit" class="btn-primary">Submit Referral</button>
-<p id="r-error" hidden style="font-size:13.5px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:14px 0 0"></p>
+<p id="r-error" hidden style="font-size:max(13.5px, var(--fs-read, 0px));color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:14px 0 0"></p>
 </div>
 
 <div id="referral-thanks" hidden style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:36px;text-align:center">
-<p style="font-size:12px;font-weight:700;color:#0e6b5c;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Referral Received</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#0e6b5c;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Referral Received</p>
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:21px;font-weight:600;margin:0 0 12px;color:#0D365F">Thank you<span id="thanks-name"></span>.</h2>
-<p style="font-size:14.5px;line-height:1.7;color:#55677a;margin:0 0 22px">A care coordinator will follow up<span id="thanks-org"></span> shortly. Once this becomes an active client, you'll be able to see shared updates below.</p>
-<button id="r-reset" style="background:none;border:1.5px solid #dfe6e2;border-radius:9px;padding:12px 22px;font-size:13.5px;font-weight:600;color:#0D365F;cursor:pointer">Submit Another Referral</button>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 0 22px">A care coordinator will follow up<span id="thanks-org"></span> shortly. Once this becomes an active client, you'll be able to see shared updates below.</p>
+<button id="r-reset" style="background:none;border:1.5px solid #dfe6e2;border-radius:9px;padding:12px 22px;font-size:max(13.5px, var(--fs-min, 0px));font-weight:600;color:#0D365F;cursor:pointer">Submit Another Referral</button>
 </div>
 </section>
 
 <section style="max-width:940px;margin:0 auto;padding:0 24px 80px">
-<p style="font-size:12.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px;text-align:center">Preview</p>
+<p style="font-size:max(12.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 6px;text-align:center">Preview</p>
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600;margin:0 0 8px;color:#0D365F;text-align:center">What you'll see once a referral becomes a client</h2>
-<p style="font-size:13.5px;color:#66736B;line-height:1.6;margin:0 0 24px;text-align:center;max-width:520px;margin-left:auto;margin-right:auto">Illustrative example, shared with your consent from the family, so you stay part of the care team.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));color:#4f5b54;line-height:1.6;margin:0 0 24px;text-align:center;max-width:520px;margin-left:auto;margin-right:auto">Illustrative example, shared with your consent from the family, so you stay part of the care team.</p>
 <div style="background:#14606F;border-radius:14px;padding:28px">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-<p style="font-size:14.5px;font-weight:600;color:#fbfaf7;margin:0">Client: J.M. · Personal Care</p>
-<span style="font-size:11px;font-weight:700;color:#14606F;background:#8fd8c8;border-radius:10px;padding:3px 10px">Active</span>
+<p style="font-size:max(14.5px, var(--fs-head, 0px));font-weight:600;color:#fbfaf7;margin:0">Client: J.M. · Personal Care</p>
+<span style="font-size:max(11px, var(--fs-min, 0px));font-weight:700;color:#14606F;background:#8fd8c8;border-radius:10px;padding:3px 10px">Active</span>
 </div>
 <div class="rp-preview-grid">
-<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:11px;font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Assessment Status</p><p style="font-size:13.5px;color:#eef2ef;margin:0">Completed, Personal Care recommended</p></div>
-<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:11px;font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Care Plan Summary</p><p style="font-size:13.5px;color:#eef2ef;margin:0">Bathing, mobility support, 4-hr daily visits</p></div>
-<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:11px;font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Education Provided</p><p style="font-size:13.5px;color:#eef2ef;margin:0">Fall Prevention Guide shared with family</p></div>
-<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:11px;font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Medication Reminders</p><p style="font-size:13.5px;color:#eef2ef;margin:0">92% compliance, last 30 days</p></div>
-<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:11px;font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Fall Reports</p><p style="font-size:13.5px;color:#eef2ef;margin:0">None reported since care began</p></div>
-<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:11px;font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Progress Update</p><p style="font-size:13.5px;color:#eef2ef;margin:0">Stable, next review in 2 weeks</p></div>
+<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:max(11px, var(--fs-min, 0px));font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Assessment Status</p><p style="font-size:max(13.5px, var(--fs-read, 0px));color:#eef2ef;margin:0">Completed, Personal Care recommended</p></div>
+<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:max(11px, var(--fs-min, 0px));font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Care Plan Summary</p><p style="font-size:max(13.5px, var(--fs-read, 0px));color:#eef2ef;margin:0">Bathing, mobility support, 4-hr daily visits</p></div>
+<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:max(11px, var(--fs-min, 0px));font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Education Provided</p><p style="font-size:max(13.5px, var(--fs-read, 0px));color:#eef2ef;margin:0">Fall Prevention Guide shared with family</p></div>
+<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:max(11px, var(--fs-min, 0px));font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Medication Reminders</p><p style="font-size:max(13.5px, var(--fs-read, 0px));color:#eef2ef;margin:0">92% compliance, last 30 days</p></div>
+<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:max(11px, var(--fs-min, 0px));font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Fall Reports</p><p style="font-size:max(13.5px, var(--fs-read, 0px));color:#eef2ef;margin:0">None reported since care began</p></div>
+<div style="background:#103D47;border-radius:8px;padding:14px"><p style="font-size:max(11px, var(--fs-min, 0px));font-weight:700;color:#8fd8c8;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">Progress Update</p><p style="font-size:max(13.5px, var(--fs-read, 0px));color:#eef2ef;margin:0">Stable, next review in 2 weeks</p></div>
 </div>
 </div>
 </section>

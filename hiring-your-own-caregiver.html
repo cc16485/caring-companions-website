@@ -21,10 +21,10 @@
 <style>
 .hy-hero{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; padding:62px 24px 56px; }
 .hy-hero .in{ max-width:900px; margin:0 auto; text-align:center; }
-.hy-hero .kick{ font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#F0A63A; margin:0 0 18px; }
+.hy-hero .kick{ font-size:max(13px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#F0A63A; margin:0 0 18px; }
 .hy-hero h1{ font-family:var(--serif); font-size:42px; font-weight:600; line-height:1.14; letter-spacing:-.02em; margin:0 0 20px; text-wrap:balance; }
 .hy-hero p{ font-size:18px; line-height:1.72; color:#dbe7ec; margin:0 auto 16px; max-width:58ch; }
-.hy-hero .sub{ font-size:15.5px; color:#a9c2cc; }
+.hy-hero .sub{ font-size:max(15.5px, var(--fs-read, 0px)); color:#a9c2cc; }
 .hy-hero .cta{ display:inline-block; background:#F0A63A; color:#3d2a06; font-weight:700; font-size:17px; padding:16px 32px; border-radius:12px; text-decoration:none; margin-top:12px; }
 .hy-hero .cta:hover{ background:#e09a2e; }
 
@@ -42,7 +42,7 @@
 .hy-wrap{ max-width:1000px; margin:0 auto; padding:0 24px; }
 .hy-sec{ padding:56px 0 0; }
 .hy-sec h2{ font-family:var(--serif); font-size:30px; color:var(--brand-blue); margin:0 0 12px; text-wrap:balance; }
-.hy-sec .lede{ font-size:16.5px; line-height:1.75; color:var(--muted); max-width:68ch; margin:0 0 26px; }
+.hy-sec .lede{ font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.75; color:var(--muted); max-width:68ch; margin:0 0 26px; }
 
 .hy-pull{ background:#f2f0e9; border-left:4px solid var(--accent); border-radius:0 14px 14px 0;
   padding:26px 30px; margin:26px 0; }
@@ -54,25 +54,25 @@
 .hy-risk .n{ width:38px; height:38px; border-radius:11px; background:var(--soft-teal); color:var(--cta);
   display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; }
 .hy-risk h3{ font-family:var(--serif); font-size:19px; color:var(--brand-blue); margin:4px 0 8px; }
-.hy-risk p{ font-size:15px; line-height:1.7; color:var(--muted); margin:0 0 8px; }
+.hy-risk p{ font-size:max(15px, var(--fs-read, 0px)); line-height:1.7; color:var(--muted); margin:0 0 8px; }
 .hy-risk p:last-child{ margin:0; }
 .hy-risk b{ color:var(--brand-blue); }
 
 .hy-vid{ background:#0D365F; margin-top:56px; padding:56px 24px; }
 .hy-vid .in{ max-width:900px; margin:0 auto; text-align:center; }
 .hy-vid h2{ font-family:var(--serif); font-size:30px; color:#fff; margin:0 0 12px; text-wrap:balance; }
-.hy-vid p{ font-size:16.5px; line-height:1.72; color:#dbe7ec; max-width:60ch; margin:0 auto 26px; }
+.hy-vid p{ font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.72; color:#dbe7ec; max-width:60ch; margin:0 auto 26px; }
 .hy-vid video{ width:100%; max-width:540px; border-radius:18px; display:block; margin:0 auto;
   box-shadow:0 20px 50px rgba(0,0,0,.32); background:#000; }
 .hy-vid .cta{ display:inline-block; background:#F0A63A; color:#3d2a06; font-weight:700; font-size:17px;
   padding:16px 32px; border-radius:12px; text-decoration:none; margin-top:26px; }
 .hy-vid .cta:hover{ background:#e09a2e; }
-.hy-vid .fine{ font-size:13.5px; color:#9fb6c2; margin:14px auto 0; }
+.hy-vid .fine{ font-size:max(13.5px, var(--fs-min, 0px)); color:#9fb6c2; margin:14px auto 0; }
 
 .hy-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 .hy-c{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 24px; }
 .hy-c h3{ font-family:var(--serif); font-size:18px; color:var(--brand-blue); margin:0 0 8px; }
-.hy-c p{ font-size:14.5px; line-height:1.68; color:var(--muted); margin:0; }
+.hy-c p{ font-size:max(14.5px, var(--fs-read, 0px)); line-height:1.68; color:var(--muted); margin:0; }
 .hy-c .price{ font-family:var(--serif); font-size:15px; color:var(--cta); font-weight:600; margin-top:10px; }
 
 .hy-split{ display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border);
@@ -82,7 +82,7 @@
 .hy-split h3{ font-family:var(--serif); font-size:18px; margin:0 0 14px; }
 .hy-split .a h3{ color:var(--brand-blue); } .hy-split .b h3{ color:var(--brand-blue); }
 .hy-split ul{ list-style:none; margin:0; padding:0; }
-.hy-split li{ position:relative; padding:9px 0 9px 27px; font-size:14.8px; line-height:1.6; border-bottom:1px solid var(--border); }
+.hy-split li{ position:relative; padding:9px 0 9px 27px; font-size:max(14.8px, var(--fs-read, 0px)); line-height:1.6; border-bottom:1px solid var(--border); }
 .hy-split li:last-child{ border-bottom:none; }
 .hy-split li::before{ content:"\2713"; position:absolute; left:0; color:#14606F; font-weight:700; }
 
@@ -91,11 +91,11 @@
 .hy-faq summary::-webkit-details-marker{ display:none; }
 .hy-faq summary::after{ content:"+"; float:right; color:var(--accent); font-weight:700; }
 .hy-faq details[open] summary::after{ content:"\2013"; }
-.hy-faq .a{ font-size:15px; line-height:1.72; color:var(--muted); padding:0 0 18px; max-width:70ch; }
+.hy-faq .a{ font-size:max(15px, var(--fs-read, 0px)); line-height:1.72; color:var(--muted); padding:0 0 18px; max-width:70ch; }
 
 .hy-close{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; margin-top:60px; padding:58px 24px; text-align:center; }
 .hy-close h2{ font-family:var(--serif); font-size:32px; margin:0 0 14px; text-wrap:balance; }
-.hy-close p{ font-size:16.5px; line-height:1.7; color:#dbe7ec; max-width:58ch; margin:0 auto 26px; }
+.hy-close p{ font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.7; color:#dbe7ec; max-width:58ch; margin:0 auto 26px; }
 .hy-close .cta{ display:inline-block; background:#F0A63A; color:#3d2a06; font-weight:700; font-size:17px;
   padding:16px 32px; border-radius:12px; text-decoration:none; margin:0 8px 10px; }
 .hy-close .alt{ display:inline-block; color:#fff; font-weight:700; font-size:16px; padding:16px 20px; text-decoration:underline; }
@@ -105,25 +105,25 @@
 .hy-tools li{ border-top:1px solid var(--border); }
 .hy-tools li:first-child{ border-top:none; }
 .hy-tools a{ display:flex; align-items:center; gap:10px; justify-content:space-between;
-  padding:10px 0; font-size:14.5px; color:#2c3d4d; text-decoration:none; line-height:1.45; }
+  padding:10px 0; font-size:max(14.5px, var(--fs-read, 0px)); color:#2c3d4d; text-decoration:none; line-height:1.45; }
 .hy-tools a:hover{ color:var(--cta); }
-.hy-tools .k{ flex:0 0 auto; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+.hy-tools .k{ flex:0 0 auto; font-size:max(10.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.05em; text-transform:uppercase;
   border-radius:999px; padding:3px 8px; background:#eef4f5; color:var(--cta); }
 .hy-tools .k.g{ background:#e8f6ef; color:#0f7a4d; }
-.hy-c .all{ display:inline-block; margin-top:12px; font-weight:700; font-size:14px; color:var(--cta); text-decoration:none; }
+.hy-c .all{ display:inline-block; margin-top:12px; font-weight:700; font-size:max(14px, var(--fs-min, 0px)); color:var(--cta); text-decoration:none; }
 .hy-paths{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:8px 0 0; }
 .hy-path{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 24px; display:flex; flex-direction:column; }
 .hy-path.on{ border:2px solid var(--cta); box-shadow:0 14px 38px rgba(31,122,140,.13); }
-.hy-path .tag{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--cta); margin-bottom:8px; }
+.hy-path .tag{ font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--cta); margin-bottom:8px; }
 .hy-path h3{ font-family:var(--serif); font-size:20px; color:var(--brand-blue); margin:0 0 10px; }
-.hy-path p{ font-size:14.5px; line-height:1.68; color:var(--muted); margin:0 0 12px; }
-.hy-path .who{ font-size:13.5px; line-height:1.6; color:#2c3d4d; background:#f6f5f0; border-radius:10px; padding:11px 13px; margin:0 0 14px; }
+.hy-path p{ font-size:max(14.5px, var(--fs-read, 0px)); line-height:1.68; color:var(--muted); margin:0 0 12px; }
+.hy-path .who{ font-size:max(13.5px, var(--fs-read, 0px)); line-height:1.6; color:#2c3d4d; background:#f6f5f0; border-radius:10px; padding:11px 13px; margin:0 0 14px; }
 .hy-path a.go{ margin-top:auto; font-weight:700; color:var(--cta); text-decoration:none; font-size:15px; }
 .hy-cds{ background:#EAF4F6; border-radius:18px; padding:30px 32px; margin-top:20px; }
 .hy-cds h3{ font-family:var(--serif); font-size:23px; color:var(--brand-blue); margin:0 0 12px; text-wrap:balance; }
-.hy-cds p{ font-size:15.5px; line-height:1.72; color:#2c3d4d; margin:0 0 12px; }
+.hy-cds p{ font-size:max(15.5px, var(--fs-read, 0px)); line-height:1.72; color:#2c3d4d; margin:0 0 12px; }
 .hy-cds ul{ list-style:none; margin:6px 0 14px; padding:0; }
-.hy-cds li{ position:relative; padding:7px 0 7px 26px; font-size:15px; line-height:1.6; color:#2c3d4d; }
+.hy-cds li{ position:relative; padding:7px 0 7px 26px; font-size:max(15px, var(--fs-read, 0px)); line-height:1.6; color:#2c3d4d; }
 .hy-cds li::before{ content:"\2713"; position:absolute; left:0; color:#14606F; font-weight:700; }
 .hy-cds .go{ display:inline-block; background:var(--cta); color:#fff; font-weight:700; font-size:16px;
   padding:14px 26px; border-radius:11px; text-decoration:none; }
@@ -132,7 +132,7 @@
 @media (max-width:639px){ .hy-cds{ padding:24px 20px; } .hy-cds h3{ font-size:20px; } }
 @media (max-width:900px){ .hy-3{ grid-template-columns:1fr; } }
 @media (max-width:639px){
-  .hy-hero{ padding:44px 20px 40px; } .hy-hero h1{ font-size:30px; } .hy-hero p{ font-size:16px; }
+  .hy-hero{ padding:44px 20px 40px; } .hy-hero h1{ font-size:30px; } .hy-hero p{ font-size:max(16px, var(--fs-read, 0px)); }
   .hy-sec h2{ font-size:25px; } .hy-split{ grid-template-columns:1fr; }
   .hy-risk{ grid-template-columns:1fr; gap:12px; } .hy-pull p{ font-size:18px; }
 }
@@ -332,7 +332,7 @@
       </ul>
       <p><b>Caring Companions Community Directed Services</b> is a CDS provider. We can tell you in one conversation whether it is worth pursuing, and walk you through it if it is.</p>
       <a class="go" href="https://caringcds.com" target="_blank" rel="noopener">See if CDS could work &rarr;</a>
-      <p style="margin:14px 0 0; font-size:14px; color:var(--muted);">Or call our CDS office directly at <a href="tel:14172182888" style="color:var(--cta);font-weight:600;">(417) 218-2888</a>. If it turns out not to fit, we will say so and you will have lost a phone call.</p>
+      <p style="margin:14px 0 0; font-size:max(14px, var(--fs-read, 0px)); color:var(--muted);">Or call our CDS office directly at <a href="tel:14172182888" style="color:var(--cta);font-weight:600;">(417) 218-2888</a>. If it turns out not to fit, we will say so and you will have lost a phone call.</p>
     </div>
   </section>
 
@@ -372,7 +372,7 @@
         <p>Two of these are free and most families have never heard of either one. Do all three.</p>
         <p><b>1. The Missouri Family Care Safety Registry.</b> Open to the public, for a worker who has consented. It covers the child and elder abuse registries, the employee disqualification list, and criminal history, and it is run by the state health department at <a href="https://health.mo.gov/safety/fcsr/" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">health.mo.gov/safety/fcsr</a>. This is the one built for exactly what you are doing.</p>
         <p><b>2. Missouri Case.net.</b> Free, and you do not need anybody's permission, because Missouri court records are public. Go to <a href="https://www.courts.mo.gov/casenet/welcome.do" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">courts.mo.gov/casenet</a>, choose <b>Litigant Name Search</b>, and type their name. You will see public civil and criminal cases from Missouri courts, including evictions, judgments, and orders of protection, which no background check package will show you.</p>
-        <p style="font-size:14.5px;color:var(--muted);margin:-4px 0 12px;">Three things to know before you trust it. Names repeat constantly, so confirm the date of birth or address before you conclude anything about a person. It only covers Missouri, so somebody who lived in Arkansas until last year will look spotless. And the state says outright it is a service, not an official court record. It is also closed overnight and at weekends, running Monday to Friday, 6am to 1am, which surprises people who go looking on a Sunday.</p>
+        <p style="font-size:max(14.5px, var(--fs-read, 0px));color:var(--muted);margin:-4px 0 12px;">Three things to know before you trust it. Names repeat constantly, so confirm the date of birth or address before you conclude anything about a person. It only covers Missouri, so somebody who lived in Arkansas until last year will look spotless. And the state says outright it is a service, not an official court record. It is also closed overnight and at weekends, running Monday to Friday, 6am to 1am, which surprises people who go looking on a Sunday.</p>
         <p><b>3. A paid criminal background check.</b> This is the one that reaches past the state line. A screening company like <a href="https://checkr.com" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">Checkr</a>, which is what we use for our own caregivers, runs national criminal databases, the sex offender registry, and county records everywhere the person has lived. It costs a modest amount per person and it needs their written consent. HomeTogether Hire has a <a href="https://tryhometogether.com/tools/background-check-authorization" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">background check authorization form</a> ready to sign.</p>
         <p>Then verify their driver's license and auto insurance if they will ever drive your parent anywhere. And call every reference, including the ones they did not offer.</p>
       </div></div>
@@ -420,7 +420,7 @@
     </div>
     <p class="lede" style="margin-top:22px;">The hiring tool works anywhere in the country. The caregiver directory is live across the Springfield area and expanding, so if you are further out you can still post a job and use the rest of it.
     <a href="https://tryhometogether.com/hire" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;">See everything HomeTogether Hire does &rarr;</a></p>
-    <p class="lede" style="margin-top:8px; font-size:15px;"><b>One honest note about screening:</b> no background check guarantees safety, on any website including ours. A check finds what has been recorded, and plenty never is. Ask what has actually been completed on the person you are considering, call every reference, and run <a href="#start" style="color:var(--cta);font-weight:600;">the three checks above</a> yourself. Two of them are free.</p>
+    <p class="lede" style="margin-top:8px; font-size:max(15px, var(--fs-read, 0px));"><b>One honest note about screening:</b> no background check guarantees safety, on any website including ours. A check finds what has been recorded, and plenty never is. Ask what has actually been completed on the person you are considering, call every reference, and run <a href="#start" style="color:var(--cta);font-weight:600;">the three checks above</a> yourself. Two of them are free.</p>
   </section>
 
   <section class="hy-sec" id="tools">
@@ -491,7 +491,7 @@
           <li>A shift genuinely cannot go unfilled</li>
           <li>More than one caregiver is needed to cover the week</li>
         </ul>
-        <p style="font-size:14px;line-height:1.65;color:var(--muted);margin:14px 0 0;">None of that means a private caregiver cannot do the work. Plenty are excellent at all of it. It means the supervision, the training, the backup, and the risk all land on you, and that load grows faster than most families expect.</p>
+        <p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.65;color:var(--muted);margin:14px 0 0;">None of that means a private caregiver cannot do the work. Plenty are excellent at all of it. It means the supervision, the training, the backup, and the risk all land on you, and that load grows faster than most families expect.</p>
       </div>
     </div>
   </section>

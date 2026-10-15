@@ -153,17 +153,17 @@ input[type=range] { accent-color: var(--accent); }
 <section class="cc-hero">
 <p class="kicker">Care Costs Calculator</p>
 <h1 class="cc-h1">What might care actually cost?</h1>
-<p style="font-size:15px;line-height:1.65;color:#45566a;margin:0 auto;max-width:520px">Move the slider to your estimated weekly hours and see how home care compares to other options. All figures are estimates, a free in-home assessment gets you an exact number.</p>
+<p style="font-size:max(15px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:520px">Move the slider to your estimated weekly hours and see how home care compares to other options. All figures are estimates, a free in-home assessment gets you an exact number.</p>
 </section>
 
 <section style="max-width:840px;margin:0 auto;padding:30px 24px">
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px">
 <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-<span style="font-size:13px;font-weight:600;color:#55677a">Hours of care per week</span>
+<span style="font-size:max(13px, var(--fs-min, 0px));font-weight:600;color:#45566a">Hours of care per week</span>
 <span style="font-size:15px;font-weight:700;color:#122236"><span id="hours-label">20</span> hrs</span>
 </div>
 <input id="hours" type="range" min="4" max="168" step="4" value="20" style="width:100%" aria-label="Hours of care per week">
-<p style="font-size:12px;color:#66736B;margin:10px 0 0">4 = a few hours a week · 168 = full-time, round-the-clock (24-hour range)</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));color:#4f5b54;margin:10px 0 0">4 = a few hours a week · 168 = full-time, round-the-clock (24-hour range)</p>
 </div>
 </section>
 
@@ -172,23 +172,23 @@ input[type=range] { accent-color: var(--accent); }
 <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
 <svg style="width:26px;height:26px;flex:0 0 auto" aria-hidden="true"><use href="/assets/icons.svg#i-tv"/></svg>
 <div style="flex:1;min-width:200px">
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0">Add HomeTogether TV</p>
-<p style="font-size:12.5px;color:#55677a;margin:2px 0 0;line-height:1.5">Video calls, reminders &amp; radar safety sensing through their TV, $99/month flat. Many families pair it with a few in-home hours to cover the time in between.</p>
+<p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0">Add HomeTogether TV</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:2px 0 0;line-height:1.5">Video calls, reminders &amp; radar safety sensing through their TV, $99/month flat. Many families pair it with a few in-home hours to cover the time in between.</p>
 </div>
-<label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:13.5px;font-weight:700;color:#1F7A8C"><input id="ht-on" type="checkbox" style="width:20px;height:20px;accent-color:#1F7A8C"> Include</label>
+<label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1F7A8C"><input id="ht-on" type="checkbox" style="width:20px;height:20px;accent-color:#1F7A8C"> Include</label>
 </div>
 <div id="ht-opts" hidden style="margin-top:16px;border-top:1px solid #eef2ef;padding-top:14px;display:grid;gap:10px">
-<label style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#2c3d4d;cursor:pointer"><input id="ht-net" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Built-in cellular internet (no Wi-Fi needed) &middot; <b>$35/mo</b></label>
-<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px;color:#2c3d4d">
+<label style="display:flex;align-items:center;gap:10px;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d;cursor:pointer"><input id="ht-net" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Built-in cellular internet (no Wi-Fi needed) &middot; <b>$35/mo</b></label>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d">
 <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input id="ht-sens" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Whole-home safety sensors &middot; <b>from $15/mo</b></label>
 <span id="ht-rooms-wrap" hidden style="display:inline-flex;align-items:center;gap:6px">Rooms:
-<select id="ht-rooms" style="padding:5px 8px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:13px"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+<select id="ht-rooms" style="padding:5px 8px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:max(13px, var(--fs-read, 0px))"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
 </span>
 </div>
-<label style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#2c3d4d;cursor:pointer"><input id="ht-health" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Connected health readings (blood pressure &amp; more) &middot; <b>$10/mo</b></label>
-<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px;color:#2c3d4d">
+<label style="display:flex;align-items:center;gap:10px;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d;cursor:pointer"><input id="ht-health" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Connected health readings (blood pressure &amp; more) &middot; <b>$10/mo</b></label>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d">
 <span>Virtual caregiver visits (same caregiver, Mon&ndash;Fri):</span>
-<select id="ht-visits" style="padding:6px 9px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:13px">
+<select id="ht-visits" style="padding:6px 9px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:max(13px, var(--fs-read, 0px))">
 <option value="0">None</option>
 <option value="75">15 min &middot; once daily &middot; $75/wk</option>
 <option value="130">15 min &middot; twice daily &middot; $130/wk</option>
@@ -206,40 +206,40 @@ input[type=range] { accent-color: var(--accent); }
 <div style="display:flex;flex-direction:column;gap:12px">
 <div style="background:#fbf6ec;border:1.5px solid #C17A12;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
 <div>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Caring Companions (Home Care)</p>
-<p id="hc-note" style="font-size:12.5px;color:#55677a;margin:0;line-height:1.5"></p>
+<p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Caring Companions (Home Care)</p>
+<p id="hc-note" style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:0;line-height:1.5"></p>
 </div>
 <p id="hc-estimate" style="font-size:19px;font-weight:700;color:#9C6410;margin:0"></p>
 <div id="ht-lines" hidden style="border-top:1px dashed #e2cfa5;padding-top:10px">
-<p style="font-size:13px;color:#55677a;margin:0 0 3px;display:flex;justify-content:space-between"><span>HomeTogether TV</span><span id="ht-base">$99/mo</span></p>
-<p id="ht-extra-row" style="font-size:13px;color:#55677a;margin:0 0 3px;display:flex;justify-content:space-between" hidden><span>Add-ons</span><span id="ht-extras"></span></p>
-<p id="ht-visit-row" style="font-size:13px;color:#55677a;margin:0 0 8px;display:flex;justify-content:space-between" hidden><span>Virtual caregiver visits</span><span id="ht-visits-amt"></span></p>
-<p style="font-size:16px;font-weight:700;color:#122236;margin:0;display:flex;justify-content:space-between"><span>Everything together</span><span id="combined"></span></p>
+<p style="font-size:max(13px, var(--fs-read, 0px));color:#45566a;margin:0 0 3px;display:flex;justify-content:space-between"><span>HomeTogether TV</span><span id="ht-base">$99/mo</span></p>
+<p id="ht-extra-row" style="font-size:max(13px, var(--fs-read, 0px));color:#45566a;margin:0 0 3px;display:flex;justify-content:space-between" hidden><span>Add-ons</span><span id="ht-extras"></span></p>
+<p id="ht-visit-row" style="font-size:max(13px, var(--fs-read, 0px));color:#45566a;margin:0 0 8px;display:flex;justify-content:space-between" hidden><span>Virtual caregiver visits</span><span id="ht-visits-amt"></span></p>
+<p style="font-size:max(16px, var(--fs-head, 0px));font-weight:700;color:#122236;margin:0;display:flex;justify-content:space-between"><span>Everything together</span><span id="combined"></span></p>
 </div>
 </div>
 <div style="background:#ffffff;border:1.5px solid #e4e1d8;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
 <div>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Assisted Living</p>
-<p style="font-size:12.5px;color:#55677a;margin:0;line-height:1.5">Typical Missouri regional range, all-inclusive monthly</p>
+<p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Assisted Living</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:0;line-height:1.5">Typical Missouri regional range, all-inclusive monthly</p>
 </div>
 <p style="font-size:19px;font-weight:700;color:#122236;margin:0">$3,500 – $5,500/mo</p>
 </div>
 <div style="background:#ffffff;border:1.5px solid #e4e1d8;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
 <div>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Memory Care</p>
-<p style="font-size:12.5px;color:#55677a;margin:0;line-height:1.5">Typical Missouri regional range, all-inclusive monthly</p>
+<p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Memory Care</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:0;line-height:1.5">Typical Missouri regional range, all-inclusive monthly</p>
 </div>
 <p style="font-size:19px;font-weight:700;color:#122236;margin:0">$5,000 – $7,500/mo</p>
 </div>
 <div style="background:#ffffff;border:1.5px solid #e4e1d8;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
 <div>
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Nursing Home (Skilled)</p>
-<p style="font-size:12.5px;color:#55677a;margin:0;line-height:1.5">Typical Missouri regional range, private pay</p>
+<p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 6px;line-height:1.35">Nursing Home (Skilled)</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:0;line-height:1.5">Typical Missouri regional range, private pay</p>
 </div>
 <p style="font-size:19px;font-weight:700;color:#122236;margin:0">$6,500 – $9,000/mo</p>
 </div>
 </div>
-<p style="font-size:12px;color:#66736B;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr, for visits and 24-hour care alike. HomeTogether TV is $99/month flat with optional add-ons (internet $35, sensors from $15, health readings $10) and weekly-billed virtual visits. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));color:#4f5b54;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr, for visits and 24-hour care alike. HomeTogether TV is $99/month flat with optional add-ons (internet $35, sensors from $15, health readings $10) and weekly-billed virtual visits. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
 </section>
 
 
@@ -247,17 +247,17 @@ input[type=range] { accent-color: var(--accent); }
 <section style="max-width:880px;margin:0 auto;padding:8px 24px 44px;">
   <div style="background:#f2f0e9;border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:26px 30px;">
     <p style="font-family:var(--serif);font-size:20px;line-height:1.55;color:var(--brand-blue);margin:0 0 10px;">Thinking about hiring somebody yourself instead?</p>
-    <p style="font-size:15.5px;line-height:1.72;color:#2c3d4d;margin:0 0 14px;">Plenty of families do, and sometimes it is the right call. We put everything we know about doing it safely into one page: what you take on as an employer, the Missouri background check anyone can run, and free templates for the paperwork. No cost, and no obligation to ever hire us.</p>
+    <p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.72;color:#2c3d4d;margin:0 0 14px;">Plenty of families do, and sometimes it is the right call. We put everything we know about doing it safely into one page: what you take on as an employer, the Missouri background check anyone can run, and free templates for the paperwork. No cost, and no obligation to ever hire us.</p>
     <a href="/hiring-your-own-caregiver" style="font-weight:700;color:var(--cta);text-decoration:none;font-size:15.5px;">How to hire a caregiver yourself &rarr;</a>
   </div>
 </section>
 <section style="max-width:840px;margin:0 auto;padding:0 24px 80px;text-align:center">
 <div style="background:#14606F;border-radius:16px;padding:30px">
-<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Want the exact number for your situation?</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Want the exact number for your situation?</p>
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600;margin:0 0 20px;color:#fbfaf7">A free in-home assessment gives you a real quote, not an estimate.</h2>
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
-<a href="book" style="background:#fbfaf7;color:#14606F;border:none;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none;display:inline-block">Schedule a Free In-Home Assessment</a>
-<a href="care-paths/paying-for-care" style="background:transparent;color:#fbfaf7;border:1.5px solid #2d4a63;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Explore Payment Options</a>
+<a href="book" style="background:#fbfaf7;color:#14606F;border:none;border-radius:9px;padding:14px 26px;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;text-decoration:none;display:inline-block">Schedule a Free In-Home Assessment</a>
+<a href="care-paths/paying-for-care" style="background:transparent;color:#fbfaf7;border:1.5px solid #2d4a63;border-radius:9px;padding:14px 26px;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;text-decoration:none">Explore Payment Options</a>
 </div>
 </div>
 </section>

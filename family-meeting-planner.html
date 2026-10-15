@@ -145,11 +145,11 @@
 <section class="fm-hero">
 <p class="kicker no-print">Family Meeting Planner</p>
 <h1 class="fm-h1">Let's prepare for the conversation.</h1>
-<p class="no-print" style="font-size:14.5px;line-height:1.65;color:#45566a;margin:0 0 20px">Tell us who's involved and what's driving the meeting. We'll generate an agenda, discussion guide, and decision worksheet you can print or share.</p>
+<p class="no-print" style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 0 20px">Tell us who's involved and what's driving the meeting. We'll generate an agenda, discussion guide, and decision worksheet you can print or share.</p>
 
 <div class="no-print" style="display:flex;flex-direction:column;gap:14px;margin-bottom:10px">
-<input id="who-name" placeholder="Who is this meeting about? (e.g. Mom, Dad)" style="padding:13px 15px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a">
-<p style="font-size:12.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.04em;margin:0">What's driving this meeting?</p>
+<input id="who-name" placeholder="Who is this meeting about? (e.g. Mom, Dad)" style="padding:13px 15px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a">
+<p style="font-size:max(12.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.04em;margin:0">What's driving this meeting?</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px" id="trigger-chips"></div>
 </div>
 </section>
@@ -157,34 +157,34 @@
 <section style="max-width:880px;margin:0 auto;padding:20px 24px 60px">
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;margin-bottom:18px">
-<p style="font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Agenda</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Agenda</p>
 <div id="agenda"></div>
 </div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;margin-bottom:18px">
-<p style="font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Discussion Guide</p>
-<p style="font-size:13.5px;color:#66736B;line-height:1.6;margin:0 0 12px">Because this meeting is about <span id="trigger-lower"></span>, start here:</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Discussion Guide</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));color:#4f5b54;line-height:1.6;margin:0 0 12px">Because this meeting is about <span id="trigger-lower"></span>, start here:</p>
 <div id="questions"></div>
 </div>
 
 <div style="background:#f2f0e9;border-radius:14px;padding:24px;margin-bottom:18px">
-<p style="font-size:11.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Decision Worksheet</p>
-<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ What did we decide today?</p>
-<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ What are we still unsure about?</p>
-<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ Who is responsible for each next step?</p>
-<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">☐ When do we check back in as a family?</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Decision Worksheet</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.9;color:#2c3d4d;margin:0">☐ What did we decide today?</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.9;color:#2c3d4d;margin:0">☐ What are we still unsure about?</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.9;color:#2c3d4d;margin:0">☐ Who is responsible for each next step?</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.9;color:#2c3d4d;margin:0">☐ When do we check back in as a family?</p>
 </div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:26px;margin-bottom:18px">
-<p style="font-size:11.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Responsibilities &amp; Follow-Up Tasks</p>
-<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
-<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
-<p style="font-size:14px;line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Responsibilities &amp; Follow-Up Tasks</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.9;color:#2c3d4d;margin:0">Name: ______________ &nbsp;&nbsp; Task: ______________ &nbsp;&nbsp; By when: ______________</p>
 </div>
 
 <div class="no-print" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px">
 <button id="print-plan" class="btn-primary">Print This Planner</button>
-<a href="cara" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Ask Cara for Help Preparing</a>
+<a href="cara" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;text-decoration:none">Ask Cara for Help Preparing</a>
 </div>
 </section>
 

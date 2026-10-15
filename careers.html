@@ -23,25 +23,25 @@
 .cr-h1 { font-family: var(--serif); font-size: 46px; line-height: 1.12; font-weight: 600; margin: 0 0 18px; color: var(--brand-blue); letter-spacing: -0.015em; }
 .cr-hero-img { width: 100%; height: 340px; border-radius: 18px; object-fit: cover; }
 .cr-trust { max-width:1200px; margin: 0 auto; padding: 4px 24px 8px; display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: center; }
-.cr-trust span { font-size: 13.5px; color: var(--muted); }
+.cr-trust span { font-size: max(13.5px, var(--fs-min, 0px)); color: var(--muted); }
 .cr-trust b { color: var(--accent); }
 .cr-section { max-width:1200px; margin: 0 auto; padding: 40px 24px; }
 .cr-section h2 { font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--brand-blue); margin: 0 0 10px; text-align: center; }
-.cr-section .lede { font-size: 15.5px; line-height: 1.65; color: var(--muted); margin: 0 auto 28px; max-width:760px; text-align: center; }
+.cr-section .lede { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.65; color: var(--muted); margin: 0 auto 28px; max-width:760px; text-align: center; }
 .cr-roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .cr-role { background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; display: flex; flex-direction: column; }
 .cr-role .emoji { font-size: 22px; margin: 0 0 8px; color: transparent; text-shadow: 0 0 0 var(--cta); }
 .cr-role h3 { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--ink-2); margin: 0 0 4px; }
-.cr-role .tag { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
-.cr-role .li { display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: var(--body-text); padding: 3px 0; }
+.cr-role .tag { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
+.cr-role .li { display: flex; gap: 9px; align-items: flex-start; font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.5; color: var(--body-text); padding: 3px 0; }
 .cr-role .li .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
 .cr-role .apply { margin-top: 16px; }
 .cr-process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .cr-step { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; }
 .cr-step .n { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fbfaf7; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 0 12px; }
-.cr-step h4 { font-size: 14.5px; font-weight: 600; color: var(--ink-2); margin: 0 0 6px; }
-.cr-step p { font-size: 12.5px; line-height: 1.5; color: var(--muted); margin: 0; }
-.cr-process-note { font-size: 13.5px; line-height: 1.6; color: var(--muted); text-align: center; margin: 18px auto 0; max-width: 640px; }
+.cr-step h4 { font-size: max(14.5px, var(--fs-head, 0px)); font-weight: 600; color: var(--ink-2); margin: 0 0 6px; }
+.cr-step p { font-size: max(12.5px, var(--fs-read, 0px)); line-height: 1.5; color: var(--muted); margin: 0; }
+.cr-process-note { font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.6; color: var(--muted); text-align: center; margin: 18px auto 0; max-width: 640px; }
 .cr-openings { max-width:1060px; margin: 0 auto; padding: 20px 24px; }
 .cr-openings-card { background: var(--soft-panel); border: 1px dashed var(--border); border-radius: 16px; padding: 32px; text-align: center; }
 .cr-cta-band { background: var(--navy-panel); }
@@ -187,7 +187,7 @@
 <div>
 <p class="kicker">Careers · Springfield, MO</p>
 <h1 class="cr-h1">Meaningful work, close to home.</h1>
-<p style="font-size:16.5px;line-height:1.6;color:#45566a;margin:0 0 26px;max-width:520px">Join a team that values kindness, flexibility, and purpose. If you have at least a year of paid caregiving experience, whether as a caregiver, a CNA or in a facility, there's a place for you here.</p>
+<p style="font-size:max(16.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:0 0 26px;max-width:520px">Join a team that values kindness, flexibility, and purpose. If you have at least a year of paid caregiving experience, whether as a caregiver, a CNA or in a facility, there's a place for you here.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px">
 <a href="/apply?job=caregiver-springfield&amp;channel_source=website" class="js-apply btn-apply">Apply in about 2 minutes →</a>
 <a href="#openings" class="btn-outline">See open positions</a>
@@ -217,7 +217,7 @@
 <div class="li"><span class="mk">✓</span> Light housekeeping, laundry &amp; bedding</div>
 <div class="li"><span class="mk">✓</span> Meal prep &amp; grocery shopping</div>
 <div class="li"><span class="mk">✓</span> Errands, transportation &amp; medication reminders</div>
-<p style="font-size:12.5px;color:var(--muted-label);margin:12px 0 0">Paired only with clients who don't need personal care. Perfect if you love helping people and building connection.</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:var(--muted-label);margin:12px 0 0">Paired only with clients who don't need personal care. Perfect if you love helping people and building connection.</p>
 <div class="apply"><a href="/apply?job=caregiver-springfield&amp;channel_source=website" class="js-apply btn-primary" style="width:100%;text-align:center;padding:12px">Apply, In-Home Caregiver</a></div>
 </div>
 <div class="cr-role">
@@ -227,7 +227,7 @@
 <div class="li"><span class="mk">✓</span> Everything in Wellness Care, plus…</div>
 <div class="li"><span class="mk">✓</span> Bathing, dressing &amp; grooming</div>
 <div class="li"><span class="mk">✓</span> Toileting &amp; incontinence care</div>
-<p style="font-size:12.5px;color:var(--muted-label);margin:12px 0 0">Ideal for experienced caregivers and CNAs who are comfortable with hands-on care.</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:var(--muted-label);margin:12px 0 0">Ideal for experienced caregivers and CNAs who are comfortable with hands-on care.</p>
 <div class="apply"><a href="/apply?job=caregiver-springfield&amp;channel_source=website" class="js-apply btn-primary" style="width:100%;text-align:center;padding:12px">Apply, In-Home Caregiver</a></div>
 </div>
 <div class="cr-role">
@@ -245,9 +245,9 @@
 
 <section class="cr-section" style="padding-top:8px">
 <div style="background:#f2f0e9;border-radius:16px;padding:32px 30px;text-align:center;max-width:940px;margin:0 auto">
-<p style="font-size:11.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Our Philosophy</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Our Philosophy</p>
 <p style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;color:#0D365F;margin:0 0 12px">Care deeply. Act kindly. Serve with purpose.</p>
-<p style="font-size:14.5px;line-height:1.75;color:#2c3d4d;margin:0;max-width:720px;margin-left:auto;margin-right:auto">We care for others the way we'd want our own loved ones cared for, and we know great care begins with great caregivers. That's why we build a culture of appreciation, support, and trust, where every caregiver feels valued.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.75;color:#2c3d4d;margin:0;max-width:720px;margin-left:auto;margin-right:auto">We care for others the way we'd want our own loved ones cared for, and we know great care begins with great caregivers. That's why we build a culture of appreciation, support, and trust, where every caregiver feels valued.</p>
 </div>
 </section>
 
@@ -271,56 +271,56 @@
 
 <section class="cr-openings" id="openings">
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:600;color:#0D365F;margin:0 0 8px;text-align:center">Current openings</h2>
-<p style="font-size:14.5px;color:var(--muted);margin:0 auto 24px;max-width:560px;text-align:center;line-height:1.6">See every open position and job description, and apply in a few clicks.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));color:var(--muted);margin:0 auto 24px;max-width:560px;text-align:center;line-height:1.6">See every open position and job description, and apply in a few clicks.</p>
 <!-- JOBS:START (generated by tools/build-jobs.mjs, do not edit by hand) -->
 <div style="display:grid;gap:12px;max-width:760px;margin:0 auto">
 <a href="/jobs/respite-caregiver-mount-vernon" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-decoration:none">
 <span style="flex:1 1 220px">
 <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;color:#0D365F">Respite Caregiver</span>
-<span style="display:block;font-size:13.5px;color:var(--muted);margin-top:3px">Mount Vernon, MO &middot; Part time &middot; 8 hours a week of respite care: companionship, lunch and light housekeeping. Mondays, or Mondays and Wednesdays.</span>
+<span style="display:block;font-size:max(13.5px, var(--fs-min, 0px));color:var(--muted);margin-top:3px">Mount Vernon, MO &middot; Part time &middot; 8 hours a week of respite care: companionship, lunch and light housekeeping. Mondays, or Mondays and Wednesdays.</span>
 </span>
-<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:13.5px;font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
-<span style="font-size:14px;font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
+<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
 </a>
 <a href="/jobs/caregiver-weekdays-springfield" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-decoration:none">
 <span style="flex:1 1 220px">
 <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;color:#0D365F">Caregiver, Weekdays</span>
-<span style="display:block;font-size:13.5px;color:var(--muted);margin-top:3px">Springfield, MO &middot; Full time &middot; Weekday daytime caregiving, Monday to Friday 7am to 5:30pm. Full time, or share the week with another caregiver.</span>
+<span style="display:block;font-size:max(13.5px, var(--fs-min, 0px));color:var(--muted);margin-top:3px">Springfield, MO &middot; Full time &middot; Weekday daytime caregiving, Monday to Friday 7am to 5:30pm. Full time, or share the week with another caregiver.</span>
 </span>
-<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:13.5px;font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
-<span style="font-size:14px;font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
+<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
 </a>
 <a href="/jobs/weekend-caregiver-springfield" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-decoration:none">
 <span style="flex:1 1 220px">
 <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;color:#0D365F">Weekend Caregiver</span>
-<span style="display:block;font-size:13.5px;color:var(--muted);margin-top:3px">Springfield, MO &middot; Part time &middot; Weekend shifts in Springfield, days and evenings. Personal care or companionship, matched to you.</span>
+<span style="display:block;font-size:max(13.5px, var(--fs-min, 0px));color:var(--muted);margin-top:3px">Springfield, MO &middot; Part time &middot; Weekend shifts in Springfield, days and evenings. Personal care or companionship, matched to you.</span>
 </span>
-<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:13.5px;font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
-<span style="font-size:14px;font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
+<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
 </a>
 <a href="/jobs/caregiver-personal-care-springfield" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-decoration:none">
 <span style="flex:1 1 220px">
 <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;color:#0D365F">Caregiver/CNA Bed-Bound Care</span>
-<span style="display:block;font-size:13.5px;color:var(--muted);margin-top:3px">Springfield, MO &middot; Part time &middot; Personal care and transfers, 7 days a week. Pick morning (8am to 2pm) or evening (4pm to 10pm) shifts.</span>
+<span style="display:block;font-size:max(13.5px, var(--fs-min, 0px));color:var(--muted);margin-top:3px">Springfield, MO &middot; Part time &middot; Personal care and transfers, 7 days a week. Pick morning (8am to 2pm) or evening (4pm to 10pm) shifts.</span>
 </span>
-<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:13.5px;font-weight:700;color:#1c6b45">$17.00–$18.00/hr</span>
-<span style="font-size:14px;font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
+<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1c6b45">$17.00–$18.00/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
 </a>
 <a href="/jobs/prn-cna-springfield" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-decoration:none">
 <span style="flex:1 1 220px">
 <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;color:#0D365F">PRN CNA</span>
-<span style="display:block;font-size:13.5px;color:var(--muted);margin-top:3px">Springfield, MO &middot; PRN, as needed &middot; $20/hr · Start PRN. Stay flexible.</span>
+<span style="display:block;font-size:max(13.5px, var(--fs-min, 0px));color:var(--muted);margin-top:3px">Springfield, MO &middot; PRN, as needed &middot; $20/hr · Start PRN. Stay flexible.</span>
 </span>
-<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:13.5px;font-weight:700;color:#1c6b45">$20.00/hr</span>
-<span style="font-size:14px;font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
+<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1c6b45">$20.00/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
 </a>
 <a href="/jobs/caregiver-springfield" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-decoration:none">
 <span style="flex:1 1 220px">
 <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;color:#0D365F">Caregiver</span>
-<span style="display:block;font-size:13.5px;color:var(--muted);margin-top:3px">Springfield, MO &middot; Part time &middot; Help older adults stay safe and independent at home. W-2, paid weekly, flexible shifts.</span>
+<span style="display:block;font-size:max(13.5px, var(--fs-min, 0px));color:var(--muted);margin-top:3px">Springfield, MO &middot; Part time &middot; Help older adults stay safe and independent at home. W-2, paid weekly, flexible shifts.</span>
 </span>
-<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:13.5px;font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
-<span style="font-size:14px;font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
+<span style="background:#e8f1ec;border-radius:999px;padding:5px 13px;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1c6b45">$16.00–$17.00/hr</span>
+<span style="font-size:max(14px, var(--fs-min, 0px));font-weight:600;color:var(--accent)">View &amp; apply &rarr;</span>
 </a>
 </div>
 <!-- JOBS:END -->
@@ -328,9 +328,9 @@
 
 <section class="cr-cta-band">
 <div class="cr-cta-inner">
-<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Ready to make a difference?</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Ready to make a difference?</p>
 <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:30px;font-weight:600;color:#fbfaf7;margin:0 0 14px">Your application takes about 2 minutes.</h2>
-<p style="font-size:15px;line-height:1.7;color:#c3cdd6;margin:0 auto 26px;max-width:520px">No lengthy forms. No uploads required. Just the first step toward work that matters.</p>
+<p style="font-size:max(15px, var(--fs-read, 0px));line-height:1.7;color:#c3cdd6;margin:0 auto 26px;max-width:520px">No lengthy forms. No uploads required. Just the first step toward work that matters.</p>
 <a href="/apply?job=caregiver-springfield&amp;channel_source=website" class="js-apply btn-apply">Apply Now →</a>
 </div>
 </section>

@@ -25,46 +25,46 @@
   .ap-band h1{font-family:var(--serif);font-size:32px;line-height:1.15;font-weight:600;margin:0 0 8px;color:#fbfaf7;}
   .ap-pay{display:inline-block;background:#e8c988;color:#122236;border-radius:999px;padding:7px 18px;font-size:17px;font-weight:700;margin:0 0 14px;}
   .ap-perks{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 0 12px;}
-  .ap-perks span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:5px 13px;font-size:13px;color:#e6edf3;}
-  .ap-counties{font-size:12.5px;color:#a9b7c4;letter-spacing:.03em;text-transform:uppercase;margin:6px 0 0;line-height:1.7;}
+  .ap-perks span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:5px 13px;font-size:max(13px, var(--fs-min, 0px));color:#e6edf3;}
+  .ap-counties{font-size:max(12.5px, var(--fs-min, 0px));color:#a9b7c4;letter-spacing:.03em;text-transform:uppercase;margin:6px 0 0;line-height:1.7;}
 
   .ap-wrap{max-width:600px;margin:0 auto;padding:26px 22px 70px;}
   .ap-steps{display:flex;align-items:center;gap:9px;margin:0 0 6px;}
   .ap-dot{height:5px;border-radius:99px;background:#e3ded3;flex:1;}
   .ap-dot.on{background:var(--accent);}
-  .ap-stepno{font-size:13px;color:var(--muted);font-weight:600;}
-  .ap-quick{font-size:13px;color:#1c6b45;font-weight:600;}
+  .ap-stepno{font-size:max(13px, var(--fs-min, 0px));color:var(--muted);font-weight:600;}
+  .ap-quick{font-size:max(13px, var(--fs-min, 0px));color:#1c6b45;font-weight:600;}
 
   .ap-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;margin:14px 0 0;}
   label.f{display:block;font-size:15px;font-weight:600;color:var(--ink-2);margin:16px 0 6px;line-height:1.4;}
   label.f:first-child{margin-top:0;}
-  label.f .opt{font-weight:400;color:var(--muted);font-size:13.5px;}
-  .sub{font-size:13px;color:var(--muted);margin:-2px 0 7px;line-height:1.5;}
-  input.t,select.t,textarea.t{width:100%;font:inherit;font-size:16px;padding:12px 13px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--ink-2);}
+  label.f .opt{font-weight:400;color:var(--muted);font-size:max(13.5px, var(--fs-min, 0px));}
+  .sub{font-size:max(13px, var(--fs-read, 0px));color:var(--muted);margin:-2px 0 7px;line-height:1.5;}
+  input.t,select.t,textarea.t{width:100%;font:inherit;font-size:max(16px, var(--fs-read, 0px));padding:12px 13px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--ink-2);}
   textarea.t{resize:vertical;}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 0;}
-  .chips button{font:inherit;font-size:14.5px;font-weight:600;padding:11px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--ink-2);cursor:pointer;text-align:left;}
+  .chips button{font:inherit;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;padding:11px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--ink-2);cursor:pointer;text-align:left;}
   .chips button.on{background:var(--brand-blue);border-color:var(--brand-blue);color:#fbfaf7;}
   .chips.stack button{width:100%;}
   .q{padding:14px 0;border-bottom:1px solid #f1eee7;}
   .q:last-of-type{border-bottom:none;}
-  .qt{font-size:15px;font-weight:600;color:var(--ink-2);line-height:1.45;}
-  .qs{font-size:13px;color:var(--muted);margin:3px 0 0;line-height:1.5;}
-  .consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0 0;font-size:13.5px;line-height:1.55;color:var(--body-text);}
+  .qt{font-size:max(15px, var(--fs-read, 0px));font-weight:600;color:var(--ink-2);line-height:1.45;}
+  .qs{font-size:max(13px, var(--fs-read, 0px));color:var(--muted);margin:3px 0 0;line-height:1.5;}
+  .consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0 0;font-size:max(13.5px, var(--fs-read, 0px));line-height:1.55;color:var(--body-text);}
   .consent input{margin-top:3px;width:17px;height:17px;accent-color:var(--accent);flex:none;}
   .go{width:100%;background:var(--accent);color:#fbfaf7;border:0;border-radius:11px;padding:17px;font:inherit;font-size:17px;font-weight:700;cursor:pointer;margin-top:18px;}
   .go:disabled{opacity:.6;cursor:default;}
-  .back{background:none;border:0;font:inherit;font-size:14px;color:var(--muted);cursor:pointer;padding:12px 0 0;text-decoration:underline;}
-  .err{display:none;color:#b00020;font-size:14px;margin-top:12px;line-height:1.5;}
-  .foot{font-size:12.5px;color:var(--muted);text-align:center;margin-top:20px;line-height:1.65;}
+  .back{background:none;border:0;font:inherit;font-size:max(14px, var(--fs-min, 0px));color:var(--muted);cursor:pointer;padding:12px 0 0;text-decoration:underline;}
+  .err{display:none;color:#b00020;font-size:max(14px, var(--fs-read, 0px));margin-top:12px;line-height:1.5;}
+  .foot{font-size:max(12.5px, var(--fs-read, 0px));color:var(--muted);text-align:center;margin-top:20px;line-height:1.65;}
   .done{display:none;text-align:center;padding:34px 12px;}
   .check{width:60px;height:60px;border-radius:50%;background:#dcfce7;color:#15803d;font-size:32px;line-height:60px;margin:0 auto 10px;}
   /* PRN CNA Team: the position line and the pay acknowledgment. */
-  .ap-posline{display:none;margin:0 0 12px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 15px;font-size:14.5px;color:var(--ink-2);}
+  .ap-posline{display:none;margin:0 0 12px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 15px;font-size:max(14.5px, var(--fs-min, 0px));color:var(--ink-2);}
   .ap-posline b{color:var(--brand-blue);}
   .prn-h{font-size:15px;font-weight:700;color:var(--brand-blue);margin:18px 0 2px;}
-  .prn-pay{display:flex;gap:11px;align-items:flex-start;background:#fbf6ea;border:1px solid #ecd9ae;border-radius:12px;padding:14px 15px;margin:20px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink-2);}
+  .prn-pay{display:flex;gap:11px;align-items:flex-start;background:#fbf6ea;border:1px solid #ecd9ae;border-radius:12px;padding:14px 15px;margin:20px 0 0;font-size:max(14.5px, var(--fs-read, 0px));line-height:1.55;color:var(--ink-2);}
   .prn-pay input{margin-top:3px;width:19px;height:19px;accent-color:var(--accent);flex:none;}
   @media(max-width:560px){ .row2{grid-template-columns:1fr;} .ap-band h1{font-size:26px;} }
 </style>
@@ -249,8 +249,8 @@
  <div class="done" id="noView">
    <div class="check" style="background:#fdf1e3;color:#b45309;">&#33;</div>
    <h1 style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:0 0 10px;">Thank you for applying.</h1>
-   <p style="font-size:15.5px;line-height:1.7;color:var(--body-text);margin:0 auto 14px;max-width:450px;" id="noWhy"></p>
-   <p style="font-size:14.5px;line-height:1.7;color:var(--muted);margin:0 auto;max-width:450px;" id="noNext"></p>
+   <p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:var(--body-text);margin:0 auto 14px;max-width:450px;" id="noWhy"></p>
+   <p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:var(--muted);margin:0 auto;max-width:450px;" id="noNext"></p>
    <p class="foot">Caring Companions In-Home Senior Care &middot; (417) 234-8494 &middot; Springfield, MO</p>
  </div>
 
@@ -261,13 +261,13 @@
    <div style="text-align:center;padding:6px 0 4px;">
      <div class="check" style="width:52px;height:52px;font-size:27px;line-height:52px;">&#10003;</div>
      <h1 id="bookHead" style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
-     <p id="bookLede" style="font-size:15px;line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are <b>in person, here at our office</b> (we do not do phone interviews) and take about <span id="bookMins">20</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
+     <p id="bookLede" style="font-size:max(15px, var(--fs-read, 0px));line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are <b>in person, here at our office</b> (we do not do phone interviews) and take about <span id="bookMins">20</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
    </div>
    <!-- Somebody who already has a time lands here from the same ?book= link
         their messages carry. Moving or cancelling has to be as easy as booking
         was, or "just call us" quietly becomes a no-show. -->
    <div class="ap-card" id="manageCard" style="display:none;">
-     <div style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Your interview</div>
+     <div style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Your interview</div>
      <div id="manageWhen" style="font-size:17px;color:var(--ink-2);line-height:1.5;"></div>
      <div class="chips" id="manageBtns" style="margin-top:14px;">
        <button type="button" onclick="startReschedule()">Pick a different time</button>
@@ -279,7 +279,7 @@
      <div id="cancelPanel" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px;">
        <div style="font-size:16px;font-weight:700;color:var(--ink-2);">Need a different time instead?</div>
        <div class="chips" style="margin-top:8px;"><button type="button" onclick="cancelBack();startReschedule()">Pick a different time</button></div>
-       <div style="font-size:15px;font-weight:700;color:var(--ink-2);margin-top:16px;">Or cancel. Mind telling us why? <span class="opt" style="font-weight:400;color:var(--muted);font-size:13.5px;">(optional)</span></div>
+       <div style="font-size:15px;font-weight:700;color:var(--ink-2);margin-top:16px;">Or cancel. Mind telling us why? <span class="opt" style="font-weight:400;color:var(--muted);font-size:max(13.5px, var(--fs-min, 0px));">(optional)</span></div>
        <div class="chips stack" id="cancelWhy" style="margin-top:8px;">
          <button type="button" data-k="found_job" onclick="cancelPick(this)">I found another job</button>
          <button type="button" data-k="schedule" onclick="cancelPick(this)">My schedule changed</button>
@@ -294,7 +294,7 @@
      </div>
      <p class="sub" id="manageLocked" style="display:none;margin:12px 0 0;"></p>
      <p class="sub" id="manageKeep" style="margin:12px 0 0;">Keeping it? Then there is nothing to do; we will see you then. Questions, ring (417)&nbsp;234-8494.</p>
-     <div id="manageErr" style="display:none;color:#b00020;font-size:14px;margin-top:10px;"></div>
+     <div id="manageErr" style="display:none;color:#b00020;font-size:max(14px, var(--fs-min, 0px));margin-top:10px;"></div>
    </div>
    <div class="ap-card" id="slotsCard">
      <div id="slotsBody"><p class="sub" style="margin:0;">Finding times…</p></div>
@@ -308,15 +308,15 @@
  <div class="done" id="doneView">
    <div class="check">&#10003;</div>
    <h1 id="doneHead" style="font-family:var(--serif);font-size:29px;font-weight:600;color:var(--brand-blue);margin:0 0 10px;">Thank you, <span id="doneName">that is in</span>.</h1>
-   <p style="font-size:15.5px;line-height:1.7;color:var(--body-text);margin:0 auto 16px;max-width:460px;" id="doneLede"></p>
+   <p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:var(--body-text);margin:0 auto 16px;max-width:460px;" id="doneLede"></p>
    <button class="back" id="changeBtn" style="display:none;" onclick="manageAgain()">I need to move or cancel this</button>
    <button class="back" id="rebookBtn" style="display:none;" onclick="rebook()">Pick a new time instead</button>
    <div id="whereCard" style="display:none;background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;margin:0 auto;max-width:420px;text-align:left;">
-     <div style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Where to come</div>
-     <div style="font-size:15.5px;font-weight:600;color:var(--ink-2);line-height:1.5;" id="whereName"></div>
-     <div style="font-size:15px;color:var(--body-text);line-height:1.55;" id="whereAddr"></div>
-     <a id="whereMap" href="#" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:14px;color:var(--brand-blue);font-weight:600;">Open in maps &rarr;</a>
-     <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin:12px 0 0;" id="whereNote"></p>
+     <div style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;">Where to come</div>
+     <div style="font-size:max(15.5px, var(--fs-read, 0px));font-weight:600;color:var(--ink-2);line-height:1.5;" id="whereName"></div>
+     <div style="font-size:max(15px, var(--fs-read, 0px));color:var(--body-text);line-height:1.55;" id="whereAddr"></div>
+     <a id="whereMap" href="#" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:max(14px, var(--fs-min, 0px));color:var(--brand-blue);font-weight:600;">Open in maps &rarr;</a>
+     <p style="font-size:max(13.5px, var(--fs-read, 0px));color:var(--muted);line-height:1.6;margin:12px 0 0;" id="whereNote"></p>
      <!-- A picture of the right door saves more calls than any wording does. -->
      <img id="wherePhoto" alt="The entrance to our office" style="display:none;width:100%;border-radius:10px;margin-top:12px;">
    </div>
@@ -428,7 +428,7 @@ function prnSetup(role){
   PRN = role;
   const rate = role.pay_min ? '$' + Number(role.pay_min).toFixed(2).replace(/\.00$/, '') + '/hr' : '';
   g('posLine').innerHTML = 'Position: <b>' + esc(role.label) + '</b>' + (rate ? ' &middot; ' + rate : '')
-    + '<div style="margin-top:7px;font-size:13.5px;color:var(--muted);line-height:1.6;">'
+    + '<div style="margin-top:7px;font-size:max(13.5px, var(--fs-read, 0px));color:var(--muted);line-height:1.6;">'
     + '<b style="color:var(--ink-2);">Start PRN. Stay flexible.</b> Tell us when you are generally available and we will text you opportunities that may fit. '
     + 'Accept or decline, no pressure. Once you accept and are confirmed, we count on you.</div>';
   g('posLine').style.display = 'block';
@@ -455,7 +455,7 @@ function prnSetup(role){
       + '<b style="display:block;margin-bottom:3px;">PRN Team pay</b>' + esc(role.pay_ack) + '</span></label>'
       /* The $20 is the offer. $18 is only a short note (her wording, 2026-09-29): it is what our CNAs are paid if
          they switch to taking an ongoing client, never alongside the PRN rate. */
-      + '<p class="sub" style="margin:8px 2px 0;font-size:12.5px;">Note: if you would like to switch to taking an ongoing client, our CNAs are paid $18 an hour.</p>';
+      + '<p class="sub" style="margin:8px 2px 0;font-size:max(12.5px, var(--fs-read, 0px));">Note: if you would like to switch to taking an ongoing client, our CNAs are paid $18 an hour.</p>';
   }
 }
 const prnLabel = (list, keys) => keys.map(k => (list.find(x => x[0] === k) || [k, k])[1]);
@@ -1013,7 +1013,7 @@ async function loadSlots(note){
     });
     box.innerHTML = top + [...byDay.values()].map(day =>
       '<div style="margin:0 0 16px;">'
-      + '<div style="font-size:14.5px;font-weight:700;color:var(--brand-blue);margin:0 0 8px;">' + day.label + '</div>'
+      + '<div style="font-size:max(14.5px, var(--fs-min, 0px));font-weight:700;color:var(--brand-blue);margin:0 0 8px;">' + day.label + '</div>'
       + '<div class="chips">' + day.times.map(t =>
           '<button type="button" onclick="bookSlot(this,\'' + t.iso + '\')">' + t.label + '</button>').join('')
       + '</div></div>').join('');

@@ -10,7 +10,7 @@
 <style>
 .cmp-hero { max-width:940px; margin: 0 auto; padding: 56px 24px 20px; text-align: center; }
 .cmp-h1 { font-family: var(--serif); font-size: 33px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
-.cmp-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.cmp-table { width: 100%; border-collapse: collapse; font-size: max(13.5px, var(--fs-min, 0px)); }
 .cmp-table th { text-align: left; padding: 12px; background: #122a40; color: #fff; font-weight: 600; }
 .cmp-table td { padding: 12px; color: var(--body-text); line-height: 1.5; }
 .cmp-table td.row-label { font-weight: 600; color: var(--ink-2); background: #f6f5f0; white-space: nowrap; }
@@ -158,7 +158,7 @@
 <section class="cmp-hero">
 <p class="kicker">Compare Care Options</p>
 <h1 class="cmp-h1">Home Care, Assisted Living, Memory Care, or Nursing Home?</h1>
-<p style="font-size:15px;line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">An honest, side-by-side look, including when home care isn't the right fit. We'd rather you choose well than choose us.</p>
+<p style="font-size:max(15px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">An honest, side-by-side look, including when home care isn't the right fit. We'd rather you choose well than choose us.</p>
 </section>
 
 <section style="max-width:1200px;margin:0 auto;padding:20px 24px;overflow-x:auto">
@@ -186,14 +186,14 @@
 
 <section style="max-width:1000px;margin:0 auto;padding:20px 24px 50px">
 <div style="background:#fbf6ec;border:1px solid #e8dcc4;border-radius:12px;padding:22px">
-<p style="font-size:13.5px;line-height:1.7;color:#5a4726;margin:0"><strong>When we'd tell you home care isn't the right fit:</strong> if round-the-clock skilled nursing is medically necessary, if the home itself isn't safe to modify, or if the family truly can't be involved at all and full-time supervision plus medical staff is required, a skilled nursing facility or memory care community is often the more responsible choice.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.7;color:#5a4726;margin:0"><strong>When we'd tell you home care isn't the right fit:</strong> if round-the-clock skilled nursing is medically necessary, if the home itself isn't safe to modify, or if the family truly can't be involved at all and full-time supervision plus medical staff is required, a skilled nursing facility or memory care community is often the more responsible choice.</p>
 </div>
 </section>
 
 <section style="max-width:940px;margin:0 auto;padding:0 24px 80px;text-align:center">
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
-<a href="cost-calculator" style="background:#1F7A8C;color:#faf9f6;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Estimate Costs</a>
-<a href="cara" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:14.5px;font-weight:600;text-decoration:none">Ask Cara Which Fits</a>
+<a href="cost-calculator" style="background:#1F7A8C;color:#faf9f6;border-radius:9px;padding:14px 26px;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;text-decoration:none">Estimate Costs</a>
+<a href="cara" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;text-decoration:none">Ask Cara Which Fits</a>
 </div>
 </section>
 

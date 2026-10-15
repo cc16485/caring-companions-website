@@ -23,26 +23,26 @@ body { background:#faf8f3; }
 .djh-hero { background: linear-gradient(150deg,#0e2c49 0%, #1b4266 58%, #2a5478 100%); border-radius: 26px; padding: 56px 46px; position: relative; overflow: hidden; margin-bottom: 30px; }
 .djh-hero::after { content:""; position:absolute; right:-80px; top:-80px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle,rgba(239,206,133,.32),transparent 66%); pointer-events:none; }
 .djh-hero > * { position: relative; }
-.djh-hero .k { font-size: 11.5px; font-weight: 700; color: var(--djh-gold); text-transform: uppercase; letter-spacing: .1em; margin: 0 0 16px; }
+.djh-hero .k { font-size: max(11.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--djh-gold); text-transform: uppercase; letter-spacing: .1em; margin: 0 0 16px; }
 .djh-hero h1 { font-family:'Source Serif 4',Georgia,serif; font-size: 46px; font-weight: 600; color: #fbf7ee; margin: 0 0 10px; letter-spacing: -0.01em; line-height:1.15; }
 .djh-hero .sub { font-family:'Source Serif 4',Georgia,serif; font-style: italic; font-size: 19px; color: #e9dcbb; margin: 0 0 18px; line-height: 1.55; }
-.djh-hero .d { font-size: 15px; line-height: 1.75; color: #c9d4de; margin: 0 0 26px; max-width: 520px; }
+.djh-hero .d { font-size: max(15px, var(--fs-read, 0px)); line-height: 1.75; color: #c9d4de; margin: 0 0 26px; max-width: 520px; }
 .djh-begin { display: inline-flex; align-items: center; gap: 10px; background: var(--djh-gold); color: var(--djh-navy-deep); border-radius: 999px; padding: 15px 30px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .15s ease, transform .12s ease; }
 .djh-begin:hover { background:#e8c46f; transform: translateY(-1px); }
-.djh-meta { display: inline-flex; gap: 18px; margin-left: 18px; font-size: 12.5px; color: #9fb2c2; font-weight: 600; }
-.djh-sect { font-size: 11.5px; font-weight: 700; color: var(--djh-gold-ink); text-transform: uppercase; letter-spacing: .1em; text-align: center; margin: 38px 0 8px; }
+.djh-meta { display: inline-flex; gap: 18px; margin-left: 18px; font-size: max(12.5px, var(--fs-min, 0px)); color: #9fb2c2; font-weight: 600; }
+.djh-sect { font-size: max(11.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--djh-gold-ink); text-transform: uppercase; letter-spacing: .1em; text-align: center; margin: 38px 0 8px; }
 .djh-h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 30px; font-weight: 600; color: var(--djh-navy); text-align: center; margin: 0 0 8px; }
-.djh-sub2 { font-size: 14.5px; line-height: 1.65; color: #55677a; text-align: center; max-width: 520px; margin: 0 auto 26px; }
+.djh-sub2 { font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.65; color: #45566a; text-align: center; max-width: 520px; margin: 0 auto 26px; }
 .djh-cast { background: #fffdf8; border: 1px solid #ece4d2; border-radius: 20px; padding: 30px 32px; position: relative; overflow: hidden; margin-bottom: 34px; box-shadow: 0 10px 30px rgba(20,58,94,.06); }
 .djh-cast::after { content:""; position:absolute; right:-60px; top:-80px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(239,206,133,.22),transparent 66%); pointer-events:none; }
 .djh-cast > * { position: relative; }
-.djh-cast .k { font-size: 11px; font-weight: 700; color: var(--djh-gold-ink); text-transform: uppercase; letter-spacing: .12em; text-align: center; margin: 0 0 20px; }
+.djh-cast .k { font-size: max(11px, var(--fs-min, 0px)); font-weight: 700; color: var(--djh-gold-ink); text-transform: uppercase; letter-spacing: .12em; text-align: center; margin: 0 0 20px; }
 .djh-cast .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 18px; }
 .djh-cast .c { text-align: center; }
 .djh-cast .n { font-family:'Source Serif 4',Georgia,serif; font-size: 19px; font-weight: 600; color: var(--djh-navy); margin: 0 0 4px; }
-.djh-cast .r { font-size: 12px; line-height: 1.5; color: #8a97a3; margin: 0; }
+.djh-cast .r { font-size: max(12px, var(--fs-min, 0px)); line-height: 1.5; color: #8a97a3; margin: 0; }
 .djh-cast .c.dim .n { color: #c8b070; font-style: italic; font-size: 16px; }
-.djh-cast .tag { font-family:'Source Serif 4',Georgia,serif; font-style: italic; text-align: center; font-size: 14.5px; color: #7a8a99; margin: 22px 0 0; border-top: 1px solid #ece4d2; padding-top: 18px; }
+.djh-cast .tag { font-family:'Source Serif 4',Georgia,serif; font-style: italic; text-align: center; font-size: max(14.5px, var(--fs-min, 0px)); color: #7a8a99; margin: 22px 0 0; border-top: 1px solid #ece4d2; padding-top: 18px; }
 .djh-ep, .djh-ep:hover, .djh-ep:focus { text-decoration: none !important; }
 .djh-ep { display: flex; gap: 18px; align-items: center; border-radius: 20px; padding: 24px 26px; margin-bottom: 12px; text-decoration: none; transition: transform .13s ease, box-shadow .13s ease; }
 .djh-ep.live { background: #fffdf8; border: 1.5px solid #e5d9bd; position: relative; overflow: hidden; box-shadow: 0 10px 28px rgba(20,58,94,.08); }
@@ -52,20 +52,20 @@ body { background:#faf8f3; }
 .djh-ep .num { flex: 0 0 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family:'Source Serif 4',Georgia,serif; font-size: 20px; font-weight: 600; }
 .djh-ep.live .num { background: #fbf3dd; color: var(--djh-gold-ink); border: 1.5px solid #ead9ac; }
 .djh-ep .body { flex: 1; min-width: 0; }
-.djh-ep .badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; border-radius: 999px; padding: 3px 10px; margin-bottom: 7px; }
+.djh-ep .badge { display: inline-block; font-size: max(10px, var(--fs-min, 0px)); font-weight: 700; text-transform: uppercase; letter-spacing: .07em; border-radius: 999px; padding: 3px 10px; margin-bottom: 7px; }
 .djh-ep.live .badge { background: #fbf3dd; color: var(--djh-gold-ink); }
 .djh-ep.live h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 20px; font-weight: 600; color: var(--djh-navy); margin: 0 0 5px; }
-.djh-ep.live p { font-size: 13px; line-height: 1.6; color: #55677a; margin: 0; }
+.djh-ep.live p { font-size: max(13px, var(--fs-read, 0px)); line-height: 1.6; color: #45566a; margin: 0; }
 .djh-ep .play { flex: 0 0 46px; height: 46px; border-radius: 50%; background: var(--djh-gold); display: flex; align-items: center; justify-content: center; color: var(--djh-navy-deep); font-size: 16px; }
 .djh-ep.soon { background: #fffdf8; border: 1px solid #ece4d2; }
-.djh-ep.soon .num { background: #f3ecdc; color: #a99f89; }
-.djh-ep.soon .badge { background: #f3ecdc; color: #a99f89; }
+.djh-ep.soon .num { background: #f3ecdc; color: #7a6f58; }
+.djh-ep.soon .badge { background: #f3ecdc; color: #7a6f58; }
 .djh-ep.soon h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 18px; font-weight: 600; color: #61707f; margin: 0 0 4px; }
-.djh-ep.soon p { font-size: 13px; line-height: 1.6; color: #94a0ab; margin: 0; }
+.djh-ep.soon p { font-size: max(13px, var(--fs-read, 0px)); line-height: 1.6; color: #94a0ab; margin: 0; }
 .djh-card { background: #fffdf8; border: 1px solid #ece4d2; border-radius: 20px; padding: 26px; margin-top: 14px; }
 .djh-card h2 { font-family:'Source Serif 4',Georgia,serif; font-size: 19px; font-weight: 600; color: var(--djh-navy); margin: 0 0 8px; }
-.djh-card p { font-size: 13.5px; line-height: 1.65; color: #55677a; margin: 0 0 12px; }
-.djh-card a.res { display: block; font-size: 14px; font-weight: 600; color: #1F7A8C; margin-bottom: 8px; text-decoration: none; }
+.djh-card p { font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.65; color: #45566a; margin: 0 0 12px; }
+.djh-card a.res { display: block; font-size: max(14px, var(--fs-min, 0px)); font-weight: 600; color: #1F7A8C; margin-bottom: 8px; text-decoration: none; }
 .djh-card a.res:hover { text-decoration: underline; }
 .djh-help { background: #fdf6e8; border: 1.5px solid #e3c98f; }
 .djh-help p { color: #5c4a22; margin: 0; line-height: 1.9; }
@@ -190,7 +190,7 @@ body { background:#faf8f3; }
 
 <div class="djh-card djh-help">
 <h2 style="color:#0D365F">If you need help right now</h2>
-<p style="font-size:13.5px">Emergencies: <a href="tel:911" style="font-weight:700">911</a> &middot; Emotional crisis: call or text <a href="tel:988" style="font-weight:700">988</a> &middot; Alzheimer&rsquo;s Association 24/7 Helpline: <a href="tel:18002723900" style="font-weight:700">(800) 272-3900</a> &middot; Sudden changes: call their provider. &middot; Local help: <a href="/sw-missouri-caregiver-resources" style="font-weight:700">SW Missouri Caregiver Resource Directory</a>.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px))">Emergencies: <a href="tel:911" style="font-weight:700">911</a> &middot; Emotional crisis: call or text <a href="tel:988" style="font-weight:700">988</a> &middot; Alzheimer&rsquo;s Association 24/7 Helpline: <a href="tel:18002723900" style="font-weight:700">(800) 272-3900</a> &middot; Sudden changes: call their provider. &middot; Local help: <a href="/sw-missouri-caregiver-resources" style="font-weight:700">SW Missouri Caregiver Resource Directory</a>.</p>
 </div>
 
 </div>

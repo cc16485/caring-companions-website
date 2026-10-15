@@ -23,9 +23,9 @@
 .bk-h1 { font-family: var(--serif); font-size: 36px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
 .bk-expect { max-width:1100px; margin: 0 auto; padding: 24px 24px 8px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .bk-expect-card { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-.bk-expect-card .k { font-size: 11.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px; }
-.bk-expect-card p.t { font-size: 15px; font-weight: 600; color: var(--ink-2); margin: 0 0 5px; line-height: 1.35; }
-.bk-expect-card p.d { font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0; }
+.bk-expect-card .k { font-size: max(11.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px; }
+.bk-expect-card p.t { font-size: max(15px, var(--fs-read, 0px)); font-weight: 600; color: var(--ink-2); margin: 0 0 5px; line-height: 1.35; }
+.bk-expect-card p.d { font-size: max(13px, var(--fs-read, 0px)); line-height: 1.55; color: var(--muted); margin: 0; }
 .bk-cal-wrap { max-width:940px; margin: 0 auto; padding: 24px 24px 12px; }
 .bk-cta-card { background: linear-gradient(160deg, #ffffff 0%, #f6f5f0 100%); border: 1px solid var(--border); border-radius: 16px; padding: 40px 32px; text-align: center; box-shadow: 0 1px 2px rgba(22,40,58,0.04); }
 .bk-fallback { max-width:940px; margin: 0 auto; padding: 8px 24px 70px; text-align: center; }
@@ -33,7 +33,7 @@
 .bk-opt:hover { border-color: var(--cta); }
 .bk-opt:focus-visible { outline: none; border-color: var(--cta); box-shadow: 0 0 0 3px rgba(31,122,140,.25); }
 .bk-opt.sel { border-color: var(--cta); background: var(--soft-teal); box-shadow: inset 0 0 0 1px var(--cta); }
-.bk-opt.sel::after { content: "\2713 Selected"; position: absolute; top: 12px; right: 14px; font-size: 11px; font-weight: 700; color: var(--cta); letter-spacing: .02em; }
+.bk-opt.sel::after { content: "\2713 Selected"; position: absolute; top: 12px; right: 14px; font-size: max(11px, var(--fs-min, 0px)); font-weight: 700; color: var(--cta); letter-spacing: .02em; }
 @media (max-width: 719px) {
   .bk-hero { padding: 36px 20px 8px; }
   .bk-h1 { font-size: 27px; }
@@ -168,7 +168,7 @@
 <section class="bk-hero">
 <p class="kicker">Schedule Your Free In-Home Assessment</p>
 <h1 class="bk-h1">Let's find the right care, together.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">We come to you, your living room, your kitchen table, to meet your loved one, see the home, and build the right care plan together. Always free, no pressure, no obligation, and nothing to prepare.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">We come to you, your living room, your kitchen table, to meet your loved one, see the home, and build the right care plan together. Always free, no pressure, no obligation, and nothing to prepare.</p>
 </section>
 
 <section class="bk-expect">
@@ -191,15 +191,15 @@
 
 <section class="bk-cal-wrap">
 <div class="bk-cta-card" style="text-align:left">
-<p style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-align:center">Ready when you are</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-align:center">Ready when you are</p>
 <h2 style="font-family:var(--serif);font-size:24px;font-weight:600;color:var(--brand-blue);margin:0 0 10px;text-align:center">Pick a time that fits.</h2>
-<p style="font-size:14px;line-height:1.65;color:var(--muted);margin:0 auto 18px;max-width:480px;text-align:center">These are real openings on our care coordinators' calendars, all times Central. Pick one and you'll get a confirmation text and email right away.</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.65;color:var(--muted);margin:0 auto 18px;max-width:480px;text-align:center">These are real openings on our care coordinators' calendars, all times Central. Pick one and you'll get a confirmation text and email right away.</p>
 <iframe src="https://link.mo-care.com/widget/booking/QXut3xLe6NwhjFkiLsoy" title="Schedule your free in-home assessment" loading="lazy" style="width:100%;min-height:760px;border:0;border-radius:10px;background:#fff"></iframe>
 </div>
 </section>
 
 <section class="bk-fallback">
-<p style="font-size:14.5px;color:#55677a;line-height:1.7;margin:0 0 14px">Prefer to talk to a person right now, or rather we reach out to you?</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));color:#45566a;line-height:1.7;margin:0 0 14px">Prefer to talk to a person right now, or rather we reach out to you?</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
 <a href="tel:14172348494" class="btn-outline">Call (417) 234-8494</a>
 <a href="contact" class="btn-outline">Send us a message instead</a>
