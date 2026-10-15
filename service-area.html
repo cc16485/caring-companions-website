@@ -159,7 +159,42 @@
 <section class="sa-hero">
 <p class="kicker">Service Areas</p>
 <h1 class="sa-h1">Home care across Southwest Missouri.</h1>
-<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto;max-width:720px">Caring Companions is based in Springfield. Find your county below to see how we can help, or call us at (417) 234-8494 to ask about your area.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto;max-width:720px">Caring Companions is based in Springfield. Check your ZIP code on the map, find your county below, or call us at (417) 234-8494 to ask about your area.</p>
+</section>
+<section class="sm-section" aria-labelledby="sm-title">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="/assets/service-area-map.css">
+<div class="sm-grid">
+<div class="sm-box">
+<div id="sm-map" class="sm-map" role="region" aria-label="Map of the counties Caring Companions serves in Southwest Missouri"></div>
+<p class="sm-fallback">The map couldn&rsquo;t load. Every county and town we serve is listed below.</p>
+</div>
+<aside class="sm-panel">
+<h2 id="sm-title">Is your home in our area?</h2>
+<form id="sm-check" class="sm-check" novalidate>
+<label for="sm-zip" class="sm-sr">Your ZIP code</label>
+<input id="sm-zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="Enter your ZIP code">
+<button type="submit">Check</button>
+</form>
+<p id="sm-result" class="sm-result" role="status" aria-live="polite"></p>
+<h3>What the colors mean</h3>
+<ul class="sm-legend">
+<li><span style="background:#0F5563;opacity:.75"></span>Counties we actively serve</li>
+<li><span style="background:#3E98A8;opacity:.75"></span>Availability is limited</li>
+<li><span class="sm-sw-future"></span>Areas we may consider in the future</li>
+</ul>
+<h3>Show me</h3>
+<div class="sm-groups">
+<button type="button" data-sm-group="core" aria-pressed="true">Where we serve</button>
+<button type="button" data-sm-group="active">Actively serve</button>
+<button type="button" data-sm-group="limited">Limited</button>
+<button type="button" data-sm-group="all">Everything</button>
+</div>
+<p class="sm-note">Tap any county on the map to see its towns and how to reach us.</p>
+</aside>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/service-area-map.js"></script>
 </section>
 <section class="sa-wrap" style="max-width:1040px">
 <div class="sa-tier">
