@@ -25,24 +25,24 @@
 .fa-why { max-width:1100px; margin: 0 auto; padding: 20px 24px 8px; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .fa-why-card { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
 .fa-why-card svg { width: 26px; height: 26px; margin-bottom: 10px; }
-.fa-why-card p.t { font-size: 14.5px; font-weight: 600; color: var(--ink-2); margin: 0 0 5px; }
-.fa-why-card p.d { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 0; }
+.fa-why-card p.t { font-size: max(14.5px, var(--fs-read, 0px)); font-weight: 600; color: var(--ink-2); margin: 0 0 5px; }
+.fa-why-card p.d { font-size: max(13px, var(--fs-read, 0px)); line-height: 1.6; color: var(--muted); margin: 0; }
 .fa-course { max-width:1000px; margin: 0 auto; padding: 26px 24px 8px; }
 .fa-course-card { background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 30px 28px; }
-.fa-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
+.fa-badge { display: inline-block; font-size: max(11px, var(--fs-min, 0px)); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
 .fa-badge.live { background: var(--soft-teal); color: var(--cta); }
 .fa-badge.soon { background: #fdf3e2; color: #9C6410; }
 .fa-course-card h2 { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
-.fa-course-card > p.sub { font-size: 14.5px; line-height: 1.65; color: var(--muted); margin: 0 0 20px; }
+.fa-course-card > p.sub { font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.65; color: var(--muted); margin: 0 0 20px; }
 .fa-lesson { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid #f0ede4; text-decoration: none; }
 .fa-lesson:hover .lt { color: var(--cta); }
-.fa-lesson .num { flex: 0 0 30px; height: 30px; border-radius: 50%; background: #EAF4F6; color: var(--cta); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.fa-lesson .num { flex: 0 0 30px; height: 30px; border-radius: 50%; background: #EAF4F6; color: var(--cta); font-size: max(13px, var(--fs-min, 0px)); font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
 .fa-lesson .lt { font-size: 15px; font-weight: 600; color: var(--ink-2); margin: 0 0 3px; transition: color .12s ease; }
-.fa-lesson .ld { font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0; }
-.fa-lesson .min { margin-left: auto; flex: 0 0 auto; font-size: 12px; color: var(--muted-label); white-space: nowrap; padding-top: 4px; }
+.fa-lesson .ld { font-size: max(13px, var(--fs-read, 0px)); line-height: 1.55; color: var(--muted); margin: 0; }
+.fa-lesson .min { margin-left: auto; flex: 0 0 auto; font-size: max(12px, var(--fs-min, 0px)); color: var(--muted-label); white-space: nowrap; padding-top: 4px; }
 .fa-plan { display: flex; gap: 12px; align-items: center; padding: 11px 0; border-top: 1px solid #f0ede4; }
 .fa-plan svg { width: 20px; height: 20px; flex: 0 0 auto; }
-.fa-plan p { font-size: 14px; color: var(--body-text); margin: 0; }
+.fa-plan p { font-size: max(14px, var(--fs-read, 0px)); color: var(--body-text); margin: 0; }
 .fa-cta { max-width:1000px; margin: 0 auto; padding: 26px 24px 80px; text-align: center; }
 @media (max-width: 719px) {
   .fa-hero { padding: 36px 20px 10px; }
@@ -178,7 +178,7 @@
 <section class="fa-hero">
 <p class="kicker">Free for families &middot; no sign-up</p>
 <h1 class="fa-h1">Family Care Academy</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:760px">The same training we give our professional caregivers, rebuilt for the people who love someone and are learning to care for them. Take it at your own pace, share it with your siblings, come back any time.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:760px">The same training we give our professional caregivers, rebuilt for the people who love someone and are learning to care for them. Take it at your own pace, share it with your siblings, come back any time.</p>
 </section>
 
 <section class="fa-why">
@@ -207,9 +207,9 @@
 <a href="/dementia-journey/" style="display:flex;gap:14px;align-items:center;background:var(--soft-teal);border:1.5px solid var(--cta);border-radius:13px;padding:16px 18px;text-decoration:none;margin-bottom:16px">
 <svg style="width:30px;height:30px;flex:0 0 auto" aria-hidden="true"><use href="/assets/icons.svg#i-grad"/></svg>
 <span>
-<span style="display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:#fff;color:var(--cta);border-radius:999px;padding:3px 9px;margin-bottom:5px">New &middot; Interactive</span>
-<p style="font-size:15.5px;font-weight:700;color:var(--brand-blue);margin:0 0 3px">The Dementia Journey: a full course for families</p>
-<p style="font-size:13px;line-height:1.55;color:#3d5568;margin:0">Nine modules built just for families: the feelings, the brain changes, the hard moments, and the love that holds it all. Narrated by Samantha. All nine modules are open now.</p>
+<span style="display:inline-block;font-size:max(10.5px, var(--fs-min, 0px));font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:#fff;color:var(--cta);border-radius:999px;padding:3px 9px;margin-bottom:5px">New &middot; Interactive</span>
+<p style="font-size:max(15.5px, var(--fs-head, 0px));font-weight:700;color:var(--brand-blue);margin:0 0 3px">The Dementia Journey: a full course for families</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));line-height:1.55;color:#3d5568;margin:0">Nine modules built just for families: the feelings, the brain changes, the hard moments, and the love that holds it all. Narrated by Samantha. All nine modules are open now.</p>
 </span>
 </a>
 </div>
@@ -226,21 +226,21 @@
 <div class="fa-plan"><svg aria-hidden="true"><use href="/assets/icons.svg#i-pill"/></svg><p>Toileting &amp; incontinence care with grace</p></div>
 <div class="fa-plan"><svg aria-hidden="true"><use href="/assets/icons.svg#i-sun"/></svg><p>Meals, hydration &amp; appetite when eating gets hard</p></div>
 <div style="margin-top:20px;background:#f6f4ee;border-radius:12px;padding:18px">
-<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 4px">Want to know the moment it's ready?</p>
-<p style="font-size:13px;line-height:1.6;color:#55677a;margin:0 0 12px">Leave your email and we'll send you the first lesson when it launches. Nothing else, no spam.</p>
+<p style="font-size:max(14px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">Want to know the moment it's ready?</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:0 0 12px">Leave your email and we'll send you the first lesson when it launches. Nothing else, no spam.</p>
 <div style="display:flex;flex-wrap:wrap;gap:10px">
-<input id="fa-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:200px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
-<button id="fa-notify" class="btn-primary" style="border-radius:8px;padding:12px 20px;font-size:14px">Notify me</button>
+<input id="fa-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex:1;min-width:200px;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<button id="fa-notify" class="btn-primary" style="border-radius:8px;padding:12px 20px;font-size:max(14px, var(--fs-min, 0px))">Notify me</button>
 </div>
-<p id="fa-sent" style="font-size:13.5px;font-weight:600;color:#1F7A8C;margin:10px 0 0" hidden>You're on the list. We'll email you when the first hands-on lesson is live.</p>
-<p id="fa-err" style="font-size:13px;color:#a33;font-weight:600;margin:10px 0 0" hidden>Please enter your email address.</p>
+<p id="fa-sent" style="font-size:max(13.5px, var(--fs-head, 0px));font-weight:600;color:#1F7A8C;margin:10px 0 0" hidden>You're on the list. We'll email you when the first hands-on lesson is live.</p>
+<p id="fa-err" style="font-size:max(13px, var(--fs-head, 0px));color:#a33;font-weight:600;margin:10px 0 0" hidden>Please enter your email address.</p>
 </div>
 </div>
 </section>
 
 <section class="fa-cta">
 <h2 style="font-family:var(--serif);font-size:23px;font-weight:600;color:#0D365F;margin:0 0 10px">Sometimes the best training is a break.</h2>
-<p style="font-size:14.5px;line-height:1.7;color:#55677a;margin:0 auto 20px;max-width:520px">If you're doing all of this yourself, you don't have to. Even a few hours of <a href="/services/respite-care" style="font-weight:600">respite care</a> a week keeps you strong enough to keep going.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto 20px;max-width:520px">If you're doing all of this yourself, you don't have to. Even a few hours of <a href="/services/respite-care" style="font-weight:600">respite care</a> a week keeps you strong enough to keep going.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
 <a href="/book" class="btn-primary">Book a Free In-Home Assessment</a>
 <a href="/cara" class="btn-outline">Ask Cara a Question</a>

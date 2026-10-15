@@ -25,22 +25,22 @@
 .os-stats { max-width:1200px; margin: 26px auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .os-stat { background: #ffffff; border: 1px solid var(--border); border-radius: 14px; padding: 20px 18px; text-align: center; }
 .os-stat .n { font-family: var(--serif); font-size: 27px; font-weight: 600; color: var(--brand-blue); margin: 0 0 4px; }
-.os-stat .d { font-size: 13px; line-height: 1.5; color: var(--muted); margin: 0; }
+.os-stat .d { font-size: max(13px, var(--fs-read, 0px)); line-height: 1.5; color: var(--muted); margin: 0; }
 .os-tl { max-width:940px; margin: 0 auto; padding: 46px 24px 8px; }
 .os-tl-item { position: relative; padding: 0 0 38px 34px; border-left: 2px solid #e4dfd2; margin-left: 8px; }
 .os-tl-item:last-child { border-left-color: transparent; padding-bottom: 8px; }
 .os-tl-item::before { content: ""; position: absolute; left: -8px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #F0A63A; border: 3px solid #faf9f6; box-shadow: 0 0 0 2px #F0A63A; }
-.os-tl-item .yr { font-size: 12px; font-weight: 700; color: #9C6410; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 6px; }
+.os-tl-item .yr { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: #9C6410; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 6px; }
 .os-tl-item h2 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
-.os-tl-item p { font-size: 15px; line-height: 1.75; color: var(--body-text); margin: 0; }
+.os-tl-item p { font-size: max(15px, var(--fs-read, 0px)); line-height: 1.75; color: var(--body-text); margin: 0; }
 .os-tl-item a { color: var(--cta); font-weight: 600; }
 .os-photos { max-width:940px; margin: 0 auto; padding: 8px 24px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .os-photos img { width: 100%; height: 210px; object-fit: cover; border-radius: 14px; }
 .os-values { max-width:1200px; margin: 0 auto; padding: 34px 24px 10px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .os-value { background: #ffffff; border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; }
 .os-value svg { width: 30px; height: 30px; margin-bottom: 12px; }
-.os-value .k { font-size: 11.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; }
-.os-value p { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0; }
+.os-value .k { font-size: max(11.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; }
+.os-value p { font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.6; color: var(--muted); margin: 0; }
 .os-promise { max-width:1000px; margin: 0 auto; padding: 30px 24px; }
 .os-promise-card { background: var(--navy-panel); border-radius: 16px; padding: 40px 36px; text-align: center; }
 .os-cta { max-width:1000px; margin: 0 auto; padding: 10px 24px 80px; text-align: center; }
@@ -182,7 +182,7 @@
 <div>
 <p class="kicker">About Us</p>
 <h1 class="os-h1">Why families across Southwest Missouri trust us.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0">We help seniors and adults who need support keep living safely, comfortably, and with dignity in the place that means the most to them, home. We've been doing it one family at a time since 2017.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0">We help seniors and adults who need support keep living safely, comfortably, and with dignity in the place that means the most to them, home. We've been doing it one family at a time since 2017.</p>
 </div>
 <img class="os-hero-img" src="/assets/photos/walking-together.webp" alt="A Caring Companions caregiver walking arm in arm with a client" loading="eager">
 </section>
@@ -246,9 +246,9 @@
 
 <section class="os-promise">
 <div class="os-promise-card">
-<p style="font-size:12px;font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Our promise</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#e8c988;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Our promise</p>
 <p style="font-family:'Source Serif 4',Georgia,serif;font-size:21px;line-height:1.6;font-style:italic;color:#fbfaf7;margin:0 0 12px">"We will care for your loved one with the same respect, kindness, and dignity we would want for our own family."</p>
-<p style="font-size:14.5px;line-height:1.7;color:#c3cdd6;margin:0;max-width:560px;margin-left:auto;margin-right:auto">Home isn't just where someone lives, it's where memories, comfort, and identity live. We're honored to help our clients stay there, safely and confidently, for as long as possible.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:#c3cdd6;margin:0;max-width:560px;margin-left:auto;margin-right:auto">Home isn't just where someone lives, it's where memories, comfort, and identity live. We're honored to help our clients stay there, safely and confidently, for as long as possible.</p>
 </div>
 </section>
 
@@ -258,13 +258,13 @@
 <a href="book" class="btn-primary">Book a Free In-Home Assessment</a>
 <a href="our-caregivers" class="btn-outline">Meet Our Caregivers</a>
 </div>
-<p style="font-size:13.5px;color:#66736B;margin:24px 0 0;line-height:1.7">Caring Companions In-Home Senior Care &middot; 1331 N Stewart Ave Ste B, Springfield, MO 65802<br>Phone (417) 234-8494 &middot; Fax (417) 719-7870</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));color:#4f5b54;margin:24px 0 0;line-height:1.7">Caring Companions In-Home Senior Care &middot; 1331 N Stewart Ave Ste B, Springfield, MO 65802<br>Phone (417) 234-8494 &middot; Fax (417) 719-7870</p>
 </section>
 
 <section style="max-width:1000px;margin:0 auto;padding:10px 24px 56px;text-align:center">
-<p style="font-size:11.5px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">One company, care wherever home is</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">One company, care wherever home is</p>
 <h2 style="margin:0 0 12px">Caring Companions has grown into a family of care.</h2>
-<p style="color:#55677a;font-size:16.5px;line-height:1.65;margin:0 0 18px">In-home caregivers across southwest Missouri, HomeTogether TV for staying close through the television anywhere in the country, and HomeTogether Local for finding and hiring caregivers directly. Different doors, one promise: real care from people who mean it.</p>
+<p style="color:#45566a;font-size:max(16.5px, var(--fs-read, 0px));line-height:1.65;margin:0 0 18px">In-home caregivers across southwest Missouri, HomeTogether TV for staying close through the television anywhere in the country, and HomeTogether Local for finding and hiring caregivers directly. Different doors, one promise: real care from people who mean it.</p>
 <a href="/family" style="display:inline-block;background:#1F7A8C;color:#fff;border-radius:12px;padding:13px 22px;font-weight:700;text-decoration:none">Meet the whole family &rarr;</a>
 </section>
 <footer class="cc-siteftr">

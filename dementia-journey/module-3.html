@@ -21,15 +21,15 @@
 body { background: var(--dj-cream); }
 .dj-shell { max-width: 720px; margin: 0 auto; padding: 22px 20px 90px; font-family:'Inter',Helvetica,Arial,sans-serif; color:#16283a; }
 .dj-top { display:flex; align-items:center; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
-.dj-top a.back { font-size:13px; font-weight:600; color:var(--dj-muted); text-decoration:none; margin-right:auto; }
+.dj-top a.back { font-size:max(13px, var(--fs-min, 0px)); font-weight:600; color:var(--dj-muted); text-decoration:none; margin-right:auto; }
 .dj-top a.back:hover { color:var(--dj-navy); }
-.dj-pill { display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #e2dbc9; border-radius:999px; padding:7px 13px; font-size:12px; font-weight:700; color:var(--dj-muted); cursor:pointer; font-family:inherit; transition:all .15s ease; }
+.dj-pill { display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #e2dbc9; border-radius:999px; padding:7px 13px; font-size:max(12px, var(--fs-min, 0px)); font-weight:700; color:var(--dj-muted); cursor:pointer; font-family:inherit; transition:all .15s ease; }
 .dj-pill:hover { border-color:var(--dj-navy); color:var(--dj-navy); }
 .dj-pill.on { border-color:var(--dj-gold-deep); color:var(--dj-gold-ink); background:#fbf3dd; }
 .dj-pill.help { border-color:#e3c98f; color:#8a5a00; background:#fdf6e8; }
 .dj-progress { height:5px; background:#ece5d3; border-radius:99px; overflow:hidden; margin-bottom:8px; }
 .dj-progress i { display:block; height:100%; background:linear-gradient(90deg,var(--dj-gold-deep),var(--dj-gold)); border-radius:99px; transition:width .5s ease; }
-.dj-count { font-size:11px; font-weight:600; color:#a99f89; letter-spacing:.04em; margin:0 0 16px; }
+.dj-count { font-size:max(11px, var(--fs-min, 0px)); font-weight:600; color:#7a6f58; letter-spacing:.04em; margin:0 0 16px; }
 .dj-card { background:var(--dj-card); border:1px solid #ece4d2; border-radius:22px; padding:36px 32px; box-shadow:0 16px 44px rgba(20,58,94,0.07); }
 .dj-card.dj-cine { background:linear-gradient(150deg,#0e2c49 0%, #1b4266 58%, #2a5478 100%); border:none; position:relative; overflow:hidden; }
 .dj-card.dj-cine::after { content:""; position:absolute; right:-70px; top:-70px; width:290px; height:290px; border-radius:50%; background:radial-gradient(circle,rgba(239,206,133,.30),transparent 66%); pointer-events:none; }
@@ -41,62 +41,62 @@ body { background: var(--dj-cream); }
 .dj-card.dj-cine .dj-callout { border-left-color:var(--dj-gold); background:rgba(239,206,133,.10); border-radius:0 14px 14px 0; }
 .dj-card.dj-cine .dj-callout p { color:#e7dfc9; }
 .dj-card.dj-cine .dj-next.soft { color:var(--dj-gold); border-color:rgba(239,206,133,.45); }
-.dj-kicker { font-size:11.5px; font-weight:700; color:var(--dj-gold-ink); text-transform:uppercase; letter-spacing:.09em; margin:0 0 12px; }
+.dj-kicker { font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; color:var(--dj-gold-ink); text-transform:uppercase; letter-spacing:.09em; margin:0 0 12px; }
 .dj-title { font-family:'Source Serif 4',Georgia,serif; font-size:28px; font-weight:600; color:var(--dj-navy); margin:0 0 12px; line-height:1.3; text-wrap:balance; }
-.dj-lead { font-size:15.5px; line-height:1.75; color:var(--dj-ink); margin:0 0 16px; }
+.dj-lead { font-size:max(15.5px, var(--fs-read, 0px)); line-height:1.75; color:var(--dj-ink); margin:0 0 16px; }
 .dj-quiet { font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:17.5px; line-height:1.8; color:#4a5b6d; margin:0 0 14px; }
 .dj-scene { background:linear-gradient(155deg,#0e2c49 0%, #1b4266 62%, #27506f 100%); border-radius:18px; padding:42px 34px; margin:0 0 20px; position:relative; overflow:hidden; }
 .dj-scene::after { content:""; position:absolute; right:-50px; top:-50px; width:230px; height:230px; border-radius:50%; background:radial-gradient(circle,rgba(239,206,133,.32),transparent 66%); }
 .dj-scene::before { content:""; position:absolute; left:-60px; bottom:-80px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(143,209,199,.12),transparent 70%); }
 .dj-scene p { font-family:'Source Serif 4',Georgia,serif; font-size:17.5px; line-height:1.9; color:#f3efe4; margin:0; position:relative; }
-.dj-scene .who { font-size:11.5px; font-weight:700; font-family:'Inter',sans-serif; color:var(--dj-gold); text-transform:uppercase; letter-spacing:.09em; margin-bottom:14px; font-style:normal; }
+.dj-scene .who { font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; font-family:'Inter',sans-serif; color:var(--dj-gold); text-transform:uppercase; letter-spacing:.09em; margin-bottom:14px; font-style:normal; }
 .dj-point { display:flex; gap:13px; align-items:flex-start; background:#f7f2e6; border:1.5px solid transparent; border-radius:14px; padding:15px 17px; margin-bottom:10px; cursor:pointer; transition:all .18s ease; }
-.dj-point .dot { flex:0 0 20px; height:20px; border-radius:50%; border:2px solid #d9cda9; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#fff; transition:all .18s ease; }
-.dj-point p { font-size:14.5px; line-height:1.65; color:var(--dj-muted); margin:0; transition:color .18s ease; }
+.dj-point .dot { flex:0 0 20px; height:20px; border-radius:50%; border:2px solid #d9cda9; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:max(11px, var(--fs-min, 0px)); color:#fff; transition:all .18s ease; }
+.dj-point p { font-size:max(14.5px, var(--fs-read, 0px)); line-height:1.65; color:var(--dj-muted); margin:0; transition:color .18s ease; }
 .dj-point.seen { background:#fbf3dd; border-color:#ead9ac; }
 .dj-point.seen .dot { background:var(--dj-gold-deep); border-color:var(--dj-gold-deep); }
 .dj-point.seen .dot::after { content:"✓"; }
 .dj-point.seen p { color:#1c2b38; }
 .dj-callout { border-left:4px solid var(--dj-gold-deep); background:#fbf5e4; border-radius:0 14px 14px 0; padding:16px 18px; margin:18px 0 0; }
-.dj-callout p { font-size:14px; line-height:1.7; color:#5c4a22; margin:0; }
-.dj-chip { display:inline-block; background:#fff; border:1.5px solid #ddd3ba; border-radius:999px; padding:11px 18px; font-size:14px; font-weight:600; color:var(--dj-ink); margin:0 8px 10px 0; cursor:pointer; font-family:inherit; transition:all .15s ease; }
+.dj-callout p { font-size:max(14px, var(--fs-read, 0px)); line-height:1.7; color:#5c4a22; margin:0; }
+.dj-chip { display:inline-block; background:#fff; border:1.5px solid #ddd3ba; border-radius:999px; padding:11px 18px; font-size:max(14px, var(--fs-min, 0px)); font-weight:600; color:var(--dj-ink); margin:0 8px 10px 0; cursor:pointer; font-family:inherit; transition:all .15s ease; }
 .dj-chip.sel { border-color:var(--dj-gold-deep); background:#fbf3dd; color:#6b4f14; }
-.dj-choice { display:block; width:100%; text-align:left; background:#fff; border:1.5px solid #ddd3ba; border-radius:14px; padding:16px 18px; margin-bottom:10px; font-size:14.5px; line-height:1.6; color:var(--dj-ink); cursor:pointer; font-family:inherit; transition:all .15s ease; }
+.dj-choice { display:block; width:100%; text-align:left; background:#fff; border:1.5px solid #ddd3ba; border-radius:14px; padding:16px 18px; margin-bottom:10px; font-size:max(14.5px, var(--fs-read, 0px)); line-height:1.6; color:var(--dj-ink); cursor:pointer; font-family:inherit; transition:all .15s ease; }
 .dj-choice:hover { border-color:var(--dj-navy); }
 .dj-choice.picked { border-color:var(--dj-navy); background:#f2f5f8; }
 .dj-choice.tried { border-style:dashed; }
-.dj-coach { border-radius:14px; padding:16px 18px; font-size:14px; line-height:1.7; margin-top:8px; background:#eef3f8; color:#1d3a56; border-left:4px solid var(--dj-navy); }
+.dj-coach { border-radius:14px; padding:16px 18px; font-size:max(14px, var(--fs-read, 0px)); line-height:1.7; margin-top:8px; background:#eef3f8; color:#1d3a56; border-left:4px solid var(--dj-navy); }
 .dj-next { display:block; width:100%; margin-top:24px; background:var(--dj-gold); color:var(--dj-navy-deep); border:none; border-radius:999px; padding:16px 26px; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:transform .12s ease, background .15s ease; }
 .dj-next:hover { transform:translateY(-1px); background:#e8c46f; }
 .dj-next.soft { background:transparent; color:var(--dj-navy); border:1.5px solid #d8d2c2; }
-.dj-save { background:none; border:1.5px solid #ddd3ba; border-radius:999px; padding:7px 14px; font-size:12.5px; font-weight:600; color:#a05252; cursor:pointer; font-family:inherit; }
+.dj-save { background:none; border:1.5px solid #ddd3ba; border-radius:999px; padding:7px 14px; font-size:max(12.5px, var(--fs-min, 0px)); font-weight:600; color:#a05252; cursor:pointer; font-family:inherit; }
 .dj-save.did { background:#fdeeee; border-color:#e3bcbc; cursor:default; }
 textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px solid #ddd3ba; border-radius:14px; padding:15px 17px; font-size:14.5px; font-family:inherit; color:#16283a; line-height:1.65; background:#fffdf8; }
 .dj-step { background:#f7f2e6; border-radius:14px; padding:17px 19px; margin-bottom:10px; display:none; }
 .dj-step.show { display:flex; gap:13px; align-items:flex-start; animation:djfade .5s ease; }
-.dj-step .n { flex:0 0 28px; height:28px; border-radius:50%; background:var(--dj-navy); color:var(--dj-gold); font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; }
-.dj-step p { font-size:14.5px; line-height:1.65; color:var(--dj-ink); margin:0; }
+.dj-step .n { flex:0 0 28px; height:28px; border-radius:50%; background:var(--dj-navy); color:var(--dj-gold); font-size:max(13px, var(--fs-min, 0px)); font-weight:700; display:flex; align-items:center; justify-content:center; }
+.dj-step p { font-size:max(14.5px, var(--fs-read, 0px)); line-height:1.65; color:var(--dj-ink); margin:0; }
 .dj-phrase { display:flex; align-items:center; gap:12px; background:#f7f2e6; border-radius:14px; padding:15px 17px; margin-bottom:10px; }
-.dj-phrase p { flex:1; font-family:'Source Serif 4',Georgia,serif; font-size:16px; line-height:1.6; color:#1c2b38; margin:0; }
+.dj-phrase p { flex:1; font-family:'Source Serif 4',Georgia,serif; font-size:max(16px, var(--fs-read, 0px)); line-height:1.6; color:#1c2b38; margin:0; }
 .dj-stmt { background:linear-gradient(155deg,#0e2c49 0%, #1e4568 100%); border-radius:16px; padding:26px 24px; margin:0 0 16px; }
 .dj-stmt p { font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:20px; line-height:1.6; color:#f3efe4; margin:0; text-align:center; }
 .dj-under { background:#fbf3dd; border:1.5px solid #ead9ac; border-radius:14px; padding:16px 18px; margin-top:6px; display:none; }
 .dj-under.show { display:block; animation:djfade .45s ease; }
-.dj-under p { font-size:14px; line-height:1.7; color:#5c4a22; margin:0; }
+.dj-under p { font-size:max(14px, var(--fs-read, 0px)); line-height:1.7; color:#5c4a22; margin:0; }
 @keyframes djfade { from { opacity:0; transform:translateY(6px);} to { opacity:1; transform:none;} }
 .dj-overlay { position:fixed; inset:0; background:rgba(14,32,50,.6); display:none; align-items:center; justify-content:center; padding:20px; z-index:60; }
 .dj-overlay.open { display:flex; }
 .dj-modal { background:#fffdf8; border-radius:22px; max-width:520px; width:100%; max-height:86vh; overflow-y:auto; padding:32px 30px; }
 .dj-modal h3 { font-family:'Source Serif 4',Georgia,serif; font-size:22px; color:var(--dj-navy); margin:0 0 10px; }
-.dj-breathe-line { font-size:16.5px; line-height:1.7; color:var(--dj-ink); margin:0 0 14px; opacity:0; transition:opacity 1.2s ease; font-family:'Source Serif 4',Georgia,serif; }
+.dj-breathe-line { font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.7; color:var(--dj-ink); margin:0 0 14px; opacity:0; transition:opacity 1.2s ease; font-family:'Source Serif 4',Georgia,serif; }
 .dj-breathe-line.show { opacity:1; }
 .dj-help-item { border-top:1px solid #f0e9d8; padding:13px 0; }
-.dj-help-item b { color:var(--dj-navy); font-size:14.5px; }
-.dj-help-item p { font-size:13.5px; line-height:1.6; color:var(--dj-muted); margin:3px 0 0; }
-.dj-plan-field label { display:block; font-size:13px; font-weight:700; color:var(--dj-navy); margin:14px 0 6px; }
+.dj-help-item b { color:var(--dj-navy); font-size:max(14.5px, var(--fs-min, 0px)); }
+.dj-help-item p { font-size:max(13.5px, var(--fs-read, 0px)); line-height:1.6; color:var(--dj-muted); margin:3px 0 0; }
+.dj-plan-field label { display:block; font-size:max(13px, var(--fs-min, 0px)); font-weight:700; color:var(--dj-navy); margin:14px 0 6px; }
 .dj-summary { background:#f7f2e6; border-radius:16px; padding:18px 20px; margin-bottom:10px; }
-.dj-summary p { font-size:15px; line-height:1.65; color:var(--dj-ink); margin:0; font-weight:600; }
-.dj-saveditem { border-top:1px solid #f0e9d8; padding:11px 0; font-size:14px; color:var(--dj-ink); }
+.dj-summary p { font-size:max(15px, var(--fs-read, 0px)); line-height:1.65; color:var(--dj-ink); margin:0; font-weight:600; }
+.dj-saveditem { border-top:1px solid #f0e9d8; padding:11px 0; font-size:max(14px, var(--fs-min, 0px)); color:var(--dj-ink); }
 @media (max-width:560px) { .dj-card { padding:26px 20px; } .dj-title { font-size:23px; } .dj-card.dj-cine .dj-title { font-size:26px; } .dj-scene { padding:30px 24px; } .dj-pill span.lbl { display:none; } .dj-pill { padding:8px 11px; } }
 @media (min-width: 880px) {
   .dj-shell { max-width: 1040px; }
@@ -108,7 +108,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
   .dj-scene p { font-size: 18.5px; }
   .dj-pts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; align-items: start; }
   .dj-pts .dj-point { margin-bottom: 0; height: 100%; }
-  .dj-lead { font-size: 16px; }
+  .dj-lead { font-size: max(16px, var(--fs-read, 0px)); }
 }
 @media print {
   body * { visibility:hidden; }
@@ -122,7 +122,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <div class="dj-shell">
 <div class="dj-top noprint">
 <a class="back" href="/dementia-journey/">&larr; The Dementia Journey</a>
-<button class="dj-pill" id="fontBtn" type="button" title="Text size"><span style="font-size:13px;font-weight:800">Aa</span></button>
+<button class="dj-pill" id="fontBtn" type="button" title="Text size"><span style="font-size:max(13px, var(--fs-min, 0px));font-weight:800">Aa</span></button>
 <button class="dj-pill" id="savedBtn" type="button" title="Saved for later"><svg style="width:14px;height:14px" aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><span class="lbl">Saved</span></button>
 <button class="dj-pill" id="breatheBtn" type="button" title="Pause and breathe"><svg style="width:14px;height:14px" aria-hidden="true"><use href="/assets/icons.svg#i-wave"/></svg><span class="lbl">Pause &amp; breathe</span></button>
 <button class="dj-pill" id="planBtn" type="button" title="My family care plan"><svg style="width:14px;height:14px" aria-hidden="true"><use href="/assets/icons.svg#i-clipboard"/></svg><span class="lbl">My plan</span></button>
@@ -163,7 +163,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <div class="dj-overlay" id="planModal">
 <div class="dj-modal">
 <h3>My Family Care Plan</h3>
-<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0 0 6px" class="noprint">Yours alone. It saves on this device and grows a little with each module. Print it anytime.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:0 0 6px" class="noprint">Yours alone. It saves on this device and grows a little with each module. Print it anytime.</p>
 <div class="dj-plan-field">
 <label>People I can call</label>
 <textarea class="dj-ta" id="plan-people" style="min-height:60px" placeholder="A sister, a neighbor, a friend from church, a nurse line&hellip;"></textarea>
@@ -181,10 +181,10 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <textarea class="dj-ta" id="plan-triggers" style="min-height:60px" placeholder="Loud TV, being rushed, dusk, cold rooms&hellip;"></textarea>
 </div>
 <div class="dj-plan-field">
-<label>Helpful phrases <span style="font-weight:400;color:#9aa69e">(new in Module 3)</span></label>
+<label>Helpful phrases <span style="font-weight:400;color:#4f5b54">(new in Module 3)</span></label>
 <textarea class="dj-ta" id="plan-phrases" style="min-height:80px" placeholder="&ldquo;You seem worried.&rdquo; &ldquo;I am here with you.&rdquo; &ldquo;Let&rsquo;s figure it out together.&rdquo;&hellip;"></textarea>
 </div>
-<p style="font-size:12.5px;color:#9aa69e;margin:14px 0 0" class="noprint">Coming as you continue: daily routines, medical contacts, and emergency information.</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#4f5b54;margin:14px 0 0" class="noprint">Coming as you continue: daily routines, medical contacts, and emergency information.</p>
 <div style="display:flex;gap:10px;margin-top:16px" class="noprint">
 <button class="dj-next" style="margin:0" onclick="window.print()">Print my plan</button>
 <button class="dj-next soft" style="margin:0" onclick="djClose('planModal')">Close</button>
@@ -195,7 +195,7 @@ textarea.dj-ta { width:100%; min-height:110px; resize:vertical; border:1.5px sol
 <div class="dj-overlay" id="savedModal">
 <div class="dj-modal">
 <h3>Saved for later</h3>
-<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0 0 8px">Everything you&rsquo;ve hearted, kept on this device.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:0 0 8px">Everything you&rsquo;ve hearted, kept on this device.</p>
 <div id="savedList"></div>
 <button class="dj-next soft" onclick="djClose('savedModal')" style="margin-top:16px">Close</button>
 </div>
@@ -398,7 +398,7 @@ el('savedBtn').addEventListener('click', function(){
   var keys=Object.keys(s).filter(function(k){ return s[k]; });
   el('savedList').innerHTML = keys.length
     ? keys.map(function(k){ return '<div class="dj-saveditem">&#10084;&nbsp; '+savedLabel(k)+'</div>'; }).join('')
-    : '<p style="font-size:14px;color:#9aa69e;margin:10px 0">Nothing saved yet. Look for the little hearts as you go.</p>';
+    : '<p style="font-size:max(14px, var(--fs-read, 0px));color:#4f5b54;margin:10px 0">Nothing saved yet. Look for the little hearts as you go.</p>';
   djOpen('savedModal');
 });
 
@@ -477,7 +477,7 @@ scenequiet: function(s){
 goals: function(s){
   stage.innerHTML = card(head(s)
     + '<div class="dj-pts">' + s.goals.map(function(g){ return '<div class="dj-point seen" style="cursor:default"><span class="dot"></span><p>'+g+'</p></div>'; }).join('') + '</div>'
-    + '<p class="dj-lead" style="font-size:13.5px;color:#9aa69e;margin-top:14px">No test at the end. Just things that help.</p>'
+    + '<p class="dj-lead" style="font-size:max(13.5px, var(--fs-read, 0px));color:#4f5b54;margin-top:14px">No test at the end. Just things that help.</p>'
     + nextBtn());
   wireNext();
 },
@@ -501,9 +501,9 @@ under: function(s){
   function draw(){
     var st=s.stmts[si];
     stage.innerHTML = card(head(s)
-      + '<p style="font-size:12px;font-weight:700;color:#a99f89;margin:0 0 10px">'+(si+1)+' of '+s.stmts.length+'</p>'
+      + '<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#7a6f58;margin:0 0 10px">'+(si+1)+' of '+s.stmts.length+'</p>'
       + '<div class="dj-stmt"><p>'+st.say+'</p></div>'
-      + '<p style="font-size:13px;font-weight:600;color:#55677a;margin:0 0 10px">What might be underneath? Tap any that feel possible:</p>'
+      + '<p style="font-size:max(13px, var(--fs-head, 0px));font-weight:600;color:#45566a;margin:0 0 10px">What might be underneath? Tap any that feel possible:</p>'
       + '<div>'+st.chips.map(function(c,i){ return '<button type="button" class="dj-chip" data-i="'+i+'">'+c+'</button>'; }).join('')+'</div>'
       + '<button class="dj-next soft" id="peek" style="margin-top:8px">What it often means</button>'
       + '<div class="dj-under" id="underOut"><p>'+st.under+'</p></div>'
@@ -541,7 +541,7 @@ phrases: function(s){
         return '<div class="dj-phrase"><p>&ldquo;'+p+'&rdquo;</p>'+saveBtnHtml(key,'Keep')+'</div>';
       }).join('')
     + '<button class="dj-next soft" id="saveAll">Add all nine to my care plan</button>'
-    + '<p id="allSaved" style="font-size:13px;font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>All nine are in your plan, under Helpful phrases.</p>'
+    + '<p id="allSaved" style="font-size:max(13px, var(--fs-head, 0px));font-weight:600;color:var(--dj-gold-ink);margin:8px 0 0" hidden>All nine are in your plan, under Helpful phrases.</p>'
     + nextBtn());
   el('saveAll').addEventListener('click',function(){
     s.phrases.forEach(function(p){
@@ -561,7 +561,7 @@ branch: function(s){
   stage.innerHTML = card(head(s)
     + s.options.map(function(o,i){ return '<button type="button" class="dj-choice" data-i="'+i+'">'+o.label+'</button>'; }).join('')
     + '<div id="out"></div>'
-    + '<p id="nudge" class="dj-lead" style="font-size:13px;color:#a99f89;margin-top:10px">'+s.nudge+'</p>'
+    + '<p id="nudge" class="dj-lead" style="font-size:max(13px, var(--fs-read, 0px));color:#7a6f58;margin-top:10px">'+s.nudge+'</p>'
     + nextBtn());
   stage.querySelectorAll('.dj-choice').forEach(function(b){
     b.addEventListener('click',function(){
@@ -578,7 +578,7 @@ branch: function(s){
 
 check: function(s){
   stage.innerHTML = card(head(s)
-    + '<p class="dj-lead" style="font-size:14px;color:#55677a">'+s.intro+'</p>'
+    + '<p class="dj-lead" style="font-size:max(14px, var(--fs-read, 0px));color:#45566a">'+s.intro+'</p>'
     + s.options.map(function(o,i){ return '<button type="button" class="dj-choice" data-i="'+i+'">'+o.label+'</button>'; }).join('')
     + '<div id="coach"></div>'
     + nextBtn());
@@ -595,7 +595,7 @@ check: function(s){
 reflect: function(s){
   stage.innerHTML = card(head(s)
     + '<textarea class="dj-ta" id="reflectTa" placeholder="Only you will ever see this&hellip;"></textarea>'
-    + '<p style="font-size:12.5px;color:#9aa69e;margin:10px 0 0">Saved only on this device. Skip freely; thinking it counts too.</p>'
+    + '<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#4f5b54;margin:10px 0 0">Saved only on this device. Skip freely; thinking it counts too.</p>'
     + nextBtn());
   var ta=el('reflectTa');
   try { ta.value=localStorage.getItem('dj_m3_reflect')||''; } catch(e){}
@@ -605,7 +605,7 @@ reflect: function(s){
 
 download: function(s){
   stage.innerHTML = card(head(s)
-    + '<div class="dj-summary" style="background:#fbf3dd;border:1.5px solid #ead9ac"><p style="font-weight:400;font-size:14px;line-height:1.7">&ldquo;You already asked me that&rdquo; &rarr; answer warmly, like the first time &middot; &ldquo;Don&rsquo;t you remember?&rdquo; &rarr; retire it &middot; &ldquo;You can&rsquo;t drive anymore&rdquo; &rarr; &ldquo;Today I&rsquo;m your driver, keep me company&rdquo; &hellip; and more.</p></div>'
+    + '<div class="dj-summary" style="background:#fbf3dd;border:1.5px solid #ead9ac"><p style="font-weight:400;font-size:max(14px, var(--fs-read, 0px));line-height:1.7">&ldquo;You already asked me that&rdquo; &rarr; answer warmly, like the first time &middot; &ldquo;Don&rsquo;t you remember?&rdquo; &rarr; retire it &middot; &ldquo;You can&rsquo;t drive anymore&rdquo; &rarr; &ldquo;Today I&rsquo;m your driver, keep me company&rdquo; &hellip; and more.</p></div>'
     + '<a class="dj-next" style="text-decoration:none;text-align:center;display:block" href="/dementia-journey/resources/what-to-say-instead" target="_blank" rel="noopener">Open my printable phrase card</a>'
     + '<button class="dj-next soft" id="openPlan">See my helpful phrases in the plan</button>'
     + nextBtn('Almost done'));
@@ -630,17 +630,17 @@ done: function(){
     +'<p class="dj-lead" style="text-align:center">Module 4, <em>When Words and Behaviors Hurt</em>, is next: accusations, anger, and the moments they don&rsquo;t recognize you. The hurt you feel is real, and we won&rsquo;t pretend otherwise.</p>'
     +'<a href="/dementia-journey/module-4" class="dj-next" style="display:block;text-decoration:none;text-align:center;margin:6px 0 14px">Continue to Module 4: When Words and Behaviors Hurt &rarr;</a>'
     +'<div style="background:#f6f4ee;border-radius:14px;padding:18px;margin:0 0 16px">'
-    +'<p style="font-size:14px;font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with a real person?</p>'
-    +'<p style="font-size:13px;color:#4d5c6b;margin:0 0 10px">Totally optional. If caring for your person is getting heavy, leave whatever you&rsquo;re comfortable sharing and a care coordinator will reach out. A conversation, not a sales pitch.</p>'
+    +'<p style="font-size:max(14px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with a real person?</p>'
+    +'<p style="font-size:max(13px, var(--fs-read, 0px));color:#4d5c6b;margin:0 0 10px">Totally optional. If caring for your person is getting heavy, leave whatever you&rsquo;re comfortable sharing and a care coordinator will reach out. A conversation, not a sales pitch.</p>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">'
-    +'<input id="dj-name" placeholder="Your name (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
-    +'<input id="dj-phone" type="tel" autocomplete="tel" placeholder="Phone (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
+    +'<input id="dj-name" placeholder="Your name (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
+    +'<input id="dj-phone" type="tel" autocomplete="tel" placeholder="Phone (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
     +'</div>'
-    +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px">'
-    +'<textarea id="dj-msg" rows="2" placeholder="Anything you want us to know? (optional)" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px"></textarea>'
-    +'<label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#4d5c6b;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="dj-incl" style="margin-top:2px"> <span>Also include the answers I&rsquo;ve written in this course. Nothing is included unless you check this.</span></label>'
-    +'<button type="button" id="dj-reach" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:14px">Reach out to me</button>'
-    +'<p id="dj-sent" style="font-size:13px;font-weight:600;color:#1F7A8C;margin:8px 0 0" hidden></p></div>'
+    +'<input id="dj-email" type="email" autocomplete="email" placeholder="you@email.com" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px">'
+    +'<textarea id="dj-msg" rows="2" placeholder="Anything you want us to know? (optional)" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff;margin-bottom:10px"></textarea>'
+    +'<label style="display:flex;gap:8px;align-items:flex-start;font-size:max(13px, var(--fs-min, 0px));color:#4d5c6b;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="dj-incl" style="margin-top:2px"> <span>Also include the answers I&rsquo;ve written in this course. Nothing is included unless you check this.</span></label>'
+    +'<button type="button" id="dj-reach" class="dj-next" style="margin:0;width:auto;padding:12px 20px;font-size:max(14px, var(--fs-min, 0px))">Reach out to me</button>'
+    +'<p id="dj-sent" style="font-size:max(13px, var(--fs-head, 0px));font-weight:600;color:#1F7A8C;margin:8px 0 0" hidden></p></div>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">'
     +'<a href="/dementia-journey/resources/what-to-say-instead" class="dj-next soft" style="width:auto;text-decoration:none;text-align:center">My phrase card</a>'
     +'<button class="dj-next soft" style="width:auto" id="donePlan">My care plan</button>'

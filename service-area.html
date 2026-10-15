@@ -19,7 +19,7 @@
 .sa-group{margin-bottom:32px}
 .sa-group h3{font-family:var(--serif);font-size:19px;font-weight:600;color:#0D365F;margin:0 0 4px}
 .sa-towns{display:grid;grid-template-columns:repeat(4,1fr);gap:2px 16px}
-.sa-towns a{font-size:14px;color:#2c3d4d;padding:5px 0;text-decoration:none}
+.sa-towns a{font-size:max(14px, var(--fs-min, 0px));color:#2c3d4d;padding:5px 0;text-decoration:none}
 .sa-towns a:hover{color:var(--accent)}
 @media(max-width:899px){.sa-towns{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:639px){.sa-hero{padding:36px 20px 8px}.sa-h1{font-size:28px}.sa-towns{grid-template-columns:1fr 1fr}}
@@ -149,7 +149,7 @@
 <section class="sa-hero">
 <p class="kicker">Service Areas</p>
 <h1 class="sa-h1">Home care across Southwest Missouri.</h1>
-<p style="font-size:15.5px;line-height:1.7;color:#45566a;margin:0 auto;max-width:720px">Caring Companions serves seniors and families in Springfield and dozens of surrounding communities. Find your town below, or call us at (417) 234-8494 to ask about your area.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto;max-width:720px">Caring Companions serves seniors and families in Springfield and dozens of surrounding communities. Find your town below, or call us at (417) 234-8494 to ask about your area.</p>
 </section>
 <section class="sa-wrap"><div class="sa-group"><h3>Greene County &middot;</h3><p style="margin:0 0 10px">  <a href="/counties/greene" style="color:#9C6410;font-weight:600">Greene County Resource Center &rarr;</a></p><div class="sa-towns"><a href="/home-care-in-ashgrove-mo">Ash Grove</a>
 <a href="/home-care-in-battlefield-mo">Battlefield</a>
@@ -193,7 +193,7 @@
 <a href="/home-care-in-flemington-mo">Flemington</a>
 <a href="/home-care-in-morrisville-mo">Morrisville</a>
 <a href="/home-care-in-aldrich-mo">Aldrich</a></div></div>
-<div class="sa-group"><h3>More Southwest Missouri Communities</h3><p style="font-size:13px;line-height:1.55;color:#55677a;margin:2px 0 12px;max-width:780px">These communities are served through our <strong>Consumer Directed Services (CDS)</strong> program, direct your own in-home care and choose a family member as your paid caregiver. <a href="https://caringcds.com" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;text-decoration:none">Sign up at caringcds.com &rarr;</a></p><div class="sa-towns"><a href="/home-care-in-alba-mo">Alba</a>
+<div class="sa-group"><h3>More Southwest Missouri Communities</h3><p style="font-size:max(13px, var(--fs-read, 0px));line-height:1.55;color:#45566a;margin:2px 0 12px;max-width:780px">These communities are served through our <strong>Consumer Directed Services (CDS)</strong> program, direct your own in-home care and choose a family member as your paid caregiver. <a href="https://caringcds.com" target="_blank" rel="noopener" style="color:var(--cta);font-weight:600;text-decoration:none">Sign up at caringcds.com &rarr;</a></p><div class="sa-towns"><a href="/home-care-in-alba-mo">Alba</a>
 <a href="/home-care-in-arcola-mo">Arcola</a>
 <a href="/home-care-in-asbury-mo">Asbury</a>
 <a href="/home-care-in-aurora-mo">Aurora</a>
@@ -228,7 +228,7 @@
 <a href="/home-care-in-wentworth-mo">Wentworth</a></div></div>
 </section>
 <section style="max-width:940px;margin:0 auto;padding:8px 24px 70px;text-align:center">
-<p style="font-size:14.5px;color:#55677a;margin:0 0 18px">Don't see your town? We likely still serve it, just ask.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));color:#45566a;margin:0 0 18px">Don't see your town? We likely still serve it, just ask.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center"><a href="/book" class="btn-primary">Book a Free In-Home Assessment</a><a href="/cara" class="btn-outline">Ask Cara</a></div>
 </section>
 <footer class="cc-siteftr">

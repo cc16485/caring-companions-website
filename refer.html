@@ -23,28 +23,28 @@
 .rf-h1 { font-family: var(--serif); font-size: 33px; font-weight: 600; margin: 0 0 12px; color: var(--brand-blue); letter-spacing: -0.01em; }
 .rf-wrap { max-width:1060px; margin: 0 auto; padding: 14px 24px; }
 .rf-refer-bar { display: flex; flex-wrap: wrap; gap: 10px 16px; justify-content: center; align-items: center; background: var(--navy-panel); border-radius: 14px; padding: 18px 22px; margin: 16px auto 10px; }
-.rf-refer-bar .lbl { font-size: 12px; font-weight: 700; color: #e8c988; text-transform: uppercase; letter-spacing: 0.05em; }
+.rf-refer-bar .lbl { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: #e8c988; text-transform: uppercase; letter-spacing: 0.05em; }
 .rf-refer-bar a { display: inline-flex; align-items: center; gap: 7px; font-size: 15.5px; font-weight: 700; color: #fbfaf7; text-decoration: none; }
 .rf-refer-bar .divider { width: 1px; height: 20px; background: #2d4a63; }
-.rf-refer-bar .fax { font-size: 13px; color: #b7c4d1; font-weight: 500; }
+.rf-refer-bar .fax { font-size: max(13px, var(--fs-min, 0px)); color: #b7c4d1; font-weight: 500; }
 .rf-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
 .rf-why { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 17px 20px; }
-.rf-why .k { font-size: 14.5px; font-weight: 700; color: var(--ink-2); margin: 0 0 4px; }
-.rf-why p { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0; }
+.rf-why .k { font-size: max(14.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--ink-2); margin: 0 0 4px; }
+.rf-why p { font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.6; color: var(--muted); margin: 0; }
 .rf-h2 { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--brand-blue); margin: 26px 0 10px; }
 .rf-svc { display: flex; flex-wrap: wrap; gap: 8px; }
-.rf-svc span { font-size: 13px; color: var(--body-text); background: #ffffff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; }
+.rf-svc span { font-size: max(13px, var(--fs-min, 0px)); color: var(--body-text); background: #ffffff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; }
 .rf-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 10px 0; }
 .rf-step { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
 .rf-step .n { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fbfaf7; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 0 10px; }
-.rf-step p { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0; }
+.rf-step p { font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.6; color: var(--muted); margin: 0; }
 .rf-step .t { font-weight: 700; color: var(--ink-2); }
 .rf-contact { background: #fbf6ec; border: 1px solid #e8dcc4; border-radius: 14px; padding: 20px 24px; margin: 18px 0 6px; }
 .rf-contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.rf-contact .cl { font-size: 11px; font-weight: 700; color: #8a5a2a; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 3px; }
+.rf-contact .cl { font-size: max(11px, var(--fs-min, 0px)); font-weight: 700; color: #8a5a2a; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 3px; }
 .rf-contact .cv { font-size: 15px; font-weight: 600; color: #5a4726; text-decoration: none; }
-.rf-contact .cv.small { font-size: 13px; font-weight: 500; line-height: 1.5; }
-.rf-print { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; font-family: inherit; }
+.rf-contact .cv.small { font-size: max(13px, var(--fs-read, 0px)); font-weight: 500; line-height: 1.5; }
+.rf-print { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 9px 16px; font-size: max(13px, var(--fs-min, 0px)); font-weight: 600; color: var(--muted); cursor: pointer; font-family: inherit; }
 @media (max-width: 720px) {
   .rf-h1 { font-size: 26px; }
   .rf-grid2, .rf-steps, .rf-contact-grid { grid-template-columns: 1fr; }
@@ -175,7 +175,7 @@
 <section class="rf-hero">
 <p class="kicker">For Referral Partners</p>
 <h1 class="rf-h1">A dependable home-care partner for the people you serve.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:780px">Discharge planners, social workers, case managers, and senior-service professionals across Southwest Missouri trust Caring Companions to help their patients and clients stay safe at home, often starting care the same or next day.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:780px">Discharge planners, social workers, case managers, and senior-service professionals across Southwest Missouri trust Caring Companions to help their patients and clients stay safe at home, often starting care the same or next day.</p>
 </section>
 
 <div class="rf-wrap">
@@ -223,7 +223,7 @@
 <button class="rf-print" onclick="window.print()">&#128424;&nbsp;&nbsp;Print / Save this page as a PDF</button>
 </div>
 
-<p style="font-size:12.5px;color:#66736B;text-align:center;margin:8px 0 0">Caring Companions In-Home Senior Care &middot; Family-owned since 2017 &middot; Screened, insured &amp; bonded caregivers &middot; mo-care.com</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#4f5b54;text-align:center;margin:8px 0 0">Caring Companions In-Home Senior Care &middot; Family-owned since 2017 &middot; Screened, insured &amp; bonded caregivers &middot; mo-care.com</p>
 </div>
 
 <footer class="cc-siteftr no-print">

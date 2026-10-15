@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
   .fam-hero{max-width:1000px;margin:0 auto;padding:56px 24px 20px;text-align:center}
-  .fam-hero .eyebrow{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cta-hover);margin:0 0 12px}
+  .fam-hero .eyebrow{font-family:var(--sans);font-size:max(13px, var(--fs-min, 0px));font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cta-hover);margin:0 0 12px}
   .fam-hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:1.1;font-weight:600;color:var(--brand-blue);letter-spacing:-.015em;margin:0}
   .fam-hero p{font-size:19px;color:var(--muted);margin:18px auto 0;max-width:56ch;line-height:1.6}
 
@@ -21,22 +21,22 @@
   .fam-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--cta)}
   .fam-card.tv::before{background:var(--brand-blue)}
   .fam-card.local::before{background:var(--accent)}
-  .fam-chip{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--cta-hover);background:var(--soft-teal);padding:5px 11px;border-radius:999px;margin-bottom:16px}
+  .fam-chip{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-family:var(--sans);font-size:max(12px, var(--fs-min, 0px));font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--cta-hover);background:var(--soft-teal);padding:5px 11px;border-radius:999px;margin-bottom:16px}
   .fam-card.local .fam-chip{color:var(--accent-hover);background:#faf1e0}
   .fam-card h2{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--brand-blue);margin:0 0 4px;line-height:1.2}
-  .fam-card .role{font-size:13.5px;color:var(--muted-label);font-weight:600;margin:0 0 14px}
-  .fam-card p{font-size:15px;color:var(--body-text);line-height:1.65;margin:0 0 16px}
+  .fam-card .role{font-size:max(13.5px, var(--fs-min, 0px));color:var(--muted-label);font-weight:600;margin:0 0 14px}
+  .fam-card p{font-size:max(15px, var(--fs-read, 0px));color:var(--body-text);line-height:1.65;margin:0 0 16px}
   .fam-list{list-style:none;padding:0;margin:0 0 22px}
-  .fam-list li{position:relative;padding-left:24px;font-size:14.5px;color:var(--body-text);margin-bottom:9px;line-height:1.5}
+  .fam-list li{position:relative;padding-left:24px;font-size:max(14.5px, var(--fs-read, 0px));color:var(--body-text);margin-bottom:9px;line-height:1.5}
   .fam-list li::before{content:"✓";position:absolute;left:0;top:0;color:var(--cta);font-weight:800}
   .fam-card.local .fam-list li::before{color:var(--accent)}
   .fam-card .cta-wrap{margin-top:auto}
-  .fam-new{font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--accent);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle}
+  .fam-new{font-size:max(10.5px, var(--fs-min, 0px));font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--accent);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle}
 
   .fam-together{max-width:1000px;margin:44px auto 0;padding:30px 32px;background:var(--soft-teal);border-radius:18px;text-align:center}
   .fam-together h3{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--brand-blue);margin:0 0 10px}
-  .fam-together p{font-size:16px;color:var(--body-text);line-height:1.65;margin:0;max-width:60ch;margin:0 auto}
-  .fam-close{max-width:1200px;margin:0 auto;padding:34px 24px 80px;text-align:center;color:var(--muted);font-size:14px}
+  .fam-together p{font-size:max(16px, var(--fs-read, 0px));color:var(--body-text);line-height:1.65;margin:0;max-width:60ch;margin:0 auto}
+  .fam-close{max-width:1200px;margin:0 auto;padding:34px 24px 80px;text-align:center;color:var(--muted);font-size:max(14px, var(--fs-min, 0px))}
 </style>
 </head>
 <body>

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../assets/site.css">
 <style>
 .cty-index-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.cty-index-grid a { display: block; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; font-size: 14.5px; font-weight: 600; color: var(--ink-2); text-decoration: none; transition: border-color .15s ease; }
+.cty-index-grid a { display: block; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; font-size: max(14.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--ink-2); text-decoration: none; transition: border-color .15s ease; }
 .cty-index-grid a:hover { border-color: var(--accent); }
 @media (max-width: 639px) { .cty-index-grid { grid-template-columns: 1fr; } }
 </style>
@@ -150,7 +150,7 @@
 <section class="cty-hero" style="max-width:940px">
 <p class="kicker">Service Areas</p>
 <h1 class="cty-h1">County Resource Centers</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">Local guides to hospitals, facilities, transportation, meals, financial help, and support, whether or not Caring Companions is the right fit for your family.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">Local guides to hospitals, facilities, transportation, meals, financial help, and support, whether or not Caring Companions is the right fit for your family.</p>
 </section>
 
 <section style="max-width:1120px;margin:0 auto;padding:30px 24px 80px">

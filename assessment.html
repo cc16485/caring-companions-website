@@ -13,7 +13,7 @@
 .as-opt {
   display: flex; align-items: center; gap: 12px; text-align: left; background: #ffffff;
   border: 1.5px solid var(--border); border-radius: 9px; padding: 13px 16px;
-  font-size: 14.5px; color: var(--body-text); cursor: pointer; font-family: inherit;
+  font-size: max(14.5px, var(--fs-min, 0px)); color: var(--body-text); cursor: pointer; font-family: inherit;
   transition: border-color .15s ease;
 }
 .as-opt:hover { border-color: var(--accent); }
@@ -24,7 +24,7 @@
 }
 .as-opt.multi .mark { border-radius: 4px; }
 .as-opt.selected .mark { background: var(--accent); border-color: var(--accent); }
-.as-tab { background: transparent; color: #55677a; border: none; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.as-tab { background: transparent; color: #45566a; border: none; border-radius: 8px; padding: 10px 18px; font-size: max(14px, var(--fs-min, 0px)); font-weight: 600; cursor: pointer; }
 .as-tab.active { background: #16283a; color: #faf9f6; }
 @media (max-width: 639px) {
   .as-page { padding: 36px 20px 60px; }
@@ -164,23 +164,23 @@
 <section class="as-page" id="view-intro" style="text-align:center">
 <p class="kicker" style="margin-bottom:16px">Care Questionnaire</p>
 <h1 class="as-h1">A real look at their needs, not a quiz.</h1>
-<p style="font-size:15.5px;line-height:1.65;color:#45566a;margin:0 0 30px">Eight short sections covering safety, memory, daily needs, medication, and more. At the end, you'll get a written report you can keep, print, and bring to a doctor, whether or not you ever call us.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 0 30px">Eight short sections covering safety, memory, daily needs, medication, and more. At the end, you'll get a written report you can keep, print, and bring to a doctor, whether or not you ever call us.</p>
 <button id="begin" class="btn-primary" style="padding:16px 30px;font-size:15.5px">Begin the questionnaire</button>
-<p style="font-size:13px;color:#66736B;margin:14px 0 0">About 8 minutes · Free · Saved automatically as you go</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));color:#4f5b54;margin:14px 0 0">About 8 minutes · Free · Saved automatically as you go</p>
 </section>
 
 <!-- Domain steps -->
 <section class="as-page" id="view-domain" hidden>
 <div style="margin-bottom:34px">
-<div style="display:flex;justify-content:space-between;font-size:12.5px;color:#66736B;margin-bottom:6px"><span>Step <span id="d-num">1</span> of <span id="d-count"></span></span><span>Saved automatically</span></div>
+<div style="display:flex;justify-content:space-between;font-size:max(12.5px, var(--fs-min, 0px));color:#4f5b54;margin-bottom:6px"><span>Step <span id="d-num">1</span> of <span id="d-count"></span></span><span>Saved automatically</span></div>
 <div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden"><div id="d-progress" style="height:100%;width:0%;background:#C17A12;transition:width .3s ease"></div></div>
 </div>
-<p id="d-eyebrow" style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px"></p>
+<p id="d-eyebrow" style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px"></p>
 <h2 id="d-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;margin:0 0 28px;color:#0D365F"></h2>
 <div id="d-questions"></div>
 <div style="display:flex;justify-content:space-between;margin-top:12px">
-<button id="d-back" style="background:none;border:none;color:#55677a;font-size:14.5px;font-weight:600;cursor:pointer;padding:10px 0">← Back</button>
-<button id="d-next" class="btn-primary" style="padding:13px 26px;font-size:14.5px">Next</button>
+<button id="d-back" style="background:none;border:none;color:#45566a;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;cursor:pointer;padding:10px 0">← Back</button>
+<button id="d-next" class="btn-primary" style="padding:13px 26px;font-size:max(14.5px, var(--fs-min, 0px))">Next</button>
 </div>
 </section>
 
@@ -190,50 +190,50 @@
 <button id="tab-family" class="as-tab active">Family Report</button>
 <button id="tab-physician" class="as-tab">Physician Version</button>
 <span style="flex:1"></span>
-<button id="print-report" style="background:none;border:1.5px solid #dfe6e2;border-radius:8px;padding:10px 16px;font-size:14px;font-weight:600;color:#0D365F;cursor:pointer">Print / Save PDF</button>
+<button id="print-report" style="background:none;border:1.5px solid #dfe6e2;border-radius:8px;padding:10px 16px;font-size:max(14px, var(--fs-min, 0px));font-weight:600;color:#0D365F;cursor:pointer">Print / Save PDF</button>
 </div>
 
-<p id="report-kind" style="font-size:12.5px;font-weight:600;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">For Your Family</p>
+<p id="report-kind" style="font-size:max(12.5px, var(--fs-min, 0px));font-weight:600;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">For Your Family</p>
 <h1 style="font-family:'Source Serif 4',Georgia,serif;font-size:28px;font-weight:600;margin:0 0 6px;color:#0D365F">Care Questionnaire Report</h1>
-<p style="font-size:13.5px;color:#66736B;margin:0 0 32px">Prepared <span id="report-date"></span> · Caring Companions</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));color:#4f5b54;margin:0 0 32px">Prepared <span id="report-date"></span> · Caring Companions</p>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:20px">
-<p style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Recommended Care Level</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Recommended Care Level</p>
 <h2 id="r-level" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:0 0 12px;color:#0D365F"></h2>
-<p id="r-explain" style="font-size:14.5px;line-height:1.7;color:#45566a;margin:0"></p>
-<p id="r-urgent" hidden style="font-size:13.5px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:16px 0 0"><strong>Why the urgency:</strong> <span id="r-urgent-reason"></span></p>
+<p id="r-explain" style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0"></p>
+<p id="r-urgent" hidden style="font-size:max(13.5px, var(--fs-read, 0px));color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:16px 0 0"><strong>Why the urgency:</strong> <span id="r-urgent-reason"></span></p>
 </div>
 
 <div id="family-view">
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:20px">
-<p style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Estimated Monthly Cost</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Estimated Monthly Cost</p>
 <p id="r-cost" style="font-size:20px;font-weight:600;color:#122236;margin:0 0 8px"></p>
-<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0">Based on our published rates. Actual cost depends on the final care plan.</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:0">Based on our published rates. Actual cost depends on the final care plan.</p>
 </div>
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:20px">
-<p style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Possible Ways to Pay</p>
-<p id="r-payer" style="font-size:14.5px;line-height:1.8;color:#2c3d4d;margin:0"></p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Possible Ways to Pay</p>
+<p id="r-payer" style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.8;color:#2c3d4d;margin:0"></p>
 </div>
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:20px">
-<p style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Questions to Ask the Doctor</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Questions to Ask the Doctor</p>
 <div id="r-doctor"></div>
 </div>
 <div style="background:#f2f0e9;border-radius:14px;padding:28px;margin-bottom:20px">
-<p style="font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Next-Step Checklist</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Next-Step Checklist</p>
 <div id="r-checklist"></div>
 </div>
 </div>
 
 <div id="physician-view" hidden>
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:20px">
-<p style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Functional Summary</p>
-<table style="width:100%;border-collapse:collapse;font-size:13.5px"><tbody id="r-clinical"></tbody></table>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Functional Summary</p>
+<table style="width:100%;border-collapse:collapse;font-size:max(13.5px, var(--fs-min, 0px))"><tbody id="r-clinical"></tbody></table>
 </div>
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:20px">
-<p style="font-size:12px;font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Risk Flags</p>
-<p id="r-riskflags" style="font-size:14.5px;line-height:1.8;color:#2c3d4d;margin:0"></p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#9C6410;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Risk Flags</p>
+<p id="r-riskflags" style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.8;color:#2c3d4d;margin:0"></p>
 </div>
-<p style="font-size:12px;color:#66736B;line-height:1.6;margin:0 0 20px">This summary reflects a self-reported, non-clinical questionnaire and is intended to support, not replace, professional clinical evaluation.</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));color:#4f5b54;line-height:1.6;margin:0 0 20px">This summary reflects a self-reported, non-clinical questionnaire and is intended to support, not replace, professional clinical evaluation.</p>
 </div>
 
 <div class="no-print" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:8px">
@@ -243,20 +243,20 @@
 
 <div class="no-print" style="background:#fbf6ec;border:1px solid #e8dcc4;border-radius:14px;padding:26px;margin-top:24px">
 <div id="email-capture">
-<p style="font-size:15px;font-weight:600;color:#122236;margin:0 0 6px">Send my results to the Caring Companions team</p>
-<p style="font-size:13.5px;line-height:1.6;color:#55677a;margin:0 0 16px">Your results are yours, we save nothing unless you ask. Share them with our office and a care coordinator will personally review them, email you a copy, and reach out to talk through next steps. No spam, no obligation.</p>
+<p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 6px">Send my results to the Caring Companions team</p>
+<p style="font-size:max(13.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:0 0 16px">Your results are yours, we save nothing unless you ask. Share them with our office and a care coordinator will personally review them, email you a copy, and reach out to talk through next steps. No spam, no obligation.</p>
 <div style="display:grid;gap:10px">
 <div style="display:flex;flex-wrap:wrap;gap:10px">
-<input id="name-input" type="text" autocomplete="name" placeholder="Your name" style="flex:1;min-width:180px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
-<input id="phone-input" type="tel" autocomplete="tel" placeholder="Phone (optional)" style="flex:1;min-width:160px;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<input id="name-input" type="text" autocomplete="name" placeholder="Your name" style="flex:1;min-width:180px;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<input id="phone-input" type="tel" autocomplete="tel" placeholder="Phone (optional)" style="flex:1;min-width:160px;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
 </div>
-<input id="email-input" type="email" autocomplete="email" placeholder="you@email.com" style="width:100%;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
+<input id="email-input" type="email" autocomplete="email" placeholder="you@email.com" style="width:100%;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff">
 <textarea id="msg-input" placeholder="Anything you want us to know? (optional)" style="width:100%;min-height:70px;resize:vertical;padding:12px 14px;font-size:14px;border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;background:#ffffff"></textarea>
-<button id="email-send" class="btn-primary" style="border-radius:8px;padding:13px 20px;font-size:14.5px;width:100%">Send my results to the office</button>
+<button id="email-send" class="btn-primary" style="border-radius:8px;padding:13px 20px;font-size:max(14.5px, var(--fs-min, 0px));width:100%">Send my results to the office</button>
 </div>
 </div>
-<p id="email-sent" hidden style="font-size:15px;font-weight:600;color:#0e6b5c;margin:0">✓ Request received, a care coordinator will email your report shortly.</p>
-<p id="email-error" hidden style="font-size:13.5px;color:#8a5a2a;margin:12px 0 0">Sorry, that didn't go through. Please try again, or call (417) 234-8494.</p>
+<p id="email-sent" hidden style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#0e6b5c;margin:0">✓ Request received, a care coordinator will email your report shortly.</p>
+<p id="email-error" hidden style="font-size:max(13.5px, var(--fs-read, 0px));color:#8a5a2a;margin:12px 0 0">Sorry, that didn't go through. Please try again, or call (417) 234-8494.</p>
 </div>
 </section>
 
@@ -545,9 +545,9 @@ function renderReport() {
   el('r-urgent').hidden = !r.urgent;
   el('r-urgent-reason').textContent = r.urgentReason;
   el('r-cost').textContent = r.costEstimate;
-  el('r-cost').insertAdjacentHTML('afterend', '<p style="margin:0 0 8px"><a href="' + r.levelUrl + '" style="color:#1F7A8C;font-weight:700;font-size:14.5px;text-decoration:underline">' + r.levelLinkLabel + ' &rarr;</a></p>');
+  el('r-cost').insertAdjacentHTML('afterend', '<p style="margin:0 0 8px"><a href="' + r.levelUrl + '" style="color:#1F7A8C;font-weight:700;font-size:max(14.5px, var(--fs-min, 0px));text-decoration:underline">' + r.levelLinkLabel + ' &rarr;</a></p>');
   el('r-payer').textContent = r.payerOptions;
-  el('r-payer').insertAdjacentHTML('afterend', '<p style="margin:8px 0 0"><a href="' + r.payerUrl + '" style="color:#1F7A8C;font-weight:700;font-size:14.5px;text-decoration:underline">' + r.payerLinkLabel + ' &rarr;</a></p>');
+  el('r-payer').insertAdjacentHTML('afterend', '<p style="margin:8px 0 0"><a href="' + r.payerUrl + '" style="color:#1F7A8C;font-weight:700;font-size:max(14.5px, var(--fs-min, 0px));text-decoration:underline">' + r.payerLinkLabel + ' &rarr;</a></p>');
 
   var dq = el('r-doctor');
   dq.innerHTML = '';
@@ -571,7 +571,7 @@ function renderReport() {
     var tr = document.createElement('tr');
     tr.style.borderBottom = '1px solid #ede9e0';
     var td1 = document.createElement('td');
-    td1.style.cssText = 'padding:9px 4px;color:#55677a;width:44%';
+    td1.style.cssText = 'padding:9px 4px;color:#45566a;width:44%';
     td1.textContent = row.label;
     var td2 = document.createElement('td');
     td2.style.cssText = 'padding:9px 4px;color:#122236;font-weight:600';

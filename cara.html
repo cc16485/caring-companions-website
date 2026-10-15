@@ -17,7 +17,7 @@
 .cara-opt {
   display: flex; align-items: center; gap: 12px; text-align: left; background: #ffffff;
   border: 1.5px solid var(--border); border-radius: 9px; padding: 14px 16px;
-  font-size: 14.5px; color: var(--body-text); cursor: pointer; font-family: inherit;
+  font-size: max(14.5px, var(--fs-min, 0px)); color: var(--body-text); cursor: pointer; font-family: inherit;
   transition: border-color .15s ease;
 }
 .cara-opt:hover { border-color: var(--accent); }
@@ -181,7 +181,7 @@
 <section class="cara-page" id="stage-subject" style="text-align:center">
 <p class="kicker">Understanding Your Situation</p>
 <h1 class="cara-h1">Who are you looking for help with?</h1>
-<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 28px">This helps me ask the right questions.</p>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));color:#45566a;line-height:1.6;margin:0 0 28px">This helps me ask the right questions.</p>
 <div style="display:flex;flex-direction:column;gap:9px;text-align:left" id="subject-options"></div>
 </section>
 
@@ -189,8 +189,8 @@
 <section class="cara-page" id="stage-situation" hidden>
 <p class="kicker" style="text-align:center">Understanding Your Situation</p>
 <h1 class="cara-h1" style="text-align:center">Tell me what's happening.</h1>
-<p style="font-size:14.5px;color:#55677a;line-height:1.6;margin:0 0 20px;text-align:center">In your own words, as much or as little as you'd like.</p>
-<textarea id="situation-text" placeholder="e.g. &ldquo;My dad has Parkinson's and keeps falling&rdquo;" rows="4" style="width:100%;padding:16px 18px;font-size:15px;border:1.5px solid #dfe6e2;border-radius:10px;font-family:inherit;color:#16283a;background:#ffffff;resize:vertical"></textarea>
+<p style="font-size:max(14.5px, var(--fs-read, 0px));color:#45566a;line-height:1.6;margin:0 0 20px;text-align:center">In your own words, as much or as little as you'd like.</p>
+<textarea id="situation-text" placeholder="e.g. &ldquo;My dad has Parkinson's and keeps falling&rdquo;" rows="4" style="width:100%;padding:16px 18px;font-size:max(15px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:10px;font-family:inherit;color:#16283a;background:#ffffff;resize:vertical"></textarea>
 <div style="display:flex;justify-content:center;margin-top:20px">
 <button id="situation-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">Continue →</button>
 </div>
@@ -199,19 +199,19 @@
 <!-- Stage: empathy -->
 <section class="cara-page" id="stage-empathy" hidden style="text-align:center">
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
-<p id="empathy-loading" style="font-size:15px;color:#66736B;margin:0">Cara is reading what you shared&hellip;</p>
+<p id="empathy-loading" style="font-size:max(15px, var(--fs-read, 0px));color:#4f5b54;margin:0">Cara is reading what you shared&hellip;</p>
 <div id="empathy-content" hidden>
-<p id="empathy-ack" style="font-size:16.5px;line-height:1.7;color:#2c3d4d;margin:0 0 16px"></p>
+<p id="empathy-ack" style="font-size:max(16.5px, var(--fs-read, 0px));line-height:1.7;color:#2c3d4d;margin:0 0 16px"></p>
 <p style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-style:italic;color:#122236;margin:0">I understand. Let's work through this together.</p>
 </div>
 </div>
-<p style="font-size:13px;color:#66736B;margin:20px 0 24px">To point you toward the most helpful resources, I'll ask a few questions, about <span id="empathy-qcount">10</span> in total.</p>
+<p style="font-size:max(13px, var(--fs-read, 0px));color:#4f5b54;margin:20px 0 24px">To point you toward the most helpful resources, I'll ask a few questions, about <span id="empathy-qcount">10</span> in total.</p>
 <button id="empathy-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">Continue →</button>
 </section>
 
 <!-- Stage: question -->
 <section class="cara-page wide" id="stage-question" hidden>
-<div style="margin-bottom:8px;display:flex;justify-content:space-between;font-size:12.5px;color:#66736B"><span>Question <span id="q-num">1</span> of <span id="q-count"></span></span><span>Saved automatically</span></div>
+<div style="margin-bottom:8px;display:flex;justify-content:space-between;font-size:max(12.5px, var(--fs-min, 0px));color:#4f5b54"><span>Question <span id="q-num">1</span> of <span id="q-count"></span></span><span>Saved automatically</span></div>
 <div style="height:6px;border-radius:3px;background:#e8e5dc;overflow:hidden;margin-bottom:30px"><div id="q-progress" style="height:100%;width:0%;background:#C17A12;transition:width .3s ease"></div></div>
 
 <div class="cara-q-grid">
@@ -219,13 +219,13 @@
 <h2 id="q-text" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:0 0 24px;color:#0D365F"></h2>
 <div style="display:flex;flex-direction:column;gap:9px" id="q-options"></div>
 <div style="display:flex;justify-content:space-between;margin-top:26px">
-<button id="q-back" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">← Back</button>
-<button id="q-next" class="btn-primary" style="padding:12px 24px;font-size:14px;border-radius:9px" hidden>Continue →</button>
+<button id="q-back" style="background:none;border:none;color:#45566a;font-size:max(14px, var(--fs-min, 0px));font-weight:600;cursor:pointer;padding:8px 0">← Back</button>
+<button id="q-next" class="btn-primary" style="padding:12px 24px;font-size:max(14px, var(--fs-min, 0px));border-radius:9px" hidden>Continue →</button>
 </div>
 </div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:22px">
-<p style="font-size:11.5px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Understanding Your Situation</p>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 14px">Understanding Your Situation</p>
 <div id="q-sidebar"></div>
 </div>
 </div>
@@ -237,10 +237,10 @@
 <h1 class="cara-h1" style="text-align:center;margin-bottom:22px">Because you've shared:</h1>
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:28px;margin-bottom:24px">
 <div id="reasoning-concerns"></div>
-<p style="font-size:15px;line-height:1.8;color:#2c3d4d;margin:18px 0 0">these situations often benefit from <strong style="color:#122236" id="reasoning-level"></strong> (<span id="reasoning-rate"></span>).</p>
-<p style="font-size:14px;line-height:1.7;color:#55677a;margin:12px 0 0" id="reasoning-explain"></p>
+<p style="font-size:max(15px, var(--fs-read, 0px));line-height:1.8;color:#2c3d4d;margin:18px 0 0">these situations often benefit from <strong style="color:#122236" id="reasoning-level"></strong> (<span id="reasoning-rate"></span>).</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:12px 0 0" id="reasoning-explain"></p>
 </div>
-<p style="font-size:12.5px;line-height:1.6;color:#66736B;margin:0 0 24px;text-align:center">Pricing starts at this rate and may vary based on schedule, hours, location, and level of support needed. A Care Coordinator can provide a personalized quote.</p>
+<p style="font-size:max(12.5px, var(--fs-read, 0px));line-height:1.6;color:#4f5b54;margin:0 0 24px;text-align:center">Pricing starts at this rate and may vary based on schedule, hours, location, and level of support needed. A Care Coordinator can provide a personalized quote.</p>
 <div style="display:flex;justify-content:center">
 <button id="reasoning-continue" class="btn-primary" style="padding:14px 30px;font-size:15px">See my full summary →</button>
 </div>
@@ -252,29 +252,29 @@
 
 <div style="background:#14606F;border-radius:14px;padding:30px;margin-bottom:18px">
 <h1 style="font-family:'Source Serif 4',Georgia,serif;font-size:30px;font-weight:600;margin:0 0 6px;color:#fbfaf7" id="summary-level"></h1>
-<p style="font-size:16px;font-weight:600;color:#e8c988;margin:0 0 20px" id="summary-rate"></p>
-<p style="font-size:12px;font-weight:700;color:#c3cdd6;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Why this fits</p>
+<p style="font-size:max(16px, var(--fs-head, 0px));font-weight:600;color:#e8c988;margin:0 0 20px" id="summary-rate"></p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#c3cdd6;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Why this fits</p>
 <div id="summary-concerns"></div>
 </div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:18px">
-<p style="font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">You may also want to explore</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">You may also want to explore</p>
 <div id="summary-explore"></div>
 </div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:18px">
-<p style="font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Our Current Starting Rates</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Our Current Starting Rates</p>
 <div id="summary-ratecard"></div>
-<p style="font-size:12px;color:#66736B;line-height:1.6;margin:12px 0 0">The exact rate depends on schedule, hours, location, and level of support needed. A Care Coordinator can provide a personalized quote.</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));color:#4f5b54;line-height:1.6;margin:12px 0 0">The exact rate depends on schedule, hours, location, and level of support needed. A Care Coordinator can provide a personalized quote.</p>
 </div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:18px">
-<p style="font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Risk Level</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Risk Level</p>
 <p style="font-size:17px;font-weight:600;color:#122236;margin:0" id="summary-risk"></p>
 </div>
 
 <div style="background:#f2f0e9;border-radius:14px;padding:28px;margin-bottom:24px">
-<p style="font-size:12px;font-weight:700;color:#66736B;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Suggested Next Steps</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 12px">Suggested Next Steps</p>
 <div id="summary-nextsteps"></div>
 </div>
 
@@ -284,7 +284,7 @@
 <a href="contact" style="background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:9px;padding:14px 26px;font-size:15px;font-weight:600;text-decoration:none">Message a Care Coordinator</a>
 </div>
 <div style="display:flex;justify-content:center">
-<button id="start-over" style="background:none;border:none;color:#55677a;font-size:14px;font-weight:600;cursor:pointer;padding:8px 0">Start a New Conversation</button>
+<button id="start-over" style="background:none;border:none;color:#45566a;font-size:max(14px, var(--fs-min, 0px));font-weight:600;cursor:pointer;padding:8px 0">Start a New Conversation</button>
 </div>
 <div id="ccrs-mount"></div>
 </section>
@@ -660,7 +660,7 @@ function renderSummary() {
   result.rateCard.forEach(function (r) {
     var row = document.createElement('div');
     row.style.cssText = 'padding:10px 0;border-bottom:1px solid #ede9e0';
-    row.innerHTML = '<p style="font-size:14px;margin:0 0 3px"><strong style="color:#122236"></strong> <span style="color:#9C6410;font-weight:600"></span></p><p style="font-size:12.5px;color:#55677a;line-height:1.5;margin:0"></p>';
+    row.innerHTML = '<p style="font-size:max(14px, var(--fs-read, 0px));margin:0 0 3px"><strong style="color:#122236"></strong> <span style="color:#9C6410;font-weight:600"></span></p><p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;line-height:1.5;margin:0"></p>';
     row.querySelector('strong').textContent = r.name;
     row.querySelector('span').textContent = ', ' + r.rate;
     row.querySelectorAll('p')[1].textContent = r.desc;
