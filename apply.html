@@ -88,7 +88,7 @@
       <span>Paid training from home</span><span>Weekly pay</span><span>W-2 employee, not a contractor</span>
       <span>Flexible schedules</span><span>Full time &amp; part time</span>
     </div>
-    <p class="ap-counties">Greene &middot; Christian &middot; Polk &middot; Taney &middot; Jasper &middot; Lawrence counties</p>
+    <p class="ap-counties">Mostly Greene, Christian, Webster and Polk counties, with some clients in Taney, Lawrence, Dallas and Stone</p>
   </div>
 </div>
 
@@ -855,8 +855,8 @@ async function next1(){
 }
 
 /* The three answers we cannot work around. The first two are the law, the
-   third is what the job physically is: caregivers drive to homes across six
-   counties. Everything else on step two is context for a human, not a gate. */
+   third is what the job physically is: caregivers drive to homes around Springfield
+   and nearby counties. Everything else on step two is context for a human, not a gate. */
 const KNOCKOUTS = [
   { k: 'age_ok', when: false, reason: 'under 18',
     why: 'Caregiving in Missouri is only open to people who are 18 or older, so we are not able to take your application further right now.',
@@ -865,7 +865,7 @@ const KNOCKOUTS = [
     why: 'We are only able to hire people who are authorized to work in the United States.',
     next: 'If your situation changes, you would be welcome to apply again.' },
   { k: 'has_transport', when: false, reason: 'no reliable transportation',
-    why: 'Our caregivers travel to clients in their own homes across six counties, so reliable transportation is something the job genuinely depends on.',
+    why: 'Our caregivers travel to clients in their own homes around Springfield and nearby counties, so reliable transportation is something the job really depends on.',
     next: 'If that changes, please apply again. And if you think we have this wrong, call us on (417) 234-8494 and we will talk it through.' },
   { k: 'one_year', when: 'no', reason: 'under one year of paid experience',
     why: 'Our caregivers need at least one year of paid caregiving experience before they start, so we are not able to take your application further right now.',
