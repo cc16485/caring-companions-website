@@ -214,14 +214,12 @@
       <p>For current and future Caring Companions clients. Add your name and we'll let you know when the app is ready. Nothing is booked and there's nothing to pay now.</p>
       <p>Need care now? You don't have to wait for the app. <a href="/book">Book a free in-home assessment</a> or call <a href="tel:14172348494">(417) 234-8494</a>.</p>
     </div>
-    <form class="card join-form" data-join novalidate>
-      <input type="radio" name="kind" value="family" checked hidden>
+    <form class="card join-form" data-app-lead novalidate>
       <label>Your name<input name="name" autocomplete="name" required maxlength="120"></label>
       <div class="join-row"><label>Email<input name="email" type="email" autocomplete="email" maxlength="200"></label>
       <label>Phone<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label></div>
       <label>ZIP code<input name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5"></label>
       <label>Who would you book for?<select name="for_whom"><option value="">Choose one</option><option>My mother</option><option>My father</option><option>Both parents</option><option>My spouse</option><option>Myself</option><option>Someone else</option></select></label>
-      <input type="hidden" name="interests" value="app-early-access">
       <label>Anything you'd like the app to do? <span style="font-weight:400;color:var(--muted)">(optional)</span><textarea name="message" maxlength="2000"></textarea></label>
       <label class="join-consent"><input type="checkbox" name="may_contact" checked> It's OK to contact me about the Caring Companions app.</label>
       <label class="hp-field" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
@@ -251,10 +249,10 @@ window.AP_CONFIG = { brand: "Caring Companions", tagline: "Caring Companions", w
       why: "Rosa says the best part of her day is seeing someone light up when she walks in. She likes knowing the family can relax because someone is there." } ],
   activities: [ { k: "move", t: "A gentle walk or stretch", i: "i-strength" }, { k: "lunch", t: "Cook lunch together", i: "i-bowl" }, { k: "meds", t: "Medication reminder", i: "i-clock" },
     { k: "outing", t: "An outing", i: "i-car" }, { k: "errands", t: "Errands and groceries", i: "i-bag" }, { k: "house", t: "Light housekeeping", i: "i-home" }, { k: "chat", t: "Cards, games and conversation", i: "i-chat" } ] };
-window.JOIN_CONFIG = { site: "missouri", fallback: "Please call (417) 234-8494." };
 </script>
 <script src="/assets/app-preview.js?v=7" defer></script>
-<script src="/assets/join.js?v=1" defer></script>
+<script src="/assets/forms.js" defer></script>
+<script src="/assets/app-lead.js?v=1" defer></script>
 
 <footer class="cc-siteftr">
 <div class="cc-siteftr-grid">
