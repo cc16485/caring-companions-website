@@ -103,8 +103,8 @@
   }
 
   function welcome() {
-    return '<div class="ap-hello"><p class="ap-kicker">' + C.tagline + '</p><h3>Book a visit in a minute.</h3>' +
-      '<p>Pick a date and a time that suits you, choose what they’d like to do, and you’re set.</p>' +
+    return '<div class="ap-hello"><p class="ap-kicker">' + C.tagline + '</p><h3>Book a Wellness Care visit in a minute.</h3>' +
+      '<p>Level 1 care: company, meals, light housekeeping, errands, rides and outings. Pick a date and a time, choose what they’d like to do, and send your request.</p>' +
       '<label class="ap-field">Who is the visit for?<select data-k="who"><option>Mom</option><option>Dad</option><option>Grandma</option><option>Grandpa</option><option>Myself</option></select></label>' +
       '<div class="ap-list-preview"><span>' + ic('i-calendar') + 'Upcoming visits</span><b>Nothing booked yet</b></div></div>' +
       foot('<button class="ap-btn" data-go="1">Book a visit</button>');
@@ -164,7 +164,7 @@
           '<button class="ap-link" data-view="' + c.k + '">Profile</button><i class="ap-tickbox" aria-hidden="true"></i></div>';
       }).join('') +
       '<button class="ap-cg ap-cg-any' + (st.any ? ' on' : '') + '" data-cg="any" aria-pressed="' + st.any + '"><span class="ap-av" style="background:#8a96a3" aria-hidden="true">?</span><span><b>Whoever is available</b><small>The quickest way to get a yes</small></span></button></div>' +
-      '<p class="ap-note">If none of your picks can make it, we offer the visit to other caregivers on our team so it still happens. Sample caregivers for this preview.</p>' +
+      '<p class="ap-note">If none of your picks can make it, we offer the visit to other caregivers on our team. If no one is free, we’ll let you know. Sample caregivers for this preview.</p>' +
       foot('<button class="ap-btn ap-ghost" data-go="3">Back</button><button class="ap-btn" data-go="5"' + (st.cgs.length || st.any ? '' : ' disabled') + '>Review</button>');
   }
   // Same three parts as a real Caring Companions caregiver profile: about, experience caring for others, why they enjoy it.
@@ -203,8 +203,8 @@
       : 'You’ll see who’s coming, with their profile, as soon as a caregiver says yes.';
     if (st.mode === 'flex') next += ' They’ll pick the exact time inside your window.';
     return '<div class="ap-done"><div class="ap-tick" aria-hidden="true"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>' +
-      '<h3>You’re all set.</h3><p>' + whose + ' visit is on the calendar. ' + next + '</p>' +
-      '<div class="ap-list-preview on"><span>' + ic('i-calendar') + 'Upcoming visits</span><b>' + DAY[st.day.getDay()] + ' ' + MON[st.day.getMonth()] + ' ' + st.day.getDate() + ', ' +
+      '<h3>Request sent.</h3><p>' + whose + ' visit request is in. ' + next + ' If no caregiver is free at that time, we’ll let you know.</p>' +
+      '<div class="ap-list-preview on"><span>' + ic('i-calendar') + 'Visit requests</span><b>' + DAY[st.day.getDay()] + ' ' + MON[st.day.getMonth()] + ' ' + st.day.getDate() + ', ' +
         (st.mode === 'set' ? tm(st.from) : tm(st.wFrom) + ' to ' + tm(st.wTo)) + '</b></div>' +
       '<p class="ap-small">That’s how booking will work in our app. Want to be first in line?</p></div>' +
       foot('<a class="ap-btn" href="' + C.joinHref + '">' + C.joinLabel + '</a><button class="ap-btn ap-ghost" data-restart>Try again</button>');
