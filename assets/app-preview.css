@@ -129,3 +129,9 @@
 .ap-tickbox { flex: none; width: 20px; height: 20px; border-radius: 6px; border: 2px solid #cfcabd; }
 .ap-cg.on .ap-tickbox { background: #1F7A8C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat; border-color: #1F7A8C; }
 .ap-avs { display: inline-flex; } .ap-avs .ap-av { width: 34px; height: 34px; font-size: 12px; border: 2px solid #fff; } .ap-avs .ap-av + .ap-av { margin-left: -10px; }
+/* photo avatars + profile parts */
+.ap-av-img { object-fit: cover; padding: 0; background: #e4e1d8; }
+.ap-av-img.big { width: 92px; height: 92px; }
+.ap-part { text-align: left; margin: 0 0 10px; }
+.ap-part p:not(.ap-lbl) { font-size: 14.5px !important; margin: 0 !important; }
+.ap-part .ap-quote { text-align: left; }

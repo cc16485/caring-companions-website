@@ -92,7 +92,10 @@
   var STEPS = [welcome, pickDay, pickTime, plan, pickCaregiver, review, booked];
   var TOTAL = 5;
   function cgBy(k) { return C.caregivers.filter(function (c) { return c.k === k; })[0]; }
-  function av(c, big) { return '<span class="ap-av' + (big ? ' big' : '') + '" style="background:' + c.c + '" aria-hidden="true">' + c.ini + '</span>'; }
+  function av(c, big) {
+    if (c.photo) return '<img class="ap-av ap-av-img' + (big ? ' big' : '') + '" src="' + c.photo + '" alt="" width="76" height="76">';
+    return '<span class="ap-av' + (big ? ' big' : '') + '" style="background:' + c.c + '" aria-hidden="true">' + c.ini + '</span>';
+  }
   function names(ks) {
     var n = ks.map(function (k) { return cgBy(k).n; });
     return n.length < 3 ? n.join(' and ') : n.slice(0, -1).join(', ') + ' and ' + n[n.length - 1];
@@ -163,11 +166,13 @@
       '<p class="ap-note">If none of your picks can make it, we offer the visit to other caregivers on our team so it still happens. Sample caregivers for this preview.</p>' +
       foot('<button class="ap-btn ap-ghost" data-go="3">Back</button><button class="ap-btn" data-go="5"' + (st.cgs.length || st.any ? '' : ' disabled') + '>Review</button>');
   }
+  // Same three parts as a real Caring Companions caregiver profile: about, experience caring for others, why they enjoy it.
   function profile(c) {
     var on = st.cgs.indexOf(c.k) > -1;
-    return '<div class="ap-prof">' + av(c, true) + '<h3>' + c.n + '</h3><p class="ap-sub">' + c.yrs + ' &middot; lives near ' + c.town + '</p>' +
-      '<p class="ap-quote">“' + c.hi + '”</p>' +
-      '<p class="ap-lbl">Likes</p><div class="ap-tags">' + c.likes.map(function (l) { return '<span>' + l + '</span>'; }).join('') + '</div>' +
+    function part(t, x, q) { return x ? '<div class="ap-part"><p class="ap-lbl">' + t + '</p><p' + (q ? ' class="ap-quote"' : '') + '>' + x + '</p></div>' : ''; }
+    return '<div class="ap-prof">' + av(c, true) + '<h3>' + (c.full || c.n) + '</h3><p class="ap-sub">' + c.yrs + ' &middot; lives near ' + c.town + '</p>' +
+      (c.about ? part('About ' + c.n, c.about) + part('Experience caring for others', c.exp) + part('Why ' + c.n + ' enjoys caregiving', c.why, true)
+        : '<p class="ap-quote">“' + c.hi + '”</p><p class="ap-lbl">Likes</p><div class="ap-tags">' + c.likes.map(function (l) { return '<span>' + l + '</span>'; }).join('') + '</div>') +
       '<ul class="ap-plan">' +
         '<li>' + ic('i-shield') + C.checkLabel + '</li>' +
         '<li>' + ic('i-check') + C.brand + ' orientation</li>' +
