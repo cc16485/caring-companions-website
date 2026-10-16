@@ -90,3 +90,6 @@
 @media (max-width:560px){.wc-signs,.wc-incl{grid-template-columns:1fr}.wc-plus > div{padding:22px 18px}}
 .wc-stats.three{grid-template-columns:repeat(3,1fr)}
 @media (max-width:860px){.wc-stats.three{grid-template-columns:1fr}}
+.wc-pillars.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1000px){.wc-pillars.four{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.wc-pillars.four{grid-template-columns:1fr}}
