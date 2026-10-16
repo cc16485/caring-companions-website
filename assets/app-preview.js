@@ -103,8 +103,8 @@
   }
 
   function welcome() {
-    return '<div class="ap-hello"><p class="ap-kicker">' + C.tagline + '</p><h3>Book a visit in a minute.</h3>' +
-      '<p>Pick a date and a time that suits you, choose what they’d like to do, and send your request.</p>' +
+    return '<div class="ap-hello"><p class="ap-kicker">' + C.tagline + '</p><h3>Book a Wellness Care visit in a minute.</h3>' +
+      '<p>Level 1 care: company, meals, light housekeeping, errands, rides and outings. Pick a date and a time, choose what they’d like to do, and send your request.</p>' +
       '<label class="ap-field">Who is the visit for?<select data-k="who"><option>Mom</option><option>Dad</option><option>Grandma</option><option>Grandpa</option><option>Myself</option></select></label>' +
       '<div class="ap-list-preview"><span>' + ic('i-calendar') + 'Upcoming visits</span><b>Nothing booked yet</b></div></div>' +
       foot('<button class="ap-btn" data-go="1">Book a visit</button>');
