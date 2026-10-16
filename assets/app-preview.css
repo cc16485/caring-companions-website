@@ -77,3 +77,62 @@
   .ap-notch { display: none; }
 }
 .ap-sig { display: inline-flex; gap: 2px; align-items: flex-end; } .ap-sig i { width: 3px; background: #0D365F; border-radius: 1px; } .ap-sig i:nth-child(1){height:5px} .ap-sig i:nth-child(2){height:8px} .ap-sig i:nth-child(3){height:11px}
+/* caregiver choice + profile */
+.ap-cgs { display: grid; gap: 8px; }
+.ap-cg { display: flex; align-items: center; gap: 10px; background: #fff; border: 1.5px solid #e4e1d8; border-radius: 14px; padding: 10px 12px; text-align: left; font: inherit; width: 100%; }
+.ap-cg.on { border-color: #1F7A8C; background: #EAF4F6; }
+.ap-cg-pick, .ap-cg-any { flex: 1; background: none; border: 0; padding: 0; font: inherit; text-align: left; cursor: pointer; color: inherit; }
+.ap-cg-any { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1.5px dashed #b9c7c9; }
+.ap-cg-any > span:last-child, .ap-cg-line > span:last-child { display: grid; }
+.ap-cg b, .ap-cg-line b { color: #0D365F; font-size: 15.5px; }
+.ap-cg small, .ap-cg-line small { display: block; color: #55677a; font-size: 12.5px; }
+.ap-av { flex: 0 0 auto; display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 14px; letter-spacing: .02em; }
+.ap-av.big { width: 76px; height: 76px; font-size: 24px; margin: 4px auto 6px; display: grid; }
+.ap-link { background: none; border: 0; padding: 6px 4px; font: inherit; font-size: 13.5px; font-weight: 700; color: #1F7A8C; text-decoration: underline; cursor: pointer; }
+.ap-prof { text-align: center; }
+.ap-prof h3 { margin: 0; }
+.ap-prof .ap-plan { text-align: left; margin-top: 12px; }
+.ap-sub { color: #55677a; font-size: 13.5px !important; margin: 2px 0 10px !important; }
+.ap-quote { font-family: 'Source Serif 4', Georgia, serif; font-size: 15.5px !important; color: #0D365F; background: #faf6ec; border-radius: 12px; padding: 10px 12px; margin: 0 0 10px !important; }
+.ap-lbl { font-size: 11px !important; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #8a6412; margin: 0 0 6px !important; }
+.ap-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.ap-tags span { background: #EAF4F6; color: #155A68; border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 600; }
+.ap-cg-line { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #e4e1d8; padding-bottom: 10px; margin-bottom: 10px; }
+/* calendar */
+.ap-cal { background: #fff; border: 1px solid #e4e1d8; border-radius: 16px; padding: 10px; margin: 10px 0 8px; }
+.ap-cal-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.ap-cal-top b { color: #0D365F; font-size: 15.5px; }
+.ap-cal-nav { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid #e4e1d8; background: #fff; color: #0D365F; font-size: 20px; line-height: 1; cursor: pointer; }
+.ap-cal-nav[disabled] { opacity: .35; cursor: default; }
+.ap-cal-g { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center; }
+.ap-cal-g small { font-size: 11px; font-weight: 700; color: #8a96a3; padding: 2px 0 4px; }
+.ap-cal-d { font: inherit; font-size: 14.5px; font-weight: 600; color: #16283a; background: none; border: 0; border-radius: 10px; height: 38px; cursor: pointer; }
+.ap-cal-d:hover:not([disabled]) { background: #EAF4F6; }
+.ap-cal-d[disabled] { color: #c3c7cc; font-weight: 400; cursor: default; }
+.ap-cal-d.on, .ap-cal-d.on:hover { background: #0D365F; color: #fff; }
+/* set time / flexible window */
+.ap-seg { display: grid; grid-template-columns: 1fr 1fr; background: #ece9e1; border-radius: 12px; padding: 4px; margin: 10px 0 14px; }
+.ap-seg button { font: inherit; font-size: 15px; font-weight: 700; color: #55677a; background: none; border: 0; border-radius: 9px; padding: 10px 6px; cursor: pointer; }
+.ap-seg button.on { background: #fff; color: #0D365F; box-shadow: 0 2px 6px rgba(13,54,95,.12); }
+.ap-q { font-weight: 700; color: #0D365F; margin: 0 0 6px !important; }
+.ap-trow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ap-tsel { display: grid; gap: 4px; font-size: 13px; font-weight: 700; color: #55677a; }
+.ap-tsel select { font: inherit; font-size: 17px; font-weight: 600; color: #0D365F; padding: 11px 10px; border: 1.5px solid #cfcabd; border-radius: 12px; background: #fff; }
+.ap-len-read { text-align: center; font-family: 'Source Serif 4', Georgia, serif; font-size: 20px !important; color: #0D365F; margin: 14px 0 6px !important; }
+.ap-stepper { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: #fff; border: 1px solid #e4e1d8; border-radius: 14px; padding: 10px 12px; margin: 14px 0 10px; }
+.ap-stepper > span:first-child { display: grid; } .ap-stepper b { color: #0D365F; } .ap-stepper small { color: #55677a; font-size: 12.5px; }
+.ap-ctl { display: flex; align-items: center; gap: 10px; } .ap-ctl b { min-width: 72px; text-align: center; }
+.ap-round { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #1F7A8C; background: #fff; color: #1F7A8C; font-size: 20px; line-height: 1; cursor: pointer; }
+.ap-round[disabled] { opacity: .35; cursor: default; }
+/* several caregiver picks */
+.ap-tight { margin-top: -2px !important; }
+.ap-tickbox { flex: none; width: 20px; height: 20px; border-radius: 6px; border: 2px solid #cfcabd; }
+.ap-cg.on .ap-tickbox { background: #1F7A8C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat; border-color: #1F7A8C; }
+.ap-avs { display: inline-flex; } .ap-avs .ap-av { width: 34px; height: 34px; font-size: 12px; border: 2px solid #fff; } .ap-avs .ap-av + .ap-av { margin-left: -10px; }
+/* photo avatars + profile parts */
+.ap-av-img { object-fit: cover; padding: 0; background: #e4e1d8; }
+.ap-av-img.big { width: 92px; height: 92px; }
+.ap-part { text-align: left; margin: 0 0 10px; }
+.ap-part p:not(.ap-lbl) { font-size: 14.5px !important; margin: 0 !important; }
+.ap-part .ap-quote { text-align: left; }
+.ap-perk { display: flex; gap: 8px; align-items: flex-start; background: #EAF4F6; color: #103D47; border-radius: 12px; padding: 10px 12px; font-size: 13.5px !important; font-weight: 600; margin: 12px 0 8px !important; }
