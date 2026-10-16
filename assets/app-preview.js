@@ -12,6 +12,7 @@
     rate: 30,
     rateLabel: 'Companion care',
     shortExtra: 0, shortUnder: 4, // e.g. Missouri: $5 more an hour for visits under 4 hours
+    perk: '',                     // a line on the review screen, e.g. what app booking saves
     checkLabel: 'Fingerprint background check',
     joinHref: 'join.html',
     joinLabel: 'Join the opening list',
@@ -192,6 +193,7 @@
       '<ul class="ap-plan">' + acts.map(function (a) { return '<li>' + ic(a.i) + a.t + '</li>'; }).join('') + '</ul>' +
       '<div class="ap-cost"><span>Estimate: ' + C.rateLabel + ', ' + hrs(h) + ' at $' + r + '</span><b>$' + (h * r) + '</b></div></div>' +
       (extra ? '<p class="ap-note">Visits under ' + hrs(C.shortUnder) + ' are $' + extra + ' more an hour, to cover drive time between visits.</p>' : '') +
+      (C.perk ? '<p class="ap-perk">' + ic('i-check') + '<span>' + C.perk + '</span></p>' : '') +
       '<p class="ap-note">Nothing is charged in this preview.</p>' +
       foot('<button class="ap-btn ap-ghost" data-go="4">Back</button><button class="ap-btn" data-go="6">Book this visit</button>');
   }

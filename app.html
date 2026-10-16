@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="/assets/outings.css?v=2">
-<link rel="stylesheet" href="/assets/app-preview.css?v=4">
+<link rel="stylesheet" href="/assets/app-preview.css?v=5">
 <style>
 .og-page .app-hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
 .og-page .peek-phone { width: 250px; height: 440px; border: 10px solid var(--navy); border-radius: 38px; background: #faf9f6; box-shadow: 0 24px 50px rgba(13,54,95,.22); padding: 30px 16px 16px; justify-self: center; transform: rotate(-4deg); display: grid; align-content: start; gap: 10px; }
@@ -190,7 +190,7 @@
   <ol class="app-steps">
     <li><h3>A living room meeting</h3><p>We come to the home, free, meet your loved one and learn their routines, what they enjoy and what's gotten harder.</p></li>
     <li><h3>A care plan together</h3><p>We write down the help they need and the caregivers who fit, so every visit starts from the same page.</p></li>
-    <li><h3>Book in the app</h3><p>Add visits when you need them, with no weekly minimum. Pick a date and a set time or a flexible window, any day from 7am to 6pm, for 2 hours or more. Say who you'd like to come, and see the cost before you book.</p></li>
+    <li><h3>Book in the app</h3><p>Add visits when you need them, with no weekly minimum. Pick a date and a set time or a flexible window, any day from 7am to 6pm, for 2 hours or more. No weekly minimum and no extra charge for short visits. Say who you'd like to come, and see the cost before you book.</p></li>
   </ol>
   <p class="form-note" style="margin-top:16px">The app is free any month you have a visit. Months without a visit are $15.</p>
   <p style="margin-top:22px"><button type="button" class="btn" data-app-preview>Try the preview</button></p>
@@ -224,7 +224,7 @@
 </main>
 <script>
 window.AP_CONFIG = { brand: "Caring Companions", tagline: "Caring Companions", weekdaysOnly: false, startHour: 7, endHour: 18, minHours: 2, rate: 30, rateLabel: "Wellness Care",
-  shortExtra: 5, shortUnder: 4, checkLabel: "Background check",
+  checkLabel: "Background check", perk: "Booking in the app means no weekly minimum and no extra charge for visits under 4 hours.",
   joinHref: "/app#early", joinLabel: "Get early access", icons: "/assets/outings-icons.svg", footnote: "Preview with sample information. The app is coming soon.",
   caregivers: [ // sample caregivers for the preview only (not real people)
     { k: "grace", n: "Grace", full: "Grace M.", photo: "/assets/photos/sample-caregiver-grace.webp", yrs: "Caregiving 6 years", town: "Nixa", drives: true,
@@ -243,7 +243,7 @@ window.AP_CONFIG = { brand: "Caring Companions", tagline: "Caring Companions", w
     { k: "outing", t: "An outing", i: "i-car" }, { k: "errands", t: "Errands and groceries", i: "i-bag" }, { k: "house", t: "Light housekeeping", i: "i-home" }, { k: "chat", t: "Cards, games and conversation", i: "i-chat" } ] };
 window.JOIN_CONFIG = { site: "missouri", fallback: "Please call (417) 234-8494." };
 </script>
-<script src="/assets/app-preview.js?v=4" defer></script>
+<script src="/assets/app-preview.js?v=5" defer></script>
 <script src="/assets/join.js?v=1" defer></script>
 
 <footer class="cc-siteftr">

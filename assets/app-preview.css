@@ -135,3 +135,4 @@
 .ap-part { text-align: left; margin: 0 0 10px; }
 .ap-part p:not(.ap-lbl) { font-size: 14.5px !important; margin: 0 !important; }
 .ap-part .ap-quote { text-align: left; }
+.ap-perk { display: flex; gap: 8px; align-items: flex-start; background: #EAF4F6; color: #103D47; border-radius: 12px; padding: 10px 12px; font-size: 13.5px !important; font-weight: 600; margin: 12px 0 8px !important; }
