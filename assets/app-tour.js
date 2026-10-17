@@ -6,7 +6,7 @@
   'use strict';
   var SCREENS = [
     { img: '1-home', t: 'Your home screen', d: 'Sign in with the email we have on file. Tap Request a visit.' },
-    { img: '2-day', t: 'Pick a day', d: 'Any day of the week, 7 AM to 6 PM, at least 2 hours ahead and up to 60 days out.' },
+    { img: '2-day', t: 'Pick a day', d: 'Any day of the week, 7 AM to 6 PM, at least 2 hours ahead and up to 60 days out. Use it on its own, or on top of a regular schedule.' },
     { img: '3-time', t: 'Pick the time', d: 'A set time, or a flexible window when the caregiver picks the start. 2 hours or more.' },
     { img: '4-help', t: 'What would help', d: 'Pick what you’d like help with, and add a note for the caregiver.' },
     { img: '5-who', t: 'Who you’d like', d: 'Ask for a caregiver who knows your loved one first, or whoever is available.' },
