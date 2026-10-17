@@ -208,7 +208,6 @@
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeHealthCareService","name":"Caring Companions In-Home Senior Care","url":"https://mo-care.com/","logo":"https://mo-care.com/assets/cc-logo.webp","image":"https://mo-care.com/assets/photos/hero-caregiver.jpg","telephone":"+1-417-234-8494","priceRange":"$30-$34/hour","address":{"@type":"PostalAddress","streetAddress":"1331 N Stewart Ave Ste B","addressLocality":"Springfield","addressRegion":"MO","postalCode":"65802","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":37.22244,"longitude":-93.25992},"openingHours":"Mo-Su 00:00-23:59","description":"Caring Companions provides trusted non-medical in-home senior care across southwest Missouri: wellness and companion care, personal care, dementia and memory care, plus overnight and 24-hour care. Available 24/7.","areaServed":["Greene County MO","Christian County MO","Webster County MO","Polk County MO","Taney County MO","Lawrence County MO","Dallas County MO","Stone County MO"],"sameAs":["https://www.facebook.com/ccseniorhomecare"]}</script>
-<link rel="stylesheet" href="/assets/app-preview.css?v=5">
 </head>
 <body>
 <div class="hp">
@@ -381,23 +380,16 @@
     <h2 style="margin:0 0 14px">Book care in about a minute.</h2>
     <p style="color:var(--muted,#55677a);font-size:max(16.5px, var(--fs-read, 0px));line-height:1.65;margin:0 0 20px">For Caring Companions clients. After a free living room meeting and a care plan made together, the app lets you book Wellness Care visits when you need them, right from your phone, with no weekly minimum. Visits depend on caregiver availability, so it's one more way to get help. Take it for a spin now with sample information.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button type="button" data-app-preview class="btn btn-primary" style="background:#1F7A8C;color:#fff;border:0;border-radius:12px;padding:13px 22px;font:inherit;font-weight:700;cursor:pointer">Try the booking app</button>
+      <button type="button" data-app-tour class="btn btn-primary" style="background:#1F7A8C;color:#fff;border:0;border-radius:12px;padding:13px 22px;font:inherit;font-weight:700;cursor:pointer">Try the booking app</button>
       <a href="/app#early" style="color:#9C6410;font-weight:700;font-size:15px;text-decoration:none">Get early access &rarr;</a>
     </div>
   </div>
-  <div class="app-band-phone" aria-hidden="true">
-    <span class="k">Caring Companions</span><b>Tue, 9am to 1pm</b>
-    <span class="r">A gentle walk or stretch</span><span class="r">Cook lunch together</span><span class="r">Medication reminder</span>
-    <span class="go">Book this visit</span>
-  </div>
+  <div class="app-band-phone"><img src="/assets/app-real/4-help.webp" width="585" height="1266" alt="The real Caring Companions app: pick what would help on the visit (sample information)" loading="lazy"></div>
 </div>
 <style>
-.app-band-phone{width:250px;height:440px;border:10px solid #0D365F;border-radius:38px;background:#faf9f6;box-shadow:0 24px 50px rgba(13,54,95,.22);padding:30px 16px 16px;justify-self:center;transform:rotate(-4deg);display:grid;align-content:start;gap:10px;box-sizing:border-box}
-.app-band-phone .k{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9C6410}
-.app-band-phone b{font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#0D365F}
-.app-band-phone .r{background:#EAF4F6;border:1.5px solid #1F7A8C;border-radius:10px;padding:10px;font-size:13.5px;font-weight:600;color:#103D47}
-.app-band-phone .go{margin-top:14px;background:#1F7A8C;color:#fff;text-align:center;border-radius:10px;padding:12px;font-size:14px;font-weight:700}
-@media(max-width:860px){.app-band-grid{grid-template-columns:1fr!important;gap:22px!important}.app-band-phone{transform:none;height:340px}}
+.app-band-phone{width:250px;border:10px solid #0D365F;border-radius:38px;overflow:hidden;background:#faf9f6;box-shadow:0 24px 50px rgba(13,54,95,.22);justify-self:center;line-height:0}
+.app-band-phone img{width:100%;height:auto;display:block}
+@media(max-width:860px){.app-band-grid{grid-template-columns:1fr!important;gap:22px!important}.app-band-phone{width:230px}}
 @media(max-width:640px){.app-band-phone{display:none}}
 </style>
 </section>
@@ -640,27 +632,7 @@
 <script src="assets/site.js"></script>
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
-<script>
-window.AP_CONFIG = { brand: "Caring Companions", tagline: "Caring Companions", weekdaysOnly: false, startHour: 7, endHour: 18, minHours: 2, rate: 30, rateLabel: "Wellness Care",
-  checkLabel: "Background check", perk: "Booking in the app means no weekly minimum and no extra charge for visits under 4 hours.",
-  joinHref: "/app#early", joinLabel: "Get early access", icons: "/assets/outings-icons.svg", footnote: "Preview with sample information. The app is coming soon. App visits depend on caregiver availability.",
-  caregivers: [ // sample caregivers for the preview only (not real people)
-    { k: "grace", n: "Grace", full: "Grace M.", photo: "/assets/photos/sample-caregiver-grace.webp", yrs: "Caregiving 6 years", town: "Nixa", drives: true,
-      about: "Grace is a retired school secretary who loves a good card game, her garden and cooking a Sunday-style lunch on a Tuesday. She is calm, cheerful and easy to have around the house.",
-      exp: "Grace has spent six years helping older adults at home with meals, light housekeeping and company. She is used to gentle reminders and keeping a day on track.",
-      why: "Grace says she enjoys the small moments most, like a shared laugh over coffee. She likes leaving a home a little brighter than she found it." },
-    { k: "andre", n: "Andre", full: "Andre W.", photo: "/assets/photos/sample-caregiver-andre.webp", yrs: "Caregiving 3 years", town: "Springfield", drives: true,
-      about: "Andre is easygoing and patient, and he is always up for a game of checkers or a Cardinals game on the radio. He never minds a long drive to an appointment.",
-      exp: "Andre has three years as a companion for older adults, with rides to appointments, grocery runs and a hand around the house.",
-      why: "Andre enjoys the conversations most. He says everyone has a story worth hearing, and he likes being the person who shows up." },
-    { k: "rosa", n: "Rosa", full: "Rosa G.", photo: "/assets/photos/sample-caregiver-rosa.webp", yrs: "Caregiving 4 years", town: "Ozark", drives: false,
-      about: "Rosa is a baker, a walker and a good listener. She speaks English and Spanish, and she loves hearing the old stories over a cup of coffee.",
-      exp: "Rosa has spent four years helping older adults at home with meals, errands and good company. Before that, she helped care for her grandmother for many years.",
-      why: "Rosa says the best part of her day is seeing someone light up when she walks in. She likes knowing the family can relax because someone is there." } ],
-  activities: [ { k: "move", t: "A gentle walk or stretch", i: "i-strength" }, { k: "lunch", t: "Cook lunch together", i: "i-bowl" }, { k: "meds", t: "Medication reminder", i: "i-clock" },
-    { k: "outing", t: "An outing", i: "i-car" }, { k: "errands", t: "Errands and groceries", i: "i-bag" }, { k: "house", t: "Light housekeeping", i: "i-home" }, { k: "chat", t: "Cards, games and conversation", i: "i-chat" } ] };
-</script>
-<script src="/assets/app-preview.js?v=7" defer></script>
+<script src="/assets/app-tour.js?v=2" defer></script>
 <script src="/assets/accessibility.js" defer></script>
 </body>
 </html>

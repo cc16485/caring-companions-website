@@ -19,14 +19,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="/assets/outings.css?v=2">
-<link rel="stylesheet" href="/assets/app-preview.css?v=5">
 <style>
 .og-page .app-hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
-.og-page .peek-phone { width: 250px; height: 440px; border: 10px solid var(--navy); border-radius: 38px; background: #faf9f6; box-shadow: 0 24px 50px rgba(13,54,95,.22); padding: 30px 16px 16px; justify-self: center; transform: rotate(-4deg); display: grid; align-content: start; gap: 10px; }
-.og-page .peek-k { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--honey-text); }
-.og-page .peek-phone b { font-family: var(--serif); font-size: 20px; color: var(--navy); }
-.og-page .peek-row { background: #EAF4F6; border: 1.5px solid var(--teal); border-radius: 10px; padding: 10px; font-size: 13.5px; font-weight: 600; color: #103D47; }
-.og-page .peek-btn { margin-top: 14px; background: var(--teal); color: #fff; text-align: center; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 700; }
+.og-page .real-phone { width: 250px; border: 10px solid var(--navy); border-radius: 38px; overflow: hidden; background: #faf9f6; box-shadow: 0 24px 50px rgba(13,54,95,.22); justify-self: center; line-height: 0; }
+.og-page .real-phone img { width: 100%; height: auto; display: block; }
 .og-page .app-steps { list-style: none; padding: 0; margin: 26px 0 0; counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .og-page .app-steps li { counter-increment: s; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 22px 20px; }
 .og-page .app-steps li::before { content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: #fff; font-family: var(--serif); font-weight: 600; margin-bottom: 12px; }
@@ -42,7 +38,7 @@
 .og-page .join-status { font-weight: 600; margin: 0; }
 .og-page .join-status.ok { color: #14606F; background: #EAF4F6; padding: 12px 14px; border-radius: 10px; }
 .og-page .join-status.err { color: #8a2d1f; }
-@media (max-width: 860px) { .og-page .app-hero-grid, .og-page .app-steps, .og-page .join-row { grid-template-columns: 1fr; } .og-page .peek-phone { transform: none; height: 380px; } }
+@media (max-width: 860px) { .og-page .app-hero-grid, .og-page .app-steps, .og-page .join-row { grid-template-columns: 1fr; } .og-page .real-phone { width: 230px; } }
 </style>
 </head>
 <body>
@@ -175,13 +171,9 @@
     <p class="kicker">Coming soon, for Caring Companions clients</p>
     <h1>Book care in about a minute.</h1>
     <p class="lede">The Caring Companions app is for our clients. Care starts with a free living room meeting at home, where we get to know your loved one and put a care plan together with you. After that, the app puts more control in your hands: book Wellness Care visits when you need them, right from your phone, with no weekly minimum.</p>
-    <div class="btn-row"><button type="button" class="btn" data-app-preview>See how booking works</button><a class="btn btn-outline" href="#early">Get early access</a></div>
+    <div class="btn-row"><button type="button" class="btn" data-app-tour>See how booking works</button><a class="btn btn-outline" href="#early">Get early access</a></div>
   </div>
-  <div class="peek-phone" aria-hidden="true">
-    <span class="peek-k">Caring Companions</span><b>Tue, 9am to 1pm</b>
-    <span class="peek-row">A gentle walk or stretch</span><span class="peek-row">Cook lunch together</span><span class="peek-row">Medication reminder</span>
-    <span class="peek-btn">Book this visit</span>
-  </div>
+  <div class="real-phone"><img src="/assets/app-real/2-day.webp" width="585" height="1266" alt="The real Caring Companions app: pick a day for the visit on a calendar (sample information)"></div>
 </div></section>
 
 <section class="section"><div class="shell">
@@ -203,7 +195,7 @@
     <p style="margin:0 0 10px">The app is a great way to reach our care team and ask for a visit whenever you need one. Visits booked in the app depend on which caregivers are free at that time, so we can't promise a caregiver will be available for every request.</p>
     <p style="margin:0">See it as one more option for help. If your loved one needs care they can count on at set times, a regular schedule in their care plan is the way to make sure of it.</p>
   </div>
-  <p style="margin-top:22px"><button type="button" class="btn" data-app-preview>Try the preview</button></p>
+  <p style="margin-top:22px"><button type="button" class="btn" data-app-tour>See the real app, step by step</button></p>
 </div></section>
 
 <section class="section alt" id="early"><div class="shell">
@@ -230,27 +222,7 @@
   </div>
 </div></section>
 </main>
-<script>
-window.AP_CONFIG = { brand: "Caring Companions", tagline: "Caring Companions", weekdaysOnly: false, startHour: 7, endHour: 18, minHours: 2, rate: 30, rateLabel: "Wellness Care",
-  checkLabel: "Background check", perk: "Booking in the app means no weekly minimum and no extra charge for visits under 4 hours.",
-  joinHref: "/app#early", joinLabel: "Get early access", icons: "/assets/outings-icons.svg", footnote: "Preview with sample information. The app is coming soon. App visits depend on caregiver availability.",
-  caregivers: [ // sample caregivers for the preview only (not real people)
-    { k: "grace", n: "Grace", full: "Grace M.", photo: "/assets/photos/sample-caregiver-grace.webp", yrs: "Caregiving 6 years", town: "Nixa", drives: true,
-      about: "Grace is a retired school secretary who loves a good card game, her garden and cooking a Sunday-style lunch on a Tuesday. She is calm, cheerful and easy to have around the house.",
-      exp: "Grace has spent six years helping older adults at home with meals, light housekeeping and company. She is used to gentle reminders and keeping a day on track.",
-      why: "Grace says she enjoys the small moments most, like a shared laugh over coffee. She likes leaving a home a little brighter than she found it." },
-    { k: "andre", n: "Andre", full: "Andre W.", photo: "/assets/photos/sample-caregiver-andre.webp", yrs: "Caregiving 3 years", town: "Springfield", drives: true,
-      about: "Andre is easygoing and patient, and he is always up for a game of checkers or a Cardinals game on the radio. He never minds a long drive to an appointment.",
-      exp: "Andre has three years as a companion for older adults, with rides to appointments, grocery runs and a hand around the house.",
-      why: "Andre enjoys the conversations most. He says everyone has a story worth hearing, and he likes being the person who shows up." },
-    { k: "rosa", n: "Rosa", full: "Rosa G.", photo: "/assets/photos/sample-caregiver-rosa.webp", yrs: "Caregiving 4 years", town: "Ozark", drives: false,
-      about: "Rosa is a baker, a walker and a good listener. She speaks English and Spanish, and she loves hearing the old stories over a cup of coffee.",
-      exp: "Rosa has spent four years helping older adults at home with meals, errands and good company. Before that, she helped care for her grandmother for many years.",
-      why: "Rosa says the best part of her day is seeing someone light up when she walks in. She likes knowing the family can relax because someone is there." } ],
-  activities: [ { k: "move", t: "A gentle walk or stretch", i: "i-strength" }, { k: "lunch", t: "Cook lunch together", i: "i-bowl" }, { k: "meds", t: "Medication reminder", i: "i-clock" },
-    { k: "outing", t: "An outing", i: "i-car" }, { k: "errands", t: "Errands and groceries", i: "i-bag" }, { k: "house", t: "Light housekeeping", i: "i-home" }, { k: "chat", t: "Cards, games and conversation", i: "i-chat" } ] };
-</script>
-<script src="/assets/app-preview.js?v=7" defer></script>
+<script src="/assets/app-tour.js?v=2" defer></script>
 <script src="/assets/forms.js" defer></script>
 <script src="/assets/app-lead.js?v=1" defer></script>
 
