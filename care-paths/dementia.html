@@ -254,7 +254,7 @@ function computeResult(state) {
 
     if (answers.wandering === 'Yes, this is an ongoing concern' || answers.daily === 'Needs someone to do it for them') {
       stage = 'Later Stage'; stageDesc = 'Wandering risk or a need for full daily task support suggests dementia has progressed further. Closer supervision meaningfully improves safety at this stage.';
-      careLevel = 'Advanced Care'; rate = 'Starting at $34/hour'; careExplain = 'Higher-acuity, closely supervised support from caregivers trained specifically in dementia care.';
+      careLevel = 'Advanced Care'; rate = 'Starting at $34/hour'; careExplain = 'Higher-acuity, closely supervised support from caregivers matched for dementia care.';
     } else if (answers.memory === 'Frequent confusion or repeating questions' || answers.daily === 'Needs reminders or some help') {
       stage = 'Middle Stage'; stageDesc = 'Needing reminders or help with daily tasks suggests dementia has progressed beyond the earliest stage. Consistent routines and hands-on help both matter more now.';
       careLevel = 'Personal Care'; rate = 'Starting at $32/hour'; careExplain = 'Hands-on help with daily routines, paired with the consistency that reduces anxiety for someone with dementia.';
