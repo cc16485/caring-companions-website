@@ -115,7 +115,7 @@
     }
     addBubble('Hi, I am Cara. Ask me anything about home care, Medicaid, VA benefits, or getting started, or use the options below.', 'cara');
 
-    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, a real care coordinator can help right away - call (417) 234-8494 (24/7), or tap "Start a Full Consultation" below and Cara will walk you through it step by step.';
+    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Start a Full Consultation" below and Cara will walk you through it step by step.';
 
     function askCara(messages) {
       if (!CARA_CHAT_ENDPOINT) {
