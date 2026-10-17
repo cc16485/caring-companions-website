@@ -63,24 +63,25 @@ const ORG = {
 /* HOW HIRING WORKS (2026-10-02, Samantha). One in-person interview, then everything else from home: paperwork online,
    a 15-minute Orientation Video Call, and paid training. Never "remote", never a phone interview.
    2026-10-15 (Samantha): the only required training is the 2-hour orientation. Dementia, on-the-job and yearly training
-   are no longer required; extra courses are optional and offered when a client's needs call for them. Postings saved
+   are no longer required; extra courses are optional and offered when a client's needs call for them. 2026-10-17 (Samantha):
+   on the job pages it stays vague, "Orientation & training", with no hours. Postings saved
    before that still say "6 hours of paid orientation and dementia training", so TRAINING_FIXES rewrites those exact
    sentences when a page is built (page, structured data and Indeed feed alike).
    ONE_LINER is the posting's summary sentence: hiring_wording_415.sql adds it to each posting's description, and here
    it is moved to the top of the structured-data and Indeed descriptions (added if a posting lacks it). On the page
    itself the "How hiring works" block says the same thing, so the sentence is not repeated in the body. */
-export const ONE_LINER = 'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and a 2-hour paid orientation, all from home on your phone or computer.';
+export const ONE_LINER = 'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and paid orientation and training, all from home on your phone or computer.';
 /* 2026-10-11 (Samantha chose the name Orientation Video Call): the sentence as it read before, still in a posting until the
    Hub's step 602 changes it, is recognized too, so a page never shows both. */
 export const OLD_ONE_LINERS = ['One 20-minute in-person interview at our office, then your paperwork, welcome call and 6 hours of paid training all from home on your phone or computer.',
   'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and 6 hours of paid training all from home on your phone or computer.'];
 /* Exact old sentences, longest first, so a shorter one never cuts into a longer one. */
 export const TRAINING_FIXES = [
-  ["Paid orientation and Alzheimer's and dementia training (6 hours)", 'Paid 2-hour orientation from home'],
-  ['Paid orientation and dementia training (6 hours)', 'Paid 2-hour orientation from home'],
-  ['Paid orientation and dementia training', 'Paid 2-hour orientation from home'],
-  ['you complete 6 hours of paid orientation and dementia training from home before you start', 'you complete a 2-hour paid orientation from home before you start'],
-  ['You complete 6 hours of paid orientation and dementia training from home before you start', 'You complete a 2-hour paid orientation from home before you start'],
+  ["Paid orientation and Alzheimer's and dementia training (6 hours)", 'Paid orientation and training from home'],
+  ['Paid orientation and dementia training (6 hours)', 'Paid orientation and training from home'],
+  ['Paid orientation and dementia training', 'Paid orientation and training from home'],
+  ['you complete 6 hours of paid orientation and dementia training from home before you start', 'you complete paid orientation and training from home before you start'],
+  ['You complete 6 hours of paid orientation and dementia training from home before you start', 'You complete paid orientation and training from home before you start'],
 ];
 const fixTraining = t => t == null ? t : TRAINING_FIXES.reduce((acc, [a, b]) => acc.split(a).join(b), String(t));
 export const currentTraining = p => ({ ...p, summary: fixTraining(p.summary), description: fixTraining(p.description),
@@ -94,7 +95,7 @@ const howHiring = p => `<section class="jb-how">
 <li><b>Meet us in person.</b> A 20-minute interview at our ${(p.city || 'Springfield') === 'Springfield' ? 'Springfield office' : 'office'}. We do not do phone interviews.</li>
 <li><b>Offer and paperwork.</b> Fill out your new-hire paperwork online. We run your background check and call your references, at no cost to you.</li>
 <li><b>A 15-minute Orientation Video Call</b> on your phone or computer. We check your ID, set up the AxisCare app with you, and go over your caregiver profile.</li>
-<li><b>Paid orientation from home.</b> 2 hours, on your phone or computer, in pieces if you like. Extra courses, like dementia care, are offered when a client's needs call for them.</li>
+<li><b>Orientation &amp; training.</b> Paid, from home on your phone or computer, in pieces if you like.</li>
 </ol>
 </section>`;
 
