@@ -145,7 +145,11 @@
   padding:4px 11px; margin-top:9px; }
 .vp-cta{ display:block; text-align:center; background:var(--cta); color:#fff; font-weight:700; font-size:16.5px;
   padding:15px; border-radius:12px; text-decoration:none; margin-top:20px; }
-.vp-cta:hover{ background:#155A68; }
+.vp-cta:hover, .vp-cta:focus{ background:#155A68; color:#fff; text-decoration:none; }
+.vp-cta:focus-visible{ outline:3px solid var(--honey, #F0A63A); outline-offset:3px; }
+.vp-plus{ margin-top:12px; padding-top:12px; border-top:1px dashed #d9d4c7; font-size:max(14px, var(--fs-min, 0px)); color:var(--muted); line-height:1.55; }
+.vp-plus b{ color:var(--brand-blue); font-size:16px; }
+.vp-plus a{ color:var(--cta); font-weight:600; }
 .vp-fine{ font-size:max(12.5px, var(--fs-read, 0px)); color:var(--muted); line-height:1.6; margin-top:13px; }
 .vp-deal{ max-width:900px; margin:26px auto 0; background:var(--soft-teal); border-radius:16px; padding:22px 26px;
   text-align:center; font-size:max(15.5px, var(--fs-read, 0px)); line-height:1.72; color:#1c2b38; }
@@ -394,7 +398,7 @@
 <section class="vc-price" id="plan">
   <div class="in">
     <h2>Build the visit, see the price</h2>
-    <p class="lede">Tick what you want her caregiver to do. We work out how long that takes, and what a week of it costs. Visits run Monday through Friday so the same caregiver comes at the same time every day, which is how somebody actually becomes a familiar face rather than a stranger checking a box.</p>
+    <p class="lede">Tick what you want her caregiver to do. We work out how long that takes, and what a week of it costs. Visits run Monday through Friday at the same time every day, from a caregiver who gets to know her and her routines, rather than a stranger checking a box.</p>
     <div class="vp">
       <div>
           <p class="vp-cat">Health tracking</p>
@@ -429,9 +433,10 @@
         <div class="vp-price" id="vpPrice">$75<span>/week</span></div>
         <p class="vp-per" id="vpPer">$15 per visit</p>
         <span class="vp-save" id="vpSave"></span>
+        <p class="vp-plus"><b>+ HomeTogether TV, $99 a month</b><br>The visits come through it, so it is a separate monthly charge. <a href="/hometogether-included">Included at no charge</a> with 20 or more private-pay hours a week of in-home care.</p>
         <div class="vp-over" id="vpOver"><b>That is a lot for one visit.</b> We can still do it, but at this point it may be worth pricing in-home hours alongside it. Say so when you call and we will lay both out.</div>
         <a class="vp-cta" href="/book" id="vpCta">Talk to a coordinator &rarr;</a>
-        <p class="vp-fine">Every visit also includes a warm hello, a wellness check, and eyes on how she is doing, whatever else you pick. Delivered on her television through HomeTogether TV, which is <a href="/hometogether-included" style="color:var(--cta);font-weight:600;">included free at 20 or more hours a week</a> of in-home care, or $99 a month on its own.</p>
+        <p class="vp-fine">Every visit also includes a warm hello, a wellness check, and eyes on how she is doing, whatever else you pick.</p>
       </div>
     </div>
     <div class="vp-deal">
