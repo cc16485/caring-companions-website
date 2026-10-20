@@ -143,6 +143,8 @@
 .vp-per{ font-size:max(14px, var(--fs-min, 0px)); color:var(--muted); margin-top:6px; }
 .vp-save{ display:none; background:#e8f6ef; color:#0f7a4d; font-size:max(12.5px, var(--fs-min, 0px)); font-weight:700; border-radius:999px;
   padding:4px 11px; margin-top:9px; }
+.vc-video video{ display:block; width:100%; aspect-ratio:16/9; border-radius:16px; background:#0E1114; box-shadow:0 10px 30px rgba(13,54,95,.12); }
+.vc-video .note{ font-size:max(14px, var(--fs-min, 0px)); color:var(--muted); text-align:center; margin-top:10px; }
 .vp-cta{ display:block; text-align:center; background:var(--cta); color:#fff; font-weight:700; font-size:16.5px;
   padding:15px; border-radius:12px; text-decoration:none; margin-top:20px; }
 .vp-cta:hover, .vp-cta:focus{ background:#155A68; color:#fff; text-decoration:none; }
@@ -317,6 +319,16 @@
 </section>
 
 <div class="vc-wrap">
+  <section class="vc-sec vc-video" id="video">
+    <h2>See what a check-in looks like</h2>
+    <p class="lede">A short video: how a weekday check-in works, what your family hears, and what it costs.</p>
+    <video controls preload="none" playsinline poster="/assets/video/virtual-caregiving-poster.jpg">
+      <source src="/assets/video/virtual-caregiving.mp4" type="video/mp4">
+      <track kind="captions" src="/assets/video/virtual-caregiving.vtt" srclang="en" label="English">
+      Your browser cannot play this video. Call us at (417) 234-8494 and we will walk you through it.
+    </video>
+    <p class="note">1 minute 21 seconds &middot; captions available</p>
+  </section>
   <section class="vc-sec">
     <h2>The gap nobody is paying for</h2>
     <p class="lede">Most families do not need somebody in the house all day. They need somebody there at 8am when the pills matter, and again at 6pm when the day gets long. But in-home care comes in four-hour blocks, so a family that only needs twenty minutes twice a day ends up paying for eight hours or going without. Almost everyone goes without, and then worries all day. This is built for exactly that gap.</p>
@@ -341,7 +353,7 @@
 
   <section class="vc-sec">
     <h2>What actually happens in a visit</h2>
-    <p class="lede">It is not a wellness call from a call center. It is one of our caregivers, the same face most days, with a list of the things you told us to watch.</p>
+    <p class="lede">It is not a wellness call from a call center. It is one of our caregivers, someone who gets to know her and her routines, with a list of the things you told us to watch.</p>
     <ol class="vc-steps">
       <li><span class="n">1</span>
         <h3>Her television comes on by itself</h3>
@@ -470,7 +482,7 @@
 
   <section class="vc-sec">
     <h2>What actually happens in a visit</h2>
-    <p class="lede">It is not a wellness call from a call center. It is one of our caregivers, the same face most days, with a list of the things you told us to watch.</p>
+    <p class="lede">It is not a wellness call from a call center. It is one of our caregivers, someone who gets to know her and her routines, with a list of the things you told us to watch.</p>
     <ol class="vc-steps">
       <li><span class="n">1</span>
         <h3>Her television comes on by itself</h3>
