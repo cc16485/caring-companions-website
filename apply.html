@@ -435,11 +435,14 @@ function prnSetup(role){
   /* Pickups are shift by shift, so full or part time and building up hours are not the questions. */
   g('jobTypeQ').style.display = 'none'; g('buildUpQ').style.display = 'none';
   g('oneYearQ').style.display = 'none';   // 731: the PRN year question below stands in for it
+  /* 1036 (Samantha 2026-10-21, the PRN Caregiver Team): only a team that needs a CNA asks if you are one, and only that
+     team turns someone away for it. The year of paid experience is asked of every PRN team. */
+  const needsCna = role.requires_cna !== false;
   g('prnQs').innerHTML =
-    '<div class="q"><div class="qt">Are you currently a CNA?</div>'
+    (needsCna ? '<div class="q"><div class="qt">Are you currently a CNA?</div>'
     + '<div class="qs">A certified nursing assistant, with your certification current.</div>'
-    + '<div class="chips" data-k="prn_cna"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>'
-    + '<div class="q"><div class="qt">Do you have at least one year of paid caregiving or CNA experience?</div>'
+    + '<div class="chips" data-k="prn_cna"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>' : '')
+    + '<div class="q"><div class="qt">Do you have at least one year of paid caregiving' + (needsCna ? ' or CNA' : '') + ' experience?</div>'
     + '<div class="chips" data-k="prn_one_year"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>';
   g('prnAvail').innerHTML =
     '<div class="prn-h">When can we call you for PRN shifts?</div>'
@@ -453,9 +456,9 @@ function prnSetup(role){
   if (role.pay_ack) {
     g('prnPay').innerHTML = '<label class="prn-pay"><input type="checkbox" id="prnPayOk"><span>'
       + '<b style="display:block;margin-bottom:3px;">PRN Team pay</b>' + esc(role.pay_ack) + '</span></label>'
-      /* The $20 is the offer. $18 is only a short note (her wording, 2026-09-29): it is what our CNAs are paid if
-         they switch to taking an ongoing client, never alongside the PRN rate. */
-      + '<p class="sub" style="margin:8px 2px 0;font-size:max(12.5px, var(--fs-read, 0px));">Note: if you would like to switch to taking an ongoing client, our CNAs are paid $18 an hour.</p>';
+      /* The PRN rate is the offer. The ongoing rate is only a short note under it, never alongside the PRN rate. 1036: the
+         note comes from the role (job_positions.pay_note), so neither team's page hard-codes it. */
+      + (role.pay_note ? '<p class="sub" style="margin:8px 2px 0;font-size:max(12.5px, var(--fs-read, 0px));">' + esc(role.pay_note) + '</p>' : '');
   }
 }
 const prnLabel = (list, keys) => keys.map(k => (list.find(x => x[0] === k) || [k, k])[1]);
@@ -887,8 +890,9 @@ async function next2(){
   if ([ 'age_ok','work_auth','has_transport' ].some(k => A[k] === undefined)){
     err.textContent = 'Please answer the first three questions.'; err.style.display='block'; return;
   }
-  if (PRN && (A.prn_cna === undefined || A.prn_one_year === undefined)){
-    err.textContent = 'Please answer the two CNA questions.'; err.style.display='block'; return;
+  const prnNeedsCna = PRN && PRN.requires_cna !== false;   // 1036
+  if (PRN && ((prnNeedsCna && A.prn_cna === undefined) || A.prn_one_year === undefined)){
+    err.textContent = prnNeedsCna ? 'Please answer the two CNA questions.' : 'Please answer the question about a year of paid experience.'; err.style.display='block'; return;
   }
   if (PRN) A.one_year = A.prn_one_year ? 'yes' : 'no';
   if (!A.one_year){
@@ -897,8 +901,8 @@ async function next2(){
   err.style.display = 'none';
   const b = g('btn2'); b.disabled = true; b.textContent = 'Saving…';
   let stop = KNOCKOUTS.find(x => A[x.k] === x.when);
-  if (!stop && PRN && A.prn_cna === false) stop = { reason: 'not a CNA (PRN CNA Team)',
-    why: 'The PRN CNA Team is for certified nursing assistants, so we are not able to take this application further.',
+  if (!stop && prnNeedsCna && A.prn_cna === false) stop = { reason: 'not a CNA (' + (PRN.label || 'PRN CNA Team') + ')',
+    why: 'The ' + (PRN.label || 'PRN CNA Team') + ' is for certified nursing assistants, so we are not able to take this application further.',
     next: 'We also hire caregivers who are not CNAs, and you would be welcome to apply for that instead at mo-care.com/apply. Or call us on (417) 234-8494.' };
   /* A role can have its own dealbreaker: no CNA certificate for a CNA post. */
   if (!stop) {
@@ -909,7 +913,7 @@ async function next2(){
   }
   try {
     /* The PRN answers first: the database only takes them on an unfinished application. */
-    if (PRN) await prnSave({ cna: A.prn_cna, one_year: A.prn_one_year }, false);
+    if (PRN) await prnSave(prnNeedsCna ? { cna: A.prn_cna, one_year: A.prn_one_year } : { one_year: A.prn_one_year }, false);
     await save({ age_ok: A.age_ok, work_auth: A.work_auth, has_transport: A.has_transport, one_year: A.one_year,
       has_license: A.has_license ?? null, has_insurance: A.has_insurance ?? null,
       can_pass_background: A.can_pass_background ?? null,
