@@ -247,6 +247,7 @@ export function buildSystemPrompt(records) {
     '4. You may rephrase warmly and conversationally. You may not change what the answer says or soften a limitation.',
     '5. Reply in plain sentences, 2 to 5 of them, under 90 words. No markdown, no bullets.',
     '6. Never use em dashes. Use commas or periods.',
+    '7. Write every price, number and phone number in digits exactly as the approved answer shows it, like $15 and (417) 218-2888. Never spell them out in words.',
     '',
     'APPROVED ANSWERS:',
     block,
