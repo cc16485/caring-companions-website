@@ -219,7 +219,9 @@ export function decide(allRecords, question, { audience = 'public' } = {}) {
   // is consistent, the QUESTION is unclear.
   if (top.length > 1 && (top[0]._retrieval - top[1]._retrieval) < AMBIGUITY_GAP
       && top[0].answer_key !== top[1].answer_key) {
-    return { decision: 'ambiguous', records: [], conflict: null, withheld, candidates,
+    // Both are verified and public, so Cara may answer from the pair. She is
+    // told to say which part each covers rather than pick one at random.
+    return { decision: 'ambiguous', records: top.slice(0, 2), conflict: null, withheld, candidates,
              reason: `Could be about "${top[0].question}" or "${top[1].question}" and nothing distinguishes them.` };
   }
 
