@@ -53,7 +53,9 @@ const VOICE =
   "they say dad, talk about their dad; if they say mom, their mom; if they give a " +
   "name, use the name. Never swap in a different relative or assume a gender they " +
   "did not state. Reply in plain sentences only, no markdown, no asterisks, no " +
-  "bullet lists. Never use em dashes; use commas or periods instead."
+  "bullet lists. Never use em dashes; use commas or periods instead. Write " +
+  "prices, numbers and phone numbers in digits, like $30 and " + PHONE + ", " +
+  "never spelled out in words."
 
 // Used when Core has nothing on the subject. She can still be a person. She
 // just cannot be a source.
