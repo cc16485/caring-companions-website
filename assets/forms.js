@@ -49,21 +49,5 @@
         return res.json();
       });
     },
-    // Community Ambassador application (2026-10-26): the same door, but never a lead. Not counted as a lead submission.
-    submitApplication: function (fields) {
-      var ref = refRead(), body = Object.assign({ kind: 'ambassador_application' }, fields);
-      if (ref && !body.partner_code) body.partner_code = ref.code;
-      return fetch(LEAD_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      }).then(function (res) {
-        return res.json().catch(function () { return {}; }).then(function (j) {
-          if (!res.ok) { var e = new Error((j && j.error) || ('lead-intake HTTP ' + res.status)); e.status = res.status; throw e; }
-          if (window.CCTrack) CCTrack('ambassador_applied');
-          return j;
-        });
-      });
-    },
   };
 })();
