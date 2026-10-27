@@ -362,6 +362,13 @@ html:not(.cc-menus-click) .cc-nav:hover .cc-nav-group:not(:hover):not(:focus-wit
 }
 .cc-cols { display: flex; gap: 8px; align-items: stretch; }
 .cc-col { display: flex; flex-direction: column; min-width: 196px; }
+/* Around-the-clock has the most links, so it gets two columns' worth of room */
+.cc-col.cc-col-2 { display: grid; grid-template-columns: 1fr 1fr; align-content: start; min-width: 400px; }
+.cc-col-2 .cc-colh, .cc-col-2 a:last-child { grid-column: 1 / -1; }
+/* a second heading partway down a column (Hiring on your own, under Virtual) */
+.cc-col a + .cc-colh { margin-top: 14px; }
+/* Leaflet's map layers use z-index 400+; keep them inside the map so the menus open over it */
+.leaflet-container { isolation: isolate; }
 .cc-colh {
   display: block; font-size: max(10.5px, var(--fs-min, 0px)); font-weight: 700; letter-spacing: .09em;
   text-transform: uppercase; color: var(--muted); padding: 2px 12px 9px;
@@ -395,7 +402,9 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   .cc-mega { width: auto; max-width: none; padding: 0; }
   .cc-mega.cc-mega-r { right: auto; }
   .cc-cols { flex-direction: column; gap: 0; }
-  .cc-col { min-width: 0; }
+  .cc-col, .cc-col.cc-col-2 { min-width: 0; }
+  .cc-col.cc-col-2 { display: flex; }
+  .cc-col a + .cc-colh { margin-top: 0; }
   .cc-colh {
     padding: 12px 24px 6px; font-size: max(10.5px, var(--fs-min, 0px)); color: var(--muted);
     background: #f6f5f0; border-top: 1px solid #efece3;

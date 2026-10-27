@@ -701,7 +701,7 @@ done: function(){
     +'<button class="dj-next soft" style="width:auto" id="donePlan">My care plan</button>'
     +'</div>'
     +'<div style="background:#f6f4ee;border-radius:14px;padding:18px;margin:22px auto 0;max-width:520px;text-align:left">'
-    +'<p style="font-size:max(14px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with a real person?</p>'
+    +'<p style="font-size:max(14px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with someone on our team?</p>'
     +'<p style="font-size:max(13px, var(--fs-read, 0px));color:#4d5c6b;margin:0 0 10px">You walked all nine roads. If you want a human beside you for the next stretch, leave whatever you&rsquo;re comfortable sharing and a care coordinator will reach out. A conversation, not a sales pitch.</p>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">'
     +'<input id="dj-name" placeholder="Your name (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
@@ -733,7 +733,7 @@ done: function(){
     }catch(e3){} }
     var btn=el('dj-reach'); btn.disabled=true;
     if(window.CCForms) CCForms.submitLead({ name: nm||'(Dementia Journey graduate)', phone: ph, email: em, message:(ms?ms+'. ':'')+'Asked us to reach out after finishing the whole Dementia Journey course.'+(ans?'\n\nCourse answers (shared by their choice):\n'+ans:'') })
-      .then(function(){ s2.textContent='Got it. A real person will reach out. Be gentle with yourself this week.'; s2.hidden=false; })
+      .then(function(){ s2.textContent='Got it. Someone from our team will reach out. Be gentle with yourself this week.'; s2.hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });
   if (window.CCTrack) CCTrack('dj_module9_complete');

@@ -731,7 +731,7 @@ done: function(){
     +'<p class="dj-lead" style="text-align:center">Module 7, <em>Daily Care Without the Battle</em>, brings the craft to bathing, dressing, and mealtimes, with dignity, and with Teepa Snow&rsquo;s Hand-under-Hand&trade;.</p>'
     +'<a href="/dementia-journey/module-7" class="dj-next" style="display:block;text-decoration:none;text-align:center;margin:6px 0 14px">Continue to Module 7: Daily Care Without the Battle &rarr;</a>'
     +'<div style="background:#f6f4ee;border-radius:14px;padding:18px;margin:0 0 16px">'
-    +'<p style="font-size:max(14px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with a real person?</p>'
+    +'<p style="font-size:max(14px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">Would you like to talk with someone on our team?</p>'
     +'<p style="font-size:max(13px, var(--fs-read, 0px));color:#4d5c6b;margin:0 0 10px">Totally optional. If caring for your person is getting heavy, leave whatever you&rsquo;re comfortable sharing and a care coordinator will reach out. A conversation, not a sales pitch.</p>'
     +'<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">'
     +'<input id="dj-name" placeholder="Your name (optional)" style="flex:1;min-width:150px;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;background:#fff">'
@@ -766,7 +766,7 @@ done: function(){
     }catch(e3){} }
     var btn=el('dj-reach'); btn.disabled=true;
     if(window.CCForms) CCForms.submitLead({ name: nm||'(Dementia Journey viewer)', phone: ph, email: em, message:(ms?ms+'. ':'')+'Asked us to reach out, from The Dementia Journey Module 6.'+(ans?'\n\nCourse answers (shared by their choice):\n'+ans:'') })
-      .then(function(){ s.textContent='Got it. A real person will reach out. Be gentle with yourself this week.'; s.hidden=false; })
+      .then(function(){ s.textContent='Got it. Someone from our team will reach out. Be gentle with yourself this week.'; s.hidden=false; })
       .catch(function(){ btn.disabled=false; });
   });
   if (window.CCTrack) CCTrack('dj_module6_complete');
