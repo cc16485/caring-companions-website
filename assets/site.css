@@ -367,6 +367,18 @@ html:not(.cc-menus-click) .cc-nav:hover .cc-nav-group:not(:hover):not(:focus-wit
   text-transform: uppercase; color: var(--muted); padding: 2px 12px 9px;
 }
 .cc-mega a { white-space: normal; }
+/* Care Levels: Wellness, Personal, Advanced as steps 1, 2, 3, each badge a shade deeper */
+.cc-dropdown a.cc-lvl { display: grid; grid-template-columns: 28px 1fr; column-gap: 11px; align-items: start; }
+.cc-lvl-n {
+  width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; margin-top: -2px;
+  font-family: var(--serif); font-size: 15px; font-weight: 700; line-height: 1;
+  background: var(--soft-teal); color: var(--brand-blue); box-shadow: inset 0 0 0 1.5px var(--mint);
+  transition: transform .15s ease;
+}
+a.cc-lvl:nth-of-type(2) .cc-lvl-n { background: var(--mint); box-shadow: none; }
+a.cc-lvl:nth-of-type(3) .cc-lvl-n { background: var(--cta); color: #fff; box-shadow: none; }
+a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
+@media (prefers-reduced-motion: reduce) { a.cc-lvl:hover .cc-lvl-n { transform: none; } }
 .cc-col.cc-feat {
   background: var(--soft-teal); border-radius: 12px; padding: 12px 6px; margin-left: 10px; min-width: 214px;
 }
