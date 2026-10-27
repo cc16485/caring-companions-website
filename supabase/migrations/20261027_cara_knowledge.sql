@@ -189,8 +189,8 @@ on conflict (id) do update set question = excluded.question, answer = excluded.a
   topics = excluded.topics, alt_questions = excluded.alt_questions, status = excluded.status, verified_on = excluded.verified_on,
   verified_by = excluded.verified_by, version = kb_items.version + (kb_items.answer is distinct from excluded.answer)::int, updated_at = now();
 
--- N002 held a stale $14 CDS rate. $16 an hour since 2026-10-16, handled by Caring Companions CDS.
-update public.kb_items set answer = 'CDS attendants are paid $16 an hour. CDS is handled by our sister company, Caring Companions Consumer Directed Services, at (417) 218-2888 or caringcds.com.', status = 'verified', verified_on = '2026-10-27',
-  verified_by = 'CDS pay $16 from 2026-10-16 (caringcds.com)', version = version + 1, updated_at = now()
-  where id = 'N002' and answer is distinct from 'CDS attendants are paid $16 an hour. CDS is handled by our sister company, Caring Companions Consumer Directed Services, at (417) 218-2888 or caringcds.com.';
+-- N002 held a stale $14 CDS rate. $15 to $16 an hour, handled by Caring Companions CDS.
+update public.kb_items set answer = 'CDS attendants are paid $15 to $16 an hour. CDS is handled by our sister company, Caring Companions Consumer Directed Services, at (417) 218-2888 or caringcds.com.', status = 'verified', verified_on = '2026-10-27',
+  verified_by = 'Samantha 10-27: CDS pay $15 to $16', version = version + 1, updated_at = now()
+  where id = 'N002' and answer is distinct from 'CDS attendants are paid $15 to $16 an hour. CDS is handled by our sister company, Caring Companions Consumer Directed Services, at (417) 218-2888 or caringcds.com.';
 

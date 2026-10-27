@@ -196,7 +196,7 @@ export const RECORDS = [
     topics: ['cds', 'paid', 'family', 'medicaid'] },
 ]
 
-// N002 was a stale $14 rate. CDS attendants are paid $16 an hour since 2026-10-16.
+// N002 was a stale $14 rate. CDS attendants are paid $15 to $16 an hour (her correction 2026-10-27).
 export const N002 = {
-  answer: `CDS attendants are paid $16 an hour. CDS is handled by ${CDS}.`,
+  answer: `CDS attendants are paid $15 to $16 an hour. CDS is handled by ${CDS}.`,
 }

@@ -22,8 +22,8 @@ for (const r of RECORDS) {
     '')
 }
 out.push(
-  '-- N002 held a stale $14 CDS rate. $16 an hour since 2026-10-16, handled by Caring Companions CDS.',
+  '-- N002 held a stale $14 CDS rate. $15 to $16 an hour, handled by Caring Companions CDS.',
   `update public.kb_items set answer = ${q(N002.answer)}, status = 'verified', verified_on = '2026-10-27',`,
-  "  verified_by = 'CDS pay $16 from 2026-10-16 (caringcds.com)', version = version + 1, updated_at = now()",
+  "  verified_by = 'Samantha 10-27: CDS pay $15 to $16', version = version + 1, updated_at = now()",
   `  where id = 'N002' and answer is distinct from ${q(N002.answer)};`, '')
 console.log(out.join('\n'))
