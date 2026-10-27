@@ -144,11 +144,11 @@ Deno.serve(async (req) => {
     let reply: string
     let outcome: string
 
-    if (d.decision === 'ok' || d.decision === 'conflict') {
+    if (d.decision === 'ok' || d.decision === 'conflict' || (d.decision === 'ambiguous' && d.records?.length)) {
       // 2. Answer from the approved records, and only from them.
       const system = buildSystemPrompt(d.records) + '\n\n' + VOICE
       reply = await askClaude(system, safeMessages, 300)
-      outcome = d.decision === 'conflict' ? 'conflict' : 'answered'
+      outcome = d.decision === 'ok' ? 'answered' : d.decision
     } else if (d.decision === 'withheld') {
       // 3. We HAVE something and it is not confirmed. This is the dangerous
       //    case, so it never touches the model. A fixed sentence cannot be
