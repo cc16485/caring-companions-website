@@ -419,6 +419,7 @@ async function main() {
   /* A posting that was unpublished must stop being served, or Google keeps
      showing a job nobody can be hired for. */
   const keep = new Set(list.map(p => p.slug + '.html'));
+  keep.add('index.html'); // mo-care.com/jobs redirect to the openings list, not a posting
   for (const f of await readdir(JOBS)) {
     if (f.endsWith('.html') && !keep.has(f)) { await unlink(path.join(JOBS, f)); console.log('removed ' + f); }
   }
