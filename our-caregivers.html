@@ -30,6 +30,16 @@
 .cg-panel { max-width:1000px; margin: 0 auto; padding: 24px; }
 .cg-panel-card { background: var(--soft-panel); border-radius: 16px; padding: 32px 30px; }
 .cg-cta { max-width:1000px; margin: 0 auto; padding: 20px 24px 80px; text-align: center; }
+.cg-meet { max-width:1000px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 1fr 300px; gap: 36px; align-items: center; }
+.cg-meet h2 { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--brand-blue); margin: 0 0 14px; }
+.cg-meet p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.75; color: var(--body-text); margin: 0 0 16px; }
+.cg-profile { background: #fff; border: 1px solid #dfe6ec; border-radius: 16px; padding: 22px; box-shadow: 0 6px 22px rgba(13,54,95,0.08); text-align: center; }
+.cg-profile img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; margin: 0 auto 12px; display: block; }
+.cg-profile .nm { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--brand-blue); margin: 0 0 6px; }
+.cg-profile .ab { font-size: max(14px, var(--fs-read, 0px)); line-height: 1.6; color: var(--body-text); margin: 0 0 14px; }
+.cg-profile .call { display: block; background: var(--brand-blue); color: #fff; border-radius: 10px; padding: 11px; font-weight: 700; text-decoration: none; font-size: 15px; }
+.cg-profile .ex { font-size: max(12px, var(--fs-min, 0px)); color: #6b7a88; margin: 10px 0 0; }
+@media (max-width: 799px) { .cg-meet { grid-template-columns: 1fr; gap: 20px; } .cg-profile { max-width: 320px; margin: 0 auto; } }
 @media (max-width: 639px) { .cg-hero { padding: 36px 20px 8px; } .cg-h1 { font-size: 28px; } }
 </style>
 </head>
@@ -190,6 +200,25 @@
 <div class="cg-check"><span class="mk">&#10003;</span> Preferences and routines honored from day one</div>
 <div class="cg-check"><span class="mk">&#10003;</span> Focused on meaningful connection, not just tasks</div>
 <div class="cg-check"><span class="mk">&#10003;</span> Ongoing support to ensure the best fit over time</div>
+</div>
+</section>
+
+<section class="cg-meet" id="meet-your-caregiver">
+<div>
+<p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Meet Your Caregiver First</p>
+<h2>Know who's coming before they knock.</h2>
+<p>Letting someone into your home is a big step. Before the first visit, we send your family a private link with your caregiver's profile: a friendly photo, a little about them, their experience, and why they love caregiving.</p>
+<p>So when the doorbell rings, it's a face you already know, not a stranger.</p>
+<div class="cg-check"><span class="mk">&#10003;</span> A private link just for your family</div>
+<div class="cg-check"><span class="mk">&#10003;</span> Shared before the first visit</div>
+<div class="cg-check"><span class="mk">&#10003;</span> We aim to keep the same small group of caregivers with your loved one</div>
+</div>
+<div class="cg-profile" aria-label="Example caregiver profile">
+<img src="/assets/photos/sample-caregiver-grace.webp" alt="Smiling caregiver" width="104" height="104" loading="lazy">
+<p class="nm">A little about Grace</p>
+<p class="ab">Grace is patient, calm and loves a good chat. Grace makes a great cup of coffee and always finds something to smile about.</p>
+<a class="call" href="tel:14172348494">Call the office</a>
+<p class="ex">An example profile. Grace is not a real caregiver.</p>
 </div>
 </section>
 
