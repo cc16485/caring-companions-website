@@ -13,14 +13,14 @@
   --body-text: #2c3d4d;
   --muted: #45566a;
   --muted-label: #4f5b54;   /* 4.72:1 on --bg (was #66736B, 2.89:1, failed AA) */
-  --accent: #9C6410;        /* 4.7:1 on --bg, 4.95:1 on white (was #C17A12, 3.29:1, failed AA) */
-  --accent-hover: #7E5008;  /* darker so hover still reads as a state change */
+  --accent: #876B00;        /* golden yellow, 4.87:1 on --bg (AA) */
+  --accent-hover: #6B5500;  /* darker so hover still reads as a state change */
   --bg: #faf9f6;
   --border: #e4e1d8;
   --soft-panel: #f2f0e9;
   --soft-teal: #EAF4F6;
   --mint: #8FD1C7;
-  --gold-on-dark: #e8c988;
+  --gold-on-dark: #F5D061;
   --shell: 1400px;          /* one page width. Header, content and footer all read from this. */
   --serif: 'Source Serif 4', Georgia, serif;
   --sans: 'Inter', Helvetica, Arial, sans-serif;

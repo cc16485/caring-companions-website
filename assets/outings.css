@@ -1,5 +1,5 @@
 .og-page { --navy: var(--brand-blue, #0D365F); --teal: var(--cta, #1F7A8C); --teal-hover: var(--cta-hover, #155A68); --teal-pale: #EAF4F6; --teal-deep: #14606F;
-  --teal-darkest: #103D47; --honey: #F0A63A; --honey-text: #9C6410; --white: #fff; --panel: var(--soft-panel, #f2f0e9); --body: var(--body-text, #2c3d4d);
+  --teal-darkest: #103D47; --honey: #F5D061; --honey-text: #876B00; --white: #fff; --panel: var(--soft-panel, #f2f0e9); --body: var(--body-text, #2c3d4d);
   --ink: #16283a; --muted: #55677a; --border: #e4e1d8; --bg: #faf9f6; color: var(--body); font-size: max(16.5px, var(--fs-read, 0px)); line-height: 1.65; }
 .og-page h1, .og-page h2, .og-page h3 { font-family: var(--serif); color: var(--navy); font-weight: 600; line-height: 1.2; margin: 0 0 14px; text-wrap: balance; }
 .og-page h1 { font-size: clamp(34px, 5vw, 50px); letter-spacing: -0.015em; }

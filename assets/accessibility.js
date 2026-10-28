@@ -35,7 +35,7 @@
       + '.a11y-sizebtns button:hover{border-color:#1F7A8C}'
       + '.a11y-zlabel{font-size:12px;color:#55677a;text-align:center;margin:8px 0 0}'
       + '.a11y-read{width:100%;border:none;border-radius:9px;padding:12px;background:#1F7A8C;color:#fff;font-weight:600;font-size:14px;cursor:pointer}'
-      + '.a11y-read:hover{background:#155A68}.a11y-read.reading{background:#C17A12}'
+      + '.a11y-read:hover{background:#155A68}.a11y-read.reading{background:#A88400}'
       + '.a11y-close{position:absolute;top:9px;right:12px;background:none;border:none;font-size:20px;color:#8a978f;cursor:pointer;line-height:1;padding:2px}'
       + '.a11y-reading-hl{background:#fff3bf!important;box-shadow:0 0 0 4px #fff3bf;border-radius:4px}'
       // Phone action bar: Call + Book pinned to the bottom, replacing the floating circles
