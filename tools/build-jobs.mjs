@@ -26,6 +26,20 @@ const JOBS = path.join(ROOT, 'jobs');
 
 /* Our own pre-screener. Augusta's postings keep their own apply flow, so the
    two funnels run side by side and can be compared honestly. */
+// One scene photo per job page (same photos and look as tools/add-page-photos.py).
+const JOB_SCENES = [
+  ['garden-visit', 'A caregiver and an older woman walking in the garden'],
+  ['training', 'A caregiver completing her training at home'],
+  ['kitchen-coffee', 'A caregiver and an older woman laughing over coffee at the kitchen table'],
+  ['profile-photo', 'A caregiver having her profile photo taken'],
+  ['puzzle', 'A caregiver and an older man working on a puzzle together'],
+  ['welcome-porch', 'A caregiver welcomed with a hug on the porch by a daughter and her mother'],
+  ['arrive-porch', 'A caregiver arriving at the front door, greeted by a smiling older woman'],
+];
+const jobPhoto = slug => {
+  const [scene, alt] = JOB_SCENES[[...String(slug || '')].reduce((n, ch) => n + ch.charCodeAt(0), 0) % JOB_SCENES.length];
+  return `<figure class="pg-photo jb-photo"><img src="/assets/photos/scene-${scene}.webp" alt="${alt}" width="1080" height="608" decoding="async"></figure>`;
+};
 const applyUrl = slug => '/apply' + (slug ? '?job=' + encodeURIComponent(slug) : '');
 
 /* Where a job page keeps the channel it was reached by, so it survives the hop
@@ -223,6 +237,7 @@ ${jsonLd(p)}
 .jb-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:14px 0 14px;}
 .jb-apply-top{display:inline-block;background:var(--accent);color:#fbfaf7;border-radius:9px;padding:13px 26px;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;}
 .jb-chips{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 24px;}
+.jb-photo{padding:0 6px 0 12px;margin:22px 0 40px;}
 .jb-chip{background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--ink-2);font-weight:500;}
 .jb-chip.pay{background:#e8f1ec;border-color:#cfe3d6;color:#1c6b45;font-weight:700;}
 .jb-body{font-size:15.5px;line-height:1.75;color:var(--body-text);}
@@ -253,6 +268,7 @@ ${c.head}
 <div class="jb-chips">
 ${chips.map((t, i) => `<span class="jb-chip${i === 2 ? ' pay' : ''}">${esc(t)}</span>`).join('\n')}
 </div>
+${jobPhoto(p.slug)}
 <div class="jb-body">
 ${para(withoutOneLiner(p.description))}
 ${p.responsibilities ? '<h2>What you would be doing</h2>' + bullets(p.responsibilities) : ''}

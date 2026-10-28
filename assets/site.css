@@ -488,3 +488,17 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
 .hp-proof-item strong.hp-proof-rating { display: inline-flex; align-items: baseline; gap: 4px; justify-content: center; }
 .hp-proof-item .hp-proof-star { color: var(--accent); font-size: 22px; line-height: 1; }
 @media (max-width: 719px) { .hp-proof-rating { justify-content: flex-start; } }
+
+/* One scene photo under the top section of content pages (tools/add-page-photos.py).
+   Brand frame: leaf-shaped corners, a honey block offset behind, and a teal dot grid
+   peeking out at the top left, so the photos read as ours rather than stock. */
+.pg-photo { position: relative; max-width: 880px; margin: 18px auto 56px; padding: 0 24px; }
+.pg-photo::before { content: ""; position: absolute; left: 60px; right: 6px; top: 26px; bottom: -16px; background: #FFC671; border-radius: 56px 10px 56px 10px; opacity: .55; }
+.pg-photo::after { content: ""; position: absolute; left: 4px; top: -14px; width: 120px; height: 84px; background-image: radial-gradient(#1F7A8C 1.6px, transparent 1.8px); background-size: 14px 14px; opacity: .45; }
+.pg-photo img { position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: 21 / 9; object-fit: cover; border-radius: 56px 10px 56px 10px; box-shadow: 0 18px 40px rgba(14, 56, 96, .16); background: #eef2f6; }
+@media (max-width: 719px) {
+  .pg-photo { padding: 0 16px; margin: 10px auto 36px; }
+  .pg-photo::before { left: 34px; right: 4px; top: 16px; bottom: -10px; border-radius: 30px 6px 30px 6px; }
+  .pg-photo::after { left: 2px; top: -10px; width: 70px; height: 52px; background-size: 11px 11px; }
+  .pg-photo img { aspect-ratio: 16 / 10; border-radius: 30px 6px 30px 6px; }
+}
