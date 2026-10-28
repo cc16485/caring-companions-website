@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 .cg-hero { max-width:1000px; margin: 0 auto; padding: 56px 24px 8px; text-align: center; }
@@ -30,16 +30,36 @@
 .cg-panel { max-width:1000px; margin: 0 auto; padding: 24px; }
 .cg-panel-card { background: var(--soft-panel); border-radius: 16px; padding: 32px 30px; }
 .cg-cta { max-width:1000px; margin: 0 auto; padding: 20px 24px 80px; text-align: center; }
-.cg-meet { max-width:1000px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 1fr 300px; gap: 36px; align-items: center; }
-.cg-meet h2 { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--brand-blue); margin: 0 0 14px; }
-.cg-meet p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.75; color: var(--body-text); margin: 0 0 16px; }
-.cg-profile { background: #fff; border: 1px solid #dfe6ec; border-radius: 16px; padding: 22px; box-shadow: 0 6px 22px rgba(13,54,95,0.08); text-align: center; }
-.cg-profile img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; margin: 0 auto 12px; display: block; }
-.cg-profile .nm { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--brand-blue); margin: 0 0 6px; }
-.cg-profile .ab { font-size: max(14px, var(--fs-read, 0px)); line-height: 1.6; color: var(--body-text); margin: 0 0 14px; }
-.cg-profile .call { display: block; background: var(--brand-blue); color: #fff; border-radius: 10px; padding: 11px; font-weight: 700; text-decoration: none; font-size: 15px; }
-.cg-profile .ex { font-size: max(12px, var(--fs-min, 0px)); color: #6b7a88; margin: 10px 0 0; }
-@media (max-width: 799px) { .cg-meet { grid-template-columns: 1fr; gap: 20px; } .cg-profile { max-width: 320px; margin: 0 auto; } }
+.cg-meet { max-width:1000px; margin: 0 auto; padding: 24px; }
+.cg-meet-intro { max-width:760px; margin: 0 auto 26px; text-align: center; }
+.cg-meet h2 { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--brand-blue); margin: 0 0 14px; }
+.cg-meet-intro p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.75; color: var(--body-text); margin: 0 0 14px; }
+.cg-meet-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 32px; }
+.cg-meet-col { width: 340px; max-width: 100%; }
+.cg-meet-col h3 { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: #4f5b54; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; text-align: center; }
+.cg-meet-col .note { font-size: max(13px, var(--fs-min, 0px)); color: #6b7a88; line-height: 1.5; margin: 10px 0 0; text-align: center; }
+.cg-meet video { width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; background: #000; display: block; box-shadow: 0 6px 22px rgba(13,54,95,0.12); }
+/* A faithful copy of the real family card (cc.mo-care.com/caregiver.html). Keep in step with it. */
+.pf { font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif; background: #F6F9FD; border: 1px solid #DCE6F0; border-radius: 22px; padding: 16px 12px 18px; color: #1B2B3C; }
+.pf-brand { text-align: center; margin: 2px 0 12px; }
+.pf-brand img { width: 150px; height: auto; display: inline-block; }
+.pf-card { background: #fff; border: 1px solid #DCE6F0; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 22px rgba(14,56,96,.08); }
+.pf-hero { padding: 22px 16px 18px; text-align: center; background: linear-gradient(180deg, #E4F4F3 0%, #fff 100%); }
+.pf-photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 5px solid #fff; outline: 3px solid #F0A63A; box-shadow: 0 6px 22px rgba(14,56,96,.18); display: block; margin: 4px auto 14px; }
+.pf-name { color: #0E3860; font-size: 30px; line-height: 1.15; font-weight: 800; letter-spacing: -.01em; margin: 0; font-family: inherit; }
+.pf-role { color: #4A5868; font-size: 15px; margin-top: 4px; }
+.pf-years { display: inline-block; margin-top: 10px; background: #FFF5E6; color: #6B4200; border: 1.5px solid #F6D39A; border-radius: 999px; padding: 4px 14px; font-size: 14px; font-weight: 700; }
+.pf-body { padding: 4px 18px 20px; }
+.pf-sec { padding: 14px 0; border-top: 1px solid #DCE6F0; }
+.pf-sec:first-child { border-top: 0; }
+.pf-sec h4 { color: #0E3860; font-size: 18px; line-height: 1.3; font-weight: 700; margin: 0 0 6px; }
+.pf-sec p { font-size: 15px; line-height: 1.6; margin: 0; }
+.pf-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.pf-tag { background: #E4F4F3; color: #0B4744; border-radius: 999px; padding: 5px 12px; font-size: 14px; font-weight: 600; }
+.pf-trust { background: #E4F4F3; border-radius: 14px; padding: 12px 14px; margin-top: 4px; font-size: 15px; line-height: 1.55; color: #0B3B39; }
+.pf-trust b { color: #0E3860; }
+.pf-call { display: block; text-align: center; background: #0E3860; color: #fff; text-decoration: none; font-weight: 700; border-radius: 14px; padding: 14px 12px; font-size: 18px; line-height: 1.3; margin-top: 16px; }
+.pf-call span { display: block; font-size: 14px; font-weight: 600; color: #CFE3F5; margin-bottom: 2px; }
 @media (max-width: 639px) { .cg-hero { padding: 36px 20px 8px; } .cg-h1 { font-size: 28px; } }
 </style>
 </head>
@@ -204,21 +224,42 @@
 </section>
 
 <section class="cg-meet" id="meet-your-caregiver">
-<div>
+<div class="cg-meet-intro">
 <p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Meet Your Caregiver First</p>
 <h2>Know who's coming before they knock.</h2>
-<p>Letting someone into your home is a big step. Before the first visit, we send your family a private link with your caregiver's profile: a friendly photo, a little about them, their experience, and why they love caregiving.</p>
+<p>Letting someone into your home is a big step. Before the first visit, we text your family a private link to your caregiver's profile: a friendly photo, a little about them, their experience, and why they love caregiving. Some caregivers also add a short hello video.</p>
 <p>So when the doorbell rings, it's a face you already know, not a stranger.</p>
-<div class="cg-check"><span class="mk">&#10003;</span> A private link just for your family</div>
-<div class="cg-check"><span class="mk">&#10003;</span> Shared before the first visit</div>
-<div class="cg-check"><span class="mk">&#10003;</span> We aim to keep the same small group of caregivers with your loved one</div>
 </div>
-<div class="cg-profile" aria-label="Example caregiver profile">
-<img src="/assets/photos/sample-caregiver-grace.webp" alt="Smiling caregiver" width="104" height="104" loading="lazy">
-<p class="nm">A little about Grace</p>
-<p class="ab">Grace is patient, calm and loves a good chat. Grace makes a great cup of coffee and always finds something to smile about.</p>
-<a class="call" href="tel:14172348494">Call the office</a>
-<p class="ex">An example profile. Grace is not a real caregiver.</p>
+<div class="cg-meet-row">
+<div class="cg-meet-col">
+<h3>What your family sees</h3>
+<div class="pf" aria-label="Example caregiver profile">
+<div class="pf-brand"><img src="/assets/cc-logo.webp" alt="Caring Companions" loading="lazy"></div>
+<div class="pf-card">
+<div class="pf-hero">
+<img class="pf-photo" src="/assets/photos/sample-caregiver-ashley.webp" alt="Photo of Ashley T., an example caregiver" width="150" height="150" loading="lazy">
+<p class="pf-name">Ashley T.</p>
+<div class="pf-role">Your caregiver from Caring Companions</div>
+<div class="pf-years">6 to 10 years caring for people</div>
+</div>
+<div class="pf-body">
+<div class="pf-sec"><h4>A little about Ashley</h4><p>Ashley is warm, patient and loves a good story. Ashley enjoys gardening and always has time for a cup of coffee and a chat.</p></div>
+<div class="pf-sec"><h4>Things Ashley is good at</h4><div class="pf-tags"><span class="pf-tag">Memory care</span><span class="pf-tag">Cooking and meals</span><span class="pf-tag">Good company</span></div></div>
+<div class="pf-trust"><b>Ashley works for Caring Companions</b>, and is background checked and trained by our care team.</div>
+<a class="pf-call" href="tel:14172348494"><span>Questions? Tap to call the office</span>(417) 234-8494</a>
+</div>
+</div>
+</div>
+<p class="note">An example profile. Ashley is not a real caregiver.</p>
+</div>
+<div class="cg-meet-col">
+<h3>Watch how it works</h3>
+<video controls preload="none" playsinline poster="/assets/video/never-a-stranger-poster.jpg">
+<source src="/assets/video/never-a-stranger.mp4" type="video/mp4">
+Your browser cannot play this video. Call us at (417) 234-8494 and we will walk you through it.
+</video>
+<p class="note">Dramatization. People shown are not actual clients or caregivers.</p>
+</div>
 </div>
 </section>
 
