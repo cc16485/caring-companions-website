@@ -606,11 +606,32 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
       <a href="https://tryhometogether.com" target="_blank" rel="noopener" style="align-self:center;color:#876B00;font-weight:700;font-size:15px;text-decoration:none">tryhometogether.com &nearr;</a>
     </div>
   </div>
-  <div>
-    <img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="A senior video calling family on their TV through HomeTogether" loading="lazy" style="width:100%;height:auto;border-radius:18px;box-shadow:0 10px 30px rgba(13,54,95,.14)">
+  <div class="ht-stage">
+    <div class="ht-blob" aria-hidden="true"></div><div class="ht-blob2" aria-hidden="true"></div>
+    <div class="ht-frame"><img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="A mom and her little boy smiling on a family video call that shows up on Grandpa's TV" loading="lazy"></div>
+    <div class="ht-bubble ht-b-call" aria-hidden="true"><span class="ht-dot" style="background:#E3F1F0;color:#1F7A8C"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span><span>Emma is calling<small>Answer on the TV</small></span></div>
+    <div class="ht-bubble ht-b-weekly" aria-hidden="true"><span class="ht-dot" style="background:#F8E6DC;color:#C2563A"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span><span>Weekly family call<small>Fridays at 10:00 AM</small></span></div>
+    <span class="ht-heart" style="right:9%;bottom:7%;width:24px" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
+    <span class="ht-heart" style="right:3%;bottom:19%;width:15px" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
   </div>
 </div>
-<style>@media(max-width:860px){.ht-band-grid{grid-template-columns:1fr!important;gap:22px!important}}</style>
+<style>
+.ht-stage{position:relative;min-height:440px;display:flex;align-items:center;justify-content:center}
+.ht-blob{position:absolute;inset:6% 4% 4% 8%;background:#E3F1F0;border-radius:58% 42% 50% 50%/50% 55% 45% 50%}
+.ht-blob2{position:absolute;width:150px;height:150px;right:2%;top:2%;background:#F8E6DC;border-radius:50%}
+.ht-frame{position:relative;width:78%;aspect-ratio:4/3.2;border-radius:28px;overflow:hidden;border:8px solid #fff;box-shadow:0 18px 40px rgba(13,54,95,.18);transform:rotate(-2deg)}
+.ht-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:40% 30%;transform:scale(1.3);transform-origin:45% 12%}
+.ht-bubble{position:absolute;background:#fff;border-radius:18px;padding:11px 15px;box-shadow:0 10px 26px rgba(13,54,95,.16);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#0D365F;line-height:1.3}
+.ht-bubble small{display:block;font-weight:400;color:#5f6f80;font-size:12px}
+.ht-dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none}
+.ht-dot svg{width:17px;height:17px}
+.ht-b-call{right:2%;top:8%}
+.ht-b-weekly{left:0;bottom:12%}
+.ht-heart{position:absolute;color:#E07A5F;display:block}
+.ht-heart svg{display:block;width:100%;height:auto}
+@media(max-width:860px){.ht-band-grid{grid-template-columns:1fr!important;gap:22px!important}}
+@media(max-width:560px){.ht-stage{min-height:320px}.ht-frame{width:86%}.ht-bubble{padding:8px 11px;font-size:12.5px;gap:8px}.ht-bubble small{font-size:11px}.ht-dot{width:28px;height:28px}.ht-b-call{top:0;right:0}.ht-b-weekly{bottom:2%;left:0}.ht-blob2{width:100px;height:100px}}
+</style>
 </section>
 
 <section id="library" class="hp-section reveal">
