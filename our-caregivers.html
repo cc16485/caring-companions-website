@@ -54,6 +54,10 @@
 .pf-sec:first-child { border-top: 0; }
 .pf-sec h4 { color: #0E3860; font-size: 18px; line-height: 1.3; font-weight: 700; margin: 0 0 6px; }
 .pf-sec p { font-size: 15px; line-height: 1.6; margin: 0; }
+.pf-hello { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid #DCE6F0; background: #000; }
+.pf-hello img { display: block; width: 100%; height: auto; opacity: .92; }
+.pf-play { position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; background: rgba(255,255,255,.92); box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.pf-play::after { content: ""; position: absolute; left: 21px; top: 16px; border-left: 17px solid #0E3860; border-top: 11px solid transparent; border-bottom: 11px solid transparent; }
 .pf-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .pf-tag { background: #E4F4F3; color: #0B4744; border-radius: 999px; padding: 5px 12px; font-size: 14px; font-weight: 600; }
 .pf-trust { background: #E4F4F3; border-radius: 14px; padding: 12px 14px; margin-top: 4px; font-size: 15px; line-height: 1.55; color: #0B3B39; }
@@ -243,8 +247,11 @@
 <div class="pf-years">6 to 10 years caring for people</div>
 </div>
 <div class="pf-body">
-<div class="pf-sec"><h4>A little about Ashley</h4><p>Ashley is warm, patient and loves a good story. Ashley enjoys gardening and always has time for a cup of coffee and a chat.</p></div>
-<div class="pf-sec"><h4>Things Ashley is good at</h4><div class="pf-tags"><span class="pf-tag">Memory care</span><span class="pf-tag">Cooking and meals</span><span class="pf-tag">Good company</span></div></div>
+<div class="pf-sec"><h4>A little about Ashley</h4><p>Ashley grew up in Republic and still lives close to family. Ashley is a mom of two and loves gardening, baking bread and Sunday dinners with a full table. Ashley is warm, patient and always has time for a cup of coffee and a chat.</p></div>
+<div class="pf-sec"><h4>Say hello to Ashley</h4><div class="pf-hello" aria-hidden="true"><img src="/assets/photos/sample-caregiver-ashley-hello.webp" alt="" width="560" height="315" loading="lazy"><span class="pf-play"></span></div></div>
+<div class="pf-sec"><h4>Ashley’s experience caring for others</h4><p>Ashley worked for four years in an assisted living community, mostly with residents living with dementia. Before that, Ashley helped care for a grandfather after his stroke. Ashley is comfortable helping with bathing, dressing and getting around safely, and knows that a good routine makes a big difference.</p></div>
+<div class="pf-sec"><h4>Why Ashley loves caregiving</h4><p>Ashley loves the small moments: a favorite song, a story told for the tenth time, a laugh over lunch. Ashley says the best part is when a client starts to look forward to the visit. Helping someone stay in their own home means a lot to Ashley.</p></div>
+<div class="pf-sec"><h4>Things Ashley is good at</h4><div class="pf-tags"><span class="pf-tag">Memory care</span><span class="pf-tag">Stroke recovery</span><span class="pf-tag">Cooking and meals</span><span class="pf-tag">Good company</span></div></div>
 <div class="pf-trust"><b>Ashley works for Caring Companions</b>, and is background checked and trained by our care team.</div>
 <a class="pf-call" href="tel:14172348494"><span>Questions? Tap to call the office</span>(417) 234-8494</a>
 </div>
