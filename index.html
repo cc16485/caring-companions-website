@@ -378,6 +378,7 @@
 <div class="cg-meet-row">
 <div class="cg-meet-col">
 <h3>What you &amp; your family see</h3>
+<div class="pf-frame">
 <div class="pf" aria-label="Example caregiver profile">
 <div class="pf-brand"><img src="/assets/cc-logo.webp" alt="Caring Companions" loading="lazy"></div>
 <div class="pf-card">
@@ -395,7 +396,8 @@
 </div>
 </div>
 </div>
-<p class="note">An example profile. Ashley is not a real caregiver. <a href="/our-caregivers#meet-your-caregiver" style="color:#1F7A8C;font-weight:700;white-space:nowrap">See the full profile &rarr;</a></p>
+</div>
+<p class="note"><span class="pf-scroll">Scroll inside to see more. </span>An example profile; Ashley is not a real caregiver. <a href="/our-caregivers#meet-your-caregiver" style="color:#1F7A8C;font-weight:700;white-space:nowrap">See the full profile &rarr;</a></p>
 </div>
 <div class="cg-meet-col">
 <h3>Watch how it works</h3>
@@ -418,6 +420,10 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 .cg-meet-col .note { font-size: max(13px, var(--fs-min, 0px)); color: #6b7a88; line-height: 1.5; margin: 10px 0 0; text-align: center; }
 .cg-meet video { width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; background: #000; display: block; box-shadow: 0 6px 22px rgba(13,54,95,0.12); }
 /* A faithful copy of the real family card (cc.mo-care.com/caregiver.html). Keep in step with it. */
+.pf-frame { position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 6px 22px rgba(13,54,95,0.12); }
+.pf-frame::after { content: ""; position: absolute; left: 1px; right: 1px; bottom: 1px; height: 46px; border-radius: 0 0 22px 22px; background: linear-gradient(180deg, rgba(246,249,253,0), #F6F9FD); pointer-events: none; }
+.pf-frame .pf { aspect-ratio: 9 / 16; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+@media (max-width: 759px) { .pf-frame .pf { aspect-ratio: auto; overflow: visible; } .pf-frame::after, .pf-scroll { display: none; } }
 .pf { font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif; background: #F6F9FD; border: 1px solid #DCE6F0; border-radius: 22px; padding: 16px 12px 18px; color: #1B2B3C; }
 .pf-brand { text-align: center; margin: 2px 0 12px; }
 .pf-brand img { width: 150px; height: auto; display: inline-block; }
