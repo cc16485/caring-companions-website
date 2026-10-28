@@ -26,3 +26,8 @@
 /sw-missouri-senior-resources /resource-library.html 301
 /blog /resource-library.html 301
 /blog/category/long-term-care-insurance /long-term-care-insurance.html 301
+# Easy addresses for job seekers (flyers, social posts)
+/jobs /careers#openings 301
+/jobs/ /careers#openings 301
+/join /careers 301
+/hiring /careers 301

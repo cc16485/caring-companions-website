@@ -176,7 +176,7 @@ html:not(.cc-menus-click) .cc-nav:hover .cc-nav-group:not(:hover):not(:focus-wit
 
 /* ---------- Rich site footer (shared across all pages) ---------- */
 .cc-siteftr { border-top: 1px solid var(--border); background: #f6f5f0; padding: 46px 24px 28px; }
-.cc-siteftr-grid { max-width: var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; }
+.cc-siteftr-grid { max-width: var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 28px; }
 .cc-siteftr h4 { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
 .cc-siteftr a { display: block; font-size: max(13px, var(--fs-min, 0px)); color: var(--muted); text-decoration: none; padding: 3px 0; }
 .cc-siteftr a:hover { color: var(--accent); text-decoration: none; }
@@ -436,11 +436,19 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   color: var(--gold-on-dark); text-decoration: none; white-space: nowrap;
 }
 .cc-utility-book:hover { color: #ffffff; text-decoration: underline; }
+/* Job seekers rarely look under About Us, so hiring sits on every page's top bar. */
+.cc-utility-jobs {
+  font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; color: #ffffff;
+  text-decoration: none; white-space: nowrap;
+  border: 1px solid rgba(255,255,255,.45); border-radius: 999px; padding: 3px 12px;
+}
+.cc-utility-jobs:hover { background: rgba(255,255,255,.12); color: #ffffff; text-decoration: none; }
 .cc-utility a:focus-visible { outline: 2px solid var(--gold-on-dark); outline-offset: 3px; border-radius: 3px; }
 @media (max-width: 719px) {
   .cc-utility-inner { padding: 9px 20px; gap: 10px; justify-content: center; }
   .cc-utility-note { display: none; }
   .cc-utility-book { margin-left: 0; }
+  .cc-utility-jobs-more { display: none; }
 }
 
 /* ---------- Hero primary CTA with a phone mark ---------- */
