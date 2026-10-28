@@ -64,6 +64,19 @@
 .ht-hero .cta:hover { background:#E8BF3A; }
 .ht-hero .under { font-size:max(13.5px, var(--fs-min, 0px)); color:#9fb6c2; margin:14px 0 0; }
 .ht-hero img { width:100%; border-radius:18px; box-shadow:0 20px 50px rgba(0,0,0,.28); }
+/* Cozy photo frame */
+.cz-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:430px}
+.cz-blob{position:absolute;inset:6% 4% 4% 8%;border-radius:58% 42% 50% 50%/50% 55% 45% 50%}
+.cz-blob2{position:absolute;width:150px;height:150px;right:2%;top:2%;border-radius:50%}
+.cz-frame{position:relative;width:80%;aspect-ratio:4/3.2;border-radius:28px;overflow:hidden;border:8px solid #fff;box-shadow:0 18px 40px rgba(13,54,95,.22);transform:rotate(-2deg)}
+.cz-frame img{display:block;width:100%!important;height:100%!important;object-fit:cover;object-position:40% 30%;transform:scale(1.3);transform-origin:45% 12%;border-radius:0!important;box-shadow:none!important;max-width:none}
+.cz-bubble{position:absolute;background:#fff;border-radius:18px;padding:11px 15px;box-shadow:0 10px 26px rgba(13,54,95,.2);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#0D365F;line-height:1.3;text-align:left;font-family:Inter,system-ui,sans-serif}
+.cz-bubble small{display:block;font-weight:400;color:#5f6f80;font-size:12px}
+.cz-dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none}
+.cz-dot svg{width:17px;height:17px}
+.cz-heart{position:absolute;color:#E07A5F;display:block}
+.cz-heart svg{display:block;width:100%;height:auto}
+@media(max-width:560px){.cz-stage{min-height:320px}.cz-frame{width:86%}.cz-bubble{padding:8px 11px;font-size:12.5px;gap:8px}.cz-bubble small{font-size:11px}.cz-dot{width:28px;height:28px}.cz-blob2{width:100px;height:100px}}
 .ht-hero .ht-hero-sub { font-size:max(15.5px, var(--fs-read, 0px)); color:#a9c2cc; margin:0 0 22px; }
 /* the value line sits under the promise, never above it */
 .ht-badge { display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:9px 20px; font-size:max(14.5px, var(--fs-min, 0px)); font-weight:600; margin-bottom:26px; }
@@ -290,7 +303,14 @@
       <a class="cta" href="/book">Book a free in-home assessment &rarr;</a>
       <p class="under">Already a client at 20+ hours? Call (417) 234-8494 and we will get one out to you.</p>
     </div>
-    <div><img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="An older woman on a video call with her family on her television" onerror="this.style.display='none'"></div>
+    <div class="cz-stage">
+      <div class="cz-blob" style="background:rgba(143,209,199,.16)" aria-hidden="true"></div><div class="cz-blob2" style="background:rgba(245,208,97,.22)" aria-hidden="true"></div>
+      <div class="cz-frame"><img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="A mom and her little boy smiling on a family video call that shows up on Grandpa's TV" onerror="this.style.display='none'"></div>
+      <div class="cz-bubble" style="right:0;top:6%" aria-hidden="true"><span class="cz-dot" style="background:#E3F1F0;color:#1F7A8C"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span><span>Emma is calling<small>Answer on the TV</small></span></div>
+      <div class="cz-bubble" style="left:0;bottom:10%" aria-hidden="true"><span class="cz-dot" style="background:#FBF0D2;color:#9C6410"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span><span>Time for your pills<small>9:00 AM reminder</small></span></div>
+      <span class="cz-heart" style="right:9%;bottom:7%;width:24px" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
+      <span class="cz-heart" style="right:3%;bottom:19%;width:15px" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
+    </div>
   </div>
 </section>
 
