@@ -209,6 +209,12 @@
 .hp-team-card p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0; }
 .hp-team-more { margin: 20px 0 0; font-size: 15.5px; font-weight: 600; }
 @media (max-width: 719px) { .hp-team-grid { grid-template-columns: 1fr; } }
+/* Even rhythm between homepage sections: plain sections 96px apart (80 tablet, 64 phone); colored bands keep their own inner padding */
+.hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #hometogether-band, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 48px; padding-bottom: 48px; }
+.hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 72px; padding-bottom: 72px; }
+.hp .cg-meet { padding-top: 64px; } .hp #decision-center { padding-bottom: 72px; } .hp #hometogether-band { padding-top: 72px; }
+@media (max-width: 1039px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #hometogether-band, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 40px; padding-bottom: 40px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 56px; padding-bottom: 56px; } .hp .cg-meet { padding-top: 52px; } .hp #decision-center { padding-bottom: 56px; } .hp #hometogether-band { padding-top: 56px; } }
+@media (max-width: 719px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #hometogether-band, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 32px; padding-bottom: 32px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 44px; padding-bottom: 44px; } .hp .cg-meet { padding-top: 40px; } .hp #decision-center { padding-bottom: 44px; } .hp #hometogether-band { padding-top: 44px; } }
 </style>
 <link rel="canonical" href="https://mo-care.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -384,7 +390,7 @@
 </div>
 </section>
 
-<section class="hp-section reveal cg-meet" id="meet-your-caregiver" style="padding-top:34px">
+<section class="hp-section reveal cg-meet" id="meet-your-caregiver">
 <div class="cg-meet-intro">
 <p style="font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Meet Your Caregiver First</p>
 <h2>Know who's coming before they knock.</h2>
@@ -593,7 +599,7 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 </div>
 </section>
 
-<section class="hp-section reveal" id="hometogether-band" style="padding-top:34px">
+<section class="hp-section reveal" id="hometogether-band">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center" class="ht-band-grid">
   <div>
     <a href="/family" style="display:inline-block;font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#876B00;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-decoration:none;border-bottom:1.5px solid rgba(193,122,18,.45)">New from our family of care &rarr;</a>
@@ -649,12 +655,13 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 </div>
 </section>
 
-<section class="hp-section reveal" style="padding-top:0">
+<section class="hp-section reveal" id="reviews">
 <div style="text-align:center;max-width:780px;margin:0 auto 24px">
 <h2>What families &amp; caregivers say</h2>
 <p style="font-size:max(15.5px, var(--fs-read, 0px));color:#000000;line-height:1.6;margin:0">Real, verified Google reviews from the people we care for, and the caregivers on our team.</p>
 </div>
-<iframe id="cc-reviews" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" style="width:100%;border:none;min-height:760px" title="Verified Google reviews for Caring Companions"></iframe>
+<script src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+<iframe id="cc-reviews" class="lc_reviews_widget" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" height="620" style="width:100%;border:none;display:block" title="Verified Google reviews for Caring Companions"></iframe>
 </section>
 
 
