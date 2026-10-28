@@ -57,7 +57,7 @@
   function select(layer) {
     if (selected && selected !== layer) group.resetStyle(selected);
     selected = layer;
-    layer.setStyle({ fillColor: '#F0A63A', fillOpacity: 0.72, weight: 2.5, dashArray: null });
+    layer.setStyle({ fillColor: '#F5D061', fillOpacity: 0.72, weight: 2.5, dashArray: null });
     layer.bringToFront();
   }
 
@@ -89,7 +89,7 @@
     L.marker(OFFICE, {
       title: 'Our Springfield office', zIndexOffset: 1000,
       icon: L.divIcon({ className: 'sm-office', iconSize: [46, 46], iconAnchor: [23, 23],
-        html: '<span class="sm-office-pulse"></span><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#fff" stroke="#0D365F" stroke-width="3"/><path d="M13 23 24 14l11 9v11a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2z" fill="#EAF4F6" stroke="#0D365F" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 33s-5.5-3.2-5.5-6.7a2.8 2.8 0 0 1 5.5-.9 2.8 2.8 0 0 1 5.5.9c0 3.5-5.5 6.7-5.5 6.7z" fill="#1F7A8C"/><circle cx="24" cy="20" r="2.4" fill="#F0A63A"/></svg>' })
+        html: '<span class="sm-office-pulse"></span><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#fff" stroke="#0D365F" stroke-width="3"/><path d="M13 23 24 14l11 9v11a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2z" fill="#EAF4F6" stroke="#0D365F" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 33s-5.5-3.2-5.5-6.7a2.8 2.8 0 0 1 5.5-.9 2.8 2.8 0 0 1 5.5.9c0 3.5-5.5 6.7-5.5 6.7z" fill="#1F7A8C"/><circle cx="24" cy="20" r="2.4" fill="#F5D061"/></svg>' })
     }).bindPopup('<div class="sm-pop"><p class="sm-pop-kicker">Our office</p><p class="sm-pop-name">Springfield</p><p class="sm-pop-text">1331 N Stewart Ave, Suite B</p><div class="sm-pop-actions"><a class="sm-btn" href="' + TEL + '">Call ' + PHONE + '</a></div></div>', { className: 'sm-popup' })
       .addTo(map);
 

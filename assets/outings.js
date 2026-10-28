@@ -7,7 +7,7 @@
     'senior-center':      { label: 'Senior centers',      icon: 'i-handshake',  color: '#0F5563' },
     'library':            { label: 'Libraries',           icon: 'i-book',       color: '#2C6E8F' },
     'park-garden':        { label: 'Parks & gardens',     icon: 'i-sprout',     color: '#3E8E5A' },
-    'museum-history':     { label: 'Museums & history',   icon: 'i-compass',    color: '#9C6410' },
+    'museum-history':     { label: 'Museums & history',   icon: 'i-compass',    color: '#876B00' },
     'arts-music-classes': { label: 'Arts, music & classes', icon: 'i-music',    color: '#7A4E9C' },
     'exercise':           { label: 'Staying active',      icon: 'i-strength',   color: '#1F7A8C' },
     'events-seasonal':    { label: 'Events & festivals',  icon: 'i-calendar',   color: '#C1532E' },

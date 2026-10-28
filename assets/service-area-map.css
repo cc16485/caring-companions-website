@@ -7,7 +7,7 @@
 .sm-map.sm-failed + .sm-fallback { display: grid; }
 .sm-panel { background: #fff; border: 1px solid var(--border, #e4e1d8); border-radius: 18px; padding: 26px 24px; }
 .sm-panel h2 { font-family: var(--serif); font-size: 25px; font-weight: 600; color: var(--brand-blue, #0D365F); margin: 0 0 14px; line-height: 1.2; }
-.sm-panel h3 { font-family: var(--sans); font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent, #9C6410); margin: 24px 0 10px; }
+.sm-panel h3 { font-family: var(--sans); font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent, #876B00); margin: 24px 0 10px; }
 .sm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .sm-check { display: flex; gap: 8px; }
 .sm-check input { flex: 1; min-width: 0; font: inherit; font-size: 17px; padding: 12px 14px; border: 1px solid #cfcabd; border-radius: 9px; letter-spacing: .04em; color: var(--ink, #16283a); }
@@ -35,14 +35,14 @@
 .sm-popup .leaflet-popup-content-wrapper { border-radius: 14px; box-shadow: 0 16px 34px rgba(13,54,95,.22); }
 .sm-popup .leaflet-popup-content { margin: 16px 18px; font-family: var(--sans); }
 .sm-popup .leaflet-popup-content p { margin: 0; }
-.sm-popup .sm-pop-kicker { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent, #9C6410); }
+.sm-popup .sm-pop-kicker { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent, #876B00); }
 .sm-popup .sm-pop-name { font-family: var(--serif); font-size: 23px; font-weight: 600; color: var(--brand-blue, #0D365F); line-height: 1.2; margin-top: 2px; }
 .sm-popup .sm-pop-text { font-size: 14px; color: #45566a; margin-top: 6px; line-height: 1.5; }
 .sm-pop-towns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .sm-pop-towns a { font-size: 13px; font-weight: 600; color: var(--brand-blue, #0D365F); background: #EAF4F6; border-radius: 999px; padding: 4px 10px; text-decoration: none; }
 .sm-pop-towns a:hover { background: #d6ecef; }
 .sm-popup .sm-pop-guide { margin-top: 10px; font-size: 13.5px; }
-.sm-pop-guide a { color: var(--accent, #9C6410); font-weight: 600; text-decoration: none; }
+.sm-pop-guide a { color: var(--accent, #876B00); font-weight: 600; text-decoration: none; }
 .sm-pop-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .sm-btn { display: inline-block; background: var(--cta, #1F7A8C); color: #fff !important; text-decoration: none; font-weight: 600; font-size: 13.5px; padding: 9px 13px; border-radius: 8px; }
 .sm-btn:hover { background: var(--cta-hover, #155A68); }
