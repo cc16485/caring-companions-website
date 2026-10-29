@@ -429,6 +429,8 @@ function prnSetup(role){
   const rate = role.pay_min ? '$' + Number(role.pay_min).toFixed(2).replace(/\.00$/, '') + '/hr' : '';
   g('posLine').innerHTML = 'Position: <b>' + esc(role.label) + '</b>' + (rate ? ' &middot; ' + rate : '')
     + '<div style="margin-top:7px;font-size:max(13.5px, var(--fs-read, 0px));color:var(--muted);line-height:1.6;">'
+    /* PRN step 4 (Samantha 2026-10-29): the team's identity line, ahead of "Start PRN. Stay flexible." */
+    + '<b style="color:var(--ink-2);">Join our PRN Team. We stand in the gap so families never go without care.</b><br>'
     + '<b style="color:var(--ink-2);">Start PRN. Stay flexible.</b> Tell us when you are generally available and we will text you opportunities that may fit. '
     + 'Accept or decline, no pressure. Once you accept and are confirmed, we count on you.</div>';
   g('posLine').style.display = 'block';
