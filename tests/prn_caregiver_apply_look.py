@@ -52,6 +52,7 @@ with sync_playwright() as pw:
             ck('...the year of paid caregiving experience is still asked (without "or CNA")', 'at least one year of paid caregiving experience?' in r.get('qs', ''), r)
             ck('...the pay acknowledgment and the ongoing note from the role, word for word', 'I understand that Caring Companions PRN Caregiver Team members are paid $18/hour.' in r.get('pay', '') and 'If you later move to a regular schedule, the ongoing caregiver rate is $16/hour.' in r.get('pay', '') and '$18 an hour' not in r.get('pay', ''), r)
             ck('...the position line names the team and $18/hr', 'PRN Caregiver Team' in r.get('line', '') and '$18/hr' in r.get('line', ''), r)
+            ck('...her identity line, then "Start PRN. Stay flexible." (PRN step 4)', 'Join our PRN Team. We stand in the gap so families never go without care.\nStart PRN. Stay flexible.' in r.get('line', ''), r)
             k = pg.evaluate(KO)
             ck('...saying "not a CNA" never turns them away; only the year goes to the database', 'apply_prn_save' in k['calls'] and k['prnPatch'] and 'cna' not in k['prnPatch']['p_prn'] and 'not able to take this application further' not in k['body'], k)
         else:
