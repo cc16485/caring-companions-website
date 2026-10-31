@@ -36,6 +36,17 @@
 .cr-role .li { display: flex; gap: 9px; align-items: flex-start; font-size: max(13.5px, var(--fs-read, 0px)); line-height: 1.5; color: var(--body-text); padding: 3px 0; }
 .cr-role .li .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
 .cr-role .apply { margin-top: 16px; }
+.cr-prn { margin-top: 22px; background: var(--navy-panel); border-radius: 16px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 22px 32px; align-items: center; }
+.cr-prn-text { flex: 1 1 340px; }
+.cr-prn-kicker { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: #F5D061; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px; }
+.cr-prn h3 { font-family: var(--serif); font-size: 24px; font-weight: 600; color: #fbfaf7; margin: 0 0 8px; }
+.cr-prn p { font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: #c3cdd6; margin: 0 0 12px; }
+.cr-prn-more { font-size: 15px; font-weight: 600; color: #F5D061; text-decoration: underline; }
+.cr-prn-more:hover { color: #fbfaf7; }
+.cr-prn-btns { flex: 1 1 280px; display: grid; gap: 10px; }
+.cr-prn-btn { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #fbfaf7; color: #0D365F; border-radius: 10px; padding: 14px 18px; font-size: 15.5px; font-weight: 700; text-decoration: none; }
+.cr-prn-btn:hover { background: #ffffff; color: var(--cta); text-decoration: none; }
+.cr-prn-btn b { background: #e8f1ec; color: #1c6b45; border-radius: 999px; padding: 3px 11px; font-size: 14px; }
 .cr-process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .cr-step { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; }
 .cr-step .n { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fbfaf7; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 0 12px; }
@@ -238,6 +249,18 @@
 <div class="li"><span class="mk">✓</span> Advanced personal care</div>
 <div class="li"><span class="mk">✓</span> Advanced-stage dementia &amp; chronic conditions</div>
 <div class="apply"><a href="/apply?position=cna&amp;channel_source=website" class="js-apply btn-primary" style="width:100%;text-align:center;padding:12px">Apply, Licensed CNA</a></div>
+</div>
+</div>
+<div class="cr-prn">
+<div class="cr-prn-text">
+<p class="cr-prn-kicker">PRN Teams · We stand in the gap</p>
+<h3>Want flexibility? Join a PRN Team.</h3>
+<p>Pick up shifts when it works for you. Accept or decline each one, no pressure and no guilt.</p>
+<a href="/prn-team" class="cr-prn-more">Learn about our PRN Teams &rarr;</a>
+</div>
+<div class="cr-prn-btns">
+<a href="/apply?job=prn-caregiver-springfield&amp;channel_source=website" class="js-apply cr-prn-btn"><span>PRN Caregiver Team</span><b>$18/hr</b></a>
+<a href="/apply?job=prn-cna-springfield&amp;channel_source=website" class="js-apply cr-prn-btn"><span>PRN CNA Team</span><b>$20/hr</b></a>
 </div>
 </div>
 </section>
