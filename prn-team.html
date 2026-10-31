@@ -85,6 +85,10 @@
 .oc-pick { background: #e8f1ec; color: #1c6b45; border: 1.5px dashed #8fbfa5; cursor: pointer; }
 .oc-pick:hover { background: #d9ebe0; }
 .oc-pick[aria-pressed="true"] { background: var(--cta); color: #fbfaf7; border: 1.5px solid var(--cta); }
+.oc-pick[data-kind="weekly"][aria-pressed="true"] { background: #0D365F; border-color: #0D365F; }
+.oc-mode { display: inline-flex; background: #efede7; border-radius: 999px; padding: 4px; gap: 4px; margin: 0 0 14px; }
+.oc-mode-btn { border: 0; background: transparent; border-radius: 999px; padding: 8px 16px; font: inherit; font-size: 14px; font-weight: 600; color: var(--ink-2); cursor: pointer; }
+.oc-mode-btn[aria-pressed="true"] { background: #ffffff; color: var(--cta); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
 .oc-taken { background: #efede7; color: #8a8f96; font-weight: 600; }
 .oc-count { min-height: 1.4em; font-size: max(14px, var(--fs-read, 0px)); font-weight: 600; color: var(--cta); margin: 0 0 10px; }
 .oc-card .li { display: flex; gap: 9px; align-items: flex-start; font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.55; color: var(--body-text); padding: 4px 0; }
@@ -296,14 +300,15 @@
 <div class="oc-card">
 <p class="oc-kicker">Flexible to sign up</p>
 <h3>Pick the shifts that fit your life</h3>
-<p class="oc-sub">Here's a sample week. Tap an open shift to try it.</p>
+<p class="oc-sub">Here's a sample week. Choose one time or every week, then tap an open shift to try it.</p>
+<div class="oc-mode" role="group" aria-label="How to sign up"><button type="button" class="oc-mode-btn" data-kind="once" aria-pressed="true">One time</button><button type="button" class="oc-mode-btn" data-kind="weekly" aria-pressed="false">Every week</button></div>
 <div class="oc-cal" role="group" aria-label="Sample on-call week">
 <span class="oc-corner"></span><span class="oc-day"><b>Mon</b>3</span><span class="oc-day"><b>Tue</b>4</span><span class="oc-day"><b>Wed</b>5</span><span class="oc-day"><b>Thu</b>6</span><span class="oc-day"><b>Fri</b>7</span><span class="oc-day"><b>Sat</b>8</span><span class="oc-day"><b>Sun</b>9</span>
-<span class="oc-slot"><b>Daytime</b>7am to 5pm</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Mon daytime">Open</button><span class="oc-cell oc-taken" aria-label="Tue daytime: taken">Taken</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Wed daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Thu daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Fri daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" aria-label="Sat daytime">You</button><span class="oc-cell oc-taken" aria-label="Sun daytime: taken">Taken</span>
-<span class="oc-slot"><b>Overnight</b>5pm to 7am</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Mon overnight">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Tue overnight">Open</button><span class="oc-cell oc-taken" aria-label="Wed overnight: taken">Taken</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Thu overnight">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" aria-label="Fri overnight">You</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" aria-label="Sat overnight">You</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Sun overnight">Open</button>
+<span class="oc-slot"><b>Daytime</b>7am to 5pm</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Mon daytime">Open</button><span class="oc-cell oc-taken" aria-label="Tue daytime: taken">Taken</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Wed daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Thu daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Fri daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" data-kind="weekly" aria-label="Sat daytime">Weekly</button><span class="oc-cell oc-taken" aria-label="Sun daytime: taken">Taken</span>
+<span class="oc-slot"><b>Overnight</b>5pm to 7am</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Mon overnight">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Tue overnight">Open</button><span class="oc-cell oc-taken" aria-label="Wed overnight: taken">Taken</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Thu overnight">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" data-kind="once" aria-label="Fri overnight">Once</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" data-kind="weekly" aria-label="Sat overnight">Weekly</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Sun overnight">Open</button>
 </div>
 <p class="oc-count" aria-live="polite"></p>
-<div class="li"><span class="mk">✓</span> Sign up one shift at a time, on your own PRN Team page. No standing schedule.</div>
+<div class="li"><span class="mk">✓</span> Find an open shift on your own PRN Team page. Take it one time, or make it recurring and keep it every week.</div>
 <div class="li"><span class="mk">✓</span> Daytime, overnight, or both for a whole day. Weekdays or weekends.</div>
 <div class="li"><span class="mk">✓</span> See 4 weeks ahead. Pick a few shifts or many. The office confirms each one.</div>
 <div class="li"><span class="mk">✓</span> You're paid for each on-call shift, plus your PRN rate for any shift you're called in to work.</div>
@@ -431,15 +436,27 @@
 (function () {
   var cal = document.querySelector('.oc-cal'); if (!cal) return;
   var out = document.querySelector('.oc-count');
+  var mode = 'once';
+  document.querySelectorAll('.oc-mode-btn').forEach(function (m) {
+    m.addEventListener('click', function () {
+      mode = m.getAttribute('data-kind');
+      document.querySelectorAll('.oc-mode-btn').forEach(function (x) { x.setAttribute('aria-pressed', x === m ? 'true' : 'false'); });
+    });
+  });
   function count() {
-    var n = cal.querySelectorAll('.oc-pick[aria-pressed="true"]').length;
-    out.textContent = n ? 'You picked ' + n + ' shift' + (n === 1 ? '' : 's') + ' this week.' : 'No shifts this week, and that is OK.';
+    var once = cal.querySelectorAll('.oc-pick[data-kind="once"][aria-pressed="true"]').length;
+    var weekly = cal.querySelectorAll('.oc-pick[data-kind="weekly"][aria-pressed="true"]').length;
+    var parts = [];
+    if (once) parts.push(once + ' one time');
+    if (weekly) parts.push(weekly + ' every week');
+    out.textContent = parts.length ? 'You picked ' + parts.join(' and ') + '.' : 'No shifts this week, and that is OK.';
   }
   cal.addEventListener('click', function (e) {
     var b = e.target.closest('.oc-pick'); if (!b) return;
     var on = b.getAttribute('aria-pressed') !== 'true';
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    b.textContent = on ? 'You' : 'Open';
+    if (on) b.setAttribute('data-kind', mode); else b.removeAttribute('data-kind');
+    b.textContent = on ? (mode === 'weekly' ? 'Weekly' : 'Once') : 'Open';
     count();
   });
   count();
