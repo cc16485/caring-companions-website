@@ -70,8 +70,17 @@
 .pr-faq details { background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
 .pr-faq summary { cursor: pointer; font-weight: 600; color: var(--ink-2); font-size: max(15px, var(--fs-head, 0px)); }
 .pr-faq p { font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.65; color: var(--body-text); margin: 10px 0 0; }
-@media (max-width: 899px) { .pr-how { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 639px) { .pr-how { grid-template-columns: 1fr; } }
+.pr-grow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.pr-oncall { max-width: 1000px; margin: 0 auto; background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 28px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 26px; align-items: start; }
+.pr-oncall-shifts { display: grid; gap: 10px; }
+.pr-shift { display: flex; gap: 14px; align-items: center; background: var(--soft-panel); border-radius: 12px; padding: 14px 16px; }
+.pr-shift svg { width: 26px; height: 26px; flex-shrink: 0; color: var(--accent); fill: currentColor; }
+.pr-shift b { display: block; font-size: max(15.5px, var(--fs-head, 0px)); color: var(--ink-2); }
+.pr-shift span { font-size: max(14px, var(--fs-read, 0px)); color: var(--muted); }
+.pr-oncall-text .li { display: flex; gap: 9px; align-items: flex-start; font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: var(--body-text); padding: 5px 0; }
+.pr-oncall-text .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+@media (max-width: 899px) { .pr-how, .pr-grow { grid-template-columns: repeat(2, 1fr); } .pr-oncall { grid-template-columns: 1fr; } }
+@media (max-width: 639px) { .pr-how, .pr-grow { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -213,6 +222,7 @@
 <span><b>✓</b> Accept or decline, no pressure</span>
 <span><b>✓</b> W-2 employee, not a contractor</span>
 <span><b>✓</b> Paid orientation &amp; training</span>
+<span><b>✓</b> On-call options for CNAs</span>
 <span><b>✓</b> Open all year</span>
 </div>
 
@@ -252,10 +262,40 @@
 <div class="li"><span class="mk">✓</span> Be a second set of hands</div>
 <div class="li"><span class="mk">✓</span> Support caregivers in the field</div>
 <div class="li"><span class="mk">✓</span> When specifically approved, help train caregivers</div>
+<div class="li"><span class="mk">✓</span> Option to be on call, with on-call pay</div>
 <p class="pr-need"><b>What we look for:</b> a current CNA certification, a driver's license and reliable transportation, at least a year of caregiving experience, and able to pass a background check and references.</p>
 <div class="apply"><a href="/apply?job=prn-cna-springfield&amp;channel_source=website" class="js-apply btn-primary" style="width:100%;text-align:center;padding:12px">Apply, PRN CNA Team</a></div>
 <a class="pr-more" href="/jobs/prn-cna-springfield">Read the full job description &rarr;</a>
 </div>
+</div>
+</section>
+
+<section class="cr-section" id="on-call">
+<h2>On-call opportunities</h2>
+<p class="lede">For the PRN CNA Team. Choose times to be on call, and be the person families can count on when a caregiver can't make it.</p>
+<div class="pr-oncall">
+<div class="pr-oncall-shifts">
+<div class="pr-shift"><svg aria-hidden="true"><use href="/assets/icons.svg#i-sun"/></svg><div><b>Daytime</b><span>7am to 5pm</span></div></div>
+<div class="pr-shift"><svg aria-hidden="true"><use href="/assets/icons.svg#i-clock"/></svg><div><b>Overnight</b><span>5pm to 7am the next morning</span></div></div>
+<div class="pr-shift"><svg aria-hidden="true"><use href="/assets/icons.svg#i-calendar"/></svg><div><b>Whole day</b><span>Both shifts, 24 hours</span></div></div>
+</div>
+<div class="pr-oncall-text">
+<div class="li"><span class="mk">✓</span> You're paid for each on-call shift, plus your PRN rate for any shift you're called in to work.</div>
+<div class="li"><span class="mk">✓</span> Pick what fits: every weekend, every other weekend, one weekend a month, a weekday, or not right now.</div>
+<div class="li"><span class="mk">✓</span> Change your choice any time. Saying "not right now" never counts against you.</div>
+<div class="li"><span class="mk">✓</span> Before your first on-call shift, you read and sign our On-Call Expectations. While you're on call, families are counting on you to answer and cover.</div>
+</div>
+</div>
+</section>
+
+<section class="cr-section" id="training" style="padding-top:8px">
+<h2>Training and growing with us</h2>
+<p class="lede">You start with paid training from home, and you can keep growing from there.</p>
+<div class="pr-grow">
+<div class="cr-step"><div class="n">1</div><h4>Paid orientation</h4><p>Paid orientation and training from home, on your phone or computer, in pieces if you like.</p></div>
+<div class="cr-step"><div class="n">2</div><h4>Optional courses</h4><p>Extra courses are offered when a client's needs call for them, and you can ask for courses that interest you.</p></div>
+<div class="cr-step"><div class="n">3</div><h4>Field Support Visits</h4><p>Experienced PRN CNAs we approve can step in for more advanced care and help train caregivers in the home, like a Hoyer lift refresher. Paid at your PRN rate.</p></div>
+<div class="cr-step"><div class="n">4</div><h4>Room to grow</h4><p>Move to regular hours, earn your CNA and join the PRN CNA Team, or help train others.</p></div>
 </div>
 </section>
 
@@ -274,6 +314,7 @@
 <details><summary>How will I hear about shifts?</summary><p>By text, when we have an opportunity that may fit the days and times you told us you're generally available.</p></details>
 <details><summary>Is there a minimum number of shifts?</summary><p>No. There may be times when you can help often and times when you can't help at all.</p></details>
 <details><summary>Which team should I apply for?</summary><p>If you hold a current CNA certification, apply for the PRN CNA Team. If not, apply for the PRN Caregiver Team. You need at least a year of paid caregiving experience for either one.</p></details>
+<details><summary>Can the PRN Caregiver Team be on call?</summary><p>To start, on-call is for the PRN CNA Team. If you earn your CNA, you can join the PRN CNA Team and choose on-call times.</p></details>
 <details><summary>How does hiring work?</summary><p>Apply online in about 2 minutes, then a 20-minute in-person interview at our Springfield office. After that you can do the rest from home: paperwork online, a 15-minute Orientation Video Call, and paid orientation and training. See <a href="/careers">our recruitment process</a>.</p></details>
 </div>
 </section>
