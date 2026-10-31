@@ -71,15 +71,38 @@
 .pr-faq summary { cursor: pointer; font-weight: 600; color: var(--ink-2); font-size: max(15px, var(--fs-head, 0px)); }
 .pr-faq p { font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.65; color: var(--body-text); margin: 10px 0 0; }
 .pr-grow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.pr-oncall { max-width: 1000px; margin: 0 auto; background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 28px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 26px; align-items: start; }
-.pr-oncall-shifts { display: grid; gap: 10px; }
-.pr-shift { display: flex; gap: 14px; align-items: center; background: var(--soft-panel); border-radius: 12px; padding: 14px 16px; }
-.pr-shift svg { width: 26px; height: 26px; flex-shrink: 0; color: var(--accent); fill: currentColor; }
-.pr-shift b { display: block; font-size: max(15.5px, var(--fs-head, 0px)); color: var(--ink-2); }
-.pr-shift span { font-size: max(14px, var(--fs-read, 0px)); color: var(--muted); }
-.pr-oncall-text .li { display: flex; gap: 9px; align-items: flex-start; font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: var(--body-text); padding: 5px 0; }
-.pr-oncall-text .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
-@media (max-width: 899px) { .pr-how, .pr-grow { grid-template-columns: repeat(2, 1fr); } .pr-oncall { grid-template-columns: 1fr; } }
+.oc-wrap { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; align-items: start; }
+.oc-card { background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; }
+.oc-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--ink-2); margin: 0 0 4px; }
+.oc-kicker { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px; }
+.oc-sub { font-size: max(14px, var(--fs-read, 0px)); color: var(--muted); margin: 0 0 16px; }
+.oc-cal { display: grid; grid-template-columns: 82px repeat(7, 1fr); gap: 5px; margin: 0 0 8px; }
+.oc-day { text-align: center; font-size: 12.5px; color: var(--muted); line-height: 1.25; }
+.oc-day b { display: block; font-size: 13.5px; color: var(--ink-2); }
+.oc-slot { font-size: 11.5px; color: var(--muted); line-height: 1.3; align-self: center; }
+.oc-slot b { display: block; font-size: 13px; color: var(--ink-2); }
+.oc-cell { min-height: 44px; border-radius: 9px; font: inherit; font-size: 12.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 2px; }
+.oc-pick { background: #e8f1ec; color: #1c6b45; border: 1.5px dashed #8fbfa5; cursor: pointer; }
+.oc-pick:hover { background: #d9ebe0; }
+.oc-pick[aria-pressed="true"] { background: var(--cta); color: #fbfaf7; border: 1.5px solid var(--cta); }
+.oc-pick[data-kind="weekly"][aria-pressed="true"] { background: #0D365F; border-color: #0D365F; }
+.oc-mode { display: inline-flex; background: #efede7; border-radius: 999px; padding: 4px; gap: 4px; margin: 0 0 14px; }
+.oc-mode-btn { border: 0; background: transparent; border-radius: 999px; padding: 8px 16px; font: inherit; font-size: 14px; font-weight: 600; color: var(--ink-2); cursor: pointer; }
+.oc-mode-btn[aria-pressed="true"] { background: #ffffff; color: var(--cta); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+.oc-taken { background: #efede7; color: #8a8f96; font-weight: 600; }
+.oc-count { min-height: 1.4em; font-size: max(14px, var(--fs-read, 0px)); font-weight: 600; color: var(--cta); margin: 0 0 10px; }
+.oc-card .li { display: flex; gap: 9px; align-items: flex-start; font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.55; color: var(--body-text); padding: 4px 0; }
+.oc-card .mk { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+.oc-strict { background: var(--navy-panel); border-color: var(--navy-panel); }
+.oc-strict h3 { color: #fbfaf7; }
+.oc-strict .oc-kicker { color: #F5D061; }
+.oc-strict .oc-sub { color: #c3cdd6; }
+.oc-rules { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+.oc-rules li { font-size: max(14.5px, var(--fs-read, 0px)); line-height: 1.55; color: #e6ecf1; padding-left: 4px; }
+.oc-rules li::marker { color: #F5D061; font-weight: 700; }
+.oc-rules .oc-hard { background: rgba(245,208,97,0.14); border-left: 3px solid #F5D061; border-radius: 6px; padding: 8px 10px; color: #fbfaf7; font-weight: 600; }
+@media (max-width: 639px) { .oc-card { padding: 22px 16px; } .oc-cal { grid-template-columns: 58px repeat(7, 1fr); gap: 3px; } .oc-cell { font-size: 10.5px; min-height: 40px; border-radius: 7px; } .oc-day { font-size: 11px; } .oc-day b { font-size: 12px; } .oc-slot b { font-size: 11.5px; } .oc-slot { font-size: 10px; } }
+@media (max-width: 899px) { .pr-how, .pr-grow { grid-template-columns: repeat(2, 1fr); } .oc-wrap { grid-template-columns: 1fr; } }
 @media (max-width: 639px) { .pr-how, .pr-grow { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -272,18 +295,37 @@
 
 <section class="cr-section" id="on-call">
 <h2>On-call opportunities</h2>
-<p class="lede">For the PRN CNA Team. Choose times to be on call, and be the person families can count on when a caregiver can't make it.</p>
-<div class="pr-oncall">
-<div class="pr-oncall-shifts">
-<div class="pr-shift"><svg aria-hidden="true"><use href="/assets/icons.svg#i-sun"/></svg><div><b>Daytime</b><span>7am to 5pm</span></div></div>
-<div class="pr-shift"><svg aria-hidden="true"><use href="/assets/icons.svg#i-clock"/></svg><div><b>Overnight</b><span>5pm to 7am the next morning</span></div></div>
-<div class="pr-shift"><svg aria-hidden="true"><use href="/assets/icons.svg#i-calendar"/></svg><div><b>Whole day</b><span>Both shifts, 24 hours</span></div></div>
+<p class="lede">For the PRN CNA Team. Signing up is flexible. Being on call is not: once you sign up, families are counting on you.</p>
+<div class="oc-wrap">
+<div class="oc-card">
+<p class="oc-kicker">Flexible to sign up</p>
+<h3>Pick the shifts that fit your life</h3>
+<p class="oc-sub">Here's a sample week. Choose one time or every week, then tap an open shift to try it.</p>
+<div class="oc-mode" role="group" aria-label="How to sign up"><button type="button" class="oc-mode-btn" data-kind="once" aria-pressed="true">One time</button><button type="button" class="oc-mode-btn" data-kind="weekly" aria-pressed="false">Every week</button></div>
+<div class="oc-cal" role="group" aria-label="Sample on-call week">
+<span class="oc-corner"></span><span class="oc-day"><b>Mon</b>3</span><span class="oc-day"><b>Tue</b>4</span><span class="oc-day"><b>Wed</b>5</span><span class="oc-day"><b>Thu</b>6</span><span class="oc-day"><b>Fri</b>7</span><span class="oc-day"><b>Sat</b>8</span><span class="oc-day"><b>Sun</b>9</span>
+<span class="oc-slot"><b>Daytime</b>7am to 5pm</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Mon daytime">Open</button><span class="oc-cell oc-taken" aria-label="Tue daytime: taken">Taken</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Wed daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Thu daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Fri daytime">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" data-kind="weekly" aria-label="Sat daytime">Weekly</button><span class="oc-cell oc-taken" aria-label="Sun daytime: taken">Taken</span>
+<span class="oc-slot"><b>Overnight</b>5pm to 7am</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Mon overnight">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Tue overnight">Open</button><span class="oc-cell oc-taken" aria-label="Wed overnight: taken">Taken</span><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Thu overnight">Open</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" data-kind="once" aria-label="Fri overnight">Once</button><button type="button" class="oc-cell oc-pick" aria-pressed="true" data-kind="weekly" aria-label="Sat overnight">Weekly</button><button type="button" class="oc-cell oc-pick" aria-pressed="false" aria-label="Sun overnight">Open</button>
 </div>
-<div class="pr-oncall-text">
+<p class="oc-count" aria-live="polite"></p>
+<div class="li"><span class="mk">✓</span> Find an open shift on your own PRN Team page. Take it one time, or make it recurring and keep it every week.</div>
+<div class="li"><span class="mk">✓</span> Daytime, overnight, or both for a whole day. Weekdays or weekends.</div>
+<div class="li"><span class="mk">✓</span> See 4 weeks ahead. Pick a few shifts or many. The office confirms each one.</div>
 <div class="li"><span class="mk">✓</span> You're paid for each on-call shift, plus your PRN rate for any shift you're called in to work.</div>
-<div class="li"><span class="mk">✓</span> Pick what fits: every weekend, every other weekend, one weekend a month, a weekday, or not right now.</div>
-<div class="li"><span class="mk">✓</span> Change your choice any time. Saying "not right now" never counts against you.</div>
-<div class="li"><span class="mk">✓</span> Before your first on-call shift, you read and sign our On-Call Expectations. While you're on call, families are counting on you to answer and cover.</div>
+<div class="li"><span class="mk">✓</span> Not signing up never counts against you.</div>
+</div>
+<div class="oc-card oc-strict">
+<p class="oc-kicker">Strict once you're on call</p>
+<h3>Our On-Call Expectations</h3>
+<p class="oc-sub">You read and sign these before your first on-call shift.</p>
+<ol class="oc-rules">
+<li>On call comes in two shifts: daytime, 7am to 5pm, and overnight, 5pm to 7am.</li>
+<li>Keep your phone on and with you. Answer the office, or call back, within 15 minutes.</li>
+<li>Be ready to start a shift within 1 hour.</li>
+<li>If the office calls you about an open shift during your on-call time, you cover it.</li>
+<li class="oc-hard">If you don't answer the office within 15 minutes, or you don't cover the shift, you won't be paid for that on-call shift, and you won't be able to sign up for on call again.</li>
+<li>If something comes up, call the office at least 24 hours before your on-call shift starts.</li>
+</ol>
 </div>
 </div>
 </section>
@@ -388,6 +430,36 @@
   document.querySelectorAll('.js-apply').forEach(function (a) {
     a.addEventListener('click', function () { if (window.CCTrack) CCTrack('apply_click'); });
   });
+})();
+</script>
+<script>
+(function () {
+  var cal = document.querySelector('.oc-cal'); if (!cal) return;
+  var out = document.querySelector('.oc-count');
+  var mode = 'once';
+  document.querySelectorAll('.oc-mode-btn').forEach(function (m) {
+    m.addEventListener('click', function () {
+      mode = m.getAttribute('data-kind');
+      document.querySelectorAll('.oc-mode-btn').forEach(function (x) { x.setAttribute('aria-pressed', x === m ? 'true' : 'false'); });
+    });
+  });
+  function count() {
+    var once = cal.querySelectorAll('.oc-pick[data-kind="once"][aria-pressed="true"]').length;
+    var weekly = cal.querySelectorAll('.oc-pick[data-kind="weekly"][aria-pressed="true"]').length;
+    var parts = [];
+    if (once) parts.push(once + ' one time');
+    if (weekly) parts.push(weekly + ' every week');
+    out.textContent = parts.length ? 'You picked ' + parts.join(' and ') + '.' : 'No shifts this week, and that is OK.';
+  }
+  cal.addEventListener('click', function (e) {
+    var b = e.target.closest('.oc-pick'); if (!b) return;
+    var on = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if (on) b.setAttribute('data-kind', mode); else b.removeAttribute('data-kind');
+    b.textContent = on ? (mode === 'weekly' ? 'Weekly' : 'Once') : 'Open';
+    count();
+  });
+  count();
 })();
 </script>
 <script src="assets/cara-widget.js"></script>
