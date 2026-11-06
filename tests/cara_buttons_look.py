@@ -44,7 +44,7 @@ with sync_playwright() as p:
         pg.click('#cara-widget-launcher')
         return pg, chats, leads
     def done(pg):
-        pg.wait_for_timeout(50); pg.wait_for_function('!document.body.innerText.includes("Cara is typing")')
+        pg.wait_for_timeout(50); pg.wait_for_function('!document.body.innerText.includes("Finding an answer")')
     def say(pg, t):
         pg.fill('#cara-widget-input', t); pg.press('#cara-widget-input', 'Enter'); done(pg)
     def tap(pg, label):
@@ -57,6 +57,9 @@ with sync_playwright() as p:
         if SHOTS: pg.locator('#cara-widget-panel').screenshot(path=str(SHOTS / name))
 
     pg, chats, leads = run()
+    check(pg.inner_text('#cara-widget-launcher').strip() == 'Have a Question?', 'the chat button says Have a Question?')
+    check(pg.evaluate("[...document.querySelectorAll('#cara-widget-launcher img, #cara-widget-panel p img')].every(i => i.complete && i.naturalWidth > 0)"), 'our logo badge shows on the button and the heading')
+    check(pg.locator('#cara-widget-panel p', has_text='Have a Question?').count() == 1, 'the chat heading says Have a Question?')
     check(buttons(pg) == ['Care for a loved one', 'What care costs', 'Ways to pay', 'Medicaid or CDS', 'Working for us'], 'five topic buttons on open: %s' % buttons(pg))
     shot(pg, '1-topics.png')
     check(pg.get_by_text('Reach our office. A Care Coordinator answers.').count() == 1 and pg.get_by_text('To reach our office, use the buttons below.').count() == 1, 'the chat says which buttons reach the office')

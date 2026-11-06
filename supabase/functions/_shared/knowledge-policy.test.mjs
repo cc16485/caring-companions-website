@@ -186,6 +186,16 @@ console.log('\n=== CARING COMPANIONS CORE, KNOWLEDGE POLICY ===\n')
   console.log()
 }
 
+// ── TEST 6c: no name, honest if asked (2026-11-06) ─────────────────────────
+{
+  const d = decide(REAL, 'Do you offer overnight care?', { audience: 'public' })
+  const sys = buildSystemPrompt(d.records, '(417) 234-8494')
+  console.log('TEST 6c The chat has no name')
+  check('6c. the prompt never names the chat Cara', !/You are Cara/.test(sys) && sys.includes('Never call yourself Cara'))
+  check('6c. asked if it is a person, it says a Care Coordinator answers calls and texts', sys.includes('a Care Coordinator answers our calls and texts at (417) 234-8494'))
+  console.log()
+}
+
 // ── TEST 6b: the office number, never the CDS number by example (2026-11-06) ──
 {
   const d = decide(REAL, 'Do you offer overnight care?', { audience: 'public' })

@@ -139,7 +139,7 @@
   function bump(dir) { var i = Math.max(0, Math.min(ZOOMS.length - 1, zIndex() + dir)), z = ZOOMS[i]; applyZoom(z); try { localStorage.setItem(ZKEY, String(z)); } catch (e) {} zLabel(); }
 
   // Caring Companions family pages only (they carry the phone utility bar).
-  // Applicant pages and the full-screen Cara and questionnaire pages keep the floating button.
+  // Applicant pages and the questionnaire page keep the floating button.
   var PHONE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>';
   function buildBar(onA11y) {
     if (!document.querySelector('.cc-utility-tel')) return;
