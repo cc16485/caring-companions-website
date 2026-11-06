@@ -46,6 +46,8 @@
       + '.cc-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;border-radius:10px;font:700 15.5px/1.2 Inter,Helvetica,Arial,sans-serif;text-decoration:none;text-align:center}'
       + '.cc-bar a svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}'
       + '.cc-bar-call{background:#1F7A8C;color:#fff}.cc-bar-book{background:#fff;color:#0D365F}'
+      // 2026-11-06 (her words): on phones, a text to the office line, answered by a real Care Coordinator
+      + '.cc-bar-text{background:#fff;color:#0D365F}'
       + '.cc-bar-a11y{flex:0 0 50px;height:50px;border-radius:10px;border:1.5px solid rgba(255,255,255,.4);background:transparent;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}'
       + '.cc-bar-a11y svg{width:28px;height:28px;fill:#fff}'
       + '.cc-bar a:focus-visible,.cc-bar-a11y:focus-visible{outline:3px solid #E7C27D;outline-offset:2px}'
@@ -148,6 +150,7 @@
     var bar = document.createElement('div');
     bar.className = 'cc-bar';
     bar.innerHTML = '<a class="cc-bar-call" href="tel:14172348494">' + PHONE_SVG + 'Call us</a>'
+      + '<a class="cc-bar-text" href="sms:+14172348494">Text Care Coordinator Here</a>'
       + (onBook ? '' : '<a class="cc-bar-book" href="/book">Book a free visit</a>')
       + '<button type="button" class="cc-bar-a11y" aria-label="Accessibility options: larger text and read aloud">' + ICON + '</button>';
     document.body.appendChild(bar);
