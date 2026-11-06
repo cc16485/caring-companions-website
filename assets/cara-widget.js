@@ -103,6 +103,105 @@
 
     var history = [];
 
+    /* One chat, one id (2026-11-05). Every message in this visit carries the same
+       session_id, so the Hub's "Ask Cara chats" page can show the whole
+       conversation instead of single questions. Kept for this browser tab only. */
+    var CHAT_KEY = 'cc_cara_chat';
+    var chat = (function () {
+      var c = null;
+      try { c = JSON.parse(sessionStorage.getItem(CHAT_KEY) || 'null'); } catch (e) { c = null; }
+      if (!c || !/^c[a-z0-9]{8}$/.test(c.id || '')) c = { id: 'c' + Math.random().toString(36).slice(2, 10).padEnd(8, '0'), offer: '' };
+      return c;
+    })();
+    function chatSave() { try { sessionStorage.setItem(CHAT_KEY, JSON.stringify(chat)); } catch (e) { /* this tab only */ } }
+    chatSave();
+
+    /* Call-back offer (her call, 2026-11-05): after the visitor's first real
+       question, Cara offers to have the office call. What they leave becomes a
+       Hub lead through lead-intake (source Website), with this chat's id in the
+       note so the office can read what they asked. A person makes the call;
+       nothing here texts or calls the family. Offered once per chat. */
+    var LEAD_ENDPOINT = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/lead-intake?token=cclead_b36832b06f2bb8d58b7d6302';
+    var GREETING = /^(hi+|hey+|hello+|howdy|good (morning|afternoon|evening)|thanks?( you)?|thank you|ok(ay)?|yes|no|test)[\s!.,?]*$/i;
+    var firstQuestion = '';
+    function inputCss() { return 'width:100%;box-sizing:border-box;border:1px solid #dfe6e2;border-radius:8px;padding:8px 10px;font-size:13px;font-family:inherit;color:#16283a'; }
+    function offerCallback() {
+      if (chat.offer) return;
+      chat.offer = 'shown'; chatSave();
+      var card = document.createElement('div');
+      card.style.cssText = 'align-self:stretch;background:#EAF4F6;border:1px solid #cfe3e7;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.45;color:#2c3d4d;display:flex;flex-direction:column;gap:7px';
+      var ask = document.createElement('div');
+      ask.textContent = 'Would you like someone from our office to call you? Leave your name and number and a Care Coordinator will reach out.';
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;gap:8px';
+      var yes = document.createElement('button');
+      yes.textContent = 'Yes, please call me';
+      yes.style.cssText = 'flex:1;background:#0D365F;color:#faf9f6;border:none;border-radius:8px;padding:8px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit';
+      var no = document.createElement('button');
+      no.textContent = 'No thanks';
+      no.style.cssText = 'background:transparent;color:#55677a;border:1.5px solid #dfe6e2;border-radius:8px;padding:8px 12px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit';
+      row.appendChild(yes); row.appendChild(no);
+      card.appendChild(ask); card.appendChild(row);
+      messagesEl.appendChild(card);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      no.addEventListener('click', function () {
+        chat.offer = 'declined'; chatSave();
+        card.remove();
+      });
+      yes.addEventListener('click', function () {
+        row.remove();
+        var name = document.createElement('input');
+        name.type = 'text'; name.placeholder = 'Your name'; name.setAttribute('aria-label', 'Your name'); name.autocomplete = 'name';
+        var phone = document.createElement('input');
+        phone.type = 'tel'; phone.placeholder = 'Phone number'; phone.setAttribute('aria-label', 'Phone number'); phone.autocomplete = 'tel';
+        var when = document.createElement('input');
+        when.type = 'text'; when.placeholder = 'Best time to call (optional)'; when.setAttribute('aria-label', 'Best time to call');
+        [name, phone, when].forEach(function (el) { el.style.cssText = inputCss(); card.appendChild(el); });
+        var note = document.createElement('div');
+        note.style.cssText = 'font-size:11.5px;color:#55677a';
+        note.textContent = 'We will only use your number to reach you about care.';
+        var err = document.createElement('div');
+        err.style.cssText = 'font-size:12px;color:#a33;display:none';
+        var go = document.createElement('button');
+        go.textContent = 'Send';
+        go.style.cssText = 'background:#0D365F;color:#faf9f6;border:none;border-radius:8px;padding:8px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit';
+        card.appendChild(note); card.appendChild(err); card.appendChild(go);
+        name.focus();
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        go.addEventListener('click', function () {
+          var n = name.value.replace(/^\s+|\s+$/g, ''), p = phone.value.replace(/^\s+|\s+$/g, '');
+          var digits = p.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
+          err.style.display = 'none';
+          if (!n) { err.textContent = 'Please add your name.'; err.style.display = 'block'; name.focus(); return; }
+          if (digits.length !== 10) { err.textContent = 'Please add a 10 digit phone number.'; err.style.display = 'block'; phone.focus(); return; }
+          go.disabled = true; go.textContent = 'Sending...';
+          var q = firstQuestion.length > 300 ? firstQuestion.slice(0, 297) + '...' : firstQuestion;
+          var body = {
+            name: n, phone: p,
+            message: 'Asked for a call back in Ask Cara on the website (Ask Cara chat ' + chat.id + '). First question: "' + q + '"',
+            best_time: when.value.replace(/^\s+|\s+$/g, '')
+          };
+          try { var ref = window.CCPartnerRef && CCPartnerRef.read(); if (ref) body.partner_code = ref.code; } catch (e) { /* no partner link */ }
+          fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+            .then(function (res) { if (!res.ok) throw new Error('lead-intake HTTP ' + res.status); return res.json(); })
+            .then(function () {
+              chat.offer = 'sent'; chatSave();
+              if (window.CCTrack) CCTrack('lead_submitted');
+              card.innerHTML = '';
+              var done = document.createElement('div');
+              done.textContent = 'Thank you, ' + n.split(/\s+/)[0] + '. We have your number, and a Care Coordinator will give you a call.';
+              card.appendChild(done);
+              messagesEl.scrollTop = messagesEl.scrollHeight;
+            })
+            .catch(function () {
+              go.disabled = false; go.textContent = 'Send';
+              err.textContent = 'Sorry, that did not go through. Please try again, or call us at (417) 234-8494.';
+              err.style.display = 'block';
+            });
+        });
+      });
+    }
+
     function addBubble(text, who) {
       var b = document.createElement('div');
       var isUser = who === 'user';
@@ -126,7 +225,7 @@
       return fetch(CARA_CHAT_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: messages })
+        body: JSON.stringify({ messages: messages, session_id: chat.id })
       }).then(function (res) {
         if (!res.ok) throw new Error('Bad response');
         return res.json();
@@ -152,6 +251,7 @@
         var replyText = (reply || '').replace(/^\s+|\s+$/g, '') || 'I am not sure about that. Give us a call at (417) 234-8494 and a care coordinator can help.';
         addBubble(replyText, 'cara');
         history.push({ role: 'assistant', content: replyText });
+        if (!firstQuestion && !GREETING.test(text)) { firstQuestion = text; offerCallback(); }
       }).catch(function () {
         thinking.remove();
         addBubble('Sorry, I am having trouble responding right now. Please call (417) 234-8494 or message us below.', 'cara');
