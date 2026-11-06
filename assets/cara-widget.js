@@ -373,6 +373,25 @@
       panel.style.display = isOpen ? 'none' : 'flex';
       if (!isOpen) inputEl.focus();
     });
+
+    /* "Ask Cara" links (2026-11-06, her pick). The menu, footer and page buttons
+       used to go to the full consultation page, which never reaches the office.
+       Now they open this chat right here (with Have someone call me, Call Us and
+       Text Us). On phones the chat button is hidden behind the phone bar, so they
+       start a text to the office line instead. */
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      var u;
+      try { u = new URL(a.getAttribute('href'), location.href); } catch (err) { return; }
+      if (u.origin !== location.origin || !/^\/cara(\.html)?\/?$/.test(u.pathname)) return;
+      e.preventDefault();
+      if (getComputedStyle(btn).display === 'none') { location.href = 'sms:+14172348494'; return; }
+      panel.style.display = 'flex';
+      inputEl.focus();
+    });
+    // Pages without this chat send their Ask Cara links to /contact#ask-cara, which opens it (computers only).
+    if (location.hash === '#ask-cara' && getComputedStyle(btn).display !== 'none') panel.style.display = 'flex';
   }
 
   if (document.body) init(); else document.addEventListener('DOMContentLoaded', init);
