@@ -1,7 +1,7 @@
 /* Caring Companions: floating "Ask Cara" widget (site-wide)
    Chat backend: the cara-chat Supabase Edge Function (deployed on the shared
    hub project). If it's ever unreachable, Cara falls back to a warm hand-off
-   to phone/consultation. Override with window.CC_CARA_ENDPOINT if needed. */
+   to a phone call. Override with window.CC_CARA_ENDPOINT if needed. */
 (function () {
   'use strict';
 
@@ -75,10 +75,7 @@
 
     var footer = document.createElement('div');
     footer.style.cssText = 'padding:12px 18px 16px;border-top:1px solid #ede9e0;display:flex;flex-direction:column;gap:8px';
-    var consultLink = document.createElement('a');
-    consultLink.href = page('cara.html');
-    consultLink.textContent = 'Start a Full Consultation';
-    consultLink.style.cssText = 'display:block;text-align:center;background:#0D365F;color:#faf9f6;border-radius:8px;padding:10px;font-size:13px;font-weight:600;text-decoration:none';
+    // 2026-11-06 (her call): no "Start a Full Consultation" here; it went to a page that does not reach the office.
     var actionRow = document.createElement('div');
     actionRow.style.cssText = 'display:flex;gap:8px';
     var callLink = document.createElement('a');
@@ -86,12 +83,12 @@
     callLink.textContent = 'Call Us';
     callLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
     var msgLink = document.createElement('a');
-    msgLink.href = page('contact.html');
-    msgLink.textContent = 'Message Us';
-    msgLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#55677a;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
+    // 2026-11-06 (her ask): Text Us, a text to the office line, in place of Message Us (the contact form)
+    msgLink.href = 'sms:+14172348494';
+    msgLink.textContent = 'Text Us';
+    msgLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
     actionRow.appendChild(callLink);
     actionRow.appendChild(msgLink);
-    footer.appendChild(consultLink);
     footer.appendChild(actionRow);
 
     panel.appendChild(header);
@@ -319,7 +316,7 @@
     addBubble('Hi, I am Cara. What can I help you with? Tap a topic, or type your own question.', 'cara');
     showTopics();
 
-    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Start a Full Consultation" below and Cara will walk you through it step by step.';
+    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Text Us" below and a Care Coordinator will answer.';
 
     function askCara(messages) {
       if (!CARA_CHAT_ENDPOINT) {
