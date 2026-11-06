@@ -83,9 +83,10 @@
     callLink.textContent = 'Call Us';
     callLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
     var msgLink = document.createElement('a');
-    msgLink.href = page('contact.html');
-    msgLink.textContent = 'Message Us';
-    msgLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#55677a;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
+    // 2026-11-06 (her ask): Text Us, a text to the office line, in place of Message Us (the contact form)
+    msgLink.href = 'sms:+14172348494';
+    msgLink.textContent = 'Text Us';
+    msgLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
     actionRow.appendChild(callLink);
     actionRow.appendChild(msgLink);
     footer.appendChild(actionRow);
@@ -315,7 +316,7 @@
     addBubble('Hi, I am Cara. What can I help you with? Tap a topic, or type your own question.', 'cara');
     showTopics();
 
-    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Message Us" below and a Care Coordinator will answer.';
+    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Text Us" below and a Care Coordinator will answer.';
 
     function askCara(messages) {
       if (!CARA_CHAT_ENDPOINT) {
