@@ -4,7 +4,7 @@ Serves the site from disk, fakes cara-chat and lead-intake, and checks:
  2. after each answer, the next steps that fit what Cara answered from (care, Medicaid/CDS, jobs)
  3. our own links and phone numbers in Cara's answer can be tapped; other sites stay text
  4. every message carries one chat id; only one row of buttons at a time; a greeting gets none
- 5. Have someone call me: name + 10 digit phone required, lead note names the chat, failure keeps the form,
+ 5. Have the office call me: name + 10 digit phone required, lead note names the chat, failure keeps the form,
     No thanks closes it, and after sending it is not offered again
 Run: python3 tests/cara_buttons_look.py [screenshot folder]  (no server needed)"""
 import json, pathlib, sys
@@ -59,14 +59,15 @@ with sync_playwright() as p:
     pg, chats, leads = run()
     check(buttons(pg) == ['Care for a loved one', 'What care costs', 'Ways to pay', 'Medicaid or CDS', 'Working for us'], 'five topic buttons on open: %s' % buttons(pg))
     shot(pg, '1-topics.png')
+    check(pg.get_by_text('Reach our office. A Care Coordinator answers.').count() == 1 and pg.get_by_text('To reach our office, use the buttons below.').count() == 1, 'the chat says which buttons reach the office')
     check(pg.locator('#cara-widget-panel', has_text='Full Consultation').count() == 0, 'no Start a Full Consultation button (her call 11-06)')
-    check(pg.locator('#cara-widget-panel a', has_text='Call Us').get_attribute('href') == 'tel:14172348494', 'Call Us calls the office')
-    check(pg.locator('#cara-widget-panel a', has_text='Text Us').get_attribute('href') == 'sms:+14172348494' and pg.locator('#cara-widget-panel', has_text='Message Us').count() == 0, 'Text Us texts the office line, in place of Message Us')
+    check(pg.locator('#cara-widget-panel a', has_text='Call the office').get_attribute('href') == 'tel:14172348494', 'Call the office calls the office')
+    check(pg.locator('#cara-widget-panel a', has_text='Text the office').get_attribute('href') == 'sms:+14172348494' and pg.locator('#cara-widget-panel', has_text='Message Us').count() == 0, 'Text the office texts the office line, in place of Message Us')
     tap(pg, 'What care costs')
     check(chats and chats[-1]['messages'][-1]['content'] == 'How much does home care cost?', 'a topic asks Cara its approved question')
     check(pg.locator('#cara-widget-messages > div', has_text='What care costs').count() == 1, 'the visitor sees the topic name in their bubble')
     check('Care for a loved one' not in buttons(pg), 'topic buttons go away once a question is asked')
-    check(buttons(pg) == ['Have someone call me', 'Book a free in-home assessment', 'See rates and ways to pay'], 'cost answer: call me, book, rates page: %s' % buttons(pg))
+    check(buttons(pg) == ['Have the office call me', 'Book a free in-home assessment', 'See rates and ways to pay'], 'cost answer: call me, book, rates page: %s' % buttons(pg))
     a = pg.locator('#cara-widget-messages a', has_text='(417) 234-8494')
     check(a.count() == 1 and a.get_attribute('href') == 'tel:14172348494', 'office phone in the answer can be tapped')
     href = pg.locator('#cara-widget-messages .cara-buttons a', has_text='Book a free').get_attribute('href')
@@ -90,8 +91,8 @@ with sync_playwright() as p:
     check(len(ids) == 1 and list(ids)[0].startswith('c'), 'every message carries one chat id: %s' % ids)
     sid = list(ids)[0]
     say(pg, 'getting up many times in the night')
-    check(buttons(pg) == ['Have someone call me', 'Book a free in-home assessment', 'Read about overnight care'], 'night answer: overnight page: %s' % buttons(pg))
-    tap(pg, 'Have someone call me')
+    check(buttons(pg) == ['Have the office call me', 'Book a free in-home assessment', 'Read about overnight care'], 'night answer: overnight page: %s' % buttons(pg))
+    tap(pg, 'Have the office call me')
     check(pg.get_by_text('Would you like someone from our office to call you?').count() == 1, 'the call-back card opens')
     pg.click('text=Yes, please call me')
     pg.click('#cara-widget-messages button:has-text("Send")')
@@ -108,26 +109,26 @@ with sync_playwright() as p:
     check(len(leads) == 1 and L.get('name') == 'Pat Lee' and L.get('best_time') == 'mornings', 'one lead with name, phone, best time')
     check(('Ask Cara chat ' + sid) in L.get('message', '') and 'How much does home care cost?' in L.get('message', '') and len(L.get('message', '')) <= 500, 'lead note names the chat and first question')
     say(pg, 'Do you cover Ozark?')
-    check('Have someone call me' not in buttons(pg) and 'Book a free in-home assessment' in buttons(pg), 'after sending, no second call back offer')
+    check('Have the office call me' not in buttons(pg) and 'Book a free in-home assessment' in buttons(pg), 'after sending, no second call back offer')
     pg.close()
 
     pg, chats, leads = run(lead_status=500)
-    say(pg, 'Can you help my mom after surgery?'); tap(pg, 'Have someone call me'); pg.click('text=Yes, please call me')
+    say(pg, 'Can you help my mom after surgery?'); tap(pg, 'Have the office call me'); pg.click('text=Yes, please call me')
     pg.fill('input[aria-label="Your name"]', 'Pat'); pg.fill('input[aria-label="Phone number"]', '4175550100')
     pg.click('#cara-widget-messages button:has-text("Send")'); pg.wait_for_selector('text=that did not go through')
     check(pg.locator('input[aria-label="Your name"]').count() == 1, 'failed save keeps the form and tells them')
     pg.close()
 
     pg, chats, leads = run()
-    say(pg, 'What areas do you serve?'); tap(pg, 'Have someone call me'); pg.click('text=No thanks')
+    say(pg, 'What areas do you serve?'); tap(pg, 'Have the office call me'); pg.click('text=No thanks')
     check(not pg.get_by_text('Would you like someone').count(), 'No thanks closes the card')
     say(pg, 'And weekends?')
-    check('Have someone call me' in buttons(pg), 'Have someone call me is still there on the next answer')
+    check('Have the office call me' in buttons(pg), 'Have the office call me is still there on the next answer')
     pg.close()
 
     pg, chats, leads = run(chat_status=500)
     tap(pg, 'Care for a loved one')
-    check(pg.get_by_text('having trouble responding').count() == 1 and 'Have someone call me' in buttons(pg), 'when Cara cannot answer, the visitor can still ask for a call')
+    check(pg.get_by_text('having trouble responding').count() == 1 and 'Have the office call me' in buttons(pg), 'when Cara cannot answer, the visitor can still ask for a call')
     pg.close()
     b.close()
 
