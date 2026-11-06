@@ -85,7 +85,7 @@ function run(question, { audience = 'public', session = 'demo-session' } = {}) {
   let reply, outcome
   console.log('\n3. WHAT CARA RECEIVES')
   if (d.decision === 'ok' || d.decision === 'conflict') {
-    const sys = buildSystemPrompt(d.records)
+    const sys = buildSystemPrompt(d.records, PHONE)
     console.log(sys.split('\n').map((l) => '   | ' + l).join('\n'))
     reply = '[not executed locally, Anthropic call happens in the deployed function]'
     outcome = d.decision === 'conflict' ? 'conflict' : 'answered'
