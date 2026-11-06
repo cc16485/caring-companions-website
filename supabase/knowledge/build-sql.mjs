@@ -1,6 +1,6 @@
 // Prints the SQL that loads cara-2026-10-27.mjs into kb_items. Safe to run twice.
-// Run: node supabase/knowledge/build-sql.mjs > supabase/migrations/20261106_cara_knowledge.sql (10-27 file kept as history)
-import { RECORDS, SOURCE, SOURCE2, N002 } from './cara-2026-10-27.mjs'
+// Run: node supabase/knowledge/build-sql.mjs > supabase/migrations/20261106b_cara_knowledge.sql (earlier files kept as history)
+import { RECORDS, SOURCE, SOURCE2, SOURCE3, N002 } from './cara-2026-10-27.mjs'
 
 const q = (s) => "'" + String(s).replace(/'/g, "''") + "'"
 const arr = (a) => 'array[' + (a || []).map(q).join(',') + ']::text[]'
@@ -13,12 +13,14 @@ const out = [
   '  on conflict (id) do update set name = excluded.name, note = excluded.note;',
   `insert into public.kb_sources (id, name, note, kind) values (${q(SOURCE2.id)}, ${q(SOURCE2.name)}, 'mo-care.com', 'internal')`,
   '  on conflict (id) do update set name = excluded.name, note = excluded.note;',
+  `insert into public.kb_sources (id, name, note, kind) values (${q(SOURCE3.id)}, ${q(SOURCE3.name)}, 'Samantha', 'internal')`,
+  '  on conflict (id) do update set name = excluded.name, note = excluded.note;',
   '',
 ]
 for (const r of RECORDS) {
   out.push(
     'insert into public.kb_items (id, question, answer, answer_key, source_id, topics, alt_questions, aliases, phrases, status, audience, confidence, conservative, verified_on, verified_by, review_legal, review_clinical, review_marketing, version)',
-    `values (${q(r.id)}, ${q(r.question)}, ${q(r.answer)}, ${q(r.key)}, ${q(r.src || SOURCE.id)}, ${arr(r.topics)}, ${arr(r.alt)}, array[]::text[], array[]::text[], 'verified', 'public', 95, false, ${q(r.on || '2026-10-27')}, ${q(r.on ? 'Samantha approved 11-06 (from mo-care.com, Client Care Agreement, Client Handbook)' : 'mo-care.com live pages (Claude, her ask 10-27)')}, 'na', 'na', 'ok', 1)`,
+    `values (${q(r.id)}, ${q(r.question)}, ${q(r.answer)}, ${q(r.key)}, ${q(r.src || SOURCE.id)}, ${arr(r.topics)}, ${arr(r.alt)}, array[]::text[], array[]::text[], 'verified', 'public', 95, false, ${q(r.on || '2026-10-27')}, ${q(r.on ? (r.src === 'S9' ? 'Samantha wrote and approved 11-06' : 'Samantha approved 11-06 (from mo-care.com, Client Care Agreement, Client Handbook)') : 'mo-care.com live pages (Claude, her ask 10-27)')}, 'na', 'na', 'ok', 1)`,
     'on conflict (id) do update set question = excluded.question, answer = excluded.answer, answer_key = excluded.answer_key, source_id = excluded.source_id,',
     '  topics = excluded.topics, alt_questions = excluded.alt_questions, status = excluded.status, verified_on = excluded.verified_on,',
     '  verified_by = excluded.verified_by, version = kb_items.version + (kb_items.answer is distinct from excluded.answer)::int, updated_at = now();',
