@@ -219,6 +219,7 @@
 <p class="ab-msg" id="abLoading" style="text-align:center">Finding open times&hellip;</p>
 <div id="abDays" class="ab-days" role="tablist" aria-label="Days with open times"></div>
 <div id="abTimes" class="ab-times" aria-label="Open times"></div>
+<p class="ab-msg" id="abNone" hidden style="text-align:center;color:var(--muted)">None of these times work? Call <a href="tel:14172348494">(417) 234-8494</a> and we'll find another time for you.</p>
 <form id="abForm" class="ab-form" novalidate hidden>
 <div class="full ab-picked" id="abPicked"></div>
 <div><label for="abFirst">Your first name</label><input id="abFirst" autocomplete="given-name" required></div>
@@ -349,6 +350,7 @@
       $('abDays').innerHTML = order.map(function(k){ var d = new Date(days[k][0].iso); return '<button type="button" class="ab-day" role="tab" data-d="' + k + '"><b>' + esc(fmtDay(d)) + '</b>' + esc(fmtDate(d)) + '</button>'; }).join('');
       Array.prototype.forEach.call($('abDays').children, function(b){ b.onclick = function(){ showDay(b.getAttribute('data-d')); }; });
       showDay(keepDay && days[keepDay] ? keepDay : order[0]);
+      $('abNone').hidden = false;
     }).catch(fail);
   }
   $('abForm').onsubmit = function(e){
