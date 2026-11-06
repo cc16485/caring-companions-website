@@ -34,6 +34,26 @@
 .bk-opt:focus-visible { outline: none; border-color: var(--cta); box-shadow: 0 0 0 3px rgba(31,122,140,.25); }
 .bk-opt.sel { border-color: var(--cta); background: var(--soft-teal); box-shadow: inset 0 0 0 1px var(--cta); }
 .bk-opt.sel::after { content: "\2713 Selected"; position: absolute; top: 12px; right: 14px; font-size: max(11px, var(--fs-min, 0px)); font-weight: 700; color: var(--cta); letter-spacing: .02em; }
+.ab-days { display:flex; gap:8px; overflow-x:auto; padding:2px 2px 10px; margin:0 0 6px; -webkit-overflow-scrolling:touch; }
+.ab-day { flex:0 0 auto; background:#fff; border:1.5px solid var(--border); border-radius:12px; padding:10px 14px; font:inherit; font-size:max(14px, var(--fs-read, 0px)); color:var(--ink-2); cursor:pointer; text-align:center; line-height:1.3; }
+.ab-day b { display:block; font-size:max(13px, var(--fs-min, 0px)); color:var(--muted); font-weight:600; }
+.ab-day.sel, .ab-time.sel { border-color:var(--cta); background:var(--soft-teal); box-shadow: inset 0 0 0 1px var(--cta); }
+.ab-times { display:grid; grid-template-columns:repeat(auto-fill, minmax(104px, 1fr)); gap:8px; margin:6px 0 4px; }
+.ab-time { background:#fff; border:1.5px solid var(--border); border-radius:10px; padding:12px 6px; font:inherit; font-weight:600; font-size:max(15px, var(--fs-read, 0px)); color:var(--brand-blue); cursor:pointer; }
+.ab-day:focus-visible, .ab-time:focus-visible, .ab-form input:focus-visible, .ab-form select:focus-visible, .ab-form textarea:focus-visible { outline:none; border-color:var(--cta); box-shadow:0 0 0 3px rgba(31,122,140,.25); }
+.ab-form { display:grid; grid-template-columns:1fr 1fr; gap:12px 14px; margin-top:16px; text-align:left; }
+.ab-form label { display:block; font-size:max(13.5px, var(--fs-min, 0px)); font-weight:600; color:var(--ink-2); margin:0 0 4px; }
+.ab-form input, .ab-form select, .ab-form textarea { width:100%; box-sizing:border-box; font:inherit; font-size:16px; padding:11px 12px; border:1.5px solid var(--border); border-radius:10px; background:#fff; color:#16283a; }
+.ab-form .full { grid-column:1 / -1; }
+.ab-form[hidden] { display:none; }
+.ab-hp { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.ab-picked { background:var(--soft-teal); border-radius:10px; padding:12px 14px; font-weight:600; color:var(--brand-blue); margin-top:14px; text-align:left; }
+.ab-msg { margin-top:12px; font-size:max(14.5px, var(--fs-read, 0px)); line-height:1.6; }
+.ab-msg.err { color:#9b1c1c; }
+.ab-done { text-align:center; }
+.ab-done h3 { font-family:var(--serif); font-size:26px; font-weight:600; color:var(--brand-blue); margin:0 0 10px; }
+.ab-done p { font-size:max(15.5px, var(--fs-read, 0px)); line-height:1.65; color:#45566a; margin:0 0 12px; }
+@media (max-width: 719px) { .ab-form { grid-template-columns:1fr; } }
 @media (max-width: 719px) {
   .bk-hero { padding: 36px 20px 8px; }
   .bk-h1 { font-size: 27px; }
@@ -167,7 +187,7 @@
 <section class="bk-hero">
 <p class="kicker">Schedule Your Free In-Home Assessment</p>
 <h1 class="bk-h1">Let's find the right care, together.</h1>
-<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">We come to you, your living room, your kitchen table, to meet your loved one, see the home, and build the right care plan together. Always free, no pressure, no obligation, and nothing to prepare.</p>
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 auto;max-width:720px">We come to you, your living room, your kitchen table, to meet your loved one, see the home, and build the right care plan together. Always free, no pressure, no obligation.</p>
 </section>
 <figure class="pg-photo"><img src="/assets/photos/scene-arrive-porch.webp" alt="A caregiver arriving at the front door, greeted by a smiling older woman" width="1080" height="608" decoding="async"></figure>
 
@@ -176,7 +196,7 @@
 <div class="bk-expect-card">
 <p class="k">What it is</p>
 <p class="t">A visit in your living room</p>
-<p class="d">About an hour and a half with an experienced care coordinator, not a salesperson.</p>
+<p class="d">Usually 60 to 90 minutes with an experienced care coordinator, not a salesperson. You'll see who is coming, with their photo, before the visit.</p>
 </div>
 <div class="bk-expect-card">
 <p class="k">What we'll cover</p>
@@ -190,12 +210,31 @@
 </div>
 </section>
 
-<section class="bk-cal-wrap">
+<section class="bk-cal-wrap" id="book-now">
 <div class="bk-cta-card" style="text-align:left">
 <p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-align:center">Ready when you are</p>
 <h2 style="font-family:var(--serif);font-size:24px;font-weight:600;color:var(--brand-blue);margin:0 0 10px;text-align:center">Pick a time that fits.</h2>
 <p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.65;color:var(--muted);margin:0 auto 18px;max-width:480px;text-align:center">These are real openings on our care coordinators' calendars, all times Central. Pick one and you'll get a confirmation text and email right away.</p>
-<iframe src="https://link.mo-care.com/widget/booking/QXut3xLe6NwhjFkiLsoy" title="Schedule your free in-home assessment" loading="lazy" style="width:100%;min-height:760px;border:0;border-radius:10px;background:#fff"></iframe>
+<div id="abBox">
+<p class="ab-msg" id="abLoading" style="text-align:center">Finding open times&hellip;</p>
+<div id="abDays" class="ab-days" role="tablist" aria-label="Days with open times"></div>
+<div id="abTimes" class="ab-times" aria-label="Open times"></div>
+<form id="abForm" class="ab-form" novalidate hidden>
+<div class="full ab-picked" id="abPicked"></div>
+<div><label for="abFirst">Your first name</label><input id="abFirst" autocomplete="given-name" required></div>
+<div><label for="abLast">Your last name</label><input id="abLast" autocomplete="family-name"></div>
+<div><label for="abPhone">Mobile phone</label><input id="abPhone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+<div><label for="abEmail">Email</label><input id="abEmail" type="email" autocomplete="email"></div>
+<div><label for="abClient">Who is the care for?</label><input id="abClient" placeholder="Their name"></div>
+<div><label for="abRel">You are their&hellip;</label><select id="abRel"><option value="">Choose one</option><option>daughter</option><option>son</option><option>spouse</option><option>other family member</option><option>friend or neighbor</option><option value="self">This is for me</option><option>professional (case manager, social worker)</option></select></div>
+<div class="full"><label for="abAddr">Address where we'll visit</label><input id="abAddr" autocomplete="street-address" placeholder="Street, city" required></div>
+<div class="full"><label for="abNotes">Anything we should know? (optional)</label><textarea id="abNotes" rows="3" placeholder="For example: Mom is coming home from rehab Thursday, or please call my sister too"></textarea></div>
+<div class="ab-hp" aria-hidden="true"><label for="abWeb">Leave this empty</label><input id="abWeb" tabindex="-1" autocomplete="off"></div>
+<div class="full"><button type="submit" class="btn-primary" id="abGo" style="width:100%">Book my free assessment</button>
+<p class="ab-msg" style="font-size:max(13px, var(--fs-min, 0px));color:var(--muted)">By booking, you agree we can text and email you about this visit. Reply STOP any time.</p></div>
+</form>
+<p class="ab-msg" id="abMsg" role="status" aria-live="polite"></p>
+</div>
 </div>
 </section>
 
@@ -260,6 +299,92 @@
 </footer>
 </div>
 
+<script>
+/* Booking in the Hub (Samantha 2026-11-05: "I would like to build that within the hub, and the hubs calendars").
+   Open times come from the Hub (assessment-book); the Hub picks who comes, holds their calendar, and sends the
+   confirmation. If the times can't load, the page says to call. */
+(function(){
+  var EP = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/assessment-book';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZ3NnZWRsc3hpbmJ5Z3dteHduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NDIzNDQsImV4cCI6MjA5ODExODM0NH0.L_31_UKdccyRH9n7p1GaBlZTqcJipB008H-GIvxwLxM';
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
+  var tz = { timeZone: 'America/Chicago' };
+  var fmtDay = function(d){ return d.toLocaleDateString('en-US', Object.assign({ weekday:'short' }, tz)); };
+  var fmtDate = function(d){ return d.toLocaleDateString('en-US', Object.assign({ month:'short', day:'numeric' }, tz)); };
+  var fmtLong = function(d){ return d.toLocaleDateString('en-US', Object.assign({ weekday:'long', month:'long', day:'numeric' }, tz)); };
+  var fmtTime = function(d){ return d.toLocaleTimeString('en-US', Object.assign({ hour:'numeric', minute:'2-digit' }, tz)); };
+  var ymd = function(d){ return d.toLocaleDateString('sv-SE', tz); };
+  var days = {}, order = [], pick = null;
+  function call(body){
+    return fetch(EP, { method:'POST', headers:{ 'Content-Type':'application/json', apikey:KEY, Authorization:'Bearer ' + KEY }, body: JSON.stringify(body) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ j._status = r.status; return j; }); });
+  }
+  function track(e, p){ try{ if(window.ccTrack) window.ccTrack(e, p); }catch(_){} }
+  function fail(){
+    $('abLoading').hidden = true;
+    $('abMsg').className = 'ab-msg err';
+    $('abMsg').innerHTML = 'We couldn’t load the open times just now. Please call us at <a href="tel:14172348494">(417) 234-8494</a> and we’ll book your visit on the phone.';
+  }
+  function showDay(k){
+    Array.prototype.forEach.call($('abDays').children, function(b){ var on = b.getAttribute('data-d') === k; b.classList.toggle('sel', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    $('abTimes').innerHTML = days[k].map(function(s){ return '<button type="button" class="ab-time" data-t="' + esc(s.iso) + '">' + esc(fmtTime(new Date(s.iso))) + '</button>'; }).join('');
+    Array.prototype.forEach.call($('abTimes').children, function(b){ b.onclick = function(){ choose(b); }; });
+  }
+  function choose(b){
+    Array.prototype.forEach.call($('abTimes').children, function(x){ x.classList.remove('sel'); });
+    b.classList.add('sel'); pick = b.getAttribute('data-t');
+    var d = new Date(pick);
+    $('abPicked').textContent = fmtLong(d) + ' at ' + fmtTime(d) + ' (usually 60 to 90 minutes)';
+    $('abForm').hidden = false; $('abMsg').textContent = '';
+    track('book_time_pick');
+    setTimeout(function(){ $('abFirst').focus(); }, 50);
+  }
+  function load(keepDay){
+    return call({ action:'slots' }).then(function(r){
+      if(r._status !== 200 || !r.slots) return fail();
+      days = {}; order = [];
+      r.slots.forEach(function(s){ var k = ymd(new Date(s.starts_at)); if(!days[k]){ days[k] = []; order.push(k); } days[k].push({ iso:s.starts_at }); });
+      $('abLoading').hidden = true;
+      if(!order.length){ $('abMsg').className = 'ab-msg'; $('abMsg').innerHTML = 'Our calendar is full for the next few weeks. Please call <a href="tel:14172348494">(417) 234-8494</a> and we’ll find a time with you.'; return; }
+      $('abDays').innerHTML = order.map(function(k){ var d = new Date(days[k][0].iso); return '<button type="button" class="ab-day" role="tab" data-d="' + k + '"><b>' + esc(fmtDay(d)) + '</b>' + esc(fmtDate(d)) + '</button>'; }).join('');
+      Array.prototype.forEach.call($('abDays').children, function(b){ b.onclick = function(){ showDay(b.getAttribute('data-d')); }; });
+      showDay(keepDay && days[keepDay] ? keepDay : order[0]);
+    }).catch(fail);
+  }
+  $('abForm').onsubmit = function(e){
+    e.preventDefault();
+    var v = function(id){ return $(id).value.trim(); };
+    var msg = $('abMsg'); msg.className = 'ab-msg err';
+    if(!pick){ msg.textContent = 'Please pick a time first.'; return; }
+    if(!v('abFirst')){ msg.textContent = 'Please add your first name.'; $('abFirst').focus(); return; }
+    if(v('abPhone').replace(/\D/g,'').length < 10){ msg.textContent = 'Please add a 10-digit phone number so we can reach you.'; $('abPhone').focus(); return; }
+    if(v('abAddr').length < 6){ msg.textContent = 'Please add the address where we’ll visit.'; $('abAddr').focus(); return; }
+    var go = $('abGo'); go.disabled = true; go.textContent = 'Booking…'; msg.className = 'ab-msg'; msg.textContent = '';
+    var rel = $('abRel').value;
+    call({ action:'book', starts_at:pick, first_name:v('abFirst'), last_name:v('abLast'), phone:v('abPhone'), email:v('abEmail'),
+      client_name: rel === 'self' ? (v('abFirst') + ' ' + v('abLast')).trim() : v('abClient'), relationship: rel === 'self' ? 'self' : rel,
+      address:v('abAddr'), notes:v('abNotes'), website:v('abWeb') }).then(function(r){
+      go.disabled = false; go.textContent = 'Book my free assessment';
+      if(r._status === 200 && r.ok){
+        track('book_done');
+        $('abBox').innerHTML = '<div class="ab-done"><h3>You’re all set.</h3>'
+          + '<p><b>' + esc(r.day) + ' at ' + esc(r.time) + '</b>' + (r.coordinator ? ' with ' + esc(r.coordinator) : '') + '. It usually takes 60 to 90 minutes.</p>'
+          + (r.card ? '<p><a class="btn-primary" href="' + esc(r.card) + '">Meet ' + esc(r.coordinator) + ' before your visit</a></p>' : '')
+          + (r.sent && (r.sent.text || r.sent.email)
+              ? '<p>We’ve sent a confirmation by ' + (r.sent.text && r.sent.email ? 'text and email' : r.sent.text ? 'text' : 'email') + '. Need a different time? Reply to it or call <a href="tel:14172348494">(417) 234-8494</a>.</p>'
+              : '<p>We’ll call you to confirm. Need a different time? Call <a href="tel:14172348494">(417) 234-8494</a>.</p>')
+          + '<p><a href="/before-your-assessment">Questions families ask us, answered up front</a></p></div>';
+        $('abBox').scrollIntoView({ behavior:'smooth', block:'start' });
+        return;
+      }
+      msg.className = 'ab-msg err';
+      msg.textContent = r.error || 'The visit couldn’t be booked just now. Please call us at (417) 234-8494.';
+      if(r.taken){ var k = pick ? ymd(new Date(pick)) : ''; pick = null; $('abForm').hidden = true; load(k); }
+    }).catch(function(){ go.disabled = false; go.textContent = 'Book my free assessment'; msg.className = 'ab-msg err'; msg.textContent = 'That didn’t go through. Please try again, or call (417) 234-8494.'; });
+  };
+  load();
+})();
+</script>
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
 <script src="/assets/accessibility.js" defer></script>
