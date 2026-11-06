@@ -1,4 +1,4 @@
-// Cara's family-facing answers, 2026-10-27.
+// The website chat's family-facing answers, 2026-10-27 (K101-K131) and 2026-11-06 (K132-K152, K125 update).
 // Every answer is taken from mo-care.com as published on 2026-10-27, plus
 // Samantha's standing rules (Medicaid goes to Caring Companions Consumer
 // Directed Services; never say AI; no em dashes; app visits never promised).
@@ -7,6 +7,8 @@
 const CDS = 'our sister company, Caring Companions Consumer Directed Services, at (417) 218-2888 or caringcds.com'
 
 export const SOURCE = { id: 'S7', name: 'mo-care.com published pages (2026-10-27)' }
+// 2026-11-06: answers from the "Questions families ask" page and the Client Care Agreement and Client Handbook it links to.
+export const SOURCE2 = { id: 'S8', name: 'mo-care.com/before-your-assessment, Client Care Agreement and Client Handbook (Rev. 10/2026)' }
 
 export const RECORDS = [
   { id: 'K101', key: 'services_overview',
@@ -156,7 +158,9 @@ export const RECORDS = [
   { id: 'K125', key: 'caregivers_employees',
     question: 'Are your caregivers employees?',
     alt: ['Are caregivers background checked?', 'Are your caregivers insured and bonded?', 'Are your caregivers contractors?'],
-    answer: 'Yes. Our caregivers are screened, insured and bonded employees of Caring Companions, never contractors.',
+    // 2026-11-06 (her OK): the detail from mo-care.com/before-your-assessment.
+    answer: 'Yes. Every caregiver is a Caring Companions employee, never a contractor, and we handle their payroll and taxes. Before they start, every caregiver has federal, state and county background checks, a driving record check and verification that they can work, and the checks are repeated over time. Caregivers are bonded and insured, including when they drive clients.',
+    src: 'S8', on: '2026-11-06',
     topics: ['employees', 'insured', 'bonded', 'screened', 'background check'] },
 
   { id: 'K126', key: 'price_guarantee',
@@ -194,6 +198,134 @@ export const RECORDS = [
     alt: ['How do I get paid to take care of my mom?', 'Can I be paid as my dad\'s caregiver through Medicaid?'],
     answer: `Through Missouri Consumer Directed Services, a family member other than a spouse can sometimes be paid as the attendant, when the person receiving care is eligible for Medicaid. That is handled by ${CDS}.`,
     topics: ['cds', 'paid', 'family', 'medicaid'] },
+
+  // ── 2026-11-06 (her "start with 1", approved with her six changes): from mo-care.com/before-your-assessment and the
+  // Client Care Agreement and Client Handbook (Rev. 10/2026). src S8. ──────────────────────────────────────────────
+  { id: 'K132', key: 'start_timing', src: 'S8', on: '2026-11-06',
+    question: 'How soon can care start?',
+    alt: ['How quickly can you start?', 'Can care start right away?', 'How long until a caregiver can come?', 'We need help as soon as possible', 'Can you start this week?'],
+    answer: 'Care can sometimes begin within 24 to 48 hours, depending on caregiver availability and your needs. We want to find the right fit, not just fill a shift. At your free in-home assessment, we will give you an honest idea of timing for your schedule.',
+    topics: ['start', 'how soon', 'quickly', 'right away'] },
+
+  { id: 'K133', key: 'caregiver_sick', src: 'S8', on: '2026-11-06',
+    question: 'What happens if our caregiver is sick?',
+    alt: ['What if the caregiver calls in sick?', 'What if our caregiver cannot make it?', 'Do you have backup caregivers?', 'What if the caregiver does not show up?'],
+    answer: 'Your caregiver calls our office, and we let you know right away. The office works to find another caregiver to cover the visit, but a replacement cannot always be guaranteed. If you chose text updates, your family gets a text with the new caregiver\'s profile, so you are never surprised by who is at the door.',
+    topics: ['sick', 'backup', 'replacement', 'call off'] },
+
+  { id: 'K134', key: 'contract_deposit', src: 'S8', on: '2026-11-06',
+    question: 'Is there a contract or a deposit?',
+    alt: ['Do we have to sign a long-term contract?', 'Do you require a deposit?', 'Is there a commitment?', 'Are we locked in?'],
+    answer: 'No deposit and no long-term contract. You are billed weekly, after the visits have happened, from your caregiver\'s actual clock-in and clock-out times. Your rate is written in your Client Care Agreement, and we give at least 4 weeks\' written notice before any rate change.',
+    topics: ['contract', 'deposit', 'commitment'] },
+
+  { id: 'K135', key: 'cancel_visit', src: 'S8', on: '2026-11-06',
+    question: 'What if we need to cancel a visit?',
+    alt: ['Is there a cancellation fee?', 'Can we cancel a visit?', 'What is your cancellation policy for a visit?', 'Can we skip a visit?'],
+    answer: 'There is no fee to cancel a visit with at least 24 hours\' notice. With less than 24 hours\' notice, the visit is billed at 2 hours, because your caregiver counted on that time for their pay. Please call the office at (417) 234-8494 to cancel a visit.',
+    topics: ['cancel', 'cancellation', 'visit'] },
+
+  { id: 'K136', key: 'end_services', src: 'S8', on: '2026-11-06',
+    question: 'How do we stop care?',
+    alt: ['Can we stop care any time?', 'How much notice do you need to end care?', 'What if we no longer need care?', 'How do we discontinue care?'],
+    answer: 'You can end services at any time. If you know about a change ahead of time, the agreement asks for two weeks\' notice so we can plan for your caregivers, and we understand that many times there is no notice at all. Just call the office at (417) 234-8494.',
+    topics: ['end services', 'stop care', 'discontinue', 'notice'] },
+
+  { id: 'K137', key: 'billing', src: 'S8', on: '2026-11-06',
+    question: 'How does billing work?',
+    alt: ['How often are we billed?', 'When do we get an invoice?', 'Can we pay by credit card?', 'Do you have autopay?'],
+    answer: 'You get one invoice each week, Monday through Sunday, by email, showing every visit from your caregiver\'s clock-in and clock-out times. Autopay then pays it from the card or bank account you keep on file. Credit cards have a 3% processing fee. Debit cards and bank (ACH) payments have no fee.',
+    topics: ['billing', 'invoice', 'autopay', 'credit card'] },
+
+  { id: 'K138', key: 'holidays', src: 'S8', on: '2026-11-06',
+    question: 'Do you provide care on holidays?',
+    alt: ['Do caregivers work on Christmas?', 'Do you charge more on holidays?', 'Is there holiday pay?', 'What about overtime?'],
+    answer: 'Yes. Care on New Year\'s Day, Easter Sunday, Memorial Day, Juneteenth, Independence Day, Labor Day, Thanksgiving and Christmas Day is billed at time and a half. If you ask a caregiver to work more than 40 hours in a week, the extra hours are also billed at time and a half.',
+    topics: ['holiday', 'holidays', 'time and a half', 'overtime'] },
+
+  { id: 'K139', key: 'rides_appointments', src: 'S8', on: '2026-11-06',
+    question: 'Can a caregiver drive Mom to appointments?',
+    alt: ['Do you provide transportation to the doctor?', 'Can a caregiver take my dad to dialysis?', 'Do caregivers drive clients?', 'Is there a mileage charge?'],
+    answer: 'Yes, in your car or theirs. In your car there is no mileage charge, but your auto insurance must be current. In the caregiver\'s car, mileage is billed at $0.69 a mile. Caregivers are bonded and insured, including when they drive clients.',
+    topics: ['appointments', 'doctor', 'drive', 'mileage', 'transportation'] },
+
+  { id: 'K140', key: 'medications', src: 'S8', on: '2026-11-06',
+    question: 'Can caregivers give medications?',
+    alt: ['Can a caregiver give Mom her pills?', 'Can caregivers fill a pill organizer?', 'Can a caregiver check blood sugar?', 'Do you help with medicine?'],
+    answer: 'Caregivers can remind about medicines, read the label, and hand over or open the container. They cannot give or set out any medicine, fill a pill organizer, apply creams or drops, or check blood sugar. A family member or another responsible person can fill the pill organizer, and our office can help find a solution for anything beyond that.',
+    topics: ['medication', 'medicine', 'pills', 'pill organizer'] },
+
+  { id: 'K141', key: 'cannot_do', src: 'S8', on: '2026-11-06',
+    question: 'What can\'t caregivers do?',
+    alt: ['What are caregivers not allowed to do?', 'Can a caregiver climb a ladder?', 'Can caregivers do yard work?', 'Can caregivers move furniture?'],
+    answer: 'Our care is non-medical, so caregivers cannot give medicines, change dressings or do nursing procedures. For everyone\'s safety, they also cannot do unsafe lifting, move heavy furniture, climb ladders or stools, or do outdoor maintenance. Everything they do follows your care plan.',
+    topics: ['not allowed', 'limits', 'ladder', 'furniture', 'yard work'] },
+
+  { id: 'K142', key: 'couples', src: 'S8', on: '2026-11-06',
+    question: 'Can you care for a couple?',
+    alt: ['Both of my parents need care', 'Can one caregiver help my mom and dad?', 'How much for two people?'],
+    answer: 'Yes. Shared household help for a couple is billed at the standard hourly rate. If both people need personal care, dementia care or hands-on supervision, care is billed at 1.5 times the hourly rate.',
+    topics: ['couple', 'both', 'two people'] },
+
+  { id: 'K143', key: 'know_who_coming', src: 'S8', on: '2026-11-06',
+    question: 'Will we know who is coming?',
+    alt: ['Can we meet the caregiver first?', 'Will we see a photo of the caregiver?', 'Who will be coming to our home?'],
+    answer: 'Always. Before the first visit, we send your caregiver\'s profile with a friendly photo, so you know who is coming. If your caregiver ever changes, the family members you choose get a text with the new caregiver\'s profile.',
+    topics: ['who is coming', 'photo', 'profile', 'meet'] },
+
+  { id: 'K144', key: 'not_good_fit', src: 'S8', on: '2026-11-06',
+    question: 'What if our caregiver is not a good fit?',
+    alt: ['What if we do not like the caregiver?', 'Can we change caregivers?', 'Mom does not get along with her caregiver', 'Can we ask for a different caregiver?'],
+    answer: 'Tell us. We call a few days after the first visit to see how it is going, and you can call us any time before then. Most things can be worked out with a quick change to the care plan. If it still is not right, we will do our best to send a different caregiver.',
+    topics: ['good fit', 'different caregiver', 'change caregiver'] },
+
+  { id: 'K145', key: 'visit_updates', src: 'S8', on: '2026-11-06',
+    question: 'How will we know how the visits are going?',
+    alt: ['Will we get updates?', 'Can we see the caregiver notes?', 'How do you keep the family informed?', 'Do caregivers write notes?'],
+    answer: 'Caregivers write a note after every visit. Our office reviews caregiver notes and follows up when something needs attention. If a caregiver has not clocked in a few minutes after a visit should start, our office is alerted right away. The family members you choose can see the care calendar, visit notes and invoices in AxisCare.',
+    topics: ['updates', 'notes', 'informed', 'axiscare'] },
+
+  { id: 'K146', key: 'tips_gifts', src: 'S8', on: '2026-11-06',
+    question: 'Can we tip our caregiver or give a gift?',
+    alt: ['Can I give the caregiver a Christmas gift?', 'Is tipping allowed?', 'Can we give our caregiver a present?'],
+    answer: 'No gifts or tips, please. Caregivers are not allowed to accept them. A thank-you card, or a call to the office to say thank you, means the world.',
+    topics: ['tip', 'tips', 'gift', 'gifts'] },
+
+  { id: 'K147', key: 'hire_privately', src: 'S8', on: '2026-11-06',
+    question: 'Can we hire our caregiver privately?',
+    alt: ['Can we pay the caregiver directly?', 'Can our caregiver work for us on the side?', 'Can we hire her for a few extra hours ourselves?'],
+    answer: 'Every caregiver is a Caring Companions employee, so caregivers cannot be hired privately, even for a few extra hours. This is covered in your Client Care Agreement. If you need more hours, call the office at (417) 234-8494 and we will set them up.',
+    topics: ['hire privately', 'pay directly', 'on the side'] },
+
+  { id: 'K148', key: 'hospital_pause', src: 'S8', on: '2026-11-06',
+    question: 'What if Mom goes into the hospital?',
+    alt: ['Dad was admitted to the hospital, what about his visits?', 'Can we pause care?', 'Can we put visits on hold?'],
+    answer: 'Please call the office as soon as you can so we can pause visits. Before care starts again, we will check the care plan with you, because needs often change after a hospital stay.',
+    topics: ['pause', 'on hold', 'admitted', 'hospital'] },
+
+  { id: 'K149', key: 'read_agreement', src: 'S8', on: '2026-11-06',
+    question: 'Can we read your agreement before we decide?',
+    alt: ['Can I see a copy of the client agreement?', 'Do you have a client handbook?', 'Can we read your policies?'],
+    answer: 'Yes. Our Client Handbook and a sample Client Care Agreement are on mo-care.com/before-your-assessment. They are the same documents our clients get, and we go through your agreement with you in person.',
+    topics: ['agreement', 'handbook', 'policies', 'documents'] },
+
+  { id: 'K150', key: 'concerns', src: 'S8', on: '2026-11-06',
+    question: 'How do I raise a concern or complaint?',
+    alt: ['I have a complaint', 'Who do I talk to about a problem with our care?', 'Can I speak to a manager?', 'I am not happy with our care'],
+    answer: 'Call the office any time at (417) 234-8494, or write to us. Every concern goes to the agency administrator. We look into it right away, tell you what we found, and your care continues as normal while we work it out. Still not right? Call Samantha directly. For abuse, neglect or exploitation, you can also call the Missouri hotline at 1-800-392-0210.',
+    topics: ['complaint', 'concern', 'problem', 'manager'] },
+
+  { id: 'K151', key: 'pets', src: 'S8', on: '2026-11-06',
+    question: 'Is it okay if we have pets?',
+    alt: ['We have a dog, is that okay?', 'Do caregivers mind cats?', 'Can caregivers help with our pets?'],
+    answer: 'Yes. Help with pets is even part of Wellness Care. We ask that any pet that could be aggressive is secured before your caregiver arrives.',
+    topics: ['pets', 'dog', 'cat', 'animals'] },
+
+  { id: 'K152', key: 'smoking', src: 'S8', on: '2026-11-06',
+    question: 'Can someone smoke in the home during visits?',
+    alt: ['My dad smokes, is that a problem?', 'Do caregivers smoke?', 'Is smoking allowed?'],
+    answer: 'We ask for a smoke-free space while your caregiver is there. Caregivers cannot be in the home during active smoking.',
+    topics: ['smoking', 'smoke', 'cigarettes'] },
 ]
 
 // N002 was a stale $14 rate. CDS attendants are paid $15 to $16 an hour (her correction 2026-10-27).
