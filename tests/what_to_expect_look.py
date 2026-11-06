@@ -21,7 +21,7 @@ with sync_playwright() as p:
             tag = f'{eng} {w}'
             pg = br.new_page(viewport={'width': w, 'height': h}); errs = []
             pg.on('pageerror', lambda e: errs.append(str(e)))
-            pg.goto(B + '/what-to-expect'); pg.wait_for_load_state('networkidle')
+            pg.goto(B + '/before-your-assessment'); pg.wait_for_load_state('networkidle')
             t = lambda: pg.inner_text('#c-total')
             ck(f'{tag} default week is 3 x 4h at $30', t() == '$360', t())
             ck(f'{tag} optional lines hidden until ticked', not pg.is_visible('#c-hol-r') and not pg.is_visible('#c-cc-r'))
@@ -34,7 +34,9 @@ with sync_playwright() as p:
             ck(f'{tag} under 8 hours a week shows the minimum note', pg.is_visible('#c-warn'))
             pg.click('#ask button:nth-child(2)')
             ck(f'{tag} tap list answers', 'pill organizer' in pg.inner_text('#ans'), pg.inner_text('#ans'))
-            ck(f'{tag} still deciding: the four facts near the top', pg.locator('.wte-facts > div').count() == 4 and 'No deposit' in pg.inner_text('.wte-facts'))
+            ck(f'{tag} all 17 questions open near the top', pg.locator('#questions .bya-q').count() == 17 and all(pg.locator('#questions .bya-q p').nth(i).is_visible() for i in range(17)))
+            ck(f'{tag} trust strip matches the homepage', pg.locator('.hp-proof .hp-proof-item').count() == 4 and '4.9' in pg.inner_text('.hp-proof'))
+            ck(f'{tag} real reviews beside the trust answers', pg.locator('.bya-trust .bya-review').count() == 3)
             ck(f'{tag} the three levels link to their pages', [pg.get_attribute(f'.wte-levels a:nth-child({i})', 'href') for i in (1, 2, 3)] == ['/services/companion-care', '/services/personal-care', '/services/advanced-care'])
             ck(f'{tag} the fine print is folded until tapped', not pg.locator('#working-together .acc-body').first.is_visible())
             pg.locator('#working-together .acc-toggle').last.click()
@@ -42,9 +44,9 @@ with sync_playwright() as p:
             ck(f'{tag} a questions band halfway down', pg.locator('.wte-ask-band a[href="/book"]').count() == 1)
             ck(f'{tag} no horizontal scroll', pg.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'))
             ck(f'{tag} no page errors', not errs, errs)
-            pg.goto(B + '/what-to-expect'); pg.wait_for_load_state('networkidle')
+            pg.goto(B + '/before-your-assessment'); pg.wait_for_load_state('networkidle')
             pg.screenshot(path=f'{OUT}/wte-{eng}-{w}.png', full_page=True)
-            pg.goto(B + '/'); ck(f'{tag} home banner links here', pg.get_attribute('.cc-utility-book', 'href') == '/what-to-expect')
+            pg.goto(B + '/'); ck(f'{tag} home banner links here', pg.get_attribute('.cc-utility-book', 'href') == '/before-your-assessment' and pg.inner_text('.cc-utility-book') == 'Questions families ask')
             pg.close()
         br.close()
     import urllib.request
