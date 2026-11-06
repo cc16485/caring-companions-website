@@ -59,6 +59,8 @@ with sync_playwright() as p:
     pg, chats, leads = run()
     check(buttons(pg) == ['Care for a loved one', 'What care costs', 'Ways to pay', 'Medicaid or CDS', 'Working for us'], 'five topic buttons on open: %s' % buttons(pg))
     shot(pg, '1-topics.png')
+    check(pg.locator('#cara-widget-panel', has_text='Full Consultation').count() == 0, 'no Start a Full Consultation button (her call 11-06)')
+    check(pg.locator('#cara-widget-panel a', has_text='Call Us').count() == 1 and pg.locator('#cara-widget-panel a', has_text='Message Us').count() == 1, 'Call Us and Message Us stay')
     tap(pg, 'What care costs')
     check(chats and chats[-1]['messages'][-1]['content'] == 'How much does home care cost?', 'a topic asks Cara its approved question')
     check(pg.locator('#cara-widget-messages > div', has_text='What care costs').count() == 1, 'the visitor sees the topic name in their bubble')
