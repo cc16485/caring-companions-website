@@ -37,10 +37,10 @@ with sync_playwright() as p:
         loc.evaluate('a => a.click()'); pg.wait_for_timeout(300)
 
     for path, sel, text, what in [
-        ('contact', 'footer a[href$="cara"], a[href$="cara"]', 'Ask Cara', 'contact page Ask Cara link'),
-        ('care-paths/dementia.html', 'a[href*="cara"]', 'Ask Cara a Follow-up', 'Ask Cara a Follow-up from a subfolder page'),
-        ('counties/greene.html', 'a[href*="cara"]', 'Talk it through with Cara', 'county page Talk it through with Cara tile'),
-        ('index.html', '.cc-dd-sub', 'Help with care questions', 'Resources menu Ask Cara'),
+        ('contact', 'footer a[href$="cara"], a[href$="cara"]', 'Have a Question?', 'contact page Have a Question? link'),
+        ('care-paths/dementia.html', 'a[href*="cara"]', 'Ask a Follow-up Question', 'Ask a Follow-up Question from a subfolder page'),
+        ('counties/greene.html', 'a[href*="cara"]', 'Talk it through with us', 'county page Talk it through with us tile'),
+        ('index.html', '.cc-dd-sub', 'Help with care questions', 'Resources menu Have a Question?'),
     ]:
         pg, errs = open_page(path)
         before = pg.url
@@ -54,7 +54,7 @@ with sync_playwright() as p:
 
     pg, errs = open_page('contact', phone=True)
     before = pg.url
-    click_link(pg, 'a[href$="cara"]', 'Ask Cara')
+    click_link(pg, 'a[href$="cara"]', 'Have a Question?')
     check(pg.url == before and not shown(pg), 'phone: Ask Cara link stays on the page (texts the office) and shows no chat')
     pg.close()
 
@@ -64,6 +64,19 @@ with sync_playwright() as p:
     for f in ['404.html', 'family.html', 'ambassadors/index.html', 'r/index.html', 'r/qr/index.html', 'refer-a-friend/index.html']:
         t = (ROOT / f).read_text()
         check('href="/cara"' not in t and 'href="/contact#ask-cara"' in t, '%s (no chat on it) sends Ask Cara to /contact#ask-cara' % f)
+    pg, errs = open_page('cara')
+    pg.wait_for_timeout(600)
+    check(pg.url.endswith('/contact#ask-cara') and shown(pg), 'the old /cara page sends visitors to the contact page with the chat open')
+    pg.close()
+    import re as _re, glob as _glob
+    seen = []
+    for f in _glob.glob(str(ROOT / '**/*.html'), recursive=True):
+        if '/docs/' in f: continue
+        t = open(f, encoding='utf-8').read()
+        t = _re.sub(r'<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->', ' ', t, flags=_re.S)
+        t = _re.sub(r'(class|id|href|src)="[^"]*"', '', t)
+        if _re.search(r'\bCara\b', t): seen.append(f.replace(str(ROOT) + '/', ''))
+    check(not seen, 'no page shows the name Cara: %s' % seen[:5])
     b.close()
 
 print('\n%d failed' % len(fails) if fails else '\nall passed')

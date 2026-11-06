@@ -60,7 +60,7 @@
     inputEl.id = 'cara-widget-input';
     inputEl.type = 'text';
     inputEl.placeholder = 'Type a question...';
-    inputEl.setAttribute('aria-label', 'Ask Cara a question');
+    inputEl.setAttribute('aria-label', 'Type a question');
     inputEl.style.cssText = 'flex:1;border:1px solid #dfe6e2;border-radius:8px;padding:9px 11px;font-size:13.5px;font-family:inherit;color:#16283a;min-width:0';
     var sendBtn = document.createElement('button');
     sendBtn.id = 'cara-widget-send';
@@ -313,7 +313,8 @@
       });
       messagesEl.appendChild(r);
     }
-    addBubble('Hi, I am Cara. What can I help you with? Tap a topic, or type your own question.', 'cara');
+    // 2026-11-06 (her call): no name. "people are not a fan of ai", so the chat never calls itself Cara.
+    addBubble('Hi! What can I help you with? Tap a topic, or type your own question.', 'cara');
     showTopics();
 
     var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Text the office" below and a Care Coordinator will answer.';
@@ -350,7 +351,7 @@
       history.push({ role: 'user', content: text });
       var thinking = document.createElement('div');
       thinking.style.cssText = 'align-self:flex-start;background:#f2f0e9;color:#8a978f;padding:8px 11px;border-radius:10px;font-size:13px;font-style:italic';
-      thinking.textContent = 'Cara is typing...';
+      thinking.textContent = 'Finding an answer...';
       messagesEl.appendChild(thinking);
       messagesEl.scrollTop = messagesEl.scrollHeight;
       askCara(history.slice()).then(function (res) {

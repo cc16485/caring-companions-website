@@ -44,7 +44,7 @@ with sync_playwright() as p:
         pg.click('#cara-widget-launcher')
         return pg, chats, leads
     def done(pg):
-        pg.wait_for_timeout(50); pg.wait_for_function('!document.body.innerText.includes("Cara is typing")')
+        pg.wait_for_timeout(50); pg.wait_for_function('!document.body.innerText.includes("Finding an answer")')
     def say(pg, t):
         pg.fill('#cara-widget-input', t); pg.press('#cara-widget-input', 'Enter'); done(pg)
     def tap(pg, label):

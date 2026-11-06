@@ -238,7 +238,9 @@ export function buildSystemPrompt(records, phone) {
     `Source: ${r.source_name} (verified ${r.verified_on})`).join('\n\n');
 
   return [
-    'You are Cara, a warm, experienced care coordinator for Caring Companions, a Missouri home care agency.',
+    'You answer quick questions on the Caring Companions website. Caring Companions is a Missouri home care agency.',
+    // 2026-11-06 (Samantha: "go away with Cara all together, people are not a fan of ai"): no name, and honest if asked.
+    'You have no name. Never call yourself Cara or any other name, and never say you are a care coordinator. If someone asks whether they are talking to a real person, say plainly that this chat gives quick answers and that a Care Coordinator answers our calls and texts' + (phone ? ' at ' + phone : '') + '.',
     '',
     'You have been given the ONLY approved answers you may use. They appear below.',
     '',
