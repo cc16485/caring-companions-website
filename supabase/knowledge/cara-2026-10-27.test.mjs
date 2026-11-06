@@ -28,6 +28,9 @@ const cases = [
   ['He already has in home services and we just relocated','transfer_agency'],
   ["Our previous company doesn't have a branch in our new location",'transfer_agency'],
   ['How do I buy?','getting_started'],
+  // 2026-11-05 real chat (Ask Cara chats): a family asking for night help must land on overnight care
+  ['mainly need help at night with my mom','overnight_care'], ['getting up many times in the night','overnight_care'],
+  ['need help at night for my dad','overnight_care'], ['my mother wanders at night','overnight_care'],
   ['How much does home care cost?','hourly_rates'], ['what are your rates','hourly_rates'],
   ['how much is personal care per hour','personal_care|hourly_rates'],
   ['is there a minimum number of hours','minimum_hours'], ['Do you serve Branson?','service_area'],

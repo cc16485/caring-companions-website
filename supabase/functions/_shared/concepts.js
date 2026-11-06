@@ -44,6 +44,11 @@ export const STOP = new Set([
   'please','tell','know','think','really','actually','am','so','out','up','down','very','much','many',
   'one','two','still','even','back','way','thing','things','okay','ok','hi','hello','thanks','thank',
   'happens','happen','work','works','like','get','gets','got','take','takes','give','gives',
+  // 2026-11-05: who needs care and how much, not what they are asking. "mainly need help at night with my mom" fell to 0.43
+  // on overnight care because help, mainly and mom counted as unanswered topics. husband and wife stay out: they are the
+  // spouse concept (CDS).
+  'help','helps','helping','mainly','mostly','mom','dad','mother','father','grandma','grandpa','grandmother','grandfather',
+  'parent','parents',
 ]);
 
 export function words(normalized) {
