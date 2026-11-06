@@ -148,7 +148,7 @@ Deno.serve(async (req) => {
 
     if (d.decision === 'ok' || d.decision === 'conflict' || (d.decision === 'ambiguous' && d.records?.length)) {
       // 2. Answer from the approved records, and only from them.
-      const system = buildSystemPrompt(d.records) + '\n\n' + VOICE
+      const system = buildSystemPrompt(d.records, PHONE) + '\n\n' + VOICE
       reply = await askClaude(system, safeMessages, 300)
       outcome = d.decision === 'ok' ? 'answered' : d.decision
     } else if (d.decision === 'withheld') {

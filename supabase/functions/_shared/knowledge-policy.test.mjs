@@ -186,6 +186,20 @@ console.log('\n=== CARING COMPANIONS CORE, KNOWLEDGE POLICY ===\n')
   console.log()
 }
 
+// ── TEST 6b: the office number, never the CDS number by example (2026-11-06) ──
+{
+  const d = decide(REAL, 'Do you offer overnight care?', { audience: 'public' })
+  const sys = buildSystemPrompt(d.records, '(417) 234-8494')
+  console.log('TEST 6b The office number is the one Cara offers')
+  const cds = d.records.some(r => r.answer.includes('218-2888'))
+  check('6b. overnight records carry no CDS number', !cds)
+  check('6b. CDS number not in the prompt when no answer gives it', !sys.includes('218-2888'))
+  check('6b. office number named in the prompt', sys.includes('(417) 234-8494'))
+  const withCds = [{ id: 'T1', version: 1, question: 'Do you take Medicaid?', answer: 'Please reach our sister company at (417) 218-2888.', source_name: 'test', verified_on: '2026-11-06' }]
+  check('6b. an answer that gives the CDS number still carries it', buildSystemPrompt(withCds, '(417) 234-8494').includes('218-2888'))
+  console.log()
+}
+
 // ── TEST 7: retrieval does not fire on filler ────────────────────────────────
 {
   console.log('TEST 7  Retrieval precision')

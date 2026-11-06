@@ -230,7 +230,9 @@ export function decide(allRecords, question, { audience = 'public' } = {}) {
 
 // What Cara is told. The records ARE the prompt. No facts are baked in here,
 // which is the entire point: change the record, change what she says.
-export function buildSystemPrompt(records) {
+// phone: the office number Cara offers. 2026-11-06: rule 7's example used to be the CDS number, and she gave it to a
+// family asking about overnight care, so the office number is named here and the example carries no number.
+export function buildSystemPrompt(records, phone) {
   const block = records.map((r) =>
     `[${r.id} v${r.version}] Question: ${r.question}\nApproved answer: ${r.answer}\n` +
     `Source: ${r.source_name} (verified ${r.verified_on})`).join('\n\n');
@@ -243,11 +245,12 @@ export function buildSystemPrompt(records) {
     'RULES, in order of importance:',
     '1. Every factual claim in your reply must come from the approved answers below. Do not add facts from your own knowledge, not even ones you are confident about.',
     '2. Do not state a price, a rate, an eligibility rule or a program requirement that is not written below.',
-    '3. If the approved answers do not cover part of what was asked, say plainly that you do not have a confirmed answer for that part and offer the phone number. Do not fill the gap.',
+    '3. If the approved answers do not cover part of what was asked, say plainly that you do not have a confirmed answer for that part and offer ' + (phone ? 'our office number, ' + phone : 'the phone number') + '. Do not fill the gap.',
     '4. You may rephrase warmly and conversationally. You may not change what the answer says or soften a limitation.',
     '5. Reply in plain sentences, 2 to 5 of them, under 90 words. No markdown, no bullets.',
     '6. Never use em dashes. Use commas or periods.',
-    '7. Write every price, number and phone number in digits exactly as the approved answer shows it, like $15 and (417) 218-2888. Never spell them out in words.',
+    '7. Write every price, number and phone number in digits exactly as the approved answer shows it, like $15. Never spell them out in words.',
+    ...(phone ? ['8. The only phone number you may give is ' + phone + ', unless an approved answer below gives a different number, and then only for what that answer is about.'] : []),
     '',
     'APPROVED ANSWERS:',
     block,
