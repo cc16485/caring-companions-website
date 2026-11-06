@@ -50,7 +50,8 @@
     title.textContent = 'Cara';
     var sub = document.createElement('p');
     sub.style.cssText = 'font-size:12px;color:#8a978f;margin:0';
-    sub.textContent = 'Ask a question, or reach us directly below';
+    // 2026-11-06 (her ask: "Can it be clear that it reaches the office"): Cara's chat is answers only; the office buttons say so.
+    sub.textContent = 'Quick answers here. To reach our office, use the buttons below.';
     header.appendChild(title);
     header.appendChild(sub);
 
@@ -76,16 +77,20 @@
     var footer = document.createElement('div');
     footer.style.cssText = 'padding:12px 18px 16px;border-top:1px solid #ede9e0;display:flex;flex-direction:column;gap:8px';
     // 2026-11-06 (her call): no "Start a Full Consultation" here; it went to a page that does not reach the office.
+    var reach = document.createElement('p');
+    reach.style.cssText = 'margin:0;font-size:12px;color:#55677a;text-align:center';
+    reach.textContent = 'Reach our office. A Care Coordinator answers.';
+    footer.appendChild(reach);
     var actionRow = document.createElement('div');
     actionRow.style.cssText = 'display:flex;gap:8px';
     var callLink = document.createElement('a');
     callLink.href = 'tel:14172348494';
-    callLink.textContent = 'Call Us';
+    callLink.textContent = 'Call the office';
     callLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
     var msgLink = document.createElement('a');
-    // 2026-11-06 (her ask): Text Us, a text to the office line, in place of Message Us (the contact form)
+    // 2026-11-06 (her ask): Text the office (was Text Us), a text to the office line, in place of Message Us (the contact form)
     msgLink.href = 'sms:+14172348494';
-    msgLink.textContent = 'Text Us';
+    msgLink.textContent = 'Text the office';
     msgLink.style.cssText = 'flex:1;text-align:center;background:transparent;color:#0D365F;border:1.5px solid #dfe6e2;border-radius:8px;padding:9px;font-size:12.5px;font-weight:600;text-decoration:none';
     actionRow.appendChild(callLink);
     actionRow.appendChild(msgLink);
@@ -113,7 +118,7 @@
     function chatSave() { try { sessionStorage.setItem(CHAT_KEY, JSON.stringify(chat)); } catch (e) { /* this tab only */ } }
     chatSave();
 
-    /* Call back (her call, 2026-11-05; a button since 11-06): "Have someone call
+    /* Call back (her call, 2026-11-05; a button since 11-06): "Have the office call
        me" under Cara's answers opens this card. What they leave becomes a Hub
        lead through lead-intake (source Website), with this chat's id in the note
        so the office can read what they asked. A person makes the call; nothing
@@ -291,7 +296,7 @@
       } else {
         if (chat.offer !== 'sent') {
           var call = document.createElement('button');
-          call.textContent = 'Have someone call me'; call.style.cssText = MAIN;
+          call.textContent = 'Have the office call me'; call.style.cssText = MAIN;
           call.addEventListener('click', function () { r.remove(); offerCallback(); });
           r.appendChild(call);
         }
@@ -316,7 +321,7 @@
     addBubble('Hi, I am Cara. What can I help you with? Tap a topic, or type your own question.', 'cara');
     showTopics();
 
-    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Text Us" below and a Care Coordinator will answer.';
+    var OFFLINE_REPLY = 'Thanks for your question! Live chat is coming soon. In the meantime, you can call our Springfield office at (417) 234-8494, or tap "Text the office" below and a Care Coordinator will answer.';
 
     function askCara(messages) {
       if (!CARA_CHAT_ENDPOINT) {
@@ -376,8 +381,8 @@
 
     /* "Ask Cara" links (2026-11-06, her pick). The menu, footer and page buttons
        used to go to the full consultation page, which never reaches the office.
-       Now they open this chat right here (with Have someone call me, Call Us and
-       Text Us). On phones the chat button is hidden behind the phone bar, so they
+       Now they open this chat right here (with Have the office call me, Call the office
+       and Text the office). On phones the chat button is hidden behind the phone bar, so they
        start a text to the office line instead. */
     document.addEventListener('click', function (e) {
       var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
