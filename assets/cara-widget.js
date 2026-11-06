@@ -23,31 +23,26 @@
   function init() {
     var btn = document.createElement('button');
     btn.id = 'cara-widget-launcher';
-    // Our own speech bubble from the brand sprite, drawn inline so the floating
-    // launcher never waits on another request to look finished.
-    btn.innerHTML =
-      '<svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="flex:0 0 auto;">'
-      + '<path d="M4 4h13a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4.5 3.5V15H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" '
-      + 'fill="#1F7A8C" stroke="#faf9f6" stroke-width="1.6" stroke-linejoin="round"/>'
-      + '<circle cx="7.2" cy="9.5" r="1.15" fill="#faf9f6"/>'
-      + '<circle cx="10.7" cy="9.5" r="1.15" fill="#faf9f6"/>'
-      + '<circle cx="14.2" cy="9.5" r="1.15" fill="#faf9f6"/>'
-      + '</svg><span>Ask Cara</span>';
+    // 2026-11-06 (her ask): our logo badge (assets/cc-badge.png, cut from cc-logo.webp) and "Have a Question?"
+    var BADGE = page('assets/cc-badge.png');
+    btn.innerHTML = '<img src="' + BADGE + '" alt="" width="30" height="30" style="flex:0 0 auto;display:block;border-radius:50%">'
+      + '<span>Have a Question?</span>';
     btn.setAttribute('aria-haspopup', 'dialog');
-    btn.setAttribute('aria-label', 'Ask Cara, our free care advisor');
-    btn.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:99999;background:#0D365F;color:#faf9f6;border:none;border-radius:999px;padding:13px 22px 13px 18px;font-family:Inter,Helvetica,Arial,sans-serif;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.22);display:inline-flex;align-items:center;gap:9px;line-height:1';
+    btn.setAttribute('aria-label', 'Have a question? Get quick answers about home care');
+    btn.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:99999;background:#0D365F;color:#faf9f6;border:none;border-radius:999px;padding:9px 20px 9px 10px;font-family:Inter,Helvetica,Arial,sans-serif;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.22);display:inline-flex;align-items:center;gap:9px;line-height:1';
 
     var panel = document.createElement('div');
     panel.id = 'cara-widget-panel';
     panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-label', 'Ask Cara');
+    panel.setAttribute('aria-label', 'Have a Question?');
     panel.style.cssText = 'position:fixed;bottom:78px;right:20px;z-index:99999;display:none;flex-direction:column;background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,0.2);width:320px;max-height:min(70vh,520px);font-family:Inter,Helvetica,Arial,sans-serif;overflow:hidden';
 
     var header = document.createElement('div');
     header.style.cssText = 'padding:16px 18px 12px;border-bottom:1px solid #ede9e0';
     var title = document.createElement('p');
-    title.style.cssText = "font-family:'Source Serif 4',Georgia,serif;font-size:16px;font-weight:600;color:#0D365F;margin:0 0 3px";
-    title.textContent = 'Cara';
+    title.style.cssText = "font-family:'Source Serif 4',Georgia,serif;font-size:16px;font-weight:600;color:#0D365F;margin:0 0 3px;display:flex;align-items:center;gap:8px";
+    title.innerHTML = '<img src="' + BADGE + '" alt="" width="24" height="24" style="display:block">';
+    title.appendChild(document.createTextNode('Have a Question?'));
     var sub = document.createElement('p');
     sub.style.cssText = 'font-size:12px;color:#8a978f;margin:0';
     // 2026-11-06 (her ask: "Can it be clear that it reaches the office"): Cara's chat is answers only; the office buttons say so.
