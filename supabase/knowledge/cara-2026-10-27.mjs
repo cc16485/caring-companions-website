@@ -303,7 +303,8 @@ export const RECORDS = [
   { id: 'K148', key: 'hospital_pause', src: 'S8', on: '2026-11-06',
     question: 'What if Mom goes into the hospital?',
     alt: ['Dad was admitted to the hospital, what about his visits?', 'Can we pause care?', 'Can we put visits on hold?'],
-    answer: 'Please call the office as soon as you can so we can pause visits. Before care starts again, we will check the care plan with you, because needs often change after a hospital stay.',
+    // 2026-11-06 (her policy: "we provide care wherever home is"): a caregiver can also stay with them in the hospital.
+    answer: 'Please call the office as soon as you can. We can pause visits, or a caregiver can keep caring for your loved one in the hospital, wherever they are. Before care at home starts again, we will check the care plan with you, because needs often change after a hospital stay.',
     topics: ['pause', 'on hold', 'admitted', 'hospital'] },
 
   { id: 'K149', key: 'read_agreement', src: 'S8', on: '2026-11-06',
@@ -347,15 +348,17 @@ export const RECORDS = [
     alt: ['Can a caregiver come on Saturday?', 'Do you work Sundays?', 'Are you open 7 days a week?', 'We need weekend help'],
     answer: 'Yes! Caring Companions provides care seven days a week, including weekends and holidays. Whether your family needs a few hours of help, regular weekend visits or overnight care, we can talk through your schedule and check caregiver availability. Certain holidays are billed at a higher hourly rate, and we will explain any charges before care begins.',
     topics: ['weekends', 'saturday', 'sunday', 'seven days'] },
+
+  { id: 'K156', key: 'facility_care', src: 'S9', on: '2026-11-06',
+    question: 'Can you provide care in assisted living, nursing homes or hospitals?',
+    alt: ['Can a caregiver sit with my mom in the hospital?', 'Do you go to assisted living?', 'Can you help my dad in his nursing home?', 'Can a caregiver help with showers in a nursing home?', 'My mom lives in senior living, can you still help?'],
+    answer: 'Yes. We provide care wherever home is, including assisted living, nursing homes and the hospital. A caregiver can sit with your loved one and keep them company, and help with personal care like showers and dressing, following the facility\'s rules and your loved one\'s care plan. Call our office at (417) 234-8494 and we will talk through what you need.',
+    topics: ['assisted living', 'nursing home', 'hospital', 'facility'] },
 ]
 
-// HELD, not loaded (her call 2026-11-06: "hold this particular answer until I confirm our policy on providing services
-// inside these facilities"). To publish: move it into RECORDS above and add a 'facility' concept in concepts.js.
-export const HELD = [
-  { id: 'K156', key: 'facility_care', src: 'S9',
-    question: 'Can you provide care in assisted living, nursing homes or hospitals?',
-    answer: 'We may be able to provide additional one-on-one companionship and non-medical assistance in assisted living communities, nursing homes or hospitals, depending on the facility\'s policies and your loved one\'s needs. Our caregivers can provide extra companionship, help with approved daily activities, and offer additional support when family members cannot be there. Call our office at (417) 234-8494 so we can discuss the situation and determine whether services can be arranged.' },
-]
+// Nothing is held. K156 (care in facilities) was held until 2026-11-06, when Samantha confirmed: "we provide care wherever
+// home is - could be sitting with someone in a hospital, providing care, shower, et in a nursing home".
+export const HELD = []
 
 // N002 was a stale $14 rate. CDS attendants are paid $15 to $16 an hour (her correction 2026-10-27).
 export const N002 = {

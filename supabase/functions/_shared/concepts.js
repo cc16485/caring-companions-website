@@ -23,7 +23,7 @@ const CONTRACTIONS = [
   [/\bwhat'?s\b/g, 'what is'], [/\bwho'?s\b/g, 'who is'], [/\bmom'?s\b/g, 'mom'],
   [/\bdad'?s\b/g, 'dad'], [/\bhe'?s\b/g, 'he is'], [/\bshe'?s\b/g, 'she is'],
   // 2026-11-06: a nursing home is a place, not nursing care. Kept as one word so it never matches "we do not provide
-  // skilled nursing"; facility care is held until Samantha confirms it, so these questions go to the office.
+  // skilled nursing"; it maps to the facility concept (K156).
   [/\bnursing homes?\b/g, 'nursinghome'],
 ];
 
@@ -181,6 +181,10 @@ export const CONCEPTS = {
   start_today: ['today', 'tomorrow', 'tonight', 'same day', 'next day', 'same-day', 'next-day', 'start today',
                 'start tomorrow', 'urgent', 'urgently', 'this afternoon', 'this evening'],
   hospice: ['hospice', 'end of life', 'palliative', 'comfort care', 'terminal', 'terminally', 'dying', 'actively dying'],
+  // 2026-11-06 (her policy): care wherever home is. "nursing home" is normalized to nursinghome above.
+  facility: ['assisted living', 'nursinghome', 'nursing facility', 'skilled nursing facility', 'rehab facility',
+             'senior living', 'retirement home', 'retirement community', 'independent living', 'care home',
+             'group home', 'facility', 'facilities', 'in the hospital', 'at the hospital', 'hospital room'],
   weekend: ['weekend', 'weekends', 'saturday', 'saturdays', 'sunday', 'sundays', 'seven days', '7 days', 'days a week'],
   sick: ['sick', 'ill', 'illness', 'calls in sick', 'call in sick', 'cannot make it', 'backup', 'back up caregiver',
          'replacement', 'replace', 'fill in', 'no show', 'does not show up', 'does not come', 'did not show up'],
