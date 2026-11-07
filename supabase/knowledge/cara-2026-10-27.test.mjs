@@ -75,10 +75,33 @@ const cases = [
   ['I have a complaint','concerns'], ['can I speak to a manager','concerns'], ['I am not happy with our care','concerns'],
   ['we have a dog','pets'], ['is it ok if we have cats','pets'],
   ['my dad smokes','smoking'], ['is smoking allowed','smoking'],
+  // 2026-11-06 (later): same-day or next-day, hospice, weekends; the facilities answer is held, so those must not answer
+  ['Can care start today?','start_today'], ['can someone come tomorrow','start_today'], ['we need a caregiver tonight','start_today'],
+  ['do you take same day requests','start_today'], ['my mom just got home and we need help today','start_today|hospital_recovery'],
+  ['How soon can care start?','start_timing'], ['how quickly can someone start','start_timing'],
+  ['Do you work with hospice?','hospice'], ['my dad is on hospice can you help','hospice'], ['do you do end of life care','hospice'],
+  ['can a caregiver sit with mom while she is on hospice','hospice'],
+  ['Do you work weekends?','weekends'], ['can a caregiver come on Saturday','weekends'], ['are you open 7 days a week','weekends'],
+  ['we need help on sundays','weekends'], ['Do you work on Christmas?','holidays'], ['How soon can care start after the assessment?','start_timing'],
+  ['Do you go to assisted living?', null], ['can you sit with my mom in the nursing home', null],
+  ['what do I do in an emergency', null],
   ['What does the DHSS manual say about a participant with a Power of Attorney?', null],
   ['Do you take Humana in Joplin?', null],
 ]
+// Consistency (her rules 1, 2, 4): every start-of-care answer says the assessment comes first, none promises 24 to 48 hours,
+// and no answer promises coverage. The held facilities answer is not loaded.
+const byKey = Object.fromEntries(RECORDS.map(r => [r.key, r]))
+const consistency = [
+  ['start answers name the assessment and care plan', ['start_timing','start_today'].every(k => /in-home assessment/.test(byKey[k].answer) && /care plan/.test(byKey[k].answer))],
+  ['no answer promises 24 to 48 hours', RECORDS.every(r => !/24 to 48|24-48|48 hours/.test(r.answer))],
+  ['start answers point to the next step', ['start_timing','start_today'].every(k => /234-8494/.test(byKey[k].answer))],
+  ['the facilities answer is held, not loaded', !byKey.facility_care],
+  ['hospice keeps medical care with the hospice team', /hospice team continues to provide medical care/.test(byKey.hospice.answer)],
+  ['weekends and holidays agree with the holiday answer', /holidays/.test(byKey.weekends.answer) && /time and a half/.test(byKey.holidays.answer)],
+  ['no answer says "covered" about staffing or rides', !/will be covered|you are covered|guaranteed a caregiver/.test(RECORDS.map(r => r.answer).join(' '))],
+]
 let pass = 0, fail = 0
+for (const [name, ok] of consistency) { ok ? pass++ : fail++; if (!ok || process.env.V) console.log(`${ok ? 'ok  ' : 'FAIL'} consistency: ${name}`) }
 for (const [q, want] of cases) {
   const d = decide(all, q, { audience:'public' })
   const got = ['ok','conflict'].includes(d.decision) ? d.records.map(r => keyOf[r.id]) : []

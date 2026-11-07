@@ -8,6 +8,8 @@ const CDS = 'our sister company, Caring Companions Consumer Directed Services, a
 
 export const SOURCE = { id: 'S7', name: 'mo-care.com published pages (2026-10-27)' }
 // 2026-11-06: answers from the "Questions families ask" page and the Client Care Agreement and Client Handbook it links to.
+// 2026-11-06 (later): wording Samantha wrote herself for hospice, weekends and same-day care.
+export const SOURCE3 = { id: 'S9', name: 'Samantha, approved wording (2026-11-06)' }
 export const SOURCE2 = { id: 'S8', name: 'mo-care.com/before-your-assessment, Client Care Agreement and Client Handbook (Rev. 10/2026)' }
 
 export const RECORDS = [
@@ -201,10 +203,11 @@ export const RECORDS = [
 
   // ── 2026-11-06 (her "start with 1", approved with her six changes): from mo-care.com/before-your-assessment and the
   // Client Care Agreement and Client Handbook (Rev. 10/2026). src S8. ──────────────────────────────────────────────
-  { id: 'K132', key: 'start_timing', src: 'S8', on: '2026-11-06',
+  { id: 'K132', key: 'start_timing', src: 'S9', on: '2026-11-06',
+    // 2026-11-06 (her change): the assessment and care plan come first, and no start date is promised.
     question: 'How soon can care start?',
-    alt: ['How quickly can you start?', 'Can care start right away?', 'How long until a caregiver can come?', 'We need help as soon as possible', 'Can you start this week?'],
-    answer: 'Care can sometimes begin within 24 to 48 hours, depending on caregiver availability and your needs. We want to find the right fit, not just fill a shift. At your free in-home assessment, we will give you an honest idea of timing for your schedule.',
+    alt: ['How quickly can you start?', 'Can care start right away?', 'How long until a caregiver can come?', 'We need help as soon as possible', 'Can you start this week?', 'How soon can care start after the assessment?'],
+    answer: 'Before care begins, we complete a free in-home assessment and build a care plan, so your caregivers know your loved one\'s needs, routines, preferences and safety. How soon care starts after that depends on how quickly we can complete the assessment and find the right caregiver. Care can sometimes begin the same day or next day, but our office confirms the start once a caregiver is matched. We never want to rush the process at the expense of good care. You can book your free in-home assessment at mo-care.com/book or call (417) 234-8494.',
     topics: ['start', 'how soon', 'quickly', 'right away'] },
 
   { id: 'K133', key: 'caregiver_sick', src: 'S8', on: '2026-11-06',
@@ -287,7 +290,7 @@ export const RECORDS = [
 
   { id: 'K146', key: 'tips_gifts', src: 'S8', on: '2026-11-06',
     question: 'Can we tip our caregiver or give a gift?',
-    alt: ['Can I give the caregiver a Christmas gift?', 'Is tipping allowed?', 'Can we give our caregiver a present?'],
+    alt: ['Can I give the caregiver a gift?', 'Is tipping allowed?', 'Can we give our caregiver a present?'],
     answer: 'No gifts or tips, please. Caregivers are not allowed to accept them. A thank-you card, or a call to the office to say thank you, means the world.',
     topics: ['tip', 'tips', 'gift', 'gifts'] },
 
@@ -326,6 +329,32 @@ export const RECORDS = [
     alt: ['My dad smokes, is that a problem?', 'Do caregivers smoke?', 'Is smoking allowed?'],
     answer: 'We ask for a smoke-free space while your caregiver is there. Caregivers cannot be in the home during active smoking.',
     topics: ['smoking', 'smoke', 'cigarettes'] },
+  // ── 2026-11-06 (later, her wording, approved): same-day or next-day care, hospice, weekends. src S9. ─────────────────
+  { id: 'K153', key: 'start_today', src: 'S9', on: '2026-11-06',
+    question: 'Can care start today or tomorrow?',
+    alt: ['We need someone today', 'Can a caregiver come tomorrow?', 'Do you take same-day requests?', 'Can you send someone tonight?', 'We need help urgently today'],
+    answer: 'Sometimes! We understand that families may need help quickly, and we will do our best to accommodate urgent requests. Before care begins, we do need to complete a free in-home assessment. This lets us understand your loved one\'s needs, routines, preferences and safety, so we can create a personalized care plan for the caregivers we send. Care can sometimes begin the same day or next day, depending on how quickly we can complete the assessment and find the right caregiver. We never want to rush the process at the expense of good care. Call us at (417) 234-8494, and we will talk through what you need and how soon we may be able to get started.',
+    topics: ['today', 'tomorrow', 'same day', 'next day', 'urgent'] },
+
+  { id: 'K154', key: 'hospice', src: 'S9', on: '2026-11-06',
+    question: 'Can you help someone receiving hospice care?',
+    alt: ['Do you work with hospice?', 'My mom is on hospice, can you help?', 'Do you provide end of life care?', 'Can a caregiver stay with dad while he is on hospice?'],
+    answer: 'Yes! Caring Companions can work alongside your loved one\'s hospice team to provide additional non-medical care and support. Our caregivers can help with personal care, bathing, dressing, repositioning within their training and safety limits, companionship and everyday household tasks. We can also provide support during the day or overnight for families who need more help. The hospice team continues to provide medical care, while our caregivers focus on comfort, personal care and helping your loved one stay supported. We coordinate with the family and the hospice team so everyone understands the care plan and their responsibilities.',
+    topics: ['hospice', 'end of life', 'comfort care'] },
+
+  { id: 'K155', key: 'weekends', src: 'S9', on: '2026-11-06',
+    question: 'Do you provide care on weekends?',
+    alt: ['Can a caregiver come on Saturday?', 'Do you work Sundays?', 'Are you open 7 days a week?', 'We need weekend help'],
+    answer: 'Yes! Caring Companions provides care seven days a week, including weekends and holidays. Whether your family needs a few hours of help, regular weekend visits or overnight care, we can talk through your schedule and check caregiver availability. Certain holidays are billed at a higher hourly rate, and we will explain any charges before care begins.',
+    topics: ['weekends', 'saturday', 'sunday', 'seven days'] },
+]
+
+// HELD, not loaded (her call 2026-11-06: "hold this particular answer until I confirm our policy on providing services
+// inside these facilities"). To publish: move it into RECORDS above and add a 'facility' concept in concepts.js.
+export const HELD = [
+  { id: 'K156', key: 'facility_care', src: 'S9',
+    question: 'Can you provide care in assisted living, nursing homes or hospitals?',
+    answer: 'We may be able to provide additional one-on-one companionship and non-medical assistance in assisted living communities, nursing homes or hospitals, depending on the facility\'s policies and your loved one\'s needs. Our caregivers can provide extra companionship, help with approved daily activities, and offer additional support when family members cannot be there. Call our office at (417) 234-8494 so we can discuss the situation and determine whether services can be arranged.' },
 ]
 
 // N002 was a stale $14 rate. CDS attendants are paid $15 to $16 an hour (her correction 2026-10-27).

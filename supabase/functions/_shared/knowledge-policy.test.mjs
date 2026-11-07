@@ -196,6 +196,18 @@ console.log('\n=== CARING COMPANIONS CORE, KNOWLEDGE POLICY ===\n')
   console.log()
 }
 
+// ── TEST 6d: no added promises, assessment first, invite the next step (2026-11-06) ─
+{
+  const d = decide(REAL, 'Do you offer overnight care?', { audience: 'public' })
+  const sys = buildSystemPrompt(d.records, '(417) 234-8494')
+  console.log('TEST 6d Promises, the assessment and the next step')
+  check('6d. no added promises, start dates, staffing, transportation or coverage', sys.includes('Never add a promise, guarantee or reassurance') && /start date/.test(sys) && /covered by insurance/.test(sys))
+  check('6d. starting care always mentions the assessment and care plan first', sys.includes('first complete a free in-home assessment and build a care plan'))
+  check('6d. ready families are invited to book or call, not job seekers or CDS', sys.includes('mo-care.com/book') && sys.includes('Consumer Directed Services'))
+  check('6d. room for the longer answers (120 words)', sys.includes('under 120 words'))
+  console.log()
+}
+
 // ── TEST 6b: the office number, never the CDS number by example (2026-11-06) ──
 {
   const d = decide(REAL, 'Do you offer overnight care?', { audience: 'public' })

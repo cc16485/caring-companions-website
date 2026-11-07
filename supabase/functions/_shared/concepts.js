@@ -22,6 +22,9 @@ const CONTRACTIONS = [
   [/\bwe'?re\b/g, 'we are'], [/\bthey'?re\b/g, 'they are'], [/\bit'?s\b/g, 'it is'],
   [/\bwhat'?s\b/g, 'what is'], [/\bwho'?s\b/g, 'who is'], [/\bmom'?s\b/g, 'mom'],
   [/\bdad'?s\b/g, 'dad'], [/\bhe'?s\b/g, 'he is'], [/\bshe'?s\b/g, 'she is'],
+  // 2026-11-06: a nursing home is a place, not nursing care. Kept as one word so it never matches "we do not provide
+  // skilled nursing"; facility care is held until Samantha confirms it, so these questions go to the office.
+  [/\bnursing homes?\b/g, 'nursinghome'],
 ];
 
 export function normalize(s) {
@@ -171,9 +174,14 @@ export const CONCEPTS = {
   hospital: ['hospital', 'rehab', 'discharge', 'discharged', 'surgery', 'coming home'],
 
   // 2026-11-06 (her OK): the "Questions families ask" answers, K132-K152.
-  start_soon: ['how soon', 'how quickly', 'how fast', 'right away', 'start soon', 'start right away', 'start tomorrow',
-               'start this week', 'start today', 'asap', 'as soon as possible', 'immediately', 'same day', 'next day',
-               'how long until', 'how long before', 'quickly', 'soon', 'urgent', 'urgently', 'wait list', 'waiting list'],
+  start_soon: ['how soon', 'how quickly', 'how fast', 'right away', 'start soon', 'start right away',
+               'start this week', 'asap', 'as soon as possible', 'immediately',
+               'how long until', 'how long before', 'quickly', 'soon', 'wait list', 'waiting list'],
+  // 2026-11-06 (later): today or tomorrow is its own answer (K153); "how soon" stays with K132.
+  start_today: ['today', 'tomorrow', 'tonight', 'same day', 'next day', 'same-day', 'next-day', 'start today',
+                'start tomorrow', 'urgent', 'urgently', 'this afternoon', 'this evening'],
+  hospice: ['hospice', 'end of life', 'palliative', 'comfort care', 'terminal', 'terminally', 'dying', 'actively dying'],
+  weekend: ['weekend', 'weekends', 'saturday', 'saturdays', 'sunday', 'sundays', 'seven days', '7 days', 'days a week'],
   sick: ['sick', 'ill', 'illness', 'calls in sick', 'call in sick', 'cannot make it', 'backup', 'back up caregiver',
          'replacement', 'replace', 'fill in', 'no show', 'does not show up', 'does not come', 'did not show up'],
   contract: ['contract', 'contracts', 'deposit', 'deposits', 'down payment', 'commitment', 'commit', 'locked in',
