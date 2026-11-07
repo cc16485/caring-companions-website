@@ -1,5 +1,5 @@
 // Prints the SQL that loads cara-2026-10-27.mjs into kb_items. Safe to run twice.
-// Run: node supabase/knowledge/build-sql.mjs > supabase/migrations/20261106b_cara_knowledge.sql (earlier files kept as history)
+// Run: node supabase/knowledge/build-sql.mjs > supabase/migrations/20261106c_cara_knowledge.sql (earlier files kept as history)
 import { RECORDS, SOURCE, SOURCE2, SOURCE3, N002 } from './cara-2026-10-27.mjs'
 
 const q = (s) => "'" + String(s).replace(/'/g, "''") + "'"
