@@ -8,7 +8,7 @@
 // The four failure cases are the point. Anyone can make the happy path work.
 // -----------------------------------------------------------------------------
 
-import { decide, buildSystemPrompt, buildRefusal } from './knowledge-policy.js'
+import { decide, buildSystemPrompt, buildRefusal, noFactsGuard } from './knowledge-policy.js'
 
 const PHONE = '(417) 234-8494'
 
@@ -205,6 +205,30 @@ console.log('\n=== CARING COMPANIONS CORE, KNOWLEDGE POLICY ===\n')
   check('6d. starting care always mentions the assessment and care plan first', sys.includes('first complete a free in-home assessment and build a care plan'))
   check('6d. ready families are invited to book or call, not job seekers or CDS', sys.includes('mo-care.com/book') && sys.includes('Consumer Directed Services'))
   check('6d. room for the longer answers (120 words)', sys.includes('under 120 words'))
+  console.log()
+}
+
+// ── TEST 6e: a no-answer reply may not claim anything (2026-11-06) ────────────
+{
+  console.log('TEST 6e No-answer replies cannot claim services, prices, programs or places')
+  const P = '(417) 234-8494'
+  const swapped = [
+    "I appreciate you asking. We provide care in homes, so that's a little different from what a nursing home offers. Give us a call at (417) 234-8494.",
+    'We do not provide transportation to the airport.',
+    'Caring Companions does not take Humana, but call us.',
+    'Our caregivers can usually be there within 2 days.',
+    'It is about $30 an hour.',
+    'We only serve Greene County.',
+  ]
+  const kept = [
+    'Hi there! What brings you here today?',
+    "I'm so sorry your mom fell. Can you tell me a little about what kind of help she needs right now?",
+    "I don't have a confirmed answer for that one. Please call us at (417) 234-8494 and a coordinator can help.",
+    // the live reply from Desktop 1347 to "Am I talking to a real person?"
+    'This chat gives quick answers, and a real Care Coordinator answers our calls and texts at (417) 234-8494. They can talk through whatever you need in more detail. What brings you in today?',
+  ]
+  for (const r of swapped) check('6e. swapped: ' + r.slice(0, 50), noFactsGuard(r, P).replaced && noFactsGuard(r, P).reply.includes(P))
+  for (const r of kept) check('6e. kept: ' + r.slice(0, 50), !noFactsGuard(r, P).replaced)
   console.log()
 }
 
