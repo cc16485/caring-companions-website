@@ -21,7 +21,7 @@
 //   ANTHROPIC_API_KEY
 // -----------------------------------------------------------------------------
 
-import { buildSystemPrompt, buildRefusal } from '../_shared/knowledge-policy.js'
+import { buildSystemPrompt, buildRefusal, noFactsGuard } from '../_shared/knowledge-policy.js'
 
 const PHONE = '(417) 234-8494'
 const KNOWLEDGE_API = `${Deno.env.get('SUPABASE_URL')}/functions/v1/knowledge-api`
@@ -68,7 +68,9 @@ const NO_FACTS_PROMPT =
   VOICE +
   "\n\nYou have NO approved facts available for this message. That means:\n" +
   "1. Do not state any price, rate, program rule, eligibility requirement, county, " +
-  "phone number other than " + PHONE + ", or service detail. Not one, however sure you feel.\n" +
+  "phone number other than " + PHONE + ", or service detail. Not one, however sure you feel. " +
+  "Never say what Caring Companions does or does not do, provide, offer, accept or cover, or " +
+  "where care happens, not even in general terms like 'we provide care in homes'.\n" +
   "2. If they asked a factual question, say plainly that you do not have a confirmed " +
   "answer for it and invite them to call " + PHONE + ". Do not apologise more than once.\n" +
   "3. If they were greeting you or sharing something personal rather than asking a " +
@@ -167,6 +169,10 @@ Deno.serve(async (req) => {
       //    source. The prompt forbids asserting anything.
       reply = await askClaude(NO_FACTS_PROMPT, safeMessages, 200)
       outcome = 'none'
+      // 2026-11-06: the prompt is not enough on its own, so a reply that claims anything is swapped for a fixed one.
+      const g = noFactsGuard(reply, PHONE)
+      if (g.replaced) console.log('no-facts reply replaced', JSON.stringify(reply).slice(0, 300))
+      reply = g.reply
     }
 
     // 5. Log it. Every answer traceable to the record and version behind it.

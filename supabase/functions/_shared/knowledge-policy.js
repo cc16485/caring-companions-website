@@ -294,3 +294,25 @@ export function buildRefusal(decision, phone) {
   return 'I do not have a confirmed answer for that one, and I would rather tell you that than guess. ' +
     `Please call us at ${phone} and a coordinator can help you directly.`;
 }
+
+// 2026-11-06 (Samantha, "Yes, tighten it"): with no approved answer, the chat said "We provide care in homes, so that's a
+// little different from what a nursing home offers", a service claim nobody approved. The prompt already forbade it, so
+// this check runs on every no-answer reply: anything that says what we do or do not provide, a price, a time, a program
+// or a place is swapped for a fixed reply that only points to the office. Warm greetings and questions pass through.
+const NO_FACTS_RISKY = [
+  /\bwe(?:'re| are)? ?(?:only |also |do |don'?t |do not |can'?t |cannot |can |could |will |won'?t |are able to |are not able to |usually |typically |normally )?(?:provide|offer|accept|take|serve|cover|work with|work in|go to|come to|bill|charge|have|specialize|staff|send|do not do|don'?t do)\b/i,
+  /\b(?:caring companions|our (?:caregivers|care|services|agency|team|office|staff)|caregivers) (?:does|do|doesn'?t|does not|can|cannot|can'?t|will|won'?t|provides?|offers?|accepts?|is able|are able|only)\b/i,
+  /\$\s?\d/,
+  /\b\d+\s*(?:hours?|days?|weeks?|months?|minutes?)\b/i,
+  /\b(?:medicaid|medicare|insurance|va\b|veterans?|hospice|assisted living|nursing ?homes?|memory care|facility|facilities|counties|county|in-home|in homes|at home)\b/i,
+]
+
+export function noFactsGuard(reply, phone) {
+  const text = String(reply || '')
+  if (!NO_FACTS_RISKY.some((re) => re.test(text))) return { reply: text, replaced: false }
+  return {
+    reply: 'I do not have a confirmed answer for that one, and I would rather tell you that than guess. ' +
+      `A Care Coordinator can help: call or text us at ${phone}.`,
+    replaced: true,
+  }
+}
