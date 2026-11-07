@@ -1,7 +1,8 @@
 // The website chat's family-facing answers, 2026-10-27 (K101-K131) and 2026-11-06 (K132-K152, K125 update).
 // Every answer is taken from mo-care.com as published on 2026-10-27, plus
 // Samantha's standing rules (Medicaid goes to Caring Companions Consumer
-// Directed Services; never say AI; no em dashes; app visits never promised).
+// Directed Services; never say AI; no em dashes).
+// 2026-11-07: the Booking App is no longer offered (her decision). K103 drops the app line and K120 says there is no app.
 // Load with: node supabase/knowledge/build-sql.mjs > the migration.
 
 const CDS = 'our sister company, Caring Companions Consumer Directed Services, at (417) 218-2888 or caringcds.com'
@@ -28,7 +29,7 @@ export const RECORDS = [
   { id: 'K103', key: 'minimum_hours',
     question: 'What is the minimum number of hours?',
     alt: ['Is there a minimum?', 'How few hours can we book?', 'Can we get a short visit?', 'Do you have a weekly minimum?'],
-    answer: 'Scheduled care has a minimum of 4 hours per visit and 8 hours per week. Our Booking App is coming soon for clients. It will let you request Wellness Care visits from 2 hours with no weekly minimum. App visits depend on which caregivers are available, so a request is sent, not guaranteed.',
+    answer: 'Scheduled care has a minimum of 4 hours per visit and 8 hours per week.',
     topics: ['minimum', 'hours', 'per visit', 'per week'] },
 
   { id: 'K104', key: 'medicaid',
@@ -129,8 +130,8 @@ export const RECORDS = [
 
   { id: 'K120', key: 'booking_app',
     question: 'Do you have an app?',
-    alt: ['How does the Booking App work?', 'Can I book visits online?', 'Can I book care from my phone?'],
-    answer: 'Our Booking App is coming soon for clients. After an in-home assessment and care plan, it lets you request Wellness Care visits, $30 an hour, any day from 7am to 6pm, for 2 hours or more, with no weekly minimum. The app has no charge any month you have a visit, and months without a visit are $15. Visits depend on which caregivers are available, so a request is sent, not guaranteed.',
+    alt: ['Can I book visits online?', 'Can I book care from my phone?'],
+    answer: 'We do not have an app for booking care. To set up care or change a visit, call (417) 234-8494 and a care coordinator will help.',
     topics: ['app', 'booking app', 'book online', 'phone'] },
 
   { id: 'K121', key: 'choose_caregiver_cc',
