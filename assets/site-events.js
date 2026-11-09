@@ -108,7 +108,12 @@
       }).catch(function () {});
 
       // Mirror key actions to Google Analytics and the Meta Pixel as conversions.
-      if (window.gtag) gtag('event', event, props || {});
+      // 2026-11-09 (her OK): Google gets only which tool and which channel, never answers about a person (care level,
+      // urgent, home safety score). Our own counter above keeps the full details; Meta gets the event name only.
+      var safe = {};
+      if (props && props.tool) safe.tool = String(props.tool).slice(0, 40);
+      if (all.from) safe.from = all.from;
+      if (window.gtag) gtag('event', event, safe);
       if (window.fbq && FB_EVENTS[event]) fbq('track', FB_EVENTS[event]);
     } catch (e) { /* analytics must never break the page */ }
   }
