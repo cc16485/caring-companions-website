@@ -57,16 +57,48 @@
     } catch (e) { return 's-anon'; }
   }
 
+  // Which channel brought this visit (2026-11-09, her monthly content scorecard). A channel name only, never a
+  // person: a tagged link (?from=youtube or ?utm_source=facebook) wins, else the site they came from. Kept for this
+  // tab only (sessionStorage), so a form filled in three pages later still counts for the channel that brought them.
+  function channelOf(host) {
+    host = String(host || '').toLowerCase();
+    if (/(^|\.)(youtube\.com|youtu\.be)$/.test(host)) return 'youtube';
+    if (/(^|\.)(facebook\.com|fb\.com|fb\.me|messenger\.com)$/.test(host)) return 'facebook';
+    if (/(^|\.)instagram\.com$/.test(host)) return 'instagram';
+    if (/(^|\.)google\.[a-z.]+$/.test(host)) return 'google';
+    if (/(^|\.)(bing\.com|duckduckgo\.com|search\.yahoo\.com)$/.test(host)) return 'other_search';
+    if (/(^|\.)nextdoor\.com$/.test(host)) return 'nextdoor';
+    return host ? 'other_site' : '';
+  }
+  function cameFrom() {
+    try {
+      var have = sessionStorage.getItem('cc-from');
+      if (have) return have;
+      var q = new URLSearchParams(location.search);
+      var tag = String(q.get('from') || q.get('utm_source') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 32);
+      var ref = '';
+      try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+      if (ref && ref.replace(/^www\./, '') === location.hostname.replace(/^www\./, '')) ref = '';
+      var from = tag || channelOf(ref) || 'direct';
+      sessionStorage.setItem('cc-from', from);
+      return from;
+    } catch (e) { return ''; }
+  }
+
   function track(event, props) {
     try {
       // Skip localhost so testing doesn't pollute the numbers.
       if (/^(localhost|127\.)/.test(location.hostname)) return;
+      var all = {};
+      for (var k in (props || {})) all[k] = props[k];
+      var from = cameFrom();
+      if (from && !all.from) all.from = from;
       var payload = JSON.stringify({
         session_id: sessionId(),
         event: String(event).slice(0, 64),
         path: location.pathname.slice(0, 300),
         referrer: (document.referrer || '').slice(0, 300),
-        props: props || {},
+        props: all,
       });
       fetch(ENDPOINT, {
         method: 'POST',
