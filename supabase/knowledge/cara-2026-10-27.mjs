@@ -113,7 +113,7 @@ export const RECORDS = [
   { id: 'K117', key: 'jobs_requirements',
     question: 'What do I need to be a caregiver with you?',
     alt: ['Do I need a CNA license?', 'Do I need a high school diploma?', 'What experience do I need?', 'What are the job requirements?'],
-    answer: 'We ask for at least one year of paid caregiving experience. Work at home, in a nursing home, assisted living or a hospital counts, and so does being paid to care for a family member. Wellness Care roles need no license. Advanced Care roles are for licensed CNAs. You must be 18 or older and able to work in the United States. For anything else, apply at mo-care.com/apply and we will talk it through.',
+    answer: 'We ask for at least one year of paid caregiving experience. Work at home, in a nursing home, assisted living or a hospital counts, and so does being paid to care for a family member. Wellness Care roles need no license. Advanced Care roles are for licensed CNAs. You must be 21 or older and able to work in the United States. For anything else, apply at mo-care.com/apply and we will talk it through.',
     topics: ['job', 'requirements', 'license', 'cna', 'experience', 'diploma'] },
 
   { id: 'K118', key: 'contact',

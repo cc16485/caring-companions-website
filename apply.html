@@ -165,7 +165,7 @@
   <div class="ap-card" id="step2" style="display:none;">
     <div class="sub" style="margin:0 0 4px;">Answer honestly. A no is not automatically a problem, and knowing now saves us both a phone call.</div>
 
-    <div class="q"><div class="qt">Are you 18 or older?</div>
+    <div class="q"><div class="qt">Are you 21 or older?</div>
       <div class="chips" data-k="age_ok"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>
 
     <div class="q"><div class="qt">Are you legally authorized to work in the United States?</div>
@@ -524,7 +524,7 @@ if (PREVIEW) {
     c.parentNode.insertBefore(head('Page ' + (i + 1) + ' of 3' + ['  ·  saved the moment they continue', '  ·  the screening questions', '  ·  then they send it'][i]), c);
   });
   fv.querySelectorAll('.go, .back, .err').forEach((b) => { b.style.display = 'none'; });
-  g('step2').appendChild(note('In the real form, a <b>No</b> to 18 or older, work authorization, transportation or a year of paid experience (or a role\'s own must-have, like a license) ends the application there with a kind explanation. Unpaid family caregiving goes to the office to verify before any interview. They cannot book an interview until all three pages are done.'));
+  g('step2').appendChild(note('In the real form, a <b>No</b> to 21 or older, work authorization, transportation or a year of paid experience (or a role\'s own must-have, like a license) ends the application there with a kind explanation. Unpaid family caregiving goes to the office to verify before any interview. They cannot book an interview until all three pages are done.'));
   g('step3').parentNode.insertBefore(note('<b>After page 3:</b> they pick an in-person interview time right away (Monday to Friday, about 20 minutes), and the confirmation and reminders go from there.'), g('step3').nextSibling);
   }
 }
@@ -859,13 +859,14 @@ async function next1(){
   } finally { b.disabled = false; b.textContent = 'Continue'; }
 }
 
-/* The three answers we cannot work around. The first two are the law, the
+/* The answers we cannot work around. Age is our own rule (21 or older from
+   2026-11-09, her call; it was 18), work authorization is the law, the
    third is what the job physically is: caregivers drive to homes around Springfield
    and nearby counties. Everything else on step two is context for a human, not a gate. */
 const KNOCKOUTS = [
-  { k: 'age_ok', when: false, reason: 'under 18',
-    why: 'Caregiving in Missouri is only open to people who are 18 or older, so we are not able to take your application further right now.',
-    next: 'If you are turning 18 soon, please do apply again then. We would be glad to hear from you.' },
+  { k: 'age_ok', when: false, reason: 'under 21',
+    why: 'Caring Companions hires caregivers who are 21 or older, so we are not able to take your application further right now.',
+    next: 'If you are turning 21 soon, please do apply again then. We would be glad to hear from you.' },
   { k: 'work_auth', when: false, reason: 'not authorized to work in the US',
     why: 'We are only able to hire people who are authorized to work in the United States.',
     next: 'If your situation changes, you would be welcome to apply again.' },
