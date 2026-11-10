@@ -499,7 +499,8 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
 
 /* The utility bar now carries the phone at full prominence, so the header
    copy is redundant on desktop. Kept on mobile, where the bar drops its note. */
-@media (min-width: 1040px) { .cc-nav-phone { display: none; } }
+/* The main menu button now calls the office (11-10), so the extra phone link would repeat it */
+.cc-nav .cc-nav-phone { display: none; }
 
 /* Google rating sits in the proof bar's first slot: strongest evidence first. */
 .hp-proof-item strong.hp-proof-rating { display: inline-flex; align-items: baseline; gap: 4px; justify-content: center; }
