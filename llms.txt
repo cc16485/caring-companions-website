@@ -11,10 +11,10 @@
 - Service area: Greene, Christian, Webster and Polk counties, and Taney, Lawrence, Dallas and Stone counties when a caregiver is nearby (https://mo-care.com/service-area)
 - Missouri Medicaid: families on Medicaid can choose their own caregiver, even a family member, and Medicaid pays that caregiver, through our sister agency Caring Companions CDS at https://caringcds.com/ (417-218-2888)
 
-Town pages are at https://mo-care.com/home-care-in-<town>-mo (for example https://mo-care.com/home-care-in-nixa-mo).
+Town pages: Springfield, Nixa, Ozark, Republic, Willard, Battlefield, Strafford, Rogersville, Marshfield and Bolivar each have a page at https://mo-care.com/home-care-in-<town>-mo (for example https://mo-care.com/home-care-in-nixa-mo).
 
-- In-home care town pages: Aldrich, Ash Grove, Battlefield, Billings, Bolivar, Clever, Diggins, Fair Grove, Fair Play, Flemington, Fordland, Fremont Hills, Halfway, Highlandville, Humansville, Marshfield, Morrisville, Niangua, Nixa, Ozark, Republic, Rogersville, Seymour, Sparta, Spokane, Springfield, Strafford, Walnut Grove and Willard.
-- These town pages point families to Caring Companions CDS (Medicaid Consumer Directed Services only), not agency in-home care: Alba, Arcola, Asbury, Aurora, Ava, Avilla, Branson, Branson West, Buffalo, Carl Junction, Carterville, Carthage, Dadeville, Duenweg, Edgar Springs, Everton, Forsyth, Freistatt, Greenfield, Halltown, Hollister, Joplin, Kirbyville, Kissee Mills, La Russell, Lockwood, Louisburg, Marionville, Merriam Woods, Miller, Mount Vernon, Neck City, Newburg, Oronogo, Pierce City, Rockaway Beach, Rolla, Sarcoxie, St. James, Stotts City, Taneyville, Urbana, Verona, Waco, Webb City and Wentworth.
+- Every other town is listed by county on https://mo-care.com/service-area, with what we offer there: counties we actively serve (Greene, Christian, Webster, Polk), counties where availability is limited (Taney, Lawrence, Dallas, Stone), and areas we may consider in the future (Jasper, Newton, Dade, Douglas and others).
+- Phelps County (Rolla, St. James, Newburg, Edgar Springs) is outside our home care area; see https://mo-care.com/counties/phelps. Families on Medicaid there and in the future-area counties can contact Caring Companions CDS at https://caringcds.com/.
 
 Always point people to the linked page or the phone number for current details.
 

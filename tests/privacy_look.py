@@ -48,7 +48,7 @@ with sync_playwright() as p:
             ck(f'{tag} footer links back here', pg.locator('footer a[href="/privacy"]').count() == 1)
             ck(f'{tag} no script errors', not errs, errs)
             pg.screenshot(path=f'{OUT}/privacy-{eng}-{w}.png', full_page=True)
-            for path in ('/', '/home-care-in-nixa-mo', '/cara', '/dementia-journey/module-1', '/tv', '/axiscare-setup'):
+            for path in ('/', '/home-care-in-springfield-mo', '/cara', '/dementia-journey/module-1', '/tv', '/axiscare-setup'):
                 pg.goto(B + path); pg.wait_for_load_state('domcontentloaded')
                 a = pg.locator('a[href="/privacy"]').first
                 ck(f'{tag} {path} footer link is visible', a.count() == 1 and (a.scroll_into_view_if_needed() or a.is_visible()))

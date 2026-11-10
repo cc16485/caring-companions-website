@@ -121,7 +121,8 @@ PAGES = {
 # Town pages take turns through the warm "a caregiver comes to the house" scenes.
 TOWN_SCENES = ['arrive-porch', 'door-handshake', 'kitchen-coffee', 'garden-visit', 'puzzle',
                'door-wave', 'welcome-porch', 'sofa-album', 'cafe-outing', 'home-hug']
-for i, p in enumerate(sorted(ROOT.glob('home-care-in-*-mo.html'))):
+# 2026-11: most town pages are now forwards to /service-area; only real pages get photos.
+for i, p in enumerate(sorted(x for x in ROOT.glob('home-care-in-*-mo.html') if 'http-equiv="refresh"' not in x.read_text())):
     PAGES.setdefault(p.name, 'welcome-porch' if p.name == 'home-care-in-springfield-mo.html'
                      else TOWN_SCENES[i % len(TOWN_SCENES)])
 
