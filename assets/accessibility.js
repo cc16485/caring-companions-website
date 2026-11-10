@@ -201,13 +201,13 @@
 /* Header menus (Services, Ways to Pay, Resources, About Us) open on click
    instead of hover, so moving the mouse across the menu bar no longer drops
    a panel over the page. Enter or Space opens, Esc or a click elsewhere
-   closes. Phones are untouched: below 861px the menus are already listed
+   closes. Phones are untouched: below 1101px the menus are already listed
    in full under the burger, and the top links go to their pages. */
 (function () {
   'use strict';
   if (window.__ccMenus) return;
   window.__ccMenus = true;
-  var desk = window.matchMedia('(min-width: 861px)');
+  var desk = window.matchMedia('(min-width: 1101px)');
 
   function init() {
     var groups = [].slice.call(document.querySelectorAll('.cc-nav .cc-nav-group'));
