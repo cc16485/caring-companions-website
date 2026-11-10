@@ -127,5 +127,8 @@
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
     if (a) track('call_click');
+    // Clicks that send a family to our sister site, caringcds.com (2026-11-10, her OK on the SEO roadmap).
+    var c = e.target && e.target.closest ? e.target.closest('a[href*="caringcds.com"]') : null;
+    if (c) track('cds_click');
   });
 })();

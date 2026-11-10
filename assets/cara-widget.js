@@ -262,6 +262,10 @@
       K124: ['family-academy.html', 'See the Family Care Academy']
     };
     var JOBS = { K116: 1, K117: 1 }, CDS = { K104: 1, K131: 1 };
+    // 2026-11-10 (SEO roadmap): about a quarter of chat questions are people looking for work. When the question
+    // reads like a job question, show the jobs buttons even if no answer matched. 'hire' alone is left out because
+    // families say it too ("hire a caregiver").
+    var JOB_WORDS = /\b(apply|applying|application|job|jobs|hiring|employment|employed|position|career|careers|resume|work for (you|y'all|your company)|work here|work there)\b/i;
     var BTN = 'display:inline-block;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none;line-height:1.2;';
     var MAIN = BTN + 'background:#0D365F;color:#faf9f6;border:1.5px solid #0D365F;';
     var SOFT = BTN + 'background:#fff;color:#0D365F;border:1.5px solid #cfe3e7;';
@@ -281,13 +285,15 @@
       var old = messagesEl.querySelectorAll('.cara-buttons');
       for (var i = 0; i < old.length; i++) old[i].remove();
     }
-    function nextSteps(ids) {
+    function nextSteps(ids, jobHint) {
       var r = row(), first = ids[0] || '';
       if (CDS[first]) {
         linkBtn(r, 'Visit caringcds.com', 'https://caringcds.com', true, true);
         linkBtn(r, 'Call CDS at (417) 218-2888', 'tel:14172182888');
-      } else if (JOBS[first]) {
+      } else if (JOBS[first] || jobHint) {
+        if (!JOBS[first]) addBubble('Looking for a job with us? You can see our open jobs and apply in about 2 minutes.', 'cara');
         linkBtn(r, 'Apply now', page('apply.html'), true);
+        linkBtn(r, 'See open jobs', page('careers.html') + '#openings');
       } else {
         if (chat.offer !== 'sent') {
           var call = document.createElement('button');
@@ -359,11 +365,11 @@
         var replyText = (res.reply || '').replace(/^\s+|\s+$/g, '') || 'I am not sure about that. Give us a call at (417) 234-8494 and a care coordinator can help.';
         addBubble(replyText, 'cara');
         history.push({ role: 'assistant', content: replyText });
-        if (!GREETING.test(text)) { if (!firstQuestion) firstQuestion = text; nextSteps(res.ids); }
+        if (!GREETING.test(text)) { if (!firstQuestion) firstQuestion = text; nextSteps(res.ids, JOB_WORDS.test(text)); }
       }).catch(function () {
         thinking.remove();
         addBubble('Sorry, I am having trouble responding right now. Please call (417) 234-8494 or message us below.', 'cara');
-        nextSteps([]);
+        nextSteps([], JOB_WORDS.test(text));
       });
     }
     sendBtn.addEventListener('click', send);
