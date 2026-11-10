@@ -203,6 +203,16 @@ const payLabel = p => !p.pay_min ? '' :
   (p.pay_max && Number(p.pay_max) > Number(p.pay_min) ? '–$' + Number(p.pay_max).toFixed(2) : '') +
   (PAY_PER[p.pay_unit || 'HOUR'] || '/hr');
 
+/* 2026-11-10 (Samantha: people without a CNA license were applying for the PRN CNA Team and being turned away).
+   A PRN CNA posting says up top, before anyone clicks Apply, that a non-CNA can still join the PRN Caregiver Team,
+   with that team's own apply link (its published posting if there is one, else the role itself). */
+export function noCnaNote(p, c) {
+  if (p.position !== 'prn_cna') return '';
+  const href = c && c.prnCaregiverSlug ? applyUrl(c.prnCaregiverSlug) : '/apply?position=prn_caregiver';
+  return '<p class="jb-nocna"><b>No CNA license?</b> You can still join us on the PRN Caregiver Team, no license needed. '
+    + '<a href="' + href + '">Apply for the PRN Caregiver Team &rarr;</a></p>';
+}
+
 export function page(p, c) {
   p = currentTraining(p);
   const url = `${SITE}/jobs/${p.slug}`;
@@ -247,6 +257,8 @@ ${jsonLd(p)}
 .jb-body li{margin:0 0 7px;}
 .jb-apply{background:var(--soft-panel);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;margin:34px 0 8px;}
 .jb-note{font-size:13px;color:var(--muted);margin:12px 0 0;}
+.jb-nocna{background:#fbf6ea;border:1px solid #ecd9ae;border-radius:12px;padding:12px 16px;margin:0 0 22px;font-size:15px;line-height:1.6;color:var(--ink-2);}
+.jb-nocna a{color:var(--brand-blue);font-weight:600;white-space:nowrap;}
 .jb-how{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin:30px 0 0;}
 .jb-how h2{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--brand-blue);margin:0 0 4px;}
 .jb-how-lede{font-size:15px;color:var(--body-text);margin:0 0 12px;}
@@ -268,6 +280,7 @@ ${c.head}
 <div class="jb-chips">
 ${chips.map((t, i) => `<span class="jb-chip${i === 2 ? ' pay' : ''}">${esc(t)}</span>`).join('\n')}
 </div>
+${noCnaNote(p, c)}
 ${jobPhoto(p.slug)}
 <div class="jb-body">
 ${para(withoutOneLiner(p.description))}
@@ -428,6 +441,7 @@ async function updateSitemap(list) {
 async function main() {
   const list = (await fetchPostings()).map(currentTraining);
   const c = await chrome();
+  c.prnCaregiverSlug = (list.find(p => p.position === 'prn_caregiver') || {}).slug || null;   // for the PRN CNA page's no-license line
   if (!existsSync(JOBS)) await mkdir(JOBS, { recursive: true });
 
   for (const p of list) await writeFile(path.join(JOBS, p.slug + '.html'), page(p, c));

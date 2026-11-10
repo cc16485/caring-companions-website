@@ -65,6 +65,15 @@
   .ap-posline b{color:var(--brand-blue);}
   .prn-h{font-size:15px;font-weight:700;color:var(--brand-blue);margin:18px 0 2px;}
   .prn-pay{display:flex;gap:11px;align-items:flex-start;background:#fbf6ea;border:1px solid #ecd9ae;border-radius:12px;padding:14px 15px;margin:20px 0 0;font-size:max(14.5px, var(--fs-read, 0px));line-height:1.55;color:var(--ink-2);}
+  /* 2026-11-10: the "No CNA license?" pop-up on the PRN CNA Team application */
+  .nc-back{position:fixed;inset:0;background:rgba(13,30,48,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:1000;}
+  .nc-back.on{display:flex;}
+  .nc-box{background:#fff;border-radius:18px;max-width:460px;width:100%;padding:24px 22px 20px;box-shadow:0 18px 50px rgba(0,0,0,.25);max-height:calc(100vh - 32px);overflow:auto;}
+  .nc-box h2{font-family:var(--serif);font-size:24px;line-height:1.25;font-weight:600;color:var(--brand-blue);margin:0 0 10px;}
+  .nc-box p{font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:var(--ink-2);margin:0 0 12px;}
+  .nc-box .go{margin-top:8px;}
+  .nc-box .nc-no{display:block;width:100%;background:none;border:1px solid var(--border);border-radius:11px;padding:13px;font:inherit;font-size:15px;font-weight:600;color:var(--ink-2);cursor:pointer;margin-top:10px;}
+  .nc-ok{display:none;background:#e8f1ec;border:1px solid #cfe3d6;color:#1c6b45;border-radius:12px;padding:11px 14px;margin:14px 0 0;font-size:max(14.5px, var(--fs-read, 0px));line-height:1.55;}
   .prn-pay input{margin-top:3px;width:19px;height:19px;accent-color:var(--accent);flex:none;}
   @media(max-width:560px){ .row2{grid-template-columns:1fr;} .ap-band h1{font-size:26px;} }
 </style>
@@ -203,6 +212,7 @@
         <input class="t" id="states" placeholder="Kansas, Arkansas…">
       </div></div>
 
+    <div class="nc-ok" id="ncOk" role="status"></div>
     <div id="prnQs"></div>
     <div id="roleQs"></div>
 
@@ -252,6 +262,18 @@
    <p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:var(--body-text);margin:0 auto 14px;max-width:450px;" id="noWhy"></p>
    <p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.7;color:var(--muted);margin:0 auto;max-width:450px;" id="noNext"></p>
    <p class="foot">Caring Companions In-Home Senior Care &middot; (417) 234-8494 &middot; Springfield, MO</p>
+ </div>
+
+ <!-- 2026-11-10 (Samantha): someone applying for the PRN CNA Team who says they are not a CNA is stopped here, kindly,
+      before anything is saved as not qualified, and moved to the PRN Caregiver Team with one tap. What they typed stays. -->
+ <div class="nc-back" id="ncBack" onclick="if (event.target === this) ncClose()">
+   <div class="nc-box" role="dialog" aria-modal="true" aria-labelledby="ncHead">
+     <h2 id="ncHead">No CNA license? You can still join us.</h2>
+     <p>The PRN CNA Team is for CNAs with a current license. Our <b>PRN Caregiver Team</b> does not need one. It is the same flexible PRN work: you pick up shifts when it works for you and say yes or no to each one.</p>
+     <p id="ncKeep">Tap below to switch and keep going. Everything you have typed so far stays.</p>
+     <button type="button" class="go" id="ncGo" onclick="ncSwitch()">Switch to the PRN Caregiver Team</button>
+     <button type="button" class="nc-no" onclick="ncClose()">Go back, I do have a CNA license</button>
+   </div>
  </div>
 
  <!-- The most willing somebody will ever be is the moment they finish the
@@ -524,7 +546,7 @@ if (PREVIEW) {
     c.parentNode.insertBefore(head('Page ' + (i + 1) + ' of 3' + ['  ·  saved the moment they continue', '  ·  the screening questions', '  ·  then they send it'][i]), c);
   });
   fv.querySelectorAll('.go, .back, .err').forEach((b) => { b.style.display = 'none'; });
-  g('step2').appendChild(note('In the real form, a <b>No</b> to 21 or older, work authorization, transportation or a year of paid experience (or a role\'s own must-have, like a license) ends the application there with a kind explanation. Unpaid family caregiving goes to the office to verify before any interview. They cannot book an interview until all three pages are done.'));
+  g('step2').appendChild(note('In the real form, a <b>No</b> to 21 or older, work authorization, transportation or a year of paid experience (or a role\'s own must-have, like a license) ends the application there with a kind explanation. On the PRN CNA Team, a <b>No</b> to being a CNA opens a pop-up that moves them to the PRN Caregiver Team instead. Unpaid family caregiving goes to the office to verify before any interview. They cannot book an interview until all three pages are done.'));
   g('step3').parentNode.insertBefore(note('<b>After page 3:</b> they pick an in-person interview time right away (Monday to Friday, about 20 minutes), and the confirmation and reminders go from there.'), g('step3').nextSibling);
   }
 }
@@ -714,6 +736,59 @@ function yn(btn, val){
   [...w.children].forEach(b => b.classList.toggle('on', b === btn));
   A[w.dataset.k] = !!val;
   if (w.dataset.k === 'lived_outside_mo') g('statesWrap').style.display = val ? 'block' : 'none';
+  if (w.dataset.k === 'prn_cna' && !val && PRN && PRN.requires_cna !== false) ncOpen();
+}
+
+/* ---- No CNA license on the PRN CNA Team (2026-11-10) ------------------------
+   Samantha: "make it clear that if they don't have a CNA license they can still apply but click the new link and continue
+   to apply for the correct position." A No to "Are you currently a CNA?" opens this instead of ending the application.
+   Switching changes the role on this same application (nothing has been saved as not qualified), keeps every answer
+   on this page, and asks only the PRN Caregiver Team's own questions from here. */
+const NC_ROLE = 'prn_caregiver';
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && g('ncBack').classList.contains('on')) ncClose(); });
+function ncOpen(){
+  g('ncBack').classList.add('on');
+  setTimeout(() => { try { g('ncGo').focus(); } catch (e) {} }, 30);
+}
+function ncClose(){
+  /* They mis-tapped: the No comes off so they can answer again. */
+  g('ncBack').classList.remove('on');
+  if (A.prn_cna === false) {
+    delete A.prn_cna;
+    document.querySelectorAll('[data-k="prn_cna"] button').forEach(b => b.classList.remove('on'));
+  }
+}
+async function ncSwitch(){
+  const b = g('ncGo'); b.disabled = true; b.textContent = 'Switching…';
+  try {
+    const { data } = await sb.from('job_positions').select('key,active,track').eq('key', NC_ROLE).maybeSingle();
+    if (!data || data.active === false || data.track !== 'prn') throw new Error('PRN Caregiver Team not open');
+    const oneYear = A.prn_one_year;
+    delete A.prn_cna;
+    Object.keys(A).forEach(k => { if (/^rq\d+$/.test(k)) delete A[k]; });   // the CNA role's own questions do not carry over
+    POSITION = NC_ROLE; PRN = null; TITLE = null; PAY_SET = false;
+    g('prnQs').innerHTML = ''; g('roleQs').innerHTML = '';
+    await loadRoleQuestions();
+    if (!PRN) throw new Error('PRN Caregiver Team did not load');
+    if (oneYear !== undefined) {
+      A.prn_one_year = oneYear;
+      const btns = document.querySelectorAll('[data-k="prn_one_year"] button');
+      if (btns.length === 2) btns[oneYear ? 0 : 1].classList.add('on');
+    }
+    /* So a refresh or a shared link opens the right application. */
+    try {
+      const q = new URLSearchParams(location.search); q.delete('job'); q.set('position', NC_ROLE);
+      history.replaceState(null, '', location.pathname + '?' + q.toString());
+    } catch (e) {}
+    g('ncBack').classList.remove('on');
+    g('ncOk').innerHTML = '<b>You are now applying for the PRN Caregiver Team.</b> Everything you typed is still here. Just keep going.';
+    g('ncOk').style.display = 'block';
+    g('ncOk').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (e) {
+    console.error(e);
+    g('ncKeep').innerHTML = 'That did not switch over. Please call or text us on <a href="tel:+14172348494" style="color:var(--brand-blue)">(417) 234-8494</a> and we will set you up for the PRN Caregiver Team.';
+    b.style.display = 'none';
+  } finally { b.disabled = false; b.textContent = 'Switch to the PRN Caregiver Team'; }
 }
 
 function goStep(n){
@@ -904,9 +979,9 @@ async function next2(){
   err.style.display = 'none';
   const b = g('btn2'); b.disabled = true; b.textContent = 'Saving…';
   let stop = KNOCKOUTS.find(x => A[x.k] === x.when);
-  if (!stop && prnNeedsCna && A.prn_cna === false) stop = { reason: 'not a CNA (' + (PRN.label || 'PRN CNA Team') + ')',
-    why: 'The ' + (PRN.label || 'PRN CNA Team') + ' is for certified nursing assistants, so we are not able to take this application further.',
-    next: 'We also hire caregivers who are not CNAs, and you would be welcome to apply for that instead at mo-care.com/apply. Or call us on (417) 234-8494.' };
+  /* 2026-11-10: not a CNA on the PRN CNA Team is no longer a decline. They get the pop-up that moves them to the
+     PRN Caregiver Team, and nothing is saved until they choose. */
+  if (!stop && prnNeedsCna && A.prn_cna === false) { b.disabled = false; b.textContent = 'Continue'; ncOpen(); return; }
   /* A role can have its own dealbreaker: no CNA certificate for a CNA post. */
   if (!stop) {
     const failed = ROLE_QS.findIndex((q, i) => q.knockout && A['rq' + i] === false);
