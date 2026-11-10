@@ -98,6 +98,7 @@ const consistency = [
   ['start answers name the assessment and care plan', ['start_timing','start_today'].every(k => /in-home assessment/.test(byKey[k].answer) && /care plan/.test(byKey[k].answer))],
   ['no answer promises 24 to 48 hours', RECORDS.every(r => !/24 to 48|24-48|48 hours/.test(r.answer))],
   ['start answers point to the next step', ['start_timing','start_today'].every(k => /234-8494/.test(byKey[k].answer))],
+  ['the hospital answer (her OK 11-10) pauses visits and promises no hospital sitting', !!byKey.hospital_pause && /pause visits/.test(byKey.hospital_pause.answer) && /depends on the hospital/.test(byKey.hospital_pause.answer) && !/keep caring|wherever they are/.test(byKey.hospital_pause.answer)],
   ['the facilities answer (her OK 11-10) promises nothing and sends families to the office', !!byKey.facility_care && /depends on the facility/.test(byKey.facility_care.answer) && /234-8494/.test(byKey.facility_care.answer) && !/shower|wherever home is|Yes\./i.test(byKey.facility_care.answer)],
   ['the hospital answer agrees: care can continue in the hospital', /in the hospital/.test(byKey.hospital_pause.answer)],
   ['hospice keeps medical care with the hospice team', /hospice team continues to provide medical care/.test(byKey.hospice.answer)],

@@ -301,11 +301,11 @@ export const RECORDS = [
     answer: 'Every caregiver is a Caring Companions employee, so caregivers cannot be hired privately, even for a few extra hours. This is covered in your Client Care Agreement. If you need more hours, call the office at (417) 234-8494 and we will set them up.',
     topics: ['hire privately', 'pay directly', 'on the side'] },
 
-  { id: 'K148', key: 'hospital_pause', src: 'S8', on: '2026-11-06',
+  { id: 'K148', key: 'hospital_pause', src: 'S8', on: '2026-11-10',
     question: 'What if Mom goes into the hospital?',
     alt: ['Dad was admitted to the hospital, what about his visits?', 'Can we pause care?', 'Can we put visits on hold?'],
-    // 2026-11-06 (her policy: "we provide care wherever home is"): a caregiver can also stay with them in the hospital.
-    answer: 'Please call the office as soon as you can. We can pause visits, or a caregiver can keep caring for your loved one in the hospital, wherever they are. Before care at home starts again, we will check the care plan with you, because needs often change after a hospital stay.',
+    // 2026-11-10 (her "Yes, change it"): no promise of hospital sitting until the facility policy is confirmed.
+    answer: 'Please call the office as soon as you can. We\'ll pause visits while your loved one is in the hospital. Whether a caregiver can sit with them there depends on the hospital\'s rules, so we\'ll talk it through with you. Before care at home starts again, we\'ll check the care plan with you, because needs often change after a hospital stay.',
     topics: ['pause', 'on hold', 'admitted', 'hospital'] },
 
   { id: 'K149', key: 'read_agreement', src: 'S8', on: '2026-11-06',
