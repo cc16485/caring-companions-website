@@ -502,3 +502,11 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   .pg-photo::after { left: 2px; top: -10px; width: 70px; height: 52px; background-size: 11px 11px; }
   .pg-photo img { aspect-ratio: 16 / 10; border-radius: 30px 6px 30px 6px; }
 }
+
+/* Social icons in the footer (2026-11-09) */
+.cc-social { max-width: var(--shell); margin: 22px auto 0; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.cc-social.center { justify-content: center; margin-top: 16px; }
+.cc-social .lbl { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: var(--ink-2, #16283a); text-transform: uppercase; letter-spacing: 0.04em; margin-right: 4px; }
+.cc-siteftr .cc-social a, .cc-footer .cc-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border-radius: 50%; background: #fff; border: 1px solid var(--border); color: var(--brand-blue); }
+.cc-siteftr .cc-social a:hover, .cc-footer .cc-social a:hover { color: #fff; background: var(--cta); border-color: var(--cta); }
+.cc-social.center .lbl { flex-basis: 100%; text-align: center; margin: 0 0 2px; }
