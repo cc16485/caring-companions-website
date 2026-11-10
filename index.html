@@ -140,7 +140,7 @@
 .cg-eyebrow{ font-size:max(12.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#F5D061; margin:0 0 12px; }
 .cg-band h2{ font-size:clamp(28px,4.4vw,42px); color:#fff; margin:0 0 12px; letter-spacing:-.015em; }
 .cg-sub{ font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.7; color:#cfe0e6; margin:0; max-width:56ch; }
-.cg-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; align-items:stretch; }
+.cg-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; align-items:stretch; }
 .cg-cell{ display:flex; align-items:stretch; }
 .cg-card{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px;
   padding:22px 20px; flex:1; }
@@ -211,11 +211,11 @@
 #care-journey { text-align: center; } #care-journey .hp-team-lede { margin-left: auto; margin-right: auto; }
 @media (max-width: 719px) { .hp-team-grid { grid-template-columns: 1fr; } }
 /* Even rhythm between homepage sections: plain sections 96px apart (80 tablet, 64 phone); colored bands keep their own inner padding */
-.hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #hometogether-band, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 48px; padding-bottom: 48px; }
+.hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 48px; padding-bottom: 48px; }
 .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 72px; padding-bottom: 72px; }
-.hp .cg-meet { padding-top: 64px; } .hp #decision-center { padding-bottom: 72px; } .hp #hometogether-band { padding-top: 72px; }
-@media (max-width: 1039px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #hometogether-band, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 40px; padding-bottom: 40px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 56px; padding-bottom: 56px; } .hp .cg-meet { padding-top: 52px; } .hp #decision-center { padding-bottom: 56px; } .hp #hometogether-band { padding-top: 56px; } }
-@media (max-width: 719px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #hometogether-band, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 32px; padding-bottom: 32px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 44px; padding-bottom: 44px; } .hp .cg-meet { padding-top: 40px; } .hp #decision-center { padding-bottom: 44px; } .hp #hometogether-band { padding-top: 44px; } }
+.hp .cg-meet { padding-top: 64px; } .hp #decision-center { padding-bottom: 72px; }
+@media (max-width: 1039px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 40px; padding-bottom: 40px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 56px; padding-bottom: 56px; } .hp .cg-meet { padding-top: 52px; } .hp #decision-center { padding-bottom: 56px; } }
+@media (max-width: 719px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 32px; padding-bottom: 32px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 44px; padding-bottom: 44px; } .hp .cg-meet { padding-top: 40px; } .hp #decision-center { padding-bottom: 44px; } }
 </style>
 <link rel="canonical" href="https://mo-care.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -266,9 +266,6 @@
 <a href="/our-services">All services &amp; pricing &rarr;</a>
 </span>
 <span class="cc-col">
-<span class="cc-colh">Virtual caregiving</span>
-<a href="/hometogether">Virtual Caregiving<span class="cc-dd-sub">Video check-ins on their TV</span></a>
-<a href="/hometogether-included">HomeTogether TV<span class="cc-dd-sub">Free with 20+ private-pay hours a week</span></a>
 <span class="cc-colh">Hiring on your own</span>
 <a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself<span class="cc-dd-sub">Free help, even if you never hire us</span></a>
 </span>
@@ -327,7 +324,7 @@
 <span class="cc-col">
 <span class="cc-colh">Who we are</span>
 <a href="/our-story">Our Story</a>
-<a href="/family">Our Family of Care<span class="cc-dd-sub">Three ways we care for you</span></a>
+<a href="/family">Our Family of Care<span class="cc-dd-sub">Two ways we care for you</span></a>
 <a href="/our-caregivers">Our Caregivers<span class="cc-dd-sub">Who comes to your door</span></a>
 </span>
 <span class="cc-col">
@@ -526,15 +523,14 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 <div class="cg-in">
   <div class="cg-head">
     <p class="cg-eyebrow">Care that grows with you</p>
-    <h2>Five levels, one continuum.</h2>
+    <h2>Four levels, one continuum.</h2>
     <p class="cg-sub">Move between levels as needs change, without ever switching providers or starting over with a new agency.</p>
   </div>
   <div class="cg-row">
-<div class="cg-cell"><div class="cg-card"><p class="cg-n">01 &middot; Connection</p><h3>HomeTogether™</h3><p class="cg-d">Virtual check-ins and monitoring, with no caregiver in the home.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
-<div class="cg-cell"><div class="cg-card"><p class="cg-n">02 &middot; Everyday life</p><h3>Wellness Care</h3><p class="cg-d">Help with routines, meals, and light household tasks.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
-<div class="cg-cell"><div class="cg-card"><p class="cg-n">03 &middot; Hands-on</p><h3>Personal Care</h3><p class="cg-d">Bathing, dressing, mobility, and daily self-care support.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
-<div class="cg-cell"><div class="cg-card"><p class="cg-n">04 &middot; Recovery</p><h3>Transition Care</h3><p class="cg-d">Support after a hospital stay, surgery, or rehab.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
-<div class="cg-cell"><div class="cg-card"><p class="cg-n">05 &middot; Complex care</p><h3>Specialized Care</h3><p class="cg-d">Dementia, Parkinson’s, stroke, and hospice needs.</p></div></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">01 &middot; Everyday life</p><h3>Wellness Care</h3><p class="cg-d">Help with routines, meals, and light household tasks.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">02 &middot; Hands-on</p><h3>Personal Care</h3><p class="cg-d">Bathing, dressing, mobility, and daily self-care support.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">03 &middot; Recovery</p><h3>Transition Care</h3><p class="cg-d">Support after a hospital stay, surgery, or rehab.</p></div><span class="cg-arrow" aria-hidden="true"></span></div>
+<div class="cg-cell"><div class="cg-card"><p class="cg-n">04 &middot; Complex care</p><h3>Specialized Care</h3><p class="cg-d">Dementia, Parkinson’s, stroke, and hospice needs.</p></div></div>
   </div>
   <div class="cg-foot">
     <div class="cg-price">
@@ -565,50 +561,6 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 <div style="display:flex;align-items:center;gap:9px"><span style="color:#876B00;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">Caregiver training academy</span></div>
 <div style="display:flex;align-items:center;gap:9px"><span style="color:#876B00;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;font-weight:600;color:#122236">Care guidance, day or night</span></div>
 </div>
-</section>
-
-<section class="hp-section reveal" id="hometogether-band">
-<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center" class="ht-band-grid">
-  <div>
-    <a href="/family" style="display:inline-block;font-size:max(11.5px, var(--fs-min, 0px));font-weight:700;color:#876B00;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;text-decoration:none;border-bottom:1.5px solid rgba(193,122,18,.45)">New from our family of care &rarr;</a>
-    <h2 style="margin:0 0 14px">Video calls and gentle check-ins, right on their TV.</h2>
-    <p style="color:var(--muted,#55677a);font-size:max(16.5px, var(--fs-read, 0px));line-height:1.65;margin:0 0 16px">Meet <strong style="color:#0D365F">HomeTogether TV</strong>: a small device that turns the television your loved one already watches into easy family video calls, medication reminders, and quiet safety sensing. No smartphone, nothing new to learn, and it works anywhere in the country.</p>
-    <ul style="list-style:none;margin:0 0 20px;padding:0;display:grid;gap:9px">
-      <li style="display:flex;gap:9px;font-size:max(15px, var(--fs-read, 0px));color:#2c3d4d"><span style="color:#876B00;font-weight:700">✓</span> Family calls appear right on the TV, up to 10 people</li>
-      <li style="display:flex;gap:9px;font-size:max(15px, var(--fs-read, 0px));color:#2c3d4d"><span style="color:#876B00;font-weight:700">✓</span> Radar safety sensing with a physical camera privacy shutter</li>
-      <li style="display:flex;gap:9px;font-size:max(15px, var(--fs-read, 0px));color:#2c3d4d"><span style="color:#876B00;font-weight:700">✓</span> <strong style="color:#0D365F">Included free</strong> for our private-pay families at 20+ hours a week</li>
-    </ul>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a href="/hometogether-included" class="btn btn-primary" style="background:#1F7A8C;color:#fff;border-radius:12px;padding:13px 22px;font-weight:700;text-decoration:none;display:inline-block">Free at 20+ hours a week &rarr;</a>
-      <a href="https://tryhometogether.com" target="_blank" rel="noopener" style="align-self:center;color:#876B00;font-weight:700;font-size:15px;text-decoration:none">tryhometogether.com &nearr;</a>
-    </div>
-  </div>
-  <div class="ht-stage">
-    <div class="ht-blob" aria-hidden="true"></div><div class="ht-blob2" aria-hidden="true"></div>
-    <div class="ht-frame"><img src="https://tryhometogether.com/assets/hero-family-tv.jpg" alt="A mom and her little boy smiling on a family video call that shows up on Grandpa's TV" loading="lazy"></div>
-    <div class="ht-bubble ht-b-call" aria-hidden="true"><span class="ht-dot" style="background:#E3F1F0;color:#1F7A8C"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span><span>Emma is calling<small>Answer on the TV</small></span></div>
-    <div class="ht-bubble ht-b-weekly" aria-hidden="true"><span class="ht-dot" style="background:#F8E6DC;color:#C2563A"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span><span>Weekly family call<small>Fridays at 10:00 AM</small></span></div>
-    <span class="ht-heart" style="right:9%;bottom:7%;width:24px" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
-    <span class="ht-heart" style="right:3%;bottom:19%;width:15px" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.1 1.8-1.9 3.3-3.1 5.4-3.1 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
-  </div>
-</div>
-<style>
-.ht-stage{position:relative;min-height:440px;display:flex;align-items:center;justify-content:center}
-.ht-blob{position:absolute;inset:6% 4% 4% 8%;background:#E3F1F0;border-radius:58% 42% 50% 50%/50% 55% 45% 50%}
-.ht-blob2{position:absolute;width:150px;height:150px;right:2%;top:2%;background:#F8E6DC;border-radius:50%}
-.ht-frame{position:relative;width:78%;aspect-ratio:4/3.2;border-radius:28px;overflow:hidden;border:8px solid #fff;box-shadow:0 18px 40px rgba(13,54,95,.18);transform:rotate(-2deg)}
-.ht-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:40% 30%;transform:scale(1.3);transform-origin:45% 12%}
-.ht-bubble{position:absolute;background:#fff;border-radius:18px;padding:11px 15px;box-shadow:0 10px 26px rgba(13,54,95,.16);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#0D365F;line-height:1.3}
-.ht-bubble small{display:block;font-weight:400;color:#5f6f80;font-size:12px}
-.ht-dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none}
-.ht-dot svg{width:17px;height:17px}
-.ht-b-call{right:2%;top:8%}
-.ht-b-weekly{left:0;bottom:12%}
-.ht-heart{position:absolute;color:#E07A5F;display:block}
-.ht-heart svg{display:block;width:100%;height:auto}
-@media(max-width:860px){.ht-band-grid{grid-template-columns:1fr!important;gap:22px!important}}
-@media(max-width:560px){.ht-stage{min-height:320px}.ht-frame{width:86%}.ht-bubble{padding:8px 11px;font-size:12.5px;gap:8px}.ht-bubble small{font-size:11px}.ht-dot{width:28px;height:28px}.ht-b-call{top:0;right:0}.ht-b-weekly{bottom:2%;left:0}.ht-blob2{width:100px;height:100px}}
-</style>
 </section>
 
 <section id="library" class="hp-section reveal">
@@ -694,7 +646,6 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 <a href="/services/24-hour-care">24-Hour Care</a>
 <a href="/services/respite-care">Respite Care</a>
 <a href="/our-services">All services &rarr;</a>
-<a href="/hometogether-included">HomeTogether TV free at 20+ hrs</a>
 </div>
 <div>
 <h4>Explore</h4>

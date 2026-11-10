@@ -64,9 +64,6 @@ input[type=range] { accent-color: var(--accent); }
 <a href="/our-services">All services &amp; pricing &rarr;</a>
 </span>
 <span class="cc-col">
-<span class="cc-colh">Virtual caregiving</span>
-<a href="/hometogether">Virtual Caregiving<span class="cc-dd-sub">Video check-ins on their TV</span></a>
-<a href="/hometogether-included">HomeTogether TV<span class="cc-dd-sub">Free with 20+ private-pay hours a week</span></a>
 <span class="cc-colh">Hiring on your own</span>
 <a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself<span class="cc-dd-sub">Free help, even if you never hire us</span></a>
 </span>
@@ -125,7 +122,7 @@ input[type=range] { accent-color: var(--accent); }
 <span class="cc-col">
 <span class="cc-colh">Who we are</span>
 <a href="/our-story">Our Story</a>
-<a href="/family">Our Family of Care<span class="cc-dd-sub">Three ways we care for you</span></a>
+<a href="/family">Our Family of Care<span class="cc-dd-sub">Two ways we care for you</span></a>
 <a href="/our-caregivers">Our Caregivers<span class="cc-dd-sub">Who comes to your door</span></a>
 </span>
 <span class="cc-col">
@@ -165,41 +162,6 @@ input[type=range] { accent-color: var(--accent); }
 </div>
 </section>
 
-<section style="max-width:840px;margin:0 auto;padding:0 24px 24px">
-<div style="background:#ffffff;border:1.5px solid #1F7A8C;border-radius:14px;padding:24px 26px">
-<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-<svg style="width:26px;height:26px;flex:0 0 auto" aria-hidden="true"><use href="/assets/icons.svg#i-tv"/></svg>
-<div style="flex:1;min-width:200px">
-<p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0">Add HomeTogether TV</p>
-<p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:2px 0 0;line-height:1.5">Video calls, reminders &amp; radar safety sensing through their TV, $99/month flat. Many families pair it with a few in-home hours to cover the time in between.</p>
-</div>
-<label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:max(13.5px, var(--fs-min, 0px));font-weight:700;color:#1F7A8C"><input id="ht-on" type="checkbox" style="width:20px;height:20px;accent-color:#1F7A8C"> Include</label>
-</div>
-<div id="ht-opts" hidden style="margin-top:16px;border-top:1px solid #eef2ef;padding-top:14px;display:grid;gap:10px">
-<label style="display:flex;align-items:center;gap:10px;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d;cursor:pointer"><input id="ht-net" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Built-in cellular internet (no Wi-Fi needed) &middot; <b>$35/mo</b></label>
-<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d">
-<label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input id="ht-sens" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Whole-home safety sensors &middot; <b>from $15/mo</b></label>
-<span id="ht-rooms-wrap" hidden style="display:inline-flex;align-items:center;gap:6px">Rooms:
-<select id="ht-rooms" style="padding:5px 8px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:max(13px, var(--fs-read, 0px))"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
-</span>
-</div>
-<label style="display:flex;align-items:center;gap:10px;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d;cursor:pointer"><input id="ht-health" type="checkbox" style="width:17px;height:17px;accent-color:#1F7A8C"> Connected health readings (blood pressure &amp; more) &middot; <b>$10/mo</b></label>
-<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:max(13.5px, var(--fs-min, 0px));color:#2c3d4d">
-<span>Virtual caregiver visits (same caregiver, Mon&ndash;Fri):</span>
-<select id="ht-visits" style="padding:6px 9px;border:1.5px solid #dfe6e2;border-radius:7px;font-family:inherit;font-size:max(13px, var(--fs-read, 0px))">
-<option value="0">None</option>
-<option value="75">15 min &middot; once daily &middot; $75/wk</option>
-<option value="130">15 min &middot; twice daily &middot; $130/wk</option>
-<option value="180">15 min &middot; 3x daily &middot; $180/wk</option>
-<option value="125">30 min &middot; once daily &middot; $125/wk</option>
-<option value="220">30 min &middot; twice daily &middot; $220/wk</option>
-<option value="300">30 min &middot; 3x daily &middot; $300/wk</option>
-</select>
-</div>
-</div>
-</div>
-</section>
-
 <section style="max-width:840px;margin:0 auto;padding:0 24px 40px">
 <div style="display:flex;flex-direction:column;gap:12px">
 <div style="background:#fbf6ec;border:1.5px solid #A88400;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
@@ -208,12 +170,6 @@ input[type=range] { accent-color: var(--accent); }
 <p id="hc-note" style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:0;line-height:1.5"></p>
 </div>
 <p id="hc-estimate" style="font-size:19px;font-weight:700;color:#876B00;margin:0"></p>
-<div id="ht-lines" hidden style="border-top:1px dashed #e2cfa5;padding-top:10px">
-<p style="font-size:max(13px, var(--fs-read, 0px));color:#45566a;margin:0 0 3px;display:flex;justify-content:space-between"><span>HomeTogether TV</span><span id="ht-base">$99/mo</span></p>
-<p id="ht-extra-row" style="font-size:max(13px, var(--fs-read, 0px));color:#45566a;margin:0 0 3px;display:flex;justify-content:space-between" hidden><span>Add-ons</span><span id="ht-extras"></span></p>
-<p id="ht-visit-row" style="font-size:max(13px, var(--fs-read, 0px));color:#45566a;margin:0 0 8px;display:flex;justify-content:space-between" hidden><span>Virtual caregiver visits</span><span id="ht-visits-amt"></span></p>
-<p style="font-size:max(16px, var(--fs-head, 0px));font-weight:700;color:#122236;margin:0;display:flex;justify-content:space-between"><span>Everything together</span><span id="combined"></span></p>
-</div>
 </div>
 <div style="background:#ffffff;border:1.5px solid #e4e1d8;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
 <div>
@@ -237,7 +193,7 @@ input[type=range] { accent-color: var(--accent); }
 <p style="font-size:19px;font-weight:700;color:#122236;margin:0">$6,500 – $9,000/mo</p>
 </div>
 </div>
-<p style="font-size:max(12px, var(--fs-min, 0px));color:#4f5b54;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr, for visits and 24-hour care alike. HomeTogether TV is $99/month flat with optional add-ons (internet $35, sensors from $15, health readings $10) and weekly-billed virtual visits. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
+<p style="font-size:max(12px, var(--fs-min, 0px));color:#4f5b54;line-height:1.6;margin:16px 0 0;text-align:center">Home care figures use our published rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr, for visits and 24-hour care alike. Assisted Living, Memory Care, and Nursing Home figures are typical Missouri regional ranges for comparison, not our pricing, ask any facility for their current rate.</p>
 </section>
 
 
@@ -281,7 +237,6 @@ input[type=range] { accent-color: var(--accent); }
 <a href="/services/24-hour-care">24-Hour Care</a>
 <a href="/services/respite-care">Respite Care</a>
 <a href="/our-services">All services &rarr;</a>
-<a href="/hometogether-included">HomeTogether TV free at 20+ hrs</a>
 </div>
 <div>
 <h4>Explore</h4>
@@ -325,16 +280,6 @@ input[type=range] { accent-color: var(--accent); }
   var weeksPerMonth = 4.33;
   var lowMo = 0, highMo = 0;
 
-  function htMonthly() {
-    if (!el('ht-on').checked) return null;
-    var base = 99, extras = 0;
-    if (el('ht-net').checked) extras += 35;
-    if (el('ht-sens').checked) extras += 15 + (parseInt(el('ht-rooms').value, 10) - 1) * 5;
-    if (el('ht-health').checked) extras += 10;
-    var visitsWk = parseInt(el('ht-visits').value, 10) || 0;
-    return { base: base, extras: extras, visits: visitsWk * weeksPerMonth, total: base + extras + visitsWk * weeksPerMonth };
-  }
-
   function update() {
     var hours = parseInt(slider.value, 10);
     el('hours-label').textContent = String(hours);
@@ -350,26 +295,8 @@ input[type=range] { accent-color: var(--accent); }
     }
     el('hc-estimate').textContent = label;
     el('hc-note').textContent = note;
-
-    var ht = htMonthly();
-    el('ht-opts').hidden = !el('ht-on').checked;
-    el('ht-lines').hidden = !ht;
-    if (ht) {
-      el('ht-extra-row').hidden = !ht.extras;
-      el('ht-extras').textContent = '+' + money(ht.extras) + '/mo';
-      el('ht-visit-row').hidden = !ht.visits;
-      el('ht-visits-amt').textContent = '+' + money(ht.visits) + '/mo';
-      el('combined').textContent = money(lowMo + ht.total) + ' – ' + money(highMo + ht.total) + '/mo';
-    }
-    el('ht-rooms-wrap').hidden = !el('ht-sens').checked;
   }
   slider.addEventListener('input', update);
-  ['ht-on','ht-net','ht-sens','ht-health'].forEach(function (id) { el(id).addEventListener('change', update); });
-  ['ht-rooms','ht-visits'].forEach(function (id) { el(id).addEventListener('change', update); });
-  window.__ccCalcSummary = function () {
-    var ht = htMonthly();
-    return (ht ? ' Plus HomeTogether TV at ' + money(ht.total) + '/mo. Combined: ' + el('combined').textContent + '.' : '');
-  };
   update();
 })();
 </script>

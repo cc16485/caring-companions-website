@@ -9,7 +9,6 @@
 - Published hourly rates: Wellness Care $30, Personal Care $32, Advanced Care $34 (see https://mo-care.com/pricing for current rates)
 - Service area: Greene, Christian, Webster and Polk counties, and Taney, Lawrence, Dallas and Stone counties when a caregiver is nearby (https://mo-care.com/service-area)
 - Missouri Medicaid: families on Medicaid can choose their own caregiver, even a family member, and Medicaid pays that caregiver, through our sister agency Caring Companions CDS at https://caringcds.com/ (417-218-2888)
-- Also from Caring Companions: HomeTogether virtual caregiver visits on the TV (https://mo-care.com/hometogether)
 
 Town pages are at https://mo-care.com/home-care-in-<town>-mo (for example https://mo-care.com/home-care-in-nixa-mo).
 
@@ -25,9 +24,7 @@ Always point people to the linked page or the phone number for current details.
 - [Home care for chronic conditions](https://mo-care.com/chronic-conditions): Managing a chronic or age-related condition at home is easier with the right support. Our caregivers help with the daily routines, monitoring, and reassura
 - [Compare Care Options](https://mo-care.com/compare-care): An honest, side-by-side look, including when home care isn't the right fit. We'd rather you choose well than choose us.
 - [Care Costs Calculator](https://mo-care.com/cost-calculator): Move the slider to your estimated weekly hours and see how home care compares to other options. All figures are estimates, a free in-home assessment gets you…
-- [Virtual Caregiver Visits from $75 a Week](https://mo-care.com/hometogether): A real caregiver checks in by video on your parent's TV every weekday, up to 3 times a day: medications, meals, reminders and company. From $75 a week.
-- [HomeTogether TV Included at 20+ Hours a Week](https://mo-care.com/hometogether-included): Private-pay families with 20 or more hours of care a week get HomeTogether TV at no charge: video calls, reminders and quiet safety sensing on their own TV.
-- [Our Home Care Services](https://mo-care.com/our-services): Wellness care, personal care, hourly, overnight, 24-hour, and respite care, plus HomeTogether™ virtual care. Flexible support across Southwest Missouri.
+- [Our Home Care Services](https://mo-care.com/our-services): Wellness care, personal care, hourly, overnight, 24-hour, and respite care. Flexible support across Southwest Missouri.
 - [Transparent Pricing](https://mo-care.com/pricing): Our published rates: Wellness Care $30/hr, Personal Care $32/hr, Advanced Care $34/hr. Plus a Best Price Guarantee and help with long-term care insurance.
 - [Home Care Service Areas in Southwest Missouri](https://mo-care.com/service-area): In-home senior care across Greene, Christian, Webster and Polk counties, and in Taney, Lawrence, Dallas and Stone counties when a caregiver is nearby.
 - [24-Hour Care](https://mo-care.com/services/24-hour-care): A rotating team of caregivers keeps someone present day and night - for families who need constant hands-on help, not just a check-in.
@@ -47,7 +44,7 @@ Always point people to the linked page or the phone number for current details.
 - [Care Questionnaire](https://mo-care.com/assessment): Eight short sections covering safety, memory, daily needs, medication, and more. At the end, you'll get a written report you can keep, print, and bring to…
 - [Schedule a Free In-Home Assessment](https://mo-care.com/book): Book a free, no-obligation in-home assessment. A care coordinator comes to you, you build the care plan together, and you decide from there.
 - [Contact Us](https://mo-care.com/contact): No pressure, no sales script, just a conversation with a real care coordinator. Prefer to explore on your own first? Try the Care Questionnaire or ask us a question…
-- [Caring Companions Family](https://mo-care.com/family): In-home care across southwest Missouri, plus HomeTogether: nationwide virtual caregiving through the TV, and help finding an in-home caregiver near you.
+- [Caring Companions Family](https://mo-care.com/family): In-home care across southwest Missouri, plus help finding and hiring an in-home caregiver near you.
 - [Family Care Academy](https://mo-care.com/family-academy): Free caregiver training for families, built from the same curriculum we use to train our professional caregivers. Start with the dementia care course.
 - [The Dementia Journey: Module 1](https://mo-care.com/family-academy/dementia-module-1)
 - [Family Checklist](https://mo-care.com/family-checklist): A free family checklist: everything to gather and arrange for a loved one's care, in one place. Checked items save automatically, and you can add your own.
