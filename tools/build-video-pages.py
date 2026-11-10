@@ -41,7 +41,7 @@ def build(v):
                  '<figcaption style="font-size:13px;color:#4f5b54;margin-top:8px">Preview only: the video goes live on YouTube on %s.</figcaption></figure>') % (v['id'], E(v['title']), datestr)
     chapters = ''.join('<li><strong>%s</strong> %s</li>' % (E(t), E(n)) for t, n in v['chapters'])
     main = ('<div class="cc-breadcrumb"><p style="font-size:max(13px, var(--fs-read, 0px));color:#4f5b54;margin:0"><a href="/videos" style="text-decoration:none">Videos</a> &rsaquo; <span style="color:#45566a">%s</span></p></div>\n'
-            '<section class="guide-hero"><p style="font-size:max(13px, var(--fs-min, 0px));font-weight:600;color:#876B00;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 14px">Video</p>'
+            '<section class="guide-hero"><p style="font-size:max(13px, var(--fs-min, 0px));font-weight:600;color:#1F7A8C;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 14px">Video</p>'
             '<h1 class="guide-h1">%s</h1>'
             '<p style="font-size:max(13.5px, var(--fs-read, 0px));color:#4f5b54;margin:0">By Samantha Troutman, owner of Caring Companions &middot; %s</p></section>\n'
             '<section class="guide-body"><article style="max-width:840px">%s\n<div style="height:24px"></div>\n%s\n%s\n'
@@ -83,7 +83,7 @@ def index(items, preview):
                     '<div style="padding:16px 18px"><p style="font-size:12.5px;color:#4f5b54;margin:0 0 6px">%s</p>'
                     '<p style="font-family:\'Source Serif 4\',Georgia,serif;font-size:19px;line-height:1.3;color:#0D365F;font-weight:600;margin:0 0 8px">%s</p>'
                     '<p style="font-size:14.5px;line-height:1.6;color:#2c3d4d;margin:0">%s</p></div></a>' % (i['url'], i['thumb'], i['datestr'], E(i['title']), E(i['desc'])) for i in items)
-    main = ('<section class="guide-hero"><p style="font-size:max(13px, var(--fs-min, 0px));font-weight:600;color:#876B00;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 14px">Videos</p>'
+    main = ('<section class="guide-hero"><p style="font-size:max(13px, var(--fs-min, 0px));font-weight:600;color:#1F7A8C;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 14px">Videos</p>'
             '<h1 class="guide-h1">Videos for families</h1><p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:#2c3d4d;margin:0;max-width:62ch">Short, practical videos from Caring Companions on home care, paying for care, dementia and caring for a parent. Each one has a written version and the full transcript.</p></section>\n'
             '<section class="guide-body" style="display:block"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;max-width:1100px">%s</div></section>\n') % cards
     page = TEMPLATE[:TEMPLATE.index('<div class="cc-breadcrumb">')] + main + TEMPLATE[TEMPLATE.index('</aside>') + 8:]
