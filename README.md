@@ -74,3 +74,5 @@ unreachable, both fall back gracefully to canned responses. Source lives in
 
 Any static server works, e.g. `python3 -m http.server 4173 --directory .`
 (there's also a `cc-website` entry in `~/Claude/.claude/launch.json`).
+
+Note (2026-11-10): the online booking page (/book) was removed. It forwards to the "Who needs care?" request-a-call steps on the home page; families call first and the office books the in-home assessment by phone.
