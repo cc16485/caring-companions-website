@@ -528,3 +528,19 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
 .cc-siteftr .cc-social a, .cc-footer .cc-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border-radius: 50%; background: #fff; border: 1px solid var(--border); color: var(--brand-blue); }
 .cc-siteftr .cc-social a:hover, .cc-footer .cc-social a:hover { color: #fff; background: var(--cta); border-color: var(--cta); }
 .cc-social.center .lbl { flex-basis: 100%; text-align: center; margin: 0 0 2px; }
+
+/* Site menu (11-10): Request a Call button, phone-header Call us button, leaner phone header */
+.nh-nav-req { border: 2px solid var(--cta); color: var(--cta) !important; border-radius: 8px; padding: 9px 16px; font-weight: 600 !important; }
+.nh-nav-req:hover { background: #EAF4F6; }
+.nh-hcall { display: none; }
+@media (max-width: 1100px) {
+  .nh-hcall { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; margin-right: 10px; background: var(--cta); color: #fff; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px; text-decoration: none; white-space: nowrap; }
+  .nh-hcall svg { width: 17px; height: 17px; fill: currentColor; }
+  .nh-nav-req { margin: 12px 24px 0; text-align: center; padding: 13px !important; border-top: 2px solid var(--cta) !important; }
+}
+@media (max-width: 719px) {
+  .cc-utility { display: none; }
+  .cc-header-inner { padding-left: 14px; padding-right: 14px; gap: 8px; }
+  .nh-hcall { margin-right: 0; padding: 9px 13px; font-size: 15px; gap: 6px; }
+  .cc-burger { padding-left: 11px !important; padding-right: 11px !important; column-gap: 7px !important; }
+}
