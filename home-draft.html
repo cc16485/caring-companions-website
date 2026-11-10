@@ -420,6 +420,65 @@
 .nh-step { display: none; }
 .nh-step.on { display: block; }
 
+/* Focused steps (11-10, round 2) */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.nh-toprow { display: flex; justify-content: space-between; align-items: center; margin: 0 0 16px; min-height: 26px; }
+.nh-toprow .nh-stepno { margin: 0 0 0 auto; }
+#nhBack { text-decoration: none; color: var(--brand-blue); font-weight: 700; padding: 4px 0; }
+#nhBack[hidden] { display: none; }
+.nh-big { font-family: var(--serif); font-size: 42px; line-height: 1.12; font-weight: 600; color: var(--brand-blue); margin: 4px 0 14px; letter-spacing: -.01em; }
+.nh-big:focus { outline: none; }
+.nh-intro { font-size: max(17px, var(--fs-read, 0px)); font-weight: 600; line-height: 1.55; color: var(--ink); margin: 0 0 20px; }
+.nh-cards { display: grid; gap: 12px; }
+.nh-pick { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; width: 100%; text-align: left; background: #fff; border: 2px solid transparent; border-radius: 14px; padding: 18px 20px; font: inherit; cursor: pointer; box-shadow: 0 2px 10px rgba(13,54,95,.06); transition: border-color .15s; }
+.nh-pick:hover { border-color: #9cc8d0; }
+.nh-pick:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.nh-pick span { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.5; color: var(--muted); }
+.nh-pick b { display: block; font-size: max(18px, var(--fs-head, 0px)); color: var(--brand-blue); margin-bottom: 3px; }
+.nh-pick i { flex: none; width: 26px; height: 26px; border: 2px solid var(--brand-blue); border-radius: 7px; margin-top: 2px; display: grid; place-items: center; font-style: normal; }
+.nh-pick[aria-pressed="true"] { border-color: var(--cta); }
+.nh-pick[aria-pressed="true"] i { background: var(--cta); border-color: var(--cta); }
+.nh-pick[aria-pressed="true"] i::after { content: "¹3"; color: #fff; font-weight: 800; font-size: 15px; }
+.nh-cont { display: block; width: 100%; margin-top: 18px; background: var(--cta); color: #fff; border: 0; border-radius: 999px; padding: 16px 24px; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer; }
+.nh-cont:hover { background: var(--cta-hover); }
+.nh-cont[disabled] { opacity: .6; cursor: wait; }
+.nh-small-q { font-size: 16px; font-weight: 700; color: var(--ink); margin: 6px 0 8px; }
+.nh-times { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.nh-times .nh-opt { justify-content: center; padding: 11px 8px; font-size: 16px; }
+.nh-field input::placeholder { color: #6b7a88; }
+.nh-consent { display: flex; gap: 12px; align-items: flex-start; margin: 16px 0 0; font-size: max(13.5px, var(--fs-min, 0px)); line-height: 1.55; color: var(--muted); cursor: pointer; }
+.nh-consent input { width: 20px; height: 20px; min-width: 20px; margin-top: 2px; accent-color: var(--cta); }
+.nh-consent a, .nh-fine a { color: var(--cta); font-weight: 600; }
+.nh-side { display: none; }
+.nh-quote { display: none; }
+.nh-quote.on { display: block; }
+.nh-qmark { display: block; font-family: var(--serif); font-size: 120px; line-height: .8; color: var(--cta); height: 60px; }
+.nh-quote p { font-size: max(19px, var(--fs-read, 0px)); line-height: 1.6; color: var(--ink); margin: 0 0 12px; }
+.nh-quote cite { font-style: normal; font-weight: 700; color: var(--brand-blue); font-size: 16px; }
+.nh-headset { width: 58px; height: 58px; color: var(--cta); }
+.nh-quote .nh-help-h { font-weight: 700; color: var(--brand-blue); font-size: 21px; margin: 6px 0 6px; }
+.nh-hero.nh-focus { background: #E6F2F4; }
+.nh-hero.nh-focus > div:first-child > .nh-kick,
+.nh-hero.nh-focus > div:first-child > h1,
+.nh-hero.nh-focus > div:first-child > .nh-sub,
+.nh-hero.nh-focus > div:first-child > .nh-stars,
+.nh-hero.nh-focus .hp-hero-media { display: none; }
+.nh-hero.nh-focus .nh-side { display: block; }
+@media (min-width: 1040px) {
+  .nh-hero.nh-focus { min-height: 640px; align-items: start; }
+  .nh-hero .nh-side { position: absolute; top: 0; bottom: 0; right: max(24px, calc((100% - var(--shell)) / 2 + 24px)); left: 58%; padding-top: 140px; text-align: right; }
+  .nh-hero .nh-headset { margin-left: auto; display: block; }
+}
+@media (max-width: 1039px) {
+  .nh-side { margin-top: 8px; border-top: 1px solid #c9dde2; padding-top: 22px; }
+  .nh-qmark { font-size: 80px; height: 40px; }
+  .nh-quote p { font-size: 17px; }
+}
+@media (max-width: 719px) {
+  .nh-big { font-size: 32px; }
+  .nh-pick { padding: 15px 16px; }
+}
+
 /* Sections */
 .nh-sec { max-width: var(--shell); margin: 0 auto; padding: 88px 24px; box-sizing: border-box; }
 .nh-sec h2 { font-family: var(--serif); font-size: 40px; line-height: 1.15; font-weight: 600; color: var(--brand-blue); margin: 0 0 18px; letter-spacing: -.01em; }
@@ -535,7 +594,7 @@
 
 <div class="nh-ask" id="nhAsk">
   <div class="nh-progress" aria-hidden="true"><i id="nhBar"></i></div>
-  <p class="nh-stepno" id="nhStepNo">Step 1 of 5</p>
+  <div class="nh-toprow"><button type="button" class="nh-back" id="nhBack" hidden>&#9664; Back</button><p class="nh-stepno" id="nhStepNo">Step 1 of 5</p></div>
 
   <div class="nh-step on" data-step="1">
     <p class="nh-q" id="nhQ1">Who needs care?</p>
@@ -548,50 +607,56 @@
   </div>
 
   <div class="nh-step" data-step="2">
-    <p class="nh-q" id="nhQ2">What kind of help would make the biggest difference?<small>Pick any that fit. Not sure? That's fine too.</small></p>
-    <div class="nh-opts" role="group" aria-labelledby="nhQ2" id="nhHelp">
-      <button type="button" class="nh-opt" aria-pressed="false" data-help="Company, meals and errands">Company, meals and errands</button>
-      <button type="button" class="nh-opt" aria-pressed="false" data-help="Bathing, dressing and getting around">Bathing, dressing and getting around</button>
-      <button type="button" class="nh-opt" aria-pressed="false" data-help="Memory loss or dementia">Memory loss or dementia</button>
-      <button type="button" class="nh-opt" aria-pressed="false" data-help="Coming home from the hospital">Coming home from the hospital</button>
-      <button type="button" class="nh-opt" aria-pressed="false" data-help="Overnight or 24-hour care">Overnight or 24-hour care</button>
-      <button type="button" class="nh-opt" aria-pressed="false" data-help="Not sure yet">Not sure yet</button>
+    <h2 class="nh-big">What can we help with?</h2>
+    <p class="nh-intro" id="nhQ2">Pick any that fit. If you don't see what you need, you can tell us when we call.</p>
+    <div class="nh-cards" role="group" aria-labelledby="nhQ2">
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Everyday help"><span><b>Everyday help</b>Company, meals, light housekeeping, errands and medication reminders</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Personal care"><span><b>Personal care</b>Bathing, dressing, toileting and help getting around safely</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Memory care"><span><b>Memory care</b>Alzheimer's and other kinds of dementia</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="After a hospital stay"><span><b>After a hospital stay</b>Settling back in after surgery, a hospital stay or rehab</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Overnight or 24-hour care"><span><b>Overnight or 24-hour care</b>Someone there through the night or around the clock</span><i aria-hidden="true"></i></button>
     </div>
-    <div class="nh-row"><button type="button" class="nh-next" data-go="3">Next</button><button type="button" class="nh-back" data-go="1">Back</button></div>
+    <button type="button" class="nh-cont" data-go="3">Continue</button>
   </div>
 
   <div class="nh-step" data-step="3">
-    <p class="nh-q" id="nhQ3">When would you like care to start?</p>
+    <h2 class="nh-big">How soon is care needed?</h2>
+    <p class="nh-intro" id="nhQ3">Whether it's a sudden need or you're planning ahead, we're happy to talk it through.</p>
     <div class="nh-opts" role="group" aria-labelledby="nhQ3">
-      <button type="button" class="nh-opt" data-when="As soon as possible">As soon as possible</button>
-      <button type="button" class="nh-opt" data-when="In the next few weeks">In the next few weeks</button>
+      <button type="button" class="nh-opt" data-when="Right away">Right away</button>
+      <button type="button" class="nh-opt" data-when="Within a few weeks">Within a few weeks</button>
       <button type="button" class="nh-opt" data-when="Just planning ahead">Just planning ahead</button>
+      <button type="button" class="nh-opt" data-when="Not sure">I'm not sure</button>
     </div>
-    <div class="nh-row"><button type="button" class="nh-back" data-go="2">Back</button></div>
   </div>
 
   <div class="nh-step" data-step="4">
-    <p class="nh-q">Where would care be?<small>So we can make sure a caregiver can get there.</small></p>
-    <label class="nh-field"><span>ZIP code or town</span><input id="nhWhere" autocomplete="postal-code" placeholder="65804 or Nixa"></label>
-    <div class="nh-row"><button type="button" class="nh-next" data-go="5">Next</button><button type="button" class="nh-back" data-go="3">Back</button></div>
+    <h2 class="nh-big">Where is care needed?</h2>
+    <p class="nh-intro">Enter the ZIP code or town where the care would be.</p>
+    <label class="nh-field"><span class="sr-only">ZIP code or town</span><input id="nhWhere" autocomplete="postal-code" placeholder="ZIP code or town"></label>
+    <p class="nh-err" id="nhErr4" role="alert"></p>
+    <button type="button" class="nh-cont" id="nhGo5">Continue</button>
   </div>
 
   <div class="nh-step" data-step="5">
-    <p class="nh-q">Who should we call?<small>A care coordinator from our Springfield office will call you. No pressure, just a conversation.</small></p>
+    <h2 class="nh-big">Almost done!</h2>
+    <p class="nh-intro">Fill in your details and a care coordinator from our Springfield office will call you.</p>
     <div class="nh-two">
-      <label class="nh-field"><span>Your name</span><input id="nhName" autocomplete="name"></label>
-      <label class="nh-field"><span>Phone number</span><input id="nhPhone" type="tel" autocomplete="tel" inputmode="tel"></label>
+      <label class="nh-field"><span class="sr-only">First name</span><input id="nhFirst" autocomplete="given-name" placeholder="First name"></label>
+      <label class="nh-field"><span class="sr-only">Last name</span><input id="nhLast" autocomplete="family-name" placeholder="Last name"></label>
     </div>
-    <label class="nh-field"><span>Email <em style="font-style:normal;font-weight:400;color:var(--muted)">optional</em></span><input id="nhEmail" type="email" autocomplete="email"></label>
-    <p class="nh-q" style="font-size:17px;font-family:inherit;margin:4px 0 8px" id="nhQ5">Best time to call</p>
-    <div class="nh-opts" role="group" aria-labelledby="nhQ5" id="nhTime" style="grid-template-columns:repeat(3,1fr)">
-      <button type="button" class="nh-opt" aria-pressed="false" data-time="Morning" style="justify-content:center;padding:11px 10px">Morning</button>
-      <button type="button" class="nh-opt" aria-pressed="false" data-time="Afternoon" style="justify-content:center;padding:11px 10px">Afternoon</button>
-      <button type="button" class="nh-opt" aria-pressed="false" data-time="Evening" style="justify-content:center;padding:11px 10px">Evening</button>
+    <label class="nh-field"><span class="sr-only">Phone number</span><input id="nhPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Phone number"></label>
+    <label class="nh-field"><span class="sr-only">Email, optional</span><input id="nhEmail" type="email" autocomplete="email" placeholder="Email (optional)"></label>
+    <p class="nh-small-q" id="nhQ5">Best time to call</p>
+    <div class="nh-times" role="group" aria-labelledby="nhQ5">
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Morning">Morning</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Afternoon">Afternoon</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Evening">Evening</button>
     </div>
+    <label class="nh-consent"><input type="checkbox" id="nhTexts"><span>By checking this box, I agree to receive text messages from Caring Companions In-Home Senior Care at the number above about my questions and care, including assessment reminders and care updates. Message frequency varies. Message and data rates may apply. Reply STOP to stop, HELP for help. Agreeing is not required to receive care. See our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
     <p class="nh-err" id="nhErr" role="alert"></p>
-    <div class="nh-row"><button type="button" class="nh-next" id="nhSend">Request my call</button><button type="button" class="nh-back" data-go="4">Back</button></div>
-    <p class="nh-fine">We only use your number to talk with you about care.</p>
+    <button type="button" class="nh-cont" id="nhSend">Request my call</button>
+    <p class="nh-fine" style="text-align:center">By clicking "Request my call" you agree to our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
   </div>
 
   <div class="nh-step" data-step="done">
@@ -608,6 +673,13 @@
 <div class="hp-hero-media">
 <img src="assets/photos/hero-caregiver-sofa.webp" width="1400" height="788" fetchpriority="high" decoding="async" alt="A caregiver and a smiling older woman with a cup of tea, chatting on the sofa at home" class="hp-hero-img">
 </div>
+<aside class="nh-side" aria-live="polite">
+  <div class="nh-quote" data-for="2"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Caring Companions is an outstanding company. Their caregivers have gone above and beyond during their care of my parents.</p><cite>Susan C. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="3"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Have been very impressed with the compassionate care my parents have received in their home. The administration has also been very flexible to work with us and very responsive.</p><cite>Judy B. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="4"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Wonderful care. They made my dad very comfortable and dealt with him using compassion and friendship.</p><cite>Debbie B. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="done"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Excellent coordination and fulfillment of care for Mom. Very happy and satisfied with Caring Companions!</p><cite>Robert G. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="5"><svg class="nh-headset" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 28v-4a15 15 0 0 1 30 0v4"/><rect x="6" y="26" width="8" height="12" rx="3"/><rect x="34" y="26" width="8" height="12" rx="3"/><path d="M38 38c0 3.5-3 6-7 6h-4"/></svg><p class="nh-help-h">We're here to help</p><p>A care coordinator from our Springfield office will call you, usually the same business day. No pressure, just a conversation.</p></div>
+</aside>
 </section>
 
 <div class="hp-proof-wrap">
@@ -729,28 +801,42 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 <script>
 (function () {
   'use strict';
+  var hero = document.getElementById('who-needs-care');
   var ask = document.getElementById('nhAsk');
   var steps = ask.querySelectorAll('.nh-step');
-  var bar = document.getElementById('nhBar'), stepNo = document.getElementById('nhStepNo');
+  var quotes = hero.querySelectorAll('.nh-quote');
+  var bar = document.getElementById('nhBar'), stepNo = document.getElementById('nhStepNo'), back = document.getElementById('nhBack');
   var data = { who: '', help: [], when: '', where: '', time: '' };
+  var trail = [1];
 
-  function go(n) {
-    steps.forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-step') === String(n)); });
-    var done = n === 'done';
+  function cur() { return trail[trail.length - 1]; }
+
+  function show(n) {
+    var key = String(n), done = key === 'done';
+    steps.forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-step') === key); });
+    quotes.forEach(function (q) { q.classList.toggle('on', q.getAttribute('data-for').split(' ').indexOf(key) > -1); });
+    hero.classList.toggle('nh-focus', key !== '1');
     bar.style.width = done ? '100%' : (Number(n) * 20) + '%';
     stepNo.textContent = done ? 'All done' : 'Step ' + n + ' of 5';
-    var cur = ask.querySelector('.nh-step.on');
-    var first = cur && cur.querySelector(done ? '#nhDone' : 'input, button');
-    if (first && n !== 1) first.focus({ preventScroll: true });
-    if (n !== 1 && ask.getBoundingClientRect().top < 0) ask.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    back.hidden = key === '1' || done;
+    if (key === '1') return;
+    // Each step opens at the top of the screen, just under the menu bar.
+    var head = document.querySelector('.cc-header');
+    var off = head ? head.getBoundingClientRect().height + 12 : 80;
+    var top = ask.getBoundingClientRect().top + window.pageYOffset - off;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    var focusEl = done ? document.getElementById('nhDone') : ask.querySelector('.nh-step.on h2');
+    if (focusEl) { focusEl.setAttribute('tabindex', '-1'); focusEl.focus({ preventScroll: true }); }
   }
+  function go(n) { trail.push(n); show(n); }
+
+  back.addEventListener('click', function () { if (trail.length > 1) trail.pop(); show(cur()); });
 
   ask.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     if (b.hasAttribute('data-who')) { data.who = b.getAttribute('data-who'); go(2); return; }
     if (b.hasAttribute('data-help')) {
-      var on = b.getAttribute('aria-pressed') !== 'true';
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
       data.help = Array.prototype.map.call(ask.querySelectorAll('[data-help][aria-pressed="true"]'), function (x) { return x.getAttribute('data-help'); });
       return;
     }
@@ -762,26 +848,36 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
     if (b.hasAttribute('data-go')) { go(Number(b.getAttribute('data-go'))); return; }
   });
 
+  var where = document.getElementById('nhWhere'), err4 = document.getElementById('nhErr4');
+  function toFive() {
+    data.where = where.value.trim();
+    if (!data.where) { err4.textContent = 'Please add a ZIP code or town.'; err4.classList.add('on'); where.focus(); return; }
+    err4.classList.remove('on'); go(5);
+  }
+  document.getElementById('nhGo5').addEventListener('click', toFive);
+  where.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); toFive(); } });
+
   var err = document.getElementById('nhErr'), send = document.getElementById('nhSend');
-  function fail(msg) { err.innerHTML = msg; err.classList.add('on'); send.disabled = false; send.textContent = 'Request my call'; }
+  function fail(msg, el) { err.innerHTML = msg; err.classList.add('on'); send.disabled = false; send.textContent = 'Request my call'; if (el) el.focus(); }
 
   send.addEventListener('click', function () {
     err.classList.remove('on');
-    var name = document.getElementById('nhName').value.trim();
-    var phone = document.getElementById('nhPhone').value.trim();
+    var first = document.getElementById('nhFirst'), last = document.getElementById('nhLast'), phone = document.getElementById('nhPhone');
     var email = document.getElementById('nhEmail').value.trim();
-    data.where = document.getElementById('nhWhere').value.trim();
-    if (!name) { fail('Please add your name.'); document.getElementById('nhName').focus(); return; }
-    if (phone.replace(/\D/g, '').replace(/^1/, '').length !== 10) { fail('Please add a 10 digit phone number so we can call you.'); document.getElementById('nhPhone').focus(); return; }
-    if (!window.CCForms) { fail('This did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>.'); return; }
+    var texts = document.getElementById('nhTexts').checked;
+    if (!first.value.trim()) return fail('Please add your first name.', first);
+    if (!last.value.trim()) return fail('Please add your last name.', last);
+    if (phone.value.replace(/\D/g, '').replace(/^1/, '').length !== 10) return fail('Please add a 10 digit phone number so we can call you.', phone);
+    if (!window.CCForms) return fail('This did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>.');
     send.disabled = true; send.textContent = 'Sending...';
     var msg = 'Asked for a call from the website home page.' +
       ' Care is for: ' + (data.who || 'not given') + '.' +
       ' Help wanted: ' + (data.help.length ? data.help.join(', ') : 'not given') + '.' +
       ' Start: ' + (data.when || 'not given') + '.' +
       ' Where: ' + (data.where || 'not given') + '.' +
-      ' Best time to call: ' + (data.time || 'any time') + '.';
-    window.CCForms.submitLead({ name: name, phone: phone, email: email, care_for: data.who, message: msg })
+      ' Best time to call: ' + (data.time || 'any time') + '.' +
+      ' Agreed to text messages: ' + (texts ? 'yes' : 'no') + '.';
+    window.CCForms.submitLead({ name: first.value.trim() + ' ' + last.value.trim(), phone: phone.value.trim(), email: email, care_for: data.who, message: msg })
       .then(function () { go('done'); })
       .catch(function () { fail('Sorry, this did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>, or try again.'); });
   });
