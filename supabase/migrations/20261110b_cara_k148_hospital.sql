@@ -1,0 +1,5 @@
+-- 2026-11-10: K148 (hospital) no longer promises a caregiver can stay in the hospital (her "Yes, change it").
+-- Only K148 changes, and only when it still differs. Same text as supabase/knowledge/cara-2026-10-27.mjs.
+update public.kb_items set answer = 'Please call the office as soon as you can. We''ll pause visits while your loved one is in the hospital. Whether a caregiver can sit with them there depends on the hospital''s rules, so we''ll talk it through with you. Before care at home starts again, we''ll check the care plan with you, because needs often change after a hospital stay.', version = version + 1, updated_at = now(),
+  verified_on = '2026-11-10', verified_by = 'Samantha 11-10: no hospital sitting promise until facility policy is confirmed'
+  where id = 'K148' and answer is distinct from 'Please call the office as soon as you can. We''ll pause visits while your loved one is in the hospital. Whether a caregiver can sit with them there depends on the hospital''s rules, so we''ll talk it through with you. Before care at home starts again, we''ll check the care plan with you, because needs often change after a hospital stay.';
