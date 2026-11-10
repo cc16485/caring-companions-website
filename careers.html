@@ -18,6 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/ask.css">
 <style>
 .cr-hero { max-width:1200px; margin: 0 auto; padding: 60px 24px 24px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 44px; align-items: center; }
 .cr-h1 { font-family: var(--serif); font-size: 46px; line-height: 1.12; font-weight: 600; margin: 0 0 18px; color: var(--brand-blue); letter-spacing: -0.015em; }
@@ -44,7 +45,7 @@
 .cr-prn-more { font-size: 15px; font-weight: 600; color: #F5D061; text-decoration: underline; }
 .cr-prn-more:hover { color: #fbfaf7; }
 .cr-prn-btns { flex: 1 1 280px; display: grid; gap: 10px; }
-.cr-prn-note { margin: 0; font-size: max(13.5px, var(--fs-min, 0px)); line-height: 1.5; color: #45566a; }
+.cr-prn-note { margin: 0; font-size: max(13.5px, var(--fs-min, 0px)); line-height: 1.5; color: #DCEBF0; }
 .cr-prn-btn { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #fbfaf7; color: #0D365F; border-radius: 10px; padding: 14px 18px; font-size: 15.5px; font-weight: 700; text-decoration: none; }
 .cr-prn-btn:hover { background: #ffffff; color: var(--cta); text-decoration: none; }
 .cr-prn-btn b { background: #e8f1ec; color: #1c6b45; border-radius: 999px; padding: 3px 11px; font-size: 14px; }
@@ -71,6 +72,43 @@
   .cr-h1 { font-size: 34px; }
   .cr-process { grid-template-columns: 1fr; }
 }
+
+/* 11-10 new look: full-width photo hero, perks band, caregiver reviews */
+.cr-nh .nh-sub { max-width: 540px; }
+.cr-need { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.55; color: var(--muted); margin: 0 0 24px; max-width: 520px; }
+.cr-need b { color: var(--brand-blue); }
+.cr-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.cr-go { display: inline-block; background: var(--cta); color: #fff; border-radius: 999px; padding: 16px 30px; font-size: 17px; font-weight: 700; text-decoration: none; }
+.cr-go:hover { background: var(--cta-hover); color: #fff; text-decoration: none; }
+.cr-ghost { display: inline-block; border: 2px solid var(--brand-blue); color: var(--brand-blue); border-radius: 999px; padding: 14px 26px; font-size: 17px; font-weight: 700; text-decoration: none; }
+.cr-ghost:hover { background: var(--brand-blue); color: #fff; text-decoration: none; }
+.cr-photo img { object-position: 42% 30%; }
+.cr-float { display: none; }
+@media (min-width: 1040px) {
+  .cr-nh { min-height: 560px; }
+  .cr-float { display: block; position: absolute; z-index: 3; right: max(24px, calc((100% - var(--shell)) / 2 + 24px)); bottom: 40px; max-width: 330px; margin: 0; background: #fff; border-radius: 18px; padding: 20px 22px; box-shadow: 0 14px 34px rgba(13,54,95,.18); }
+  .cr-float p { font-family: var(--serif); font-size: 21px; line-height: 1.35; color: var(--brand-blue); margin: 0 0 8px; }
+  .cr-float cite { font-style: normal; font-size: 14.5px; font-weight: 600; color: var(--muted); }
+}
+.cr-perks { background: var(--brand-blue); }
+.cr-perks-in { max-width: var(--shell); margin: 0 auto; padding: 30px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; box-sizing: border-box; }
+.cr-perk { color: #CFE3F5; font-size: max(15px, var(--fs-read, 0px)); line-height: 1.45; }
+.cr-perk b { display: block; color: #fff; font-size: 17px; margin: 8px 0 2px; }
+.cr-pi { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.12); color: #fff; }
+.cr-pi svg { width: 24px; height: 24px; }
+.cr-voices { background: #E6F2F4; }
+.cr-voices-in { max-width: var(--shell); margin: 0 auto; padding: 60px 24px; box-sizing: border-box; }
+.cr-voices h2 { font-family: var(--serif); font-size: 34px; font-weight: 600; color: var(--brand-blue); text-align: center; margin: 0 0 28px; }
+.cr-vgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.cr-v { margin: 0; background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 16px rgba(13,54,95,.06); display: flex; flex-direction: column; }
+.cr-vq { font-family: var(--serif); font-size: 64px; line-height: .8; height: 30px; color: var(--cta); }
+.cr-v blockquote { margin: 0 0 14px; font-size: max(16.5px, var(--fs-read, 0px)); line-height: 1.6; color: var(--ink); flex: 1; }
+.cr-v figcaption { font-size: 15px; font-weight: 700; color: var(--brand-blue); }
+.cr-vsrc { text-align: center; font-size: 14px; color: var(--muted); margin: 18px 0 0; }
+.cr-roles { grid-template-columns: repeat(3, 1fr); }
+.cr-role { border-radius: 18px; box-shadow: 0 4px 16px rgba(13,54,95,.05); }
+@media (max-width: 960px) { .cr-perks-in { grid-template-columns: repeat(2, 1fr); } .cr-vgrid { grid-template-columns: 1fr 1fr; } .cr-roles { grid-template-columns: 1fr; } }
+@media (max-width: 719px) { .cr-perks-in { padding: 26px 20px; gap: 18px; } .cr-perk b { font-size: 16px; } .cr-vgrid { grid-template-columns: 1fr; } .cr-voices-in { padding: 44px 20px; } .cr-voices h2 { font-size: 28px; } .cr-go, .cr-ghost { width: 100%; text-align: center; box-sizing: border-box; } }
 </style>
 </head>
 <body>
@@ -191,30 +229,49 @@
 </div>
 </header>
 
-<section class="cr-hero">
-<div>
-<p class="kicker">Careers · Springfield, MO</p>
-<h1 class="cr-h1">Meaningful work, close to home.</h1>
-<p style="font-size:max(16.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:0 0 26px;max-width:520px">Join a team that values kindness, flexibility, and purpose. If you have at least a year of paid caregiving experience, whether as a caregiver, a CNA or in a facility, there's a place for you here.</p>
-<div style="display:flex;flex-wrap:wrap;gap:12px">
-<a href="/apply?job=caregiver-springfield&amp;channel_source=website" class="js-apply btn-apply">Apply in about 2 minutes →</a>
-<a href="#openings" class="btn-outline">See open positions</a>
+<section class="nh-hero cr-nh">
+<figure class="nh-photo cr-photo"><img src="assets/photos/scene-door-wave.webp" alt="A Caring Companions caregiver waving hello as she arrives at a client's front door" width="1080" height="608"></figure>
+<div class="nh-hero-copy">
+<p class="nh-kick">Careers &middot; Springfield, MO</p>
+<h1>Meaningful work, close to home.</h1>
+<p class="nh-sub">Join a team that values kindness, flexibility and purpose. Our office team is kind, helpful and easy to reach when you need us.</p>
+<p class="cr-need"><b>What you need:</b> 21 or older and at least a year of paid caregiving experience, as a caregiver, a CNA or in a facility. No license required.</p>
+<div class="cr-btns">
+<a href="/apply?job=caregiver-springfield&amp;channel_source=website" class="js-apply cr-go">Apply in about 2 minutes</a>
+<a href="#openings" class="cr-ghost">See open jobs</a>
 </div>
 </div>
-<img class="cr-hero-img" src="assets/photos/hero-caregiver.jpg" alt="A Caring Companions caregiver with a senior client">
+<blockquote class="cr-float"><p>&ldquo;Caring Companions is the best place I've ever worked!&rdquo;</p><cite>Krystal L. &middot; caregiver, Google review</cite></blockquote>
 </section>
 
-<div class="cr-trust">
-<span><b>✓</b> W-2 employee, not a contractor</span>
-<span><b>✓</b> Paid orientation &amp; training</span>
-<span><b>✓</b> Flexible schedules near you</span>
-<span><b>✓</b> Insured &amp; supported</span>
-<span><b>✓</b> One year of paid experience, no license required</span>
+<div class="cr-perks">
+<div class="cr-perks-in">
+<div class="cr-perk"><span class="cr-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><b>W-2 employee</b><span>Not a contractor. Paid weekly.</span></div>
+<div class="cr-perk"><span class="cr-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><b>Paid orientation</b><span>From home, on your phone or computer.</span></div>
+<div class="cr-perk"><span class="cr-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>Flexible schedules</b><span>Shifts near you that fit your life.</span></div>
+<div class="cr-perk"><span class="cr-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Insured and supported</b><span>An office team that answers.</span></div>
 </div>
+</div>
+
+<section class="cr-voices">
+<div class="cr-voices-in">
+<p class="nh-kick" style="text-align:center">From our caregivers</p>
+<h2>Hear it from the people who work here</h2>
+<div class="cr-vgrid">
+<figure class="cr-v"><span class="cr-vq" aria-hidden="true">&ldquo;</span><blockquote>Coming from a nursing background, I have high expectations from management and I have never been disappointed by this staff.</blockquote><figcaption>Elisabeth W. &middot; caregiver for 2.5 years</figcaption></figure>
+<figure class="cr-v"><span class="cr-vq" aria-hidden="true">&ldquo;</span><blockquote>I have worked for Caring Companion for almost 3 years, and can say I truly enjoy my job.</blockquote><figcaption>Kimberly M. &middot; caregiver</figcaption></figure>
+<figure class="cr-v"><span class="cr-vq" aria-hidden="true">&ldquo;</span><blockquote>Good at working to match the caregiver's schedule needs; this is a second job for me, so not all time slots are available.</blockquote><figcaption>Deborah H. &middot; caregiver</figcaption></figure>
+<figure class="cr-v"><span class="cr-vq" aria-hidden="true">&ldquo;</span><blockquote>Great company to work for. Flexibility with scheduling. Intentionally paired with families for good compatibility.</blockquote><figcaption>Stephanie S. &middot; caregiver</figcaption></figure>
+<figure class="cr-v"><span class="cr-vq" aria-hidden="true">&ldquo;</span><blockquote>I recently moved here from a different state and was seeking adequate employment and Caring Companions welcomed me in with open arms.</blockquote><figcaption>Onica T. &middot; caregiver</figcaption></figure>
+<figure class="cr-v"><span class="cr-vq" aria-hidden="true">&ldquo;</span><blockquote>Samantha is very understanding and always willing to work around my schedule.</blockquote><figcaption>Kimberly T. &middot; caregiver for 1 year</figcaption></figure>
+</div>
+<p class="cr-vsrc">All from Google reviews written by our caregivers.</p>
+</div>
+</section>
 
 <section class="cr-section">
 <h2>Everyone has a place here</h2>
-<p class="lede">At Caring Companions we care for seniors and adults with disabilities through Private Pay, VA, and the Medicare GUIDE program. Every client is unique, and so is every caregiver's role. Whether you're an experienced caregiver, a CNA, returning to the workforce, or retired and looking to make a difference, we'd love to welcome you to the family. We ask for at least one year of paid caregiving experience. If your experience is caring for a family member and someone can confirm it, apply anyway and we will talk it through.</p>
+<p class="lede">At Caring Companions we care for seniors and adults with disabilities through Private Pay, VA, and the Medicare GUIDE program. Every client is unique, and so is every caregiver's role. Whether you're an experienced caregiver, a CNA, returning to the workforce, or retired and looking to make a difference, we'd love to welcome you to the family. We ask that you are 21 or older with at least one year of paid caregiving experience. If your experience is caring for a family member and someone can confirm it, apply anyway and we will talk it through.</p>
 
 <div class="cr-roles">
 <div class="cr-role">
@@ -274,7 +331,7 @@
 
 <section class="cr-section">
 <h2>Our recruitment process</h2>
-<p class="lede">Simple, supportive, and streamlined. You come in once, for your interview. After that, you can do the rest from home, on your phone or computer.</p>
+<p class="lede">Simple, supportive and quick. After a short interview, you can do the rest from home, on your phone or computer.</p>
 <div class="cr-process">
 <!-- 2026-10-01 (Samantha): there is no phone interview; interviews are in person, about 20 minutes (the calendar keeps a 30-minute slot).
      2026-10-02 (Samantha): after the interview everything else is from home: paperwork online, a 15-minute Orientation Video Call,
@@ -283,9 +340,9 @@
      no longer required; extra courses are optional, offered when a client's needs call for them.
      2026-10-17 (Samantha): keep it vague on the site, "Orientation & Training", with no hours. -->
 <div class="cr-step"><div class="n">1</div><h4>Apply online</h4><p>A short application, about 2 minutes, no uploads. Pick your interview time at the end.</p></div>
-<div class="cr-step"><div class="n">2</div><h4>In-person interview</h4><p>About 20 minutes at our office, 1331 N Stewart Ave, Suite B, Springfield. We do not do phone interviews.</p></div>
+<div class="cr-step"><div class="n">2</div><h4>Interview</h4><p>A short interview, about 20 minutes, so we can get to know you.</p></div>
 <div class="cr-step"><div class="n">3</div><h4>Offer &amp; paperwork</h4><p>Your offer and new-hire paperwork come to you online through Viventium.</p></div>
-<div class="cr-step"><div class="n">4</div><h4>Background &amp; ref checks</h4><p>Background, MVR, and references, all at no cost to you.</p></div>
+<div class="cr-step"><div class="n">4</div><h4>Background checks</h4><p>Background checks, a driving record check and references, all at no cost to you.</p></div>
 <div class="cr-step"><div class="n">5</div><h4>Orientation Video Call</h4><p>15 minutes on your phone or computer. We check your ID, set up the AxisCare app with you, and go over your caregiver profile.</p></div>
 <div class="cr-step"><div class="n">6</div><h4>Orientation &amp; Training</h4><p>Paid, from home, on your phone or computer, in pieces if you like.</p></div>
 <div class="cr-step"><div class="n">7</div><h4>Meet your first client</h4><p>Your caregiver profile, with a friendly photo, goes to the family before your first visit, so they know who is coming.</p></div>
