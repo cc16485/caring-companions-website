@@ -6,7 +6,7 @@
 - Office: 1331 N Stewart Ave Ste B, Springfield, MO 65802
 - Office hours: Monday to Friday, 8 AM to 5 PM. Caregiving is available around the clock, including nights, weekends and holidays, when scheduled.
 - Website: https://mo-care.com/
-- Book a free in-home assessment: https://mo-care.com/book
+- Request a free in-home assessment: https://mo-care.com/#who-needs-care (or call (417) 234-8494; the office books the visit by phone)
 - Published hourly rates: Wellness Care $30, Personal Care $32, Advanced Care $34 (see https://mo-care.com/pricing for current rates)
 - Service area: Greene, Christian, Webster and Polk counties, and Taney, Lawrence, Dallas and Stone counties when a caregiver is nearby (https://mo-care.com/service-area)
 - Missouri Medicaid: families on Medicaid can choose their own caregiver, even a family member, and Medicaid pays that caregiver, through our sister agency Caring Companions CDS at https://caringcds.com/ (417-218-2888)
@@ -43,7 +43,6 @@ Always point people to the linked page or the phone number for current details.
 ## Getting started
 
 - [Care Questionnaire](https://mo-care.com/assessment): Eight short sections covering safety, memory, daily needs, medication, and more. At the end, you'll get a written report you can keep, print, and bring to…
-- [Schedule a Free In-Home Assessment](https://mo-care.com/book): Book a free, no-obligation in-home assessment. A care coordinator comes to you, you build the care plan together, and you decide from there.
 - [Contact Us](https://mo-care.com/contact): No pressure, no sales script, just a conversation with a real care coordinator. Prefer to explore on your own first? Try the Care Questionnaire or ask us a question…
 - [Family Care Academy](https://mo-care.com/family-academy): Free caregiver training for families, built from the same curriculum we use to train our professional caregivers. Start with the dementia care course.
 - [The Dementia Journey: Module 1](https://mo-care.com/family-academy/dementia-module-1)

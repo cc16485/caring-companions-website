@@ -31,7 +31,7 @@
 
   function actions(group, county) {
     var q = encodeURIComponent(county + ' County');
-    if (group === 'active') return '<a class="sm-btn" href="/book">Book a free in-home assessment</a><a class="sm-btn sm-btn-ghost" href="' + TEL + '">Call ' + PHONE + '</a>';
+    if (group === 'active') return '<a class="sm-btn" href="/#who-needs-care">Request a free assessment</a><a class="sm-btn sm-btn-ghost" href="' + TEL + '">Call ' + PHONE + '</a>';
     if (group === 'limited') return '<a class="sm-btn" href="' + TEL + '">Call ' + PHONE + '</a><a class="sm-btn sm-btn-ghost" href="/contact?area=' + q + '">Check availability online</a>';
     return '<a class="sm-btn" href="/contact?waitlist=' + q + '">Leave your name</a>';
   }
@@ -130,7 +130,7 @@
       }
       var g = layer.feature.properties.group, q = encodeURIComponent(county + ' County');
       out.classList.add('sm-' + g);
-      if (g === 'active') out.innerHTML = '<b>Yes, we serve ' + z + '.</b> That’s ' + county + ' County, one of our home counties. <a href="/book">Book a free in-home assessment</a>';
+      if (g === 'active') out.innerHTML = '<b>Yes, we serve ' + z + '.</b> That’s ' + county + ' County, one of our home counties. <a href="/#who-needs-care">Request a free assessment</a>';
       else if (g === 'limited') out.innerHTML = '<b>' + z + ' is in ' + county + ' County, where availability is limited.</b> Call <a href="' + TEL + '">' + PHONE + '</a> and we’ll tell you where things stand, or <a href="/contact?area=' + q + '">check online</a>.';
       else out.innerHTML = '<b>' + z + ' is in ' + county + ' County.</b> We don’t provide care there right now. <a href="/contact?waitlist=' + q + '">Leave your name</a> and we’ll keep it on file.';
       map.fitBounds(layer.getBounds(), { padding: [50, 50], maxZoom: 10 });
