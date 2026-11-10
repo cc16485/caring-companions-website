@@ -59,5 +59,14 @@ for (const [w, t] of [['page', pgT], ['structured data', ldT], ['Indeed feed', f
   ck('old training wording in a posting: rewritten in the ' + w, !/6 hours|dementia training/i.test(t) && /paid orientation and training|Paid orientation and training/.test(t), (t.match(/.{60}(6 hours|dementia training).{60}/i) || [])[0]);
 ck('the How hiring works block says Orientation Video Call', /A 15-minute Orientation Video Call/.test(page(base, c)))
 
+// 2026-11-10: a PRN CNA page points people without a CNA license to the PRN Caregiver Team; no other page does.
+const prnCna = { ...base, slug: 'prn-cna-springfield', title: 'PRN CNA', position: 'prn_cna', employment_type: 'PER_DIEM', description: 'Start PRN.' };
+const withSlug = page(prnCna, { ...c, prnCaregiverSlug: 'prn-caregiver-springfield' });
+ck('PRN CNA page: says No CNA license? and links the PRN Caregiver posting', withSlug.includes('No CNA license?') && withSlug.includes('href="/apply?job=prn-caregiver-springfield"'));
+ck('PRN CNA page with no PRN Caregiver posting: links the role instead', page(prnCna, c).includes('href="/apply?position=prn_caregiver"'));
+ck('PRN CNA page: the no-license line comes before the job text', withSlug.indexOf('No CNA license?') < withSlug.indexOf('jb-body"'));
+ck('PRN CNA page: no em dashes in the new line', !/\u2014|&mdash;/.test(withSlug.slice(withSlug.indexOf('jb-nocna">'), withSlug.indexOf('</p>', withSlug.indexOf('jb-nocna">')))));
+ck('other pages: no no-license line', !page(base, c).includes('No CNA license?') && !page({ ...prnCna, position: 'prn_caregiver' }, c).includes('No CNA license?'));
+
 console.log(`build-jobs.test: ${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
