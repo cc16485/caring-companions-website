@@ -83,7 +83,7 @@ with sync_playwright() as p:
     check(cds.count() == 1 and cds.get_attribute('href') == 'https://caringcds.com' and cds.get_attribute('target') == '_blank', 'caringcds.com in the answer opens in a new tab')
     shot(pg, '3-medicaid.png')
     say(pg, 'How do I apply for a job?')
-    check(buttons(pg) == ['Apply now'], 'jobs answer: Apply now only, no call back: %s' % buttons(pg))
+    check(buttons(pg) == ['Apply now', 'See open jobs'], 'jobs answer: Apply now and See open jobs, no call back: %s' % buttons(pg))
     ap = pg.locator('#cara-widget-messages > div:not(.cara-buttons) a', has_text='mo-care.com/apply')
     check(ap.count() == 1 and ap.get_attribute('href') == 'https://mo-care.com/apply' and ap.text_content() == 'mo-care.com/apply', 'mo-care.com/apply can be tapped, comma left off')
     check(pg.locator('#cara-widget-messages a', has_text='example.com').count() == 0, 'other sites stay plain text')
@@ -133,6 +133,14 @@ with sync_playwright() as p:
     tap(pg, 'Care for a loved one')
     check(pg.get_by_text('having trouble responding').count() == 1 and 'Have the office call me' in buttons(pg), 'when Cara cannot answer, the visitor can still ask for a call')
     pg.close()
+    # 2026-11-10: a job question with no matched answer still gets the job buttons, and a family question does not
+    pg, chats, leads = run()
+    say(pg, 'Trying to get an application for a job there')
+    check(buttons(pg) == ['Apply now', 'See open jobs'], 'unmatched job question still shows job buttons: %s' % buttons(pg))
+    say(pg, 'Can I hire a caregiver for weekends')
+    check('Apply now' not in buttons(pg), 'a family saying hire does not get job buttons: %s' % buttons(pg))
+    pg.close()
+
     b.close()
 
 print('\n%d failed' % len(fails) if fails else '\nall passed')
