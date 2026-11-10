@@ -164,7 +164,7 @@
 <section class="dc-search" id="view-search">
 <button id="resume-banner" style="display:none;align-items:center;justify-content:space-between;width:100%;text-align:left;gap:12px;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:12px;padding:16px 18px;margin-bottom:28px;cursor:pointer">
 <span style="font-size:max(14px, var(--fs-min, 0px));color:#5a4726"><strong>Continue where you left off:</strong> <span id="resume-label"></span> · Step <span id="resume-step"></span> of 5</span>
-<span style="color:#876B00;font-weight:700;font-size:max(14px, var(--fs-min, 0px));white-space:nowrap">Resume →</span>
+<span style="color:#1F7A8C;font-weight:700;font-size:max(14px, var(--fs-min, 0px));white-space:nowrap">Resume →</span>
 </button>
 
 <p class="kicker" style="text-align:center">Home Care Decision Center</p>
@@ -188,7 +188,7 @@
 <section class="dc-journey" id="view-journey" hidden>
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px">
 <p style="font-size:max(14px, var(--fs-read, 0px));color:#45566a;margin:0;min-width:0;overflow-wrap:break-word">You said: <strong style="color:#122236" id="current-label"></strong></p>
-<button id="change-situation" style="background:none;border:none;color:#876B00;font-size:max(13.5px, var(--fs-min, 0px));font-weight:600;cursor:pointer;padding:0;white-space:nowrap;flex-shrink:0">Change situation</button>
+<button id="change-situation" style="background:none;border:none;color:#1F7A8C;font-size:max(13.5px, var(--fs-min, 0px));font-weight:600;cursor:pointer;padding:0;white-space:nowrap;flex-shrink:0">Change situation</button>
 </div>
 
 <div style="margin-bottom:36px">
@@ -200,7 +200,7 @@
 <div style="display:flex;flex-direction:column;gap:0" id="step-list"></div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:32px">
-<p id="active-kind" style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#876B00;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px"></p>
+<p id="active-kind" style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#1F7A8C;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px"></p>
 <h2 id="active-title" style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;margin:0 0 14px;color:#0D365F"></h2>
 <p id="active-body" style="font-size:max(15px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 0 26px"></p>
 <div style="display:flex;flex-wrap:wrap;gap:12px">
@@ -420,7 +420,7 @@ function renderJourney() {
     badge.textContent = done ? '✓' : String(i + 1);
     var text = document.createElement('span');
     var kind = document.createElement('span');
-    kind.style.cssText = 'display:block;font-size:11px;font-weight:700;color:#876B00;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px';
+    kind.style.cssText = 'display:block;font-size:11px;font-weight:700;color:#1F7A8C;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px';
     kind.textContent = st.kind;
     var title = document.createElement('span');
     title.style.cssText = 'display:block;font-size:14px;font-weight:600;color:' + (current ? '#122236' : done ? '#55677a' : '#66736B');
@@ -503,7 +503,7 @@ try {
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
 <script src="/assets/accessibility.js" defer></script>
-<section class="related-strip" aria-label="Related pages" style="max-width:1100px;margin:0 auto;padding:28px 24px 36px"><p style="font-size:12.5px;font-weight:700;color:#876B00;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 10px">Related</p><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px"><li><a href="/how-we-decide" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">How we decide &rarr;</a></li><li><a href="/facility-comparison" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">Facility comparison &rarr;</a></li><li><a href="/decision-journal" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">Decision journal &rarr;</a></li></ul></section>
+<section class="related-strip" aria-label="Related pages" style="max-width:1100px;margin:0 auto;padding:28px 24px 36px"><p style="font-size:12.5px;font-weight:700;color:#1F7A8C;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 10px">Related</p><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px"><li><a href="/how-we-decide" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">How we decide &rarr;</a></li><li><a href="/facility-comparison" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">Facility comparison &rarr;</a></li><li><a href="/decision-journal" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">Decision journal &rarr;</a></li></ul></section>
 <footer class="cc-legal" style="text-align:center;padding:22px 16px 28px;font-family:Inter,Helvetica,Arial,sans-serif;font-size:13px;color:#4f5b54">&copy; 2026 Caring Companions In-Home Senior Care &middot; <a href="/privacy" style="color:inherit">Privacy Policy</a></footer>
 </body>
 </html>
