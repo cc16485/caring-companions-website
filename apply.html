@@ -283,7 +283,7 @@
    <div style="text-align:center;padding:6px 0 4px;">
      <div class="check" style="width:52px;height:52px;font-size:27px;line-height:52px;">&#10003;</div>
      <h1 id="bookHead" style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
-     <p id="bookLede" style="font-size:max(15px, var(--fs-read, 0px));line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews are <b>in person, here at our office</b> (we do not do phone interviews) and take about <span id="bookMins">20</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
+     <p id="bookLede" style="font-size:max(15px, var(--fs-read, 0px));line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews take about <span id="bookMins">20</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
    </div>
    <!-- Somebody who already has a time lands here from the same ?book= link
         their messages carry. Moving or cancelling has to be as easy as booking
@@ -547,7 +547,7 @@ if (PREVIEW) {
   });
   fv.querySelectorAll('.go, .back, .err').forEach((b) => { b.style.display = 'none'; });
   g('step2').appendChild(note('In the real form, a <b>No</b> to 21 or older, work authorization, transportation or a year of paid experience (or a role\'s own must-have, like a license) ends the application there with a kind explanation. On the PRN CNA Team, a <b>No</b> to being a CNA opens a pop-up that moves them to the PRN Caregiver Team instead. Unpaid family caregiving goes to the office to verify before any interview. They cannot book an interview until all three pages are done.'));
-  g('step3').parentNode.insertBefore(note('<b>After page 3:</b> they pick an in-person interview time right away (Monday to Friday, about 20 minutes), and the confirmation and reminders go from there.'), g('step3').nextSibling);
+  g('step3').parentNode.insertBefore(note('<b>After page 3:</b> they pick an interview time right away (Monday to Friday, about 20 minutes), and the confirmation and reminders go from there.'), g('step3').nextSibling);
   }
 }
 
@@ -563,7 +563,7 @@ const RESUME = P.get('book');
 let HAVE_BOOKING = false;   // an active booking exists; new times mean moving it
 if (RESUME) {
   ROW = RESUME;
-  g('bookHead').textContent = 'Welcome back. Let’s pick your in-person interview time.';
+  g('bookHead').textContent = 'Welcome back. Let’s pick your interview time.';
   g('formView').style.display = 'none';
   g('bookView').style.display = 'block';
   resumeBooking();
@@ -604,8 +604,8 @@ function showManage(mine){
   const locked = mine.can_change === false;   // absent means the old database: no limits
   g('bookHead').textContent = 'Welcome back.';
   g('bookLede').textContent = locked
-    ? 'Your in-person interview is booked. Here it is.'
-    : 'Your in-person interview is booked. Move it or cancel it here whenever you need to.';
+    ? 'Your interview is booked. Here it is.'
+    : 'Your interview is booked. Move it or cancel it here whenever you need to.';
   g('manageWhen').innerHTML = 'You are booked for <b>' + dayLabel(d) + ' at ' + timeLabel(d) + '</b>.';
   g('manageBtns').style.display = locked ? 'none' : 'flex';
   g('manageLocked').style.display = locked ? 'block' : 'none';
@@ -1168,13 +1168,14 @@ function showBooked(when, moved){
   }
   /* WORDING (2026-10-01): say what will really happen. Messages go out 8am–6pm Central (a late-night booking is
      confirmed after 8am), and the hour-before reminder is a text, so only for people who said yes to texts. */
-  /* IN PERSON (2026-10-01, Samantha): someone missed an interview thinking it was a phone call. */
-  g('doneLede').innerHTML = 'Your <b>in-person</b> interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
-    + 'Please come to our office (the address is below). This is not a phone interview. '
+  /* 2026-11-08 (Samantha): just say interview, no place or format (we may interview by video). Where to go still
+     shows in the card below, which comes from the Hub's interview location. */
+  g('doneLede').innerHTML = 'Your interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
+    + 'Where to go is below. '
     + 'We will send you a confirmation and a reminder the day before, and if you said yes to texts, a short text about an hour before. '
     + 'Our messages go out between 8am and 6pm.'
-    /* 2026-10-02 (Samantha): one visit, then the rest from home. */
-    + '<br><br>After your interview, you can do the rest from home: paperwork online, a 15-minute Orientation Video Call, and 6 hours of paid training on your phone or computer.';
+    /* 2026-11-10 (Samantha): no Orientation Video Call before orientation; training stays vague, no hours. */
+    + '<br><br>After your interview, you can do the rest from home: paperwork online, then paid orientation and training on your phone or computer.';
   fillWhere();
   g('rebookBtn').style.display = 'none';
   g('changeBtn').style.display = 'inline-block';
@@ -1186,7 +1187,7 @@ function showBooked(when, moved){
 function skipBooking(){
   g('changeBtn').style.display = 'none';
   g('rebookBtn').style.display = 'none';
-  g('doneLede').textContent = 'Someone from our office will call you within one business day to set a time for your in-person interview at our office. '
+  g('doneLede').textContent = 'Someone from our office will call you within one business day to set a time for your interview. '
     + 'If you told us you have lived outside Missouri, we will get your fingerprint check moving straight away so it does not hold up your start.';
   g('bookView').style.display = 'none';
   g('doneView').style.display = 'block';

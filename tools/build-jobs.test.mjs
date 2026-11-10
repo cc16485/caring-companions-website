@@ -29,22 +29,20 @@ for (const [name, p] of [['posting with the one-liner (after 415 SQL)', withLine
   const body = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
   ck(name + ': the page body does not repeat the one-liner (the How hiring works block says it)', count(body, ONE_LINER) === 0);
   ck(name + ': How hiring works block is on the page', body.includes('<h2>How hiring works</h2>') && body.includes('After your interview, you can do the rest from home.'));
-  ck(name + ': five steps', count(body.slice(body.indexOf('jb-how'), body.indexOf('</ol>')), '<li>') === 5);
+  ck(name + ': four steps', count(body.slice(body.indexOf('jb-how'), body.indexOf('</ol>')), '<li>') === 4);
   ck(name + ': orientation and training named, no hours', body.includes('<b>Orientation &amp; training.</b> Paid, from home') && !/\d+[- ]hour/i.test(body.slice(body.indexOf('jb-how'), body.indexOf('</section>', body.indexOf('jb-how')))));
   for (const where of [['page', html], ['structured data', jsonLd(p)], ['Indeed feed', indeedFeed([p])]])
     ck(name + ': no required dementia training or 6 hours in the ' + where[0], !/6 hours|dementia training|on-the-job|hours of training a year/i.test(where[1]), (where[1].match(/.{60}(6 hours|dementia training).{60}/i) || [])[0]);
-  ck(name + ': footer says about 2 minutes and one in-person interview', body.includes('The application takes about 2 minutes. No uploads required. One in-person interview, then the rest from home.'));
+  ck(name + ': footer says about 2 minutes and one short interview', body.includes('The application takes about 2 minutes. No uploads required. One short interview, then the rest from home.'));
   ck(name + ': no "five minutes" anywhere', !/five minutes|5 minutes/i.test(html));
   ck(name + ': never says remote', !/\bremote(ly)?\b/i.test(body));
-  ck(name + ': no phone interview offered', body.includes('We do not do phone interviews.'));
+  ck(name + ': interview has no place or format (2026-11-08)', !/in[- ]person|phone interview|at our (Springfield )?office/i.test(body), (body.match(/.{40}(in[- ]person|phone interview|at our (Springfield )?office).{40}/i) || [])[0]);
   const how = body.slice(body.indexOf('<section class="jb-how">'), body.indexOf('</section>', body.indexOf('jb-how')));
   ck(name + ': no em dash in the new wording', !how.includes('\u2014') && !body.includes('\u2014 '), how);
   const feed = indeedFeed([p]);
   ck(name + ': Indeed feed opens with the one-liner, once', feed.includes('<description><![CDATA[<div><p>' + ONE_LINER) && count(feed, ONE_LINER) === 1);
 }
-ck('Springfield job: interview "at our Springfield office"', page(withLine, c).includes('A 20-minute interview at our Springfield office.'));
-ck('Mount Vernon job: interview "at our office" (no town, no street)', page(without, c).includes('A 20-minute interview at our office.')
-  && !page(without, c).slice(page(without, c).indexOf('jb-how')).split('</section>')[0].includes('Stewart'));
+ck('every job: the interview step says a short interview', page(withLine, c).includes('<b>Interview.</b> A short interview, about 20 minutes') && page(without, c).includes('<b>Interview.</b> A short interview, about 20 minutes'));
 ck('Mount Vernon job: structured data still has no office street', JSON.parse(jsonLd(without)).jobLocation.address.streetAddress === undefined);
 
 /* 2026-10-11: a posting still carrying the old sentence (before the Hub's step 602) shows only the new one */
@@ -57,7 +55,9 @@ const oldTraining = { ...base, benefits: TRAINING_FIXES.map(f => f[0]).join('\n'
 const pgT = page(oldTraining, c), ldT = jsonLd(oldTraining), feedT = indeedFeed([oldTraining]);
 for (const [w, t] of [['page', pgT], ['structured data', ldT], ['Indeed feed', feedT]])
   ck('old training wording in a posting: rewritten in the ' + w, !/6 hours|dementia training/i.test(t) && /paid orientation and training|Paid orientation and training/.test(t), (t.match(/.{60}(6 hours|dementia training).{60}/i) || [])[0]);
-ck('the How hiring works block says Orientation Video Call', /A 15-minute Orientation Video Call/.test(page(base, c)))
+ck('no Orientation Video Call on the page (2026-11-10)', !/Orientation Video Call/i.test(page(base, c)))
+const lastOld = { ...base, description: 'Caring Companions is hiring.\n\n' + OLD_ONE_LINERS[2] };
+ck('posting with the 10-11 sentence: page, structured data and feed never say in-person or Orientation Video Call', ![page(lastOld, c), jsonLd(lastOld), indeedFeed([lastOld])].some(x => /in-person|Orientation Video Call/i.test(x)))
 
 // 2026-11-10: a PRN CNA page points people without a CNA license to the PRN Caregiver Team; no other page does.
 const prnCna = { ...base, slug: 'prn-cna-springfield', title: 'PRN CNA', position: 'prn_cna', employment_type: 'PER_DIEM', description: 'Start PRN.' };
