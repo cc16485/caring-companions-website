@@ -4,7 +4,7 @@
   "brand": "cc",
   "title": "Does Long-Term Care Insurance Pay for Home Care? (How to Use Your Policy)",
   "short_title": "Does long-term care insurance pay for home care?",
-  "description": "Did Mom or Dad buy a long-term care insurance policy years ago? It may pay for most or all of their care at home. Here's how the benefit trigger, elimination period and daily maximum work, and how Caring Companions helps you file the claim and bill the insurance company directly.",
+  "description": "Did Mom or Dad buy a long-term care insurance policy years ago? It may help pay for their care at home, depending on the policy. Here's how the benefit trigger, elimination period and daily maximum work, and how Caring Companions helps you file the claim and, depending on your policy, may be able to bill the insurance company directly.",
   "publish": "2026-12-29T23:00:00.000Z",
   "thumb": "/Users/samantha/Claude/Projects/youtube/long/out/cc03-thumb.jpg",
   "end": "Find the policy. Then call us for a free review.",
@@ -66,8 +66,8 @@
    {
     "chip": "Step 4",
     "head": "You choose how payment works",
-    "sub": "We bill the insurer directly, or you get paid invoices",
-    "text": "Once the claim is approved, you choose how payment works. With an assignment of benefits, we bill the insurance company directly, and as long as care stays within what the policy pays, you have nothing out of pocket. Or, you can pay us, and we give you paid invoices to send in for reimbursement."
+    "sub": "We may bill the insurer directly, or you get paid invoices",
+    "text": "Once the claim is approved, you choose how payment works, depending on your policy and insurer. With an assignment of benefits, we may be able to bill the insurance company directly. Or, you can pay us, and we give you paid invoices to send in for reimbursement."
    },
    {
     "chip": "Step 5",
@@ -130,11 +130,11 @@
     "Step 4: You choose how payment works"
    ],
    [
-    "3:02",
+    "2:59",
     "Step 5: We keep the paperwork current"
    ],
    [
-    "3:26",
+    "3:23",
     "How to reach us"
    ]
   ]

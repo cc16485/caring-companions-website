@@ -4,7 +4,7 @@
   "brand": "cc",
   "title": "What Does In-Home Care Cost in Springfield, MO? (Real Prices + Ways to Pay)",
   "short_title": "What does in-home care cost in Springfield, MO?",
-  "description": "Real in-home care prices from Caring Companions in Springfield, Missouri: Wellness Care $30 an hour, Personal Care $32 an hour, Advanced Care $34 an hour. Visits are at least 4 hours, and at least 8 hours a week. Plus the ways families pay: private pay, long-term care insurance, VA benefits, Medicare GUIDE respite, and more.",
+  "description": "Real in-home care prices from Caring Companions in Springfield, Missouri: Wellness Care $30 an hour, Personal Care $32 an hour, Advanced Care $34 an hour. The standard visit is at least 4 hours, with at least 8 hours a week, and you can ask about shorter visits. Plus the ways families pay: private pay, long-term care insurance, VA benefits, Medicare GUIDE respite, and more.",
   "publish": "2026-12-15T23:00:00.000Z",
   "thumb": "/Users/samantha/Claude/Projects/youtube/long/out/cc02-thumb.jpg",
   "end": "Get an exact number with a free in-home assessment.",
@@ -42,8 +42,8 @@
    {
     "chip": "What changes the cost",
     "head": "Mostly, the hours",
-    "sub": "At least 4 hours a visit and 8 hours a week",
-    "text": "What changes the total is mostly the hours. Visits are at least four hours, and at least eight hours a week. So the smallest schedule, two four-hour visits of Wellness Care, comes to two hundred forty dollars a week."
+    "sub": "Standard: 4 hours a visit, 8 a week. Ask about shorter.",
+    "text": "What changes the total is mostly the hours. Our standard visit is at least four hours, with at least eight hours a week. So the smallest standard schedule, two four-hour visits of Wellness Care, comes to two hundred forty dollars a week. Need shorter visits? Ask us. When a caregiver is available, we'll work to make it happen, for five dollars more an hour."
    },
    {
     "chip": "Best Price Guarantee",
@@ -60,8 +60,8 @@
    {
     "chip": "Ways to pay",
     "head": "Long-term care insurance",
-    "sub": "We check the policy and bill the insurance company directly",
-    "text": "If there's a long-term care insurance policy, it may cover most or all of the cost. We check the benefits, handle the claim paperwork, and bill the insurance company directly."
+    "sub": "We review the policy and may be able to bill the insurer",
+    "text": "If there's a long-term care insurance policy, it may help pay for care, depending on the policy. We review the benefits, help with the claim paperwork, and may be able to bill the insurance company directly."
    },
    {
     "chip": "Ways to pay",
@@ -122,31 +122,31 @@
     "Mostly, the hours"
    ],
    [
-    "1:27",
+    "1:37",
     "Found a lower rate? We'll beat it."
    ],
    [
-    "1:47",
+    "1:58",
     "Long-term care insurance"
    ],
    [
-    "2:00",
+    "2:12",
     "VA benefits"
    ],
    [
-    "2:15",
+    "2:27",
     "Medicare GUIDE respite"
    ],
    [
-    "2:26",
+    "2:38",
     "Look at CDS"
    ],
    [
-    "2:43",
+    "2:55",
     "Putting it together"
    ],
    [
-    "3:09",
+    "3:21",
     "How to reach us"
    ]
   ]
