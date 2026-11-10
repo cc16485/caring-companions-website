@@ -168,6 +168,23 @@ html:not(.cc-menus-click) .cc-nav:hover .cc-nav-group:not(:hover):not(:focus-wit
   .cc-dd-sep { display: none; }
 }
 
+/* Phone menu button says "Menu" next to the three lines (her ask 11-09: clearer for seniors).
+   Pure CSS so all pages pick it up; the label keeps its aria-label "Open menu". */
+@media (max-width: 860px) {
+  .cc-burger {
+    display: grid; grid-template-columns: 18px auto; grid-template-rows: repeat(3, 2px);
+    row-gap: 4px; column-gap: 9px; align-content: center; align-items: center;
+    width: auto; height: 44px; padding: 0 18px 0 16px;
+    border: 1.5px solid #d6d1c4; border-radius: 999px; background: #fff;
+  }
+  .cc-burger span { grid-column: 1; width: 18px; background: var(--brand-blue); }
+  .cc-burger::after { content: "Menu"; grid-column: 2; grid-row: 1 / span 3; font-size: 16px; font-weight: 600; line-height: 1; color: var(--brand-blue); }
+  .cc-navtog:checked ~ .cc-burger::after { content: "Close"; }
+  .cc-navtog:checked ~ .cc-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .cc-navtog:checked ~ .cc-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .cc-navtog:focus-visible ~ .cc-burger { outline: 3px solid var(--brand-blue); outline-offset: 2px; }
+}
+
 /* ---------- Shared footer ---------- */
 .cc-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 40px 20px; }
 .cc-footer-inner { max-width: var(--shell); margin: 0 auto; text-align: center; }

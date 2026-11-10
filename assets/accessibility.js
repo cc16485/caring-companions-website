@@ -38,14 +38,14 @@
       + '.a11y-read:hover{background:#155A68}.a11y-read.reading{background:#A88400}'
       + '.a11y-close{position:absolute;top:9px;right:12px;background:none;border:none;font-size:20px;color:#8a978f;cursor:pointer;line-height:1;padding:2px}'
       + '.a11y-reading-hl{background:#fff3bf!important;box-shadow:0 0 0 4px #fff3bf;border-radius:4px}'
-      // Phone action bar: Call + Book pinned to the bottom, replacing the floating circles
+      // Phone action bar: Call + Text pinned to the bottom, replacing the floating circles
       + '.cc-bar{display:none}'
       + '@media (max-width:719px){'
       + 'body.cc-has-bar{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}'
       + '.cc-bar{position:fixed;left:0;right:0;bottom:0;z-index:2147483500;display:flex;gap:8px;align-items:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#0D365F;box-shadow:0 -4px 18px rgba(16,40,58,.22)}'
       + '.cc-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;border-radius:10px;font:700 15.5px/1.2 Inter,Helvetica,Arial,sans-serif;text-decoration:none;text-align:center}'
       + '.cc-bar a svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}'
-      + '.cc-bar-call{background:#1F7A8C;color:#fff}.cc-bar-book{background:#fff;color:#0D365F}'
+      + '.cc-bar-call{background:#1F7A8C;color:#fff}'
       // 2026-11-06 (her words, "Text us"): on phones, a text to the office line, answered by a real Care Coordinator
       + '.cc-bar-text{background:#fff;color:#0D365F}'
       + '.cc-bar-a11y{flex:0 0 50px;height:50px;border-radius:10px;border:1.5px solid rgba(255,255,255,.4);background:transparent;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}'
@@ -144,14 +144,11 @@
   function buildBar(onA11y) {
     if (!document.querySelector('.cc-utility-tel')) return;
     if (/^\/(careers|jobs\/|apply|cara|assessment)/.test(location.pathname)) return;
-    // Town pages outside our home counties (.tw-tier) ask for a call or the
-    // waitlist first, so the bar offers Call only, the same as on /book.
-    var onBook = /^\/book(\.html)?\/?$/.test(location.pathname) || !!document.querySelector('.tw-tier');
+    // 2026-11-09 her ask: the bar says only "Call us" and "Text us" on every page (Book a free visit removed).
     var bar = document.createElement('div');
     bar.className = 'cc-bar';
     bar.innerHTML = '<a class="cc-bar-call" href="tel:14172348494">' + PHONE_SVG + 'Call us</a>'
       + '<a class="cc-bar-text" href="sms:+14172348494">Text us</a>'
-      + (onBook ? '' : '<a class="cc-bar-book" href="/book">Book a free visit</a>')
       + '<button type="button" class="cc-bar-a11y" aria-label="Accessibility options: larger text and read aloud">' + ICON + '</button>';
     document.body.appendChild(bar);
     document.body.classList.add('cc-has-bar');
