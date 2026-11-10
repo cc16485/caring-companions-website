@@ -33,7 +33,7 @@ async()=>{
   ROW='row-1'; window.__calls=[];
   try{ await next2(); }catch(e){}
   await sleep(80);
-  return { calls: window.__calls.map(c=>c[0]), prnPatch: (window.__calls.find(c=>c[0]==='apply_prn_save')||[])[1], err: g('err2').style.display!=='none' ? g('err2').innerText : '', body: document.body.innerText.slice(0,4000) };
+  return { calls: window.__calls.map(c=>c[0]), prnPatch: (window.__calls.find(c=>c[0]==='apply_prn_save')||[])[1], err: g('err2').style.display!=='none' ? g('err2').innerText : '', body: document.body.innerText.slice(0,4000), popup: g('ncBack') ? g('ncBack').classList.contains('on') : false };
 }
 """
 res = []
@@ -59,7 +59,8 @@ with sync_playwright() as pw:
             ck('PRN CNA Team: the CNA question as before', r.get('cnaChips') and 'Are you currently a CNA' in r.get('qs', ''), r)
             ck('...its own acknowledgment and its $18 note, now from the role', 'paid $20/hour' in r.get('pay', '') and 'our CNAs are paid $18 an hour' in r.get('pay', ''), r)
             k = pg.evaluate(KO)
-            ck('...not a CNA: turned away, in the team\'s own name', 'The PRN CNA Team is for certified nursing assistants' in k['body'], k['body'][:600])
+            # 2026-11-10 (Samantha): not a CNA is no longer a turn-away. The pop-up offers the PRN Caregiver Team and nothing is saved.
+            ck('...not a CNA: the switch-to-PRN-Caregiver pop-up opens, nothing saved, not turned away', k['popup'] and not k['calls'] and 'not able to take this application further' not in k['body'], k)
         ck('no page errors (' + pos + ')', not errs, errs)
         pg.close()
     b.close()
