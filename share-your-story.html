@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Share Your Story | Caring Companions</title>
-<meta name="description" content="Record a short video about your experience with Caring Companions. About a minute, from your own phone, no editing and no pressure.">
+<meta name="description" content="Tell other families about your experience with Caring Companions. Write a few sentences or record a short video, no pressure.">
 <link rel="canonical" href="https://mo-care.com/share-your-story">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Share Your Story | Caring Companions">
-<meta property="og:description" content="Record a short video about your experience with Caring Companions. About a minute, from your own phone.">
+<meta property="og:description" content="Tell other families about your experience with Caring Companions. Write a few sentences or record a short video.">
 <meta property="og:url" content="https://mo-care.com/share-your-story">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,6 +41,7 @@
 .sty-tip b { color: var(--brand-blue); }
 
 .sty-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 4px 0 0; }
+.sty-choice-main { grid-column: 1 / -1; border-color: var(--cta); background: #f1f8f9; }
 .sty-choice { display: block; width: 100%; text-align: left; font-family: inherit; background: #fff; border: 2px solid var(--border); border-radius: 14px; padding: 20px 20px; cursor: pointer; transition: all .14s; }
 .sty-choice:hover { border-color: var(--cta); transform: translateY(-1px); }
 .sty-choice .k { display: block; font-size: 16.5px; font-weight: 700; color: var(--brand-blue); margin-bottom: 5px; }
@@ -214,7 +215,7 @@
 <span class="cc-colh">Get in touch</span>
 <a href="/contact">Contact Us</a>
 <a href="/careers">Careers<span class="cc-dd-sub">Join our team</span></a>
-<a href="/share-your-story">Share Your Story<span class="cc-dd-sub">Record a minute for us</span></a>
+<a href="/share-your-story">Share Your Story<span class="cc-dd-sub">A few words from you</span></a>
 </span>
 <span class="cc-col cc-feat cc-feat-call">
 <span class="cc-colh">Talk to a coordinator</span>
@@ -234,13 +235,12 @@
 <section class="sty-wrap sty-hero">
   <p class="sty-eyebrow">A favor, if you have a minute</p>
   <h1 class="sty-h1" id="styH1">Share your story</h1>
-  <p class="sty-lede" id="styLede">Families looking for care trust other families far more than they trust any advertisement. If we have been good to you, sixty seconds of your voice would mean more to the next family than anything we could write ourselves.</p>
+  <p class="sty-lede" id="styLede">Families looking for care trust other families far more than they trust any advertisement. If we have been good to you, a few words from you would mean more to the next family than anything we could write ourselves.</p>
   <div class="sty-toggle" role="group" aria-label="Who is sharing">
     <button type="button" id="styWhoFamily" class="on">I am a client or family member</button>
     <button type="button" id="styWhoCaregiver">I am a Caring Companions caregiver</button>
   </div>
 </section>
-<figure class="pg-photo"><img src="/assets/photos/scene-sofa-album.webp" alt="A daughter, her mother and a caregiver looking at a photo album on the sofa" width="1080" height="608" decoding="async"></figure>
 
 
 <div class="sty-wrap">
@@ -251,15 +251,19 @@
     <p class="note" id="styPromptNote">No script and nothing to prepare. Just answer these the way you would tell a friend. Skip any of them you want.</p>
     <ol class="sty-prompts" id="styPrompts"></ol>
     <div class="sty-tip">
-      <b>What makes a good one:</b> hold your phone upright, sit facing a window so the light is on your face, and pick a quiet room. About a minute is perfect. Nobody expects it to be polished, and the real ones work better anyway.
+      <b>Most people just write a few sentences.</b> That is plenty. If you would like to record a video instead, hold your phone upright, sit facing a window, and pick a quiet room. Nobody expects it to be polished, and the real ones work better anyway.
     </div>
   </section>
 
   <!-- ============ STEP 2: how ============ -->
   <section class="sty-card" id="styPick">
     <h2>Ready when you are</h2>
-    <p class="note">Two ways to do this, whichever feels easier.</p>
+    <p class="note">Pick whichever feels easiest.</p>
     <div class="sty-choices">
+      <button type="button" class="sty-choice sty-choice-main" id="styPickWrite">
+        <span class="k">Write it out</span>
+        <span class="d">Type a few sentences. No camera, takes a couple of minutes.</span>
+      </button>
       <button type="button" class="sty-choice" id="styPickRecord">
         <span class="k">Record it right here</span>
         <span class="d">Use the camera on this phone or computer. You can watch it back and start over as many times as you like.</span>
@@ -270,7 +274,6 @@
       </button>
     </div>
     <input type="file" id="styFile" accept="video/*" style="display:none">
-    <button type="button" class="sty-write" id="styPickWrite">I would rather write it out than be on camera &rarr;</button>
   </section>
 
   <!-- ============ STEP 2a: recorder ============ -->
@@ -377,7 +380,7 @@
 </div>
 
 <section class="sty-safety">
-  <h3>What happens to your video</h3>
+  <h3>What happens to your story</h3>
   <p>It goes into our private system where only our office can see it. It is not posted anywhere the moment you send it, and we will always reach out before we use it publicly.</p>
   <p>Sharing a story is completely up to you. It will never affect the care you receive, your schedule, or your job, and you can change your mind at any time. Call us at <a href="tel:14172348494" style="color:var(--cta);font-weight:600;">(417) 234-8494</a> or email <a href="mailto:samantha@mo-care.com" style="color:var(--cta);font-weight:600;">samantha@mo-care.com</a> and we will take it down and delete it.</p>
 </section>
@@ -447,7 +450,7 @@
   var COPY = {
     family: {
       h1: 'Share your story',
-      lede: 'Families looking for care trust other families far more than they trust any advertisement. If we have been good to you, sixty seconds of your voice would mean more to the next family than anything we could write ourselves.',
+      lede: 'Families looking for care trust other families far more than they trust any advertisement. If we have been good to you, a few words from you would mean more to the next family than anything we could write ourselves.',
       prompts: [
         'What was going on that made you start looking for help?',
         'What were you worried about before you called us?',
@@ -460,7 +463,7 @@
     },
     caregiver: {
       h1: 'Tell us why you stay',
-      lede: 'The best caregivers we hire come from other caregivers telling the truth about this job. A minute of your voice does more for our team than any job ad we could run.',
+      lede: 'The best caregivers we hire come from other caregivers telling the truth about this job. A few words from you do more for our team than any job ad we could run.',
       prompts: [
         'What were you doing before you came to Caring Companions?',
         'Tell us about a shift or a client that has stuck with you.',
