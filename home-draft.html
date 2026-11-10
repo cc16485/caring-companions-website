@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In-Home Senior Care in Springfield, MO | Caring Companions</title>
+<meta name="google-site-verification" content="ABIGhMI1DB92SviMUVrYahgzq8-njI6FiOMD0yX8wnc">
+<meta name="description" content="In-home senior care across southwest Missouri: wellness care, personal care, dementia care, overnight and 24-hour support, so seniors stay safe at home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Homepage-specific layout (breakpoints: <720 mobile, 720–1039 tablet, ≥1040 desktop) */
+.hp { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; }
+.hp-header-inner { max-width:var(--shell); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.hp-logo img { height: 55px; display: block; }
+.hp-nav { display: flex; align-items: center; gap: 28px; }
+.hp-nav a { font-size: max(14.5px, var(--fs-min, 0px)); font-weight: 500; color: var(--ink); transition: color .15s ease; text-decoration: none; }
+.hp-nav a:hover { color: var(--accent); }
+.hp-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.hp-header-right { display: flex; align-items: center; gap: 14px; }
+.hp-phone { font-size: max(14px, var(--fs-min, 0px)); color: var(--muted); white-space: nowrap; text-decoration: none; }
+.hp-cta-sm { display: inline-block; background: var(--cta); color: var(--bg); border: none; border-radius: 8px; padding: 10px 18px; font-size: max(14px, var(--fs-min, 0px)); font-weight: 600; cursor: pointer; white-space: nowrap; text-decoration: none; transition: background .15s ease; }
+.hp-cta-sm:hover { background: var(--cta-hover); color: var(--bg); text-decoration: none; }
+#cc-nav-toggle { background: none; border: 1px solid #dfe6e2; border-radius: 8px; width: 38px; height: 38px; display: none; align-items: center; justify-content: center; cursor: pointer; color: var(--ink); font-size: 16px; }
+#cc-mobile-menu { display: none; flex-direction: column; padding: 6px 20px 18px; border-top: 1px solid var(--border); gap: 2px; }
+#cc-mobile-menu a { font-size: 15px; padding: 10px 0; color: var(--ink); border-bottom: 1px solid #ede9e0; text-decoration: none; }
+#cc-mobile-menu a:last-child { border-bottom: none; }
+
+.hp-hero { max-width:var(--shell); margin: 0 auto; padding: 80px 24px 20px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.hp-hero h1 { font-family: var(--serif); font-size: 54px; line-height: 1.14; font-weight: 600; margin: 0 0 20px; color: var(--brand-blue); letter-spacing: -0.015em; }
+.hp-hero-sub { font-size: 17px; line-height: 1.6; color: #000000; margin: 0 0 20px; max-width:520px; }
+.hp-hero-img { width: 100%; height: 440px; }
+.hp-hero-media { position: relative; margin: 0 18px 18px 0; }
+.hp-hero-media::before { content: ""; position: absolute; inset: 22px -18px -18px 22px; background: #E4F4F3; border-radius: 28px; }
+.hp-hero-media .hp-hero-img { position: relative; display: block; object-fit: cover; object-position: 62% 40%; border-radius: 22px; border: 7px solid #fff; box-shadow: 0 18px 40px rgba(13,54,95,.16); max-width: 100%; }
+/* Wide screens: photo runs to the right edge and fades into the page behind the words (11-10, like showmeneighbors.com) */
+@media (min-width: 1040px) {
+  .hp-hero { position: relative; max-width: none; min-height: 600px; padding: 64px max(24px, calc((100% - var(--shell)) / 2 + 24px)); grid-template-columns: minmax(0, 600px); overflow: hidden; }
+  .hp-hero > div:first-child { position: relative; z-index: 2; }
+  .hp-hero-media { position: absolute; top: 0; bottom: 0; right: 0; left: 45%; margin: 0; }
+  .hp-hero-media::before { inset: 0; border-radius: 0; z-index: 1; background: linear-gradient(90deg, var(--bg) 0%, rgba(250,249,246,.8) 9%, rgba(250,249,246,0) 24%); }
+  .hp-hero-media .hp-hero-img { width: 100%; height: 100%; border: 0; border-radius: 0; box-shadow: none; object-position: 62% 38%; }
+}
+.hp-hero-trust { display: none; font-size: max(15px, var(--fs-read, 0px)); font-weight: 600; line-height: 1.5; color: var(--brand-blue); margin: -12px 0 0; }
+
+.hp-btn-hero { color: var(--bg); border: none; border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; background-color: var(--cta); text-decoration: none; display: inline-block; }
+.hp-btn-hero:hover { background: #124a56; color: var(--bg); text-decoration: none; }
+.hp-btn-hero:active { transform: scale(0.98); }
+.hp-btn-hero:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hp-btn-hero-outline { background: transparent; color: var(--cta); border: 1.5px solid var(--cta); border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; text-decoration: none; display: inline-block; }
+.hp-btn-hero-outline:hover { background: rgba(31, 122, 140, 0.08); color: var(--cta); text-decoration: none; }
+.hp-btn-hero-outline:active { transform: scale(0.98); }
+.hp-btn-hero-outline:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.hp-section { max-width:var(--shell); margin: 0 auto; padding: 88px 24px; }
+.hp-section-dark { background: var(--navy-panel); padding: 88px 24px; }
+.hp-cta-section { max-width:var(--shell); margin: 0 auto; padding: 88px 24px 96px; text-align: center; }
+.hp-hiring { padding-top: 0; }
+.hp-hiring-in { max-width: 1000px; margin: 0 auto; background: #f6e7c4; border-radius: 18px; padding: 34px 36px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; justify-content: space-between; }
+.hp-hiring-in > div:first-child { flex: 1 1 420px; }
+.hp-hiring-eyebrow { font-size: max(13px, var(--fs-min, 0px)); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand-blue); margin: 0 0 6px; }
+.hp-hiring h2 { margin: 0 0 10px; }
+.hp-hiring p:not(.hp-hiring-eyebrow) { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.6; margin: 0; color: #000000; }
+.hp-hiring-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.hp-hiring .hp-btn-hero-outline { background: #ffffff; }
+.hp h2 { font-family: var(--serif); font-size: 32px; font-weight: 600; margin: 0 0 12px; color: var(--brand-blue); }
+.hp-section-dark h2 { color: #fbfaf7; margin: 0 0 18px; }
+
+.hp-services-strip a { font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--muted); text-decoration: none; }
+.hp-services-strip a:hover { color: var(--accent); }
+
+.hp-doors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.hp-door { display: block; border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; background: #ffffff; box-shadow: 0 1px 2px rgba(22,40,58,0.04); transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease; text-decoration: none; }
+.hp-door:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 28px rgba(22,40,58,0.09); text-decoration: none; }
+.hp-door:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.hp-advisor-grid { max-width:var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.hp-btn-light { background: #fbfaf7; color: var(--navy-panel); border: none; border-radius: 9px; padding: 14px 24px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; text-decoration: none; display: inline-block; }
+.hp-btn-light:hover { background: #e7e3d8; color: var(--navy-panel); text-decoration: none; }
+.hp-btn-light:active { transform: scale(0.98); }
+.hp-btn-light:focus-visible { outline: 2px solid var(--gold-on-dark); outline-offset: 2px; }
+
+.hp-care-row { display: flex; flex-direction: row; align-items: stretch; gap: 0; }
+.hp-care-cell { display: flex; flex-direction: row; align-items: center; flex: 1; width: 100%; }
+.hp-care-arrow { color: #cdb98a; font-size: 20px; padding: 0 10px; flex-shrink: 0; }
+.hp-care-arrow::before { content: "→"; }
+
+.hp-trust-grid { max-width:1000px; margin: 0 auto 36px; display: grid; grid-template-columns: repeat(2, 1fr); justify-items: center; gap: 20px 28px; }
+
+.hp-guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.hp-guide-card { display: block; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #ffffff; text-decoration: none; transition: border-color .18s ease; }
+.hp-guide-card:hover { border-color: var(--accent); text-decoration: none; }
+
+.hp-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 48px 20px 32px; }
+.hp-footer-grid { max-width:var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.hp-footer a { font-size: max(13.5px, var(--fs-min, 0px)); color: var(--muted); text-decoration: none; }
+.hp-footer a:hover { color: var(--accent); }
+
+/* Tablet (720–1039) */
+@media (max-width: 1039px) {
+  .hp-nav { display: none; }
+  .hp-phone { display: none; }
+  #cc-nav-toggle { display: flex; }
+  .hp-hero { padding: 56px 32px 12px; grid-template-columns: 1fr; gap: 48px; }
+  .hp-hero h1 { font-size: 44px; }
+  .hp-hero-img { height: 360px; }
+  .hp-section { padding: 64px 32px; }
+  .hp-section-dark { padding: 64px 32px; }
+  .hp-doors { grid-template-columns: repeat(2, 1fr); }
+  .hp-advisor-grid { grid-template-columns: 1fr; }
+  .hp-guides-grid { grid-template-columns: repeat(2, 1fr); }
+  .hp-footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* Mobile (<720) */
+@media (max-width: 719px) {
+  .hp-header-inner { padding: 14px 20px; }
+  .hp-logo img { height: 44px; }
+  .hp-hero { padding: 36px 20px 8px; gap: 28px; }
+  .hp-hero h1 { font-size: 34px; }
+  .hp-hero-sub { font-size: max(15.5px, var(--fs-read, 0px)); }
+  .hp-hero-img { height: 260px; }
+  .hp-hero-media { margin: 0 10px 10px 0; }
+  .hp-hero-media::before { inset: 14px -10px -10px 14px; border-radius: 22px; }
+  .hp-section { padding: 48px 20px; }
+  .hp-section-dark { padding: 48px 20px; }
+  .hp-cta-section { padding: 48px 20px 60px; }
+  .hp h2 { font-size: 26px; }
+  .hp-doors { grid-template-columns: 1fr; }
+  .hp-care-row { flex-direction: column; }
+  .hp-care-cell { flex-direction: column; }
+  .hp-care-arrow { padding: 10px 0; }
+  .hp-care-arrow::before { content: "↓"; }
+  .hp-trust-grid { grid-template-columns: 1fr; }
+  .hp-hero-trust { display: block; }
+  .hp-proof-item:nth-child(-n+3) { display: none; }
+  .hp-guides-grid { grid-template-columns: 1fr; }
+  .hp-footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Care that grows with you: the continuum, on navy so it lands ---- */
+/* full bleed, and a step DOWN in tone: the section above it is teal, so a
+   band that starts teal too just reads as one long muddy stripe */
+.hp-section.cg-band{ max-width:none; width:100%; background:#0D365F; color:#fff;
+  padding:clamp(58px,8vw,94px) 0; margin:0; }
+.cg-in{ max-width:1200px; margin:0 auto; padding:0 24px; }
+.cg-head{ max-width:760px; margin:0 0 clamp(32px,4vw,44px); }
+.cg-eyebrow{ font-size:max(12.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#F5D061; margin:0 0 12px; }
+.cg-band h2{ font-size:clamp(28px,4.4vw,42px); color:#fff; margin:0 0 12px; letter-spacing:-.015em; }
+.cg-sub{ font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.7; color:#cfe0e6; margin:0; max-width:56ch; }
+.cg-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; align-items:stretch; }
+.cg-cell{ display:flex; align-items:stretch; }
+.cg-card{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px;
+  padding:22px 20px; flex:1; }
+.cg-n{ font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#8FD1C7; margin:0 0 10px; }
+.cg-card h3{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:19px; font-weight:600; color:#fff; margin:0 0 8px; }
+.cg-d{ font-size:max(13.5px, var(--fs-read, 0px)); line-height:1.6; color:#cfe0e6; margin:0; }
+.cg-arrow{ flex:0 0 auto; width:34px; align-self:center; position:relative; }
+.cg-arrow::before{ content:""; position:absolute; left:8px; right:8px; top:50%; height:1.5px; background:rgba(240,166,58,.55); }
+.cg-arrow::after{ content:""; position:absolute; right:8px; top:50%; width:7px; height:7px;
+  border-top:1.5px solid #F5D061; border-right:1.5px solid #F5D061; transform:translateY(-50%) rotate(45deg); }
+.cg-foot{ margin-top:clamp(26px,3.5vw,38px); background:rgba(0,0,0,.18); border-radius:18px;
+  padding:24px 26px; display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+.cg-pl{ font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#9fb6c2; margin:0 0 6px; }
+.cg-rates{ display:flex; gap:22px; }
+.cg-rates span{ display:flex; align-items:baseline; gap:3px; flex-wrap:wrap; }
+.cg-rates b{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:27px; font-weight:600; color:#fff; }
+.cg-rates i{ font-style:normal; font-size:max(13px, var(--fs-min, 0px)); color:#9fb6c2; }
+.cg-rates em{ font-style:normal; display:block; width:100%; font-size:max(12px, var(--fs-min, 0px)); color:#9fb6c2; }
+.cg-pay{ display:flex; gap:8px; flex-wrap:wrap; }
+.cg-chip{ font-size:max(12.5px, var(--fs-min, 0px)); font-weight:600; color:#dbe7ec; background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:6px 13px; }
+.cg-cta{ margin-left:auto; background:#F5D061; color:#3a2705; font-weight:700; font-size:15.5px;
+  padding:13px 24px; border-radius:12px; text-decoration:none; white-space:nowrap; }
+.cg-cta:hover{ background:#E8BF3A; }
+@media (max-width:1000px){
+  .cg-row{ grid-template-columns:1fr 1fr; gap:14px; }
+  .cg-arrow{ display:none; }
+  .cg-cta{ margin-left:0; width:100%; text-align:center; }
+}
+@media (max-width:600px){
+  .cg-row{ grid-template-columns:1fr; gap:0; }
+  .cg-cell{ flex-direction:column; }
+  /* stacked, the arrows point down instead of across */
+  .cg-arrow{ display:block; width:100%; height:30px; }
+  .cg-arrow::before{ left:50%; right:auto; top:6px; bottom:6px; height:auto; width:1.5px; }
+  .cg-arrow::after{ left:50%; right:auto; top:auto; bottom:7px; transform:translateX(-50%) rotate(135deg); }
+  .cg-rates{ gap:16px; }
+}
+
+/* ---- Cara, lightened ----
+   She used to sit on a dark teal band directly above the navy continuum,
+   which put roughly 1500px of dark in the middle of an otherwise light
+   page and blunted both. Dark is emphasis; the continuum earns it, a
+   friendly "tell us what's happening" does not. */
+.hp-section.cara-band{ background:#f2f0e9; max-width:none; width:100%; padding:clamp(58px,8vw,88px) 24px; margin:0; }
+.cara-band .hp-advisor-grid{ max-width:1200px; margin:0 auto; }
+.cara-kick{ font-size:max(13px, var(--fs-min, 0px)); font-weight:700; color:#876B00; letter-spacing:.06em; text-transform:uppercase; margin:0 0 16px; }
+.cara-band h2.cara-h{ color:var(--brand-blue); margin:0 0 18px; }
+.cara-p{ font-size:max(15.5px, var(--fs-read, 0px)); line-height:1.65; color:var(--muted); margin:0 0 28px; max-width:460px; }
+.cara-chat{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px;
+  display:flex; flex-direction:column; gap:14px; box-shadow:0 14px 38px rgba(13,54,95,.10); }
+.cara-them{ align-self:flex-end; max-width:82%; background:var(--brand-blue); color:#f4f8fa;
+  border-radius:14px 14px 3px 14px; padding:13px 17px; font-size:max(14px, var(--fs-read, 0px)); line-height:1.55; }
+.cara-her{ align-self:flex-start; max-width:88%; background:var(--soft-teal); color:#1c2b38;
+  border-radius:14px 14px 14px 3px; padding:13px 17px; font-size:max(14px, var(--fs-read, 0px)); line-height:1.6; }
+
+/* Icon CTA + utility-bar dedupe. Declared here because this page's <style>
+   loads after site.css, so the base .hp-btn-hero rules would otherwise win. */
+.hp-btn-hero.hp-btn-hero-call { display: inline-flex; align-items: center; gap: 10px; }
+.hp-btn-hero.hp-btn-hero-call svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+.hp-team { padding-top: 0; }
+.hp-team-lede { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0 0 24px; max-width: 640px; }
+.hp-team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.hp-team-card { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 14px; padding: 26px 26px; }
+.hp-team-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
+.hp-team-card p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0; }
+.hp-team-more { margin: 20px 0 0; font-size: 15.5px; font-weight: 600; }
+#care-journey { text-align: center; } #care-journey .hp-team-lede { margin-left: auto; margin-right: auto; }
+@media (max-width: 719px) { .hp-team-grid { grid-template-columns: 1fr; } }
+/* Even rhythm between homepage sections: plain sections 96px apart (80 tablet, 64 phone); colored bands keep their own inner padding */
+.hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 48px; padding-bottom: 48px; }
+.hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 72px; padding-bottom: 72px; }
+.hp .cg-meet { padding-top: 64px; } .hp #decision-center { padding-bottom: 72px; }
+@media (max-width: 1039px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 40px; padding-bottom: 40px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 56px; padding-bottom: 56px; } .hp .cg-meet { padding-top: 52px; } .hp #decision-center { padding-bottom: 56px; } }
+@media (max-width: 719px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 32px; padding-bottom: 32px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 44px; padding-bottom: 44px; } .hp .cg-meet { padding-top: 40px; } .hp #decision-center { padding-bottom: 44px; } }
+</style>
+<link rel="canonical" href="https://mo-care.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="In-Home Senior Care in Springfield, MO | Caring Companions">
+<meta property="og:description" content="In-home senior care across southwest Missouri: wellness care, personal care, dementia care, overnight and 24-hour support, so seniors stay safe at home.">
+<meta property="og:url" content="https://mo-care.com/">
+<meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Caring Companions In-Home Senior Care","url":"https://mo-care.com/","logo":"https://mo-care.com/assets/cc-logo.webp","image":"https://mo-care.com/assets/photos/hero-caregiver.jpg","telephone":"+1-417-234-8494","priceRange":"$30-$34/hour","address":{"@type":"PostalAddress","streetAddress":"1331 N Stewart Ave Ste B","addressLocality":"Springfield","addressRegion":"MO","postalCode":"65802","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":37.22244,"longitude":-93.25992},"description":"Caring Companions provides trusted non-medical in-home senior care across southwest Missouri: wellness and companion care, personal care, dementia and memory care, plus overnight and 24-hour care. Office hours are Monday to Friday, 8 AM to 5 PM. Caregiving is available around the clock, including nights, weekends and holidays, when scheduled.","areaServed":["Greene County MO","Christian County MO","Webster County MO","Polk County MO","Taney County MO","Lawrence County MO","Dallas County MO","Stone County MO"],"sameAs":["https://www.facebook.com/ccseniorhomecare","https://www.facebook.com/1043697295676809","https://www.instagram.com/caring_companions_missouri/","https://www.youtube.com/@caring-companions","https://www.tiktok.com/@caringcompanionsmo","https://www.linkedin.com/company/40670656/","https://www.pinterest.com/caringcompanionsmissouri/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}]}</script>
+<style>
+.nh-nav-req { border: 2px solid var(--cta); color: var(--cta) !important; border-radius: 8px; padding: 9px 16px; font-weight: 600 !important; }
+.nh-nav-req:hover { background: #EAF4F6; }
+.nh-hcall { display: none; }
+@media (max-width: 1100px) {
+  .nh-hcall { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; margin-right: 10px; background: var(--cta); color: #fff; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px; text-decoration: none; white-space: nowrap; }
+  .nh-hcall svg { width: 17px; height: 17px; fill: currentColor; }
+  .nh-nav-req { margin: 12px 24px 0; text-align: center; padding: 13px !important; border-top: 2px solid var(--cta) !important; }
+}
+@media (max-width: 719px) {
+  .cc-utility { display: none; }
+  .cc-header-inner { padding-left: 14px; padding-right: 14px; gap: 8px; }
+  .nh-hcall { margin-right: 0; padding: 9px 13px; font-size: 15px; gap: 6px; }
+  .cc-burger { padding-left: 11px !important; padding-right: 11px !important; column-gap: 7px !important; }
+  .nh-hero .hp-hero-img { height: 230px; }
+}
+</style>
+</head>
+<body>
+<div class="hp">
+
+<div class="cc-utility">
+<div class="cc-utility-inner">
+<a href="tel:14172348494" class="cc-utility-tel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>(417) 234-8494</a>
+<a href="/before-your-assessment" class="cc-utility-book">Questions families ask</a>
+<a href="/careers" class="cc-utility-jobs">We&rsquo;re hiring<span class="cc-utility-jobs-more"> caregivers</span> &rarr;</a>
+</div>
+</div>
+
+<header class="cc-header">
+<div class="cc-header-inner">
+<a href="/" class="cc-logo"><img src="/assets/cc-logo.webp" alt="Caring Companions"></a>
+<input type="checkbox" id="cc-navtog" class="cc-navtog" aria-hidden="true" tabindex="-1">
+<a href="tel:14172348494" class="nh-hcall" aria-label="Call us at (417) 234-8494"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Call us</a>
+<label for="cc-navtog" class="cc-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+<nav class="cc-nav">
+<span class="cc-nav-group">
+<a href="/our-services" class="cc-nav-top">Services<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Care Levels</span>
+<a href="/services/companion-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">1</span><span>Wellness Care<span class="cc-dd-sub">Company, meals, laundry, errands, medication reminders</span></span></a>
+<a href="/services/personal-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">2</span><span>Personal Care<span class="cc-dd-sub">Wellness Care plus bathing, dressing, toileting, transfers</span></span></a>
+<a href="/services/advanced-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">3</span><span>Advanced Care<span class="cc-dd-sub">Extra support for complex needs</span></span></a>
+</span>
+<span class="cc-col cc-col-2">
+<span class="cc-colh">Around-the-clock &amp; specialty</span>
+<a href="/services/24-hour-care">24-Hour Care<span class="cc-dd-sub">Care around the clock, in shifts</span></a>
+<a href="/services/overnight-care">Overnight Care<span class="cc-dd-sub">Someone there through the night</span></a>
+<a href="/services/respite-care">Respite Care<span class="cc-dd-sub">A break for family caregivers</span></a>
+<a href="/care-paths/dementia">Dementia &amp; Memory Care<span class="cc-dd-sub">Patient help with memory loss</span></a>
+<a href="/our-services">All services &amp; pricing &rarr;</a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Hiring on your own</span>
+<a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself?<span class="cc-dd-sub">Free help, even if you never hire us</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/pricing" class="cc-nav-top">Ways to Pay<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Rates</span>
+<a href="/pricing">Our Rates &amp; Guarantee</a>
+<a href="/care-paths/paying-for-care">Private Pay</a>
+<a href="/cost-calculator">Cost Calculator</a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Benefits &amp; coverage</span>
+<a href="/long-term-care-insurance">Long-Term Care Insurance<span class="cc-dd-sub">We verify &amp; bill your policy</span></a>
+<a href="/guides/va-benefits-for-home-care">VA Benefits<span class="cc-dd-sub">Aid &amp; Attendance</span></a>
+</span>
+<span class="cc-col cc-feat">
+<span class="cc-colh">Guide</span>
+<a href="/medicare-guide">Medicare GUIDE<span class="cc-dd-sub">Up to 20 four-hour respite visits a year</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/resource-library" class="cc-nav-top">Resources<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Learn</span>
+<a href="/resource-library">Guide Library</a>
+<a href="/family-academy">Family Care Academy<span class="cc-dd-sub">Free training for family caregivers</span></a>
+<a href="/counties/">County Resource Centers</a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Tools</span>
+<a href="/cara">Have a Question?<span class="cc-dd-sub">Help with care questions</span></a>
+<a href="/assessment">Care Questionnaire</a>
+<a href="/decision-center">Decision Center</a>
+</span>
+<span class="cc-col cc-feat">
+<span class="cc-colh">Community</span>
+<a href="/outings">Good Days Out<span class="cc-dd-sub">Senior outings near you</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/our-story" class="cc-nav-top">About Us<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Who we are</span>
+<a href="/our-story">Our Story</a>
+<a href="/our-caregivers">Our Caregivers<span class="cc-dd-sub">Who comes to your door</span></a>
+<a href="/service-area">Where We Serve<span class="cc-dd-sub">Towns and counties we cover</span></a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Get in touch</span>
+<a href="/contact">Contact Us</a>
+<a href="/share-your-story">Share Your Story<span class="cc-dd-sub">A few words from you</span></a>
+</span>
+<span class="cc-col cc-feat cc-feat-call">
+<span class="cc-colh">Talk to a coordinator</span>
+<a href="tel:14172348494" class="cc-feat-tel">(417) 234-8494</a>
+<span class="cc-feat-note">Talk with our Springfield office. No sales pressure.</span>
+</span>
+</span>
+</span>
+</span>
+<a href="/careers">Careers</a>
+<a href="#who-needs-care" class="nh-nav-req">Request a Call</a>
+<a href="tel:14172348494" class="cc-nav-cta" aria-label="Call us at (417) 234-8494">Call (417) 234-8494</a>
+<a href="tel:14172348494" class="cc-nav-phone">(417) 234-8494</a>
+</nav>
+</div>
+</header>
+
+<style>
+/* ===== Home page redesign draft (11-10). Prefix nh- ===== */
+.nh-kick { font-size: max(12.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 14px; }
+.nh-hero h1 { margin-bottom: 14px; }
+.nh-sub { font-size: max(18px, var(--fs-read, 0px)); line-height: 1.55; color: var(--ink); margin: 0 0 14px; max-width: 540px; font-weight: 500; }
+.nh-stars { display: flex; align-items: center; gap: 10px; margin: 0 0 26px; font-size: max(15px, var(--fs-read, 0px)); font-weight: 600; color: var(--brand-blue); }
+.nh-stars span { color: #E0A21B; letter-spacing: 2px; font-size: 19px; }
+
+/* Who needs care? */
+.nh-ask { max-width: 520px; }
+.nh-progress { height: 8px; border-radius: 99px; background: #dde8ec; overflow: hidden; margin: 0 0 6px; }
+.nh-progress i { display: block; height: 100%; width: 20%; background: var(--cta); border-radius: 99px; transition: width .3s ease; }
+.nh-stepno { text-align: right; font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--muted); margin: 0 0 14px; }
+.nh-q { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--brand-blue); margin: 0 0 14px; line-height: 1.25; }
+.nh-q small { display: block; font-family: inherit; font-size: max(15px, var(--fs-read, 0px)); font-weight: 400; color: var(--muted); margin-top: 4px; font-family: system-ui, sans-serif; }
+.nh-opts { display: grid; gap: 10px; }
+.nh-opt { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; background: #fff; border: 2px solid #c9d8de; border-radius: 999px; padding: 13px 22px; font: inherit; font-size: max(17px, var(--fs-read, 0px)); font-weight: 600; color: var(--brand-blue); cursor: pointer; transition: border-color .15s, background .15s, transform .1s; }
+.nh-opt:hover { border-color: var(--cta); }
+.nh-opt:active { transform: scale(.99); }
+.nh-opt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.nh-opt svg { width: 26px; height: 26px; flex: none; color: var(--cta); }
+.nh-opt[aria-pressed="true"] { border-color: var(--cta); background: #E4F4F3; }
+.nh-opt[aria-pressed="true"]::after { content: "\2713"; margin-left: auto; color: var(--cta); font-weight: 800; }
+.nh-row { display: flex; gap: 12px; align-items: center; margin-top: 16px; flex-wrap: wrap; }
+.nh-next { background: var(--cta); color: #fff; border: 0; border-radius: 999px; padding: 14px 30px; font: inherit; font-size: 16.5px; font-weight: 700; cursor: pointer; }
+.nh-next:hover { background: var(--cta-hover); }
+.nh-next[disabled] { opacity: .55; cursor: wait; }
+.nh-back { background: none; border: 0; font: inherit; font-size: 15.5px; font-weight: 600; color: var(--muted); cursor: pointer; text-decoration: underline; padding: 8px 4px; }
+.nh-field { display: block; margin: 0 0 12px; }
+.nh-field span { display: block; font-size: max(14.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.nh-field input { width: 100%; box-sizing: border-box; border: 2px solid #c9d8de; border-radius: 12px; padding: 13px 14px; font: inherit; font-size: 17px; background: #fff; color: var(--ink); }
+.nh-field input:focus { outline: none; border-color: var(--cta); }
+.nh-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.nh-fine { font-size: max(13.5px, var(--fs-min, 0px)); color: var(--muted); line-height: 1.5; margin: 6px 0 0; }
+.nh-err { display: none; background: #FDECEA; color: #8A1C12; border-radius: 12px; padding: 12px 14px; font-size: 15px; line-height: 1.5; margin: 12px 0 0; }
+.nh-err.on { display: block; }
+.nh-err a { color: #8A1C12; font-weight: 700; }
+.nh-done { background: #fff; border-radius: 20px; padding: 26px 24px; box-shadow: 0 10px 30px rgba(13,54,95,.10); }
+.nh-done h3 { font-family: var(--serif); font-size: 26px; color: var(--brand-blue); margin: 0 0 10px; }
+.nh-done p { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.6; margin: 0 0 10px; color: var(--body-text); }
+.nh-callbar { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; box-sizing: border-box; margin-top: 18px; background: var(--brand-blue); color: #fff; text-decoration: none; border-radius: 999px; padding: 15px 22px; font-size: 17px; font-weight: 700; }
+.nh-callbar:hover { background: #0a2a4a; color: #fff; text-decoration: none; }
+.nh-callbar svg { width: 18px; height: 18px; fill: currentColor; }
+.nh-step { display: none; }
+.nh-step.on { display: block; }
+
+/* Sections */
+.nh-sec { max-width: var(--shell); margin: 0 auto; padding: 88px 24px; box-sizing: border-box; }
+.nh-sec h2 { font-family: var(--serif); font-size: 40px; line-height: 1.15; font-weight: 600; color: var(--brand-blue); margin: 0 0 18px; letter-spacing: -.01em; }
+.nh-lede { font-size: max(17.5px, var(--fs-read, 0px)); line-height: 1.65; color: var(--body-text); max-width: 760px; margin: 0 0 40px; }
+
+/* Why families choose us */
+.nh-why { display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
+.nh-why p { font-size: max(17px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0 0 18px; }
+.nh-why-art { position: relative; padding: 30px; }
+.nh-why-art::before { content: ""; position: absolute; inset: 0 30px 0 60px; background: #F6E3B4; border-radius: 48% 52% 46% 54% / 55% 45% 55% 45%; }
+.nh-why-art img { position: relative; display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; border: 8px solid #fff; box-shadow: 0 16px 40px rgba(13,54,95,.16); }
+.nh-badge { position: absolute; width: 86px; height: 86px; border-radius: 50%; display: grid; place-items: center; border: 6px solid #fff; box-shadow: 0 8px 20px rgba(13,54,95,.14); }
+.nh-badge svg { width: 38px; height: 38px; }
+.nh-b1 { left: 0; top: 14%; background: #F5D061; color: var(--brand-blue); }
+.nh-b2 { right: 0; top: 4%; background: #CFE8EC; color: var(--brand-blue); }
+.nh-b3 { left: 6%; bottom: 6%; background: var(--brand-blue); color: #fff; }
+.nh-b4 { right: 4%; bottom: 12%; background: var(--cta); color: #fff; }
+.nh-points { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 12px; }
+.nh-points li { display: flex; gap: 12px; align-items: flex-start; font-size: max(16.5px, var(--fs-read, 0px)); font-weight: 600; color: var(--ink); line-height: 1.45; }
+.nh-points li::before { content: "\2713"; flex: none; width: 26px; height: 26px; border-radius: 50%; background: #E4F4F3; color: var(--cta); font-weight: 800; display: grid; place-items: center; font-size: 14px; }
+
+/* Reviews band */
+.nh-dark { background: var(--brand-blue); }
+.nh-dark .nh-sec h2 { color: #fff; }
+.nh-dark .nh-lede { color: #CFE3F5; }
+.nh-reviews { background: #fff; border-radius: 22px; padding: 18px 12px 6px; }
+
+/* Services */
+.nh-svc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.nh-card { display: flex; gap: 20px; align-items: flex-start; background: #fff; border: 1px solid #e8e5dc; border-radius: 18px; padding: 26px 26px; text-decoration: none; color: inherit; box-shadow: 0 4px 16px rgba(13,54,95,.05); transition: transform .15s, box-shadow .15s; }
+.nh-card:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(13,54,95,.10); text-decoration: none; }
+.nh-ic { flex: none; width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; }
+.nh-ic svg { width: 32px; height: 32px; }
+.nh-card h3 { font-size: max(19px, var(--fs-head, 0px)); font-weight: 700; color: var(--brand-blue); margin: 2px 0 6px; }
+.nh-card p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.6; color: var(--muted); margin: 0; }
+.nh-card .nh-price { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent); }
+.nh-card.nh-all h3 { text-decoration: underline; }
+.c1 { background: #FFF1CC; color: #7A5A00; } .c2 { background: #DDF0F2; color: #155A68; } .c3 { background: #E3E8F5; color: #0D365F; }
+.c4 { background: #F8E1D8; color: #8A3B1E; } .c5 { background: #E6F1E3; color: #2F5D2A; } .c6 { background: #EDE4F5; color: #4F2F70; }
+.nh-pay { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 30px; font-size: 15.5px; color: var(--muted); }
+.nh-pay b { color: var(--ink); }
+.nh-chip { background: #fff; border: 1px solid #dfe6e2; border-radius: 999px; padding: 7px 14px; font-weight: 600; color: var(--brand-blue); font-size: 14.5px; }
+
+/* How it works */
+.nh-soft { background: #F1F7F8; }
+.nh-how { display: grid; grid-template-columns: 1fr 360px; gap: 64px; align-items: start; }
+.nh-steps { list-style: none; padding: 0; margin: 0; counter-reset: s; display: grid; gap: 18px; }
+.nh-steps li { counter-increment: s; display: grid; grid-template-columns: 52px 1fr; gap: 18px; background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 16px rgba(13,54,95,.05); }
+.nh-steps li::before { content: counter(s); width: 44px; height: 44px; border-radius: 50%; background: var(--cta); color: #fff; font-weight: 800; font-size: 19px; display: grid; place-items: center; }
+.nh-steps h3 { font-size: max(18.5px, var(--fs-head, 0px)); color: var(--brand-blue); margin: 4px 0 6px; }
+.nh-steps p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.6; color: var(--muted); margin: 0; }
+.nh-video video { width: 100%; aspect-ratio: 9 / 16; border-radius: 22px; background: #000; display: block; box-shadow: 0 12px 30px rgba(13,54,95,.16); }
+.nh-video p { font-size: 13.5px; color: var(--muted); text-align: center; margin: 10px 0 0; }
+.nh-video h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); text-align: center; margin: 0 0 12px; }
+
+/* FAQ */
+.nh-faq { max-width: 980px; }
+.nh-faq details { border-bottom: 1px solid #dfe3dc; }
+.nh-faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0; font-size: max(19px, var(--fs-head, 0px)); font-weight: 700; color: var(--brand-blue); }
+.nh-faq summary::-webkit-details-marker { display: none; }
+.nh-faq summary::after { content: "+"; font-size: 30px; font-weight: 400; color: var(--cta); line-height: 1; }
+.nh-faq details[open] summary::after { content: "\2212"; }
+.nh-faq details p { font-size: max(16.5px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0 0 24px; max-width: 820px; }
+.nh-more { display: inline-block; margin-top: 26px; font-weight: 700; }
+
+/* Closing call band */
+.nh-close { background: var(--cta); }
+.nh-close .nh-sec { text-align: center; padding: 72px 24px; }
+.nh-close h2 { color: #fff; }
+.nh-close p { color: #E4F4F3; font-size: 18px; margin: 0 auto 28px; max-width: 620px; line-height: 1.6; }
+.nh-close .nh-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.nh-btn-w { background: #fff; color: var(--brand-blue); border-radius: 999px; padding: 15px 28px; font-weight: 700; font-size: 17px; text-decoration: none; display: inline-flex; gap: 10px; align-items: center; }
+.nh-btn-w svg { width: 18px; height: 18px; fill: currentColor; }
+.nh-btn-o { border: 2px solid #fff; color: #fff; border-radius: 999px; padding: 13px 26px; font-weight: 700; font-size: 17px; text-decoration: none; }
+.nh-btn-w:hover, .nh-btn-o:hover { text-decoration: none; opacity: .92; }
+
+/* Careers band, smaller */
+.nh-jobs { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; background: #FFF6DE; border-radius: 22px; padding: 30px 34px; }
+.nh-jobs h2 { font-size: 28px; margin: 0 0 6px; }
+.nh-jobs p { margin: 0; color: var(--body-text); font-size: 16.5px; line-height: 1.55; max-width: 640px; }
+
+/* Draft banner */
+.nh-draft { background: #FFF3C4; color: #5c4500; text-align: center; font-size: 14.5px; font-weight: 600; padding: 10px 16px; }
+
+@media (max-width: 1039px) {
+  .nh-why, .nh-how { grid-template-columns: 1fr; gap: 40px; }
+  .nh-why-art { max-width: 460px; margin: 0 auto; }
+  .nh-video { max-width: 340px; margin: 0 auto; }
+  .nh-sec h2 { font-size: 34px; }
+}
+@media (max-width: 719px) {
+  .nh-sec { padding: 60px 20px; }
+  .nh-sec h2 { font-size: 29px; }
+  .nh-svc { grid-template-columns: 1fr; }
+  .nh-card { padding: 22px 20px; gap: 12px; flex-direction: column; }
+  .nh-ic { width: 50px; height: 50px; border-radius: 14px; } .nh-ic svg { width: 28px; height: 28px; }
+  .nh-two { grid-template-columns: 1fr; }
+  .nh-steps li { grid-template-columns: 1fr; gap: 10px; padding: 20px; }
+  .nh-q { font-size: 23px; }
+  .nh-badge { width: 66px; height: 66px; } .nh-badge svg { width: 30px; height: 30px; }
+  .nh-jobs { padding: 26px 22px; }
+}
+</style>
+
+<p class="nh-draft">Draft home page for Samantha's review. Not linked anywhere and hidden from Google.</p>
+
+<section class="hp-hero nh-hero" id="who-needs-care">
+<div>
+<p class="nh-kick">In-home care in Springfield and southwest Missouri &middot; Since 2017</p>
+<h1>Good care starts with people you can trust.</h1>
+<p class="nh-sub">Help at home from caregivers you meet before they ever knock, and a local office that answers the phone.</p>
+<p class="nh-stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 on Google</p>
+
+<div class="nh-ask" id="nhAsk">
+  <div class="nh-progress" aria-hidden="true"><i id="nhBar"></i></div>
+  <p class="nh-stepno" id="nhStepNo">Step 1 of 5</p>
+
+  <div class="nh-step on" data-step="1">
+    <p class="nh-q" id="nhQ1">Who needs care?</p>
+    <div class="nh-opts" role="group" aria-labelledby="nhQ1">
+      <button type="button" class="nh-opt" data-who="My parent"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="11" r="3.4"/><path d="M3.5 26c.6-5 3.6-8 7.5-8s6.9 3 7.5 8"/><path d="M17.5 20.5c1.2-1.6 2.7-2.4 4.5-2.4 3.3 0 5.6 2.6 6.1 7.9"/></svg>My parent(s)</button>
+      <button type="button" class="nh-opt" data-who="My spouse"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M16 27S4.5 20 4.5 11.8C4.5 8.3 7.2 5.8 10.4 5.8c2.4 0 4.4 1.4 5.6 3.4 1.2-2 3.2-3.4 5.6-3.4 3.2 0 5.9 2.5 5.9 6 0 8.2-11.5 15.2-11.5 15.2z"/></svg>My spouse</button>
+      <button type="button" class="nh-opt" data-who="Myself"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 27c.8-6 4.8-9.5 10-9.5S25.2 21 26 27"/></svg>Myself</button>
+      <button type="button" class="nh-opt" data-who="Someone else"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="14" cy="10" r="5"/><path d="M4 27c.8-6 4.8-9.5 10-9.5 2.2 0 4.2.6 5.8 1.8"/><path d="M25 19v8M21 23h8"/></svg>Someone else</button>
+    </div>
+  </div>
+
+  <div class="nh-step" data-step="2">
+    <p class="nh-q" id="nhQ2">What kind of help would make the biggest difference?<small>Pick any that fit. Not sure? That's fine too.</small></p>
+    <div class="nh-opts" role="group" aria-labelledby="nhQ2" id="nhHelp">
+      <button type="button" class="nh-opt" aria-pressed="false" data-help="Company, meals and errands">Company, meals and errands</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-help="Bathing, dressing and getting around">Bathing, dressing and getting around</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-help="Memory loss or dementia">Memory loss or dementia</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-help="Coming home from the hospital">Coming home from the hospital</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-help="Overnight or 24-hour care">Overnight or 24-hour care</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-help="Not sure yet">Not sure yet</button>
+    </div>
+    <div class="nh-row"><button type="button" class="nh-next" data-go="3">Next</button><button type="button" class="nh-back" data-go="1">Back</button></div>
+  </div>
+
+  <div class="nh-step" data-step="3">
+    <p class="nh-q" id="nhQ3">When would you like care to start?</p>
+    <div class="nh-opts" role="group" aria-labelledby="nhQ3">
+      <button type="button" class="nh-opt" data-when="As soon as possible">As soon as possible</button>
+      <button type="button" class="nh-opt" data-when="In the next few weeks">In the next few weeks</button>
+      <button type="button" class="nh-opt" data-when="Just planning ahead">Just planning ahead</button>
+    </div>
+    <div class="nh-row"><button type="button" class="nh-back" data-go="2">Back</button></div>
+  </div>
+
+  <div class="nh-step" data-step="4">
+    <p class="nh-q">Where would care be?<small>So we can make sure a caregiver can get there.</small></p>
+    <label class="nh-field"><span>ZIP code or town</span><input id="nhWhere" autocomplete="postal-code" placeholder="65804 or Nixa"></label>
+    <div class="nh-row"><button type="button" class="nh-next" data-go="5">Next</button><button type="button" class="nh-back" data-go="3">Back</button></div>
+  </div>
+
+  <div class="nh-step" data-step="5">
+    <p class="nh-q">Who should we call?<small>A care coordinator from our Springfield office will call you. No pressure, just a conversation.</small></p>
+    <div class="nh-two">
+      <label class="nh-field"><span>Your name</span><input id="nhName" autocomplete="name"></label>
+      <label class="nh-field"><span>Phone number</span><input id="nhPhone" type="tel" autocomplete="tel" inputmode="tel"></label>
+    </div>
+    <label class="nh-field"><span>Email <em style="font-style:normal;font-weight:400;color:var(--muted)">optional</em></span><input id="nhEmail" type="email" autocomplete="email"></label>
+    <p class="nh-q" style="font-size:17px;font-family:inherit;margin:4px 0 8px" id="nhQ5">Best time to call</p>
+    <div class="nh-opts" role="group" aria-labelledby="nhQ5" id="nhTime" style="grid-template-columns:repeat(3,1fr)">
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Morning" style="justify-content:center;padding:11px 10px">Morning</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Afternoon" style="justify-content:center;padding:11px 10px">Afternoon</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Evening" style="justify-content:center;padding:11px 10px">Evening</button>
+    </div>
+    <p class="nh-err" id="nhErr" role="alert"></p>
+    <div class="nh-row"><button type="button" class="nh-next" id="nhSend">Request my call</button><button type="button" class="nh-back" data-go="4">Back</button></div>
+    <p class="nh-fine">We only use your number to talk with you about care.</p>
+  </div>
+
+  <div class="nh-step" data-step="done">
+    <div class="nh-done" tabindex="-1" id="nhDone">
+      <h3>Thank you. We'll call you soon.</h3>
+      <p>A care coordinator from our Springfield office will call you, usually the same business day. If you reached us after hours, we'll call the next morning.</p>
+      <p>Rather talk now? We're happy to.</p>
+    </div>
+  </div>
+
+  <a class="nh-callbar" href="tel:14172348494"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Call us: (417) 234-8494</a>
+</div>
+</div>
+<div class="hp-hero-media">
+<img src="assets/photos/hero-caregiver-sofa.webp" width="1400" height="788" fetchpriority="high" decoding="async" alt="A caregiver and a smiling older woman with a cup of tea, chatting on the sofa at home" class="hp-hero-img">
+</div>
+</section>
+
+<div class="hp-proof-wrap">
+<div class="hp-proof">
+<div class="hp-proof-item"><strong class="hp-proof-rating">4.9<span class="hp-proof-star" aria-hidden="true">&#9733;</span></strong><span>On Google, from families who've shared their experience</span></div>
+<div class="hp-proof-item"><strong>Since 2017</strong><span>Serving families across southwest Missouri</span></div>
+<div class="hp-proof-item"><strong>Locally owned</strong><span>Not a franchise. Our office is in Springfield</span></div>
+<div class="hp-proof-item"><strong>Meet them first</strong><span>Your caregiver's photo and story before the first visit</span></div>
+</div>
+</div>
+
+<section class="nh-sec">
+<div class="nh-why">
+<div>
+<h2>Why families choose Caring Companions</h2>
+<p>We're a local, family-owned home care agency, not a franchise. Our office is right here in Springfield, and the people who answer the phone are the same people who plan your care.</p>
+<p>We take the time to get to know your family, what a good day looks like, and what worries you most. Then we match a caregiver by skills, personality and schedule.</p>
+<p>Before the first visit, you get your caregiver's profile with a friendly photo and a little about them, so the person at the door is never a stranger.</p>
+<ul class="nh-points">
+<li>Every caregiver is our employee, never a contractor</li>
+<li>Background checks on every caregiver before they start</li>
+<li>No deposit and no long-term contract</li>
+</ul>
+</div>
+<div class="nh-why-art">
+<img src="assets/photos/scene-welcome-porch.webp" alt="A caregiver being welcomed at the front door by an older woman" loading="lazy">
+<span class="nh-badge nh-b1" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15 16 6l11 9"/><path d="M8 13v13h16V13"/><path d="M16 23s-4-2.5-4-5.2c0-1.3 1-2.3 2.2-2.3.8 0 1.4.4 1.8 1 .4-.6 1-1 1.8-1 1.2 0 2.2 1 2.2 2.3 0 2.7-4 5.2-4 5.2z"/></svg></span>
+<span class="nh-badge nh-b2" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13h17v6a7 7 0 0 1-7 7h-3a7 7 0 0 1-7-7z"/><path d="M23 15h2a3 3 0 0 1 0 6h-2.5"/><path d="M11 5c-1 1.5 1 2.5 0 4M16 5c-1 1.5 1 2.5 0 4"/></svg></span>
+<span class="nh-badge nh-b3" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="18" height="24" rx="3"/><circle cx="16" cy="13" r="3.5"/><path d="M10.5 23c.8-3 3-4.6 5.5-4.6s4.7 1.6 5.5 4.6"/></svg></span>
+<span class="nh-badge nh-b4" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5h4l2 6-3 2c1.4 3 3.9 5.6 7 7l2-3 6 2v4a2 2 0 0 1-2 2C13.5 25 7 18.5 5 7a2 2 0 0 1 2-2z"/></svg></span>
+</div>
+</div>
+</section>
+
+<div class="nh-dark" id="reviews">
+<section class="nh-sec">
+<h2>Trusted by families across southwest Missouri</h2>
+<p class="nh-lede">Real, verified Google reviews from the families we care for and the caregivers on our team.</p>
+<div class="nh-reviews">
+<script src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+<iframe id="cc-reviews" class="lc_reviews_widget" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" height="620" style="width:100%;border:none;display:block" title="Verified Google reviews for Caring Companions" loading="lazy"></iframe>
+</div>
+</section>
+</div>
+
+<section class="nh-sec" id="services">
+<h2>The care you need, at home</h2>
+<p class="nh-lede">From a friendly visit a few times a week to someone there around the clock. Care can change as needs change, without switching agencies or starting over.</p>
+<div class="nh-svc">
+<a class="nh-card" href="/services/companion-care"><span class="nh-ic c1"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14h16v5a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7z"/><path d="M22 16h2a3 3 0 0 1 0 6h-2.4"/><path d="M11 5c-1 1.5 1 2.5 0 4M16 5c-1 1.5 1 2.5 0 4"/></svg></span><span><h3>Wellness Care</h3><p>Company, meals, laundry, errands and medication reminders, for someone who doesn't need hands-on help.</p><span class="nh-price">$30 an hour</span></span></a>
+<a class="nh-card" href="/services/personal-care"><span class="nh-ic c2"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14V8a3 3 0 0 1 6 0"/><path d="M4 14h24v4a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8z"/><path d="M9 26l-1 3M23 26l1 3"/></svg></span><span><h3>Personal Care</h3><p>Everything in Wellness Care, plus bathing, dressing, toileting, walking and safe transfers.</p><span class="nh-price">$32 an hour</span></span></a>
+<a class="nh-card" href="/services/advanced-care"><span class="nh-ic c3"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4 6 8v7c0 6.5 4.3 11 10 13 5.7-2 10-6.5 10-13V8z"/><path d="M16 11v9M11.5 15.5h9"/></svg></span><span><h3>Advanced Care</h3><p>Extra support for advanced dementia, serious mobility limits and other complex needs.</p><span class="nh-price">$34 an hour</span></span></a>
+<a class="nh-card" href="/guides/dementia-and-alzheimers"><span class="nh-ic c6"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 27v-4.5c-3.7-1.3-6-4.6-6-8.5a10 10 0 0 1 20 0c0 1.6-.4 3-1.1 4.2L27 22h-3v5"/><path d="M16 17s-3-2-3-4a1.8 1.8 0 0 1 3-1.3A1.8 1.8 0 0 1 19 13c0 2-3 4-3 4z"/></svg></span><span><h3>Dementia &amp; Memory Care</h3><p>Patient, familiar help for someone living with memory loss, in the comfort of their own home.</p></span></a>
+<a class="nh-card" href="/services/24-hour-care"><span class="nh-ic c4"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg></span><span><h3>24-Hour Care</h3><p>Caregivers in rotating 8 or 12 hour shifts, so someone is always there.</p></span></a>
+<a class="nh-card" href="/services/overnight-care"><span class="nh-ic c3"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 20.5A10.5 10.5 0 0 1 11.5 8 9 9 0 1 0 24 20.5z"/><path d="M22 5v4M20 7h4"/></svg></span><span><h3>Overnight Care</h3><p>One caregiver from evening to morning, for bathroom trips, wandering or anything after dark.</p></span></a>
+<a class="nh-card" href="/services/respite-care"><span class="nh-ic c5"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 24s-8-4.8-8-10.4A4.4 4.4 0 0 1 16 11a4.4 4.4 0 0 1 8 2.6C24 19.2 16 24 16 24z"/><path d="M4 22c2 0 4 1 6 3h8l7-4c1.2-.7 2.6.9 1.6 2L21 28H9"/></svg></span><span><h3>Respite Care</h3><p>A break for family caregivers, planned ahead or when you need it most.</p></span></a>
+<a class="nh-card" href="/guides/hospital-discharge"><span class="nh-ic c2"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 27V9l8-4v22"/><path d="M12 12h6v15"/><path d="M8 11v2M8 16v2"/><path d="M19 20l4-4 4 4M20 19v8h6v-8"/></svg></span><span><h3>Coming Home From the Hospital</h3><p>Help settling back in after surgery, a hospital stay or rehab, so recovery goes smoothly.</p></span></a>
+</div>
+<div class="nh-pay"><b>Ways to pay:</b><span class="nh-chip">Private pay</span><span class="nh-chip">Long-term care insurance</span><span class="nh-chip">Medicare GUIDE</span><span class="nh-chip">VA Aid &amp; Attendance</span><a href="/our-services" style="font-weight:700;margin-left:6px">All services and pricing &rarr;</a></div>
+</section>
+
+<div class="nh-soft">
+<section class="nh-sec">
+<h2>How getting started works</h2>
+<p class="nh-lede">Choosing home care is a big decision. Here's what happens, from the first phone call to the first visit.</p>
+<div class="nh-how">
+<ol class="nh-steps">
+<li><div><h3>We talk on the phone</h3><p>Call us, or ask for a call above. A care coordinator listens, answers your questions about care and cost, and there's no pressure to decide anything.</p></div></li>
+<li><div><h3>A free visit at home</h3><p>We come to the house for a free in-home assessment, meet your loved one, and build the care plan together. No obligation, and you get everything in writing.</p></div></li>
+<li><div><h3>Meet your caregiver first</h3><p>We match a caregiver by skills, personality and schedule, then send you their profile with a photo before the first visit.</p></div></li>
+<li><div><h3>Care begins, and we stay close</h3><p>We call a few days after the first visit to see how it's going, and a real person answers our office line, day or night.</p></div></li>
+</ol>
+<div class="nh-video">
+<h3>Watch how it works</h3>
+<video controls preload="none" playsinline poster="/assets/video/never-a-stranger-poster.jpg">
+<source src="/assets/video/never-a-stranger.mp4" type="video/mp4">
+<track kind="captions" src="/assets/video/never-a-stranger.vtt" srclang="en" label="English" default>
+Your browser cannot play this video. Call us at (417) 234-8494 and we will walk you through it.
+</video>
+<p>Dramatization. People shown are not actual clients or caregivers.</p>
+</div>
+</div>
+</section>
+</div>
+
+<section class="nh-sec" id="questions">
+<h2>Questions families ask</h2>
+<div class="nh-faq">
+<details><summary>How much does care cost?</summary><p>$30, $32 or $34 an hour, depending on the level of care: Wellness Care, Personal Care or Advanced Care. We'll recommend the right level together at the visit. Your rate is written in your agreement, and we give at least 4 weeks' written notice before any change.</p></details>
+<details><summary>Is there a deposit or a long-term contract?</summary><p>No deposit and no long-term contract. You're billed weekly, after the visits have happened, from your caregiver's actual clock-in and clock-out times. You can stop care when you need to.</p></details>
+<details><summary>Is there a minimum?</summary><p>Our standard visit is at least 4 hours, with at least 8 hours a week. Need a shorter visit? Please ask. When a caregiver is available for a shorter shift, we will work to make it happen, with an extra $5 an hour for visits under 4 hours. Shorter visits depend on staffing, so we cannot promise them every time.</p></details>
+<details><summary>Is the assessment free? Do we have to decide that day?</summary><p>Yes, it's free, and there's no obligation. We listen, answer your questions and leave you everything in writing. Take the time you need.</p></details>
+<details><summary>Will we know who's coming?</summary><p>Always. Before the first visit, we send your caregiver's profile with a friendly photo. If your caregiver ever changes, the family members you choose get a text with the new caregiver's profile.</p></details>
+<details><summary>Do you do background checks?</summary><p>Yes, on every caregiver and every office team member, before they start: federal, state and county background checks, a driving record check, and verification that they're allowed to work. The checks are repeated over time, not just done once.</p></details>
+<details><summary>Are caregivers your employees?</summary><p>Always. Every caregiver is a Caring Companions employee, never a contractor. We handle their payroll and all their taxes, so you never become anyone's employer. Every caregiver also has at least a year of paid caregiving experience and finishes our orientation before their first visit with a client.</p></details>
+</div>
+<a class="nh-more" href="/before-your-assessment">See more questions and answers &rarr;</a>
+</section>
+
+<div class="nh-close">
+<section class="nh-sec">
+<h2>Let's talk it through</h2>
+<p>No pressure and no sales pitch. Call our Springfield office, or ask us to call you.</p>
+<div class="nh-btns">
+<a class="nh-btn-w" href="tel:14172348494"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Call (417) 234-8494</a>
+<a class="nh-btn-o" href="#who-needs-care">Request a call</a>
+</div>
+</section>
+</div>
+
+<section class="nh-sec" style="padding-top:64px;padding-bottom:72px">
+<div class="nh-jobs">
+<div><h2>Love helping people? Join our team.</h2><p>We hire caregivers and CNAs in Springfield and nearby towns. You're our employee, with flexible schedules and an office team that has your back.</p></div>
+<a href="/careers" class="hp-btn-hero">See caregiver jobs</a>
+</div>
+</section>
+
+<script src="assets/forms.js"></script>
+<script>
+(function () {
+  'use strict';
+  var ask = document.getElementById('nhAsk');
+  var steps = ask.querySelectorAll('.nh-step');
+  var bar = document.getElementById('nhBar'), stepNo = document.getElementById('nhStepNo');
+  var data = { who: '', help: [], when: '', where: '', time: '' };
+
+  function go(n) {
+    steps.forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-step') === String(n)); });
+    var done = n === 'done';
+    bar.style.width = done ? '100%' : (Number(n) * 20) + '%';
+    stepNo.textContent = done ? 'All done' : 'Step ' + n + ' of 5';
+    var cur = ask.querySelector('.nh-step.on');
+    var first = cur && cur.querySelector(done ? '#nhDone' : 'input, button');
+    if (first && n !== 1) first.focus({ preventScroll: true });
+    if (n !== 1 && ask.getBoundingClientRect().top < 0) ask.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  ask.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.hasAttribute('data-who')) { data.who = b.getAttribute('data-who'); go(2); return; }
+    if (b.hasAttribute('data-help')) {
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      data.help = Array.prototype.map.call(ask.querySelectorAll('[data-help][aria-pressed="true"]'), function (x) { return x.getAttribute('data-help'); });
+      return;
+    }
+    if (b.hasAttribute('data-when')) { data.when = b.getAttribute('data-when'); go(4); return; }
+    if (b.hasAttribute('data-time')) {
+      ask.querySelectorAll('[data-time]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      data.time = b.getAttribute('data-time'); return;
+    }
+    if (b.hasAttribute('data-go')) { go(Number(b.getAttribute('data-go'))); return; }
+  });
+
+  var err = document.getElementById('nhErr'), send = document.getElementById('nhSend');
+  function fail(msg) { err.innerHTML = msg; err.classList.add('on'); send.disabled = false; send.textContent = 'Request my call'; }
+
+  send.addEventListener('click', function () {
+    err.classList.remove('on');
+    var name = document.getElementById('nhName').value.trim();
+    var phone = document.getElementById('nhPhone').value.trim();
+    var email = document.getElementById('nhEmail').value.trim();
+    data.where = document.getElementById('nhWhere').value.trim();
+    if (!name) { fail('Please add your name.'); document.getElementById('nhName').focus(); return; }
+    if (phone.replace(/\D/g, '').replace(/^1/, '').length !== 10) { fail('Please add a 10 digit phone number so we can call you.'); document.getElementById('nhPhone').focus(); return; }
+    if (!window.CCForms) { fail('This did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>.'); return; }
+    send.disabled = true; send.textContent = 'Sending...';
+    var msg = 'Asked for a call from the website home page.' +
+      ' Care is for: ' + (data.who || 'not given') + '.' +
+      ' Help wanted: ' + (data.help.length ? data.help.join(', ') : 'not given') + '.' +
+      ' Start: ' + (data.when || 'not given') + '.' +
+      ' Where: ' + (data.where || 'not given') + '.' +
+      ' Best time to call: ' + (data.time || 'any time') + '.';
+    window.CCForms.submitLead({ name: name, phone: phone, email: email, care_for: data.who, message: msg })
+      .then(function () { go('done'); })
+      .catch(function () { fail('Sorry, this did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>, or try again.'); });
+  });
+})();
+</script>
+<footer class="cc-siteftr">
+<div class="cc-siteftr-grid">
+<div class="brand">
+<img src="/assets/cc-logo.webp" alt="Caring Companions">
+<p class="tag">The trusted guide for aging at home.</p>
+<p class="meta">1331 N Stewart Ave Ste B<br>Springfield, MO 65802<br><a href="tel:14172348494" style="display:inline;padding:0;color:inherit">(417) 234-8494</a></p>
+<a class="book" href="/book">Book a Free In-Home Assessment</a>
+</div>
+<div>
+<h4>Care Services</h4>
+<a href="/services/companion-care">Wellness Care</a>
+<a href="/services/personal-care">Personal Care</a>
+<a href="/services/advanced-care">Advanced Care</a>
+<a href="/services/overnight-care">Overnight Care</a>
+<a href="/services/24-hour-care">24-Hour Care</a>
+<a href="/services/respite-care">Respite Care</a>
+<a href="/our-services">All services &rarr;</a>
+</div>
+<div>
+<h4>Explore</h4>
+<a href="/getting-started">Getting Started</a>
+<a href="/before-your-assessment">What to Expect</a>
+<a href="/decision-center">Decision Center</a>
+<a href="/assessment">Care Questionnaire</a>
+<a href="/cara">Have a Question?</a>
+<a href="/cost-calculator">Cost Calculator</a>
+<a href="/resource-library">Resource Library</a>
+<a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself?</a>
+<a href="/family-academy">Family Care Academy</a>
+<a href="/outings">Good Days Out</a>
+<a href="/service-area">Service Areas</a>
+</div>
+<div>
+<h4>Company</h4>
+<a href="/our-story">Our Story</a>
+<a href="/our-caregivers">Our Caregivers</a>
+<a href="/share-your-story">Share Your Story</a>
+<a href="/pricing">Pricing</a>
+<a href="/contact">Contact Us</a>
+</div>
+<div>
+<h4>Work With Us</h4>
+<a href="/careers#openings">Open Caregiver Jobs</a>
+<a href="/apply">Apply Now</a>
+<a href="/careers">Why Work Here</a>
+</div>
+</div>
+<div class="cc-social " data-social-row><span class="lbl">Follow us</span><a href="https://www.facebook.com/1043697295676809"  target="_blank" rel="noopener me" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a><a href="https://www.instagram.com/caring_companions_missouri/"  target="_blank" rel="noopener me" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a><a href="https://www.youtube.com/@caring-companions"  target="_blank" rel="noopener me" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.tiktok.com/@caringcompanionsmo"  target="_blank" rel="noopener me" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="https://www.linkedin.com/company/40670656/"  target="_blank" rel="noopener me" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.pinterest.com/caringcompanionsmissouri/"  target="_blank" rel="noopener me" aria-label="Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg></a></div>
+<p class="cc-siteftr-bottom">&copy; 2026 Caring Companions In-Home Senior Care. All rights reserved. &middot; <a href="/privacy" style="display:inline;padding:0;color:inherit;text-decoration:underline">Privacy Policy</a></p>
+</footer>
+
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+<script src="/assets/accessibility.js" defer></script>
+</body>
+</html>
