@@ -84,11 +84,15 @@ const ORG = {
    ONE_LINER is the posting's summary sentence: hiring_wording_415.sql adds it to each posting's description, and here
    it is moved to the top of the structured-data and Indeed descriptions (added if a posting lacks it). On the page
    itself the "How hiring works" block says the same thing, so the sentence is not repeated in the body. */
-export const ONE_LINER = 'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and paid orientation and training, all from home on your phone or computer.';
+/* 2026-11-10 (Samantha): say "interview" with no place or format (we may interview by video), and the Orientation
+   Video Call no longer comes before orientation and training, so it is gone from the pages. The sentence as it read
+   before is kept in OLD_ONE_LINERS so postings that still carry it are rewritten. */
+export const ONE_LINER = 'One short interview, then your paperwork and paid orientation and training, all from home on your phone or computer.';
 /* 2026-10-11 (Samantha chose the name Orientation Video Call): the sentence as it read before, still in a posting until the
    Hub's step 602 changes it, is recognized too, so a page never shows both. */
 export const OLD_ONE_LINERS = ['One 20-minute in-person interview at our office, then your paperwork, welcome call and 6 hours of paid training all from home on your phone or computer.',
-  'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and 6 hours of paid training all from home on your phone or computer.'];
+  'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and 6 hours of paid training all from home on your phone or computer.',
+  'One 20-minute in-person interview at our office, then your paperwork, Orientation Video Call and paid orientation and training, all from home on your phone or computer.'];
 /* Exact old sentences, longest first, so a shorter one never cuts into a longer one. */
 export const TRAINING_FIXES = [
   ["Paid orientation and Alzheimer's and dementia training (6 hours)", 'Paid orientation and training from home'],
@@ -106,9 +110,8 @@ const howHiring = p => `<section class="jb-how">
 <p class="jb-how-lede">After your interview, you can do the rest from home.</p>
 <ol>
 <li><b>Apply online.</b> About 2 minutes, no uploads. Pick your interview time at the end.</li>
-<li><b>Meet us in person.</b> A 20-minute interview at our ${(p.city || 'Springfield') === 'Springfield' ? 'Springfield office' : 'office'}. We do not do phone interviews.</li>
-<li><b>Offer and paperwork.</b> Fill out your new-hire paperwork online. We run your background check and call your references, at no cost to you.</li>
-<li><b>A 15-minute Orientation Video Call</b> on your phone or computer. We check your ID, set up the AxisCare app with you, and go over your caregiver profile.</li>
+<li><b>Interview.</b> A short interview, about 20 minutes, so we can get to know you.</li>
+<li><b>Offer and paperwork.</b> Fill out your new-hire paperwork online. We run your background checks and call your references, at no cost to you.</li>
 <li><b>Orientation &amp; training.</b> Paid, from home on your phone or computer, in pieces if you like.</li>
 </ol>
 </section>`;
@@ -293,7 +296,7 @@ ${howHiring(p)}
 
 <div class="jb-apply">
 <p style="font-size:16px;font-weight:600;color:#122236;margin:0 0 8px">Interested?</p>
-<p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 auto 20px;max-width:440px">The application takes about 2 minutes. No uploads required. One in-person interview, then the rest from home.</p>
+<p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 auto 20px;max-width:440px">The application takes about 2 minutes. No uploads required. One short interview, then the rest from home.</p>
 <a href="${applyUrl(p.slug)}" class="btn-apply" style="display:inline-block;background:var(--cta);color:#fbfaf7;border-radius:9px;padding:14px 28px;font-size:15px;font-weight:600;text-decoration:none">Apply for this role &rarr;</a>
 <p class="jb-note">Questions first? Call us on ${ORG.phone}.</p>
 </div>
