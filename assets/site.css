@@ -62,7 +62,8 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 }
 .cc-header-inner.w820 { max-width: 1000px; }
 .cc-header-inner .cc-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-.cc-header-inner .cc-logo img { height: 42px; display: block; }
+.cc-header-inner .cc-logo img { height: 58px; display: block; } /* 11-10: bigger logo, was 42px */
+@media (min-width: 720px) { .cc-header-inner { padding-top: 12px; padding-bottom: 12px; } }
 .cc-header-phone { font-size: max(14px, var(--fs-min, 0px)); color: var(--muted); white-space: nowrap; text-decoration: none; }
 .cc-header-phone:hover { text-decoration: none; color: var(--muted); }
 
@@ -542,5 +543,10 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   .cc-utility { display: none; }
   .cc-header-inner { padding-left: 14px; padding-right: 14px; gap: 8px; }
   .nh-hcall { margin-right: 0; padding: 9px 13px; font-size: 15px; gap: 6px; }
+  /* 11-10: the bottom bar already has Call us on phones, so the header drops its copy and the logo gets the room */
+  body.cc-has-bar .nh-hcall { display: none; }
+  .cc-header-inner { padding-top: 10px; padding-bottom: 10px; }
+  .cc-header-inner .cc-logo img { height: 52px; }
+  body:not(.cc-has-bar) .cc-header-inner .cc-logo img { height: 46px; } /* pages without the bottom bar (careers, apply) keep the top Call us, so a bit less logo */
   .cc-burger { padding-left: 11px !important; padding-right: 11px !important; column-gap: 7px !important; }
 }
