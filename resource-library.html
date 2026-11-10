@@ -23,6 +23,17 @@
   padding: 8px 16px; font-size: max(13px, var(--fs-min, 0px)); font-weight: 600; cursor: pointer; font-family: inherit;
 }
 .rl-cat-chip.selected { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.rl-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.rl-card[hidden] { display:none; }
+.rl-cat { font-size:11px; font-weight:700; color:#876B00; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 10px; }
+.rl-title { font-size:16px; font-weight:600; color:#122236; margin:0 0 8px; line-height:1.35; }
+.rl-desc { font-size:13px; line-height:1.55; color:#45566a; margin:0 0 14px; }
+.rl-by { font-size:11.5px; color:#4f5b54; margin:0; }
+.rl-video { padding-top:0; overflow:hidden; }
+.rl-thumb { display:block; position:relative; margin:0 -20px 16px; }
+.rl-thumb img { display:block; width:100%; height:auto; }
+.rl-play { position:absolute; right:12px; bottom:12px; width:44px; height:44px; border-radius:50%; background:rgba(13,54,95,.88); box-shadow:0 2px 10px rgba(0,0,0,.25); }
+.rl-play::after { content:""; position:absolute; left:17px; top:13px; border-style:solid; border-width:9px 0 9px 14px; border-color:transparent transparent transparent #fff; }
 .rl-hide-mobile { display: inline; }
 @media (max-width: 1039px) { .rl-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 719px) {
@@ -36,11 +47,11 @@
 <link rel="canonical" href="https://mo-care.com/resource-library">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="Comprehensive, clinically reviewed guides on the questions families actually face, not blog posts. Each one is written to be the best resource on its…">
+<meta name="description" content="Practical guides and short videos for Missouri families on dementia, falls, coming home from the hospital, caregiver burnout and paying for home care.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Caring Companions In-Home Senior Care">
 <meta property="og:title" content="Resource Library | Caring Companions">
-<meta property="og:description" content="Comprehensive, clinically reviewed guides on the questions families actually face, not blog posts. Each one is written to be the best resource on its…">
+<meta property="og:description" content="Practical guides and short videos for Missouri families on dementia, falls, coming home from the hospital, caregiver burnout and paying for home care.">
 <meta property="og:url" content="https://mo-care.com/resource-library">
 <meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -165,152 +176,31 @@
 <section class="rl-hero">
 <p class="kicker">Resource Library</p>
 <h1 class="rl-h1">The Aging at Home Library</h1>
-<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 0 30px">Comprehensive, clinically reviewed guides on the questions families actually face, not blog posts. Each one is written to be the best resource on its topic, anywhere.</p>
-<input id="query" placeholder="Search guides, e.g. &ldquo;falls,&rdquo; &ldquo;Medicaid,&rdquo; &ldquo;dementia&rdquo;" style="width:100%;max-width:480px;padding:14px 18px;font-size:max(14.5px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;color:#16283a;background:#ffffff">
+<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.65;color:#45566a;margin:0 0 30px">Practical guides and short videos on the questions families actually face, from spotting the first signs to paying for care. Each guide is reviewed by a Caring Companions Care Coordinator.</p>
+<input id="query" aria-label="Search the library" placeholder="Search, e.g. &ldquo;falls,&rdquo; &ldquo;Medicaid,&rdquo; &ldquo;dementia&rdquo;" style="width:100%;max-width:480px;padding:14px 18px;font-size:max(14.5px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:9px;font-family:inherit;color:#16283a;background:#ffffff">
 </section>
 <figure class="pg-photo"><img src="/assets/photos/scene-daughter-text.webp" alt="A daughter smiling as she reads a text about her mother's care" width="1080" height="608" decoding="async"></figure>
 
 
-<section style="max-width:1240px;margin:0 auto;padding:0 24px 20px">
-<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" id="category-chips"></div>
-</section>
-
-<section class="rl-grid-wrap">
-<div class="rl-grid" id="guide-grid"></div>
-<p id="no-results" hidden style="text-align:center;font-size:max(14.5px, var(--fs-read, 0px));color:#4f5b54;padding:40px 0">No guides match "<span id="no-results-term"></span>" yet, try a different search, or <a href="cara">ask us</a>.</p>
-</section>
-
-
-<footer class="cc-siteftr">
-<div class="cc-siteftr-grid">
-<div class="brand">
-<img src="/assets/cc-logo.webp" alt="Caring Companions">
-<p class="tag">The trusted guide for aging at home.</p>
-<p class="meta">1331 N Stewart Ave Ste B<br>Springfield, MO 65802<br><a href="tel:14172348494" style="display:inline;padding:0;color:inherit">(417) 234-8494</a></p>
-<a class="book" href="/book">Book a Free In-Home Assessment</a>
-</div>
-<div>
-<h4>Care Services</h4>
-<a href="/services/companion-care">Wellness Care</a>
-<a href="/services/personal-care">Personal Care</a>
-<a href="/services/advanced-care">Advanced Care</a>
-<a href="/services/overnight-care">Overnight Care</a>
-<a href="/services/24-hour-care">24-Hour Care</a>
-<a href="/services/respite-care">Respite Care</a>
-<a href="/our-services">All services &rarr;</a>
-</div>
-<div>
-<h4>Explore</h4>
-<a href="/getting-started">Getting Started</a>
-<a href="/before-your-assessment">What to Expect</a>
-<a href="/decision-center">Decision Center</a>
-<a href="/assessment">Care Questionnaire</a>
-<a href="/cara">Have a Question?</a>
-<a href="/cost-calculator">Cost Calculator</a>
-<a href="/resource-library">Resource Library</a>
-<a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself</a>
-<a href="/family-academy">Family Care Academy</a>
-<a href="/outings">Good Days Out</a>
-<a href="/service-area">Service Areas</a>
-</div>
-<div>
-<h4>Company</h4>
-<a href="/our-story">Our Story</a>
-<a href="/family">Our Family of Care</a>
-<a href="/our-caregivers">Our Caregivers</a>
-<a href="/share-your-story">Share Your Story</a>
-<a href="/pricing">Pricing</a>
-<a href="/contact">Contact Us</a>
-</div>
-<div>
-<h4>Work With Us</h4>
-<a href="/careers#openings">Open Caregiver Jobs</a>
-<a href="/apply">Apply Now</a>
-<a href="/careers">Why Work Here</a>
-</div>
-</div>
-<div class="cc-social " data-social-row><span class="lbl">Follow us</span><a href="https://www.facebook.com/1043697295676809"  target="_blank" rel="noopener me" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a><a href="https://www.instagram.com/caring_companions_missouri/"  target="_blank" rel="noopener me" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a><a href="https://www.youtube.com/@caring-companions"  target="_blank" rel="noopener me" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.tiktok.com/@caringcompanionsmo"  target="_blank" rel="noopener me" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="https://www.linkedin.com/company/40670656/"  target="_blank" rel="noopener me" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.pinterest.com/caringcompanionsmissouri/"  target="_blank" rel="noopener me" aria-label="Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg></a></div>
-<p class="cc-siteftr-bottom">&copy; 2026 Caring Companions In-Home Senior Care. All rights reserved. &middot; <a href="/privacy" style="display:inline;padding:0;color:inherit;text-decoration:underline">Privacy Policy</a></p>
-</footer>
-</div>
+<!-- library:start (built by tools/build-resource-library.py; edit tools/library-guides.json, not this) -->
+<section style="max-width:1240px;margin:0 auto;padding:0 24px 20px"><div class="rl-chips" id="category-chips" role="group" aria-label="Topics"><button type="button" class="rl-cat-chip selected" aria-pressed="true">All</button><button type="button" class="rl-cat-chip" aria-pressed="false">Dementia &amp; Memory</button><button type="button" class="rl-cat-chip" aria-pressed="false">Chronic Conditions</button><button type="button" class="rl-cat-chip" aria-pressed="false">Falls &amp; Mobility</button><button type="button" class="rl-cat-chip" aria-pressed="false">Hospital &amp; Recovery</button><button type="button" class="rl-cat-chip" aria-pressed="false">Medication</button><button type="button" class="rl-cat-chip" aria-pressed="false">Caregiver Support</button><button type="button" class="rl-cat-chip" aria-pressed="false">Nutrition</button><button type="button" class="rl-cat-chip" aria-pressed="false">End-of-Life</button><button type="button" class="rl-cat-chip" aria-pressed="false">Payment &amp; Benefits</button></div></section>
+<section class="rl-grid-wrap"><div class="rl-grid" id="guide-grid"><a class="rl-card" href="guides/dementia-and-alzheimers.html" data-cat="Dementia &amp; Memory" data-text="recognizing early signs of dementia what’s normal aging, what isn’t, and when to see a doctor. dementia &amp; memory"><p class="rl-cat">Dementia &amp; Memory</p><p class="rl-title">Recognizing Early Signs of Dementia</p><p class="rl-desc">What’s normal aging, what isn’t, and when to see a doctor.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/best-practices-for-dementia-care.html" data-cat="Dementia &amp; Memory" data-text="best practices for dementia care daily routines, communication tips, safety, and caregiver support. dementia &amp; memory"><p class="rl-cat">Dementia &amp; Memory</p><p class="rl-title">Best Practices for Dementia Care</p><p class="rl-desc">Daily routines, communication tips, safety, and caregiver support.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/parkinsons-disease-at-home.html" data-cat="Chronic Conditions" data-text="parkinson’s disease at home mobility, fall risk, and daily support strategies. chronic conditions"><p class="rl-cat">Chronic Conditions</p><p class="rl-title">Parkinson’s Disease at Home</p><p class="rl-desc">Mobility, fall risk, and daily support strategies.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/stroke-recovery-at-home.html" data-cat="Chronic Conditions" data-text="stroke recovery at home what recovery looks like month to month, and how to support it. chronic conditions"><p class="rl-cat">Chronic Conditions</p><p class="rl-title">Stroke Recovery at Home</p><p class="rl-desc">What recovery looks like month to month, and how to support it.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/living-well-with-heart-failure.html" data-cat="Chronic Conditions" data-text="living well with heart failure daily monitoring and home routines that reduce hospital readmission. chronic conditions"><p class="rl-cat">Chronic Conditions</p><p class="rl-title">Living Well with Heart Failure</p><p class="rl-desc">Daily monitoring and home routines that reduce hospital readmission.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/managing-copd-at-home.html" data-cat="Chronic Conditions" data-text="managing copd at home breathing routines, triggers, and when symptoms mean it’s time to call a doctor. chronic conditions"><p class="rl-cat">Chronic Conditions</p><p class="rl-title">Managing COPD at Home</p><p class="rl-desc">Breathing routines, triggers, and when symptoms mean it’s time to call a doctor.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/diabetes-care-for-seniors.html" data-cat="Chronic Conditions" data-text="diabetes care for seniors meal planning, monitoring, and medication support at home. chronic conditions"><p class="rl-cat">Chronic Conditions</p><p class="rl-title">Diabetes Care for Seniors</p><p class="rl-desc">Meal planning, monitoring, and medication support at home.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/fall-prevention-at-home.html" data-cat="Falls &amp; Mobility" data-text="fall prevention at home simple, immediate changes that meaningfully reduce fall risk. falls &amp; mobility"><p class="rl-cat">Falls &amp; Mobility</p><p class="rl-title">Fall Prevention at Home</p><p class="rl-desc">Simple, immediate changes that meaningfully reduce fall risk.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/hospital-discharge.html" data-cat="Hospital &amp; Recovery" data-text="coming home after a hospital stay a 72-hour checklist for a safe transition home. hospital &amp; recovery"><p class="rl-cat">Hospital &amp; Recovery</p><p class="rl-title">Coming Home After a Hospital Stay</p><p class="rl-desc">A 72-hour checklist for a safe transition home.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/medication-management.html" data-cat="Medication" data-text="medication management made simple keeping prescriptions straight and avoiding dangerous interactions. medication"><p class="rl-cat">Medication</p><p class="rl-title">Medication Management Made Simple</p><p class="rl-desc">Keeping prescriptions straight and avoiding dangerous interactions.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/caregiver-burnout.html" data-cat="Caregiver Support" data-text="caregiver burnout: what it is, what helps recognizing burnout and finding real relief, not just advice. caregiver support"><p class="rl-cat">Caregiver Support</p><p class="rl-title">Caregiver Burnout: What It Is, What Helps</p><p class="rl-desc">Recognizing burnout and finding real relief, not just advice.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/home-safety-room-by-room.html" data-cat="Falls &amp; Mobility" data-text="home safety room by room a practical walkthrough of the highest-risk spots in the house. falls &amp; mobility"><p class="rl-cat">Falls &amp; Mobility</p><p class="rl-title">Home Safety Room by Room</p><p class="rl-desc">A practical walkthrough of the highest-risk spots in the house.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/eating-well-as-we-age.html" data-cat="Nutrition" data-text="eating well as we age nutrition changes that matter most for seniors, and warning signs. nutrition"><p class="rl-cat">Nutrition</p><p class="rl-title">Eating Well as We Age</p><p class="rl-desc">Nutrition changes that matter most for seniors, and warning signs.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/planning-for-end-of-life-care.html" data-cat="End-of-Life" data-text="planning for end-of-life care a compassionate, practical guide to a hard conversation. end-of-life"><p class="rl-cat">End-of-Life</p><p class="rl-title">Planning for End-of-Life Care</p><p class="rl-desc">A compassionate, practical guide to a hard conversation.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/va-benefits-for-home-care.html" data-cat="Payment &amp; Benefits" data-text="va benefits for home care how va community care and aid &amp; attendance can help pay for care. payment &amp; benefits"><p class="rl-cat">Payment &amp; Benefits</p><p class="rl-title">VA Benefits for Home Care</p><p class="rl-desc">How VA Community Care and Aid &amp; Attendance can help pay for care.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a><a class="rl-card" href="guides/missouri-medicaid-hcbs.html" data-cat="Payment &amp; Benefits" data-text="missouri medicaid hcbs, explained how missouri’s home and community-based services program works. payment &amp; benefits"><p class="rl-cat">Payment &amp; Benefits</p><p class="rl-title">Missouri Medicaid HCBS, Explained</p><p class="rl-desc">How Missouri’s Home and Community-Based Services program works.</p><p class="rl-by">Reviewed by a Caring Companions Care Coordinator</p></a></div>
+<p id="no-results" hidden style="text-align:center;font-size:max(14.5px, var(--fs-read, 0px));color:#4f5b54;padding:40px 0">Nothing matches "<span id="no-results-term"></span>" yet. Try a different word, or <a href="cara">ask us</a>.</p>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"The Aging at Home Library","url":"https://mo-care.com/resource-library","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://mo-care.com/guides/dementia-and-alzheimers.html","name":"Recognizing Early Signs of Dementia"},{"@type":"ListItem","position":2,"url":"https://mo-care.com/guides/best-practices-for-dementia-care.html","name":"Best Practices for Dementia Care"},{"@type":"ListItem","position":3,"url":"https://mo-care.com/guides/parkinsons-disease-at-home.html","name":"Parkinson’s Disease at Home"},{"@type":"ListItem","position":4,"url":"https://mo-care.com/guides/stroke-recovery-at-home.html","name":"Stroke Recovery at Home"},{"@type":"ListItem","position":5,"url":"https://mo-care.com/guides/living-well-with-heart-failure.html","name":"Living Well with Heart Failure"},{"@type":"ListItem","position":6,"url":"https://mo-care.com/guides/managing-copd-at-home.html","name":"Managing COPD at Home"},{"@type":"ListItem","position":7,"url":"https://mo-care.com/guides/diabetes-care-for-seniors.html","name":"Diabetes Care for Seniors"},{"@type":"ListItem","position":8,"url":"https://mo-care.com/guides/fall-prevention-at-home.html","name":"Fall Prevention at Home"},{"@type":"ListItem","position":9,"url":"https://mo-care.com/guides/hospital-discharge.html","name":"Coming Home After a Hospital Stay"},{"@type":"ListItem","position":10,"url":"https://mo-care.com/guides/medication-management.html","name":"Medication Management Made Simple"},{"@type":"ListItem","position":11,"url":"https://mo-care.com/guides/caregiver-burnout.html","name":"Caregiver Burnout: What It Is, What Helps"},{"@type":"ListItem","position":12,"url":"https://mo-care.com/guides/home-safety-room-by-room.html","name":"Home Safety Room by Room"},{"@type":"ListItem","position":13,"url":"https://mo-care.com/guides/eating-well-as-we-age.html","name":"Eating Well as We Age"},{"@type":"ListItem","position":14,"url":"https://mo-care.com/guides/planning-for-end-of-life-care.html","name":"Planning for End-of-Life Care"},{"@type":"ListItem","position":15,"url":"https://mo-care.com/guides/va-benefits-for-home-care.html","name":"VA Benefits for Home Care"},{"@type":"ListItem","position":16,"url":"https://mo-care.com/guides/missouri-medicaid-hcbs.html","name":"Missouri Medicaid HCBS, Explained"}]}}</script>
 <script>
 (function () {
-'use strict';
-var BYLINE = 'Reviewed by a Caring Companions Care Coordinator · Updated July 2026';
-var GUIDES = [
-  { title: 'Recognizing Early Signs of Dementia', category: 'Dementia & Memory', desc: 'What’s normal aging, what isn’t, and when to see a doctor.', href: 'guides/dementia-and-alzheimers.html' },
-  { title: 'Best Practices for Dementia Care', category: 'Dementia & Memory', desc: 'Daily routines, communication tips, safety, and caregiver support.', href: 'guides/best-practices-for-dementia-care.html' },
-  { title: 'Parkinson’s Disease at Home', category: 'Chronic Conditions', desc: 'Mobility, fall risk, and daily support strategies.', href: 'guides/parkinsons-disease-at-home.html' },
-  { title: 'Stroke Recovery at Home', category: 'Chronic Conditions', desc: 'What recovery looks like month to month, and how to support it.', href: 'guides/stroke-recovery-at-home.html' },
-  { title: 'Living Well with Heart Failure', category: 'Chronic Conditions', desc: 'Daily monitoring and home routines that reduce hospital readmission.', href: 'guides/living-well-with-heart-failure.html' },
-  { title: 'Managing COPD at Home', category: 'Chronic Conditions', desc: 'Breathing routines, triggers, and when symptoms mean it’s time to call a doctor.', href: 'guides/managing-copd-at-home.html' },
-  { title: 'Diabetes Care for Seniors', category: 'Chronic Conditions', desc: 'Meal planning, monitoring, and medication support at home.', href: 'guides/diabetes-care-for-seniors.html' },
-  { title: 'Fall Prevention at Home', category: 'Falls & Mobility', desc: 'Simple, immediate changes that meaningfully reduce fall risk.', href: 'guides/fall-prevention-at-home.html' },
-  { title: 'Coming Home After a Hospital Stay', category: 'Hospital & Recovery', desc: 'A 72-hour checklist for a safe transition home.', href: 'guides/hospital-discharge.html' },
-  { title: 'Medication Management Made Simple', category: 'Medication', desc: 'Keeping prescriptions straight and avoiding dangerous interactions.', href: 'guides/medication-management.html' },
-  { title: 'Caregiver Burnout: What It Is, What Helps', category: 'Caregiver Support', desc: 'Recognizing burnout and finding real relief, not just advice.', href: 'guides/caregiver-burnout.html' },
-  { title: 'Home Safety Room by Room', category: 'Falls & Mobility', desc: 'A practical walkthrough of the highest-risk spots in the house.', href: 'guides/home-safety-room-by-room.html' },
-  { title: 'Eating Well as We Age', category: 'Nutrition', desc: 'Nutrition changes that matter most for seniors, and warning signs.', href: 'guides/eating-well-as-we-age.html' },
-  { title: 'Planning for End-of-Life Care', category: 'End-of-Life', desc: 'A compassionate, practical guide to a hard conversation.', href: 'guides/planning-for-end-of-life-care.html' },
-  { title: 'VA Benefits for Home Care', category: 'Payment & Benefits', desc: 'How VA Community Care and Aid & Attendance can help pay for care.', href: 'guides/va-benefits-for-home-care.html' },
-  { title: 'Missouri Medicaid HCBS, Explained', category: 'Payment & Benefits', desc: 'How Missouri’s Home and Community-Based Services program works.', href: 'guides/missouri-medicaid-hcbs.html' },
-];
-var CATS = ['All', 'Dementia & Memory', 'Chronic Conditions', 'Falls & Mobility', 'Hospital & Recovery', 'Medication', 'Caregiver Support', 'Nutrition', 'End-of-Life', 'Payment & Benefits'];
-
-var state = { query: '', category: 'All' };
-
-var chipWrap = document.getElementById('category-chips');
-CATS.forEach(function (c) {
-  var b = document.createElement('button');
-  b.className = 'rl-cat-chip' + (c === 'All' ? ' selected' : '');
-  b.textContent = c;
-  b.addEventListener('click', function () {
-    state.category = c;
-    chipWrap.querySelectorAll('.rl-cat-chip').forEach(function (x) { x.classList.toggle('selected', x.textContent === c); });
-    render();
-  });
-  chipWrap.appendChild(b);
-});
-
-function render() {
-  var q = state.query.trim().toLowerCase();
-  var filtered = GUIDES.filter(function (g) {
-    var matchesCat = state.category === 'All' || g.category === state.category;
-    var matchesQuery = !q || g.title.toLowerCase().indexOf(q) !== -1 || g.desc.toLowerCase().indexOf(q) !== -1 || g.category.toLowerCase().indexOf(q) !== -1;
-    return matchesCat && matchesQuery;
-  });
-  var grid = document.getElementById('guide-grid');
-  grid.innerHTML = '';
-  filtered.forEach(function (g) {
-    var a = document.createElement('a');
-    a.className = 'rl-card';
-    a.href = g.href;
-    var cat = document.createElement('p');
-    cat.style.cssText = 'font-size:11px;font-weight:700;color:#876B00;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px';
-    cat.textContent = g.category;
-    var title = document.createElement('p');
-    title.style.cssText = 'font-size:16px;font-weight:600;color:#122236;margin:0 0 8px;line-height:1.35';
-    title.textContent = g.title;
-    var desc = document.createElement('p');
-    desc.style.cssText = 'font-size:13px;line-height:1.55;color:#45566a;margin:0 0 14px';
-    desc.textContent = g.desc;
-    var byline = document.createElement('p');
-    byline.style.cssText = 'font-size:11.5px;color:#4f5b54;margin:0';
-    byline.textContent = BYLINE;
-    a.appendChild(cat); a.appendChild(title); a.appendChild(desc); a.appendChild(byline);
-    grid.appendChild(a);
-  });
-  document.getElementById('no-results').hidden = filtered.length > 0;
-  document.getElementById('no-results-term').textContent = state.query;
-}
-
-document.getElementById('query').addEventListener('input', function (e) {
-  state.query = e.target.value;
-  render();
-});
-render();
+  var chips = document.querySelectorAll('.rl-cat-chip'), cards = document.querySelectorAll('#guide-grid .rl-card'), q = document.getElementById('query'), cat = 'All';
+  function render() {
+    var t = (q.value || '').trim().toLowerCase(), shown = 0;
+    cards.forEach(function (c) { var ok = (cat === 'All' || c.getAttribute('data-cat').split('|').indexOf(cat) !== -1) && (!t || c.getAttribute('data-text').indexOf(t) !== -1); c.hidden = !ok; if (ok) shown++; });
+    document.getElementById('no-results').hidden = shown > 0; document.getElementById('no-results-term').textContent = q.value;
+  }
+  chips.forEach(function (b) { b.addEventListener('click', function () { cat = b.textContent; chips.forEach(function (x) { var on = x === b; x.classList.toggle('selected', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); }); render(); }); });
+  q.addEventListener('input', render);
+  var h = (location.hash || '').slice(1).toLowerCase(); chips.forEach(function (b) { if (h && b.textContent.toLowerCase().replace(/[^a-z]+/g, '-') === h) b.click(); });
 })();
 </script>
+<!-- library:end -->
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
 <script src="/assets/accessibility.js" defer></script>
