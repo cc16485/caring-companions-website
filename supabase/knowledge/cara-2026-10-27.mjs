@@ -350,15 +350,17 @@ export const RECORDS = [
     answer: 'Yes! Caring Companions provides care seven days a week, including weekends and holidays. Whether your family needs a few hours of help, regular weekend visits or overnight care, we can talk through your schedule and check caregiver availability. Certain holidays are billed at a higher hourly rate, and we will explain any charges before care begins.',
     topics: ['weekends', 'saturday', 'sunday', 'seven days'] },
 
-  { id: 'K156', key: 'facility_care', src: 'S9', on: '2026-11-06',
+  { id: 'K156', key: 'facility_care', src: 'S9', on: '2026-11-10',
     question: 'Can you provide care in assisted living, nursing homes or hospitals?',
     alt: ['Can a caregiver sit with my mom in the hospital?', 'Do you go to assisted living?', 'Can you help my dad in his nursing home?', 'Can a caregiver help with showers in a nursing home?', 'My mom lives in senior living, can you still help?'],
-    answer: 'Yes. We provide care wherever home is, including assisted living, nursing homes and the hospital. A caregiver can sit with your loved one and keep them company, and help with personal care like showers and dressing, following the facility\'s rules and your loved one\'s care plan. Call our office at (417) 234-8494 and we will talk through what you need.',
+    answer: 'We provide care at home. If your loved one lives in assisted living or a nursing home, or is in the hospital, please call us at (417) 234-8494. What\'s possible depends on the facility\'s rules, and we\'ll talk it through with you.',
     topics: ['assisted living', 'nursing home', 'hospital', 'facility'] },
 ]
 
 // Nothing is held. K156 (care in facilities) was held until 2026-11-06, when Samantha confirmed: "we provide care wherever
 // home is - could be sitting with someone in a hospital, providing care, shower, et in a nursing home".
+// 2026-11-10 (her "yes"): K156 now promises nothing about facilities until she answers the facility questions
+// (permission, insurance, tasks per setting). Setting-by-setting wording is drafted in the SEO phase 2 review.
 export const HELD = []
 
 // N002 was a stale $14 rate. CDS attendants are paid $15 to $16 an hour (her correction 2026-10-27).
