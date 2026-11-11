@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free In-Home Assessment | Caring Companions</title>
+<meta name="description" content="Request a free in-home care assessment. A care coordinator from our Springfield office calls to answer your questions and set a time that works for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Homepage-specific layout (breakpoints: <720 mobile, 720–1039 tablet, ≥1040 desktop) */
+.hp { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; }
+.hp-header-inner { max-width:var(--shell); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.hp-logo img { height: 55px; display: block; }
+.hp-nav { display: flex; align-items: center; gap: 28px; }
+.hp-nav a { font-size: max(14.5px, var(--fs-min, 0px)); font-weight: 500; color: var(--ink); transition: color .15s ease; text-decoration: none; }
+.hp-nav a:hover { color: var(--accent); }
+.hp-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.hp-header-right { display: flex; align-items: center; gap: 14px; }
+.hp-phone { font-size: max(14px, var(--fs-min, 0px)); color: var(--muted); white-space: nowrap; text-decoration: none; }
+.hp-cta-sm { display: inline-block; background: var(--cta); color: var(--bg); border: none; border-radius: 8px; padding: 10px 18px; font-size: max(14px, var(--fs-min, 0px)); font-weight: 600; cursor: pointer; white-space: nowrap; text-decoration: none; transition: background .15s ease; }
+.hp-cta-sm:hover { background: var(--cta-hover); color: var(--bg); text-decoration: none; }
+#cc-nav-toggle { background: none; border: 1px solid #dfe6e2; border-radius: 8px; width: 38px; height: 38px; display: none; align-items: center; justify-content: center; cursor: pointer; color: var(--ink); font-size: 16px; }
+#cc-mobile-menu { display: none; flex-direction: column; padding: 6px 20px 18px; border-top: 1px solid var(--border); gap: 2px; }
+#cc-mobile-menu a { font-size: 15px; padding: 10px 0; color: var(--ink); border-bottom: 1px solid #ede9e0; text-decoration: none; }
+#cc-mobile-menu a:last-child { border-bottom: none; }
+
+.hp-hero { max-width:var(--shell); margin: 0 auto; padding: 80px 24px 20px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.hp-hero h1 { font-family: var(--serif); font-size: 54px; line-height: 1.14; font-weight: 600; margin: 0 0 20px; color: var(--brand-blue); letter-spacing: -0.015em; }
+.hp-hero-sub { font-size: 17px; line-height: 1.6; color: #000000; margin: 0 0 20px; max-width:520px; }
+.hp-hero-img { width: 100%; height: 440px; }
+.hp-hero-media { position: relative; margin: 0 18px 18px 0; }
+.hp-hero-media::before { content: ""; position: absolute; inset: 22px -18px -18px 22px; background: #E4F4F3; border-radius: 28px; }
+.hp-hero-media .hp-hero-img { position: relative; display: block; object-fit: cover; object-position: 62% 40%; border-radius: 22px; border: 7px solid #fff; box-shadow: 0 18px 40px rgba(13,54,95,.16); max-width: 100%; }
+/* Wide screens: photo runs to the right edge and fades into the page behind the words (11-10, like showmeneighbors.com) */
+@media (min-width: 1040px) {
+  .hp-hero { position: relative; max-width: none; min-height: 600px; padding: 64px max(24px, calc((100% - var(--shell)) / 2 + 24px)); grid-template-columns: minmax(0, 600px); overflow: hidden; }
+  .hp-hero > div:first-child { position: relative; z-index: 2; }
+  .hp-hero-media { position: absolute; top: 0; bottom: 0; right: 0; left: 45%; margin: 0; }
+  .hp-hero-media::before { inset: 0; border-radius: 0; z-index: 1; background: linear-gradient(90deg, var(--bg) 0%, rgba(250,249,246,.8) 9%, rgba(250,249,246,0) 24%); }
+  .hp-hero-media .hp-hero-img { width: 100%; height: 100%; border: 0; border-radius: 0; box-shadow: none; object-position: 62% 38%; }
+}
+.hp-hero-trust { display: none; font-size: max(15px, var(--fs-read, 0px)); font-weight: 600; line-height: 1.5; color: var(--brand-blue); margin: -12px 0 0; }
+
+.hp-btn-hero { color: var(--bg); border: none; border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; background-color: var(--cta); text-decoration: none; display: inline-block; }
+.hp-btn-hero:hover { background: #124a56; color: var(--bg); text-decoration: none; }
+.hp-btn-hero:active { transform: scale(0.98); }
+.hp-btn-hero:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hp-btn-hero-outline { background: transparent; color: var(--cta); border: 1.5px solid var(--cta); border-radius: 9px; padding: 15px 26px; font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; text-decoration: none; display: inline-block; }
+.hp-btn-hero-outline:hover { background: rgba(31, 122, 140, 0.08); color: var(--cta); text-decoration: none; }
+.hp-btn-hero-outline:active { transform: scale(0.98); }
+.hp-btn-hero-outline:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.hp-section { max-width:var(--shell); margin: 0 auto; padding: 88px 24px; }
+.hp-section-dark { background: var(--navy-panel); padding: 88px 24px; }
+.hp-cta-section { max-width:var(--shell); margin: 0 auto; padding: 88px 24px 96px; text-align: center; }
+.hp-hiring { padding-top: 0; }
+.hp-hiring-in { max-width: 1000px; margin: 0 auto; background: #f6e7c4; border-radius: 18px; padding: 34px 36px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; justify-content: space-between; }
+.hp-hiring-in > div:first-child { flex: 1 1 420px; }
+.hp-hiring-eyebrow { font-size: max(13px, var(--fs-min, 0px)); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand-blue); margin: 0 0 6px; }
+.hp-hiring h2 { margin: 0 0 10px; }
+.hp-hiring p:not(.hp-hiring-eyebrow) { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.6; margin: 0; color: #000000; }
+.hp-hiring-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.hp-hiring .hp-btn-hero-outline { background: #ffffff; }
+.hp h2 { font-family: var(--serif); font-size: 32px; font-weight: 600; margin: 0 0 12px; color: var(--brand-blue); }
+.hp-section-dark h2 { color: #fbfaf7; margin: 0 0 18px; }
+
+.hp-services-strip a { font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 600; color: var(--muted); text-decoration: none; }
+.hp-services-strip a:hover { color: var(--accent); }
+
+.hp-doors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.hp-door { display: block; border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; background: #ffffff; box-shadow: 0 1px 2px rgba(22,40,58,0.04); transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease; text-decoration: none; }
+.hp-door:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 28px rgba(22,40,58,0.09); text-decoration: none; }
+.hp-door:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.hp-advisor-grid { max-width:var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.hp-btn-light { background: #fbfaf7; color: var(--navy-panel); border: none; border-radius: 9px; padding: 14px 24px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s ease, transform .1s ease; text-decoration: none; display: inline-block; }
+.hp-btn-light:hover { background: #e7e3d8; color: var(--navy-panel); text-decoration: none; }
+.hp-btn-light:active { transform: scale(0.98); }
+.hp-btn-light:focus-visible { outline: 2px solid var(--gold-on-dark); outline-offset: 2px; }
+
+.hp-care-row { display: flex; flex-direction: row; align-items: stretch; gap: 0; }
+.hp-care-cell { display: flex; flex-direction: row; align-items: center; flex: 1; width: 100%; }
+.hp-care-arrow { color: #cdb98a; font-size: 20px; padding: 0 10px; flex-shrink: 0; }
+.hp-care-arrow::before { content: "→"; }
+
+.hp-trust-grid { max-width:1000px; margin: 0 auto 36px; display: grid; grid-template-columns: repeat(2, 1fr); justify-items: center; gap: 20px 28px; }
+
+.hp-guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.hp-guide-card { display: block; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #ffffff; text-decoration: none; transition: border-color .18s ease; }
+.hp-guide-card:hover { border-color: var(--accent); text-decoration: none; }
+
+.hp-footer { border-top: 1px solid var(--border); background: #f6f5f0; padding: 48px 20px 32px; }
+.hp-footer-grid { max-width:var(--shell); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.hp-footer a { font-size: max(13.5px, var(--fs-min, 0px)); color: var(--muted); text-decoration: none; }
+.hp-footer a:hover { color: var(--accent); }
+
+/* Tablet (720–1039) */
+@media (max-width: 1039px) {
+  .hp-nav { display: none; }
+  .hp-phone { display: none; }
+  #cc-nav-toggle { display: flex; }
+  .hp-hero { padding: 56px 32px 12px; grid-template-columns: 1fr; gap: 48px; }
+  .hp-hero h1 { font-size: 44px; }
+  .hp-hero-img { height: 360px; }
+  .hp-section { padding: 64px 32px; }
+  .hp-section-dark { padding: 64px 32px; }
+  .hp-doors { grid-template-columns: repeat(2, 1fr); }
+  .hp-advisor-grid { grid-template-columns: 1fr; }
+  .hp-guides-grid { grid-template-columns: repeat(2, 1fr); }
+  .hp-footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* Mobile (<720) */
+@media (max-width: 719px) {
+  .hp-header-inner { padding: 14px 20px; }
+  .hp-logo img { height: 44px; }
+  .hp-hero { padding: 36px 20px 8px; gap: 28px; }
+  .hp-hero h1 { font-size: 34px; }
+  .hp-hero-sub { font-size: max(15.5px, var(--fs-read, 0px)); }
+  .hp-hero-img { height: 260px; }
+  .hp-hero-media { margin: 0 10px 10px 0; }
+  .hp-hero-media::before { inset: 14px -10px -10px 14px; border-radius: 22px; }
+  .hp-section { padding: 48px 20px; }
+  .hp-section-dark { padding: 48px 20px; }
+  .hp-cta-section { padding: 48px 20px 60px; }
+  .hp h2 { font-size: 26px; }
+  .hp-doors { grid-template-columns: 1fr; }
+  .hp-care-row { flex-direction: column; }
+  .hp-care-cell { flex-direction: column; }
+  .hp-care-arrow { padding: 10px 0; }
+  .hp-care-arrow::before { content: "↓"; }
+  .hp-trust-grid { grid-template-columns: 1fr; }
+  .hp-hero-trust { display: block; }
+  .hp-proof-wrap { display: none; } /* 11-10: the hero already shows rating, since 2017, locally owned, and Why families choose covers meet them first */
+  .hp-guides-grid { grid-template-columns: 1fr; }
+  .hp-footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Care that grows with you: the continuum, on navy so it lands ---- */
+/* full bleed, and a step DOWN in tone: the section above it is teal, so a
+   band that starts teal too just reads as one long muddy stripe */
+.hp-section.cg-band{ max-width:none; width:100%; background:#0D365F; color:#fff;
+  padding:clamp(58px,8vw,94px) 0; margin:0; }
+.cg-in{ max-width:1200px; margin:0 auto; padding:0 24px; }
+.cg-head{ max-width:760px; margin:0 0 clamp(32px,4vw,44px); }
+.cg-eyebrow{ font-size:max(12.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#F5D061; margin:0 0 12px; }
+.cg-band h2{ font-size:clamp(28px,4.4vw,42px); color:#fff; margin:0 0 12px; letter-spacing:-.015em; }
+.cg-sub{ font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.7; color:#cfe0e6; margin:0; max-width:56ch; }
+.cg-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; align-items:stretch; }
+.cg-cell{ display:flex; align-items:stretch; }
+.cg-card{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px;
+  padding:22px 20px; flex:1; }
+.cg-n{ font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#8FD1C7; margin:0 0 10px; }
+.cg-card h3{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:19px; font-weight:600; color:#fff; margin:0 0 8px; }
+.cg-d{ font-size:max(13.5px, var(--fs-read, 0px)); line-height:1.6; color:#cfe0e6; margin:0; }
+.cg-arrow{ flex:0 0 auto; width:34px; align-self:center; position:relative; }
+.cg-arrow::before{ content:""; position:absolute; left:8px; right:8px; top:50%; height:1.5px; background:rgba(240,166,58,.55); }
+.cg-arrow::after{ content:""; position:absolute; right:8px; top:50%; width:7px; height:7px;
+  border-top:1.5px solid #F5D061; border-right:1.5px solid #F5D061; transform:translateY(-50%) rotate(45deg); }
+.cg-foot{ margin-top:clamp(26px,3.5vw,38px); background:rgba(0,0,0,.18); border-radius:18px;
+  padding:24px 26px; display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+.cg-pl{ font-size:max(11.5px, var(--fs-min, 0px)); font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#9fb6c2; margin:0 0 6px; }
+.cg-rates{ display:flex; gap:22px; }
+.cg-rates span{ display:flex; align-items:baseline; gap:3px; flex-wrap:wrap; }
+.cg-rates b{ font-family:var(--serif,'Source Serif 4',Georgia,serif); font-size:27px; font-weight:600; color:#fff; }
+.cg-rates i{ font-style:normal; font-size:max(13px, var(--fs-min, 0px)); color:#9fb6c2; }
+.cg-rates em{ font-style:normal; display:block; width:100%; font-size:max(12px, var(--fs-min, 0px)); color:#9fb6c2; }
+.cg-pay{ display:flex; gap:8px; flex-wrap:wrap; }
+.cg-chip{ font-size:max(12.5px, var(--fs-min, 0px)); font-weight:600; color:#dbe7ec; background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:6px 13px; }
+.cg-cta{ margin-left:auto; background:#F5D061; color:#3a2705; font-weight:700; font-size:15.5px;
+  padding:13px 24px; border-radius:12px; text-decoration:none; white-space:nowrap; }
+.cg-cta:hover{ background:#E8BF3A; }
+@media (max-width:1000px){
+  .cg-row{ grid-template-columns:1fr 1fr; gap:14px; }
+  .cg-arrow{ display:none; }
+  .cg-cta{ margin-left:0; width:100%; text-align:center; }
+}
+@media (max-width:600px){
+  .cg-row{ grid-template-columns:1fr; gap:0; }
+  .cg-cell{ flex-direction:column; }
+  /* stacked, the arrows point down instead of across */
+  .cg-arrow{ display:block; width:100%; height:30px; }
+  .cg-arrow::before{ left:50%; right:auto; top:6px; bottom:6px; height:auto; width:1.5px; }
+  .cg-arrow::after{ left:50%; right:auto; top:auto; bottom:7px; transform:translateX(-50%) rotate(135deg); }
+  .cg-rates{ gap:16px; }
+}
+
+/* ---- Cara, lightened ----
+   She used to sit on a dark teal band directly above the navy continuum,
+   which put roughly 1500px of dark in the middle of an otherwise light
+   page and blunted both. Dark is emphasis; the continuum earns it, a
+   friendly "tell us what's happening" does not. */
+.hp-section.cara-band{ background:#f2f0e9; max-width:none; width:100%; padding:clamp(58px,8vw,88px) 24px; margin:0; }
+.cara-band .hp-advisor-grid{ max-width:1200px; margin:0 auto; }
+.cara-kick{ font-size:max(13px, var(--fs-min, 0px)); font-weight:700; color:#1F7A8C; letter-spacing:.06em; text-transform:uppercase; margin:0 0 16px; }
+.cara-band h2.cara-h{ color:var(--brand-blue); margin:0 0 18px; }
+.cara-p{ font-size:max(15.5px, var(--fs-read, 0px)); line-height:1.65; color:var(--muted); margin:0 0 28px; max-width:460px; }
+.cara-chat{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px;
+  display:flex; flex-direction:column; gap:14px; box-shadow:0 14px 38px rgba(13,54,95,.10); }
+.cara-them{ align-self:flex-end; max-width:82%; background:var(--brand-blue); color:#f4f8fa;
+  border-radius:14px 14px 3px 14px; padding:13px 17px; font-size:max(14px, var(--fs-read, 0px)); line-height:1.55; }
+.cara-her{ align-self:flex-start; max-width:88%; background:var(--soft-teal); color:#1c2b38;
+  border-radius:14px 14px 14px 3px; padding:13px 17px; font-size:max(14px, var(--fs-read, 0px)); line-height:1.6; }
+
+/* Icon CTA + utility-bar dedupe. Declared here because this page's <style>
+   loads after site.css, so the base .hp-btn-hero rules would otherwise win. */
+.hp-btn-hero.hp-btn-hero-call { display: inline-flex; align-items: center; gap: 10px; }
+.hp-btn-hero.hp-btn-hero-call svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+.hp-team { padding-top: 0; }
+.hp-team-lede { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0 0 24px; max-width: 640px; }
+.hp-team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.hp-team-card { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 14px; padding: 26px 26px; }
+.hp-team-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
+.hp-team-card p { font-size: max(15.5px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); margin: 0; }
+.hp-team-more { margin: 20px 0 0; font-size: 15.5px; font-weight: 600; }
+#care-journey { text-align: center; } #care-journey .hp-team-lede { margin-left: auto; margin-right: auto; }
+@media (max-width: 719px) { .hp-team-grid { grid-template-columns: 1fr; } }
+/* Even rhythm between homepage sections: plain sections 96px apart (80 tablet, 64 phone); colored bands keep their own inner padding */
+.hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 48px; padding-bottom: 48px; }
+.hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 72px; padding-bottom: 72px; }
+.hp .cg-meet { padding-top: 64px; } .hp #decision-center { padding-bottom: 72px; }
+@media (max-width: 1039px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 40px; padding-bottom: 40px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 56px; padding-bottom: 56px; } .hp .cg-meet { padding-top: 52px; } .hp #decision-center { padding-bottom: 56px; } }
+@media (max-width: 719px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 32px; padding-bottom: 32px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 44px; padding-bottom: 44px; } .hp .cg-meet { padding-top: 40px; } .hp #decision-center { padding-bottom: 44px; } }
+.fa-next { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
+.fa-next h2 { font-family: var(--serif); font-size: 28px; color: var(--brand-blue); margin: 0 0 18px; }
+.fa-next ol { margin: 0 0 18px; padding-left: 22px; }
+.fa-next li { font-size: max(17px, var(--fs-read, 0px)); line-height: 1.6; color: var(--ink); margin: 0 0 12px; }
+.fa-next a { font-weight: 600; color: var(--brand-blue); }
+</style>
+<link rel="canonical" href="https://mo-care.com/free-assessment">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Free In-Home Assessment | Caring Companions">
+<meta property="og:description" content="Request a free in-home care assessment. A care coordinator from our Springfield office calls to answer your questions and set a time that works for you.">
+<meta property="og:url" content="https://mo-care.com/free-assessment">
+<meta property="og:image" content="https://mo-care.com/assets/photos/hero-caregiver.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@media (max-width: 719px) { .nh-hero .hp-hero-img { height: 230px; } }
+</style>
+</head>
+<body>
+<div class="hp">
+
+<div class="cc-utility">
+<div class="cc-utility-inner">
+<a href="tel:14172348494" class="cc-utility-tel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>(417) 234-8494</a>
+<a href="/before-your-assessment" class="cc-utility-book">Questions families ask</a>
+<a href="/careers" class="cc-utility-jobs">We&rsquo;re hiring<span class="cc-utility-jobs-more"> caregivers</span> &rarr;</a>
+</div>
+</div>
+
+<header class="cc-header">
+<div class="cc-header-inner">
+<a href="/" class="cc-logo"><img src="/assets/cc-logo.webp" alt="Caring Companions"></a>
+<input type="checkbox" id="cc-navtog" class="cc-navtog" aria-hidden="true" tabindex="-1">
+<a href="tel:14172348494" class="nh-hcall" aria-label="Call us at (417) 234-8494"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Call us</a>
+<label for="cc-navtog" class="cc-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+<nav class="cc-nav">
+<span class="cc-nav-group">
+<a href="/our-services" class="cc-nav-top">Services<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Care Levels</span>
+<a href="/services/companion-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">1</span><span>Wellness Care<span class="cc-dd-sub">Company, meals, laundry, errands, medication reminders</span></span></a>
+<a href="/services/personal-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">2</span><span>Personal Care<span class="cc-dd-sub">Wellness Care plus bathing, dressing, toileting, transfers</span></span></a>
+<a href="/services/advanced-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">3</span><span>Advanced Care<span class="cc-dd-sub">Extra support for complex needs</span></span></a>
+</span>
+<span class="cc-col cc-col-2">
+<span class="cc-colh">Around-the-clock &amp; specialty</span>
+<a href="/services/24-hour-care">24-Hour Care<span class="cc-dd-sub">Care around the clock, in shifts</span></a>
+<a href="/services/overnight-care">Overnight Care<span class="cc-dd-sub">Someone there through the night</span></a>
+<a href="/services/respite-care">Respite Care<span class="cc-dd-sub">A break for family caregivers</span></a>
+<a href="/care-paths/dementia">Dementia &amp; Memory Care<span class="cc-dd-sub">Patient help with memory loss</span></a>
+<a href="/our-services">All services &amp; pricing &rarr;</a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Hiring on your own</span>
+<a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself?<span class="cc-dd-sub">Free help, even if you never hire us</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/pricing" class="cc-nav-top">Ways to Pay<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Rates</span>
+<a href="/pricing">Our Rates &amp; Guarantee</a>
+<a href="/care-paths/paying-for-care">Private Pay</a>
+<a href="/cost-calculator">Cost Calculator</a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Benefits &amp; coverage</span>
+<a href="/long-term-care-insurance">Long-Term Care Insurance<span class="cc-dd-sub">We verify &amp; bill your policy</span></a>
+<a href="/guides/va-benefits-for-home-care">VA Benefits<span class="cc-dd-sub">Aid &amp; Attendance</span></a>
+</span>
+<span class="cc-col cc-feat">
+<span class="cc-colh">Guide</span>
+<a href="/medicare-guide">Medicare GUIDE<span class="cc-dd-sub">Up to 20 four-hour respite visits a year</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/resource-library" class="cc-nav-top">Resources<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Learn</span>
+<a href="/resource-library">Guide Library</a>
+<a href="/family-academy">Family Care Academy<span class="cc-dd-sub">Free training for family caregivers</span></a>
+<a href="/counties/">County Resource Centers</a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Tools</span>
+<a href="/cara">Have a Question?<span class="cc-dd-sub">Help with care questions</span></a>
+<a href="/assessment">Care Questionnaire</a>
+<a href="/decision-center">Decision Center</a>
+</span>
+<span class="cc-col cc-feat">
+<span class="cc-colh">Community</span>
+<a href="/outings">Good Days Out<span class="cc-dd-sub">Senior outings near you</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/our-story" class="cc-nav-top">About Us<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Who we are</span>
+<a href="/our-story">Our Story</a>
+<a href="/our-caregivers">Our Caregivers<span class="cc-dd-sub">Who comes to your door</span></a>
+<a href="/service-area">Where We Serve<span class="cc-dd-sub">Towns and counties we cover</span></a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Get in touch</span>
+<a href="/contact">Contact Us</a>
+<a href="/share-your-story">Share Your Story<span class="cc-dd-sub">A few words from you</span></a>
+</span>
+<span class="cc-col cc-feat cc-feat-call">
+<span class="cc-colh">Talk to a coordinator</span>
+<a href="tel:14172348494" class="cc-feat-tel">(417) 234-8494</a>
+<span class="cc-feat-note">Talk with our Springfield office. No sales pressure.</span>
+</span>
+</span>
+</span>
+</span>
+<a href="/careers">Careers</a>
+<a href="/contact" class="nh-nav-req">Contact Us</a>
+<a href="tel:14172348494" class="cc-nav-cta" aria-label="Call us at (417) 234-8494">Call (417) 234-8494</a>
+<a href="tel:14172348494" class="cc-nav-phone">(417) 234-8494</a>
+</nav>
+</div>
+</header>
+
+<style>
+.fa-wrap { max-width: 1160px; margin: 0 auto; padding: 44px 24px 56px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; }
+.fa-kick { font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--cta); margin: 0 0 12px; }
+.fa-intro h1 { font-family: var(--serif); font-size: clamp(34px, 4.2vw, 50px); line-height: 1.1; color: var(--brand-blue); margin: 0 0 16px; font-weight: 600; }
+.fa-lead { font-size: max(19px, var(--fs-read, 0px)); line-height: 1.55; color: var(--ink); margin: 0 0 24px; }
+.fa-facts { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 12px; }
+.fa-facts li { display: flex; gap: 12px; align-items: flex-start; font-size: max(17px, var(--fs-read, 0px)); line-height: 1.45; color: var(--ink); }
+.fa-facts svg { flex: 0 0 26px; width: 26px; height: 26px; color: var(--cta); margin-top: 1px; }
+.fa-facts b { color: var(--brand-blue); }
+.fa-proof { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 15.5px; font-weight: 600; color: var(--muted); margin: 0 0 22px; }
+.fa-proof .st { color: #E0A21B; letter-spacing: 1px; }
+.fa-quote { border-left: 3px solid #FFC671; padding: 4px 0 4px 16px; margin: 0; }
+.fa-quote p { font-family: var(--serif); font-size: 19px; line-height: 1.45; color: var(--brand-blue); margin: 0 0 6px; }
+.fa-quote cite { font-style: normal; font-size: 14.5px; color: var(--muted); }
+.fa-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 18px 44px rgba(14,56,96,.12); padding: 28px; }
+.fa-card h2 { font-family: var(--serif); font-size: 26px; color: var(--brand-blue); margin: 0 0 4px; }
+.fa-card .fa-sub { font-size: 15.5px; color: var(--muted); margin: 0 0 20px; }
+.fa-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fa-f { display: block; margin: 0 0 14px; }
+.fa-f > span { display: block; font-size: 15px; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+.fa-f input, .fa-f textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 17px; padding: 13px 14px; border: 1.5px solid #d6d1c4; border-radius: 10px; background: #fff; color: var(--ink); }
+.fa-f textarea { min-height: 80px; resize: vertical; }
+.fa-f input:focus, .fa-f textarea:focus { outline: 3px solid rgba(31,122,140,.25); border-color: var(--cta); }
+.fa-opt { font-weight: 400; color: var(--muted); }
+.fa-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.fa-chips button { font: inherit; font-size: 16px; font-weight: 600; padding: 10px 16px; border-radius: 999px; border: 1.5px solid #d6d1c4; background: #fff; color: var(--brand-blue); cursor: pointer; }
+.fa-chips button[aria-pressed="true"] { background: var(--brand-blue); border-color: var(--brand-blue); color: #fff; }
+.fa-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: var(--muted); margin: 4px 0 16px; }
+.fa-consent input { margin-top: 3px; width: 18px; height: 18px; flex: 0 0 18px; }
+.fa-err { display: none; background: #fdecea; color: #8a1c12; border-radius: 10px; padding: 10px 12px; font-size: 15px; margin: 0 0 12px; }
+.fa-err.on { display: block; }
+.fa-go { width: 100%; font: inherit; font-size: 18px; font-weight: 700; padding: 16px; border: 0; border-radius: 12px; background: var(--cta); color: #fff; cursor: pointer; }
+.fa-go:hover { background: #18606e; }
+.fa-go:disabled { opacity: .7; cursor: default; }
+.fa-after { text-align: center; font-size: 15px; color: var(--muted); margin: 12px 0 0; }
+.fa-done { display: none; text-align: center; padding: 10px 0; }
+.fa-done h2 { margin-bottom: 10px; }
+.fa-done p { font-size: 17px; line-height: 1.55; color: var(--ink); margin: 0 0 14px; }
+.fa-done a.fa-call { display: inline-block; background: var(--brand-blue); color: #fff; font-weight: 700; padding: 14px 22px; border-radius: 12px; text-decoration: none; }
+.fa-card.sent form { display: none; }
+.fa-card.sent .fa-done { display: block; }
+.fa-steps { background: #f6f5f0; border-top: 1px solid var(--border); }
+.fa-steps-in { max-width: 1160px; margin: 0 auto; padding: 56px 24px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.fa-steps h2 { font-family: var(--serif); font-size: 32px; color: var(--brand-blue); margin: 0 0 22px; }
+.fa-steps ol { list-style: none; counter-reset: s; margin: 0 0 20px; padding: 0; }
+.fa-steps li { counter-increment: s; position: relative; padding: 0 0 18px 52px; font-size: max(17px, var(--fs-read, 0px)); line-height: 1.55; color: var(--ink); }
+.fa-steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--brand-blue); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.fa-steps li b { display: block; color: var(--brand-blue); font-size: 18px; }
+.fa-steps a.fa-more { font-weight: 600; color: var(--brand-blue); }
+.fa-steps img { width: 100%; height: auto; display: block; border-radius: 40px 10px 40px 10px; box-shadow: 0 18px 40px rgba(14,56,96,.16); aspect-ratio: 4 / 3; object-fit: cover; }
+@media (max-width: 900px) {
+  .fa-wrap, .fa-steps-in { grid-template-columns: 1fr; gap: 28px; }
+  .fa-wrap { padding: 28px 16px 40px; }
+  .fa-card { padding: 22px 18px; }
+  .fa-quote, .fa-lead { display: none; }
+  .fa-intro h1 { font-size: 32px; margin-bottom: 18px; }
+  .fa-facts { margin-bottom: 18px; }
+  .fa-proof { margin: 0; }
+  .fa-steps-in { padding: 44px 16px 52px; }
+}
+@media (max-width: 420px) { .fa-row { grid-template-columns: 1fr; gap: 0; } }
+</style>
+
+<main>
+<section class="fa-wrap">
+<div class="fa-intro">
+<p class="fa-kick">Free in-home assessment</p>
+<h1>We&rsquo;ll come to you and plan the right care together.</h1>
+<p class="fa-lead">A care coordinator from our Springfield office visits your loved one at home, listens to what&rsquo;s going on, and works out a care plan with you.</p>
+<ul class="fa-facts">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.6 2.6L16.5 9"/></svg><span><b>Free, with no obligation.</b> No decision needed that day.</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/></svg><span><b>At home, usually 60 to 90 minutes.</b></span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1z"/></svg><span><b>We call to pick a day,</b> usually the same business day.</span></li>
+</ul>
+<p class="fa-proof"><span><span class="st" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 on Google</span><span>Locally owned since 2017</span></p>
+<blockquote class="fa-quote"><p>&ldquo;Have been very impressed with the compassionate care my parents have received in their home.&rdquo;</p><cite>Judy B. &middot; Google review</cite></blockquote>
+</div>
+
+<div class="fa-card" id="faCard">
+<form id="faForm" novalidate>
+<h2>Request your free assessment</h2>
+<p class="fa-sub">Takes about a minute.</p>
+<div class="fa-row">
+<label class="fa-f"><span>First name</span><input id="faFirst" autocomplete="given-name"></label>
+<label class="fa-f"><span>Last name</span><input id="faLast" autocomplete="family-name"></label>
+</div>
+<label class="fa-f"><span>Phone</span><input id="faPhone" type="tel" autocomplete="tel" inputmode="tel"></label>
+<label class="fa-f"><span>Email <span class="fa-opt">(optional)</span></span><input id="faEmail" type="email" autocomplete="email"></label>
+<div class="fa-f"><span id="faWhoL">Who is the care for?</span><div class="fa-chips" role="group" aria-labelledby="faWhoL" data-pick="who"><button type="button" aria-pressed="false">My parent</button><button type="button" aria-pressed="false">My spouse</button><button type="button" aria-pressed="false">Myself</button><button type="button" aria-pressed="false">Someone else</button></div></div>
+<label class="fa-f"><span>Town or ZIP code</span><input id="faWhere" autocomplete="postal-code"></label>
+<div class="fa-f"><span id="faTimeL">Best time to call</span><div class="fa-chips" role="group" aria-labelledby="faTimeL" data-pick="time"><button type="button" aria-pressed="false">Morning</button><button type="button" aria-pressed="false">Afternoon</button><button type="button" aria-pressed="false">Evening</button></div></div>
+<label class="fa-f"><span>Anything we should know? <span class="fa-opt">(optional)</span></span><textarea id="faNote"></textarea></label>
+<label class="fa-consent"><input type="checkbox" id="faTexts"><span>By checking this box, I agree to receive text messages from Caring Companions In-Home Senior Care at the number above about my questions and care, including assessment reminders and care updates. Message frequency varies. Message and data rates may apply. Reply STOP to stop, HELP for help. Agreeing is not required to receive care. See our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+<p class="fa-err" id="faErr" role="alert"></p>
+<button type="submit" class="fa-go" id="faSend">Request my free assessment</button>
+<p class="fa-after">We&rsquo;ll call you to pick a day that works.</p>
+</form>
+<div class="fa-done" tabindex="-1" id="faDone">
+<h2>Thank you. We&rsquo;ll call you soon.</h2>
+<p>A care coordinator from our Springfield office will call to set up your free assessment, usually the same business day. If you reached us after hours, we&rsquo;ll call the next morning.</p>
+<p>Rather talk now?</p>
+<a class="fa-call" href="tel:14172348494">Call (417) 234-8494</a>
+</div>
+</div>
+</section>
+
+<section class="fa-steps">
+<div class="fa-steps-in">
+<div>
+<h2>What happens at your assessment</h2>
+<ol>
+<li><b>We call you.</b> We answer your questions and pick a day that works for your family.</li>
+<li><b>We visit at home.</b> A free visit to get to know your loved one and what would help most.</li>
+<li><b>We plan together.</b> We recommend the right level of care together and talk through the schedule and cost. No decision is needed that day.</li>
+</ol>
+<a class="fa-more" href="/before-your-assessment">More about what to expect &rarr;</a>
+</div>
+<img src="/assets/photos/scene-door-handshake.webp" alt="A caregiver greeting an older woman at her front door" width="1080" height="608" loading="lazy" decoding="async">
+</div>
+</section>
+</main>
+
+<script src="/assets/forms.js"></script>
+<script>
+/* Free Assessment page (her ask 11-10). One short form for families ready to set up the assessment.
+   The lead note starts with WANTS A FREE IN-HOME ASSESSMENT so the office sees it on the Leads card.
+   No silent failures: a send error shows the office number. */
+(function () {
+  'use strict';
+  var card = document.getElementById('faCard'), form = document.getElementById('faForm');
+  var err = document.getElementById('faErr'), send = document.getElementById('faSend');
+  var pick = { who: '', time: '' };
+  form.querySelectorAll('[data-pick]').forEach(function (g) {
+    g.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      g.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      pick[g.getAttribute('data-pick')] = on ? b.textContent : '';
+    });
+  });
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function fail(msg, id) { err.innerHTML = msg; err.classList.add('on'); send.disabled = false; send.textContent = 'Request my free assessment'; if (id) document.getElementById(id).focus(); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); err.classList.remove('on');
+    if (!val('faFirst')) return fail('Please add your first name.', 'faFirst');
+    if (!val('faLast')) return fail('Please add your last name.', 'faLast');
+    if (val('faPhone').replace(/\D/g, '').replace(/^1/, '').length !== 10) return fail('Please add a 10 digit phone number so we can call you.', 'faPhone');
+    if (!val('faWhere')) return fail('Please add the town or ZIP code where care is needed.', 'faWhere');
+    if (!window.CCForms) return fail('This did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>.');
+    send.disabled = true; send.textContent = 'Sending...';
+    var texts = document.getElementById('faTexts').checked;
+    var msg = 'WANTS A FREE IN-HOME ASSESSMENT. Asked from the Free Assessment page. Call to set a time.' +
+      ' Care is for: ' + (pick.who || 'not given') + '.' +
+      ' Where: ' + val('faWhere') + '.' +
+      ' Best time to call: ' + (pick.time || 'any time') + '.' +
+      (val('faNote') ? ' They wrote: ' + val('faNote') : '') +
+      ' Agreed to text messages: ' + (texts ? 'yes' : 'no') + '.';
+    window.CCForms.submitLead({ name: val('faFirst') + ' ' + val('faLast'), phone: val('faPhone'), email: val('faEmail'), care_for: pick.who, kind: 'assessment_request', message: msg })
+      .then(function () {
+        card.classList.add('sent');
+        var d = document.getElementById('faDone'); d.focus({ preventScroll: true });
+        var head = document.querySelector('.cc-header'), off = head ? head.getBoundingClientRect().height + 12 : 80;
+        window.scrollTo({ top: Math.max(0, card.getBoundingClientRect().top + window.pageYOffset - off), behavior: 'smooth' });
+      })
+      .catch(function () { fail('Sorry, this did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>, or try again.'); });
+  });
+})();
+</script>
+
+<footer class="cc-siteftr">
+<div class="cc-siteftr-grid">
+<div class="brand">
+<img src="/assets/cc-logo.webp" alt="Caring Companions">
+<p class="tag">The trusted guide for aging at home.</p>
+<p class="meta">1331 N Stewart Ave Ste B<br>Springfield, MO 65802<br><a href="tel:14172348494" style="display:inline;padding:0;color:inherit">(417) 234-8494</a></p>
+<a class="book" href="#faCard">Request a Free Assessment</a>
+</div>
+<div>
+<h4>Care Services</h4>
+<a href="/services/companion-care">Wellness Care</a>
+<a href="/services/personal-care">Personal Care</a>
+<a href="/services/advanced-care">Advanced Care</a>
+<a href="/services/overnight-care">Overnight Care</a>
+<a href="/services/24-hour-care">24-Hour Care</a>
+<a href="/services/respite-care">Respite Care</a>
+<a href="/our-services">All services &rarr;</a>
+</div>
+<div>
+<h4>Explore</h4>
+<a href="/getting-started">Getting Started</a>
+<a href="/before-your-assessment">What to Expect</a>
+<a href="/decision-center">Decision Center</a>
+<a href="/assessment">Care Questionnaire</a>
+<a href="/cara">Have a Question?</a>
+<a href="/cost-calculator">Cost Calculator</a>
+<a href="/resource-library">Resource Library</a>
+<a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself?</a>
+<a href="/family-academy">Family Care Academy</a>
+<a href="/outings">Good Days Out</a>
+<a href="/service-area">Service Areas</a>
+</div>
+<div>
+<h4>Company</h4>
+<a href="/our-story">Our Story</a>
+<a href="/our-caregivers">Our Caregivers</a>
+<a href="/share-your-story">Share Your Story</a>
+<a href="/pricing">Pricing</a>
+<a href="/contact">Contact Us</a>
+</div>
+<div>
+<h4>Work With Us</h4>
+<a href="/careers#openings">Open Caregiver Jobs</a>
+<a href="/apply">Apply Now</a>
+<a href="/careers">Why Work Here</a>
+</div>
+</div>
+<div class="cc-social " data-social-row><span class="lbl">Follow us</span><a href="https://www.facebook.com/1043697295676809"  target="_blank" rel="noopener me" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a><a href="https://www.instagram.com/caring_companions_missouri/"  target="_blank" rel="noopener me" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a><a href="https://www.youtube.com/@caring-companions"  target="_blank" rel="noopener me" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.tiktok.com/@caringcompanionsmo"  target="_blank" rel="noopener me" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="https://www.linkedin.com/company/40670656/"  target="_blank" rel="noopener me" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.pinterest.com/caringcompanionsmissouri/"  target="_blank" rel="noopener me" aria-label="Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg></a></div>
+<p class="cc-siteftr-bottom">&copy; 2026 Caring Companions In-Home Senior Care. All rights reserved. &middot; <a href="/privacy" style="display:inline;padding:0;color:inherit;text-decoration:underline">Privacy Policy</a></p>
+</footer>
+
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+<script src="/assets/accessibility.js" defer></script>
+</body>
+</html>
