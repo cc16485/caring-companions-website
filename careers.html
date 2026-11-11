@@ -110,6 +110,13 @@
 .cr-role { border-radius: 18px; box-shadow: 0 4px 16px rgba(13,54,95,.05); }
 @media (max-width: 960px) { .cr-perks-in { grid-template-columns: repeat(2, 1fr); } .cr-vgrid { grid-template-columns: 1fr 1fr; } .cr-roles { grid-template-columns: 1fr; } }
 @media (max-width: 719px) { .cr-perks-in { padding: 26px 20px; gap: 18px; } .cr-perk b { font-size: 16px; } .cr-vgrid { grid-template-columns: 1fr; } .cr-voices-in { padding: 44px 20px; } .cr-voices h2 { font-size: 28px; } .cr-go, .cr-ghost { width: 100%; text-align: center; box-sizing: border-box; } }
+.cr-vet { background:#fbf6ec; border-bottom:1px solid #ecdcbf; }
+.cr-vet-in { max-width:1100px; margin:0 auto; padding:34px 24px; display:flex; align-items:center; gap:28px; box-sizing:border-box; }
+.cr-vet-kick { margin:0 0 4px; font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#1F7A8C; }
+.cr-vet h2 { font-family:var(--serif); font-size:28px; color:var(--brand-blue); margin:0 0 8px; }
+.cr-vet p { margin:0; font-size:max(16px,var(--fs-read,0px)); line-height:1.6; color:var(--ink-2); max-width:640px; }
+.cr-vet-btns { display:flex; flex-wrap:wrap; gap:12px; flex:none; }
+@media (max-width:860px) { .cr-vet-in { flex-direction:column; align-items:flex-start; padding:28px 20px; gap:16px; } .cr-vet-btns { width:100%; } }
 </style>
 </head>
 <body>
@@ -117,6 +124,7 @@
 <div class="cc-utility">
 <div class="cc-utility-inner">
 <a href="tel:14172348494" class="cc-utility-tel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>(417) 234-8494</a>
+<a href="/veterans" class="cc-utility-vet">&#9733; Veterans: get paid to care<span class="cc-utility-jobs-more"> for a veteran you know</span> &rarr;</a>
 <a href="/before-your-assessment" class="cc-utility-book">Questions families ask</a>
 <a href="/careers" class="cc-utility-jobs">We&rsquo;re hiring<span class="cc-utility-jobs-more"> caregivers</span> &rarr;</a>
 </div>
@@ -231,6 +239,12 @@
 <div class="cr-perk"><span class="cr-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>Flexible schedules</b><span>Shifts near you that fit your life.</span></div>
 <div class="cr-perk"><span class="cr-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Insured and supported</b><span>An office team that answers.</span></div>
 </div>
+<section class="cr-vet"><div class="cr-vet-in">
+<div><p class="cr-vet-kick">Caring for a veteran you know?</p>
+<h2>Get paid to be their caregiver.</h2>
+<p>If a family member or friend is a veteran with VA Homemaker and Home Health Aide care, we can hire you to care for them. 18 or older, and no paid caregiving experience needed. You're a W-2 employee, paid weekly.</p></div>
+<div class="cr-vet-btns"><a href="/apply?position=va_family_caregiver&amp;channel_source=careers-page" class="cr-go">Apply for this role</a><a href="/veterans" class="cr-ghost">How it works</a></div>
+</div></section>
 </div>
 
 <section class="cr-voices">

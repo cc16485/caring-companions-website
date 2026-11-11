@@ -226,6 +226,17 @@
 @media (max-width: 719px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 32px; padding-bottom: 32px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 44px; padding-bottom: 44px; } .hp .cg-meet { padding-top: 40px; } .hp #decision-center { padding-bottom: 44px; } }
 .nh-medicaid { font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: var(--ink); margin: 14px 0 0; }
 .nh-medicaid a { font-weight: 600; color: var(--brand-blue); }
+.hp-vet { background:linear-gradient(135deg,#0D365F 0%,#14606F 100%); }
+.hp-vet-in { max-width:1100px; margin:0 auto; padding:30px 24px; display:flex; align-items:center; gap:22px; box-sizing:border-box; }
+.hp-vet-ic { flex:none; width:58px; height:58px; border-radius:50%; background:rgba(255,255,255,.12); color:#FFC671; display:flex; align-items:center; justify-content:center; }
+.hp-vet-ic svg { width:30px; height:30px; }
+.hp-vet-copy { flex:1; }
+.hp-vet-kick { margin:0 0 4px; font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#FFC671; }
+.hp-vet h2 { font-family:var(--serif); font-size:28px; line-height:1.2; color:#fff; margin:0 0 6px; }
+.hp-vet p { margin:0; color:#dbe9ee; font-size:max(16px,var(--fs-read,0px)); line-height:1.55; }
+.hp-vet-go { flex:none; background:#FFC671; color:#0D365F; font-weight:700; font-size:17px; padding:14px 22px; border-radius:12px; text-decoration:none; white-space:nowrap; }
+.hp-vet-go:hover { background:#ffd690; color:#0D365F; }
+@media (max-width:860px) { .hp-vet-in { flex-direction:column; align-items:flex-start; padding:26px 20px; gap:14px; } .hp-vet h2 { font-size:24px; } .hp-vet-go { width:100%; text-align:center; box-sizing:border-box; } }
 </style>
 <link rel="canonical" href="https://mo-care.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -248,6 +259,7 @@
 <div class="cc-utility">
 <div class="cc-utility-inner">
 <a href="tel:14172348494" class="cc-utility-tel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>(417) 234-8494</a>
+<a href="/veterans" class="cc-utility-vet">&#9733; Veterans: get paid to care<span class="cc-utility-jobs-more"> for a veteran you know</span> &rarr;</a>
 <a href="/before-your-assessment" class="cc-utility-book">Questions families ask</a>
 <a href="/careers" class="cc-utility-jobs">We&rsquo;re hiring<span class="cc-utility-jobs-more"> caregivers</span> &rarr;</a>
 </div>
@@ -660,6 +672,18 @@
 <div class="hp-proof-item"><strong>Meet them first</strong><span>Your caregiver's photo and story before the first visit</span></div>
 </div>
 </div>
+
+<section class="hp-vet" aria-label="Veterans">
+<div class="hp-vet-in">
+<span class="hp-vet-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+<div class="hp-vet-copy">
+<p class="hp-vet-kick">New &middot; In network with VA Community Care</p>
+<h2>Caring for a veteran? You can get paid.</h2>
+<p>Your veteran chooses who cares for them. Caring Companions can hire the family member or friend they already trust, and the VA pays for the authorized hours. We help with the VA paperwork, start to finish.</p>
+</div>
+<a href="/veterans" class="hp-vet-go">See how it works &rarr;</a>
+</div>
+</section>
 
 <section class="nh-sec">
 <div class="nh-why">
