@@ -22,6 +22,18 @@
 <style>
 .pr-hero { max-width:940px; margin: 0 auto; padding: 56px 24px 8px; text-align: center; }
 .pr-h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
+.pr-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 10px; max-width: 540px; }
+.pr-strip a { display: block; background: #fff; border: 1.5px solid #d6d1c4; border-radius: 12px; padding: 12px 10px; text-align: center; text-decoration: none; }
+.pr-strip a:hover { border-color: var(--cta); }
+.pr-strip span { display: block; font-size: 14px; font-weight: 600; color: var(--muted); }
+.pr-strip b { display: block; font-family: var(--serif); font-size: 28px; color: var(--brand-blue); line-height: 1.15; }
+.pr-strip small { font-family: system-ui, sans-serif; font-size: 14px; font-weight: 500; color: var(--muted); }
+.pr-strip-note { font-size: max(15.5px, var(--fs-read, 0px)); color: var(--ink); margin: 0 0 14px; }
+.pr-strip-note a { font-weight: 600; color: var(--brand-blue); }
+#rates { scroll-margin-top: 90px; }
+@media (max-width: 420px) { .pr-strip b { font-size: 24px; } .pr-strip span { font-size: 13px; } }
+.pr-medicaid { max-width: 760px; margin: 18px auto 0; text-align: center; font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: var(--ink); }
+.pr-medicaid a { font-weight: 600; color: var(--brand-blue); }
 .pr-cards { max-width:1200px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
 .pr-card { background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; }
 .pr-card .name { font-size: 15px; font-weight: 700; color: var(--ink-2); margin: 0 0 4px; }
@@ -194,7 +206,12 @@
 <p class="nh-kick">Transparent Pricing</p>
 <h1>Trusted care. Clear pricing. No surprises.</h1>
 <p class="nh-sub">Finding the right care for someone you love is a big decision. Understanding the cost shouldn't make it harder.</p>
-<p class="nh-more">At Caring Companions, we believe families deserve honest, upfront pricing without the pressure of a sales call. That's why we share our rates right here, so you can explore your options, plan with confidence, and focus on what matters most: finding the right care for your loved one.</p>
+<div class="pr-strip" aria-label="Our hourly rates">
+<a href="#rates"><span>Wellness Care</span><b>$30<small>/hour</small></b></a>
+<a href="#rates"><span>Personal Care</span><b>$32<small>/hour</small></b></a>
+<a href="#rates"><span>Advanced Care</span><b>$34<small>/hour</small></b></a>
+</div>
+<p class="pr-strip-note">No deposit and no long-term contract. <a href="#rates">See what each level includes &darr;</a></p>
 <p class="nh-stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 on Google</p>
 </div>
 <div class="nh-ask" id="nhAsk" data-page="the Pricing page">
@@ -286,7 +303,7 @@
 </section>
 
 
-<section class="pr-cards">
+<section class="pr-cards" id="rates">
 <div class="pr-card">
 <p class="name">Wellness Care</p>
 <p class="price">$30<span style="font-size:15px;font-weight:400;color:var(--muted)">/hour</span></p>
@@ -365,7 +382,7 @@
 <div class="lv-help">
 <p>Not sure what kind of care your loved one needs? That's okay. You don't have to figure it out alone. We'll listen, answer your questions, and help you find the right level of support, starting with a free, no-obligation care assessment.</p>
 <a href="/free-assessment" class="btn-primary">Request a Free Assessment</a>
-<p class="lv-alt">Or <a href="/assessment">fill out the 8-minute Care Questionnaire</a>.</p>
+<p class="lv-alt">Or call us at <a href="tel:14172348494">(417) 234-8494</a>.</p>
 </div>
 </section>
 
@@ -387,6 +404,7 @@
 <a href="guides/va-benefits-for-home-care"><p style="font-size:max(14.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">VA Benefits</p><p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:0;line-height:1.5">Community Care &amp; Aid &amp; Attendance.</p></a>
 <a href="long-term-care-insurance"><p style="font-size:max(14.5px, var(--fs-head, 0px));font-weight:600;color:#122236;margin:0 0 4px">LTC Insurance</p><p style="font-size:max(12.5px, var(--fs-read, 0px));color:#45566a;margin:0;line-height:1.5">We verify and bill your policy.</p></a>
 </div>
+<p class="pr-medicaid">On MO HealthNet (Medicaid)? Our sister company, Caring Companions CDS, can help through Missouri&rsquo;s Consumer Directed Services program, where you choose your caregiver: someone you already know, or someone we help you find. <a href="https://caringcds.com">caringcds.com</a> or <a href="tel:14172182888">(417) 218-2888</a></p>
 </section>
 
 
@@ -408,10 +426,18 @@
 
 <section class="cc-reviews-sec">
 <div class="cc-reviews-head">
-<h2>What families &amp; caregivers say</h2>
-<p>Real, verified Google reviews from the families we care for, and the caregivers on our team.</p>
+<h2>What families say</h2>
+<p>From our Google reviews. 4.9 stars from 54 reviews.</p>
 </div>
-<iframe class="cc-reviews-frame" src="https://backend.leadconnectorhq.com/appengine/reviews/get_widget/Recp0AhyMh8lrtKJ9kaj" frameborder="0" scrolling="no" title="Verified Google reviews for Caring Companions"></iframe>
+<div class="cc-famrev">
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;Caring Companions is an outstanding company. Their caregivers have gone above and beyond during their care of my parents.&rdquo;</blockquote><figcaption>Susan C. &middot; Google review</figcaption></figure>
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;I can&rsquo;t say enough good things about Caring Companions&hellip; they really care about helping in any way they can.&rdquo;</blockquote><figcaption>Darlene M. &middot; Google review</figcaption></figure>
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;Have been very impressed with the compassionate care my parents have received in their home. The administration has also been very flexible to work with us and very responsive.&rdquo;</blockquote><figcaption>Judy B. &middot; Google review</figcaption></figure>
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;I would recommend Caring Companions to anyone looking for excellent and reliable senior care.&rdquo;</blockquote><figcaption>Sally C. &middot; Google review</figcaption></figure>
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;Wonderful care. They made my dad very comfortable and dealt with him using compassion and friendship.&rdquo;</blockquote><figcaption>Debbie B. &middot; Google review</figcaption></figure>
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;Excellent coordination and fulfillment of care for Mom. Very happy and satisfied with Caring Companions!&rdquo;</blockquote><figcaption>Robert G. &middot; Google review</figcaption></figure>
+</div>
+<p class="cc-famrev-more"><a href="https://www.google.com/maps/place/?q=place_id:ChIJaUETSOx7z4cRdYKcTMoZ6Go" target="_blank" rel="noopener">Read all our reviews on Google &rarr;</a></p>
 </section>
 <figure class="pg-photo"><img src="/assets/photos/scene-door-handshake.webp" alt="A caregiver greeting an older woman at her front door" width="1080" height="608" decoding="async"></figure>
 <section class="related-strip" aria-label="Related pages" style="max-width:1100px;margin:0 auto;padding:28px 24px 36px"><p style="font-size:12.5px;font-weight:700;color:#1F7A8C;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 10px">Related</p><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px"><li><a href="/guides/va-benefits-for-home-care" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">Does the VA Pay for In-Home Care in Missouri? &rarr;</a></li><li><a href="/long-term-care-insurance" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">Long-Term Care Insurance for Home Care &rarr;</a></li><li><a href="/resource-library" style="display:inline-block;border:1px solid #e4e1d8;border-radius:999px;padding:7px 14px;background:#fff;color:#0D365F;font-size:15px;line-height:1.35;font-weight:600;text-decoration:none">The Aging at Home Library &rarr;</a></li></ul></section>
