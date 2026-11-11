@@ -174,13 +174,13 @@
   <div class="ap-card" id="step2" style="display:none;">
     <div class="sub" style="margin:0 0 4px;">Answer honestly. A no is not automatically a problem, and knowing now saves us both a phone call.</div>
 
-    <div class="q"><div class="qt">Are you 21 or older?</div>
+    <div class="q" id="ageQ"><div class="qt" id="ageQt">Are you 21 or older?</div>
       <div class="chips" data-k="age_ok"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>
 
     <div class="q"><div class="qt">Are you legally authorized to work in the United States?</div>
       <div class="chips" data-k="work_auth"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>
 
-    <div class="q"><div class="qt">Do you have reliable transportation to get to shifts?</div>
+    <div class="q" id="transportQ"><div class="qt">Do you have reliable transportation to get to shifts?</div>
       <div class="chips" data-k="has_transport"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>
 
     <!-- 731 (2026-10-14, Samantha: "we also need to require a year of paid experience"; unpaid family caregiving counts
@@ -193,11 +193,11 @@
         <button type="button" onclick="pick(this,'no')">No, less than a year</button>
       </div></div>
 
-    <div class="q"><div class="qt">Do you have a valid driver's license?</div>
+    <div class="q" id="licenseQ"><div class="qt">Do you have a valid driver's license?</div>
       <div class="qs">Only needed if you would be driving clients. Plenty of shifts do not involve driving.</div>
       <div class="chips" data-k="has_license"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>
 
-    <div class="q"><div class="qt">Do you have current auto insurance?</div>
+    <div class="q" id="insuranceQ"><div class="qt">Do you have current auto insurance?</div>
       <div class="chips" data-k="has_insurance"><button type="button" onclick="yn(this,1)">Yes</button><button type="button" onclick="yn(this,0)">No</button></div></div>
 
     <div class="q"><div class="qt">Can you pass a background check?</div>
@@ -371,6 +371,18 @@ let TITLE = null;
 let POSITION = POSITION_HINT || (JOB ? null : 'caregiver');
 let PAY_SET = false;   // a posting's own rate beats the role's
 let ROLE_QS = [];
+/* 1417 (2026-11-10, VA family or friend caregiver): a role can set its own minimum age and whether it needs a year of
+   paid experience or transportation. Every other role keeps 21, a paid year and transportation (the column defaults). */
+let ROLE = null;
+const roleMinAge = () => (ROLE && Number(ROLE.min_age)) || 21;
+const roleNeedsPaidYear = () => !(ROLE && ROLE.needs_paid_year === false);
+const roleNeedsTransport = () => !(ROLE && ROLE.needs_transport === false);
+function applyRoleRules(){
+  g('ageQt').textContent = 'Are you ' + roleMinAge() + ' or older?';
+  const show = (id, on) => { const el = g(id); if (el) el.style.display = on ? '' : 'none'; };
+  show('transportQ', roleNeedsTransport()); show('licenseQ', roleNeedsTransport()); show('insuranceQ', roleNeedsTransport());
+  show('oneYearQ', roleNeedsPaidYear());
+}
 
 /* The role's own questions on top of the shared ones. A shared core plus a
    couple of extras beats seven near-identical screeners that drift apart. */
@@ -384,6 +396,7 @@ async function loadRoleQuestions(){
        An old link for it opens the regular caregiver application instead. */
     if (data.active === false) { if (POSITION !== 'caregiver') { POSITION = 'caregiver'; return loadRoleQuestions(); } return; }
     ROLE_QS = Array.isArray(data.screener) ? data.screener : [];
+    ROLE = data; applyRoleRules();
     /* Only when they came for a named role. A bare /apply keeps the general
        headline, because they have not told us which job they want yet. */
     if (!TITLE && data.label && (POSITION_HINT || JOB)) g('bandTitle').textContent = data.label + ' in Springfield, MO';
@@ -878,6 +891,9 @@ const SCREEN_CALL_MSG = 'Before we can book your interview, we need a few quick 
 const FAMILY_MSG = 'Thank you. Because your experience is caring for a family member, someone from our office will call you '
   + 'to hear about it and to talk with the person who can confirm it, like a hospice or home health nurse or a family member. '
   + 'Once that is done, we will book your interview. Questions? Call (417) 234-8494.';
+/* 1417: the VA family or friend caregiver's call is about the veteran and the VA referral, not their experience. */
+const VA_FAMILY_MSG = 'Thank you. Someone from our office will call you to talk about the veteran you would care for and '
+  + 'their VA referral, and to help with any VA paperwork. Once that is done, we will book your interview. Questions? Call (417) 234-8494.';
 const SCREEN_NO_MSG = 'Based on your answers, we are not able to book an interview from this application. '
   + 'If something has changed, or you think we have it wrong, please call us at (417) 234-8494.';
 async function showFinish(mine){
@@ -965,9 +981,12 @@ function roleAnswers(){
 
 async function next2(){
   const err = g('err2');
-  if ([ 'age_ok','work_auth','has_transport' ].some(k => A[k] === undefined)){
-    err.textContent = 'Please answer the first three questions.'; err.style.display='block'; return;
+  const must = roleNeedsTransport() ? [ 'age_ok','work_auth','has_transport' ] : [ 'age_ok','work_auth' ];
+  if (must.some(k => A[k] === undefined)){
+    err.textContent = must.length === 3 ? 'Please answer the first three questions.' : 'Please answer the first two questions.'; err.style.display='block'; return;
   }
+  /* 1417: a role with no paid-year rule goes the 731 way: the office calls first, before any interview is booked. */
+  if (!roleNeedsPaidYear()) A.one_year = 'family';
   const prnNeedsCna = PRN && PRN.requires_cna !== false;   // 1036
   if (PRN && ((prnNeedsCna && A.prn_cna === undefined) || A.prn_one_year === undefined)){
     err.textContent = prnNeedsCna ? 'Please answer the two CNA questions.' : 'Please answer the question about a year of paid experience.'; err.style.display='block'; return;
@@ -978,7 +997,13 @@ async function next2(){
   }
   err.style.display = 'none';
   const b = g('btn2'); b.disabled = true; b.textContent = 'Saving…';
-  let stop = KNOCKOUTS.find(x => A[x.k] === x.when);
+  const age = roleMinAge();
+  let stop = KNOCKOUTS.filter(x => !(x.k === 'has_transport' && !roleNeedsTransport()))
+    .map(x => x.k === 'age_ok' ? Object.assign({}, x, { reason: 'under ' + age,
+      why: 'This role is for people who are ' + age + ' or older, so we are not able to take your application further right now.',
+      next: 'If you are turning ' + age + ' soon, please do apply again then. We would be glad to hear from you.' }) : x)
+    .find(x => A[x.k] === x.when);
+  if (stop && stop.k === 'age_ok' && age === 21) stop = KNOCKOUTS[0];   // the regular wording, unchanged
   /* 2026-11-10: not a CNA on the PRN CNA Team is no longer a decline. They get the pop-up that moves them to the
      PRN Caregiver Team, and nothing is saved until they choose. */
   if (!stop && prnNeedsCna && A.prn_cna === false) { b.disabled = false; b.textContent = 'Continue'; ncOpen(); return; }
@@ -1043,7 +1068,7 @@ async function finish(){
     g('formView').style.display = 'none';
     g('bookView').style.display = 'block';
     window.scrollTo(0, 0);
-    if (A.one_year === 'family'){ showReview(FAMILY_MSG); return; }   // 731: the office verifies before any interview
+    if (A.one_year === 'family'){ showReview(roleNeedsPaidYear() ? FAMILY_MSG : VA_FAMILY_MSG); return; }   // 731: the office verifies before any interview
     resumeBooking();   // 461: shows their booking under another application, or the office review, else the times
   } catch (e) {
     b.disabled = false; b.textContent = 'Send my application';
