@@ -602,3 +602,28 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
    bridge above an open panel sat over the bottom half of the next tab. Menus open on click
    when accessibility.js runs (.cc-menus-click), so the bridge is not needed then. */
 .cc-menus-click .cc-dropdown::before { display: none; }
+
+/* 11-11 her ask: tell every town and county that a veteran can choose their own caregiver
+   through VA Community Care. Same box on the 50 town pages and the county guides. */
+.cc-va-box { max-width: 940px; margin: 0 auto; padding: 30px 24px 6px; }
+.cc-va-in { position: relative; overflow: hidden; background: #0D365F; border-radius: 16px; padding: 34px 32px 30px; color: #fff; }
+.cc-va-in::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: repeating-linear-gradient(90deg, #B22234 0 40px, #fff 40px 80px); }
+.cc-va-kick { margin: 0 0 8px; font-size: max(12.5px, var(--fs-min, 0px)); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #FFC671; }
+.cc-va-in h2 { margin: 0 0 12px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: clamp(25px, 3.2vw, 32px); line-height: 1.2; color: #fff; }
+.cc-va-in p { margin: 0 0 12px; font-size: max(16px, var(--fs-read, 0px)); line-height: 1.6; color: #dbe9ee; }
+.cc-va-list { list-style: none; margin: 4px 0 20px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.cc-va-list li { background: rgba(255,255,255,.08); border-radius: 10px; padding: 12px 14px; font-size: max(15px, var(--fs-read, 0px)); line-height: 1.45; color: #fff; }
+.cc-va-list b { display: block; color: #FFC671; font-size: max(13px, var(--fs-min, 0px)); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+.cc-va-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.cc-va-btns a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 10px; font-weight: 700; font-size: max(16px, var(--fs-read, 0px)); text-decoration: none; }
+.cc-va-go { background: #FFC671; color: #0D365F; }
+.cc-va-go:hover { background: #ffd48f; }
+.cc-va-call { border: 2px solid rgba(255,255,255,.7); color: #fff; }
+.cc-va-call:hover { background: rgba(255,255,255,.1); }
+.cc-va-fine { margin: 14px 0 0 !important; font-size: max(13.5px, var(--fs-min, 0px)) !important; color: #b9cbd6 !important; }
+@media (max-width: 700px) {
+  .cc-va-box { padding: 24px 16px 4px; }
+  .cc-va-in { padding: 30px 20px 24px; }
+  .cc-va-list { grid-template-columns: 1fr; }
+  .cc-va-btns a { flex: 1 1 100%; justify-content: center; }
+}
