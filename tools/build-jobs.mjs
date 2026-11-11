@@ -38,7 +38,7 @@ const JOB_SCENES = [
 ];
 const jobPhoto = slug => {
   const [scene, alt] = JOB_SCENES[[...String(slug || '')].reduce((n, ch) => n + ch.charCodeAt(0), 0) % JOB_SCENES.length];
-  return `<figure class="pg-photo jb-photo"><img src="/assets/photos/scene-${scene}.webp" alt="${alt}" width="1080" height="608" decoding="async"></figure>`;
+  return `<figure class="nh-photo"><img style="object-position:40% 35%" src="/assets/photos/scene-${scene}.webp" alt="${alt}" width="1080" height="608" fetchpriority="high" decoding="async"></figure>`;
 };
 const applyUrl = slug => '/apply' + (slug ? '?job=' + encodeURIComponent(slug) : '');
 
@@ -240,11 +240,15 @@ export function page(p, c) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/ask.css">
 <script type="application/ld+json">
 ${jsonLd(p)}
 </script>
 <style>
-.jb-wrap{max-width:820px;margin:0 auto;padding:52px 24px 30px;}
+.jb-wrap{max-width:820px;margin:0 auto;padding:40px 24px 30px;scroll-margin-top:80px;}
+.jb-nh .jb-back{display:inline-block;margin:0 0 18px;}
+.jb-nh .jb-chips{margin:4px 0 20px;}
+.jb-nh .jb-nocna{max-width:560px;}
 .jb-back{font-size:13.5px;color:var(--muted);text-decoration:none;}
 .jb-h1{font-family:var(--serif);font-size:40px;line-height:1.14;font-weight:600;color:var(--brand-blue);margin:0;letter-spacing:-.015em;}
 .jb-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:14px 0 14px;}
@@ -274,17 +278,22 @@ ${jsonLd(p)}
 <div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
 ${c.head}
 
-<main class="jb-wrap">
+<section class="nh-hero jb-nh">
+${jobPhoto(p.slug)}
+<div class="nh-hero-copy">
 <a class="jb-back" href="/careers">&larr; All careers</a>
-<div class="jb-top">
-<h1 class="jb-h1">${esc(p.title)}</h1>
-<a href="${applyUrl(p.slug)}" class="btn-apply jb-apply-top">Apply now &rarr;</a>
-</div>
+<p class="nh-kick">Now hiring &middot; ${esc(p.city || 'Springfield')}, ${esc(p.region || 'MO')}</p>
+<h1>${esc(p.title)}</h1>
+${p.summary ? `<p class="nh-sub">${esc(p.summary)}</p>` : ''}
 <div class="jb-chips">
 ${chips.map((t, i) => `<span class="jb-chip${i === 2 ? ' pay' : ''}">${esc(t)}</span>`).join('\n')}
 </div>
 ${noCnaNote(p, c)}
-${jobPhoto(p.slug)}
+<div class="nh-btns"><a href="${applyUrl(p.slug)}" class="nh-go">Apply now &rarr;</a><a href="#about-the-job" class="nh-ghost">About the job</a></div>
+</div>
+</section>
+
+<main class="jb-wrap" id="about-the-job">
 <div class="jb-body">
 ${para(withoutOneLiner(p.description))}
 ${p.responsibilities ? '<h2>What you would be doing</h2>' + bullets(p.responsibilities) : ''}
