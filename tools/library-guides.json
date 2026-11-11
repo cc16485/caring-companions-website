@@ -79,11 +79,11 @@
  {
   "title": "Fall Prevention at Home",
   "category": "Falls & Mobility",
-  "desc": "Simple, immediate changes that meaningfully reduce fall risk.",
+  "desc": "Why falls happen, and a room-by-room safety check you can do in about an hour.",
   "href": "/guides/fall-prevention-at-home",
   "inside": [
    "Why falls happen",
-   "A room-by-room walkthrough",
+   "A room-by-room safety check",
    "If a fall already happened"
   ]
  },
@@ -118,17 +118,6 @@
    "Signs of burnout",
    "What actually helps",
    "Asking for help without guilt"
-  ]
- },
- {
-  "title": "Home Safety Room by Room",
-  "category": "Falls & Mobility",
-  "desc": "A practical walkthrough of the highest-risk spots in the house.",
-  "href": "/guides/home-safety-room-by-room",
-  "inside": [
-   "Entryways and stairs",
-   "Kitchen and bathroom",
-   "Bedroom"
   ]
  },
  {

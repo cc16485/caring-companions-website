@@ -63,7 +63,6 @@ PAGES = {
     'guides/diabetes-care-for-seniors.html': 'kitchen-coffee',
     'guides/eating-well-as-we-age.html': 'kitchen-walker',
     'guides/fall-prevention-at-home.html': 'garden-walker',
-    'guides/home-safety-room-by-room.html': 'family-door',
     'guides/hospital-discharge.html': 'door-wave',
     'guides/living-well-with-heart-failure.html': 'garden-visit',
     'guides/managing-copd-at-home.html': 'puzzle',
