@@ -3,96 +3,187 @@
   "title": "Recognizing Early Signs of Dementia",
   "category": "Dementia & Memory",
   "desc": "What’s normal aging, what isn’t, and when to see a doctor.",
-  "href": "/guides/dementia-and-alzheimers"
+  "href": "/guides/dementia-and-alzheimers",
+  "inside": [
+   "Normal aging vs. warning signs",
+   "Ten early signs to watch for",
+   "What to do if you notice them"
+  ]
  },
  {
   "title": "Best Practices for Dementia Care",
   "category": "Dementia & Memory",
   "desc": "Daily routines, communication tips, safety, and caregiver support.",
-  "href": "/guides/best-practices-for-dementia-care"
+  "href": "/guides/best-practices-for-dementia-care",
+  "inside": [
+   "Daily routines that calm",
+   "How to talk so it lands",
+   "Taking care of yourself, too"
+  ]
  },
  {
   "title": "Parkinson’s Disease at Home",
   "category": "Chronic Conditions",
   "desc": "Mobility, fall risk, and daily support strategies.",
-  "href": "/guides/parkinsons-disease-at-home"
+  "href": "/guides/parkinsons-disease-at-home",
+  "inside": [
+   "Mobility and fall risk",
+   "Daily support that helps",
+   "As the condition changes"
+  ]
  },
  {
   "title": "Stroke Recovery at Home",
   "category": "Chronic Conditions",
   "desc": "What recovery looks like month to month, and how to support it.",
-  "href": "/guides/stroke-recovery-at-home"
+  "href": "/guides/stroke-recovery-at-home",
+  "inside": [
+   "The first weeks home",
+   "Therapies and how to help",
+   "The emotional side"
+  ]
  },
  {
   "title": "Living Well with Heart Failure",
   "category": "Chronic Conditions",
   "desc": "Daily monitoring and home routines that reduce hospital readmission.",
-  "href": "/guides/living-well-with-heart-failure"
+  "href": "/guides/living-well-with-heart-failure",
+  "inside": [
+   "What to check every day",
+   "Warning signs to watch for",
+   "Small changes in daily life"
+  ]
  },
  {
   "title": "Managing COPD at Home",
   "category": "Chronic Conditions",
   "desc": "Breathing routines, triggers, and when symptoms mean it’s time to call a doctor.",
-  "href": "/guides/managing-copd-at-home"
+  "href": "/guides/managing-copd-at-home",
+  "inside": [
+   "Breathing routines that help",
+   "Triggers to avoid",
+   "When to call the doctor"
+  ]
  },
  {
   "title": "Diabetes Care for Seniors",
   "category": "Chronic Conditions",
   "desc": "Meal planning, monitoring, and medication support at home.",
-  "href": "/guides/diabetes-care-for-seniors"
+  "href": "/guides/diabetes-care-for-seniors",
+  "inside": [
+   "Daily basics",
+   "High and low blood sugar signs",
+   "Meals and daily life"
+  ]
  },
  {
   "title": "Fall Prevention at Home",
   "category": "Falls & Mobility",
   "desc": "Simple, immediate changes that meaningfully reduce fall risk.",
-  "href": "/guides/fall-prevention-at-home"
+  "href": "/guides/fall-prevention-at-home",
+  "inside": [
+   "Why falls happen",
+   "A room-by-room walkthrough",
+   "If a fall already happened"
+  ]
  },
  {
   "title": "Coming Home After a Hospital Stay",
   "category": "Hospital & Recovery",
   "desc": "A 72-hour checklist for a safe transition home.",
-  "href": "/guides/hospital-discharge"
+  "href": "/guides/hospital-discharge",
+  "inside": [
+   "Questions to ask before discharge",
+   "The 72-hour checklist",
+   "Signs that need a call"
+  ]
  },
  {
   "title": "Medication Management Made Simple",
   "category": "Medication",
   "desc": "Keeping prescriptions straight and avoiding dangerous interactions.",
-  "href": "/guides/medication-management"
+  "href": "/guides/medication-management",
+  "inside": [
+   "One master list",
+   "Cutting down on mix-ups",
+   "Questions for the doctor"
+  ]
  },
  {
   "title": "Caregiver Burnout: What It Is, What Helps",
   "category": "Caregiver Support",
   "desc": "Recognizing burnout and finding real relief, not just advice.",
-  "href": "/guides/caregiver-burnout"
+  "href": "/guides/caregiver-burnout",
+  "inside": [
+   "Signs of burnout",
+   "What actually helps",
+   "Asking for help without guilt"
+  ]
  },
  {
   "title": "Home Safety Room by Room",
   "category": "Falls & Mobility",
   "desc": "A practical walkthrough of the highest-risk spots in the house.",
-  "href": "/guides/home-safety-room-by-room"
+  "href": "/guides/home-safety-room-by-room",
+  "inside": [
+   "Entryways and stairs",
+   "Kitchen and bathroom",
+   "Bedroom"
+  ]
  },
  {
   "title": "Eating Well as We Age",
   "category": "Nutrition",
   "desc": "Nutrition changes that matter most for seniors, and warning signs.",
-  "href": "/guides/eating-well-as-we-age"
+  "href": "/guides/eating-well-as-we-age",
+  "inside": [
+   "Why needs change",
+   "Warning signs",
+   "Easy ways to help"
+  ]
  },
  {
   "title": "Planning for End-of-Life Care",
   "category": "End-of-Life",
   "desc": "A compassionate, practical guide to a hard conversation.",
-  "href": "/guides/planning-for-end-of-life-care"
+  "href": "/guides/planning-for-end-of-life-care",
+  "inside": [
+   "Palliative care vs. hospice",
+   "Advance directives",
+   "Starting the conversation"
+  ]
  },
  {
   "title": "VA Benefits for Home Care",
   "category": "Payment & Benefits",
   "desc": "How VA Community Care and Aid & Attendance can help pay for care.",
-  "href": "/guides/va-benefits-for-home-care"
+  "href": "/guides/va-benefits-for-home-care",
+  "inside": [
+   "Who qualifies",
+   "Comparing the benefits",
+   "How to apply, step by step"
+  ]
  },
  {
   "title": "Missouri Medicaid HCBS, Explained",
   "category": "Payment & Benefits",
   "desc": "How Missouri’s Home and Community-Based Services program works.",
-  "href": "/guides/missouri-medicaid-hcbs"
+  "href": "/guides/missouri-medicaid-hcbs",
+  "inside": [
+   "Who qualifies",
+   "What a spend-down is",
+   "How to apply, step by step"
+  ]
+ },
+ {
+  "title": "Hiring a Caregiver Yourself",
+  "category": "Choosing Care",
+  "desc": "Honest help for families who want to hire on their own, even if you never hire us.",
+  "href": "/hiring-your-own-caregiver",
+  "inside": [
+   "Three ways to do it",
+   "Six things to set up first",
+   "When an agency is the better answer"
+  ]
  }
 ]
