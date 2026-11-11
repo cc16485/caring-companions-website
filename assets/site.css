@@ -469,6 +469,16 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   .cc-utility-jobs-more { display: none; }
 }
 
+
+/* 2026-11-10 (her ask: highlight the Veterans page): a gold pill on every page's top bar. */
+.cc-utility-vet {
+  margin-left: auto; font-size: max(13.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--brand-blue);
+  background: #FFC671; border-radius: 999px; padding: 3px 12px; text-decoration: none; white-space: nowrap;
+}
+.cc-utility-vet:hover { background: #ffd690; color: var(--brand-blue); text-decoration: none; }
+.cc-utility-vet + .cc-utility-book { margin-left: 0; }
+@media (max-width: 719px) { .cc-utility-vet { margin-left: 0; } }
+
 /* ---------- Hero primary CTA with a phone mark ---------- */
 .hp-btn-hero-call { display: inline-flex; align-items: center; gap: 10px; }
 .hp-btn-hero-call svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
