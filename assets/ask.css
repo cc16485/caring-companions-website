@@ -138,3 +138,16 @@
 .c4 { background: #F8E1D8; color: #8A3B1E; } .c5 { background: #E6F1E3; color: #2F5D2A; } .c6 { background: #EDE4F5; color: #4F2F70; }
 @media (max-width: 719px) { .nh-svc { grid-template-columns: 1fr; } .nh-card { flex-direction: column; gap: 12px; padding: 20px; } .nh-svc-sec h2 { font-size: 28px; } }
 .nh-card .nh-price { display: inline-block; margin-top: 8px; font-size: 14px; font-weight: 700; color: var(--accent); }
+
+/* Family pages in the new look (11-10): photo hero with buttons instead of the request steps,
+   and a band just under the hero for pieces that used to sit beside the words. */
+.nh-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.nh-go { display: inline-block; background: var(--cta); color: #fff; border-radius: 999px; padding: 16px 30px; font-size: 17px; font-weight: 700; text-decoration: none; }
+.nh-go:hover { background: var(--cta-hover); color: #fff; text-decoration: none; }
+.nh-ghost { display: inline-block; border: 2px solid var(--brand-blue); color: var(--brand-blue); border-radius: 999px; padding: 14px 26px; font-size: 17px; font-weight: 700; text-decoration: none; }
+.nh-ghost:hover { background: var(--brand-blue); color: #fff; text-decoration: none; }
+.nh-more { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.65; color: #45566a; margin: 0 0 16px; max-width: 560px; }
+.nh-under { font-size: max(14.5px, var(--fs-min, 0px)); color: #4f5b54; margin: 12px 0 0; }
+.nh-after { background: var(--bg); }
+.nh-after-in { max-width: var(--shell); margin: 0 auto; padding: 8px 24px 40px; box-sizing: border-box; }
+@media (max-width: 719px) { .nh-go, .nh-ghost { width: 100%; text-align: center; box-sizing: border-box; } .nh-after-in { padding: 4px 20px 32px; } }

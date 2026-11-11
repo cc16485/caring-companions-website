@@ -18,6 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="/assets/ask.css">
 <style>
 .g-hero{ background:linear-gradient(160deg,#14606F,#0D365F); color:#fff; padding:60px 24px 54px; }
 .g-hero .in{ max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:center; }
@@ -124,6 +125,8 @@
   .g-sec h2{ font-size:25px; } .g-split{ grid-template-columns:1fr; }
   .g-check{ padding:40px 16px; } .g-check .box{ padding:26px 20px 24px; } .g-q{ font-size:20px; }
 }
+.nh-hero h1.nh-h1-long{font-size:38px}@media (max-width:719px){.nh-hero h1.nh-h1-long{font-size:28px}}
+.nh-after .g-card{max-width:760px}
 </style>
 </head>
 <body>
@@ -244,24 +247,23 @@
 </header>
 
 <main>
-<section class="g-hero">
-  <div class="in">
-    <div>
-      <p class="kick">Medicare pays for dementia respite care<span>Through the Medicare GUIDE Program</span></p>
-      <h1>Medicare may pay for a trained caregiver to stay with your loved one while you take a well-deserved break.</h1>
-      <p>GUIDE is a Medicare program for people living with dementia at home. Every enrolled family gets a dedicated dementia care navigator and 24/7 support, and families further along in the disease also receive <b>20 four-hour respite visits a year</b>, all at no additional cost.</p>
-      <p class="sub">Most eligible families never hear it exists. Caring Companions is an approved GUIDE respite provider in southwest Missouri.</p>
-      <a class="cta" href="#check">Check eligibility &rarr;</a>
-      <p class="under">Two minutes, nine questions. Or call (417) 234-8494 and we will do it with you.</p>
-    </div>
-    <div class="g-card">
+<section class="nh-hero">
+<figure class="nh-photo"><img style="object-position:45% 35%" src="/assets/photos/scene-puzzle.webp" alt="A caregiver and a client working on a puzzle together" width="1080" height="608" fetchpriority="high" decoding="async"></figure>
+<div class="nh-hero-copy">
+<p class="nh-kick">Medicare GUIDE Program</p>
+<h1 class="nh-h1-long">Medicare may pay for a trained caregiver to stay with your loved one while you take a well-deserved break.</h1>
+<p class="nh-sub">GUIDE is a Medicare program for people living with dementia at home. Every enrolled family gets a dedicated dementia care navigator and 24/7 support, and families further along in the disease also receive <b>20 four-hour respite visits a year</b>, all at no additional cost.</p>
+<p class="nh-more">Most eligible families never hear it exists. Caring Companions is an approved GUIDE respite provider in southwest Missouri.</p>
+<div class="nh-btns"><a href="#check" class="nh-go">Check eligibility &rarr;</a></div>
+<p class="nh-under">Two minutes, nine questions. Or call (417) 234-8494 and we will do it with you.</p>
+</div>
+</section>
+<div class="nh-after"><div class="nh-after-in "><div class="g-card">
       <h2>What it covers</h2>
       <div class="li"><div class="n">1</div><div><b>Respite care</b><span>20 four-hour visits a year, delivered by our caregivers and billed to Medicare rather than to you. Medicare decides who qualifies for these hours based on how far the dementia has progressed and how much strain the caregiver is under.</span></div></div>
       <div class="li"><div class="n">2</div><div><b>A dementia care navigator</b><span>A trained person who calls you every month. Education, resources, help finding things, someone to talk to who has seen this before.</span></div></div>
       <div class="li"><div class="n">3</div><div><b>A 24/7 support line</b><span>Dementia does not keep business hours. Urgent questions, behavior nobody prepared you for, any hour of the night.</span></div></div>
-    </div>
-  </div>
-</section>
+    </div></div></div>
 <figure class="pg-photo"><img src="/assets/photos/scene-home-hug.webp" alt="A daughter hugging her father as a caregiver arrives" width="1080" height="608" decoding="async"></figure>
 
 

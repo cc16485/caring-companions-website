@@ -18,6 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="/assets/ask.css">
 <style>
 .gs-hero { max-width:940px; margin: 0 auto; padding: 56px 24px 8px; text-align: center; }
 .gs-h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; margin: 0 0 16px; color: var(--brand-blue); letter-spacing: -0.01em; }
@@ -150,17 +151,107 @@
 </span>
 </span>
 <a href="/careers">Careers</a>
-<a href="/#who-needs-care" class="nh-nav-req">Request a Call</a>
+<a href="#who-needs-care" class="nh-nav-req">Request a Call</a>
 <a href="tel:14172348494" class="cc-nav-cta" aria-label="Call us at (417) 234-8494">Call (417) 234-8494</a>
 <a href="tel:14172348494" class="cc-nav-phone">(417) 234-8494</a>
 </nav>
 </div>
 </header>
 
-<section class="gs-hero">
-<p class="kicker">Getting Started</p>
-<h1 class="gs-h1">New to home care? Start here.</h1>
-<p style="font-size:max(15.5px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto;max-width:580px">Whether you're just beginning this journey or already know what you need, we're here to help, and it starts with a simple, no-pressure conversation.</p>
+<section class="nh-hero" id="who-needs-care">
+<div class="nh-hero-copy">
+<div class="nh-hide-on-focus">
+<p class="nh-kick">Getting Started</p>
+<h1>New to home care? Start here.</h1>
+<p class="nh-sub">Whether you're just beginning this journey or already know what you need, we're here to help, and it starts with a simple, no-pressure conversation.</p>
+<p class="nh-stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 on Google</p>
+</div>
+<div class="nh-ask" id="nhAsk" data-page="the Getting Started page">
+  <div class="nh-progress" aria-hidden="true"><i id="nhBar"></i></div>
+  <div class="nh-toprow"><button type="button" class="nh-back" id="nhBack" hidden>&#9664; Back</button><p class="nh-stepno" id="nhStepNo">Step 1 of 5</p></div>
+
+  <div class="nh-step on" data-step="1">
+    <p class="nh-q" id="nhQ1">Who needs care?</p>
+    <div class="nh-opts" role="group" aria-labelledby="nhQ1">
+      <button type="button" class="nh-opt" data-who="My parent"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="11" r="3.4"/><path d="M3.5 26c.6-5 3.6-8 7.5-8s6.9 3 7.5 8"/><path d="M17.5 20.5c1.2-1.6 2.7-2.4 4.5-2.4 3.3 0 5.6 2.6 6.1 7.9"/></svg>My parent(s)</button>
+      <button type="button" class="nh-opt" data-who="My spouse"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M16 27S4.5 20 4.5 11.8C4.5 8.3 7.2 5.8 10.4 5.8c2.4 0 4.4 1.4 5.6 3.4 1.2-2 3.2-3.4 5.6-3.4 3.2 0 5.9 2.5 5.9 6 0 8.2-11.5 15.2-11.5 15.2z"/></svg>My spouse</button>
+      <button type="button" class="nh-opt" data-who="Myself"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 27c.8-6 4.8-9.5 10-9.5S25.2 21 26 27"/></svg>Myself</button>
+      <button type="button" class="nh-opt" data-who="Someone else"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="14" cy="10" r="5"/><path d="M4 27c.8-6 4.8-9.5 10-9.5 2.2 0 4.2.6 5.8 1.8"/><path d="M25 19v8M21 23h8"/></svg>Someone else</button>
+    </div>
+  </div>
+
+  <div class="nh-step" data-step="2">
+    <h2 class="nh-big">What can we help with?</h2>
+    <p class="nh-intro" id="nhQ2">Pick any that fit. If you don't see what you need, you can tell us when we call.</p>
+    <div class="nh-cards" role="group" aria-labelledby="nhQ2">
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Everyday help"><span><b>Everyday help</b>Company, meals, light housekeeping, errands and medication reminders</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Personal care"><span><b>Personal care</b>Bathing, dressing, toileting and help getting around safely</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Memory care"><span><b>Memory care</b>Alzheimer's and other kinds of dementia</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="After a hospital stay"><span><b>After a hospital stay</b>Settling back in after surgery, a hospital stay or rehab</span><i aria-hidden="true"></i></button>
+      <button type="button" class="nh-pick" aria-pressed="false" data-help="Overnight or 24-hour care"><span><b>Overnight or 24-hour care</b>Someone there through the night or around the clock</span><i aria-hidden="true"></i></button>
+    </div>
+    <button type="button" class="nh-cont" data-go="3">Continue</button>
+  </div>
+
+  <div class="nh-step" data-step="3">
+    <h2 class="nh-big">How soon is care needed?</h2>
+    <p class="nh-intro" id="nhQ3">Whether it's a sudden need or you're planning ahead, we're happy to talk it through.</p>
+    <div class="nh-opts" role="group" aria-labelledby="nhQ3">
+      <button type="button" class="nh-opt" data-when="Right away">Right away</button>
+      <button type="button" class="nh-opt" data-when="Within a few weeks">Within a few weeks</button>
+      <button type="button" class="nh-opt" data-when="Just planning ahead">Just planning ahead</button>
+      <button type="button" class="nh-opt" data-when="Not sure">I'm not sure</button>
+    </div>
+  </div>
+
+  <div class="nh-step" data-step="4">
+    <h2 class="nh-big">Where is care needed?</h2>
+    <p class="nh-intro">Enter the ZIP code or town where the care would be.</p>
+    <label class="nh-field"><span class="sr-only">ZIP code or town</span><input id="nhWhere" autocomplete="postal-code" placeholder="ZIP code or town"></label>
+    <p class="nh-err" id="nhErr4" role="alert"></p>
+    <button type="button" class="nh-cont" id="nhGo5">Continue</button>
+  </div>
+
+  <div class="nh-step" data-step="5">
+    <h2 class="nh-big">Almost done!</h2>
+    <p class="nh-intro">Fill in your details and a care coordinator from our Springfield office will call you.</p>
+    <div class="nh-two">
+      <label class="nh-field"><span class="sr-only">First name</span><input id="nhFirst" autocomplete="given-name" placeholder="First name"></label>
+      <label class="nh-field"><span class="sr-only">Last name</span><input id="nhLast" autocomplete="family-name" placeholder="Last name"></label>
+    </div>
+    <label class="nh-field"><span class="sr-only">Phone number</span><input id="nhPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Phone number"></label>
+    <label class="nh-field"><span class="sr-only">Email, optional</span><input id="nhEmail" type="email" autocomplete="email" placeholder="Email (optional)"></label>
+    <p class="nh-small-q" id="nhQ5">Best time to call</p>
+    <div class="nh-times" role="group" aria-labelledby="nhQ5">
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Morning">Morning</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Afternoon">Afternoon</button>
+      <button type="button" class="nh-opt" aria-pressed="false" data-time="Evening">Evening</button>
+    </div>
+    <label class="nh-consent"><input type="checkbox" id="nhTexts"><span>By checking this box, I agree to receive text messages from Caring Companions In-Home Senior Care at the number above about my questions and care, including assessment reminders and care updates. Message frequency varies. Message and data rates may apply. Reply STOP to stop, HELP for help. Agreeing is not required to receive care. See our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+    <p class="nh-err" id="nhErr" role="alert"></p>
+    <button type="button" class="nh-cont" id="nhSend">Request my call</button>
+    <p class="nh-fine" style="text-align:center">By clicking "Request my call" you agree to our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+  </div>
+
+  <div class="nh-step" data-step="done">
+    <div class="nh-done" tabindex="-1" id="nhDone">
+      <h3>Thank you. We'll call you soon.</h3>
+      <p>A care coordinator from our Springfield office will call you, usually the same business day. If you reached us after hours, we'll call the next morning.</p>
+      <p>Rather talk now? We're happy to.</p>
+    </div>
+  </div>
+
+  <a class="nh-callbar" href="tel:14172348494"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Call us: (417) 234-8494</a>
+</div>
+</div>
+<figure class="nh-photo"><img style="object-position:32% 30%" src="/assets/photos/scene-home-hug.webp" alt="A daughter hugging her father as a caregiver arrives" width="1080" height="608" fetchpriority="high" decoding="async"></figure>
+<aside class="nh-side" aria-live="polite">
+  <div class="nh-quote" data-for="2"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Caring Companions is an outstanding company. Their caregivers have gone above and beyond during their care of my parents.</p><cite>Susan C. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="3"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Have been very impressed with the compassionate care my parents have received in their home. The administration has also been very flexible to work with us and very responsive.</p><cite>Judy B. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="4"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Wonderful care. They made my dad very comfortable and dealt with him using compassion and friendship.</p><cite>Debbie B. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="done"><span class="nh-qmark" aria-hidden="true">&ldquo;</span><p>Excellent coordination and fulfillment of care for Mom. Very happy and satisfied with Caring Companions!</p><cite>Robert G. &middot; Google review</cite></div>
+  <div class="nh-quote" data-for="5"><svg class="nh-headset" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 28v-4a15 15 0 0 1 30 0v4"/><rect x="6" y="26" width="8" height="12" rx="3"/><rect x="34" y="26" width="8" height="12" rx="3"/><path d="M38 38c0 3.5-3 6-7 6h-4"/></svg><p class="nh-help-h">We're here to help</p><p>A care coordinator from our Springfield office will call you, usually the same business day. No pressure, just a conversation.</p></div>
+</aside>
 </section>
 <figure class="pg-photo"><img src="/assets/photos/scene-daughter-text.webp" alt="A daughter smiling as she reads a text about her mother's care" width="1080" height="608" decoding="async"></figure>
 
@@ -270,5 +361,7 @@
 <script src="assets/cara-widget.js"></script>
 <script src="assets/site-events.js"></script>
 <script src="/assets/accessibility.js" defer></script>
+<script src="/assets/forms.js"></script>
+<script src="/assets/ask.js"></script>
 </body>
 </html>
