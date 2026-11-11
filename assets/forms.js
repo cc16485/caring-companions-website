@@ -46,6 +46,13 @@
       (document.body || document.documentElement).appendChild(f);
     } catch (e) {}
   }
+  /* Which kind of form was sent, as a plain name for Google Ads (2026-11-11). Never anything the person typed. */
+  function formName(kind) {
+    return kind === 'assessment_request' ? 'free_assessment'
+      : kind === 'professional_referral' ? 'referral'
+      : kind === 'course_signup' ? 'course'
+      : 'contact';
+  }
   window.CCForms = {
     markSent: markSent,
     // fields: { name, phone, email, message, care_for }, all optional,
@@ -61,7 +68,7 @@
         body: JSON.stringify(body),
       }).then(function (res) {
         if (!res.ok) throw new Error('lead-intake HTTP ' + res.status);
-        if (window.CCTrack) CCTrack('lead_submitted');
+        if (window.CCTrack) CCTrack('lead_submitted', { form: formName(body.kind) });
         window.CCForms.markSent();
         return res.json();
       });

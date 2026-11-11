@@ -181,7 +181,7 @@
             .then(function (res) { if (!res.ok) throw new Error('lead-intake HTTP ' + res.status); try { if (window.CCForms && CCForms.markSent) CCForms.markSent(); } catch (e) {} return res.json(); })
             .then(function () {
               chat.offer = 'sent'; chatSave();
-              if (window.CCTrack) CCTrack('lead_submitted');
+              if (window.CCTrack) CCTrack('lead_submitted', { form: 'chat' });
               card.innerHTML = '';
               var done = document.createElement('div');
               done.textContent = 'Thank you, ' + n.split(/\s+/)[0] + '. We have your number, and a Care Coordinator will give you a call.';

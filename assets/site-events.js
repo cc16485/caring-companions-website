@@ -44,6 +44,14 @@
     email_signup: 'CompleteRegistration',
   };
 
+  /* 2026-11-11 Google tracking (key events for Google Ads). Google's own tag already counts every page view, so our
+     page_view is not sent to it again (that doubled the page views). Course and program-eligibility steps stay in our own
+     counter only, so no health topic reaches Google in an event name. The only form names Google may see are these. */
+  var GA_FORMS = { free_assessment: 1, contact: 1, referral: 1, course: 1, chat: 1 };
+  function googleSkips(event) {
+    return event === 'page_view' || /^dj_/.test(event) || /^guide_(not_)?eligible$/.test(event);
+  }
+
   var ENDPOINT = 'https://zngsgedlsxinbygwmxwn.supabase.co/rest/v1/website_events';
   var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZ3NnZWRsc3hpbmJ5Z3dteHduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NDIzNDQsImV4cCI6MjA5ODExODM0NH0.L_31_UKdccyRH9n7p1GaBlZTqcJipB008H-GIvxwLxM';
 
@@ -113,8 +121,13 @@
       // urgent, home safety score). Our own counter above keeps the full details; Meta gets the event name only.
       var safe = {};
       if (props && props.tool) safe.tool = String(props.tool).slice(0, 40);
+      if (props && GA_FORMS[props.form]) safe.form = props.form;
       if (all.from) safe.from = all.from;
-      if (window.gtag) gtag('event', event, safe);
+      if (window.gtag && !googleSkips(event)) {
+        gtag('event', event, safe);
+        // 2026-11-11 Google tracking: a free assessment request gets its own name, so Google Ads can count it on its own.
+        if (event === 'lead_submitted' && safe.form === 'free_assessment') gtag('event', 'free_assessment_request', safe);
+      }
       if (window.fbq && FB_EVENTS[event]) fbq('track', FB_EVENTS[event]);
     } catch (e) { /* analytics must never break the page */ }
   }
