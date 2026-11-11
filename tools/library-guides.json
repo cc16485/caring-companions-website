@@ -22,58 +22,58 @@
   ]
  },
  {
-  "title": "Parkinson’s Disease at Home",
+  "title": "Home Care for Someone with Parkinson’s",
   "category": "Chronic Conditions",
-  "desc": "Mobility, fall risk, and daily support strategies.",
+  "desc": "Medicine on time, safer moving around, what our caregivers do and don’t do, and when to call.",
   "href": "/guides/parkinsons-disease-at-home",
   "inside": [
-   "Mobility and fall risk",
-   "Daily support that helps",
-   "As the condition changes"
+   "A sample week of help",
+   "What we do, and what we don’t",
+   "Falls and other signs to call"
   ]
  },
  {
-  "title": "Stroke Recovery at Home",
+  "title": "The First Months Home After a Stroke",
   "category": "Chronic Conditions",
-  "desc": "What recovery looks like month to month, and how to support it.",
+  "desc": "How home care fits around therapy, what our caregivers do and don’t do, and the signs that mean call 911.",
   "href": "/guides/stroke-recovery-at-home",
   "inside": [
-   "The first weeks home",
-   "Therapies and how to help",
-   "The emotional side"
+   "How help changes as recovery goes",
+   "What we do, and what we don’t",
+   "Stroke signs: call 911"
   ]
  },
  {
-  "title": "Living Well with Heart Failure",
+  "title": "Home Care After a Heart Failure Diagnosis",
   "category": "Chronic Conditions",
-  "desc": "Daily monitoring and home routines that reduce hospital readmission.",
+  "desc": "Low-salt meals, the daily weight check, what our caregivers do and don’t do, and when to call.",
   "href": "/guides/living-well-with-heart-failure",
   "inside": [
-   "What to check every day",
-   "Warning signs to watch for",
-   "Small changes in daily life"
+   "A sample week of help",
+   "What we do, and what we don’t",
+   "Weight gain and other signs to call"
   ]
  },
  {
-  "title": "Managing COPD at Home",
+  "title": "Home Care for Someone with COPD",
   "category": "Chronic Conditions",
-  "desc": "Breathing routines, triggers, and when symptoms mean it’s time to call a doctor.",
+  "desc": "What a week of help looks like, what our caregivers do and don’t do, and when to call.",
   "href": "/guides/managing-copd-at-home",
   "inside": [
-   "Breathing routines that help",
-   "Triggers to avoid",
-   "When to call the doctor"
+   "A sample week of help",
+   "What we do, and what we don’t",
+   "When to call the doctor or 911"
   ]
  },
  {
-  "title": "Diabetes Care for Seniors",
+  "title": "Home Care for Someone with Diabetes",
   "category": "Chronic Conditions",
-  "desc": "Meal planning, monitoring, and medication support at home.",
+  "desc": "Steady meals, medicine reminders, what our caregivers do and don’t do, and the signs of low blood sugar.",
   "href": "/guides/diabetes-care-for-seniors",
   "inside": [
-   "Daily basics",
-   "High and low blood sugar signs",
-   "Meals and daily life"
+   "A sample week of help",
+   "What we do, and what we don’t",
+   "Low blood sugar: when to call 911"
   ]
  },
  {
@@ -99,14 +99,14 @@
   ]
  },
  {
-  "title": "Medication Management Made Simple",
+  "title": "Medication Reminders at Home: How We Help",
   "category": "Medication",
-  "desc": "Keeping prescriptions straight and avoiding dangerous interactions.",
+  "desc": "Keeping medicines straight at home, what our caregivers do and don’t do, and when to call.",
   "href": "/guides/medication-management",
   "inside": [
-   "One master list",
-   "Cutting down on mix-ups",
-   "Questions for the doctor"
+   "Keeping medicines straight",
+   "What a reminder from us means",
+   "Signs a medicine needs a call"
   ]
  },
  {
@@ -121,24 +121,24 @@
   ]
  },
  {
-  "title": "Eating Well as We Age",
+  "title": "When Mom Stops Eating Well: Help with Meals at Home",
   "category": "Nutrition",
-  "desc": "Nutrition changes that matter most for seniors, and warning signs.",
+  "desc": "Why it happens, what to watch for, and what a week of meal help from us looks like.",
   "href": "/guides/eating-well-as-we-age",
   "inside": [
-   "Why needs change",
-   "Warning signs",
-   "Easy ways to help"
+   "Why it happens",
+   "A sample week of meal help",
+   "Signs worth a doctor visit"
   ]
  },
  {
-  "title": "Planning for End-of-Life Care",
+  "title": "Home Care Alongside Hospice",
   "category": "End-of-Life",
-  "desc": "A compassionate, practical guide to a hard conversation.",
+  "desc": "What hospice covers, the hours families still need to fill, and how we help alongside the hospice team.",
   "href": "/guides/planning-for-end-of-life-care",
   "inside": [
-   "Palliative care vs. hospice",
-   "Advance directives",
+   "What hospice covers, and what it doesn’t",
+   "How we work alongside hospice",
    "Starting the conversation"
   ]
  },
