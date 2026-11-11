@@ -36,8 +36,8 @@ SITUATIONS = [
         ('/guides/dementia-and-alzheimers', 'What changes, and when to see a doctor'),
         ('/care-paths/dementia', 'Dementia care at home')]),
     ('i-home', 'Making the house safer', [
-        ('/guides/home-safety-room-by-room', 'Room-by-room safety check'),
-        ('/guides/fall-prevention-at-home', 'Preventing falls'),
+        ('/guides/fall-prevention-at-home#home-walkthrough', 'Room-by-room safety check'),
+        ('/guides/fall-prevention-at-home', 'Why falls happen, and what helps'),
         ('/guides/parkinsons-disease-at-home', 'Parkinson’s at home')]),
     ('i-money', 'Figuring out how to pay for care', [
         ('/pricing', 'What home care costs'),
@@ -49,21 +49,10 @@ SITUATIONS = [
         ('/family-academy', 'Family Care Academy')]),
 ]
 
-def minutes(href):
-    """Reading time from the guide page itself (about 200 words a minute)."""
-    p = os.path.join(ROOT, href.strip('/') + '.html')
-    try: s = open(p, encoding='utf-8').read()
-    except OSError: return 0
-    s = re.sub(r'<script.*?</script>|<style.*?</style>|<header.*?</header>|<footer.*?</footer>|<nav.*?</nav>', ' ', s, flags=re.S)
-    m = re.search(r'<main.*?</main>', s, re.S)
-    words = len(re.sub(r'<[^>]+>', ' ', m.group(0) if m else s).split())
-    return max(2, round(words / 200))
-
 def icon(name, cls='rl-ico'):
     return '<span class="%s" aria-hidden="true"><svg><use href="/assets/icons.svg#%s"/></svg></span>' % (cls, name)
 
 def guide_card(g):
-    mins = minutes(g['href'])
     inside = ''.join('<li>%s</li>' % E(i) for i in g.get('inside', []))
     return ('<a class="rl-card" href="%s" data-cat="%s" data-text="%s">'
             '<span class="rl-top">%s<span class="rl-cat">%s</span></span>'
@@ -72,7 +61,7 @@ def guide_card(g):
             % (E(g['href']), E(g['category']), E((g['title'] + ' ' + g['desc'] + ' ' + g['category'] + ' ' + ' '.join(g.get('inside', []))).lower()),
                icon(ICON.get(g['category'], 'i-book')), E(g['category']), E(g['title']), E(g['desc']),
                ('<ul class="rl-inside">%s</ul>' % inside) if inside else '',
-               ('%d min read' % mins) if mins else 'Guide'))
+               'Reviewed by a Care Coordinator'))
 
 def video_card(v):
     cat = VIDEO_CAT.get(v['id'], 'Choosing Care')
