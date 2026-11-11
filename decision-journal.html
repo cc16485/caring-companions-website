@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="/assets/ask.css">
 <style>
 .dj-hero { max-width:840px; margin: 0 auto; padding: 48px 24px 10px; }
 .dj-h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; margin: 0 0 8px; color: var(--brand-blue); }
@@ -145,16 +146,20 @@
 </div>
 </header>
 
-<section class="dj-hero">
-<p style="font-size:max(13px, var(--fs-min, 0px));font-weight:600;color:#1F7A8C;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px"><a href="family-workspace" style="text-decoration:none;color:#1F7A8C">Family Workspace</a> › Decision Journal</p>
-<h1 class="dj-h1">Decision Journal</h1>
-<p style="font-size:max(14.5px, var(--fs-read, 0px));color:#45566a;line-height:1.6;margin:0 0 20px">A place to record why you made the choices you did, so six months from now, the family remembers the reasoning, not just the decision.</p>
-
+<section class="nh-hero nh-short">
+<figure class="nh-photo"><img style="object-position:40% 35%" src="/assets/photos/scene-early-morning.webp" alt="A daughter writing notes at home early in the morning" width="1080" height="608" fetchpriority="high" decoding="async"></figure>
+<div class="nh-hero-copy">
+<p class="nh-kick"><a href="family-workspace" style="text-decoration:none;color:#1F7A8C">Family Workspace</a> › Decision Journal</p>
+<h1>Decision Journal</h1>
+<p class="nh-sub">A place to record why you made the choices you did, so six months from now, the family remembers the reasoning, not just the decision.</p>
+<div class="tool-nh-rest">
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:22px;margin-bottom:24px">
 <p style="font-size:max(12.5px, var(--fs-min, 0px));font-weight:700;color:#4f5b54;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 10px">Add an entry</p>
 <input id="entry-title" placeholder="Decision (e.g. &ldquo;Why we chose home care over assisted living&rdquo;)" style="width:100%;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;margin-bottom:10px">
 <textarea id="entry-note" placeholder="What we decided, and why" rows="3" style="width:100%;padding:12px 14px;font-size:max(14px, var(--fs-read, 0px));border:1.5px solid #dfe6e2;border-radius:8px;font-family:inherit;color:#16283a;resize:vertical;margin-bottom:12px"></textarea>
 <button id="entry-save" class="btn-primary" style="border-radius:8px;padding:12px 22px;font-size:max(14px, var(--fs-min, 0px))">Save Entry</button>
+</div>
+</div>
 </div>
 </section>
 
