@@ -317,7 +317,9 @@ document.getElementById('r-submit').addEventListener('click', function () {
   var contact = document.getElementById('r-phone').value.trim();
   var situation = document.getElementById('r-situation').value.trim();
   errEl.hidden = true;
-  if (!name && !contact) {
+  /* 2026-11-11 her rule: a phone or email is required on every lead form (a name alone can't be followed up) */
+  var reachable = /@/.test(contact) || contact.replace(/\D/g, '').replace(/^1/, '').length === 10;
+  if (!name || !reachable) {
     errEl.textContent = 'Please include your name and a phone number or email so we can follow up.';
     errEl.hidden = false;
     return;
