@@ -41,7 +41,7 @@
     return 'We don’t provide care here right now. Leave your name and number and we’ll keep it on file.';
   }
   function popupHtml(p) {
-    var towns = (p.towns || []).map(function (t) { return '<a href="' + t[1] + '">' + esc(t[0]) + '</a>'; }).join('');
+    var towns = (p.towns || []).map(function (t) { return t[1] ? '<a href="' + t[1] + '">' + esc(t[0]) + '</a>' : '<span>' + esc(t[0]) + '</span>'; }).join('');
     return '<div class="sm-pop sm-' + p.group + '"><p class="sm-pop-kicker">' + GROUP[p.group].label + '</p>' +
       '<p class="sm-pop-name">' + esc(p.name) + ' County</p><p class="sm-pop-text">' + blurb(p.group) + '</p>' +
       (towns ? '<div class="sm-pop-towns">' + towns + '</div>' : '') +
