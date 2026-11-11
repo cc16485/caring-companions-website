@@ -309,6 +309,7 @@ ${howHiring(p)}
 <a href="${applyUrl(p.slug)}" class="btn-apply" style="display:inline-block;background:var(--cta);color:#fbfaf7;border-radius:9px;padding:14px 28px;font-size:15px;font-weight:600;text-decoration:none">Apply for this role &rarr;</a>
 <p class="jb-note">Questions first? Call us on ${ORG.phone}.</p>
 </div>
+<p class="jb-note" style="text-align:center">Caring for a veteran in your own family? You may be able to get paid for it. <a href="/veterans" style="color:var(--accent);font-weight:600">See how it works &rarr;</a></p>
 </main>
 
 ${c.foot}
