@@ -168,3 +168,10 @@
 
 /* County pages: the "See the directory" jump lands under the menu. */
 #directory { scroll-margin-top: 90px; }
+
+/* Family tools (11-10): the tool's own controls stay in the hero under the words. */
+.tool-nh-rest { margin-top: 4px; max-width: 560px; }
+.tool-nh-rest > * { margin-left: 0 !important; margin-right: 0 !important; }
+.tool-nh-rest input, .tool-nh-rest textarea { box-sizing: border-box; max-width: 100%; }
+@media print { .nh-hero .nh-photo, .nh-hero .nh-btns, .nh-hero .nh-stars { display: none !important; } .nh-hero { min-height: 0 !important; padding: 0 0 12px !important; } }
+.tool-nh-rest > div { justify-content: flex-start !important; text-align: left !important; }
