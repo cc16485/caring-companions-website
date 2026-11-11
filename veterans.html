@@ -286,7 +286,7 @@
 </div>
 <label class="vt-f"><span>Phone</span><input id="vtPhone" type="tel" autocomplete="tel" inputmode="tel"></label>
 <label class="vt-f"><span>Email <span class="vt-opt">(optional)</span></span><input id="vtEmail" type="email" autocomplete="email"></label>
-<div class="vt-f"><span id="vtwhoL">I am</span><div class="vt-chips" role="group" aria-labelledby="vtwhoL" data-pick="who"><button type="button" aria-pressed="false">A family member or friend who wants to be the caregiver</button><button type="button" aria-pressed="false">A family member looking for a caregiver</button><button type="button" aria-pressed="false">The veteran</button></div></div>
+<div class="vt-f"><span id="vtwhoL">Which describes you?</span><div class="vt-chips" role="group" aria-labelledby="vtwhoL" data-pick="who"><button type="button" aria-pressed="false">I want to be the veteran's caregiver</button><button type="button" aria-pressed="false">I'm the veteran</button><button type="button" aria-pressed="false">I'm helping a veteran get care</button></div></div>
 <div class="vt-f"><span id="vtenrolledL">Is the veteran enrolled in VA health care?</span><div class="vt-chips" role="group" aria-labelledby="vtenrolledL" data-pick="enrolled"><button type="button" aria-pressed="false">Yes</button><button type="button" aria-pressed="false">No</button><button type="button" aria-pressed="false">Not sure</button></div></div>
 <label class="vt-f"><span>Town or ZIP code</span><input id="vtWhere" autocomplete="postal-code"></label>
 <div class="vt-f"><span id="vttimeL">Best time to call</span><div class="vt-chips" role="group" aria-labelledby="vttimeL" data-pick="time"><button type="button" aria-pressed="false">Morning</button><button type="button" aria-pressed="false">Afternoon</button><button type="button" aria-pressed="false">Evening</button></div></div>
@@ -438,7 +438,7 @@
     send.disabled = true; send.textContent = 'Sending...';
     var texts = document.getElementById('vtTexts').checked;
     var msg = 'VA COMMUNITY CARE. From the Veterans page.' +
-      ' They are: ' + pick.who + '.' +
+      ' They said: ' + pick.who + '.' +
       ' Veteran enrolled in VA health care: ' + (pick.enrolled || 'not given') + '.' +
       ' Where: ' + val('vtWhere') + '.' +
       ' Best time to call: ' + (pick.time || 'any time') + '.' +
