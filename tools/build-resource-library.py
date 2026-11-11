@@ -61,7 +61,7 @@ def guide_card(g):
             % (E(g['href']), E(g['category']), E((g['title'] + ' ' + g['desc'] + ' ' + g['category'] + ' ' + ' '.join(g.get('inside', []))).lower()),
                icon(ICON.get(g['category'], 'i-book')), E(g['category']), E(g['title']), E(g['desc']),
                ('<ul class="rl-inside">%s</ul>' % inside) if inside else '',
-               'Reviewed by a Care Coordinator'))
+               'By our Springfield team'))
 
 def video_card(v):
     cat = VIDEO_CAT.get(v['id'], 'Choosing Care')
