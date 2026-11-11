@@ -157,3 +157,6 @@
 .fun-nh-q > div { margin: 0 !important; max-width: none !important; }
 .fun-nh-q > p { margin: 0 0 12px !important; }
 .fun-nh-q .fun-option { text-align: left; }
+
+/* Phones and tablets: when the photo comes after the buttons, give it room to breathe (her ask 11-10). */
+@media (max-width: 1039px) { .nh-hero-copy + .nh-photo { margin-top: 32px; } }
