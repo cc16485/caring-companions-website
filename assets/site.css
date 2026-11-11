@@ -52,7 +52,7 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 /* ---------- Shared header (interior pages: logo + phone) ---------- */
 .cc-header {
   position: sticky; top: 0; z-index: 40;
-  background: rgba(250, 249, 246, 0.94);
+  background: #ffffff; /* 11-10 her choice: white top bar (was cream rgba(250, 249, 246, 0.94)) */
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }
