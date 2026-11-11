@@ -39,6 +39,8 @@
     submitLead: function (fields) {
       var ref = refRead(), body = Object.assign({}, fields);
       if (ref && !body.partner_code) body.partner_code = ref.code;
+      /* which page the form was on, so the office sees it on the GHL contact (2026-11-11) */
+      if (!body.page) try { body.page = location.pathname; } catch (e) {}
       return fetch(LEAD_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
