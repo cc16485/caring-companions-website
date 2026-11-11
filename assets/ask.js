@@ -60,7 +60,11 @@
   where.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); toFive(); } });
 
   var err = document.getElementById('nhErr'), send = document.getElementById('nhSend');
-  function fail(msg, el) { err.innerHTML = msg; err.classList.add('on'); send.disabled = false; send.textContent = 'Request my call'; if (el) el.focus(); }
+  /* The Free Assessment page (mo-care.com/free-assessment, her ask 11-10) uses this same form with
+     data-intent="assessment": the lead says so up front so the office sees it on the Leads card. */
+  var wantsAssessment = ask.getAttribute('data-intent') === 'assessment';
+  var sendLabel = send.textContent;
+  function fail(msg, el) { err.innerHTML = msg; err.classList.add('on'); send.disabled = false; send.textContent = sendLabel; if (el) el.focus(); }
 
   send.addEventListener('click', function () {
     err.classList.remove('on');
@@ -73,14 +77,16 @@
     if (!window.CCForms) return fail('This did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>.');
     send.disabled = true; send.textContent = 'Sending...';
     var page = ask.getAttribute('data-page') || 'the website';
-    var msg = 'Asked for a call from ' + page + '.' +
+    var msg = (wantsAssessment ? 'WANTS A FREE IN-HOME ASSESSMENT. Asked from ' + page + ' (a Request a Free Assessment button). Call to set a time.' : 'Asked for a call from ' + page + '.') +
       ' Care is for: ' + (data.who || 'not given') + '.' +
       ' Help wanted: ' + (data.help.length ? data.help.join(', ') : 'not given') + '.' +
       ' Start: ' + (data.when || 'not given') + '.' +
       ' Where: ' + (data.where || 'not given') + '.' +
       ' Best time to call: ' + (data.time || 'any time') + '.' +
       ' Agreed to text messages: ' + (texts ? 'yes' : 'no') + '.';
-    window.CCForms.submitLead({ name: first.value.trim() + ' ' + last.value.trim(), phone: phone.value.trim(), email: email, care_for: data.who, message: msg })
+    var lead = { name: first.value.trim() + ' ' + last.value.trim(), phone: phone.value.trim(), email: email, care_for: data.who, message: msg };
+    if (wantsAssessment) lead.kind = 'assessment_request';
+    window.CCForms.submitLead(lead)
       .then(function () { go('done'); })
       .catch(function () { fail('Sorry, this did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>, or try again.'); });
   });
