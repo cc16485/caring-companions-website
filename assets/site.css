@@ -550,3 +550,14 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   body:not(.cc-has-bar) .cc-header-inner .cc-logo img { height: 46px; } /* pages without the bottom bar (careers, apply) keep the top Call us, so a bit less logo */
   .cc-burger { padding-left: 11px !important; padding-right: 11px !important; column-gap: 7px !important; }
 }
+
+/* Phone menu sections fold up (her ask 11-10: too much to scroll on a phone).
+   Services, Ways to Pay, Resources and About Us start closed; a tap on the
+   heading opens that one and closes the others. Only when accessibility.js
+   runs (.cc-menus-click); without it the full list still shows. */
+@media (max-width: 1100px) {
+  .cc-menus-click .cc-nav-group:not(.cc-open) .cc-dropdown { display: none; }
+  .cc-menus-click .cc-nav-top, .cc-menus-click .cc-nav > a[href="/careers"] { font-size: 17px; font-weight: 600; padding-top: 16px; padding-bottom: 16px; color: var(--ink-2); }
+  .cc-menus-click .cc-nav-top .cc-caret { width: 9px; height: 9px; opacity: .8; }
+  .cc-menus-click .cc-nav-group.cc-open .cc-nav-top { color: var(--brand-blue); background: var(--soft-teal); }
+}
