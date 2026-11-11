@@ -175,3 +175,10 @@
 .tool-nh-rest input, .tool-nh-rest textarea { box-sizing: border-box; max-width: 100%; }
 @media print { .nh-hero .nh-photo, .nh-hero .nh-btns, .nh-hero .nh-stars { display: none !important; } .nh-hero { min-height: 0 !important; padding: 0 0 12px !important; } }
 .tool-nh-rest > div { justify-content: flex-start !important; text-align: left !important; }
+/* 2026-11-11 (Samantha: "the hero photo should go to the top navigation"). On wide screens a breadcrumb sitting
+   right above the hero takes no height, so the photo starts right under the menu; the breadcrumb sits in the
+   hero's top padding, over the plain left side. Phones keep the breadcrumb on its own line. */
+@media (min-width: 1040px) {
+  :is(div, nav):has(+ .nh-hero) { position: relative; z-index: 3; height: 0; padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible; }
+  :is(div, nav):has(+ .nh-hero) > p { padding-top: 16px; margin: 0; }
+}
