@@ -343,6 +343,11 @@
 <style>
 /* ===== Home page redesign draft (11-10). Prefix nh- ===== */
 .nh-kick { font-size: max(12.5px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 14px; }
+.nh-kick span { white-space: nowrap; } /* 11-10: if it ever has to wrap, break after the dot, never leave "2017" alone */
+@media (max-width: 719px) {
+  /* 11-10 her ask: one line on phones. All caps at the 15px phone minimum is too wide, so phones use regular capitals */
+  .nh-kick { text-transform: none; letter-spacing: 0; }
+}
 .nh-hero h1 { margin-bottom: 14px; }
 .nh-sub { font-size: max(18px, var(--fs-read, 0px)); line-height: 1.55; color: var(--ink); margin: 0 0 14px; max-width: 540px; font-weight: 500; }
 .nh-stars { display: flex; align-items: center; gap: 10px; margin: 0 0 26px; font-size: max(15px, var(--fs-read, 0px)); font-weight: 600; color: var(--brand-blue); }
@@ -552,7 +557,7 @@
 
 <section class="hp-hero nh-hero" id="who-needs-care">
 <div>
-<p class="nh-kick">Springfield, MO &middot; Locally owned since 2017</p>
+<p class="nh-kick"><span>Springfield, MO &middot;</span> <span>Locally owned since 2017</span></p>
 <h1>Helping someone you love feel at home.</h1>
 <p class="nh-sub">Trusted local caregivers help them stay safe, comfortable, and independent, with thoughtful matching and a Springfield office that&rsquo;s here when you need us.</p>
 <p class="nh-stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 on Google</p>
