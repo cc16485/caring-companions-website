@@ -1,4 +1,4 @@
-# Builds the cards on /resource-library (the Aging at Home Library): every written guide plus every live
+# Builds the cards on /resource-library (Family Guides): every written guide plus every live
 # video page, written straight into the page so Google and AI tools can read them (the old version drew
 # the list with JavaScript, so search engines saw an empty page). Topic buttons and search still work.
 # Guides: tools/library-guides.json. Videos: videos/data/<id>.json once they have a youtube_id.
@@ -43,7 +43,7 @@ def main():
     cards = ''.join(video_card(v) for v in vids) + ''.join(guide_card(g) for g in guides)
     items = [{'@type': 'ListItem', 'position': n, 'url': SITE + '/videos/' + slug(v['short_title']), 'name': v['title']} for n, v in enumerate(vids, 1)]
     items += [{'@type': 'ListItem', 'position': len(items) + n, 'url': SITE + g['href'], 'name': g['title']} for n, g in enumerate(guides, 1)]
-    ld = json.dumps({'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'The Aging at Home Library', 'url': SITE + '/resource-library',
+    ld = json.dumps({'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Family Guides', 'url': SITE + '/resource-library',
                      'mainEntity': {'@type': 'ItemList', 'itemListElement': items}}, ensure_ascii=False, separators=(',', ':'))
     block = ('<!-- library:start (built by tools/build-resource-library.py; edit tools/library-guides.json, not this) -->\n'
              '<section style="max-width:1240px;margin:0 auto;padding:0 24px 20px"><div class="rl-chips" id="category-chips" role="group" aria-label="Topics">%s</div></section>\n'
