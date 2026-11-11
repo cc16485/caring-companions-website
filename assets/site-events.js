@@ -41,6 +41,7 @@
     call_click: 'Contact',
     tool_completed: 'CompleteRegistration',
     cara_chat_used: 'Contact',
+    email_signup: 'CompleteRegistration',
   };
 
   var ENDPOINT = 'https://zngsgedlsxinbygwmxwn.supabase.co/rest/v1/website_events';
