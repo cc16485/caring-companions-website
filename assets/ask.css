@@ -165,3 +165,6 @@
 .nh-hero.nh-short .nh-meta { font-size: max(14px, var(--fs-read, 0px)); color: #4f5b54; margin: 0 0 22px; max-width: 560px; }
 @media (min-width: 1040px) { .nh-hero.nh-short { min-height: 420px; padding-top: 56px; padding-bottom: 56px; } }
 @media (max-width: 719px) { .nh-hero.nh-short .nh-photo img { height: 190px; } }
+
+/* County pages: the "See the directory" jump lands under the menu. */
+#directory { scroll-margin-top: 90px; }
