@@ -201,8 +201,8 @@
 /* Header menus (Services, Ways to Pay, Resources, About Us) open on click
    instead of hover, so moving the mouse across the menu bar no longer drops
    a panel over the page. Enter or Space opens, Esc or a click elsewhere
-   closes. Phones are untouched: below 1101px the menus are already listed
-   in full under the burger, and the top links go to their pages. */
+   closes. On phones (below 1101px) the same tap folds each section open or
+   shut under the Menu button, so the list is short to scroll. */
 (function () {
   'use strict';
   if (window.__ccMenus) return;
@@ -232,7 +232,6 @@
       top.setAttribute('aria-expanded', 'false');
       top.setAttribute('aria-controls', panel.id);
       top.addEventListener('click', function (e) {
-        if (!desk.matches) return;
         e.preventDefault();
         var open = !g.classList.contains('cc-open');
         closeAll(g);
@@ -248,8 +247,12 @@
     });
 
     document.addEventListener('click', function (e) {
+      if (!desk.matches && e.target.closest && e.target.closest('.cc-nav')) return;
       if (!(e.target.closest && e.target.closest('.cc-nav-group'))) closeAll();
     });
+    // Phone: shutting the Menu folds every section back up for next time.
+    var tog = document.getElementById('cc-navtog');
+    if (tog) tog.addEventListener('change', function () { if (!tog.checked) closeAll(); });
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
       groups.forEach(function (g) { if (g.classList.contains('cc-open')) close(g, true); });
