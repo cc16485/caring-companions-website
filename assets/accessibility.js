@@ -138,11 +138,11 @@
   function zLabel() { var el = document.getElementById('a11y-zlabel'); if (el) el.textContent = 'Text size: ' + Math.round(ZOOMS[zIndex()] * 100) + '%'; }
   function bump(dir) { var i = Math.max(0, Math.min(ZOOMS.length - 1, zIndex() + dir)), z = ZOOMS[i]; applyZoom(z); try { localStorage.setItem(ZKEY, String(z)); } catch (e) {} zLabel(); }
 
-  // Caring Companions family pages only (they carry the phone utility bar).
+  // Caring Companions family pages only (they carry the blue top bar; its phone number was removed 11-10, her ask).
   // Applicant pages and the questionnaire page keep the floating button.
   var PHONE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>';
   function buildBar(onA11y) {
-    if (!document.querySelector('.cc-utility-tel')) return;
+    if (!document.querySelector('.cc-utility')) return;
     if (/^\/(careers|jobs\/|apply|cara|assessment)/.test(location.pathname)) return;
     // 2026-11-09 her ask: the bar says only "Call us" and "Text us" on every page (Book a free visit removed).
     var bar = document.createElement('div');

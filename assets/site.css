@@ -593,3 +593,7 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   .cc-ng-small .cc-mega { left: 0; right: auto; }
   .cc-ng-small .cc-mega::before { left: 0; right: 0; width: auto; top: -22px; height: 22px; }
 }
+
+/* 11-10 her ask: no phone number in the blue top bar (it is in the menu bar and the phone Call us bar).
+   With nothing on the left, keep the links together on the right, also when they wrap. */
+@media (min-width: 720px) { .cc-utility-inner { justify-content: flex-end; } }
