@@ -151,3 +151,9 @@
 .nh-after { background: var(--bg); }
 .nh-after-in { max-width: var(--shell); margin: 0 auto; padding: 8px 24px 40px; box-sizing: border-box; }
 @media (max-width: 719px) { .nh-go, .nh-ghost { width: 100%; text-align: center; box-sizing: border-box; } .nh-after-in { padding: 4px 20px 32px; } }
+
+/* Care paths (11-10): the quiz's first question sits in the new photo hero. */
+.fun-nh-q { margin-top: 6px; max-width: 440px; }
+.fun-nh-q > div { margin: 0 !important; max-width: none !important; }
+.fun-nh-q > p { margin: 0 0 12px !important; }
+.fun-nh-q .fun-option { text-align: left; }
