@@ -575,3 +575,11 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
 .nh-dark .cc-famrev-more a { color: #fff; }
 @media (max-width: 900px) { .cc-famrev { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .cc-famrev { grid-template-columns: 1fr; } .cc-famrev-card blockquote { font-size: 17px; } .cc-famrev-card:nth-child(n+4) { display: none; } }
+
+/* Resources is now two items (11-10), so it opens right under its own tab
+   instead of sharing the wide menus' right edge. */
+@media (min-width: 1101px) {
+  .cc-nav-group.cc-ng-small { position: relative; }
+  .cc-ng-small .cc-mega { left: 0; right: auto; }
+  .cc-ng-small .cc-mega::before { left: 0; right: 0; width: auto; top: -22px; height: 22px; }
+}
