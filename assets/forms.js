@@ -33,7 +33,21 @@
   }
   window.CCPartnerRef = { read: refRead, remember: refRemember, code: refCode, KEY: REF_KEY, DAYS: REF_DAYS };
 
+  /* 2026-11-11 (Samantha: "Thank-you page"): Facebook won't take form events from mo-care.com (it files the site as health
+     related), so after a form is sent, /thank-you loads quietly in a hidden frame. Its normal page view lets Facebook leave
+     out people who already wrote to us. Nothing about the person or the form goes with it. Once per page. */
+  var sentMarked = false;
+  function markSent() {
+    if (sentMarked) return; sentMarked = true;
+    try {
+      var f = document.createElement('iframe');
+      f.src = '/thank-you?from=form'; f.title = ''; f.setAttribute('aria-hidden', 'true'); f.tabIndex = -1;
+      f.style.cssText = 'position:absolute;width:1px;height:1px;left:-9999px;top:0;border:0;visibility:hidden';
+      (document.body || document.documentElement).appendChild(f);
+    } catch (e) {}
+  }
   window.CCForms = {
+    markSent: markSent,
     // fields: { name, phone, email, message, care_for }, all optional,
     // but at least one of name/phone/email must be present.
     submitLead: function (fields) {
@@ -48,6 +62,7 @@
       }).then(function (res) {
         if (!res.ok) throw new Error('lead-intake HTTP ' + res.status);
         if (window.CCTrack) CCTrack('lead_submitted');
+        window.CCForms.markSent();
         return res.json();
       });
     },

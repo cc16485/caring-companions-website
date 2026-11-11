@@ -178,7 +178,7 @@
           };
           try { var ref = window.CCPartnerRef && CCPartnerRef.read(); if (ref) body.partner_code = ref.code; } catch (e) { /* no partner link */ }
           fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
-            .then(function (res) { if (!res.ok) throw new Error('lead-intake HTTP ' + res.status); return res.json(); })
+            .then(function (res) { if (!res.ok) throw new Error('lead-intake HTTP ' + res.status); try { if (window.CCForms && CCForms.markSent) CCForms.markSent(); } catch (e) {} return res.json(); })
             .then(function () {
               chat.offer = 'sent'; chatSave();
               if (window.CCTrack) CCTrack('lead_submitted');
