@@ -597,3 +597,8 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
 /* 11-10 her ask: no phone number in the blue top bar (it is in the menu bar and the phone Call us bar).
    With nothing on the left, keep the links together on the right, also when they wrap. */
 @media (min-width: 720px) { .cc-utility-inner { justify-content: flex-end; } }
+
+/* 11-10 her report: with Resources open, About Us could not be clicked. The invisible hover
+   bridge above an open panel sat over the bottom half of the next tab. Menus open on click
+   when accessibility.js runs (.cc-menus-click), so the bridge is not needed then. */
+.cc-menus-click .cc-dropdown::before { display: none; }
