@@ -1,5 +1,5 @@
 /* Caring Companions: Accessibility widget.
-   Larger text (page zoom, remembered across pages) + "read this page aloud."
+   Larger text (zooms the page content, not the pinned bars; remembered across pages) + "read this page aloud."
    Read-aloud uses Samantha's ElevenLabs voice via the elevenlabs-tts function
    (cached server-side); if that's unavailable it silently falls back to the
    browser's own voice so it never goes quiet. No dependencies, no picker. */
@@ -16,7 +16,21 @@
 
   function savedZoom() { var z = parseFloat(localStorage.getItem(ZKEY) || '1'); return isNaN(z) ? 1 : z; }
   function zIndex() { var i = ZOOMS.indexOf(savedZoom()); return i < 0 ? 0 : i; }
-  function applyZoom(z) { document.documentElement.style.zoom = (z === 1 ? '' : String(z)); }
+  /* 11-10 fix (her report: on her iPhone the Call us bar jumped to the middle of the page when scrolling).
+     Zooming the whole <html> breaks pinned (position:fixed) bars in iPhone Safari. So bigger text now
+     zooms the page content only, and the pinned pieces (Call us bar, accessibility button and panel,
+     Have a Question widget) stay out of the zoom and stay pinned. */
+  var ZOOM_CSS = 'html.a11y-zoom body>*:not(.cc-bar):not(.a11y-btn):not(.a11y-panel):not(#cara-widget-launcher):not(#cara-widget-panel):not(script):not(style){zoom:var(--a11y-zoom)}';
+  function applyZoom(z) {
+    var root = document.documentElement;
+    root.style.zoom = '';
+    if (!document.getElementById('a11y-zoom-css')) {
+      var st = document.createElement('style'); st.id = 'a11y-zoom-css'; st.textContent = ZOOM_CSS;
+      (document.head || root).appendChild(st);
+    }
+    if (z === 1) { root.classList.remove('a11y-zoom'); root.style.removeProperty('--a11y-zoom'); }
+    else { root.classList.add('a11y-zoom'); root.style.setProperty('--a11y-zoom', String(z)); }
+  }
   try { if (savedZoom() !== 1) applyZoom(savedZoom()); } catch (e) {}
 
   var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2.3"/><path d="M12 7.2c-2.7 0-4.6.7-7.4 1.1a1 1 0 1 0 .3 2c1.9-.3 3.3-.6 4.6-.8v3l-1.7 6.1a1 1 0 0 0 1.9.6l1.5-5.2h1.6l1.5 5.2a1 1 0 0 0 1.9-.6L15.5 12.5v-3c1.3.2 2.7.5 4.6.8a1 1 0 1 0 .3-2C16.6 7.9 14.7 7.2 12 7.2z"/></svg>';
