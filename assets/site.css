@@ -382,7 +382,7 @@ html:not(.cc-menus-click) .cc-nav:hover .cc-nav-group:not(:hover):not(:focus-wit
 .cc-col { display: flex; flex-direction: column; min-width: 196px; }
 /* Around-the-clock has the most links, so it gets two columns' worth of room */
 .cc-col.cc-col-2 { display: grid; grid-template-columns: 1fr 1fr; align-content: start; min-width: 400px; }
-.cc-col-2 .cc-colh, .cc-col-2 a:last-child { grid-column: 1 / -1; }
+.cc-col-2 .cc-colh { grid-column: 1 / -1; }
 /* a second heading partway down a column (Hiring on your own, under Virtual) */
 .cc-col a + .cc-colh { margin-top: 14px; }
 /* Leaflet's map layers use z-index 400+; keep them inside the map so the menus open over it */
