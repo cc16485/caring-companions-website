@@ -372,7 +372,7 @@ function speak(text){
   stopVoice();
   if (!voiceOn || !text) return;
   if (ttsCache[text]) { playUrl(ttsCache[text]); return; }
-  fetch(TTS, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: text }) })
+  fetch(TTS, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: text, page: location.pathname }) })
     .then(function(r){ return r.json(); })
     .then(function(d){ if (d && d.url) { ttsCache[text] = d.url; playUrl(d.url); } })
     .catch(function(){ /* silence over robot, always */ });

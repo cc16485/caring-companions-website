@@ -107,9 +107,15 @@
   function updateReadBtn() { if (readBtn) { readBtn.innerHTML = reading ? '&#9632;&nbsp; Stop reading' : '&#128266;&nbsp; Read this page aloud'; readBtn.classList.toggle('reading', reading); } }
 
   function elevenSpeak(text, done) {
-    fetch(TTS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: text }) })
-      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    /* 2026-11-12 (open doors): the server now only records a passage that is published on this page, so the page
+       sends its own address. A passage it will not record (code "not_on_page") is skipped and reading carries on. */
+    fetch(TTS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: text, page: location.pathname }) })
+      .then(function (r) {
+        if (r.status === 403) return r.json().then(function (d) { if (d && d.code === 'not_on_page') { done(); return null; } throw 0; });
+        if (!r.ok) throw 0; return r.json();
+      })
       .then(function (d) {
+        if (d === null) return;
         if (!d || !d.url) throw 0;
         var a = ensureAudio();
         a.src = d.url;
