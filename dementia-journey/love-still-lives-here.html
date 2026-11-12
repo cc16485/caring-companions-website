@@ -112,7 +112,7 @@ function speak(text){
   stopVoice();
   if (!voiceOn||!text) return;
   if (ttsCache[text]){ player.src=ttsCache[text]; player.play().catch(function(){}); return; }
-  fetch(TTS,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text})})
+  fetch(TTS,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text,page:location.pathname})})
     .then(function(r){ return r.json(); })
     .then(function(d){ if(d&&d.url){ ttsCache[text]=d.url; player.src=d.url; player.play().catch(function(){}); } })
     .catch(function(){});
