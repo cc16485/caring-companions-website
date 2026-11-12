@@ -31,7 +31,7 @@ with sync_playwright() as p:
             pg.check('#c-mi'); pg.check('#c-cc'); ck(f'{tag} mileage + 3% card fee', t() == '$627', t())
             for _ in range(2): pg.click('[data-k="visits"] button:first-child')
             pg.click('[data-k="hours"] button:first-child')
-            ck(f'{tag} under 8 hours a week shows the minimum note', pg.is_visible('#c-warn'))
+            ck(f'{tag} one 4-hour visit a week is allowed, with no minimum note (her rule 11-12)', pg.locator('#c-warn').count() == 0 and t() == '$224', t())
             pg.click('#ask button:nth-child(2)')
             ck(f'{tag} tap list answers', 'pill organizer' in pg.inner_text('#ans'), pg.inner_text('#ans'))
             ck(f'{tag} all 17 questions open near the top', pg.locator('#questions .bya-q').count() == 17 and all(pg.locator('#questions .bya-q p').nth(i).is_visible() for i in range(17)))
