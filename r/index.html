@@ -32,6 +32,8 @@
 .ry-tile span{color:#5b6770;font-size:14.5px;line-height:1.5}
 .ry-tile:hover,.ry-tile:focus-visible{border-color:#1F7A8C;background:#fff}
 @media (max-width:560px){.ry-tiles{grid-template-columns:1fr}}
+.ry-mail{margin-top:22px;padding-top:20px;border-top:1px solid #e4e1d8}
+.ry-mail h3{font-size:17px;color:#0D365F;margin:0 0 4px}
 @media (max-width:560px){.ry-grid{grid-template-columns:1fr}.ry-card{padding:20px}}
 </style>
 </head>
@@ -155,6 +157,25 @@
 <a class="ry-tile" href="/before-your-assessment"><b>What to expect</b><span>How a first visit works, step by step.</span></a>
 <a class="ry-tile" href="/assessment"><b>Not sure what you need?</b><span>A short care questionnaire to help you think it through.</span></a>
 </div>
+<!-- 2026-11-12 (Samantha: "send them an email with our prices, all services and payors and click to go to our website").
+     One email, at once. Not a request for a call, and not a mailing list. -->
+<div class="ry-mail" id="ry-mail">
+<h3>Or have it all in one email</h3>
+<p class="ry-note">Our services, our rates and the ways to pay, in one email you can keep or forward. Just the one email, and we won't call you.</p>
+<div id="ry-mailbox">
+<div class="ry-grid">
+<input id="rm-first" placeholder="First name" autocomplete="given-name" aria-label="First name">
+<input id="rm-email" type="email" placeholder="Email" autocomplete="email" inputmode="email" aria-label="Email">
+</div>
+<div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden" aria-hidden="true">
+<label for="rm-website">Website</label>
+<input id="rm-website" name="website" type="text" tabindex="-1" autocomplete="off">
+</div>
+<button id="rm-send" class="btn-outline" type="button">Email me the details</button>
+<p id="rm-error" class="ry-err" hidden></p>
+</div>
+<p id="rm-thanks" class="ry-p" hidden>It's on its way. If you don't see it in a few minutes, check your spam folder, or call us at <a href="tel:14172348494">(417) 234-8494</a>.</p>
+</div>
 </div>
 
 <div class="ry-card" id="ry-form">
@@ -251,6 +272,28 @@
   try { code = new URLSearchParams(location.search).get('p') || ''; } catch (e) {}
   if (window.CCPartnerRef) CCPartnerRef.remember(code);
   var $ = function (id) { return document.getElementById(id); };
+  /* "Email me the details" (2026-11-12): one email with our services, rates and ways to pay. The server sends it; this
+     only asks. The code of whoever shared the link goes along, so they are credited if this person later starts care. */
+  var INFO_URL = 'https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/family-signup';
+  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuZ3NnZWRsc3hpbmJ5Z3dteHduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NDIzNDQsImV4cCI6MjA5ODExODM0NH0.L_31_UKdccyRH9n7p1GaBlZTqcJipB008H-GIvxwLxM';
+  var CALL = 'Sorry, we could not send that just now. Please try again, or call us at (417) 234-8494.';
+  $('rm-send').addEventListener('click', function () {
+    var first = $('rm-first').value.trim(), email = $('rm-email').value.trim(), err = $('rm-error'), btn = $('rm-send');
+    err.hidden = true;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { err.textContent = 'Please enter your email address so we know where to send it.'; err.hidden = false; $('rm-email').focus(); return; }
+    var ref = (window.CCPartnerRef && CCPartnerRef.read()) || null;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(INFO_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: ANON, Authorization: 'Bearer ' + ANON },
+      body: JSON.stringify({ action: 'info', first: first, email: email, website: $('rm-website').value, partner_code: ref ? ref.code : (CCPartnerRef ? CCPartnerRef.code(code) : '') }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j || {} }; }); })
+      .then(function (x) {
+        /* only "it went" counts as sent: an older server, an opted-out address or a failed send all say so plainly */
+        if (!x.ok || x.j.emailed !== true) { err.textContent = /email address|Too many/.test(String(x.j.error || '')) ? x.j.error : CALL; err.hidden = false; return; }
+        $('ry-mailbox').hidden = true; $('rm-thanks').hidden = false;
+      })
+      .catch(function () { err.textContent = CALL; err.hidden = false; })
+      .finally(function () { btn.disabled = false; btn.textContent = 'Email me the details'; });
+  });
   $('ry-submit').addEventListener('click', function () {
     var name = $('ry-name').value.trim(), phone = $('ry-phone').value.trim(), email = $('ry-email').value.trim(), err = $('ry-error'), btn = $('ry-submit');
     err.hidden = true;
