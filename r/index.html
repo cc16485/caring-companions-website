@@ -26,6 +26,12 @@
 .ry-err{font-size:14px;color:#8a5a2a;background:#fbf6ec;border:1px solid #e8dcc4;border-radius:8px;padding:11px 14px;margin:12px 0 0}
 .ry-links{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px}
 .ry-links a{color:#1F7A8C;font-weight:600}
+.ry-tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.ry-tile{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid #e4e1d8;border-radius:12px;background:#fbfaf6;text-decoration:none;min-height:44px}
+.ry-tile b{color:#0D365F;font-size:16px}
+.ry-tile span{color:#5b6770;font-size:14.5px;line-height:1.5}
+.ry-tile:hover,.ry-tile:focus-visible{border-color:#1F7A8C;background:#fff}
+@media (max-width:560px){.ry-tiles{grid-template-columns:1fr}}
 @media (max-width:560px){.ry-grid{grid-template-columns:1fr}.ry-card{padding:20px}}
 </style>
 </head>
@@ -133,6 +139,22 @@
 <div class="ry-acts">
 <a href="tel:14172348494" class="btn-primary">Call (417) 234-8494</a>
 <a href="#ry-form" class="btn-outline">Ask us to call you</a>
+<a href="#ry-learn" class="btn-outline">Learn more about us first</a>
+</div>
+
+<!-- 2026-11-12 (Samantha: "a clear way for them to learn more about us, not just an ask us to call you"). Someone who was
+     sent this link may not be ready to talk. This sits ABOVE the form so learning more is a first-class choice. -->
+<div class="ry-card" id="ry-learn">
+<h2>Get to know us first</h2>
+<p class="ry-note">No form, no call. Have a look around and reach out when you're ready.</p>
+<div class="ry-tiles">
+<a class="ry-tile" href="/our-story"><b>Who we are</b><span>A local, family-owned team, and why we do this work.</span></a>
+<a class="ry-tile" href="/our-services"><b>What we help with</b><span>Company, meals, bathing, memory care, overnight and more.</span></a>
+<a class="ry-tile" href="/our-caregivers"><b>Meet our caregivers</b><span>The people who would be coming to the home.</span></a>
+<a class="ry-tile" href="/pricing"><b>What it costs</b><span>Our rates, with no deposit and no long contract.</span></a>
+<a class="ry-tile" href="/before-your-assessment"><b>What to expect</b><span>How a first visit works, step by step.</span></a>
+<a class="ry-tile" href="/assessment"><b>Not sure what you need?</b><span>A short care questionnaire to help you think it through.</span></a>
+</div>
 </div>
 
 <div class="ry-card" id="ry-form">
@@ -166,10 +188,6 @@
 <a href="/careers" class="btn-outline">See our open jobs</a>
 </div>
 
-<div>
-<p class="ry-note" style="margin-bottom:8px">Prefer to look around first?</p>
-<div class="ry-links"><a href="/our-services">Our services</a><a href="/pricing">Rates</a><a href="/assessment">Care Questionnaire</a><a href="/our-caregivers">Our caregivers</a></div>
-</div>
 <p class="ry-note">This page remembers, on this device only and for up to 90 days, that it was shared with you, so we know how you found us. It doesn't keep anything about you.</p>
 </div>
 </section>
