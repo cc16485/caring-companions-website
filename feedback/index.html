@@ -81,7 +81,7 @@
   <div id="gReview" style="display:none;background:var(--pale);border-radius:12px;padding:16px 18px;margin:6px 0 4px;">
     <div style="font-weight:bold;color:var(--brand-blue);font-family:Arial,Helvetica,sans-serif;font-size:15px;margin-bottom:6px;">Would you share that on Google?</div>
     <div style="font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:12px;">It takes a minute, and it's how other local families find care they can trust.</div>
-    <a href="https://search.google.com/local/writereview?placeid=ChIJaUETSOx7z4cRdYKcTMoZ6Go" target="_blank" rel="noopener" style="display:inline-block;background:#14606F;color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:15px;padding:11px 22px;border-radius:9px;text-decoration:none;">Review us on Google &rarr;</a>
+    <a id="gLink" href="https://search.google.com/local/writereview?placeid=ChIJaUETSOx7z4cRdYKcTMoZ6Go" target="_blank" rel="noopener" style="display:inline-block;background:#14606F;color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:15px;padding:11px 22px;border-radius:9px;text-decoration:none;">Review us on Google &rarr;</a>
     <div style="border-top:1px solid #d7e6ea;margin:16px 0 0;padding-top:14px;">
       <div style="font-weight:bold;color:var(--brand-blue);font-family:Arial,Helvetica,sans-serif;font-size:15px;margin-bottom:6px;">Or say it out loud?</div>
       <div style="font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:12px;">A minute on camera, recorded right from this phone. Families trust other families more than anything we could write.</div>
@@ -116,6 +116,14 @@
   stars.forEach(function(b){ b.addEventListener('click', function(){ choose(+b.dataset.v); }); });
 
   var pre = parseInt(new URLSearchParams(location.search).get('r'), 10);
+  /* 2026-11-11: a review-ask text from the office carries the family's own code (?k=), so the office can see that they
+     opened it, how many stars they gave, and that they pressed "Review us on Google". Nothing else about them is sent. */
+  var K = (new URLSearchParams(location.search).get('k') || '').toLowerCase();
+  if (!/^[a-z0-9]{8,16}$/.test(K)) K = '';
+  function ping(ev){ if(!K) return; try{ fetch(CFG.endpoint, { method:'POST', headers:{ 'Content-Type':'application/json' },
+    body: JSON.stringify({ event: ev, k: K }), keepalive: true }).catch(function(){}); }catch(e){} }
+  ping('open');
+  var gl = document.getElementById('gLink'); if (gl) gl.addEventListener('click', function(){ ping('google'); });
   if (pre >= 1 && pre <= 5) choose(pre);
 
   function starRow(n){ var s=''; for(var i=1;i<=5;i++) s += (i<=n?'★':'☆'); return s; }
@@ -126,7 +134,7 @@
       name: document.getElementById('fb-name').value.trim(),
       contact: document.getElementById('fb-contact').value.trim(),
       message: document.getElementById('fb-msg').value.trim(),
-      partial: !!extra });
+      partial: !!extra, k: K || undefined });
   }
 
   document.getElementById('f').addEventListener('submit', function(e){
