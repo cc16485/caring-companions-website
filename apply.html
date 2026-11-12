@@ -914,6 +914,23 @@ function showReview(msg){
   g('keepBtn').style.display = 'none';
 }
 
+/* WHO SENT THEM (2026-11-12, caregiver referrals). When a caregiver shares their personal link (mo-care.com/r/?p=ANN-K7),
+   this device remembers the code for 90 days (the first link wins: assets/forms.js keeps it). An application started
+   from that device carries the code, so the Hub knows who referred them. Only the code is sent, never anything else.
+   A code in this page's own address (?p=) counts the same way. The server keeps the first code it is given. */
+const REFCODE = (() => {
+  const ok = (c) => { c = String(c == null ? '' : c).trim().toUpperCase(); return /^[A-Z0-9-]{3,20}$/.test(c) ? c : ''; };
+  try {
+    const v = JSON.parse(localStorage.getItem('cc_partner_ref') || 'null'), t = v && Date.parse(v.first_at);
+    if (v && ok(v.code) && !isNaN(t) && Date.now() - t <= 90 * 864e5 && t <= Date.now() + 864e5) return ok(v.code);
+  } catch (e) {}
+  try {
+    const c = ok(new URLSearchParams(location.search).get('p'));
+    if (c) { try { localStorage.setItem('cc_partner_ref', JSON.stringify({ code: c, first_at: new Date().toISOString() })); } catch (e) {} }
+    return c;
+  } catch (e) { return ''; }
+})();
+
 async function save(patch, done){
   const { data, error } = await sb.rpc('apply_save',
     { p_id: ROW, p_data: patch, p_done: !!done });
@@ -933,7 +950,7 @@ async function next1(){
     /* Saved here, before the screening questions. Someone who stops now is
        still a person with a number who wanted this job. */
     await save({ posting_slug: JOB || null, posting_title: TITLE, source: 'website',
-      channel: CHANNEL || null,
+      channel: CHANNEL || null, ...(REFCODE ? { referral_code: REFCODE } : {}),
       first_name: val('first'), last_name: val('last'),
       phone: val('phone') || null, email: val('email') || null,
       zip: val('zip') || null, job_type: A.job_type || null,
