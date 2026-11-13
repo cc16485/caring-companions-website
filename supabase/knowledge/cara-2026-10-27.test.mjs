@@ -81,6 +81,9 @@ const cases = [
   ['How soon can care start?','start_timing'], ['how quickly can someone start','start_timing'],
   ['Do you work with hospice?','hospice'], ['my dad is on hospice can you help','hospice'], ['do you do end of life care','hospice'],
   ['can a caregiver sit with mom while she is on hospice','hospice'],
+  // 2026-11-12: Early Support Visits (a visit once a month or every other week)
+  ['What are Early Support Visits?','early_support_visits'], ['do you offer occasional visits','early_support_visits'], ['can someone come once a month','early_support_visits'],
+  ['can a caregiver come every other week','early_support_visits'], ['how much are early support visits','early_support_visits'], ['do you do monthly visits','early_support_visits'],
   ['Do you work weekends?','weekends'], ['can a caregiver come on Saturday','weekends'], ['are you open 7 days a week','weekends'],
   ['we need help on sundays','weekends'], ['Do you work on Christmas?','holidays'], ['How soon can care start after the assessment?','start_timing'],
   ['Do you go to assisted living?','facility_care'], ['can you sit with my mom in the nursing home','facility_care'],
