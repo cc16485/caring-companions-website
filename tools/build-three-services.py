@@ -78,7 +78,7 @@ PAGES = [
     faqs=[
       ('Will the facility allow an outside caregiver?', 'Most welcome it. It is a good idea to let the staff know, and our caregivers follow each place\'s rules for visitors and outside caregivers.'),
       ('Is this medical care?', 'No. Our caregivers give non-medical care: company, help with meals, everyday personal help and a watchful, friendly presence. Nurses and facility staff keep doing the medical care.'),
-      ('What does it cost?', 'The same as care at home. Visits use our regular hourly rates, based on how much help your loved one needs: $30 an hour for Wellness Care, $32 for Personal Care and $34 for Advanced Care. Standard visits are 4 hours or more, with at least 8 hours a week. <a href="/pricing">See our rates</a>.'),
+      ('What does it cost?', 'The same as care at home. Visits use our regular hourly rates, based on how much help your loved one needs: $30 an hour for Wellness Care, $32 for Personal Care and $34 for Advanced Care. Standard visits are 4 hours or more, with at least 8 hours a week. <a href="/pricing">See our rates</a>. Don&rsquo;t need 8 hours of care per week? <a href="/early-support-visits">Learn about Early Support Visits</a>, a visit once a month or every other week, in Springfield.'),
       TOWNS_Q,
     ],
     band_k='Worried they are spending too much time alone?',
