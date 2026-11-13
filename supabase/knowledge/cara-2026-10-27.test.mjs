@@ -14,7 +14,12 @@ const live = [
 
 const kb = RECORDS.map(r => ({ id:r.id, question:r.question, alt_questions:r.alt, answer:r.answer, answer_key:r.key,
   topics:r.topics, aliases:[], phrases:[], status:'verified', audience:'public', confidence:95, version:1, verified_on:'2026-10-27' }))
-const all = [...live, ...kb]
+// 2026-11-12: the office rule OR27 is internal. As first loaded (step 1449) its title and topics were the same words as the
+// public K157, so the website chat held back "What are Early Support Visits?" (an internal match that ties a public one wins).
+// OR27 is now titled and tagged for the office only. It is in this test as it is stored, so a tie can't come back unnoticed.
+// Ask Cara in the Hub reads every internal rule's question and answer, so the office still gets it whatever its topics are.
+const office = [{ id:'OR27', question:'Exhibit J on the tablet', answer_key:null, topics:['exhibit j'], aliases:[], phrases:[], alt_questions:[], status:'verified', audience:'internal', confidence:100, version:1, verified_on:'2026-11-12' }]
+const all = [...live, ...kb, ...office]
 const keyOf = Object.fromEntries(all.map(r => [r.id, r.answer_key]))
 
 const cases = [
