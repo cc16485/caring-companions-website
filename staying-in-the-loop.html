@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staying in the Loop | Caring Companions</title>
+<meta name="description" content="See the care calendar, visit notes, care plan and every invoice, and know how and when our Springfield office will be in touch. Here is how we keep families in the loop.">
+<link rel="canonical" href="https://mo-care.com/staying-in-the-loop">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caring Companions In-Home Senior Care">
+<meta property="og:title" content="Staying in the Loop | Caring Companions">
+<meta property="og:description" content="See the care calendar, visit notes, care plan and every invoice, and know how and when our Springfield office will be in touch. Here is how we keep families in the loop.">
+<meta property="og:url" content="https://mo-care.com/staying-in-the-loop">
+<meta property="og:image" content="https://mo-care.com/assets/photos/scene-daughter-text.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="/assets/ask.css">
+<style>
+.sl-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+.sl-sec { padding: 54px 0 0; }
+.sl-kick { font-size: max(13px, var(--fs-min, 0px)); font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 10px; }
+.sl-sec h2 { font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--brand-blue); letter-spacing: -0.01em; margin: 0 0 12px; text-wrap: balance; }
+.sl-lede { font-size: max(17px, var(--fs-read, 0px)); line-height: 1.7; color: var(--body-text); max-width: 68ch; margin: 0 0 28px; }
+.sl-see { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.sl-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; }
+.sl-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--brand-blue); margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
+.sl-card h3 svg { width: 26px; height: 26px; flex: none; }
+.sl-card > p { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.65; color: var(--body-text); margin: 0 0 18px; }
+.sl-ex { margin-top: auto; background: #EAF4F6; border-radius: 12px; padding: 14px 16px 16px; }
+.sl-ex-tag { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: #155A68; text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 10px; }
+.sl-row { background: #fff; border-radius: 9px; padding: 10px 12px; margin: 0 0 6px; display: flex; justify-content: space-between; gap: 12px; font-size: max(14.5px, var(--fs-min, 0px)); line-height: 1.45; color: #16283a; }
+.sl-row:last-child { margin: 0; }
+.sl-row b { color: var(--brand-blue); }
+.sl-row span:last-child { color: var(--muted); text-align: right; white-space: nowrap; }
+.sl-note { background: #fff; border-radius: 9px; padding: 12px 14px; font-size: max(14.5px, var(--fs-min, 0px)); line-height: 1.6; color: #16283a; margin: 0; }
+.sl-note b { display: block; color: var(--brand-blue); margin: 0 0 4px; }
+.sl-fine { font-size: max(15px, var(--fs-read, 0px)); line-height: 1.65; color: var(--muted); margin: 18px 0 0; max-width: 72ch; }
+.sl-hear { display: grid; gap: 12px; }
+.sl-when { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; display: grid; grid-template-columns: 230px 1fr; gap: 20px; align-items: baseline; }
+.sl-when h3 { font-size: max(16px, var(--fs-read, 0px)); font-weight: 700; color: var(--brand-blue); margin: 0; }
+.sl-when p { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.65; color: var(--body-text); margin: 0; }
+.sl-when a { color: var(--cta); font-weight: 600; }
+.sl-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.sl-panel { background: var(--navy-panel); border-radius: 16px; padding: 30px 28px; color: #fff; }
+.sl-panel h3 { font-family: var(--serif); font-size: 22px; font-weight: 600; margin: 0 0 10px; color: #fff; }
+.sl-panel p { font-size: max(16px, var(--fs-read, 0px)); line-height: 1.7; color: #dbe7ec; margin: 0; }
+.sl-panel .k { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: #F5D061; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 10px; }
+.sl-cta { text-align: center; padding: 54px 0 80px; }
+.sl-cta h2 { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--brand-blue); margin: 0 0 18px; }
+@media (max-width: 820px) { .sl-see, .sl-two { grid-template-columns: 1fr; } .sl-when { grid-template-columns: 1fr; gap: 6px; } }
+@media (max-width: 639px) { .sl-wrap { padding: 0 20px; } .sl-sec { padding-top: 40px; } .sl-sec h2 { font-size: 25px; } .sl-card { padding: 20px; } .sl-row { flex-direction: column; gap: 2px; } .sl-row span:last-child { text-align: left; white-space: normal; } }
+</style>
+</head>
+<body>
+<div style="font-family:'Inter',Helvetica,Arial,sans-serif;background:#faf9f6;color:#16283a;min-height:100vh">
+<div class="cc-utility">
+<div class="cc-utility-inner">
+<a href="/veterans" class="cc-utility-vet">&#9733; Veterans: get paid to care<span class="cc-utility-jobs-more"> for a veteran you know</span> &rarr;</a>
+<a href="/before-your-assessment" class="cc-utility-book">What to expect</a>
+<a href="/careers" class="cc-utility-jobs">We&rsquo;re hiring<span class="cc-utility-jobs-more"> caregivers</span> &rarr;</a>
+</div>
+</div>
+
+<header class="cc-header">
+<div class="cc-header-inner">
+<a href="/" class="cc-logo"><img src="/assets/cc-logo.webp" alt="Caring Companions"></a>
+<input type="checkbox" id="cc-navtog" class="cc-navtog" aria-hidden="true" tabindex="-1">
+<a href="tel:14172348494" class="nh-hcall" aria-label="Call us at (417) 234-8494"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.2 2.2z"/></svg>Call us</a>
+<label for="cc-navtog" class="cc-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+<nav class="cc-nav">
+<span class="cc-nav-group">
+<a href="/our-services" class="cc-nav-top">Services<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Care Levels</span>
+<a href="/services/companion-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">1</span><span>Wellness Care<span class="cc-dd-sub">Company, meals, laundry, errands, medication reminders</span></span></a>
+<a href="/services/personal-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">2</span><span>Personal Care<span class="cc-dd-sub">Wellness Care plus bathing, dressing, toileting, transfers</span></span></a>
+<a href="/services/advanced-care" class="cc-lvl"><span class="cc-lvl-n" aria-hidden="true">3</span><span>Advanced Care<span class="cc-dd-sub">Extra support for complex needs</span></span></a>
+<span class="cc-colh cc-colh-next">A visit now and then</span>
+<a href="/early-support-visits">Early Support Visits<span class="cc-dd-sub">Help and good company, as little as once a month</span></a>
+</span>
+<span class="cc-col cc-col-2">
+<span class="cc-colh">Around-the-clock &amp; specialty</span>
+<a href="/services/24-hour-care">24-Hour Care<span class="cc-dd-sub">Care around the clock, in shifts</span></a>
+<a href="/services/overnight-care">Overnight Care<span class="cc-dd-sub">Someone there through the night</span></a>
+<a href="/services/respite-care">Respite Care<span class="cc-dd-sub">A break for family caregivers</span></a>
+<a href="/care-paths/dementia">Dementia &amp; Memory Care<span class="cc-dd-sub">Patient help with memory loss</span></a>
+<a href="/guides/planning-for-end-of-life-care">End-of-Life Care<span class="cc-dd-sub">Comfort and company in the last months</span></a>
+<a href="/our-services">All services &amp; pricing &rarr;</a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group">
+<a href="/pricing" class="cc-nav-top">Ways to Pay<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Rates</span>
+<a href="/pricing">Our Rates &amp; Guarantee</a>
+<a href="/care-paths/paying-for-care">Private Pay</a>
+<a href="/cost-calculator">Cost Calculator</a>
+</span>
+<span class="cc-col">
+<span class="cc-colh">Benefits &amp; coverage</span>
+<a href="/long-term-care-insurance">Long-Term Care Insurance<span class="cc-dd-sub">We verify &amp; bill your policy</span></a>
+<a href="/veterans">VA Benefits<span class="cc-dd-sub">In network with VA Community Care</span></a>
+</span>
+<span class="cc-col cc-feat">
+<span class="cc-colh">Guide</span>
+<a href="/medicare-guide">Medicare GUIDE<span class="cc-dd-sub">Up to 20 four-hour respite visits a year</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group cc-ng-small">
+<a href="/resource-library" class="cc-nav-top">Resources<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Learn</span>
+<a href="/resource-library">Family Guides<span class="cc-dd-sub">Short videos and easy reads</span></a>
+<a href="/family-academy">Family Care Academy<span class="cc-dd-sub">Free training for family caregivers</span></a>
+<a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself?<span class="cc-dd-sub">Free help, even if you never hire us</span></a>
+</span>
+</span>
+</span>
+</span>
+<span class="cc-nav-group cc-ng-small">
+<a href="/our-story" class="cc-nav-top">About Us<i class="cc-caret"></i></a>
+<span class="cc-dropdown cc-mega">
+<span class="cc-cols">
+<span class="cc-col">
+<span class="cc-colh">Who we are</span>
+<a href="/our-story">Our Story<span class="cc-dd-sub">Family owned in Springfield since 2017</span></a>
+<a href="/our-caregivers">Our Caregivers<span class="cc-dd-sub">Who comes to your door</span></a>
+<a href="/staying-in-the-loop">Staying in the Loop<span class="cc-dd-sub">What you can see, and how we keep in touch</span></a>
+<a href="/service-area">Where We Serve<span class="cc-dd-sub">Towns and counties we cover</span></a>
+</span>
+</span>
+</span>
+</span>
+<a href="/careers">Careers</a>
+<a href="/contact" class="nh-nav-req">Contact Us</a>
+<a href="tel:14172348494" class="cc-nav-cta" aria-label="Call us at (417) 234-8494">Call (417) 234-8494</a>
+<a href="tel:14172348494" class="cc-nav-phone">(417) 234-8494</a>
+</nav>
+</div>
+</header>
+
+<section class="nh-hero nh-short">
+<figure class="nh-photo"><img style="object-position:60% 30%" src="/assets/photos/scene-daughter-text.webp" alt="A daughter smiling as she reads an update on her phone" width="1080" height="608" fetchpriority="high" decoding="async"></figure>
+<div class="nh-hero-copy">
+<p class="nh-kick">Staying in the loop</p>
+<h1>You shouldn't have to wonder how the visit went.</h1>
+<p class="nh-sub">When you can't be there, you still want to know who came, what the day was like and what it cost. Here is what you can see for yourself, and how you'll hear from us.</p>
+<div class="nh-btns"><a href="#see" class="nh-go">What you can see</a><a href="#hear" class="nh-ghost">How you'll hear from us</a></div>
+</div>
+</section>
+
+<div class="sl-wrap">
+
+<section class="sl-sec" id="see">
+<p class="sl-kick">Open any time</p>
+<h2>What you can see for yourself</h2>
+<p class="sl-lede">The family members you choose each get their own sign-in to AxisCare, our care and billing system. It works on a phone or a computer, whenever you want to look.</p>
+<div class="sl-see">
+
+<div class="sl-card">
+<h3><svg aria-hidden="true"><use href="/assets/icons.svg#i-calendar"/></svg>The care calendar</h3>
+<p>Every visit on the schedule, with the day, the time and who's coming.</p>
+<div class="sl-ex"><p class="sl-ex-tag">Example</p>
+<div class="sl-row"><span><b>Tuesday</b> &middot; Ashley</span><span>9:00 AM to 1:00 PM</span></div>
+<div class="sl-row"><span><b>Thursday</b> &middot; Ashley</span><span>9:00 AM to 1:00 PM</span></div>
+<div class="sl-row"><span><b>Saturday</b> &middot; Rosa</span><span>10:00 AM to 2:00 PM</span></div>
+</div>
+</div>
+
+<div class="sl-card">
+<h3><svg aria-hidden="true"><use href="/assets/icons.svg#i-clipboard"/></svg>Care notes from each visit</h3>
+<p>Your caregiver writes a note after every visit, so you can read how the day went in their own words.</p>
+<div class="sl-ex"><p class="sl-ex-tag">Example</p>
+<p class="sl-note"><b>Tuesday, 9:00 AM to 1:00 PM</b>Dorothy was in good spirits today. We made vegetable soup together and she ate a full bowl. Took a short walk to the mailbox with her walker. She asked me to remind you about her hair appointment on Friday.</p>
+</div>
+</div>
+
+<div class="sl-card">
+<h3><svg aria-hidden="true"><use href="/assets/icons.svg#i-heart"/></svg>The care plan</h3>
+<p>The plan we build with you at the assessment: the routines, the preferences and the help your loved one wants. We review it together at least every 90 days.</p>
+<div class="sl-ex"><p class="sl-ex-tag">Example</p>
+<div class="sl-row"><span><b>Mornings</b></span><span>Coffee first, then breakfast</span></div>
+<div class="sl-row"><span><b>Walking</b></span><span>Walker, stay close on steps</span></div>
+<div class="sl-row"><span><b>Loves</b></span><span>Crosswords, gospel music</span></div>
+</div>
+</div>
+
+<div class="sl-card">
+<h3><svg aria-hidden="true"><use href="/assets/icons.svg#i-doc"/></svg>Detailed invoices</h3>
+<p>One invoice a week that lists every visit, billed from your caregiver's actual clock-in and clock-out times. You can see your payments too.</p>
+<div class="sl-ex"><p class="sl-ex-tag">Example</p>
+<div class="sl-row"><span><b>Tue</b> &middot; 9:02 AM to 1:01 PM</span><span>4 hours</span></div>
+<div class="sl-row"><span><b>Thu</b> &middot; 8:58 AM to 1:00 PM</span><span>4 hours</span></div>
+<div class="sl-row"><span><b>Sat</b> &middot; 10:00 AM to 2:03 PM</span><span>4 hours</span></div>
+</div>
+</div>
+
+</div>
+<p class="sl-fine">The examples above are made up to show the kind of thing you'll see. They aren't a real client, and your screen will look a little different.</p>
+</section>
+
+<section class="sl-sec" id="hear">
+<p class="sl-kick">From our Springfield office</p>
+<h2>How you'll hear from us</h2>
+<p class="sl-lede">A screen is handy, but it isn't the same as a person. These are the times you can expect a call, a text or an email from our team.</p>
+<div class="sl-hear">
+<div class="sl-when"><h3>Before the first visit</h3><p>We call to confirm the day, the time and who's coming, and we send your caregiver's profile with a friendly photo.</p></div>
+<div class="sl-when"><h3>A few days after care starts</h3><p>We call to ask how it's going. You don't have to wait for that call. If something isn't right, tell us any time.</p></div>
+<div class="sl-when"><h3>If a caregiver is running late</h3><p>The contacts you choose can get a text, so nobody is left watching the driveway.</p></div>
+<div class="sl-when"><h3>If someone different is coming</h3><p>If your caregiver is sick, we let you know right away. The contacts you choose can get a text with the new caregiver's profile, so you're never surprised by who's at the door.</p></div>
+<div class="sl-when"><h3>When a note needs attention</h3><p>If a caregiver notices a change or a concern, we work with the caregiver and your family to sort it out.</p></div>
+<div class="sl-when"><h3>Each week</h3><p>Your invoice comes by email, showing every visit from the week before.</p></div>
+<div class="sl-when"><h3>When you need us</h3><p>A real person answers our office line, day or night: <a href="tel:14172348494">(417) 234-8494</a>.</p></div>
+</div>
+</section>
+
+<section class="sl-sec">
+<div class="sl-two">
+<div class="sl-panel"><p class="k">Behind the scenes</p><h3>Someone here is paying attention too.</h3><p>Our office reads every care note. And if a caregiver hasn't clocked in a few minutes after a visit should start, we're alerted right away and we follow up.</p></div>
+<div class="sl-panel"><p class="k">Your Family Circle</p><h3>You choose who's in the loop.</h3><p>A daughter across town, a son in another state, a trusted neighbor. We only share care updates with the people you've approved in writing, and you can add or remove someone at any time.</p></div>
+</div>
+</section>
+
+<section class="sl-sec">
+<p class="sl-kick">From families</p>
+<h2>What families say</h2>
+<div class="cc-famrev" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;Have been very impressed with the compassionate care my parents have received in their home. The administration has also been very flexible to work with us and very responsive.&rdquo;</blockquote><figcaption>Judy B. &middot; Google review</figcaption></figure>
+<figure class="cc-famrev-card"><p class="cc-famrev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>&ldquo;Excellent coordination and fulfillment of care for Mom. Very happy and satisfied with Caring Companions!&rdquo;</blockquote><figcaption>Robert G. &middot; Google review</figcaption></figure>
+</div>
+</section>
+
+<section class="sl-cta">
+<h2>Have a question about how this works for your family?</h2>
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+<a href="/free-assessment" class="btn-primary">Request a Free Assessment</a>
+<a href="/before-your-assessment" class="btn-outline">What to Expect</a>
+</div>
+</section>
+
+</div>
+
+<footer class="cc-siteftr">
+<div class="cc-siteftr-grid">
+<div class="brand">
+<img src="/assets/cc-logo.webp" alt="Caring Companions">
+<p class="tag">The trusted guide for aging at home.</p>
+<p class="meta">1331 N Stewart Ave Ste B<br>Springfield, MO 65802<br><a href="tel:14172348494" style="display:inline;padding:0;color:inherit">(417) 234-8494</a></p>
+<a class="book" href="/free-assessment">Request a Free Assessment</a>
+</div>
+<div>
+<h4>Care Services</h4>
+<a href="/services/companion-care">Wellness Care</a>
+<a href="/services/personal-care">Personal Care</a>
+<a href="/services/advanced-care">Advanced Care</a>
+<a href="/services/overnight-care">Overnight Care</a>
+<a href="/services/24-hour-care">24-Hour Care</a>
+<a href="/services/respite-care">Respite Care</a>
+<a href="/early-support-visits">Early Support Visits</a>
+<a href="/our-services">All services &rarr;</a>
+</div>
+<div>
+<h4>Explore</h4>
+<a href="/getting-started">Getting Started</a>
+<a href="/before-your-assessment">What to Expect</a>
+<a href="/assessment">Care Questionnaire</a>
+<a href="/cara">Have a Question?</a>
+<a href="/cost-calculator">Cost Calculator</a>
+<a href="/resource-library">Family Guides</a>
+<a href="/hiring-your-own-caregiver">Hiring a Caregiver Yourself?</a>
+<a href="/veterans">Caring for a Veteran?</a>
+<a href="/family-academy">Family Care Academy</a>
+<a href="/outings">Good Days Out</a>
+<a href="/service-area">Service Areas</a>
+</div>
+<div>
+<h4>Company</h4>
+<a href="/our-story">Our Story</a>
+<a href="/our-caregivers">Our Caregivers</a>
+<a href="/staying-in-the-loop">Staying in the Loop</a>
+<a href="/share-your-story">Share Your Story</a>
+<a href="/pricing">Pricing</a>
+<a href="/contact">Contact Us</a>
+</div>
+<div>
+<h4>Work With Us</h4>
+<a href="/careers#openings">Open Caregiver Jobs</a>
+<a href="/apply">Apply Now</a>
+<a href="/careers">Why Work Here</a>
+</div>
+</div>
+<div class="cc-social " data-social-row><span class="lbl">Follow us</span><a href="https://www.facebook.com/1043697295676809"  target="_blank" rel="noopener me" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a><a href="https://www.instagram.com/caring_companions_missouri/"  target="_blank" rel="noopener me" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a><a href="https://www.youtube.com/@caring-companions"  target="_blank" rel="noopener me" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.tiktok.com/@caringcompanionsmo"  target="_blank" rel="noopener me" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="https://www.linkedin.com/company/40670656/"  target="_blank" rel="noopener me" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.pinterest.com/caringcompanionsmissouri/"  target="_blank" rel="noopener me" aria-label="Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg></a></div>
+<p class="cc-siteftr-bottom">&copy; 2026 Caring Companions In-Home Senior Care. All rights reserved. &middot; <a href="/privacy" style="display:inline;padding:0;color:inherit;text-decoration:underline">Privacy Policy</a></p>
+</footer>
+</div>
+<script src="assets/cara-widget.js"></script>
+<script src="assets/site-events.js"></script>
+<script src="/assets/accessibility.js" defer></script>
+</body>
+</html>
