@@ -29,7 +29,7 @@
 // -----------------------------------------------------------------------------
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-import { decide } from '../_shared/knowledge-policy.js'
+import { decide, forAudience } from '../_shared/knowledge-policy.js'
 import { requireServiceOrCore } from '../_shared/require-core.js'
 
 const cors = {
@@ -103,7 +103,8 @@ Deno.serve(async (req) => {
       const { data, error } = await db.from('kb_items').select(SELECT).limit(200)
       if (error) throw error
 
-      const records = (data ?? []).map(shape)
+      // 2026-11-12: the office rulebook (Ask Cara's rules) is left out of a public search, so it cannot block a family's answer
+      const records = forAudience(data ?? [], audience).map(shape)
       const d = decide(records, question, { audience })
 
       return json({
