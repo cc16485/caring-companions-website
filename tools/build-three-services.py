@@ -6,7 +6,7 @@
 3. Care Wherever They Live -> new page services/care-wherever-they-live.html
 
 The two new pages are built from services/respite-care.html (same header, request-a-call steps, footer).
-Wording keeps to what she confirmed: we offer all three. Couples price is her word 2026-11-13 (1.5 times the rate only when both need personal care; otherwise the regular rate). No other prices, hours or promises that were not hers
+Wording keeps to what she confirmed: we offer all three. Couples price is her word 2026-11-13 (1.5 times the rate only when both need personal care; otherwise the regular rate). Facility visits use the regular rates and minimums (her word 2026-11-13). No other prices, hours or promises that were not hers
 (feeling, not policy). No caregiver is promised by name or as "the same" one.
 
 Run from the repo root: python3 tools/build-three-services.py
@@ -78,7 +78,7 @@ PAGES = [
     faqs=[
       ('Will the facility allow an outside caregiver?', 'Most welcome it. It is a good idea to let the staff know, and our caregivers follow each place\'s rules for visitors and outside caregivers.'),
       ('Is this medical care?', 'No. Our caregivers give non-medical care: company, help with meals, everyday personal help and a watchful, friendly presence. Nurses and facility staff keep doing the medical care.'),
-      ('What does it cost?', 'We go over the cost with you before anything starts. <a href="/pricing">See our rates</a>, or call (417) 234-8494 and we will talk it through.'),
+      ('What does it cost?', 'The same as care at home. Visits use our regular hourly rates, based on how much help your loved one needs: $30 an hour for Wellness Care, $32 for Personal Care and $34 for Advanced Care. Standard visits are 4 hours or more, with at least 8 hours a week. <a href="/pricing">See our rates</a>.'),
       TOWNS_Q,
     ],
     band_k='Worried they are spending too much time alone?',
