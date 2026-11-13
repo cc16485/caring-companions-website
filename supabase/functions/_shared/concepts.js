@@ -186,6 +186,9 @@ export const CONCEPTS = {
              'senior living', 'retirement home', 'retirement community', 'independent living', 'care home',
              'group home', 'facility', 'facilities', 'in the hospital', 'at the hospital', 'hospital room'],
   weekend: ['weekend', 'weekends', 'saturday', 'saturdays', 'sunday', 'sundays', 'seven days', '7 days', 'days a week'],
+  // 2026-11-12: Early Support Visits by Caring Companions (a 4-hour visit once a month or every other week, Springfield)
+  early_support: ['early support', 'early support visits', 'once a month', 'monthly', 'every other week', 'biweekly', 'bi-weekly',
+                  'twice a month', 'occasional', 'occasionally', 'now and then', 'once in a while', 'every couple of weeks'],
   sick: ['sick', 'ill', 'illness', 'calls in sick', 'call in sick', 'cannot make it', 'backup', 'back up caregiver',
          'replacement', 'replace', 'fill in', 'no show', 'does not show up', 'does not come', 'did not show up'],
   contract: ['contract', 'contracts', 'deposit', 'deposits', 'down payment', 'commitment', 'commit', 'locked in',

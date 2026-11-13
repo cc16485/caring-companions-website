@@ -355,6 +355,13 @@ export const RECORDS = [
     alt: ['Can a caregiver sit with my mom in the hospital?', 'Do you go to assisted living?', 'Can you help my dad in his nursing home?', 'Can a caregiver help with showers in a nursing home?', 'My mom lives in senior living, can you still help?'],
     answer: 'We provide care at home. If your loved one lives in assisted living or a nursing home, or is in the hospital, please call us at (417) 234-8494. What\'s possible depends on the facility\'s rules, and we\'ll talk it through with you.',
     topics: ['assisted living', 'nursing home', 'hospital', 'facility'] },
+
+  // ── 2026-11-12 (her decisions that day): Early Support Visits by Caring Companions. src S9. ─────────────────────────────
+  { id: 'K157', key: 'early_support_visits', src: 'S9', on: '2026-11-12',
+    question: 'What are Early Support Visits?',
+    alt: ['Do you offer occasional visits?', 'Can someone come once a month?', 'Can a caregiver come every other week?', 'Do you do monthly visits?', 'How much are Early Support Visits?', 'Can we have a visit now and then?'],
+    answer: 'Early Support Visits are for older adults in Springfield who are doing well at home and would like a helping hand around the house and good company now and then. A caregiver comes for a 4-hour visit once a month for $152 a visit, or every other week for $140 a visit. Before visits begin there is a one-time $99 in-home assessment and setup, billed with the first visit. See mo-care.com/early-support-visits or call (417) 234-8494.',
+    topics: ['early support', 'once a month', 'every other week', 'occasional'] },
 ]
 
 // Nothing is held. K156 (care in facilities) was held until 2026-11-06, when Samantha confirmed: "we provide care wherever
