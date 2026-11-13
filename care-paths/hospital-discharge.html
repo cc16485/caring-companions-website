@@ -184,9 +184,9 @@
 
 <div style="background:#14606F;border-radius:16px;padding:30px;margin-bottom:16px">
 <p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#F5D061;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px">Recommended Care Level</p>
-<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;margin:0 0 6px;color:#fbfaf7">Transition Care</h2>
+<h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;margin:0 0 6px;color:#fbfaf7">Personal Care</h2>
 <p style="font-size:max(15px, var(--fs-head, 0px));font-weight:600;color:#F5D061;margin:0 0 14px">Starting at $32/hour</p>
-<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.7;color:#c3cdd6;margin:0">We recommend Transition Care because it combines hands-on mobility and transfer support, medication reminders, and close monitoring, exactly the mix that reduces the risk of returning to the hospital during this window.</p>
+<p style="font-size:max(14px, var(--fs-read, 0px));line-height:1.7;color:#c3cdd6;margin:0">We recommend Personal Care because it brings hands-on help with getting around and transfers, medication reminders, and someone paying close attention during the first weeks home.</p>
 </div>
 
 <div style="background:#ffffff;border:1px solid #e4e1d8;border-radius:14px;padding:24px;margin-bottom:16px">
@@ -329,7 +329,7 @@ function onResult(state) {
   var checklist = ['Medications reconciled into one list, with follow-up appointments already scheduled', 'A clear, well-lit path to the bathroom, free of fall hazards'];
   if (alone) checklist.push('A plan for daytime coverage, since no one will be there full-time');
   if (fallsRisk) checklist.push('Extra attention to mobility support given recent falls');
-  checklist.push('A Transition Care caregiver to help bridge the first few weeks home');
+  checklist.push('A caregiver to help bridge the first few weeks home');
 
   var recoveringFrom = answers.recoveringFrom || 'a hospital stay';
   var homeSupportText = alone ? 'will be mostly alone at home' : answers.homeSupport === 'Only part of the day' ? 'has part-day support at home' : 'has around-the-clock support at home';
@@ -384,7 +384,7 @@ document.getElementById('email-send').addEventListener('click', function () {
     message: [
       'Visitor completed the Hospital Discharge planner and asked for their Recovery Plan by email.',
       'Plan summary: ' + (lastPlanSummary || 'not recorded'),
-      'Recommended: Transition Care, starting at $32/hour.',
+      'Recommended: Personal Care, starting at $32/hour.',
     ].join('\n'),
   }).then(function () {
     document.getElementById('email-capture').hidden = true;
