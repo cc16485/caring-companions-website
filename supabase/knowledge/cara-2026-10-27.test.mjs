@@ -1,7 +1,7 @@
 // Run: node supabase/knowledge/cara-2026-10-27.test.mjs
 // Real questions families and job seekers typed to Cara, plus common ones,
 // and which answer each must land on. null = she should not answer from a record.
-import { decide } from '../functions/_shared/knowledge-policy.js'
+import { decide, forAudience } from '../functions/_shared/knowledge-policy.js'
 import { RECORDS } from './cara-2026-10-27.mjs'
 
 const live = [
@@ -14,11 +14,11 @@ const live = [
 
 const kb = RECORDS.map(r => ({ id:r.id, question:r.question, alt_questions:r.alt, answer:r.answer, answer_key:r.key,
   topics:r.topics, aliases:[], phrases:[], status:'verified', audience:'public', confidence:95, version:1, verified_on:'2026-10-27' }))
-// 2026-11-12: the office rule OR27 is internal. As first loaded (step 1449) its title and topics were the same words as the
-// public K157, so the website chat held back "What are Early Support Visits?" (an internal match that ties a public one wins).
-// OR27 is now titled and tagged for the office only. It is in this test as it is stored, so a tie can't come back unnoticed.
-// Ask Cara in the Hub reads every internal rule's question and answer, so the office still gets it whatever its topics are.
-const office = [{ id:'OR27', question:'Exhibit J on the tablet', answer_key:null, topics:['exhibit j'], aliases:[], phrases:[], alt_questions:[], status:'verified', audience:'internal', confidence:100, version:1, verified_on:'2026-11-12' }]
+// 2026-11-12: the office rulebook (source S10) must never block a family's answer. On 2026-11-07 its 26 rules were loaded for
+// Ask Cara in the Hub, and because an internal match that ties a public one is withheld, the website chat brushed off "what
+// are your rates", "what is your phone number", "What services do you offer?" and overnight care. The hardest case is tested
+// here: every public answer gets an office-rulebook twin with the SAME title and topics. A public search must ignore them all.
+const office = [...live, ...kb].map(r => ({ ...r, id: 'OR-' + r.id, answer_key: null, audience: 'internal', source_id: 'S10' }))
 const all = [...live, ...kb, ...office]
 const keyOf = Object.fromEntries(all.map(r => [r.id, r.answer_key]))
 
@@ -114,9 +114,18 @@ const consistency = [
   ['no answer says "covered" about staffing or rides', !/will be covered|you are covered|guaranteed a caregiver/.test(RECORDS.map(r => r.answer).join(' '))],
 ]
 let pass = 0, fail = 0
+{ const raw = decide(all, 'what are your rates', { audience:'public' }), fixed = decide(forAudience(all, 'public'), 'what are your rates', { audience:'public' })
+  const t1 = raw.decision === 'withheld' && fixed.decision !== 'withheld'
+  t1 ? pass++ : fail++; if (!t1 || process.env.V) console.log(`${t1 ? 'ok  ' : 'FAIL'} the office rulebook blocks "what are your rates" without the filter (${raw.decision}) and not with it (${fixed.decision})`)
+  const sop = [{ id:'N-SOP', question:'What are your rates?', answer_key:null, topics:['rate','price','cost'], aliases:[], phrases:[], alt_questions:[], status:'verified', audience:'internal', source_id:'S1', confidence:95, version:1 }]
+  const kept = decide(forAudience([...live, ...kb, ...sop], 'public'), 'what are your rates', { audience:'public' })
+  const t2 = kept.decision === 'withheld'
+  t2 ? pass++ : fail++; if (!t2 || process.env.V) console.log(`${t2 ? 'ok  ' : 'FAIL'} an internal record that is NOT the office rulebook still holds a public answer back (${kept.decision})`)
+  const t3 = forAudience(all, 'internal').length === all.length
+  t3 ? pass++ : fail++; if (!t3 || process.env.V) console.log(`${t3 ? 'ok  ' : 'FAIL'} an internal (office) search still sees the rulebook`) }
 for (const [name, ok] of consistency) { ok ? pass++ : fail++; if (!ok || process.env.V) console.log(`${ok ? 'ok  ' : 'FAIL'} consistency: ${name}`) }
 for (const [q, want] of cases) {
-  const d = decide(all, q, { audience:'public' })
+  const d = decide(forAudience(all, 'public'), q, { audience:'public' })
   const got = ['ok','conflict'].includes(d.decision) ? d.records.map(r => keyOf[r.id]) : []
   const amb = d.decision === 'ambiguous' ? d.candidates.slice(0,2).map(c => keyOf[c.id]) : []
   const ok = (want||'').includes('unsure') && d.decision==='unsure' ? true : want === null ? got.length === 0 : want.split('|').some(w => got[0] === w || (amb.length && amb.includes(w)))

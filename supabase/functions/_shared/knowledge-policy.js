@@ -117,6 +117,17 @@ export function scoreRecord(record, question) {
 }
 
 /** Candidates, best first, with their evidence attached. */
+// 2026-11-12: the office rulebook (source S10, ids OR01 and up) was loaded on 2026-11-07 for Ask Cara in the Hub. Its rules
+// are short office instructions ("Calls", "Regular care") whose titles and topics tie with public answers, and a tie with an
+// internal record is withheld below. So the website chat told families "that is about how we run things on our end" when they
+// asked for rates, services, the phone number or overnight care. The rulebook is not knowledge about our services: Ask Cara
+// reads every rule itself. A public search never considers it. Other internal records (real procedures) still withhold.
+export const OFFICE_RULEBOOK_SOURCE = 'S10';
+export function forAudience(rows, audience = 'public') {
+  const all = rows || [];
+  return audience === 'public' ? all.filter((r) => r && r.source_id !== OFFICE_RULEBOOK_SOURCE) : all;
+}
+
 export function rankRecords(records, question) {
   return (records || [])
     .map((r) => ({ record: r, ...scoreRecord(r, question) }))
