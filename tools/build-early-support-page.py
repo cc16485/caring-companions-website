@@ -149,7 +149,7 @@ MAIN = f'''<main>
 <p class="big">Mom is doing well at home. Dad still manages his day. But you wish someone could stop by regularly, lend a hand, and spend a little time with them.</p>
 <p>That&rsquo;s why we created Early Support Visits.</p>
 <p>A caregiver from our team helps with everyday things while getting to know your loved one. With their permission, we&rsquo;ll let you know how each visit went.</p>
-<p>And from the first visit, your family is established with Caring Companions. You know us, we know your loved one, and there is a whole team of wonderful caregivers behind every visit. So when an extra visit would help, or more help is needed someday, you can simply ask.</p>
+<p>And you&rsquo;ll have a team that already knows your family. There may be times, maybe after a fall or an illness, when you&rsquo;re glad we&rsquo;re already here. Because you&rsquo;re established with Caring Companions and our wonderful caregivers, we can add support when it&rsquo;s needed.</p>
 </div>
 <img src="/assets/photos/scene-kitchen-coffee.webp" alt="A caregiver and an older woman laughing over coffee at the kitchen table" width="1080" height="608" loading="lazy" decoding="async">
 </section>
@@ -270,7 +270,6 @@ MAIN = f'''<main>
 <details class="esv-q"><summary>Can we take a break?</summary><p>Yes. Visits can be paused for up to 60 days. Just let the office know.</p></details>
 <details class="esv-q"><summary>What is the $99 for?</summary><p>It is a one-time assessment and setup fee. Before visits begin, we come to the home, get to know your loved one, and write a personal care plan for the caregiver. It is separate from the four-hour visits and is billed with the first visit. Your first phone conversation with us is free.</p></details>
 <details class="esv-q"><summary>Where do you offer it?</summary><p>In Springfield for now. If the home is somewhere else nearby, tell us on the form and we will let you know what we can offer.</p></details>
-<details class="esv-q"><summary>Can we add an extra visit?</summary><p>Yes, just ask. Because your loved one is already a Caring Companions client, we know them and their home, and we will do our best to arrange an extra visit with a caregiver from our team. Extra visits depend on caregiver availability and cost the same as your usual visit.</p></details>
 <details class="esv-q"><summary>What if they need more help later?</summary><p>Then we talk about it together. If your loved one starts to need help more often, or hands-on help with things like bathing or dressing, regular home care is the right fit, and we can move them over without starting from the beginning. Early Support Visits aren&rsquo;t a substitute for that kind of care. Plenty of people will never need more, and they are welcome to stay with Early Support Visits for as long as it fits.</p></details>
 </section>
 </div>
