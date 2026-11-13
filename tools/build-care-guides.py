@@ -108,7 +108,7 @@ def article(g):
     lh, lb = LOCAL[g['local']]
     toc.append(('local-help', 'Local help'))
     a.append('<h2 id="local-help">%s</h2><div class="cg-local">%s</div>' % (lh, lb))
-    a.append('<h2>What it costs</h2><p class="cg-cost">Care is $30 to $34 an hour, depending on how much hands-on help is needed. Visits are usually 4 hours or more, at least once a week, with no deposit and no long-term contract. <a href="/pricing">See our rates</a>.</p>')
+    a.append('<h2>What it costs</h2><p class="cg-cost">Care is $30 to $34 an hour, depending on how much hands-on help is needed. Visits are usually 4 hours or more, at least 8 hours a week, with no deposit and no long-term contract. <a href="/pricing">See our rates</a>.</p>')
     a.append('<div class="cg-cta"><h2>Want to talk it through?</h2><p>Call us and a real person answers, day or night. We can come to the house for a free in-home assessment and build a plan with you, with no pressure to decide anything.</p>'
              '<a class="nh-go" href="tel:14172348494">Call (417) 234-8494</a><a class="cg-light" href="/free-assessment">Request a free assessment</a></div>')
     if g['srcs']:

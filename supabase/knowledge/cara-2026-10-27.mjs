@@ -3,7 +3,6 @@
 // Samantha's standing rules (Medicaid goes to Caring Companions Consumer
 // Directed Services; never say AI; no em dashes).
 // 2026-11-07: the Booking App is no longer offered (her decision). K103 drops the app line and K120 says there is no app.
-// 2026-11-12: the weekly minimum is one 4-hour visit (her decision; it was 8 hours a week). K103.
 // Load with: node supabase/knowledge/build-sql.mjs > the migration.
 
 const CDS = 'our sister company, Caring Companions Consumer Directed Services, at (417) 218-2888 or caringcds.com'
@@ -30,7 +29,7 @@ export const RECORDS = [
   { id: 'K103', key: 'minimum_hours',
     question: 'What is the minimum number of hours?',
     alt: ['Is there a minimum?', 'How few hours can we book?', 'Can we get a short visit?', 'Do you have a weekly minimum?'],
-    answer: 'Scheduled care has a minimum of 4 hours per visit, at least once a week.',
+    answer: 'Scheduled care has a minimum of 4 hours per visit and 8 hours per week.',
     topics: ['minimum', 'hours', 'per visit', 'per week'] },
 
   { id: 'K104', key: 'medicaid',
