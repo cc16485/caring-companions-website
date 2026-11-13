@@ -6,7 +6,7 @@
 3. Care Wherever They Live -> new page services/care-wherever-they-live.html
 
 The two new pages are built from services/respite-care.html (same header, request-a-call steps, footer).
-Wording keeps to what she confirmed: we offer all three. No prices, hours or promises that were not hers
+Wording keeps to what she confirmed: we offer all three. Couples price is her word 2026-11-13 (1.5 times the rate only when both need personal care; otherwise the regular rate). No other prices, hours or promises that were not hers
 (feeling, not policy). No caregiver is promised by name or as "the same" one.
 
 Run from the repo root: python3 tools/build-three-services.py
@@ -49,7 +49,7 @@ PAGES = [
     faqs=[
       ('Can one caregiver help both of my parents?', 'Yes. At the free in-home assessment we look at what each of them needs and tell you honestly what one caregiver can do in a visit.'),
       ('What if they need different kinds of help?', 'That is very common. One may only want company and a hand with meals while the other needs help bathing and getting around. The care plan covers each of them.'),
-      ('What does care for two cost?', 'It depends on how much help each of them needs. We go over the cost with you at the free in-home assessment, before anything starts. <a href="/pricing">See our rates</a>.'),
+      ('What does care for two cost?', 'Often no more than care for one. When one of you needs personal care, the other still enjoys the cooking, cleaning and errands done for the household, at the regular hourly rate. If you both need personal care, such as help bathing and dressing, the rate is one and a half times the regular rate, not double. <a href="/pricing">See our rates</a>.'),
       TOWNS_Q,
     ],
     band_k='Not sure where to start?',
