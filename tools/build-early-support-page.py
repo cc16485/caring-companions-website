@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Builds early-support-visits.html from free-assessment.html (same header, footer, form card look).
-Early Support Visits by Caring Companions (Samantha 2026-11-12): 4-hour visits in Springfield, Nixa, Ozark and Republic.
+Early Support Visits by Caring Companions (Samantha 2026-11-12): 4-hour visits in Springfield only (her decision 2026-11-12 late; it was four towns earlier that day).
 $152 once a month, $140 every other week; $99 one-time assessment and setup fee.
 Her review of 2026-11-12 (second pass): hero "Doing fine at home? A little help can still make a big difference." (her wording, replacing "Peace of mind starts before there's a problem", which she dropped), a why-start-early section,
 family updates near the top, scheduling "we'll work together", housekeeping expectations, the $99 fee is the assessment
@@ -15,7 +15,7 @@ WEEKLY = False   # her decision pending (2026-11-12)
 
 TITLE = 'Early Support Visits | Caring Companions'
 OFTEN = 'once a month, every other week or every week' if WEEKLY else 'once a month or every other week'
-DESC = f'Doing fine at home? A little help can still make a big difference. Help around the house and good company, {OFTEN}, in Springfield, Nixa, Ozark and Republic.'
+DESC = f'Doing fine at home? A little help can still make a big difference. Help around the house and good company, {OFTEN}, in Springfield, Missouri.'
 URL = 'https://mo-care.com/early-support-visits'
 FROM = '$132' if WEEKLY else '$140'
 
@@ -32,7 +32,7 @@ s = sub1(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:tit
 s = sub1(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{DESC}">', s)
 s = sub1(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{URL}">', s)
 # Top bar: nothing about veterans or the free assessment here; one plain line about this program (her point 9).
-s = sub1(r'<div class="cc-utility-inner">.*?</div>', '<div class="cc-utility-inner esv-util"><span>Early Support Visits: now in Springfield, Nixa, Ozark and Republic</span></div>', s, flags=re.S)
+s = sub1(r'<div class="cc-utility-inner">.*?</div>', '<div class="cc-utility-inner esv-util"><span>Early Support Visits: now in Springfield</span></div>', s, flags=re.S)
 # Footer button: this program has a paid assessment, so it must not say "free assessment" (her point 9).
 s = sub1(r'<a class="book" href="#faCard">Request a Free Assessment</a>', '<a class="book" href="#faCard">Ask about Early Support Visits</a>', s)
 
@@ -104,7 +104,7 @@ MAIN = f'''<main>
 <div class="fa-intro">
 <p class="esv-prog">Early Support Visits<small>by Caring Companions</small></p>
 <h1>Doing fine at home? A little help can still make a big difference.</h1>
-<p class="esv-tag">A little help around the house. A little good company. A familiar face to count on.</p>
+<p class="esv-tag">A helping hand around the house. Good company. A familiar face to count on.</p>
 <p class="fa-lead">For older adults who are doing well at home, and for the families who love them.</p>
 <ul class="fa-facts">
 <li>{CHECK}<span><b>Help and good company, without weekly home care.</b> {often_fact}</span></li>
@@ -125,7 +125,7 @@ MAIN = f'''<main>
 <label class="fa-f"><span>Phone</span><input id="faPhone" type="tel" autocomplete="tel" inputmode="tel"></label>
 <label class="fa-f"><span>Email <span class="fa-opt">(optional)</span></span><input id="faEmail" type="email" autocomplete="email"></label>
 <div class="fa-f"><span id="faWhoL">Who are the visits for?</span><div class="fa-chips" role="group" aria-labelledby="faWhoL" data-pick="who"><button type="button" aria-pressed="false">My parent</button><button type="button" aria-pressed="false">My spouse</button><button type="button" aria-pressed="false">Myself</button><button type="button" aria-pressed="false">Someone else</button></div></div>
-<div class="fa-f"><span id="faTownL">Which town?</span><div class="fa-chips" role="group" aria-labelledby="faTownL" data-pick="town"><button type="button" aria-pressed="false">Springfield</button><button type="button" aria-pressed="false">Nixa</button><button type="button" aria-pressed="false">Ozark</button><button type="button" aria-pressed="false">Republic</button><button type="button" aria-pressed="false">Somewhere else</button></div></div>
+<div class="fa-f"><span id="faTownL">Where is the home?</span><div class="fa-chips" role="group" aria-labelledby="faTownL" data-pick="town"><button type="button" aria-pressed="false">Springfield</button><button type="button" aria-pressed="false">Somewhere else</button></div></div>
 <div class="fa-f"><span id="faOftenL">How often sounds right?</span><div class="fa-chips" role="group" aria-labelledby="faOftenL" data-pick="often">{chips}</div></div>
 <label class="fa-f"><span>Anything we should know? <span class="fa-opt">(optional)</span></span><textarea id="faNote"></textarea></label>
 <label class="fa-consent"><input type="checkbox" id="faTexts"><span>By checking this box, I agree to receive text messages from Caring Companions In-Home Senior Care at the number above about my questions and care, including assessment reminders and care updates. Message frequency varies. Message and data rates may apply. Reply STOP to stop, HELP for help. Agreeing is not required to receive care. See our <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
@@ -209,9 +209,9 @@ MAIN = f'''<main>
 <div class="esv-box">
 <h3>Before the first visit: a one-time $99 assessment and setup</h3>
 <p>Before visits begin, someone from our office comes to the home to get to know your loved one, their home, how they like things done, anything to keep in mind for safety, and what they would like help with. From that we write a personal care plan for the caregiver.</p>
-<p>The $99 is for that assessment and setup. It is separate from the four-hour visits.</p>
+<p>The $99 is for that assessment and setup. It is separate from the four-hour visits, and it is billed with your first visit, so there is nothing to pay at the assessment.</p>
 </div>
-<p class="esv-note">Early Support Visits are private pay, with no long-term contract. Offered in Springfield, Nixa, Ozark and Republic.</p>
+<p class="esv-note">Early Support Visits are private pay, with no long-term contract. Each visit is billed on that week&rsquo;s invoice. Offered in Springfield.</p>
 </section>
 </div>
 
@@ -268,8 +268,8 @@ MAIN = f'''<main>
 <details class="esv-q"><summary>How do we pick the day?</summary><p>We&rsquo;ll work together to find a regular visit day and time that fits your schedule and our caregiver availability.</p></details>
 <details class="esv-q"><summary>What if we need to move or skip a visit?</summary><p>With at least 24 hours&rsquo; notice, we&rsquo;ll move it at no charge. With less than 24 hours&rsquo; notice, the visit is billed at 2 hours.</p></details>
 <details class="esv-q"><summary>Can we take a break?</summary><p>Yes. Visits can be paused for up to 60 days. Just let the office know.</p></details>
-<details class="esv-q"><summary>What is the $99 for?</summary><p>It is a one-time assessment and setup fee. Before visits begin, we come to the home, get to know your loved one, and write a personal care plan for the caregiver. It is separate from the four-hour visits. Your first phone conversation with us is free.</p></details>
-<details class="esv-q"><summary>Where do you offer it?</summary><p>Springfield, Nixa, Ozark and Republic.</p></details>
+<details class="esv-q"><summary>What is the $99 for?</summary><p>It is a one-time assessment and setup fee. Before visits begin, we come to the home, get to know your loved one, and write a personal care plan for the caregiver. It is separate from the four-hour visits and is billed with the first visit. Your first phone conversation with us is free.</p></details>
+<details class="esv-q"><summary>Where do you offer it?</summary><p>In Springfield for now. If the home is somewhere else nearby, tell us on the form and we will let you know what we can offer.</p></details>
 <details class="esv-q"><summary>What if they need more help later?</summary><p>Then we talk about it together. If your loved one starts to need help more often, or hands-on help with things like bathing or dressing, regular home care is the right fit, and we can move them over without starting from the beginning. Early Support Visits aren&rsquo;t a substitute for that kind of care. Plenty of people will never need more, and they are welcome to stay with Early Support Visits for as long as it fits.</p></details>
 </section>
 </div>
@@ -307,7 +307,7 @@ SCRIPT = '''<script>
     if (!val('faFirst')) return fail('Please add your first name.', 'faFirst');
     if (!val('faLast')) return fail('Please add your last name.', 'faLast');
     if (val('faPhone').replace(/\\D/g, '').replace(/^1/, '').length !== 10) return fail('Please add a 10 digit phone number so we can call you.', 'faPhone');
-    if (!pick.town) return fail('Please pick the town where the visits would be.');
+    if (!pick.town) return fail('Please tell us where the home is.');
     if (!window.CCForms) return fail('This did not go through. Please call us at <a href="tel:14172348494">(417) 234-8494</a>.');
     send.disabled = true; send.textContent = 'Sending...';
     var texts = document.getElementById('faTexts').checked;
