@@ -301,6 +301,29 @@ SCRIPT = '''<script>
     });
   });
   function val(id) { return document.getElementById(id).value.trim(); }
+  /* How they found us (2026-11-13, her ask: see which post or ad brought each inquiry). Reads the channel that
+     site-events.js keeps for this tab (a tagged link like ?from=esv-min-fb wins, else the site they came from), and
+     falls back to the link tag on this page. A channel or post name only, never anything about the person. */
+  var PIECE = { post1: "the announcement post", post2: "the what-a-visit-looks-like post", post3: "the yes-we-clean post",
+    post4: "the is-it-for-me post", post5: "the price post", post6: "the sons-and-daughters post", post7: "the post for professionals",
+    min: "the agency-minimums post", "8hrs": "the don't-need-8-hours post", reel1: "reel 1", reel2: "reel 2", reel3: "reel 3", reel4: "reel 4",
+    video: "the longer video", famemail: "the email to current families", partneremail: "the email to referral partners", handout: "the handout" };
+  var PLACE = { fb: "Facebook", ig: "Instagram", li: "LinkedIn", gbp: "Google", nd: "Nextdoor", yt: "YouTube", tt: "TikTok", pin: "Pinterest", ad: "a paid ad" };
+  var CHANNEL = { facebook: "Facebook", instagram: "Instagram", google: "a Google search", youtube: "YouTube", nextdoor: "Nextdoor",
+    other_search: "a web search", other_site: "another website", direct: "came straight to the website" };
+  function howFound() {
+    var tag = "";
+    try { tag = sessionStorage.getItem("cc-from") || ""; } catch (e) {}
+    if (!tag) { try { var q = new URLSearchParams(location.search); tag = String(q.get("from") || q.get("utm_source") || "").toLowerCase(); } catch (e) {} }
+    tag = tag.replace(/[^a-z0-9_-]/g, "").slice(0, 32);
+    if (!tag) return "not known";
+    if (tag.indexOf("esv-") === 0) {
+      var parts = tag.slice(4).split("-"), piece = PIECE[parts[0]], place = PLACE[parts[1]];
+      if (piece) return piece + (place ? " on " + place : "") + " (link tag " + tag + ")";
+      return "an Early Support link (link tag " + tag + ")";
+    }
+    return CHANNEL[tag] || tag;
+  }
   function fail(msg, id) { err.innerHTML = msg; err.classList.add('on'); send.disabled = false; send.textContent = LABEL; if (id) document.getElementById(id).focus(); }
   form.addEventListener('submit', function (e) {
     e.preventDefault(); err.classList.remove('on');
@@ -316,7 +339,8 @@ SCRIPT = '''<script>
       ' Town: ' + pick.town + '.' +
       ' How often: ' + (pick.often || 'not given') + '.' +
       (val('faNote') ? ' They wrote: ' + val('faNote') : '') +
-      ' Agreed to text messages: ' + (texts ? 'yes' : 'no') + '.';
+      ' Agreed to text messages: ' + (texts ? 'yes' : 'no') + '.' +
+      ' How they found us: ' + howFound() + '.';
     window.CCForms.submitLead({ name: val('faFirst') + ' ' + val('faLast'), phone: val('faPhone'), email: val('faEmail'), care_for: pick.who, message: msg })
       .then(function () {
         card.classList.add('sent');
