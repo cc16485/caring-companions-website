@@ -2,7 +2,7 @@
 """Builds early-support-visits.html from free-assessment.html (same header, footer, form card look).
 Early Support Visits by Caring Companions (Samantha 2026-11-12): 4-hour visits in Springfield, Nixa, Ozark and Republic.
 $152 once a month, $140 every other week; $99 one-time assessment and setup fee.
-Her review of 2026-11-12 (second pass): hero "Peace of mind starts before there's a problem", a why-start-early section,
+Her review of 2026-11-12 (second pass): hero "Doing fine at home? A little help can still make a big difference." (her wording, replacing "Peace of mind starts before there's a problem", which she dropped), a why-start-early section,
 family updates near the top, scheduling "we'll work together", housekeeping expectations, the $99 fee is the assessment
 and not a visit, no veterans bar, no "free assessment" wording on this page, the story is not signed as her quote.
 WEEKLY: she is deciding whether an every-week option ($132) launches. False = two options (my recommendation).
@@ -15,7 +15,7 @@ WEEKLY = False   # her decision pending (2026-11-12)
 
 TITLE = 'Early Support Visits | Caring Companions'
 OFTEN = 'once a month, every other week or every week' if WEEKLY else 'once a month or every other week'
-DESC = f'Peace of mind starts before there is a problem. A little help around the house and good company, {OFTEN}, in Springfield, Nixa, Ozark and Republic.'
+DESC = f'Doing fine at home? A little help can still make a big difference. Help around the house and good company, {OFTEN}, in Springfield, Nixa, Ozark and Republic.'
 URL = 'https://mo-care.com/early-support-visits'
 FROM = '$132' if WEEKLY else '$140'
 
@@ -103,7 +103,7 @@ MAIN = f'''<main>
 <section class="fa-wrap">
 <div class="fa-intro">
 <p class="esv-prog">Early Support Visits<small>by Caring Companions</small></p>
-<h1>Peace of mind starts before there&rsquo;s a problem.</h1>
+<h1>Doing fine at home? A little help can still make a big difference.</h1>
 <p class="esv-tag">A little help around the house. A little good company. A familiar face to count on.</p>
 <p class="fa-lead">For older adults who are doing well at home, and for the families who love them.</p>
 <ul class="fa-facts">
