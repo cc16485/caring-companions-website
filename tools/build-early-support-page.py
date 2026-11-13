@@ -149,7 +149,7 @@ MAIN = f'''<main>
 <p class="big">Mom is doing well at home. Dad still manages his day. But you wish someone could stop by regularly, lend a hand, and spend a little time with them.</p>
 <p>That&rsquo;s why we created Early Support Visits.</p>
 <p>A caregiver from our team helps with everyday things while getting to know your loved one. With their permission, we&rsquo;ll let you know how each visit went.</p>
-<p>And if their needs change someday, you&rsquo;ll already know a care team, and they&rsquo;ll already know you.</p>
+<p>And you&rsquo;ll have a team that already knows your family. There may be times, maybe after a fall or an illness, when you&rsquo;re glad we&rsquo;re already here. Because you&rsquo;re established with Caring Companions and our wonderful caregivers, we can add support when it&rsquo;s needed.</p>
 </div>
 <img src="/assets/photos/scene-kitchen-coffee.webp" alt="A caregiver and an older woman laughing over coffee at the kitchen table" width="1080" height="608" loading="lazy" decoding="async">
 </section>
