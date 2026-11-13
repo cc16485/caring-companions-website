@@ -226,6 +226,15 @@
 @media (max-width: 719px) { .hp .cg-meet, .hp .hp-team, .hp #decision-center, .hp #library, .hp #reviews, .hp .hp-cta-section, .hp .hp-hiring { padding-top: 32px; padding-bottom: 32px; } .hp #advisor, .hp .cg-band, .hp .hp-section-dark { padding-top: 44px; padding-bottom: 44px; } .hp .cg-meet { padding-top: 40px; } .hp #decision-center { padding-bottom: 44px; } }
 .nh-medicaid { font-size: max(15px, var(--fs-read, 0px)); line-height: 1.6; color: var(--ink); margin: 14px 0 0; }
 .nh-medicaid a { font-weight: 600; color: var(--brand-blue); }
+.hp-esv { display:flex; align-items:center; gap:24px; margin:26px 0 0; padding:26px 28px; background:#fff; border:1px solid var(--border); border-left:5px solid #FFC671; border-radius:16px; box-shadow:0 8px 22px rgba(14,56,96,.07); }
+.hp-esv-copy { flex:1; }
+.hp-esv-k { font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0 0 6px; }
+.hp-esv h3 { font-family:var(--serif); font-size:26px; line-height:1.2; color:var(--brand-blue); margin:0 0 8px; font-weight:600; }
+.hp-esv-h { font-size:max(18px, var(--fs-read, 0px)); line-height:1.5; font-weight:600; color:var(--ink); margin:0 0 6px; }
+.hp-esv-p { font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.6; color:var(--ink); margin:0; }
+.hp-esv-go { flex:none; background:#0D365F; color:#fff; font-weight:700; font-size:17px; padding:14px 22px; border-radius:12px; text-decoration:none; white-space:nowrap; }
+.hp-esv-go:hover { background:#14606F; color:#fff; text-decoration:none; }
+@media (max-width:860px) { .hp-esv { flex-direction:column; align-items:flex-start; padding:22px 18px; gap:16px; } .hp-esv h3 { font-size:23px; } .hp-esv-go { width:100%; text-align:center; box-sizing:border-box; } }
 .hp-vet { background:linear-gradient(135deg,#0D365F 0%,#14606F 100%); }
 .hp-vet-in { max-width:1100px; margin:0 auto; padding:30px 24px; display:flex; align-items:center; gap:22px; box-sizing:border-box; }
 .hp-vet-ic { flex:none; width:58px; height:58px; border-radius:50%; background:rgba(255,255,255,.12); color:#FFC671; display:flex; align-items:center; justify-content:center; }
@@ -738,6 +747,15 @@
 <a class="nh-card" href="/services/respite-care"><span class="nh-ic c5"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 24s-8-4.8-8-10.4A4.4 4.4 0 0 1 16 11a4.4 4.4 0 0 1 8 2.6C24 19.2 16 24 16 24z"/><path d="M4 22c2 0 4 1 6 3h8l7-4c1.2-.7 2.6.9 1.6 2L21 28H9"/></svg></span><span><h3>Respite Care</h3><p>A break for family caregivers, planned ahead or when you need it most.</p></span></a>
 <a class="nh-card" href="/guides/hospital-discharge"><span class="nh-ic c2"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 27V9l8-4v22"/><path d="M12 12h6v15"/><path d="M8 11v2M8 16v2"/><path d="M19 20l4-4 4 4M20 19v8h6v-8"/></svg></span><span><h3>Coming Home From the Hospital</h3><p>Help settling back in after surgery, a hospital stay or rehab, so recovery goes smoothly.</p></span></a>
 </div>
+<aside class="hp-esv" aria-label="Early Support Visits">
+<div class="hp-esv-copy">
+<p class="hp-esv-k">New &middot; A visit now and then</p>
+<h3>Early Support Visits by Caring Companions</h3>
+<p class="hp-esv-h">Doing fine at home? A little help can still make a big difference.</p>
+<p class="hp-esv-p">A helping hand around the house. Good company. A familiar face to count on. Visits once a month or every other week, in Springfield.</p>
+</div>
+<a href="/early-support-visits" class="hp-esv-go">See how it works &rarr;</a>
+</aside>
 <div class="nh-pay"><b>Ways to pay:</b><span class="nh-chip">Private pay</span><span class="nh-chip">Long-term care insurance</span><span class="nh-chip">Medicare GUIDE</span><span class="nh-chip">VA Aid &amp; Attendance</span><a href="/our-services" style="font-weight:700;margin-left:6px">All services and pricing &rarr;</a></div>
 <p class="nh-medicaid">On MO HealthNet (Medicaid)? Our sister company, Caring Companions CDS, can help through Missouri&rsquo;s Consumer Directed Services program, where you choose your caregiver: someone you already know, or someone we help you find. <a href="https://caringcds.com">caringcds.com</a> or <a href="tel:14172182888">(417) 218-2888</a></p>
 </section>
@@ -771,7 +789,7 @@ Your browser cannot play this video. Call us at (417) 234-8494 and we will walk 
 <div class="nh-faq">
 <details><summary>How much does care cost?</summary><p>$30, $32 or $34 an hour, depending on the level of care: Wellness Care, Personal Care or Advanced Care. We'll recommend the right level together at the visit. Your rate is written in your agreement, and we give at least 4 weeks' written notice before any change.</p></details>
 <details><summary>Is there a deposit or a long-term contract?</summary><p>No deposit and no long-term contract. You're billed weekly, after the visits have happened, from your caregiver's actual clock-in and clock-out times. You can stop care when you need to.</p></details>
-<details><summary>Is there a minimum?</summary><p>Our standard visit is at least 4 hours, with at least 8 hours a week. Need a shorter visit? Please ask. When a caregiver is available for a shorter shift, we will work to make it happen, with an extra $5 an hour for visits under 4 hours. Shorter visits depend on staffing, so we cannot promise them every time.</p></details>
+<details><summary>Is there a minimum?</summary><p>Our standard visit is at least 4 hours, with at least 8 hours a week. Need a shorter visit? Please ask. When a caregiver is available for a shorter shift, we will work to make it happen, with an extra $5 an hour for visits under 4 hours. Shorter visits depend on staffing, so we cannot promise them every time. Want a visit now and then instead? See <a href="/early-support-visits">Early Support Visits</a>, offered in Springfield.</p></details>
 <details><summary>Is the assessment free? Do we have to decide that day?</summary><p>Yes, it's free, and there's no obligation. We listen, answer your questions and leave you everything in writing. Take the time you need.</p></details>
 <details><summary>Will we have the same caregiver each visit?</summary><p>Yes, that's how we set up care. Your loved one has their own caregiver on a set, consistent schedule, or a small caregiver team when the schedule needs more than one person. A familiar face builds trust, and a caregiver who knows the routines is more likely to notice when something is off. When your caregiver is sick or takes time off, one of our fill-in caregivers or CNAs covers the visit. We try to send the same fill-in each time too, so even the backup is someone they know.</p></details>
 <details><summary>Will we know who's coming?</summary><p>Always. Before the first visit, we send your caregiver's profile with a friendly photo, and your regular caregiver keeps coming on a set schedule. If someone has to fill in, such as when your caregiver is sick, the family members you choose get a text with that caregiver's profile.</p></details>
