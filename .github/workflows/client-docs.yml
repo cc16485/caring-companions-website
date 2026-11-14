@@ -1,0 +1,53 @@
+# Keep the Client Care Agreement (sample) and the Client Handbook on mo-care.com current.
+#
+# Samantha, 2026-11-13: "make sure the client agreement and client handbook is always current."
+# The Hub publishes the real ones (cc.mo-care.com/client-folders). Every morning this reads them and, when either has
+# changed, rewrites the website copy (the agreement gets the yellow "sample for reading only" band) and publishes it.
+# Nobody has to remember to update the website after the agreement or handbook changes.
+name: Keep client documents current
+
+on:
+  schedule:
+    - cron: '41 11 * * *'     # every morning, about 5:40 Central
+  workflow_dispatch:           # and a button, for right after a new agreement or handbook goes out
+  push:
+    branches: [main]
+    paths:
+      - 'tools/build-client-docs.py'
+      - '.github/workflows/client-docs.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: client-docs
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the PDF library
+        run: pip install --quiet pymupdf
+
+      - name: Bring the two documents up to date
+        run: python3 tools/build-client-docs.py
+
+      - name: Publish whatever changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Both documents are current, nothing to publish."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/docs '*.html'
+          git commit -m "Client documents: the website copies brought up to date with the Hub"
+          git pull --rebase
+          git push
