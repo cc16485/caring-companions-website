@@ -1,0 +1,16 @@
+{
+  "agreement": {
+    "source": "https://cc.mo-care.com/client-folders/18-client-care-agreement.pdf",
+    "source_sha256": "1137e7e60865b671276bc0a252742e1757a7690f22c835113b367ba45c1b1d1f",
+    "pages": 26,
+    "updated": "20261113",
+    "website_file": "assets/docs/caring-companions-client-care-agreement-sample.pdf"
+  },
+  "handbook": {
+    "source": "https://cc.mo-care.com/client-folders/16-client-handbook.pdf",
+    "source_sha256": "465521400bf3a0a8239f5b74c7ef43817d6ec8d4ab3f4eb8a41c4f525b4c43b9",
+    "pages": 23,
+    "updated": "20261113",
+    "website_file": "assets/docs/caring-companions-client-handbook.pdf"
+  }
+}
