@@ -47,7 +47,7 @@ export const RECORDS = [
   { id: 'K106', key: 'medicare_guide',
     question: 'Does Medicare pay for home care?',
     alt: ['What is the Medicare GUIDE program?', 'Does Medicare cover dementia respite?', 'Can Medicare pay for a caregiver?'],
-    answer: 'The Medicare program we work with is GUIDE, for people living with dementia at home. Families further along in the disease can get 20 four-hour respite visits a year, billed to Medicare. Medicare decides who qualifies. Caring Companions is an approved GUIDE respite provider in southwest Missouri. Call (417) 234-8494 and we will check eligibility with you.',
+    answer: 'The Medicare program we work with is GUIDE, for people living with dementia at home. Families further along in the disease can get 19 four-hour respite visits a year (76 hours), billed to Medicare. Medicare decides who qualifies. Caring Companions is an approved GUIDE respite provider in southwest Missouri. Call (417) 234-8494 and we will check eligibility with you.',
     topics: ['medicare', 'guide', 'dementia', 'respite'] },
 
   { id: 'K107', key: 'va_benefits',
