@@ -55,6 +55,12 @@
   }
   window.CCForms = {
     markSent: markSent,
+    /* 2026-11-15: which professional partner a link code belongs to ({ ok, name, type }), so the referral form can fill in
+       their organization and type. Reads nothing else; saves nothing. */
+    lookupPartner: function (code) {
+      return fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'partner_lookup', code: String(code || '') }) })
+        .then(function (r) { return r.ok ? r.json() : { ok: false }; }).catch(function () { return { ok: false }; });
+    },
     // fields: { name, phone, email, message, care_for }, all optional,
     // but at least one of name/phone/email must be present.
     submitLead: function (fields) {
