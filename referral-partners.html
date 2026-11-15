@@ -349,8 +349,14 @@ document.getElementById('r-submit').addEventListener('click', function () {
      separately as the referrer, so your own number is never filed as the family's. Nothing is sent to you automatically. */
   btn.disabled = true;
   btn.textContent = 'Submitting…';
+  /* 2026-11-15: a partner who came from their own link in our emails (?p=THEIRCODE) is credited for this referral. Only
+     this form uses it: it is not remembered on the device, so nothing else they fill in later is tagged with it. */
+  var urlCode = '';
+  try { urlCode = (new URLSearchParams(location.search).get('p') || '').trim().toUpperCase(); } catch (e) {}
+  if (!/^[A-Z0-9-]{3,20}$/.test(urlCode)) urlCode = '';
   CCForms.submitLead({
     kind: 'professional_referral',
+    partner_code: urlCode || undefined,
     referrer_name: name,
     referrer_org: org,
     referrer_type: partnerId,
