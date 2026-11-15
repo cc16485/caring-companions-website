@@ -26,7 +26,7 @@ const CHECK = process.argv.includes('--check');
 
 /* The audiences the autopilot knows how to reach. Anything else would sit in
    the file looking published and never send to a soul. */
-const AUDIENCES = new Set(['monthly', 'clients', 'client_contacts', 'caregivers', 'referrers']);
+const AUDIENCES = new Set(['monthly', 'clients', 'client_contacts', 'caregivers', 'referrers', 'va']);
 
 /* The design file holds four arrays, not one, and they do not carry the two
    fields the sender needs. Audience is implied by which array an email is in,
@@ -45,6 +45,8 @@ const ARRAYS = [
   { name: '_e',  aud: 'monthly',    key: e => 'm' + e.id },
   { name: '_cg', aud: 'caregivers', key: e => 'g' + e.id },
   { name: '_r',  aud: 'referrers',  key: e => 'r' + e.id },
+  /* the VA series (2026-11-14): twelve guides for GoHighLevel contacts tagged "va lead", keys v1 to v12 */
+  { name: '_va', aud: 'va',         key: e => 'v' + e.id },
 ];
 
 /* The array is a JavaScript literal, not JSON: it references the shared
