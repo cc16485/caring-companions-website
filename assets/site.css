@@ -415,6 +415,18 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
 }
 .cc-feat-note { display: block; font-size: max(11.5px, var(--fs-min, 0px)); line-height: 1.5; color: var(--muted); padding: 0 12px 6px; }
 
+/* Medicare GUIDE box in the Ways to Pay menu: one card that reads as an
+   invitation (need first, three reasons, a button) instead of a bare link. */
+.cc-col.cc-feat.cc-feat-mc { width: 286px; padding: 12px 8px 8px; }
+.cc-dropdown a.cc-mc { white-space: normal; padding: 6px 12px 12px; }
+.cc-mc-h { display: block; font-family: var(--serif); font-size: 19px; font-weight: 600; line-height: 1.25; color: var(--brand-blue); }
+.cc-mc-p { display: block; font-size: max(13.5px, var(--fs-read, 0px)); font-weight: 400; line-height: 1.5; color: var(--ink-2); margin-top: 8px; }
+.cc-mc-li { display: block; position: relative; padding-left: 22px; font-size: max(13.5px, var(--fs-read, 0px)); font-weight: 500; line-height: 1.4; color: var(--ink-2); margin-top: 7px; }
+.cc-mc-p + .cc-mc-li { margin-top: 12px; }
+.cc-mc-li::before { content: ""; position: absolute; left: 3px; top: 3px; width: 6px; height: 10px; border: solid var(--cta); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.cc-mc-btn { display: inline-block; margin-top: 14px; background: var(--cta); color: #fff; border-radius: 8px; padding: 10px 16px; font-size: 14.5px; font-weight: 600; line-height: 1.2; }
+a.cc-mc:hover .cc-mc-btn { background: var(--cta-hover); }
+
 @media (max-width: 1100px) {
   /* stacked in the burger menu: the column headers become section labels */
   .cc-mega { width: auto; max-width: none; padding: 0; }
@@ -431,6 +443,8 @@ a.cc-lvl:hover .cc-lvl-n { transform: scale(1.08); }
   .cc-col.cc-feat .cc-colh { background: #f1ede1; }
   .cc-feat-tel { padding: 11px 24px !important; font-size: 17px !important; border-top: 1px solid #efece3; }
   .cc-feat-note { padding: 0 24px 12px; }
+  .cc-col.cc-feat.cc-feat-mc { width: auto; padding: 0; }
+  .cc-dropdown a.cc-mc { padding: 14px 24px 18px; }
 }
 
 /* ---------- Utility bar: the phone at full contrast, above everything ----------
