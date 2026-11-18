@@ -36,6 +36,18 @@
   .ap-quick{font-size:max(13px, var(--fs-min, 0px));color:#1c6b45;font-weight:600;}
 
   .ap-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;margin:14px 0 0;}
+  /* 11-18 (Samantha: "make sure they get the choice of prescreener"): a bare /apply asks which job first */
+  #pickView{display:none;}
+  .pk-h{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--brand-blue);margin:22px 0 4px;}
+  .pk-sub{color:var(--muted);font-size:max(15px, var(--fs-min, 0px));margin:0 0 14px;line-height:1.5;}
+  .pk-list{display:grid;gap:10px;}
+  .pk-btn{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:16px 18px;cursor:pointer;font:inherit;color:var(--ink);transition:border-color .15s ease, box-shadow .15s ease;}
+  .pk-btn:hover,.pk-btn:focus-visible{border-color:var(--accent);box-shadow:0 4px 14px rgba(13,54,95,.08);outline:none;}
+  .pk-btn b{display:block;font-size:max(17px, var(--fs-min, 0px));color:var(--brand-blue);}
+  .pk-btn small{display:block;color:var(--muted);font-size:max(14px, var(--fs-min, 0px));margin-top:3px;line-height:1.45;}
+  .pk-btn .pk-pay{margin-left:auto;white-space:nowrap;font-weight:700;color:var(--accent);font-size:max(15px, var(--fs-min, 0px));}
+  .pk-btn .pk-go{color:var(--accent);font-size:20px;flex:none;}
+  @media(max-width:560px){ .pk-btn{flex-wrap:wrap;} .pk-btn .pk-pay{margin-left:0;} .pk-btn .pk-go{display:none;} }
   label.f{display:block;font-size:15px;font-weight:600;color:var(--ink-2);margin:16px 0 6px;line-height:1.4;}
   label.f:first-child{margin-top:0;}
   label.f .opt{font-weight:400;color:var(--muted);font-size:max(13.5px, var(--fs-min, 0px));}
@@ -102,6 +114,11 @@
 </div>
 
 <div class="ap-wrap">
+ <div id="pickView" aria-live="polite">
+  <h2 class="pk-h">Which job are you applying for?</h2>
+  <p class="pk-sub">Pick one so we ask you the right questions. Not sure? Choose Caregiver.</p>
+  <div class="pk-list" id="pickList"></div>
+ </div>
  <div id="formView">
   <div class="ap-posline" id="posLine"></div>
   <div class="ap-posline" id="resumeNote" role="status"><b>Welcome back.</b> Just a few questions left, then you can pick your interview time.</div>
@@ -511,6 +528,38 @@ async function prnSave(patch, ack){
 }
 
 if (POSITION && !JOB) loadRoleQuestions();
+
+/* 11-18 (Samantha: "in the apply now i want to make sure they get the choice of prescreener"). Somebody who opens
+   /apply with no job and no role (the Apply Now buttons and menu) picks the job first, so they get that role's own
+   pre-screener instead of the Caregiver one by default. The list is the Missouri roles switched on in Recruit, in
+   Recruit's order, so turning a role off there takes it off here too. Picking one reopens the page with ?position=,
+   keeping any other link details (where they came from, a referral code). If the list cannot load, the regular
+   Caregiver application shows, exactly as before. */
+const NEEDS_PICK = !JOB && !POSITION_HINT && !P.get('book') && !P.get('preview');
+async function showJobPicker(){
+  try {
+    const { data, error } = await sb.from('job_positions')
+      .select('key,label,blurb,pay_min,pay_max,pay_unit,office,sort,active').eq('active', true).order('sort');
+    const roles = (data || []).filter(r => r && r.key && r.label && (r.office || 'MO') === 'MO');
+    if (error || roles.length < 2) { g('formView').style.display = ''; return; }
+    const per = u => ({ HOUR:' an hour', DAY:' a day', WEEK:' a week', YEAR:' a year' }[u || 'HOUR'] || ' an hour');
+    const money = v => '$' + Number(v).toFixed(2).replace(/\.00$/, '');
+    g('pickList').innerHTML = roles.map(r => {
+      const pay = r.pay_min ? money(r.pay_min) + (r.pay_max && Number(r.pay_max) > Number(r.pay_min) ? '–' + money(r.pay_max) : '') + per(r.pay_unit) : '';
+      return '<button type="button" class="pk-btn" data-key="' + esc(r.key) + '"><span><b>' + esc(r.label) + '</b>'
+        + (r.blurb ? '<small>' + esc(r.blurb) + '</small>' : '') + '</span>'
+        + (pay ? '<span class="pk-pay">' + pay + '</span>' : '') + '<span class="pk-go" aria-hidden="true">&rsaquo;</span></button>';
+    }).join('');
+    g('pickList').onclick = e => {
+      const b = e.target.closest('.pk-btn'); if (!b) return;
+      const q = new URLSearchParams(location.search); q.set('position', b.dataset.key);
+      location.assign(location.pathname + '?' + q.toString() + location.hash);
+    };
+    g('formView').style.display = 'none';
+    g('pickView').style.display = 'block';
+  } catch (e) { g('formView').style.display = ''; /* the Caregiver application shows, as before */ }
+}
+if (NEEDS_PICK) { g('formView').style.display = 'none'; showJobPicker(); }
 
 /* PREVIEW (2026-10-11, Samantha: "can you put the pre-screener all 2-3 pages so we can see a preview on the recruit
    tab"). ?preview=1 shows every page at once, exactly as the role asks it, and nothing can be saved or sent from it:
