@@ -395,6 +395,13 @@ const SUPA_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn
 const sb = window.supabase.createClient(SUPA_URL, SUPA_ANON);
 const P = new URLSearchParams(location.search);
 const JOB = P.get('job') || '';
+/* 11-18: the job pages ask "When are you usually free?" and send ?days=mon,tue&times=evening. PRN roles tick the
+   same chips (prnSetup); other roles get it written into "When can you work?" so they can edit it. */
+const PICK_DAYS = (P.get('days') || '').split(',').filter(v => /^(mon|tue|wed|thu|fri|sat|sun)$/.test(v));
+const PICK_TIMES = (P.get('times') || '').split(',').filter(v => /^(morning|daytime|evening|overnight)$/.test(v));
+const PICK_LABEL = { mon:'Mon', tue:'Tue', wed:'Wed', thu:'Thu', fri:'Fri', sat:'Sat', sun:'Sun', morning:'mornings', daytime:'daytime', evening:'evenings', overnight:'overnights' };
+const PICK_TEXT = [PICK_DAYS.map(v => PICK_LABEL[v]).join(', '), PICK_TIMES.map(v => PICK_LABEL[v]).join(', ')].filter(Boolean).join(' · ');
+if (PICK_TEXT && document.getElementById('avail') && !document.getElementById('avail').value) document.getElementById('avail').value = PICK_TEXT;
 /* ?position= lets a role be previewed without a live posting behind it, which
    is how the office checks what each screener asks. */
 const POSITION_HINT = P.get('position') || '';
@@ -490,7 +497,7 @@ const PRN_INTERESTS = [['calloffs','Call-offs and same-day shifts'],['evenings',
                        ['short','Short shifts'],['long','Long shifts'],['multiday','Temporary multi-day coverage']];
 const esc = t => String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const prnChips = (k, list, multi) => '<div class="chips' + (k === 'interests' ? ' stack' : '') + '">' + list.map(([v, l]) =>
-  '<button type="button" onclick="prnPick(this,\'' + k + '\',\'' + v + '\',' + (multi ? 1 : 0) + ')">' + esc(l) + '</button>').join('') + '</div>';
+  '<button type="button" data-pk="' + k + '" data-pv="' + v + '" onclick="prnPick(this,\'' + k + '\',\'' + v + '\',' + (multi ? 1 : 0) + ')">' + esc(l) + '</button>').join('') + '</div>';
 function prnPick(btn, k, v, multi){
   if (multi) {
     const on = !btn.classList.contains('on'); btn.classList.toggle('on', on);
@@ -529,6 +536,12 @@ function prnSetup(role){
     + '<label class="f">Times of day</label>' + prnChips('times', PRN_TIMES, true)
     + '<label class="f">How much notice do you need?</label>' + prnChips('notice', PRN_NOTICE, false)
     + '<label class="f">What are you interested in? <span class="opt">(optional)</span></label>' + prnChips('interests', PRN_INTERESTS, true);
+  /* 11-18: tick what they picked on the job page, and take it back out of the free-text box. */
+  [['days', PICK_DAYS], ['times', PICK_TIMES]].forEach(([k, vals]) => vals.forEach(v => {
+    const b = g('prnAvail').querySelector('button[data-pk="' + k + '"][data-pv="' + v + '"]');
+    if (b && !b.classList.contains('on')) prnPick(b, k, v, 1);
+  }));
+  if (PICK_TEXT && g('avail').value === PICK_TEXT) g('avail').value = '';
   g('availLabel').innerHTML = 'Anything else about when you can work? <span class="opt">(optional)</span>';
   g('availSub').textContent = 'For example, school pickup at 3 every weekday.';
   if (role.pay_ack) {
