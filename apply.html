@@ -59,6 +59,30 @@
   .chips button{font:inherit;font-size:max(14.5px, var(--fs-min, 0px));font-weight:600;padding:11px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--ink-2);cursor:pointer;text-align:left;}
   .chips button.on{background:var(--brand-blue);border-color:var(--brand-blue);color:#fbfaf7;}
   .chips.stack button{width:100%;}
+  /* 2026-11-18 pick-a-time redesign (Samantha: video or in person first, then a day, then that day's times) */
+  .pk-step{font-size:max(13px, var(--fs-min, 0px));color:var(--ink-3, #6b7280);margin:18px 0 8px;font-weight:600;}
+  .pk-step:first-child{margin-top:0;}
+  .pk-opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;padding:14px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer;margin:0 0 10px;font:inherit;color:var(--ink-2);}
+  .pk-opt .pk-ic{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;}
+  .pk-opt b{display:block;font-size:max(16px, var(--fs-min, 0px));color:var(--brand-blue);}
+  .pk-opt span.pk-d{display:block;font-size:max(14px, var(--fs-min, 0px));line-height:1.5;color:var(--body-text);margin-top:2px;}
+  .pk-opt.v.on{border:2px solid #185FA5;background:#E6F1FB;padding:13px;}
+  .pk-opt.p.on{border:2px solid #0F6E56;background:#E1F5EE;padding:13px;}
+  .pk-opt.none{cursor:default;opacity:.75;}
+  .pk-days{display:flex;gap:8px;overflow-x:auto;padding:2px 0 4px;}
+  .pk-day{flex:0 0 auto;min-width:62px;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;text-align:center;font:inherit;color:var(--ink-2);}
+  .pk-day small{display:block;font-size:12px;}
+  .pk-day strong{display:block;font-size:16px;}
+  .pk-day.empty{color:#9aa3ad;}
+  .pk-panel{margin-top:16px;border-radius:12px;padding:14px;}
+  .pk-panel h3{display:flex;align-items:center;gap:8px;margin:0;font-size:max(16px, var(--fs-min, 0px));}
+  .pk-grp{font-size:13px;font-weight:600;margin:12px 0 6px;}
+  .pk-times{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .pk-t{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 0;border-radius:10px;background:#fff;cursor:pointer;font:inherit;font-weight:600;font-size:max(15px, var(--fs-min, 0px));}
+  .pk-none{margin-top:16px;border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;}
+  .pk-none p{margin:4px 0;}
+  .pk-switch{font:inherit;font-weight:600;margin-top:8px;padding:9px 14px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--ink-2);}
+  @media (max-width:380px){.pk-times{grid-template-columns:repeat(2,minmax(0,1fr));}}
   .q{padding:14px 0;border-bottom:1px solid #f1eee7;}
   .q:last-of-type{border-bottom:none;}
   .qt{font-size:max(15px, var(--fs-read, 0px));font-weight:600;color:var(--ink-2);line-height:1.45;}
@@ -300,7 +324,7 @@
    <div style="text-align:center;padding:6px 0 4px;">
      <div class="check" style="width:52px;height:52px;font-size:27px;line-height:52px;">&#10003;</div>
      <h1 id="bookHead" style="font-family:var(--serif);font-size:27px;font-weight:600;color:var(--brand-blue);margin:8px 0 6px;">Thanks, <span id="bookName">that is in</span>. Now pick a time.</h1>
-     <p id="bookLede" style="font-size:max(15px, var(--fs-read, 0px));line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews take about <span id="bookMins">20</span> minutes. Choose whatever suits you and we will send you a confirmation.</p>
+     <p id="bookLede" style="font-size:max(15px, var(--fs-read, 0px));line-height:1.65;color:var(--body-text);margin:0 auto 4px;max-width:430px;">Interviews take about <span id="bookMins">20</span> minutes. Pick how you'd like to meet, then a day and a time.</p>
    </div>
    <!-- Somebody who already has a time lands here from the same ?book= link
         their messages carry. Moving or cancelling has to be as easy as booking
@@ -1171,6 +1195,60 @@ const timeLabel = d => d.toLocaleTimeString('en-US',
 
 let WHERE = null;
 
+/* the pick-a-time step's state (survives a reload of the times, e.g. "That time was just taken") */
+const PK = { mode: '', day: '', days: new Map(), top: '' };
+const PK_C = { video: { ic: '🎥', dark: '#0C447C', mid: '#185FA5', light: '#E6F1FB', word: 'video', Word: 'Video' },
+               person: { ic: '🏢', dark: '#085041', mid: '#0F6E56', light: '#E1F5EE', word: 'in-person', Word: 'In-person' } };
+function pkTimes(dayKey, mode){ const d = PK.days.get(dayKey); return d ? d.times.filter(t => t.video === (mode === 'video')) : []; }
+function pkAny(mode){ return [...PK.days.keys()].some(k => pkTimes(k, mode).length); }
+function pkMode(m){ if (!pkAny(m)) return; PK.mode = m; pkDraw(); }
+function pkDay(k){ PK.day = k; pkDraw(); const el = g('pkTimesTop'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+function pkDraw(){
+  const box = g('slotsBody'); if (!box) return;
+  const m = PK.mode, c = PK_C[m], other = m === 'video' ? 'person' : 'video';
+  const opt = (k, title, words) => {
+    const on = PK.mode === k, any = pkAny(k), cc = PK_C[k];
+    return '<button type="button" class="pk-opt ' + (k === 'video' ? 'v' : 'p') + (on ? ' on' : '') + (any ? '' : ' none') + '" aria-pressed="' + on + '"'
+      + (any ? ' onclick="pkMode(\'' + k + '\')"' : ' aria-disabled="true"') + '>'
+      + '<span class="pk-ic" style="background:' + cc.light + ';" aria-hidden="true">' + cc.ic + '</span>'
+      + '<span><b>' + title + '</b><span class="pk-d">' + (any ? words : 'There are no ' + cc.word + ' times available right now.') + '</span></span></button>';
+  };
+  let h = PK.top
+    + '<div class="pk-step">1 · How would you like to meet?</div>'
+    + opt('video', 'Video, from home', "No app to download. We text you a link. At your time, tap it on your phone or computer and you're in. Have your driver's license handy to show us.")
+    + opt('person', 'In person, at our office', 'Come meet us at our Springfield office. We text you the address and where to park.')
+    + '<div class="pk-step">2 · Pick a day</div><div class="pk-days" role="group" aria-label="Days">'
+    + [...PK.days.entries()].map(([k, d]) => {
+        const n = pkTimes(k, m).length, on = PK.day === k;
+        return '<button type="button" class="pk-day' + (n ? '' : ' empty') + '" aria-pressed="' + on + '" onclick="pkDay(\'' + k + '\')"'
+          + (on ? ' style="border:2px solid ' + c.mid + ';background:' + c.light + ';color:' + c.dark + ';padding:7px 9px;"' : '') + '>'
+          + '<small>' + d.dow + '</small><strong>' + d.num.replace(/^\w+ /, '') + '</strong><small>' + (n ? d.num.split(' ')[0] : 'none') + '</small></button>';
+      }).join('') + '</div><div id="pkTimesTop"></div>';
+  if (!PK.day){
+    h += '<p class="sub" style="margin:10px 0 0;">Tap a day to see its ' + c.word + ' times.</p>';
+  } else {
+    const d = PK.days.get(PK.day), list = pkTimes(PK.day, m), alt = pkTimes(PK.day, other).length;
+    if (!list.length){
+      h += '<div class="pk-none"><div aria-hidden="true" style="font-size:22px;">' + c.ic + '</div>'
+        + '<p style="font-weight:700;color:var(--brand-blue);">There are no ' + c.word + ' times available on ' + d.label + '.</p>'
+        + '<p class="sub" style="margin:0;">Try another day' + (alt ? ', or meet ' + (other === 'video' ? 'by video' : 'in person') + ' that day.' : '.') + '</p>'
+        + (alt ? '<button type="button" class="pk-switch" onclick="pkMode(\'' + other + '\')">' + PK_C[other].ic + ' See ' + PK_C[other].word + ' times that day</button>' : '')
+        + '</div>';
+    } else {
+      const grp = [['Morning', t => t.hr < 12], ['Afternoon', t => t.hr >= 12 && t.hr < 17], ['Evening', t => t.hr >= 17]];
+      h += '<div class="pk-panel" style="background:' + c.light + ';">'
+        + '<h3 style="color:' + c.dark + ';"><span aria-hidden="true">' + c.ic + '</span>' + c.Word + ' times on ' + d.label + '</h3>'
+        + '<div style="font-size:13.5px;color:' + c.mid + ';margin-top:2px;">' + (m === 'video' ? 'From home. We text you the link.' : 'At our Springfield office.') + ' Missouri time.</div>'
+        + grp.map(([name, f]) => { const ts = list.filter(f); return ts.length ? '<div class="pk-grp" style="color:' + c.mid + ';">' + name + '</div><div class="pk-times">'
+            + ts.map(t => '<button type="button" class="pk-t"' + (t.video ? ' data-video="1"' : '') + ' aria-label="' + t.label + ', ' + c.word + ' interview"'
+              + ' style="color:' + c.dark + ';border:1px solid ' + c.mid + ';" onclick="bookSlot(this,\'' + t.iso + '\')"><span aria-hidden="true">' + c.ic + '</span>' + t.label + '</button>').join('')
+            + '</div>' : ''; }).join('')
+        + '</div>';
+    }
+  }
+  box.innerHTML = h;
+}
+
 /* note: a line to show above the times, drawn with them (2026-10-08: "That time was just taken" used to be added and
    then wiped the same instant by this redraw, so nobody ever saw it). */
 async function loadSlots(note){
@@ -1197,22 +1275,26 @@ async function loadSlots(note){
       g('skipBtn').style.display = 'none';
       return;
     }
-    /* Grouped by day, because "Tuesday" is how people think about it. */
-    const byDay = new Map();
+    /* 2026-11-18 (Samantha: "I dont love the layout of showing all the times like that" ... "Yes, build it"): one step at
+       a time. 1 video or in person (with what video means), 2 a day, 3 only that day's times for the way they chose,
+       every time labeled by icon and color. A day or a way with nothing open says so ("There are no in-person times
+       available"). No fixed times of day are written anywhere: what shows comes only from the open times (her word,
+       availability can change). A time counts as video only when every free interviewer then is on video
+       (interview_video_times); anything else is in person, the same rule as before. */
+    PK.days = new Map();
     slots.forEach(s => {
       const d = new Date(s.starts_at);
       const key = d.toLocaleDateString('en-CA', { timeZone: TZ });
-      if (!byDay.has(key)) byDay.set(key, { label: dayLabel(d), times: [] });
-      byDay.get(key).times.push({ iso: s.starts_at, label: timeLabel(d), video: VIDEO_TIMES.has(+d) });
+      if (!PK.days.has(key)) PK.days.set(key, { label: dayLabel(d),
+        dow: d.toLocaleDateString('en-US', { weekday: 'short', timeZone: TZ }), num: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: TZ }), times: [] });
+      const hr = +d.toLocaleString('en-US', { hour: 'numeric', hour12: false, timeZone: TZ }) % 24;
+      PK.days.get(key).times.push({ iso: s.starts_at, label: timeLabel(d), video: VIDEO_TIMES.has(+d), hr });
     });
-    const vnote = VIDEO_TIMES.size ? '<p class="sub" style="margin:0 0 12px;">' + VIDEO_NOTE + '</p>' : '';
-    box.innerHTML = top + vnote + [...byDay.values()].map(day =>
-      '<div style="margin:0 0 16px;">'
-      + '<div style="font-size:max(14.5px, var(--fs-min, 0px));font-weight:700;color:var(--brand-blue);margin:0 0 8px;">' + day.label + '</div>'
-      + '<div class="chips">' + day.times.map(t =>
-          '<button type="button"' + (t.video ? ' data-video="1" aria-label="' + t.label + ', video interview"' : '') + ' onclick="bookSlot(this,\'' + t.iso + '\')">'
-          + t.label + (t.video ? ' <span style="font-size:.82em;font-weight:600;opacity:.8;">· Video</span>' : '') + '</button>').join('')
-      + '</div></div>').join('');
+    PK.top = top;
+    const has = m => [...PK.days.values()].some(x => x.times.some(t => t.video === (m === 'video')));
+    if (!PK.mode || !has(PK.mode)) PK.mode = has('video') ? 'video' : 'person';
+    if (PK.day && !PK.days.has(PK.day)) PK.day = '';
+    pkDraw();
   } catch (e) {
     box.innerHTML = '<p class="sub" style="margin:0;">We could not load times just now. '
       + 'Someone will call you within one business day, or ring us on (417) 234-8494.</p>';
@@ -1266,7 +1348,7 @@ async function bookSlot(btn, iso){
     /* Otherwise somebody else likely took it a second earlier. Reload rather
        than leaving a time on screen that no longer exists. */
     all.forEach(b => b.disabled = false);
-    btn.textContent = timeLabel(new Date(iso));
+    btn.textContent = timeLabel(new Date(iso));   /* the redraw just below puts the icon back */
     loadSlots('That time was just taken. Here are the ones still free.');
     console.error(e);
   }
