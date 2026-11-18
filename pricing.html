@@ -91,6 +91,38 @@
 @media (max-width: 899px) { .pr-levels-grid { grid-template-columns:1fr; } }
 @media (max-width: 899px) { .pr-cards { grid-template-columns: 1fr; } .pr-pay-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 639px) { .pr-hero { padding: 36px 20px 8px; } .pr-h1 { font-size: 28px; } }
+/* Weekly estimate (11-18) */
+.pr-est { max-width:860px; margin:28px auto 8px; padding:28px 28px 24px; background:#fff; border:1px solid var(--border); border-left:5px solid var(--brand-blue); border-radius:16px; box-shadow:0 8px 22px rgba(14,56,96,.07); scroll-margin-top:90px; }
+.pr-est h2 { font-family:var(--serif); font-size:28px; color:var(--brand-blue); margin:0 0 6px; font-weight:600; }
+.pr-est-intro { font-size:max(16px, var(--fs-read, 0px)); line-height:1.55; color:var(--ink); margin:0 0 20px; }
+.pr-est-q { font-size:16px; font-weight:700; color:var(--ink-2); margin:0 0 10px; }
+.pr-est-levels { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:0 0 6px; }
+.pr-est-levels button { font:inherit; cursor:pointer; background:#fff; border:2px solid #d6d1c4; border-radius:12px; padding:12px 8px; text-align:center; color:var(--ink-2); min-height:64px; }
+.pr-est-levels button span { display:block; font-size:15px; font-weight:700; }
+.pr-est-levels button small { display:block; font-size:14px; color:var(--muted); margin-top:2px; }
+.pr-est-levels button[aria-pressed="true"] { border-color:var(--brand-blue); background:#eef4fa; box-shadow:inset 0 0 0 1px var(--brand-blue); }
+.pr-est-levels button:focus-visible, .pr-est-step button:focus-visible { outline:3px solid #FFC671; outline-offset:2px; }
+.pr-est-help { font-size:14.5px; margin:0 0 20px; color:var(--muted); }
+.pr-est-help a { color:#1F7A8C; font-weight:600; }
+.pr-est-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:0 0 20px; }
+.pr-est-step { display:flex; align-items:center; justify-content:space-between; gap:8px; background:#f6f5f0; border-radius:12px; padding:8px; }
+.pr-est-step button { font:inherit; cursor:pointer; width:48px; height:48px; flex-shrink:0; border-radius:10px; border:1.5px solid #d6d1c4; background:#fff; font-size:24px; font-weight:600; color:var(--brand-blue); line-height:1; }
+.pr-est-step button:disabled { opacity:.35; cursor:default; }
+.pr-est-step output { flex:1; text-align:center; font-family:var(--serif); font-size:24px; font-weight:600; color:var(--brand-blue); }
+.pr-est-step output small { display:block; font-family:system-ui, sans-serif; font-size:13.5px; font-weight:500; color:var(--muted); }
+.pr-est-out { background:#0D365F; color:#fff; border-radius:14px; padding:20px 22px; text-align:center; }
+.pr-est-big { font-family:var(--serif); font-size:42px; font-weight:600; line-height:1.1; margin:0; }
+.pr-est-big small { font-family:system-ui, sans-serif; font-size:17px; font-weight:500; opacity:.85; }
+.pr-est-month { font-size:17px; margin:6px 0 0; opacity:.92; }
+.pr-est-math { font-size:15px; margin:8px 0 0; opacity:.8; }
+.pr-est-note { font-size:15px; line-height:1.55; margin:12px 0 0; background:rgba(255,255,255,.1); border-radius:10px; padding:10px 12px; }
+.pr-est-note a { color:#FFC671; font-weight:600; }
+.pr-est-few p { font-size:17px; line-height:1.55; margin:0; }
+.pr-est-foot { text-align:center; margin:16px 0 0; }
+.pr-est-foot p { font-size:15px; color:var(--muted); margin:0 0 12px; }
+.pr-est-foot .btns { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+@media (max-width:720px){ .pr-est { margin:22px 16px 8px; padding:22px 16px 20px; } .pr-est-row { grid-template-columns:1fr; } .pr-est-big { font-size:36px; } }
+@media (max-width:420px){ .pr-est-levels { gap:6px; } .pr-est-levels button { padding:10px 4px; } .pr-est-levels button span { font-size:14px; } }
 </style>
 </head>
 <body>
@@ -352,6 +384,80 @@
 </div>
 </section>
 <p class="pr-terms"><strong>Care that fits your life, not the other way around.</strong> Choose a schedule that works for your family, with a standard visit of 4 hours or more and at least 8 hours per week. Need shorter visits? Please ask: when a caregiver is available, we will work to make it happen, with an extra $5 an hour for visits under 4 hours. Shorter visits depend on staffing, so they are not guaranteed. Every client receives a personalized care plan, and our team works to match your loved one with the right caregiver.</p>
+<section class="pr-est" id="estimate" aria-labelledby="estH">
+<h2 id="estH">Estimate your weekly cost</h2>
+<p class="pr-est-intro">Pick a level and a schedule. The number updates as you go.</p>
+<p class="pr-est-q" id="estLvlQ">Level of care</p>
+<div class="pr-est-levels" role="group" aria-labelledby="estLvlQ">
+<button type="button" data-rate="30" aria-pressed="false"><span>Wellness</span><small>$30 an hour</small></button>
+<button type="button" data-rate="32" aria-pressed="true"><span>Personal</span><small>$32 an hour</small></button>
+<button type="button" data-rate="34" aria-pressed="false"><span>Advanced</span><small>$34 an hour</small></button>
+</div>
+<p class="pr-est-help">Not sure which level? <a href="#wellness">See what each one includes</a>, or we can help you decide.</p>
+<div class="pr-est-row">
+<div><p class="pr-est-q" id="estHrsQ">Hours each visit</p>
+<div class="pr-est-step" role="group" aria-labelledby="estHrsQ"><button type="button" id="estHrsDn" aria-label="Fewer hours each visit">&minus;</button><output id="estHrs" aria-live="polite">4<small>hours</small></output><button type="button" id="estHrsUp" aria-label="More hours each visit">+</button></div></div>
+<div><p class="pr-est-q" id="estDaysQ">Days a week</p>
+<div class="pr-est-step" role="group" aria-labelledby="estDaysQ"><button type="button" id="estDaysDn" aria-label="Fewer days a week">&minus;</button><output id="estDays" aria-live="polite">3<small>days</small></output><button type="button" id="estDaysUp" aria-label="More days a week">+</button></div></div>
+</div>
+<div class="pr-est-out" aria-live="polite">
+<div id="estSum">
+<p class="pr-est-big"><span id="estWeek">$384</span> <small>a week</small></p>
+<p class="pr-est-month">About <span id="estMonth">$1,660</span> a month</p>
+<p class="pr-est-math" id="estMath">12 hours a week &times; $32 an hour</p>
+<p class="pr-est-note" id="estShort" hidden>Includes the extra $5 an hour for visits under 4 hours. Shorter visits depend on staffing, so they are not guaranteed.</p>
+</div>
+<div class="pr-est-few" id="estFew" hidden>
+<p>That is <span id="estFewHrs">4</span> hours a week. Our regular care starts at 8 hours a week.</p>
+<p class="pr-est-note">Want a visit now and then instead? <a href="/early-support-visits">See Early Support Visits</a>, once a month or every other week, in Springfield.</p>
+</div>
+</div>
+<div class="pr-est-foot">
+<p>This is an estimate. A free in-home assessment gives you your exact number.</p>
+<div class="btns"><a href="/free-assessment" class="btn-primary">Request a Free Assessment</a> <a href="tel:+14172348494" class="btn-outline">Call (417) 234-8494</a></div>
+</div>
+</section>
+<script>
+(function () {
+  'use strict';
+  var HOURS = [2, 3, 4, 5, 6, 7, 8, 10, 12, 24];
+  var box = document.getElementById('estimate');
+  var lvls = box.querySelectorAll('.pr-est-levels button');
+  var rate = 32, hi = 2, days = 3, used = false;
+  function $(id) { return document.getElementById(id); }
+  function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  function draw() {
+    var hrs = HOURS[hi], per = rate + (hrs < 4 ? 5 : 0), week = hrs * days;
+    $('estHrs').innerHTML = hrs + '<small>' + (hrs === 1 ? 'hour' : 'hours') + '</small>';
+    $('estDays').innerHTML = days + '<small>' + (days === 1 ? 'day' : 'days') + '</small>';
+    $('estHrsDn').disabled = hi === 0; $('estHrsUp').disabled = hi === HOURS.length - 1;
+    $('estDaysDn').disabled = days === 1; $('estDaysUp').disabled = days === 7;
+    var few = week < 8;
+    $('estSum').hidden = few; $('estFew').hidden = !few;
+    if (few) { $('estFewHrs').textContent = week; return; }
+    $('estWeek').textContent = money(week * per);
+    $('estMonth').textContent = money(Math.round(week * per * 52 / 12 / 10) * 10);
+    $('estMath').innerHTML = week + ' hours a week &times; $' + per + ' an hour';
+    $('estShort').hidden = hrs >= 4;
+  }
+  function touched() {
+    draw();
+    if (!used && window.CCTrack) { used = true; window.CCTrack('estimate_used', { tool: 'pricing-estimate' }); }
+  }
+  Array.prototype.forEach.call(lvls, function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(lvls, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      rate = +b.getAttribute('data-rate'); touched();
+    });
+  });
+  $('estHrsDn').onclick = function () { if (hi > 0) { hi--; touched(); } };
+  $('estHrsUp').onclick = function () { if (hi < HOURS.length - 1) { hi++; touched(); } };
+  $('estDaysDn').onclick = function () { if (days > 1) { days--; touched(); } };
+  $('estDaysUp').onclick = function () { if (days < 7) { days++; touched(); } };
+  draw();
+})();
+</script>
+
 <aside class="pr-esv" id="early-support">
 <p class="pr-esv-k">Once a month or every other week</p>
 <h2>Early Support Visits</h2>
@@ -452,7 +558,7 @@
 <p style="font-size:max(15px, var(--fs-read, 0px));line-height:1.7;color:#45566a;margin:0 auto 22px;max-width:520px">A free in-home assessment gets you a real quote based on your schedule and needs, not an estimate.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
 <a href="/free-assessment" class="btn-primary">Request a Free Assessment</a>
-<a href="cost-calculator" class="btn-outline">Estimate Your Cost</a>
+<a href="#estimate" class="btn-outline">Estimate Your Cost</a>
 </div>
 <p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:18px auto 0;max-width:560px">Want to read the agreement our clients sign first? <a href="/before-your-assessment" style="color:#1F7A8C;font-weight:600;text-decoration:none">See what to expect &rarr;</a></p>
 <p style="font-size:max(14.5px, var(--fs-read, 0px));line-height:1.6;color:#45566a;margin:8px auto 0;max-width:560px">Caring for a veteran? With VA Community Care, you don&rsquo;t pay Caring Companions. <a href="/veterans" style="color:#1F7A8C;font-weight:600;text-decoration:none">How it works &rarr;</a></p>
