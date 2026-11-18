@@ -35,6 +35,8 @@ for (const [name, p] of [['posting with the one-liner (after 415 SQL)', withLine
     ck(name + ': no required dementia training or 6 hours in the ' + where[0], !/6 hours|dementia training|on-the-job|hours of training a year/i.test(where[1]), (where[1].match(/.{60}(6 hours|dementia training).{60}/i) || [])[0]);
   ck(name + ': footer says about 2 minutes and one short interview', body.includes('The application takes about 2 minutes. No uploads required. One short interview, then the rest from home.'));
   ck(name + ': no "five minutes" anywhere', !/five minutes|5 minutes/i.test(html));
+  /* 11-18: job pages live in /jobs/, so a short "assets/..." script address 404s there (no Cara chat, no visit counts) */
+  ck(name + ': scripts and links use full /assets/ addresses', !/(src|href)="assets\//.test(html.slice(html.indexOf('<body>'))), (html.match(/(src|href)="assets\/[^"]*/g) || []).join(' '));
   ck(name + ': never says remote', !/\bremote(ly)?\b/i.test(body));
   ck(name + ': interview has no place or format (2026-11-08)', !/in[- ]person|phone interview|at our (Springfield )?office/i.test(body), (body.match(/.{40}(in[- ]person|phone interview|at our (Springfield )?office).{40}/i) || [])[0]);
   const how = body.slice(body.indexOf('<section class="jb-how">'), body.indexOf('</section>', body.indexOf('jb-how')));
