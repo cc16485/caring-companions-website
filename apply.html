@@ -523,7 +523,7 @@ const PREVIEW_MODE = P.get('preview') || '';
 const PREVIEW = ['1', 'book', 'manage'].includes(PREVIEW_MODE);
 if (PREVIEW) {
   const _rpc = sb.rpc.bind(sb);
-  sb.rpc = (fn, args) => ['interview_open_slots', 'interview_where'].includes(fn) ? _rpc(fn, args)
+  sb.rpc = (fn, args) => ['interview_open_slots', 'interview_where', 'interview_video_times'].includes(fn) ? _rpc(fn, args)
     : Promise.resolve({ data: null, error: { message: 'Preview: nothing is saved' } });
   document.title = 'Preview · ' + document.title;
   const note = (html) => { const d = document.createElement('div');
@@ -573,6 +573,21 @@ if (PREVIEW) {
    Somebody who already HAS a time gets their booking with the choice to move
    or cancel it, not a fresh list of slots that would quietly double-book. */
 const RESUME = P.get('book');
+/* 2026-11-17 (Katlin video interviews, Samantha's "Yes, both"): Katlin interviews by video, Mon-Fri 5:30-7:30 PM. Times
+   only she can take are marked Video; a video booking shows no office address, and the link goes only in the text and
+   email (never on this page). "During interview the person holds their drivers license up to the camera" (her words). */
+let VIDEO_TIMES = new Set();
+const VIDEO_NOTE = 'Times marked <b>Video</b> are video interviews: you join from your phone or computer by tapping a link we send you.';
+const VIDEO_BOOKED_LINE = "This is a <b>video interview</b>. We text and email you the link. Please have your driver's license ready to hold up to the camera.";
+async function isMyVideo(fallback){
+  if (PREVIEW || !ROW) return !!fallback;
+  try {
+    const { data, error } = await sb.rpc('interview_mine_video', { p_applicant: ROW });
+    if (error || typeof data !== 'boolean') return !!fallback;
+    return data;
+  } catch (e) { return !!fallback; }
+}
+
 let HAVE_BOOKING = false;   // an active booking exists; new times mean moving it
 if (RESUME) {
   ROW = RESUME;
@@ -620,6 +635,8 @@ function showManage(mine){
     ? 'Your interview is booked. Here it is.'
     : 'Your interview is booked. Move it or cancel it here whenever you need to.';
   g('manageWhen').innerHTML = 'You are booked for <b>' + dayLabel(d) + ' at ' + timeLabel(d) + '</b>.';
+  /* 2026-11-17 (Katlin video interviews): a video booking says so; the link itself only goes in their text and email */
+  isMyVideo().then(v => { if (v) g('manageWhen').innerHTML += '<br>' + VIDEO_BOOKED_LINE; });
   g('manageBtns').style.display = locked ? 'none' : 'flex';
   g('manageLocked').style.display = locked ? 'block' : 'none';
   g('manageKeep').style.display = locked ? 'none' : 'block';
@@ -1111,12 +1128,16 @@ async function loadSlots(note){
   const box = g('slotsBody');
   const top = note ? '<p class="sub" role="status" style="color:#b00020;margin:0 0 10px;">' + note + '</p>' : '';
   try {
-    const [{ data: slots, error }, { data: where }] = await Promise.all([
+    const [{ data: slots, error }, { data: where }, vids] = await Promise.all([
       sb.rpc('interview_open_slots'),
       sb.rpc('interview_where'),
+      /* 2026-11-17 (Katlin video interviews): the times only a video interviewer can take. If this is not installed yet,
+         nothing is marked and every time looks exactly as before. */
+      sb.rpc('interview_video_times').then(r => r, () => ({ data: null })),
     ]);
     if (error) throw error;
     WHERE = where || null;
+    VIDEO_TIMES = new Set(((vids && !vids.error && vids.data) || []).map(v => +new Date(v.starts_at)));
     /* 2026-10-11 fix: moving a time (and rebooking after a cancel) replaces the intro text, which removes the bookMins
        label; updating it then threw, and the times never showed ("We could not load times just now"). */
     const bm = g('bookMins'); if (bm && WHERE && WHERE.minutes) bm.textContent = WHERE.minutes;
@@ -1133,13 +1154,15 @@ async function loadSlots(note){
       const d = new Date(s.starts_at);
       const key = d.toLocaleDateString('en-CA', { timeZone: TZ });
       if (!byDay.has(key)) byDay.set(key, { label: dayLabel(d), times: [] });
-      byDay.get(key).times.push({ iso: s.starts_at, label: timeLabel(d) });
+      byDay.get(key).times.push({ iso: s.starts_at, label: timeLabel(d), video: VIDEO_TIMES.has(+d) });
     });
-    box.innerHTML = top + [...byDay.values()].map(day =>
+    const vnote = VIDEO_TIMES.size ? '<p class="sub" style="margin:0 0 12px;">' + VIDEO_NOTE + '</p>' : '';
+    box.innerHTML = top + vnote + [...byDay.values()].map(day =>
       '<div style="margin:0 0 16px;">'
       + '<div style="font-size:max(14.5px, var(--fs-min, 0px));font-weight:700;color:var(--brand-blue);margin:0 0 8px;">' + day.label + '</div>'
       + '<div class="chips">' + day.times.map(t =>
-          '<button type="button" onclick="bookSlot(this,\'' + t.iso + '\')">' + t.label + '</button>').join('')
+          '<button type="button"' + (t.video ? ' data-video="1" aria-label="' + t.label + ', video interview"' : '') + ' onclick="bookSlot(this,\'' + t.iso + '\')">'
+          + t.label + (t.video ? ' <span style="font-size:.82em;font-weight:600;opacity:.8;">· Video</span>' : '') + '</button>').join('')
       + '</div></div>').join('');
   } catch (e) {
     box.innerHTML = '<p class="sub" style="margin:0;">We could not load times just now. '
@@ -1164,7 +1187,9 @@ async function bookSlot(btn, iso){
     if (error) throw error;
     HAVE_BOOKING = true;
     const d = new Date(iso);
-    showBooked(dayLabel(d) + ' at ' + timeLabel(d), moved);
+    /* the booking decides (the database picks the interviewer); the marked time is the fallback */
+    const video = await isMyVideo(VIDEO_TIMES.has(+d));
+    showBooked(dayLabel(d) + ' at ' + timeLabel(d), moved, video);
   } catch (e) {
     /* The database is the referee here: it may refuse because the limit or the
        two-hour cutoff was reached with this tab already open. */
@@ -1199,7 +1224,7 @@ async function bookSlot(btn, iso){
 }
 
 const DONE_HEAD_HTML = g('doneHead').innerHTML;   // "Thank you, <name>."
-function showBooked(when, moved){
+function showBooked(when, moved, video){
   /* The heading may still say "cancelled" from an earlier trip through this
      page, so it is always set, never assumed. */
   if (moved) g('doneHead').textContent = 'All moved.';
@@ -1212,13 +1237,20 @@ function showBooked(when, moved){
      confirmed after 8am), and the hour-before reminder is a text, so only for people who said yes to texts. */
   /* 2026-11-08 (Samantha): just say interview, no place or format (we may interview by video). Where to go still
      shows in the card below, which comes from the Hub's interview location. */
-  g('doneLede').innerHTML = 'Your interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
+  g('doneLede').innerHTML = video
+    /* 2026-11-17 (Katlin video interviews): no office, the link comes by text and email; her words for the license */
+    ? 'Your video interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
+      + 'We will text and email you the link. At that time, tap the link on your phone or computer. '
+      + "Please have your driver's license ready to hold up to the camera. "
+      + 'We will send you a reminder the day before, and if you said yes to texts, a short text about an hour before. '
+      + 'Our messages about your interview go out between 8am and 9pm.'
+    : 'Your interview is ' + (moved ? 'now' : 'booked for') + ' <b>' + when + '</b>. '
     + 'Where to go is below. '
     + 'We will send you a confirmation and a reminder the day before, and if you said yes to texts, a short text about an hour before. '
     + 'Our messages go out between 8am and 6pm.'
     /* 2026-11-10 (Samantha): no Orientation Video Call before orientation; training stays vague, no hours. */
     + '<br><br>After your interview, you can do the rest from home: paperwork online, then paid orientation and training on your phone or computer.';
-  fillWhere();
+  if (video) g('whereCard').style.display = 'none'; else fillWhere();
   g('rebookBtn').style.display = 'none';
   g('changeBtn').style.display = 'inline-block';
   g('bookView').style.display = 'none';
