@@ -656,3 +656,19 @@ a.cc-mc:hover .cc-mc-btn { background: var(--cta-hover); }
   .cc-va-list { grid-template-columns: 1fr; }
   .cc-va-btns a { flex: 1 1 100%; justify-content: center; }
 }
+
+/* 11-19 her report: the Ways to Pay menu did not line up. It hung off the
+   header's right edge, so it started where its own tab ended. It now opens
+   under its tab, like Resources. Inside, the column headings sit on the same
+   left line as their links, and the Medicare box's right half starts on the
+   same line as the Benefits column above it, top-aligned with its left half. */
+@media (min-width: 1101px) {
+  .cc-nav-group:has(.cc-feat-mc) { position: relative; }
+  .cc-mega:has(.cc-feat-mc) { left: 0; right: auto; }
+  .cc-mega:has(.cc-feat-mc)::before { left: 0; right: 0; width: auto; top: -22px; height: 22px; }
+  .cc-cols:has(> .cc-feat-mc) .cc-colh { padding-left: 14px; padding-right: 14px; }
+  .cc-col.cc-feat.cc-feat-mc { padding: 14px 8px 10px; }
+  .cc-dropdown a.cc-mc { align-items: flex-start; gap: 24px; padding: 4px 14px 10px; }
+  .cc-mc-b { flex: 0 0 269px; }
+  .cc-mc-b .cc-mc-li:first-child { margin-top: 4px; }
+}
