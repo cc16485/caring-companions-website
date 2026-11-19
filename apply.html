@@ -989,12 +989,53 @@ const SCREEN_NO_MSG = 'Based on your answers, we are not able to book an intervi
 async function showFinish(mine){
   if (mine.gap === 'ineligible'){ showReview(SCREEN_NO_MSG); return; }
   if (!mine.can_finish){ showReview(SCREEN_CALL_MSG); return; }
+  if (mine.ask === 'one_year'){ showYearAsk(); return; }   // 1561: a finished application missing only this answer
   /* Their own role's questions (a PRN CNA Team application asks the two CNA questions). */
   if (mine.position && mine.position !== POSITION){ POSITION = mine.position; await loadRoleQuestions(); }
   g('bookView').style.display = 'none';
   g('formView').style.display = 'block';
   g('resumeNote').style.display = 'block';
   goStep(mine.gap === 'unfinished' ? 3 : 2);
+}
+/* 1561 (2026-11-19, Samantha: "the link says before we book your interview we need to ask a few questions").
+   People who finished applying before the paid-year question existed answer just that one here, once, then see the
+   times. The database takes the answer only for them (apply_answer_year) and a "no" ends it the way the form does. */
+function showYearAsk(){
+  g('bookHead').textContent = 'One quick question, then pick your time.';
+  g('bookLede').style.display = 'none';
+  g('skipBtn').style.display = 'none';
+  g('keepBtn').style.display = 'none';
+  g('slotsBody').innerHTML =
+    '<div class="q"><div class="qt">Do you have at least one year of paid caregiving experience?</div>'
+    + '<div class="qs">Caring for people at home, in a nursing home, assisted living or a hospital all counts, and so does a CNA, CMT, LPN or RN license. Being paid to care for a family member counts too, for example through CDS or the VA.</div>'
+    + '<div class="chips stack" id="yearChips">'
+    + '<button type="button" onclick="yearAnswer(this,\'yes\')">Yes, a year or more</button>'
+    + '<button type="button" onclick="yearAnswer(this,\'family\')">I cared for a family member without pay, and someone can confirm it</button>'
+    + '<button type="button" onclick="yearAnswer(this,\'no\')">No, less than a year</button>'
+    + '</div><p class="sub" id="yearErr" style="display:none;color:#b45309;margin:10px 0 0;"></p></div>';
+}
+async function yearAnswer(btn, val){
+  const all = document.querySelectorAll('#yearChips button');
+  all.forEach(b => { b.disabled = true; b.classList.toggle('on', b === btn); });
+  try {
+    const { error } = await sb.rpc('apply_answer_year', { p_id: ROW, p_one_year: val });
+    if (error) throw error;
+    if (val === 'no'){
+      const k = KNOCKOUTS.find(x => x.k === 'one_year');
+      g('noWhy').textContent = k.why; g('noNext').textContent = k.next;
+      g('bookView').style.display = 'none'; g('noView').style.display = 'block';
+      window.scrollTo(0, 0); return;
+    }
+    if (val === 'family'){ showReview(FAMILY_MSG); return; }
+    g('bookHead').textContent = 'Thank you. Now pick a time.';
+    g('bookLede').style.display = '';
+    g('slotsBody').innerHTML = '<p class="sub" style="margin:0;">Finding times…</p>';
+    resumeBooking();
+  } catch (e) {
+    all.forEach(b => { b.disabled = false; b.classList.remove('on'); });
+    const er = g('yearErr'); er.textContent = 'That did not save. Please call or text us at (417) 234-8494.'; er.style.display = 'block';
+    console.error(e);
+  }
 }
 function showReview(msg){
   g('bookHead').textContent = 'Thank you for applying.';
