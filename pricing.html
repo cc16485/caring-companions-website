@@ -118,6 +118,7 @@
 .pr-est-note { font-size:15px; line-height:1.55; margin:12px 0 0; background:rgba(255,255,255,.1); border-radius:10px; padding:10px 12px; }
 .pr-est-note a { color:#FFC671; font-weight:600; }
 .pr-est-few p { font-size:17px; line-height:1.55; margin:0; }
+#estSum + .pr-est-few { margin-top:14px; }
 .pr-est-foot { text-align:center; margin:16px 0 0; }
 .pr-est-foot p { font-size:15px; color:var(--muted); margin:0 0 12px; }
 .pr-est-foot .btns { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
@@ -384,7 +385,7 @@
 <a class="pr-more" href="#advanced">What's included &darr;</a>
 </div>
 </section>
-<p class="pr-terms"><strong>Care that fits your life, not the other way around.</strong> Choose a schedule that works for your family, with a standard visit of 4 hours or more and at least 8 hours per week. Need shorter visits? Please ask: when a caregiver is available, we will work to make it happen, with an extra $5 an hour for visits under 4 hours. Shorter visits depend on staffing, so they are not guaranteed. Every client receives a personalized care plan, and our team works to match your loved one with the right caregiver.</p>
+<p class="pr-terms"><strong>Care that fits your life, not the other way around.</strong> Choose a schedule that works for your family. Our rates are based on 8 or more hours a week, in visits of 4 hours or more. Need fewer than 8 hours a week? It is $5 more an hour. Need a visit shorter than 4 hours? Please ask: when a caregiver is available, we will work to make it happen, also at $5 more an hour, or $10 more if both apply. Shorter visits depend on staffing, so they are not guaranteed. Every client receives a personalized care plan, and our team works to match your loved one with the right caregiver.</p>
 <section class="pr-est" id="estimate" aria-labelledby="estH">
 <h2 id="estH">Estimate your weekly cost</h2>
 <p class="pr-est-intro">Pick a level and a schedule. The number updates as you go.</p>
@@ -406,10 +407,10 @@
 <p class="pr-est-big"><span id="estWeek">$384</span> <small>a week</small></p>
 <p class="pr-est-month">About <span id="estMonth">$1,660</span> a month</p>
 <p class="pr-est-math" id="estMath">12 hours a week &times; $32 an hour</p>
-<p class="pr-est-note" id="estShort" hidden>Includes the extra $5 an hour for visits under 4 hours. Shorter visits depend on staffing, so they are not guaranteed.</p>
+<p class="pr-est-note" id="estShort" hidden>Includes $5 more an hour for visits under 4 hours. Shorter visits depend on staffing, so they are not guaranteed.</p>
 </div>
 <div class="pr-est-few" id="estFew" hidden>
-<p>That is <span id="estFewHrs">4</span> hours a week. Our regular care starts at 8 hours a week.</p>
+<p>That is <span id="estFewHrs">4</span> hours a week. Our rates are based on 8 or more hours a week, so fewer hours is $5 more an hour. It is included above.</p>
 <p class="pr-est-note">Want a visit now and then instead? <a href="/early-support-visits">See Early Support Visits</a>, once a month or every other week, in Springfield.</p>
 </div>
 </div>
@@ -428,14 +429,13 @@
   function $(id) { return document.getElementById(id); }
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
   function draw() {
-    var hrs = HOURS[hi], per = rate + (hrs < 4 ? 5 : 0), week = hrs * days;
+    var hrs = HOURS[hi], week = hrs * days, few = week < 8, per = rate + (hrs < 4 ? 5 : 0) + (few ? 5 : 0);
     $('estHrs').innerHTML = hrs + '<small>' + (hrs === 1 ? 'hour' : 'hours') + '</small>';
     $('estDays').innerHTML = days + '<small>' + (days === 1 ? 'day' : 'days') + '</small>';
     $('estHrsDn').disabled = hi === 0; $('estHrsUp').disabled = hi === HOURS.length - 1;
     $('estDaysDn').disabled = days === 1; $('estDaysUp').disabled = days === 7;
-    var few = week < 8;
-    $('estSum').hidden = few; $('estFew').hidden = !few;
-    if (few) { $('estFewHrs').textContent = week; return; }
+    $('estFew').hidden = !few;
+    if (few) { $('estFewHrs').textContent = week; }
     $('estWeek').textContent = money(week * per);
     $('estMonth').textContent = money(Math.round(week * per * 52 / 12 / 10) * 10);
     $('estMath').innerHTML = week + ' hours a week &times; $' + per + ' an hour';
@@ -463,7 +463,7 @@
 <p class="pr-esv-k">Once a month or every other week</p>
 <h2>Early Support Visits</h2>
 <p>Don&rsquo;t need 8 hours a week? Early Support Visits are a separate program for people who are doing well at home: a helping hand around the house and good company, in Springfield.</p>
-<div class="pr-esv-row"><div><b>$35</b><span>an hour, once a month or every other week</span></div><div><b>$140</b><span>each four-hour visit</span></div><div><b>$99</b><span>one-time assessment and setup, billed with the first visit</span></div></div>
+<div class="pr-esv-row"><div><b>$35</b><span>an hour, once a month or every other week. That is our $30 rate plus $5.</span></div><div><b>$140</b><span>each four-hour visit</span></div><div><b>$99</b><span>one-time assessment and setup, billed with the first visit. No setup fee with weekly care.</span></div></div>
 <p class="pr-esv-s"><a href="/early-support-visits">See how Early Support Visits work &rarr;</a></p>
 </aside>
 
