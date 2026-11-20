@@ -2,9 +2,9 @@
  {
   "id": "cc05",
   "brand": "cc",
-  "title": "Medicare GUIDE Program: Dementia Respite Care at Home (20 Visits a Year)",
+  "title": "Medicare GUIDE Program: Dementia Respite Care at Home (19 Visits a Year)",
   "short_title": "Medicare may pay for a break from dementia care",
-  "description": "Caring for someone with dementia at home? The Medicare GUIDE program gives accepted families a dementia care navigator and a 24/7 support line, and families further along can get 20 four-hour respite visits a year, paid by Medicare. Who qualifies (Original Medicare, living at home), what rules it out, and how to get started.",
+  "description": "Caring for someone with dementia at home? The Medicare GUIDE program gives accepted families a dementia care navigator and a 24/7 support line, and families further along can get 19 four-hour respite visits a year, paid by Medicare. Who qualifies (Original Medicare, living at home), what rules it out, and how to get started.",
   "publish": "2027-01-26T23:00:00.000Z",
   "thumb": "/Users/samantha/Claude/Projects/youtube/long/out/cc05-thumb.jpg",
   "end": "Check if your family qualifies.",
@@ -35,9 +35,9 @@
    },
    {
     "chip": "What it covers",
-    "head": "20 respite visits a year",
+    "head": "19 respite visits a year",
     "sub": "4 hours each. Medicare pays us, not you.",
-    "text": "For families further along, GUIDE also pays for respite: twenty visits a year, four hours each. A trained caregiver from Caring Companions stays with your loved one, and Medicare pays us, not you."
+    "text": "For families further along, GUIDE also pays for respite: nineteen visits a year, four hours each. A trained caregiver from Caring Companions stays with your loved one, and Medicare pays us, not you."
    },
    {
     "chip": "Why it matters",
@@ -101,7 +101,7 @@
    ],
    [
     "0:55",
-    "20 respite visits a year"
+    "19 respite visits a year"
    ],
    [
     "1:10",
@@ -112,7 +112,7 @@
     "Respite hours depend on the stage"
    ],
    [
-    "1:44",
+    "1:45",
     "Original Medicare, living at home"
    ],
    [

@@ -66,8 +66,8 @@
    {
     "chip": "Dementia caregivers",
     "head": "Medicare GUIDE respite",
-    "sub": "20 visits a year, 4 hours each, if you qualify",
-    "text": "Caring for someone with dementia? If your family qualifies, Medicare's GUIDE program can pay for twenty respite visits a year, four hours each."
+    "sub": "19 visits a year, 4 hours each, if you qualify",
+    "text": "Caring for someone with dementia? If your family qualifies, Medicare's GUIDE program can pay for nineteen respite visits a year, four hours each."
    },
    {
     "chip": "If it gets dark",
@@ -120,7 +120,7 @@
     "Medicare GUIDE respite"
    ],
    [
-    "2:18",
+    "2:17",
     "How to reach us"
    ]
   ]
