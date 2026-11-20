@@ -4,7 +4,7 @@
   "brand": "cc",
   "title": "What Does In-Home Care Cost in Springfield, MO? (Real Prices + Ways to Pay)",
   "short_title": "What does in-home care cost in Springfield, MO?",
-  "description": "Real in-home care prices from Caring Companions in Springfield, Missouri: Wellness Care $30 an hour, Personal Care $32 an hour, Advanced Care $34 an hour. The standard visit is at least 4 hours, with at least 8 hours a week, and you can ask about shorter visits. Plus the ways families pay: private pay, long-term care insurance, VA benefits, Medicare GUIDE respite, and more.",
+  "description": "Real in-home care prices from Caring Companions in Springfield, Missouri: Wellness Care $30 an hour, Personal Care $32 an hour, Advanced Care $34 an hour. Rates are based on 8 or more hours a week, in visits of 4 hours or more. Fewer hours is $5 more an hour, and you can ask about shorter visits. Plus the ways families pay: private pay, long-term care insurance, VA benefits, Medicare GUIDE respite, and more.",
   "publish": "2026-12-15T23:00:00.000Z",
   "thumb": "/Users/samantha/Claude/Projects/youtube/long/out/cc02-thumb.jpg",
   "end": "Get an exact number with a free in-home assessment.",
@@ -42,8 +42,8 @@
    {
     "chip": "What changes the cost",
     "head": "Mostly, the hours",
-    "sub": "Standard: 4 hours a visit, 8 a week. Ask about shorter.",
-    "text": "What changes the total is mostly the hours. Our standard visit is at least four hours, with at least eight hours a week. So the smallest standard schedule, two four-hour visits of Wellness Care, comes to two hundred forty dollars a week. Need shorter visits? Ask us. When a caregiver is available, we'll work to make it happen, for five dollars more an hour."
+    "sub": "Rates are based on 8 or more hours a week. Under 8 hours a week is $5 more an hour. Ask about shorter visits.",
+    "text": "What changes the total is mostly the hours. Our rates are based on eight or more hours a week, in visits of four hours or more. So two four-hour visits of Wellness Care comes to two hundred forty dollars a week. Fewer than eight hours a week is five dollars more an hour. Need shorter visits? Ask us. When a caregiver is available, we'll work to make it happen, for five dollars more an hour."
    },
    {
     "chip": "Best Price Guarantee",
@@ -72,8 +72,8 @@
    {
     "chip": "Ways to pay",
     "head": "Medicare GUIDE respite",
-    "sub": "For dementia caregivers: 20 visits a year, 4 hours each",
-    "text": "Caring for someone with dementia? Medicare's GUIDE program covers respite visits for families who qualify: twenty visits a year, four hours each."
+    "sub": "For dementia caregivers: 19 visits a year, 4 hours each",
+    "text": "Caring for someone with dementia? Medicare's GUIDE program covers respite visits for families who qualify: nineteen visits a year, four hours each."
    },
    {
     "chip": "Missouri Medicaid?",
@@ -122,31 +122,31 @@
     "Mostly, the hours"
    ],
    [
-    "1:37",
+    "1:38",
     "Found a lower rate? We'll beat it."
    ],
    [
-    "1:58",
+    "1:59",
     "Long-term care insurance"
    ],
    [
-    "2:12",
+    "2:13",
     "VA benefits"
    ],
    [
-    "2:27",
+    "2:28",
     "Medicare GUIDE respite"
    ],
    [
-    "2:38",
+    "2:40",
     "Look at CDS"
    ],
    [
-    "2:55",
+    "2:57",
     "Putting it together"
    ],
    [
-    "3:21",
+    "3:23",
     "How to reach us"
    ]
   ]
