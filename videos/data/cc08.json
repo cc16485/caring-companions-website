@@ -48,8 +48,8 @@
    {
     "chip": "The cost",
     "head": "$30, $32 or $34 an hour",
-    "sub": "Standard 4-hour visits, 8 a week. No deposit, no contract.",
-    "text": "We'll recommend the right level together: Wellness Care, Personal Care, or Advanced Care, at thirty, thirty-two, or thirty-four dollars an hour. Our standard visit is at least four hours, with at least eight hours a week, and you can ask about shorter visits. There's no deposit, and no long-term contract."
+    "sub": "Based on 8 or more hours a week. Under 8 hours a week is $5 more an hour. No deposit, no contract.",
+    "text": "We'll recommend the right level together: Wellness Care, Personal Care, or Advanced Care, at thirty, thirty-two, or thirty-four dollars an hour. Those rates are based on eight or more hours a week, in visits of four hours or more. Fewer hours is five dollars more an hour, and you can ask about shorter visits. There's no deposit, and no long-term contract."
    },
    {
     "chip": "Ways to pay",
@@ -114,27 +114,27 @@
     "$30, $32 or $34 an hour"
    ],
    [
-    "1:35",
+    "1:40",
     "We'll tell you if something fits better"
    ],
    [
-    "1:50",
+    "1:55",
     "Ask us anything"
    ],
    [
-    "2:06",
+    "2:11",
     "Step 4: We match and train a caregiver"
    ],
    [
-    "2:16",
+    "2:21",
     "Step 5: You meet them first"
    ],
    [
-    "2:27",
+    "2:32",
     "We check the fit"
    ],
    [
-    "2:37",
+    "2:42",
     "How to reach us"
    ]
   ]
