@@ -23,13 +23,13 @@ export const RECORDS = [
   { id: 'K102', key: 'hourly_rates',
     question: 'How much does home care cost?',
     alt: ['What are your rates?', 'How much per hour?', 'What is the price of care?', 'How much does a caregiver cost?'],
-    answer: 'Our published rates are Wellness Care $30 an hour, Personal Care $32 an hour, and Advanced Care $34 an hour. Overnight and 24-Hour Care use the same hourly rates, based on the level of care needed. An in-home assessment gives you an exact number for your schedule and needs.',
+    answer: 'Our published rates are Wellness Care $30 an hour, Personal Care $32 an hour, and Advanced Care $34 an hour. Overnight and 24-Hour Care use the same hourly rates, based on the level of care needed. These rates are based on 8 or more hours of care a week. With fewer than 8 hours a week, the rate is $5 more an hour. An in-home assessment gives you an exact number for your schedule and needs.',
     topics: ['cost', 'price', 'rate', 'hourly', 'how much'] },
 
   { id: 'K103', key: 'minimum_hours',
     question: 'What is the minimum number of hours?',
     alt: ['Is there a minimum?', 'How few hours can we book?', 'Can we get a short visit?', 'Do you have a weekly minimum?'],
-    answer: 'Scheduled care has a minimum of 4 hours per visit and 8 hours per week.',
+    answer: 'Visits are 4 hours or more. Our rates are based on 8 or more hours of care a week. With fewer than 8 hours a week, the rate is $5 more an hour. A visit under 4 hours, when the office can approve one, is also $5 more an hour.',
     topics: ['minimum', 'hours', 'per visit', 'per week'] },
 
   { id: 'K104', key: 'medicaid',
@@ -360,7 +360,7 @@ export const RECORDS = [
   { id: 'K157', key: 'early_support_visits', src: 'S9', on: '2026-11-12',
     question: 'What are Early Support Visits?',
     alt: ['Do you offer occasional visits?', 'Can someone come once a month?', 'Can a caregiver come every other week?', 'Do you do monthly visits?', 'How much are Early Support Visits?', 'Can we have a visit now and then?'],
-    answer: 'Early Support Visits are for older adults in Springfield who are doing well at home and would like a helping hand around the house and good company now and then. A caregiver comes for a 4-hour visit once a month for $152 a visit, or every other week for $140 a visit. Before visits begin there is a one-time $99 in-home assessment and setup, billed with the first visit. See mo-care.com/early-support-visits or call (417) 234-8494.',
+    answer: 'Early Support Visits are for older adults in Springfield who are doing well at home and would like a helping hand around the house and good company now and then. A caregiver comes for a 4-hour visit once a month or every other week. Visits are billed at our regular rate plus $5 an hour, which is from $35 an hour, so a visit starts at $140. Before visits begin there is a one-time $99 in-home assessment and setup, billed with the first visit. See mo-care.com/early-support-visits or call (417) 234-8494.',
     topics: ['early support', 'once a month', 'every other week', 'occasional'] },
 ]
 
