@@ -44,6 +44,13 @@
 .os-tl-item h2 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--brand-blue); margin: 0 0 8px; }
 .os-tl-item p { font-size: max(15px, var(--fs-read, 0px)); line-height: 1.75; color: var(--body-text); margin: 0; }
 .os-tl-item a { color: var(--cta); font-weight: 600; }
+.os-founder { max-width:940px; margin: 0 auto; padding: 30px 24px 18px; display: grid; grid-template-columns: 180px 1fr; gap: 34px; align-items: center; }
+.os-founder img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 6px #faf9f6, 0 0 0 8px #F5D061; }
+.os-founder .yr { font-size: max(12px, var(--fs-min, 0px)); font-weight: 700; color: #1F7A8C; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 6px; }
+.os-founder blockquote { margin: 0 0 12px; font-family: var(--serif); font-size: 19px; line-height: 1.65; color: var(--brand-blue); }
+.os-founder cite { font-style: normal; font-weight: 700; color: var(--brand-blue); font-size: max(15px, var(--fs-read, 0px)); }
+.os-founder cite span { display: block; font-weight: 400; color: var(--body-text); font-size: 14px; }
+@media (max-width: 700px) { .os-founder { grid-template-columns: 1fr; justify-items: center; gap: 20px; } .os-founder img { width: 140px; height: 140px; } }
 .os-photos { max-width:940px; margin: 0 auto; padding: 8px 24px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .os-photos img { width: 100%; height: 210px; object-fit: cover; border-radius: 14px; }
 .os-values { max-width:1200px; margin: 0 auto; padding: 34px 24px 10px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -298,6 +305,15 @@
 <div class="os-stat"><p class="n">2017</p><p class="d">Family owned in Springfield since day one, never a franchise</p></div>
 <div class="os-stat"><p class="n">4 home counties</p><p class="d">Greene, Christian, Webster &amp; Polk, plus Taney, Lawrence, Dallas &amp; Stone when a caregiver is nearby</p></div>
 <div class="os-stat"><p class="n">24 &middot; 7 &middot; 365</p><p class="d">Our team answers, nights, weekends, and holidays included</p></div>
+</section>
+
+<section class="os-founder">
+<img src="/assets/photos/samantha-troutman.jpg" alt="Samantha Troutman, Co-Founder and CEO of Caring Companions" width="400" height="400" loading="lazy">
+<div>
+<p class="yr">Meet our founder</p>
+<blockquote>&ldquo;I went into social work because I wanted to help people, and so much of that work is connecting people to the services they need. In 2017 I opened Caring Companions to do exactly that: listen to each family, understand what they need, and match them with the right caregiver.&rdquo;</blockquote>
+<cite>Samantha Troutman<span>Co-Founder and CEO</span></cite>
+</div>
 </section>
 
 <section class="os-tl">
