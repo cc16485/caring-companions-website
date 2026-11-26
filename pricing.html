@@ -386,6 +386,38 @@
 </div>
 </section>
 <p class="pr-terms"><strong>Care that fits your life, not the other way around.</strong> Choose a schedule that works for your family. Our rates are based on 8 or more hours a week, in visits of 4 hours or more. Need fewer than 8 hours a week? It is $5 more an hour. Need a visit shorter than 4 hours? Please ask: when a caregiver is available, we will work to make it happen, also at $5 more an hour, or $10 more if both apply. Shorter visits depend on staffing, so they are not guaranteed. Every client receives a personalized care plan, and our team works to match your loved one with the right caregiver.</p>
+
+<style>
+/* Peace of Mind Promise (her yes 11-25: Hormozi offer, every line already true on the site; #6 her yes "Yes, include it") */
+.pom { background:#f6f5f0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.pom-in { max-width:1000px; margin:0 auto; padding:52px 24px 56px; }
+.pom-kick { font-size:14px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--cta); margin:0 0 10px; }
+.pom h2 { font-family:var(--serif); font-size:clamp(28px,3.4vw,38px); line-height:1.15; color:var(--brand-blue); margin:0 0 10px; font-weight:600; }
+.pom-lead { font-size:max(18px, var(--fs-read, 0px)); line-height:1.55; color:var(--ink); margin:0 0 28px; max-width:640px; }
+.pom-grid { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.pom-grid li { background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px 22px; display:flex; gap:14px; align-items:flex-start; }
+.pom-n { flex:0 0 34px; width:34px; height:34px; border-radius:50%; background:var(--brand-blue); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:16px; }
+.pom-grid b { display:block; font-size:19px; color:var(--brand-blue); margin:2px 0 4px; }
+.pom-grid p { margin:0; font-size:max(16.5px, var(--fs-read, 0px)); line-height:1.55; color:var(--ink); }
+.pom-grid a { color:var(--brand-blue); font-weight:600; }
+@media (max-width:760px) { .pom-in { padding:40px 16px 44px; } .pom-grid { grid-template-columns:1fr; } }
+</style>
+<section class="pom" id="promise" aria-labelledby="pomH">
+<div class="pom-in">
+<p class="pom-kick">Our Peace of Mind Promise</p>
+<h2 id="pomH">When you choose Caring Companions, here&rsquo;s what you can count on.</h2>
+<p class="pom-lead">Letting someone into the home of a person you love is a big step. These are the things we promise every family.</p>
+<ol class="pom-grid">
+<li><span class="pom-n">1</span><div><b>You&rsquo;ll know who&rsquo;s coming.</b><p>Before the first visit, you get your caregiver&rsquo;s photo and a little about them, so the person at the door is never a stranger.</p></div></li>
+<li><span class="pom-n">2</span><div><b>You&rsquo;ll know what it costs.</b><p>Our rates are right here on our website. No deposit, no long-term contract. And if another professional agency gives you a lower written rate, we&rsquo;ll beat it for your first six months. <a href="#guarantee">See our Best Price Guarantee</a></p></div></li>
+<li><span class="pom-n">3</span><div><b>You&rsquo;ll hear from a real person.</b><p>Someone from our Springfield office calls you back, usually the same business day, and <a href="/staying-in-the-loop">keeps you in the loop</a> once care starts.</p></div></li>
+<li><span class="pom-n">4</span><div><b>We handle the paperwork.</b><p>We verify and bill <a href="/long-term-care-insurance">long-term care insurance</a>, and we help with <a href="/veterans">VA Community Care</a> from start to finish.</p></div></li>
+<li><span class="pom-n">5</span><div><b>You can start small.</b><p>Not ready for weekly care? <a href="/early-support-visits">Early Support Visits</a> can be as little as once a month.</p></div></li>
+<li><span class="pom-n">6</span><div><b>The right fit matters.</b><p>If a caregiver isn&rsquo;t the right fit, tell us. We&rsquo;ll listen and look for a better match.</p></div></li>
+</ol>
+</div>
+</section>
+
 <section class="pr-est" id="estimate" aria-labelledby="estH">
 <h2 id="estH">Estimate your weekly cost</h2>
 <p class="pr-est-intro">Pick a level and a schedule. The number updates as you go.</p>
@@ -525,7 +557,7 @@
 </div>
 </section>
 
-<section class="pr-guarantee">
+<section class="pr-guarantee" id="guarantee">
 <div class="pr-guarantee-card">
 <p style="font-size:max(12px, var(--fs-min, 0px));font-weight:700;color:#F5D061;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">Our Best Price Guarantee</p>
 <p style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;color:#fbfaf7;margin:0 0 12px">Quality care at a price you can feel good about.</p>
